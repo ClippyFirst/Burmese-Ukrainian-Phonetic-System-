@@ -1,0 +1,2 @@
+rule_id,input,environment,output,status,source_id
+NO_DIRECT_TONE_VOWEL_RULE,tonal_category,vowel_alternation_context,do_not_apply_as_direct_rule,analysis_dependent,MOONEY2021
