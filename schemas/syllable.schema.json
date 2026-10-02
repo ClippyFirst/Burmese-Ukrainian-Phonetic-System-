@@ -1,0 +1,22 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"BurmeseSyllableAnalysis",
+  "type":"object",
+  "required":["raw","codepoints","onset","status"],
+  "properties":{
+    "raw":{"type":"string"},
+    "codepoints":{"type":"array","items":{"type":"string"}},
+    "onset":{"type":"object"},
+    "kinzi":{"type":["object","null"]},
+    "conjunct":{"type":"array"},
+    "medials":{"type":"array"},
+    "vowel":{"type":["object","null"]},
+    "inherent_vowel":{"type":["object","null"]},
+    "coda":{"type":["object","null"]},
+    "tone_mark":{"type":["object","null"]},
+    "prosody":{"type":"object"},
+    "phonology":{"type":"object"},
+    "ipa":{"type":["string","null"]},
+    "status":{"type":"string"}
+  }
+}
