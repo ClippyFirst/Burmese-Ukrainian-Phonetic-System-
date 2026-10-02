@@ -1,0 +1,4 @@
+analysis_id,description,dimensions,status,source_id
+four_way_traditional,traditional four-way major-syllable analysis,pitch+phonation+duration+vowel_quality,well_supported,GREEN2002
+eight_tone_double_register,eight-tone double-register analysis,pitch+register+duration,analysis_dependent,DUAN2025
+phonetic_tts,F0-and-duration-oriented synthesis model,F0+duration,model_specific,TUN2011
