@@ -1,0 +1,5 @@
+orthographic_marker,possible_function,phonological_status,source_id
+U+103A,asat,contextual inherent-vowel suppression/final-related function,context_dependent,U18
+U+1036,anusvara,part of rhyme representation,context_dependent,U18
+U+1038,visarga,prosodic/orthographic sign,context_dependent,U18
+kinzi,nga final in orthographic syllable,phonological final nasal,established,U18
