@@ -1,0 +1,15 @@
+component,modelled,sourced,generated,tested
+Consonants,partial,yes,no,yes
+Medials,yes,yes,no,yes
+Conjuncts,yes,yes,no,yes
+Kinzi,yes,yes,no,yes
+Asat,yes,yes,no,yes
+Virama,yes,yes,no,yes
+Vowels,partial,yes,no,yes
+Vowel structures,partial,yes,no,partial
+Finals,partial,yes,no,partial
+Prosody,yes,yes,no,partial
+Phonation,yes,yes,no,partial
+Phonological rules,partial,yes,no,partial
+IPA,partial,yes,no,yes
+UA correspondences,adapter,yes,no,partial
