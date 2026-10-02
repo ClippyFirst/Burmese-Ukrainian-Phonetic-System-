@@ -1,0 +1,7 @@
+source_id,title,author,year,type,scope,url
+U18,Unicode Standard Chapter 16,Unicode Consortium,2025,standard,Burmese Myanmar script,https://unicode.org/versions/Unicode18.0.0/core-spec/chapter-16/
+UTN11,Representing Myanmar in Unicode,Unicode Consortium,2007,technical_note,Myanmar script and encoding,https://www.unicode.org/notes/tn11/
+GREEN2002,Word Foot and Syllable Structure in Burmese,Anthony Green,2002,chapter,Burmese syllable and tone analysis,https://roa.rutgers.edu/files/551-1002/551-1002-GREEN-0-1.PDF
+MOONEY2021,Sonority and syllable structure: The case of Burmese tone,Kate Mooney; Chiara Repetti-Ludlow,2021,peer_reviewed,Burmese tone and vowel alternations,https://journals.linguisticsociety.org/proceedings/index.php/PLSA/article/view/4900
+DUAN2025,Double registers and eight tones in Burmese,Haifeng Duan; Xiaonong Zhu,2025,peer_reviewed,Burmese tone/register/phonation,https://doi.org/10.1075/lali.00203.dua
+TUN2011,Myanmar text-to-speech system with rule-based tone synthesis,Than Naing Tun et al.,2011,peer_reviewed,Tone F0 and duration,https://www.jstage.jst.go.jp/article/ast/32/5/32_5_174/_article
