@@ -1,0 +1,14 @@
+source_ipa,target_ipa,ukrainian_candidate,status,method
+p,p,п,seed,feature_neutral
+b,b,б,seed,feature_neutral
+t,t,т,seed,feature_neutral
+d,d,д,seed,feature_neutral
+k,k,к,seed,feature_neutral
+m,m,м,seed,feature_neutral
+n,n,н,seed,feature_neutral
+s,s,с,seed,feature_neutral
+z,z,з,seed,feature_neutral
+j,j,й,seed,feature_neutral
+w,w,в,seed,feature_neutral
+l,l,л,seed,feature_neutral
+r,ɹ,р,seed,feature_neutral
