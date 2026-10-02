@@ -1,0 +1,36 @@
+codepoint,character,unicode_name,script_scope,phonological_status,source_id
+U+1000,က,MYANMAR LETTER KA,Burmese-core,orthographic_unit,U18
+U+1001,ခ,MYANMAR LETTER KHA,Burmese-core,orthographic_unit,U18
+U+1002,ဂ,MYANMAR LETTER GA,Burmese-core,orthographic_unit,U18
+U+1003,ဃ,MYANMAR LETTER GHA,Burmese-core,orthographic_unit,U18
+U+1004,င,MYANMAR LETTER NGA,Burmese-core,orthographic_unit,U18
+U+1005,စ,MYANMAR LETTER CA,Burmese-core,orthographic_unit,U18
+U+1006,ဆ,MYANMAR LETTER CHA,Burmese-core,orthographic_unit,U18
+U+1007,ဇ,MYANMAR LETTER JA,Burmese-core,orthographic_unit,U18
+U+1008,ဈ,MYANMAR LETTER JHA,Burmese-core,orthographic_unit,U18
+U+1009,ဉ,MYANMAR LETTER NYA,Burmese-core,orthographic_unit,U18
+U+100A,ည,MYANMAR LETTER NNYA,Burmese-core,orthographic_unit,U18
+U+100B,ဋ,MYANMAR LETTER TTA,Burmese-core,orthographic_unit,U18
+U+100C,ဌ,MYANMAR LETTER TTHA,Burmese-core,orthographic_unit,U18
+U+100D,ဍ,MYANMAR LETTER DDA,Burmese-core,orthographic_unit,U18
+U+100E,ဎ,MYANMAR LETTER DDHA,Burmese-core,orthographic_unit,U18
+U+100F,ဏ,MYANMAR LETTER NNA,Burmese-core,orthographic_unit,U18
+U+1010,တ,MYANMAR LETTER TA,Burmese-core,orthographic_unit,U18
+U+1011,ထ,MYANMAR LETTER THA,Burmese-core,orthographic_unit,U18
+U+1012,ဒ,MYANMAR LETTER DA,Burmese-core,orthographic_unit,U18
+U+1013,ဓ,MYANMAR LETTER DHA,Burmese-core,orthographic_unit,U18
+U+1014,န,MYANMAR LETTER NA,Burmese-core,orthographic_unit,U18
+U+1015,ပ,MYANMAR LETTER PA,Burmese-core,orthographic_unit,U18
+U+1016,ဖ,MYANMAR LETTER PHA,Burmese-core,orthographic_unit,U18
+U+1017,ဗ,MYANMAR LETTER BA,Burmese-core,orthographic_unit,U18
+U+1018,ဘ,MYANMAR LETTER BHA,Burmese-core,orthographic_unit,U18
+U+1019,မ,MYANMAR LETTER MA,Burmese-core,orthographic_unit,U18
+U+101A,ယ,MYANMAR LETTER YA,Burmese-core,orthographic_unit,U18
+U+101B,ရ,MYANMAR LETTER RA,Burmese-core,orthographic_unit,U18
+U+101C,လ,MYANMAR LETTER LA,Burmese-core,orthographic_unit,U18
+U+101D,ဝ,MYANMAR LETTER WA,Burmese-core,orthographic_unit,U18
+U+101E,သ,MYANMAR LETTER SA,Burmese-core,orthographic_unit,U18
+U+101F,ဟ,MYANMAR LETTER HA,Burmese-core,orthographic_unit,U18
+U+1020,ဠ,MYANMAR LETTER LLA,Burmese-core,orthographic_unit,U18
+U+1021,အ,MYANMAR LETTER A,Burmese-core,orthographic_unit,U18
+U+103F,ဿ,MYANMAR LETTER GREAT SA,Burmese-core,special_orthographic_unit,U18
