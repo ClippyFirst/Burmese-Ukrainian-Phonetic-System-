@@ -1,0 +1,3 @@
+rule_id,structure,status,source_id
+SYLLABLE_CGVVC,C(G)V((V)C),well_supported,GREEN2002
+NASAL_NO_CHECKED,nasal_rhyme + checked tone,excluded,well_supported,GREEN2002
