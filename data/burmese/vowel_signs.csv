@@ -1,0 +1,10 @@
+codepoint,character,unicode_name,category,status,source_id
+U+102B,ါ,MYANMAR VOWEL SIGN TALL AA,dependent_vowel,established,U18
+U+102C,ာ,MYANMAR VOWEL SIGN AA,dependent_vowel,established,U18
+U+102D,ိ,MYANMAR VOWEL SIGN I,dependent_vowel,established,U18
+U+102E,ီ,MYANMAR VOWEL SIGN II,dependent_vowel,established,U18
+U+102F,ု,MYANMAR VOWEL SIGN U,dependent_vowel,established,U18
+U+1030,ူ,MYANMAR VOWEL SIGN UU,dependent_vowel,established,U18
+U+1031,ေ,MYANMAR VOWEL SIGN E,dependent_vowel,established,U18
+U+1032,ဲ,MYANMAR VOWEL SIGN AI,dependent_vowel,established,U18
+U+1036,ံ,MYANMAR SIGN ANUSVARA,dependent_vowel_or_rhyme_sign,context_dependent,U18
