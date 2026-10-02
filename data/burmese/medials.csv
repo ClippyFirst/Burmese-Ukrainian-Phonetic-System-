@@ -1,0 +1,5 @@
+id,codepoint,character,traditional_value,scope,status,source_id
+medial_ya,U+103B,ျ,ya,Burmese-core,established,U18
+medial_ra,U+103C,ြ,ra,Burmese-core,established,U18
+medial_wa,U+103D,ွ,wa,Burmese-core,established,U18
+medial_ha,U+103E,ှ,ha,Burmese-core,established,U18
