@@ -1,0 +1,4 @@
+analysis_id,phenomenon,description,status,scope,source_id
+four_way_tone,prosody,Four major-syllable categories involving pitch phonation duration and vowel quality,well_supported,mainstream Burmese,GREEN2002
+eight_tone_register,prosody,Double-register eight-tone proposal separating modal and breathy series,analysis_dependent,Burmese,DUAN2025
+sonority_vowel_alternation,vowels,Vowel alternations explained via sonority sequencing rather than direct tone causation,analysis_dependent,Burmese,MOONEY2021
