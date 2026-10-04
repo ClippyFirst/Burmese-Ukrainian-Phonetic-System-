@@ -1,0 +1,6 @@
+system_id,language,tradition,status,scope,source_id,notes
+RU_EPSHTEIN,Russian,Russian practical transcription of Burmese geographical names,ESTABLISHED,proper names and geographical names,RU_EPSHTEIN_1959,"Primary Russian tradition; rules published by V. G. Epstein in 1959."
+RU_WEB,Russian,Burmese-Russian practical transcription reference table,DOCUMENTARY,practical reference,RU_WEB_BURMESE,"Useful documentary comparison; not treated as primary scholarly authority."
+SR,Serbian,Serbian Cyrillic practical Burmese system,NOT_ESTABLISHED,search target,,"No dedicated Burmese-specific Serbian system of comparable codified status located in the present review."
+BG,Bulgarian,Bulgarian Cyrillic practical Burmese system,NOT_ESTABLISHED,search target,,"No dedicated Burmese-specific Bulgarian system of comparable codified status located in the present review."
+UA_CLIPPYFIRST,Ukrainian,Project Burmese-Ukrainian practical phonetic transcription,PROPOSED,proper names and reference use,UA_ORTH_2019,"Derived from Burmese phonology/IPA plus Ukrainian target-language constraints; not an official Ukrainian standard."
