@@ -10,7 +10,9 @@ It is intended for personal names, geographical names, institutions, cultural/hi
 
 ## 1. Russian predecessor
 
-A dedicated Russian practical tradition exists. V. G. Epstein's 1959 *Rules of Russian Transcription of Burmese Geographical Names* was published by the Institute of Oriental Studies of the USSR Academy of Sciences and was intended for Burmese geographical names, with application to personal names and other terms noted in the bibliographic record. A modern documentary table preserves the same family of rules: positional consonants, medial rules, vowel/rime tables, final neutralization and non-marking of tone.
+A dedicated Russian practical tradition exists. V. G. Epstein's 1959 Rules of Russian Transcription of Burmese Geographical Names was published by the Institute of Oriental Studies of the USSR Academy of Sciences and was intended for Burmese geographical names, with application to personal names and other terms noted in the bibliographic record. A further 1978 institutional instruction for Russian transmission of Burmese geographical names is also documented, as is Epstein's 1958 article on transcription of Burmese proper names.
+
+A modern documentary table preserves the same family of rules: positional consonants, medial rules, vowel/rime tables, final neutralization and non-marking of tone.
 
 The Russian system is therefore a control system, not merely a random Cyrillic rendering.
 
