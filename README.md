@@ -18,7 +18,7 @@ The project now explicitly reproduces the comparative methodology used in the Th
 
 Burmese phonology/IPA → Russian practical control → Ukrainian target-language policy → Ukrainian practical output
 
-A dedicated Russian practical tradition is documented. The principal historical source located is V. G. Epstein, Rules of Russian Transcription of Burmese Geographical Names (1959). The repository records this tradition as a control/predecessor layer, not as the source of truth for Ukrainian.
+A dedicated Russian practical tradition is documented. The principal historical source located is V. G. Epstein, Rules of Russian Transcription of Burmese Geographical Names (1959). A further institutional instruction from 1978 is also documented, demonstrating continuity of the Russian geographical-name tradition. The repository records this tradition as a control/predecessor layer, not as the source of truth for Ukrainian.
 
 The comparison shows several systematic target-language differences:
 
@@ -97,7 +97,9 @@ Russian practical transcription is documentary evidence for Russian practice. It
 - Mooney & Repetti-Ludlow (2021), Sonority and syllable structure: The case of Burmese tone.
 - Duan & Zhu (2025), Double registers and eight tones in Burmese.
 - Tun et al. (2011), Myanmar text-to-speech system with rule-based tone synthesis.
+- V. G. Epstein (1958), К вопросу о транскрибировании бирманских собственных имен.
 - V. G. Epstein (1959), Rules of Russian Transcription of Burmese Geographical Names.
+- K. T. Boyko & A. V. Samarkin (1978), Instruction for Russian transmission of geographical names of Burma.
 - Ukrainian Orthography 2019, practical-transcription provisions for geographical names.
 
 ## Research artifacts
