@@ -1,33 +1,33 @@
 layer,burmese_ipa,burmese_role,russian_practical,ukrainian_candidate,policy,status,evidence
-consonant,k,onset,к,к,"Neutralize aspiration because Ukrainian lacks a phonemic aspirated-stop series",proposed,RU_EPSHTEIN_1959;UA_ORTH_2019
-consonant,kʰ,onset,кх,к,"Do not copy Russian х; target Ukrainian stop inventory has no aspirated counterpart",proposed,RU_EPSHTEIN_1959;UA_ORTH_2019
-consonant,ɡ,onset,г,ґ,"Prefer ґ for a foreign hard /ɡ/ when the canonical Ukrainian inventory confirms it",analysis_dependent,RU_EPSHTEIN_1959;UA_ORTH_2019
+consonant,k,onset,к,к,"Neutralize aspiration because Ukrainian lacks a phonemic aspirated-stop series",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
+consonant,kʰ,onset,кх,к,"Do not copy Russian х; target Ukrainian stop inventory has no aspirated counterpart",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
+consonant,ɡ,onset,г,ґ,"Prefer ґ for a foreign hard /ɡ/ when the canonical Ukrainian inventory confirms it",analysis_dependent,RU_EPSHTEIN_1959;UA_ORTH_2026
 consonant,ŋ,onset_or_coda,нг,нг,"Expose the velar nasal rather than collapsing it to н; final form may be context-sensitive",proposed,RU_EPSHTEIN_1959
-consonant,s,onset,с,с,"Direct phonological target",proposed,UA_ORTH_2019
+consonant,s,onset,с,с,"Direct phonological target",proposed,UA_ORTH_2026
 consonant,sʰ,onset,сх,с,"Neutralize aspiration; do not import Russian сх",proposed,RU_EPSHTEIN_1959
-consonant,z,onset,з,з,"Direct phonological target",proposed,UA_ORTH_2019
-consonant,ɲ,onset,нь,нь,"Use Ukrainian soft н sequence",proposed,UA_ORTH_2019
-consonant,t,onset,т,т,"Direct target",proposed,UA_ORTH_2019
-consonant,tʰ,onset,тх,т,"Neutralize aspiration",proposed,RU_EPSHTEIN_1959;UA_ORTH_2019
-consonant,d,onset,д,д,"Direct target",proposed,UA_ORTH_2019
-consonant,n,onset,н,н,"Direct target",proposed,UA_ORTH_2019
-consonant,p,onset,п,п,"Direct target",proposed,UA_ORTH_2019
-consonant,pʰ,onset,пх,п,"Neutralize aspiration",proposed,RU_EPSHTEIN_1959;UA_ORTH_2019
-consonant,b,onset,б,б,"Direct target",proposed,UA_ORTH_2019
-consonant,m,onset,м,м,"Direct target",proposed,UA_ORTH_2019
-consonant,j,onset,й,й/я/є/ю/йо,"Render according to Ukrainian orthographic position rather than blindly copying й",analysis_dependent,UA_ORTH_2019
+consonant,z,onset,з,з,"Direct phonological target",proposed,UA_ORTH_2026
+consonant,ɲ,onset,нь,нь,"Use Ukrainian soft н sequence",proposed,UA_ORTH_2026
+consonant,t,onset,т,т,"Direct target",proposed,UA_ORTH_2026
+consonant,tʰ,onset,тх,т,"Neutralize aspiration",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
+consonant,d,onset,д,д,"Direct target",proposed,UA_ORTH_2026
+consonant,n,onset,н,н,"Direct target",proposed,UA_ORTH_2026
+consonant,p,onset,п,п,"Direct target",proposed,UA_ORTH_2026
+consonant,pʰ,onset,пх,п,"Neutralize aspiration",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
+consonant,b,onset,б,б,"Direct target",proposed,UA_ORTH_2026
+consonant,m,onset,м,м,"Direct target",proposed,UA_ORTH_2026
+consonant,j,onset,й,й/я/є/ю/йо,"Render according to Ukrainian orthographic position rather than blindly copying й",analysis_dependent,UA_ORTH_2026
 consonant,r,onset,й,р,"Do not inherit a Russian collapse where Burmese phonology is /r/",proposed,RU_EPSHTEIN_1959
-consonant,l,onset,л,л,"Direct target",proposed,UA_ORTH_2019
-consonant,w,onset_or_coda,у,в,"Use Ukrainian в for /w/ in practical consonantal position; vocalic /u/ remains у",proposed,UA_ORTH_2019
+consonant,l,onset,л,л,"Direct target",proposed,UA_ORTH_2026
+consonant,w,onset_or_coda,у,в,"Use Ukrainian в for /w/ in practical consonantal position; vocalic /u/ remains у",proposed,UA_ORTH_2026
 consonant,θ~ð,onset,т,т,"No dedicated Ukrainian dental fricative; т is conservative",analysis_dependent,RU_EPSHTEIN_1959
-consonant,h,onset,х,г,"Project baseline for foreign /h/; х remains an alternative candidate",analysis_dependent,UA_ORTH_2019
-consonant,ʔ,onset,∅,∅,"Do not invent apostrophes automatically",proposed,RU_EPSHTEIN_1959;UA_ORTH_2019
-vowel,a,nucleus,а,а,"Direct target; quantity remains analytical",proposed,UA_ORTH_2019
-vowel,ɛ,nucleus,э,е,"Ukrainian has no э; use е",proposed,RU_EPSHTEIN_1959;UA_ORTH_2019
-vowel,i,nucleus,и,і,"Ukrainian /i/ is і; do not copy Russian и",proposed,RU_EPSHTEIN_1959;UA_ORTH_2019
-vowel,ɯ,nucleus,ы/у,и,"No exact Ukrainian phoneme; и is baseline and remains analysis-dependent",analysis_dependent,RU_EPSHTEIN_1959;UA_ORTH_2019
-vowel,u,nucleus,у,у,"Direct target",proposed,UA_ORTH_2019
-vowel,o,nucleus,о,о,"Direct target",proposed,UA_ORTH_2019
-vowel,ɔ,nucleus,о,о,"Merge in practical output; retain distinction upstream in IPA",proposed,UA_ORTH_2019
-vowel,e,nucleus,е,е,"Direct target",proposed,UA_ORTH_2019
+consonant,h,onset,х,г,"Project baseline for foreign /h/; х remains an alternative candidate",analysis_dependent,UA_ORTH_2026
+consonant,ʔ,onset,∅,∅,"Do not invent apostrophes automatically",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
+vowel,a,nucleus,а,а,"Direct target; quantity remains analytical",proposed,UA_ORTH_2026
+vowel,ɛ,nucleus,э,е,"Ukrainian has no э; use е",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
+vowel,i,nucleus,и,і,"Ukrainian /i/ is і; do not copy Russian и",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
+vowel,ɯ,nucleus,ы/у,и,"No exact Ukrainian phoneme; и is baseline and remains analysis-dependent",analysis_dependent,RU_EPSHTEIN_1959;UA_ORTH_2026
+vowel,u,nucleus,у,у,"Direct target",proposed,UA_ORTH_2026
+vowel,o,nucleus,о,о,"Direct target",proposed,UA_ORTH_2026
+vowel,ɔ,nucleus,о,о,"Merge in practical output; retain distinction upstream in IPA",proposed,UA_ORTH_2026
+vowel,e,nucleus,е,е,"Direct target",proposed,UA_ORTH_2026
 tone,all,prosody,not encoded,not encoded,"Tone/register/phonation stay in metadata and IPA modes; never convert automatically to Ukrainian stress",proposed,DUAN2025;GREEN2002;TUN2011
