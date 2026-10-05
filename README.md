@@ -47,6 +47,24 @@ Serbian scholarship is nevertheless retained as a methodological comparator for 
 
 Bulgarian remains NOT_ESTABLISHED until a primary Burmese-specific source is located.
 
+## Usage
+
+Install the package in editable mode and run the test suite:
+
+```bash
+pip install -e .
+pip install pytest
+pytest
+```
+
+Structural Burmese parsing is available directly through the Python package.
+The Ukrainian target adapter intentionally requires a local checkout of the
+canonical ClippyFirst/Ukrainian-Phonetic-Inventory repository; the Burmese
+repository does not vendor or duplicate that inventory.
+
+Without the external inventory, the adapter returns
+`inventory_unavailable` rather than falling back to a hidden Ukrainian map.
+
 ## Current implementation
 
 Implemented:
