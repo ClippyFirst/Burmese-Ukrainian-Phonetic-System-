@@ -27,3 +27,21 @@ def test_practical_rules_are_exposed_by_the_data_layer():
 def test_ukrainian_adapter_does_not_fallback_to_hidden_inventory():
     result = ipa_to_ukrainian("i")
     assert result["status"] == "inventory_unavailable"
+
+
+def test_ukrainian_adapter_consumes_external_inventory(tmp_path):
+    import json
+
+    (tmp_path / "data" / "uk").mkdir(parents=True)
+    (tmp_path / "inventory.json").write_text(
+        json.dumps({"schema_version": "test", "phonemes": [{"id": "UA-V-001", "ipa": "i"}]}),
+        encoding="utf-8",
+    )
+    (tmp_path / "data" / "uk" / "graphemes.csv").write_text(
+        "grapheme,ipa_primary,type,phonological_function,context_sensitive,status,notes,source_id\n"
+        "і,i,letter,vowel,no,core,,TEST\n",
+        encoding="utf-8",
+    )
+    result = ipa_to_ukrainian("i", inventory_root=tmp_path)
+    assert result["status"] == "established"
+    assert result["candidates"][0]["orthography"] == "і"
