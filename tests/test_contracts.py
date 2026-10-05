@@ -45,3 +45,15 @@ def test_ukrainian_adapter_consumes_external_inventory(tmp_path):
     result = ipa_to_ukrainian("i", inventory_root=tmp_path)
     assert result["status"] == "established"
     assert result["candidates"][0]["orthography"] == "і"
+
+
+def test_practical_rule_keys_match_practical_table():
+    import csv
+
+    def keys(path, column):
+        with path.open(encoding="utf-8", newline="") as handle:
+            return {row[column] for row in csv.DictReader(handle)}
+
+    practical = ROOT / "data" / "burmese" / "ukrainian_practical.csv"
+    rules = ROOT / "data" / "burmese" / "practical_rules.csv"
+    assert keys(rules, "input") <= keys(practical, "burmese_ipa")
