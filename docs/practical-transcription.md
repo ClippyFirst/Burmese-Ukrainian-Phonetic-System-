@@ -119,7 +119,7 @@ Burmese tone must never be converted automatically into Ukrainian stress.
 
 ## 11. Ukrainian orthography
 
-The target layer follows Ukrainian practical-transcription principles. Ukrainian orthographic guidance states that geographical names of Slavic and other countries are rendered according to practical-transcription requirements. This supports an independent target-language stage.
+The target layer follows Ukrainian practical-transcription principles. The current Ukrainian state standard is the 2026 edition of Ukrainian Orthography, effective from 2026-03-28. Its normative status supports an independent Ukrainian target-language stage. The 2019 edition is retained only as historical provenance.
 
 The system therefore does not import Russian ы, э, кх, тх, пх, or Russian-specific soft-sign conventions merely because they occur in the predecessor system.
 
