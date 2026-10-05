@@ -100,7 +100,7 @@ Russian practical transcription is documentary evidence for Russian practice. It
 - V. G. Epstein (1958), К вопросу о транскрибировании бирманских собственных имен.
 - V. G. Epstein (1959), Rules of Russian Transcription of Burmese Geographical Names.
 - K. T. Boyko & A. V. Samarkin (1978), Instruction for Russian transmission of geographical names of Burma.
-- Ukrainian Orthography 2019, practical-transcription provisions for geographical names.
+- Ukrainian Orthography 2026, practical-transcription provisions for geographical names.
 
 ## Research artifacts
 
