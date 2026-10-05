@@ -97,7 +97,7 @@ Russian practical transcription is documentary evidence for Russian practice. It
 - Mooney & Repetti-Ludlow (2021), Sonority and syllable structure: The case of Burmese tone.
 - Duan & Zhu (2025), Double registers and eight tones in Burmese.
 - Tun et al. (2011), Myanmar text-to-speech system with rule-based tone synthesis.
-- V. G. Epstein (1958), К вопросу о транскрибировании бирманских собственных имен.
+- V. G. Epstein (1958), bibliographic lead on Burmese proper-name transcription (article-level verification remains uncertain).
 - V. G. Epstein (1959), Rules of Russian Transcription of Burmese Geographical Names.
 - K. T. Boyko & A. V. Samarkin (1978), Instruction for Russian transmission of geographical names of Burma.
 - Ukrainian Orthography 2026, practical-transcription provisions for geographical names.
