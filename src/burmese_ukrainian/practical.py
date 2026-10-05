@@ -1,14 +1,19 @@
-"""Burmese → Ukrainian practical layer.
+"""Evidence-backed Burmese → Ukrainian practical correspondence layer.
 
-This module deliberately consumes Burmese IPA/phonological values rather than
-Myanmar characters or Russian spellings. It is a proposal layer: mappings that
-depend on disputed Burmese analysis or Ukrainian editorial adjudication are
-returned with explicit status.
+The active correspondence table lives in data/burmese/ukrainian_practical.csv.
+Python does not maintain a second hidden mapping table.
 """
 
 from __future__ import annotations
 
+import csv
 from dataclasses import dataclass
+from pathlib import Path
+
+
+DATA_DIR = Path(__file__).resolve().parents[2] / "data" / "burmese"
+PRACTICAL_TABLE = DATA_DIR / "ukrainian_practical.csv"
+RULE_TABLE = DATA_DIR / "practical_rules.csv"
 
 
 @dataclass(frozen=True)
@@ -17,47 +22,76 @@ class PracticalCandidate:
     status: str
     rule_ids: tuple[str, ...]
     reason: str
+    evidence: tuple[str, ...] = ()
 
 
-DIRECT = {
-    "p": "п", "b": "б", "t": "т", "d": "д",
-    "k": "к", "ɡ": "ґ", "m": "м", "n": "н",
-    "s": "с", "z": "з", "ɲ": "нь", "l": "л",
-    "r": "р", "j": "й", "w": "в",
-    "i": "і", "e": "е", "a": "а", "u": "у",
-    "o": "о", "ɔ": "о", "ɛ": "е", "ɯ": "и",
-}
+def _read_rows(path: Path) -> list[dict[str, str]]:
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        return list(csv.DictReader(handle))
 
-NEUTRALIZE = {
-    "pʰ": ("п", "UA-BUR-ASP-P"),
-    "tʰ": ("т", "UA-BUR-ASP-T"),
-    "kʰ": ("к", "UA-BUR-ASP-K"),
-    "sʰ": ("с", "UA-BUR-ASP-S"),
-    "tɕ": ("ч", "UA-BUR-AFF"),
-    "tɕʰ": ("ч", "UA-BUR-AFF"),
-    "ŋ": ("нг", "UA-BUR-NG"),
-    "h": ("г", "UA-BUR-H"),
-    "θ": ("т", "UA-BUR-TH"),
-    "ð": ("т", "UA-BUR-TH"),
-    "ʔ": ("", "UA-BUR-GLOTTAL"),
-}
+
+def _load_rules() -> dict[str, list[str]]:
+    rules: dict[str, list[str]] = {}
+    for row in _read_rows(RULE_TABLE):
+        rules.setdefault(row["input"], []).append(row["rule_id"])
+    return rules
+
+
+def _load_candidates() -> dict[str, list[dict[str, str]]]:
+    rows = _read_rows(PRACTICAL_TABLE)
+    return_rows: dict[str, list[dict[str, str]]] = {}
+    for row in rows:
+        return_rows.setdefault(row["burmese_ipa"], []).append(row)
+    return return_rows
+
 
 def rank_ukrainian_candidates(ipa: str) -> list[PracticalCandidate]:
-    """Return deterministic proposal candidates, preserving uncertainty."""
+    """Return deterministic candidates from the canonical project table."""
     if not ipa:
         return []
-    if ipa in NEUTRALIZE:
-        text, rule = NEUTRALIZE[ipa]
-        status = "analysis_dependent" if ipa in {"h", "θ", "ð"} else "proposed"
-        return [PracticalCandidate(text, status, (rule,), "target-language adaptation")]
-    if ipa in DIRECT:
-        return [PracticalCandidate(DIRECT[ipa], "proposed", ("UA-BUR-DIRECT",), "direct target")]
-    return [PracticalCandidate("?", "not_established", ("UA-BUR-UNMAPPED",), "No project rule yet")]
+
+    rows = _load_candidates().get(ipa)
+    if not rows:
+        # The table contains a few grouped documentary labels such as
+        # θ~ð. Do not silently split such analyses into unsupported claims.
+        return [
+            PracticalCandidate(
+                text="?",
+                status="not_established",
+                rule_ids=("UA-BUR-UNMAPPED",),
+                reason="No exact project correspondence is established for this IPA value.",
+            )
+        ]
+
+    rules = _load_rules()
+    candidates: list[PracticalCandidate] = []
+    for row in rows:
+        rule_ids = tuple(rules.get(row["burmese_ipa"], ()))
+        candidates.append(
+            PracticalCandidate(
+                text=row["ukrainian_candidate"],
+                status=row["status"].lower(),
+                rule_ids=rule_ids,
+                reason=row["policy"],
+                evidence=tuple(x for x in row["evidence"].split(";") if x),
+            )
+        )
+    return candidates
+
 
 def practical_from_ipa(ipa: str) -> dict:
     candidates = rank_ukrainian_candidates(ipa)
     return {
         "ipa": ipa,
-        "candidates": [c.__dict__ for c in candidates],
+        "candidates": [
+            {
+                "text": c.text,
+                "status": c.status,
+                "rule_ids": c.rule_ids,
+                "reason": c.reason,
+                "evidence": c.evidence,
+            }
+            for c in candidates
+        ],
         "status": candidates[0].status if candidates else "insufficient_input",
     }
