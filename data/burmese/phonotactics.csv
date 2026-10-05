@@ -1,3 +1,3 @@
 rule_id,structure,status,source_id,notes
 SYLLABLE_CGVVC,"C(G)V((V)C)",well_supported,GREEN2002,"Structural abstraction; not a lexical generator."
-NASAL_NO_CHECKED,"nasal rhyme + checked tone",excluded,well_supported,GREEN2002,"Checked tone is excluded from the nasal-rhyme class in the cited analysis."
+NASAL_NO_CHECKED,"nasal rhyme + checked tone",well_supported,GREEN2002,"Checked tone is excluded from the nasal-rhyme class in the cited analysis."
