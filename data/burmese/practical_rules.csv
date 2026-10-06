@@ -8,6 +8,7 @@ UA-BUR-ASP-T,ua_target,tʰ,т,PROPOSED,RU_EPSHTEIN_1959;UA_ORTH_2026,"Neutralize
 UA-BUR-ASP-P,ua_target,pʰ,п,PROPOSED,RU_EPSHTEIN_1959;UA_ORTH_2026,"Neutralize aspiration."
 UA-BUR-ASP-S,ua_target,sʰ,с,PROPOSED,RU_EPSHTEIN_1959;UA_ORTH_2026,"Neutralize aspiration."
 UA-BUR-NG,ua_target,ŋ,нг,PROPOSED,RU_EPSHTEIN_1959,"Retain an explicit velar nasal sequence."
+UA-BUR-NASAL-FINAL,ua_target,ɴ,нг,PROPOSED,UA_ORTH_2026,"Use an explicit Ukrainian nasal sequence for Burmese final nasal realization /ɴ/."
 UA-BUR-W,ua_target,w,в,PROPOSED,UA_ORTH_2026,"Use consonantal в rather than Russian у."
 UA-BUR-H,ua_target,h,г,ANALYSIS_DEPENDENT,UA_ORTH_2026,"Project hypothesis; х remains an alternative."
 UA-BUR-R,ua_target,r,р,PROPOSED,RU_EPSHTEIN_1959,"Preserve Burmese phonological r rather than copying a Russian output convention."
