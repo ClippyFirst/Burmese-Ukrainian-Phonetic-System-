@@ -49,9 +49,27 @@ function parseCluster(raw){
 }
 
 function deriveIpa(sy){
-  const onset=ONSETS[sy.onset];if(!onset)return null;const parts=[];
-  if(sy.kinzi)parts.push("ŋ");parts.push(onset.ipa);
-  for(const m of sy.medials){const id=MEDIALS[m]?.id,map={medial_ya:"j",medial_ra:"r",medial_wa:"w",medial_ha:"h"};if(map[id])parts.push(map[id]);else return null;}
+  const onset=ONSETS[sy.onset];if(!onset)return null;let initial=onset.ipa;const parts=[];
+  if(sy.kinzi)parts.push("ŋ");
+  const ids=sy.medials.map(m=>MEDIALS[m]?.id).filter(Boolean);
+  const has=key=>ids.includes(key);
+  // Standard Burmese has contextual medial realizations: /k kʰ g/ + -y/-r
+  // become palatal affricates, while /ŋ/ + -r merges toward /ɲ/.
+  if(has("medial_ya")||has("medial_ra")){
+    if(initial==="k") initial="tɕ";
+    else if(initial==="kʰ") initial="tɕʰ";
+    else if(initial==="ɡ") initial="dʑ";
+    else if(initial==="ŋ"&&has("medial_ra")) initial="ɲ";
+  }
+  // Ha-to is primarily a voicing/devoicing marker on sonorants, not an /h/ onset.
+  if(has("medial_ha")){
+    const devoiced={m:"m̥",n:"n̥","ŋ":"ŋ̊","ɲ":"ɲ̥",l:"l̥",w:"ʍ"};
+    if(initial==="j"||initial==="r") initial="ʃ";
+    else if(devoiced[initial]) initial=devoiced[initial];
+    else return null;
+  }
+  parts.push(initial);
+  if(has("medial_wa"))parts.push("w");
   if(!sy.vowels.length){if(sy.coda||sy.asat)return null;parts.push("a");}
   const map={"MYANMAR VOWEL SIGN E":"e","MYANMAR VOWEL SIGN I":"i","MYANMAR VOWEL SIGN II":"iː","MYANMAR VOWEL SIGN U":"u","MYANMAR VOWEL SIGN UU":"uː","MYANMAR VOWEL SIGN TALL AA":"a","MYANMAR VOWEL SIGN AA":"a","MYANMAR VOWEL SIGN AI":"ɛ","MYANMAR SIGN ANUSVARA":""};
   for(const sign of sy.vowels){const id=SIGNS[sign]?.unicode_name;if(!(id in map))return null;parts.push(map[id]);}
@@ -67,7 +85,7 @@ function candidateFor(segment){
 
 function renderUkrainian(ipaText){
   if(!ipaText)return{text:"",status:"NOT_ESTABLISHED",parts:[]};
-  const units=ipaText.match(/tʰ|kʰ|pʰ|sʰ|dʰ|bʰ|θ|ð|ɲ|ŋ|ɯ|ɡ|ʔ|[a-zɛɪɔəː]/g)||[];
+  const units=ipaText.match(/tɕʰ|tɕ|dʑ|tʰ|kʰ|pʰ|sʰ|dʰ|bʰ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|θ|ð|ɲ|ŋ|ɯ|ɡ|ʔ|[a-zɛɪɔəː]/g)||[];
   const parts=[];let status="ESTABLISHED";
   for(const u of units){const c=candidateFor(u);parts.push(c);if(!["PROPOSED","ESTABLISHED","WELL_SUPPORTED"].includes(c.status))status=c.status;}
   return{text:parts.map(x=>x.text).join(""),status,parts};
