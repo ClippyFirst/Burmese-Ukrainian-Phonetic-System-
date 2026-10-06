@@ -6,11 +6,11 @@
   "type":"module",
   "engines":{"node":">=22.12.0"},
   "scripts":{
-    "dev":"vite",
+    "dev":"npm run generate:web && vite --host 127.0.0.1 --port 4173",
     "generate:web":"node scripts/generate-web-data.mjs",
     "validate:data":"node scripts/validate-web-data.mjs",
-    "test":"node --test tests/web/*.test.mjs",
-    "test:browser":"playwright test",
+    "test":"npm run generate:web && node --test tests/web/*.test.mjs",
+    "test:browser":"npm run generate:web && playwright test",
     "build":"npm run validate:data && npm run generate:web && vite build"
   },
   "dependencies":{},
