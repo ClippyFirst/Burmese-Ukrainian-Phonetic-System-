@@ -71,8 +71,22 @@ function deriveIpa(sy){
   parts.push(initial);
   if(has("medial_wa"))parts.push("w");
   if(!sy.vowels.length){if(sy.coda||sy.asat)return null;parts.push("a");}
-  const map={"MYANMAR VOWEL SIGN E":"e","MYANMAR VOWEL SIGN I":"i","MYANMAR VOWEL SIGN II":"iː","MYANMAR VOWEL SIGN U":"u","MYANMAR VOWEL SIGN UU":"uː","MYANMAR VOWEL SIGN TALL AA":"a","MYANMAR VOWEL SIGN AA":"a","MYANMAR VOWEL SIGN AI":"ɛ","MYANMAR SIGN ANUSVARA":""};
-  for(const sign of sy.vowels){const id=SIGNS[sign]?.unicode_name;if(!(id in map))return null;parts.push(map[id]);}
+  const vowelIds=sy.vowels.map(sign=>SIGNS[sign]?.unicode_name).filter(Boolean);
+  // Common Burmese compound-vowel spellings change quality when the syllable is closed.
+  // In particular ော/ေါ is /ɔ/ in open syllables but /aʊ/ before a nasal/velar
+  // coda in Yangon Burmese (e.g. ကျောင်း /tɕáʊɴ/).
+  if(vowelIds.includes("MYANMAR VOWEL SIGN E")&&(vowelIds.includes("MYANMAR VOWEL SIGN AA")||vowelIds.includes("MYANMAR VOWEL SIGN TALL AA"))){
+    parts.push(sy.coda?"aʊ":"ɔ");
+  }else if(vowelIds.includes("MYANMAR VOWEL SIGN I")&&vowelIds.includes("MYANMAR VOWEL SIGN U")){
+    parts.push(sy.coda?"aɪ":"o");
+  }else if(sy.coda&&vowelIds.includes("MYANMAR VOWEL SIGN I")){
+    parts.push("eɪ");
+  }else if(sy.coda&&vowelIds.includes("MYANMAR VOWEL SIGN U")){
+    parts.push("oʊ");
+  }else{
+    const map={"MYANMAR VOWEL SIGN E":"e","MYANMAR VOWEL SIGN I":"i","MYANMAR VOWEL SIGN II":"iː","MYANMAR VOWEL SIGN U":"u","MYANMAR VOWEL SIGN UU":"uː","MYANMAR VOWEL SIGN TALL AA":"a","MYANMAR VOWEL SIGN AA":"a","MYANMAR VOWEL SIGN AI":"ɛ","MYANMAR SIGN ANUSVARA":""};
+    for(const sign of sy.vowels){const id=SIGNS[sign]?.unicode_name;if(!(id in map))return null;parts.push(map[id]);}
+  }
   if(sy.coda)parts.push(ONSETS[sy.coda]?.ipa||"");return parts.join("");
 }
 
