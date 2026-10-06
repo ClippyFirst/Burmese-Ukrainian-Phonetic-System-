@@ -67,14 +67,17 @@ function parseCluster(raw){
 function deriveIpa(sy){
   const onset=ONSETS[sy.onset];
   if(!onset) return null;
-  const parts=[onset.ipa];
+  const parts=[];
+  if(sy.kinzi) parts.push("ŋ");
+  parts.push(onset.ipa);
   for(const m of sy.medials){
     const id=MEDIALS[m]?.id;
     const map={medial_ya:"j",medial_ra:"r",medial_wa:"w",medial_ha:"h"};
     if(map[id]) parts.push(map[id]); else return null;
   }
   if(!sy.vowels.length){
-    return null;
+    if(sy.coda || sy.asat) return null;
+    parts.push("a");
   }
   for(const sign of sy.vowels){
     const id=SIGNS[sign]?.unicode_name;
@@ -82,7 +85,6 @@ function deriveIpa(sy){
     if(!(id in map)) return null;
     parts.push(map[id]);
   }
-  if(sy.kinzi) parts.push("ŋ");
   if(sy.coda){ parts.push(ONSETS[sy.coda]?.ipa || ""); }
   return parts.join("");
 }
@@ -112,7 +114,9 @@ function convert(text){
   const ukText=parsed.map(s=>s.nonMyanmar?s.raw:(s.uk?.text||"")).join("");
   const real=parsed.filter(s=>!s.nonMyanmar);
   const statuses=real.map(s=>s.status);
-  const worst=statuses.includes("NOT_ESTABLISHED")?"NOT_ESTABLISHED":statuses.includes("UNCERTAIN")?"UNCERTAIN":statuses.includes("ANALYSIS_DEPENDENT")?"ANALYSIS_DEPENDENT":"ESTABLISHED";
+  const ukStatuses=real.flatMap(s=>s.uk?.parts?.map(p=>p.status)||[]);
+  const allStatuses=[...statuses,...ukStatuses];
+  const worst=allStatuses.includes("UNCERTAIN")?"UNCERTAIN":allStatuses.includes("NOT_ESTABLISHED")?"NOT_ESTABLISHED":allStatuses.includes("ANALYSIS_DEPENDENT")?"ANALYSIS_DEPENDENT":allStatuses.includes("PROPOSED")?"PROPOSED":"ESTABLISHED";
   return {input:text,normalized:normalize(text),ipa:ipaText,uk:ukText,status:worst,segments:parsed};
 }
 
@@ -135,9 +139,9 @@ function render(){
     if(s.notes.length){const note=document.createElement("small");note.textContent=s.notes.join(" ");row.append(note);}
     syllables.append(row);
   });
-  const problems=r.segments.filter(s=>!s.nonMyanmar && (!s.ipa || s.status==="UNCERTAIN" || s.status==="NOT_ESTABLISHED"));
+  const problems=r.segments.filter(s=>!s.nonMyanmar && (!s.ipa || s.status==="UNCERTAIN" || s.status==="NOT_ESTABLISHED" || s.status==="ANALYSIS_DEPENDENT" || s.uk?.status==="PROPOSED" || s.uk?.status==="ANALYSIS_DEPENDENT"));
   issues.hidden=problems.length===0;
-  issueText.textContent=problems.length?("Для "+problems.length+" сегмент"+(problems.length===1?"а":"ів")+" результат потребує додаткового аналізу; сервіс не вигадує відсутню відповідність."):"";
+  issueText.textContent=problems.length?("Для "+problems.length+" сегмент"+(problems.length===1?"а":"ів")+" результат містить запропоновану або неповністю встановлену відповідність; сервіс не подає її як доведену."):"";
   live.textContent="Конвертацію завершено. Статус: "+r.status;
 }
 
