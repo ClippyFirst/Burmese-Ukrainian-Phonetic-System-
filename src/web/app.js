@@ -78,7 +78,6 @@ function deriveIpa(sy){
   }
   parts.push(initial);
   const wa=has("medial_wa");
-  if(wa&&!sy.vowels.length)return null;
   const vowelIds=sy.vowels.map(sign=>SIGNS[sign]?.unicode_name).filter(Boolean);
   const hasV=id=>vowelIds.includes(id);
   const closed=!!coda||sy.asat;
@@ -109,7 +108,9 @@ function deriveIpa(sy){
     vowel=nasalCoda?"ɪ":"a";
   }
   if(!vowel){
-    if(!sy.vowels.length&&!sy.coda&&!sy.asat)vowel="a";
+    if(!sy.vowels.length&&wa&&nasalCoda)vowel="ʊ";
+    else if(!sy.vowels.length&&wa&&checkedCoda)vowel="ɛ";
+    else if(!sy.vowels.length&&!sy.coda&&!sy.asat)vowel="a";
     else if(sy.kinziCoda&&!sy.vowels.length)vowel="ɪ";
     else return null;
   }
