@@ -135,7 +135,7 @@ Russian practical transcription is documentary evidence for Russian practice. It
 
 ## Status labels
 
-ESTABLISHED · WELL_SUPPORTED · ANALYSIS_DEPENDENT · DIALECT_DEPENDENT · CONTEXT_DEPENDENT · UNCERTAIN · DISPUTED · NOT_ESTABLISHED · UNSUPPORTED
+ESTABLISHED · WELL_SUPPORTED · PROPOSED · ANALYSIS_DEPENDENT · DIALECT_DEPENDENT · CONTEXT_DEPENDENT · UNCERTAIN · DISPUTED · NOT_ESTABLISHED · UNSUPPORTED
 
 The implementation intentionally returns uncertainty instead of silently inventing a linguistic analysis.
 
