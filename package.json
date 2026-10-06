@@ -1,0 +1,18 @@
+{
+  "name":"burmese-ukrainian-phonetic-system",
+  "private":true,
+  "version":"0.2.0",
+  "description":"Research-grade Burmese to Ukrainian practical transcription system and local web service.",
+  "type":"module",
+  "engines":{"node":">=22.12.0"},
+  "scripts":{
+    "dev":"vite",
+    "generate:web":"node scripts/generate-web-data.mjs",
+    "validate:data":"node scripts/validate-web-data.mjs",
+    "test":"node --test tests/web/*.test.mjs",
+    "test:browser":"playwright test",
+    "build":"npm run validate:data && npm run generate:web && vite build"
+  },
+  "dependencies":{},
+  "devDependencies":{"@playwright/test":"1.63.0","vite":"8.3.1"}
+}
