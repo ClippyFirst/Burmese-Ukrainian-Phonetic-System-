@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'">
+<meta name="description" content="Методологія авторської української практичної системи передачі бірманської мови.">
+<title>Система / မြန်မာ → УКРАЇНСЬКА</title>
+<link rel="stylesheet" href="./src/web/styles.css">
+</head>
+<body>
+<main class="shell">
+<header class="site-header">
+  <div class="topline"><a class="brand" href="./"><span class="brand-mark" aria-hidden="true">မြ</span><span>မြန်မာ / УКРАЇНСЬКА</span></a><span class="local"><i aria-hidden="true"></i> дослідницька система</span></div>
+  <div class="hero compact"><p class="eyebrow">Методологія</p><h1>Як побудовано <em>українське читання.</em></h1><p class="subtitle">Ця сторінка пояснює не «правильну вимову взагалі», а логіку авторської системи та межі її доказовості.</p></div>
+  <nav class="nav" aria-label="Основна навігація"><a href="./">Сервіс</a><a class="active" href="./system.html">Як побудовано систему</a></nav>
+</header>
+
+<article class="document">
+<section><p class="kicker">01 · Об'єкт</p><h2>Що саме передає система</h2><p>Об'єктом є сучасна стандартна бірманська мова в письмі Myanmar. Myanmar script не ототожнюється автоматично з Burmese: Unicode описує писемність і механіку її кодування, тоді як фонологічні рішення спираються на окремі лінгвістичні джерела.</p></section>
+<section><p class="kicker">02 · Конвеєр</p><h2>Від письма до українського результату</h2><div class="pipeline"><span>Burmese Unicode</span><b>→</b><span>графемна структура</span><b>→</b><span>фонологічний аналіз</span><b>→</b><span>IPA</span><b>→</b><span>українська цільова мова</span><b>→</b><strong>практична транскрипція</strong></div><p>Тому український результат не утворюється заміною Myanmar-літер на кириличні знаки.</p></section>
+<section><p class="kicker">03 · Українська політика</p><h2>Чому система не копіює російську</h2><p>Російські правила передачі бірманських географічних назв Epstein (1959) та інструкція 1978 року зберігаються як документальний контрольний шар. Вони показують історично засвідчені рішення, але російський результат не використовується як проміжний runtime-формат.</p><div class="table-wrap"><table><thead><tr><th>Бірманська ознака</th><th>Російська практика</th><th>Українська політика</th><th>Статус</th></tr></thead><tbody>
+<tr><td>/kʰ/</td><td>кх</td><td>к</td><td>ANALYSIS_DEPENDENT / policy</td></tr>
+<tr><td>/tʰ/</td><td>тх</td><td>т</td><td>PROPOSED</td></tr>
+<tr><td>/ŋ/</td><td>нг</td><td>нг</td><td>PROPOSED</td></tr>
+<tr><td>/i/</td><td>и</td><td>і</td><td>PROPOSED</td></tr>
+<tr><td>/w/</td><td>у</td><td>в</td><td>PROPOSED</td></tr>
+<tr><td>/r/</td><td>й / r залежно від традиції</td><td>р</td><td>PROPOSED</td></tr>
+<tr><td>/h/</td><td>х</td><td>г; х — альтернатива</td><td>ANALYSIS_DEPENDENT</td></tr>
+<tr><td>/ɯ/</td><td>ы / у</td><td>и як базовий кандидат</td><td>ANALYSIS_DEPENDENT</td></tr>
+</tbody></table></div></section>
+<section><p class="kicker">04 · Просодія</p><h2>Тон не перетворюється на український наголос</h2><p>У репозиторії зберігаються конкуруючі аналізи бірманської тональності та фонації. Оскільки тон може включати висоту, фонацію, інтенсивність, тривалість і якість голосного, практичний український результат не повинен автоматично перетворювати його на знак українського наголосу.</p></section>
+<section><p class="kicker">05 · Статуси</p><h2>Система показує межі знання</h2><div class="status-grid"><div><b>ESTABLISHED</b><span>підтверджено в межах поточної моделі</span></div><div><b>WELL_SUPPORTED</b><span>має сильну незалежну доказову базу</span></div><div><b>ANALYSIS_DEPENDENT</b><span>залежить від вибору лінгвістичного аналізу</span></div><div><b>CONTEXT_DEPENDENT</b><span>значення визначається контекстом</span></div><div><b>UNCERTAIN</b><span>доказів недостатньо для впевненого рішення</span></div><div><b>NOT_ESTABLISHED</b><span>окреме рішення ще не встановлено</span></div></div></section>
+<section><p class="kicker">06 · Джерела</p><h2>Доказова база</h2><ul><li>Unicode Standard, Chapter 16 — Myanmar.</li><li>Unicode Technical Note #11 — Representing Myanmar in Unicode.</li><li>Green (2002) — Word, Foot, and Syllable Structure in Burmese.</li><li>Mooney & Repetti-Ludlow (2021) — Burmese tone and syllable structure.</li><li>Duan & Zhu (2025) — double registers and eight tones in Burmese.</li><li>Tun et al. (2011) — rule-based Myanmar tone synthesis.</li><li>Epstein (1959) — Russian transcription of Burmese geographical names.</li><li>Boyko & Samarkin (1978) — Russian transmission of geographical names of Burma.</li><li>Український правопис 2026 — чинна нормативна база української мови.</li></ul><p>Повний реєстр джерел, claims та машинозчитуваних відповідностей залишається в GitHub-репозиторії.</p></section>
+</article>
+<footer class="footer"><div><strong>မြန်မာ / УКРАЇНСЬКА</strong><span>Методологічна сторінка авторської системи.</span></div><div><a href="./">← Повернутися до сервісу</a></div></footer>
+</main>
+</body>
+</html>
