@@ -13,3 +13,9 @@ jobs:
       - run: pip install -e .
       - run: pip install pytest
       - run: pytest
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npm run build
+      - run: npm test
