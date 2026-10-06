@@ -30,7 +30,8 @@ function segment(text){
     const start=i; i++;
     while(i<s.length && isMyanmar(s[i])){
       const prev=s[i-1];
-      const isNewBase=BASE.has(s[i]) && prev!==VIRAMA && s.slice(Math.max(start,i-3),i)!==KINZI;
+      const isCodaBase=BASE.has(s[i]) && s[i+1]===ASAT;
+      const isNewBase=BASE.has(s[i]) && !isCodaBase && prev!==VIRAMA && prev!==ASAT && s.slice(Math.max(start,i-3),i)!==KINZI;
       if(isNewBase) break;
       i++;
     }
@@ -49,6 +50,7 @@ function parseCluster(raw){
     if(i+1<raw.length && BASE.has(raw[i+1])){sy.conjunct.push(raw[i+1]);i+=2;} else {sy.status="UNCERTAIN";sy.notes.push("Неповна послідовність virama.");break;}
   }
   while(i<raw.length && MEDIAL_CHARS.has(raw[i])){sy.medials.push(raw[i]);i++;}
+  if(i+1<raw.length && BASE.has(raw[i]) && raw[i+1]===ASAT){sy.coda=raw[i];i+=2;sy.asat=true;}
   while(i<raw.length && VOWEL_CHARS.has(raw[i])){sy.vowels.push(raw[i]);i++;}
   while(i<raw.length){
     if(raw[i]===ASAT){sy.asat=true;i++;continue;}
@@ -80,6 +82,7 @@ function deriveIpa(sy){
     parts.push(map[id]);
   }
   if(sy.kinzi) parts.push("ŋ");
+  if(sy.coda){ parts.push(ONSETS[sy.coda]?.ipa || ""); }
   return parts.join("");
 }
 
@@ -87,7 +90,7 @@ function candidateFor(segment){
   const direct=PRACTICAL[segment]||PRACTICAL[segment==="θ"?"θ~ð":segment];
   if(!direct) return {text:"",status:"NOT_ESTABLISHED",reason:"Немає точного правила для цього IPA-сегмента."};
   const row=direct[0];
-  return {text:row.ukrainian_candidate,status:(row.status||"UNKNOWN").toUpperCase(),reason:row.policy,ruleIds:(RULES[segment]||RULES[segment==="θ"?"θ~ð":segment]||[]).map(x=>x.rule_id)};
+  return {text:row.ukrainian_candidate,status:(row.status||"UNKNOWN").toUpperCase(),reason:row.policy,ruleIds:(RULES[segment]||RULES["/"+segment+"/"]||RULES[segment==="θ"?"θ~ð":segment]||RULES["/θ~ð/"]||[]).map(x=>x.rule_id)};
 }
 
 function renderUkrainian(ipaText){
@@ -138,7 +141,7 @@ function render(){
 }
 
 source.addEventListener("input",render);
-document.querySelector("#example").addEventListener("click",()=>{source.value="မြန်မာ";render();source.focus();});
+document.querySelector("#example").addEventListener("click",()=>{source.value="ကာ မြန်မာ";render();source.focus();});
 document.querySelector("#clear").addEventListener("click",()=>{source.value="";render();source.focus();});
 document.querySelectorAll("[data-copy]").forEach(btn=>btn.addEventListener("click",async()=>{
   const value=document.querySelector("#"+btn.dataset.copy).textContent;
