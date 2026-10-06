@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'">
+<meta name="description" content="Бірманський текст → практична українська транскрипція з IPA та поясненням системи.">
+<title>မြန်မာ / УКРАЇНСЬКА</title>
+<link rel="stylesheet" href="./src/web/styles.css">
+</head>
+<body>
+<main class="shell">
+<header class="site-header">
+  <div class="topline">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">မြ</span><span>မြန်မာ / УКРАЇНСЬКА</span></a>
+    <span class="local"><i aria-hidden="true"></i> працює локально</span>
+  </div>
+  <div class="hero">
+    <p class="eyebrow">Практична транскрипція</p>
+    <h1>Бірманський текст, <em>українське читання.</em></h1>
+    <p class="subtitle">Введіть текст бірманською — отримайте українську практичну транскрипцію, IPA та пояснення того, як сформовано результат.</p>
+  </div>
+  <nav class="nav" aria-label="Основна навігація"><a class="active" href="./">Сервіс</a><a href="./system.html">Як побудовано систему</a></nav>
+</header>
+
+<section class="workspace" aria-labelledby="input-heading">
+  <div class="bar"><div class="section-title"><span class="section-number">A</span><div><p class="kicker">Вхід</p><h2 id="input-heading">Бірманський текст</h2></div></div><span id="count" class="count">0 символів</span></div>
+  <label class="sr-only" for="source">Введіть бірманський текст</label>
+  <div class="input-frame"><textarea id="source" rows="7" spellcheck="false" lang="my" placeholder="ဥပမာ — မြန်မာ"></textarea><div class="input-hint"><span>Unicode Myanmar</span><span>локальна обробка</span></div></div>
+  <div class="controls">
+    <button id="example" class="button primary" type="button">Приклад ↗</button>
+    <button id="clear" class="button secondary" type="button">Очистити</button>
+    <a class="button secondary" href="./system.html">Про систему ↗</a>
+  </div>
+</section>
+
+<section id="empty" class="empty" aria-live="polite"><span class="empty-glyph" aria-hidden="true">မြ</span><div><strong>Тут з’явиться результат</strong><span>Вставте бірманський текст або відкрийте приклад, щоб почати.</span></div></section>
+
+<section id="results" class="results" hidden aria-labelledby="results-heading">
+  <div class="bar"><div class="section-title"><span class="section-number">B</span><div><p class="kicker">Вихід</p><h2 id="results-heading">Результати</h2></div></div><span class="result-note">аналіз → IPA → українська передача</span></div>
+
+  <article class="result-card primary-result">
+    <div class="result-meta"><span class="result-index">01</span><div><h3>Українська практична транскрипція</h3><p>Авторська система, побудована від аналізу вимови, а не від прямої заміни знаків.</p></div><button class="copy" data-copy="uk" type="button">Копіювати</button></div>
+    <p id="uk" class="result-value" lang="uk"></p>
+    <div id="uk-status" class="status-line"></div>
+  </article>
+
+  <article class="result-card">
+    <div class="result-meta"><span class="result-index">02</span><div><h3>IPA</h3><p>Фонетичний / фонологічний шар, наскільки його встановлено для конкретного сегмента.</p></div><button class="copy" data-copy="ipa" type="button">Копіювати</button></div>
+    <p id="ipa" class="result-value ipa" lang="und-fonipa"></p>
+    <div id="ipa-status" class="status-line"></div>
+  </article>
+
+  <article class="result-card">
+    <div class="result-meta"><span class="result-index">03</span><div><h3>Структурний аналіз</h3><p>Як Unicode-послідовність розібрана на бірманські графемні кластери.</p></div></div>
+    <div id="syllables" class="syllables"></div>
+  </article>
+</section>
+
+<section id="issues" class="issues" hidden aria-live="polite"><span aria-hidden="true">!</span><div><strong>Потребує уваги</strong><p id="issue-text"></p></div></section>
+
+<section class="feedback">
+  <div><p class="kicker">Методологія</p><h2>Це не переклад і не механічна кирилізація.</h2><p>Російська практична традиція використовується як контрольний історичний шар. Кінцеве рішення формується за українською фонетикою, орфографією та зафіксованою в репозиторії доказовою політикою.</p></div>
+  <a class="button primary" href="./system.html">Читати пояснення системи ↗</a>
+</section>
+
+<footer class="footer"><div><strong>မြန်မာ / УКРАЇНСЬКА</strong><span>Дослідницький інструмент практичної передачі бірманської мови українською.</span></div><div><span>© 2026 Vitalii Tkachuk · ClippyFirst</span><a href="https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-" target="_blank" rel="noreferrer">GitHub ↗</a></div></footer>
+<p id="live" class="sr-only" aria-live="polite"></p>
+</main>
+<script type="module" src="./src/web/app.js"></script>
+</body>
+</html>
