@@ -6,6 +6,9 @@ const uk=document.querySelector("#uk"), ipa=document.querySelector("#ipa"), syll
 const ukStatus=document.querySelector("#uk-status"), ipaStatus=document.querySelector("#ipa-status"), live=document.querySelector("#live");
 
 const KINZI="င်္", VIRAMA="္", ASAT="်";
+const NASAL_CODAS=new Set(["င","န","မ","ည"]);
+const CHECKED_CODAS=new Set(["က","ခ","ဂ","ဃ","စ","ဆ","ဇ","ဈ","တ","ထ","ဒ","ဓ","ပ","ဖ","ဗ","ဘ"]);
+const IPA_UNIT_RE=/t͡?ɕʰ|t͡?ɕ|d͡?ʑ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|ɴ|ŋ|ɲ|ɯ|ɛ|ɪ|ɔ|ə|ʊ|eɪ|oʊ|aɪ|aʊ|[a-zɡʔː]/g;
 const MEDIAL_CHARS=new Set(Object.keys(MEDIALS)), VOWEL_CHARS=new Set(Object.keys(SIGNS)), BASE=new Set(Object.keys(ONSETS));
 
 function normalize(text){return text.normalize("NFC");}
@@ -53,53 +56,77 @@ function parseCluster(raw){
 }
 
 function deriveIpa(sy){
-  const onset=ONSETS[sy.onset];if(!onset)return null;let initial=onset.ipa;const parts=[];
+  const onset=ONSETS[sy.onset];if(!onset)return null;
+  let initial=onset.ipa;const parts=[];
   if(sy.kinzi)parts.push("ŋ");
   const ids=sy.medials.map(m=>MEDIALS[m]?.id).filter(Boolean);
   const has=key=>ids.includes(key);
-  // Standard Burmese has contextual medial realizations: /k kʰ g/ + -y/-r
-  // become palatal affricates, while /ŋ/ + -r merges toward /ɲ/.
+  const coda=sy.coda;
+  const nasalCoda=!!coda&&NASAL_CODAS.has(coda);
+  const checkedCoda=!!coda&&CHECKED_CODAS.has(coda);
   if(has("medial_ya")||has("medial_ra")){
-    if(initial==="k") initial="tɕ";
-    else if(initial==="kʰ") initial="tɕʰ";
-    else if(initial==="ɡ") initial="dʑ";
-    else if(initial==="ŋ"&&has("medial_ra")) initial="ɲ";
+    if(initial==="k")initial="tɕ";
+    else if(initial==="kʰ")initial="tɕʰ";
+    else if(initial==="ɡ")initial="dʑ";
+    else if(initial==="ŋ"&&has("medial_ra"))initial="ɲ";
   }
-  // Ha-to is primarily a voicing/devoicing marker on sonorants, not an /h/ onset.
   if(has("medial_ha")){
     const devoiced={m:"m̥",n:"n̥","ŋ":"ŋ̊","ɲ":"ɲ̥",l:"l̥",w:"ʍ"};
-    if(initial==="j"||initial==="r") initial="ʃ";
-    else if(devoiced[initial]) initial=devoiced[initial];
+    if(initial==="j"||initial==="r")initial="ʃ";
+    else if(devoiced[initial])initial=devoiced[initial];
     else return null;
   }
   parts.push(initial);
-  if(has("medial_wa"))parts.push("w");
-  if(!sy.vowels.length){
-    if(sy.kinziCoda){parts.push("ɪ");}
-    else if(sy.coda||sy.asat)return null;
-    else parts.push("a");
-  }
+  const wa=has("medial_wa");
+  if(wa&&!sy.vowels.length)return null;
   const vowelIds=sy.vowels.map(sign=>SIGNS[sign]?.unicode_name).filter(Boolean);
-  // Common Burmese compound-vowel spellings change quality when the syllable is closed.
-  // In particular ော/ေါ is /ɔ/ in open syllables but /aʊ/ before a nasal/velar
-  // coda in Yangon Burmese (e.g. ကျောင်း /tɕáʊɴ/).
-  if(vowelIds.includes("MYANMAR VOWEL SIGN E")&&(vowelIds.includes("MYANMAR VOWEL SIGN AA")||vowelIds.includes("MYANMAR VOWEL SIGN TALL AA"))){
-    parts.push(sy.coda?"aʊ":"ɔ");
-  }else if(vowelIds.includes("MYANMAR VOWEL SIGN I")&&vowelIds.includes("MYANMAR VOWEL SIGN U")){
-    parts.push(sy.coda?"aɪ":"o");
-  }else if(sy.coda&&vowelIds.includes("MYANMAR VOWEL SIGN I")){
-    parts.push("eɪ");
-  }else if(sy.coda&&vowelIds.includes("MYANMAR VOWEL SIGN U")){
-    parts.push("oʊ");
-  }else{
-    const map={"MYANMAR VOWEL SIGN E":"e","MYANMAR VOWEL SIGN I":"i","MYANMAR VOWEL SIGN II":"iː","MYANMAR VOWEL SIGN U":"u","MYANMAR VOWEL SIGN UU":"uː","MYANMAR VOWEL SIGN TALL AA":"a","MYANMAR VOWEL SIGN AA":"a","MYANMAR VOWEL SIGN AI":"ɛ","MYANMAR SIGN ANUSVARA":""};
-    for(const sign of sy.vowels){const id=SIGNS[sign]?.unicode_name;if(!(id in map))return null;parts.push(map[id]);}
+  const hasV=id=>vowelIds.includes(id);
+  const closed=!!coda||sy.asat;
+  let vowel=null;
+  if(hasV("MYANMAR VOWEL SIGN E")&&(hasV("MYANMAR VOWEL SIGN AA")||hasV("MYANMAR VOWEL SIGN TALL AA"))){
+    vowel=closed?(nasalCoda||checkedCoda?"aʊ":null):"ɔ";
+  }else if(hasV("MYANMAR VOWEL SIGN I")&&hasV("MYANMAR VOWEL SIGN U")){
+    vowel=closed?"aɪ":"o";
+  }else if(hasV("MYANMAR VOWEL SIGN I")){
+    if(wa&&closed)vowel=nasalCoda?"ʊ":checkedCoda?"ɛ":null;
+    else if(checkedCoda)vowel="eɪ";
+    else if(nasalCoda)vowel="ɪ";
+    else vowel="i";
+  }else if(hasV("MYANMAR VOWEL SIGN II")){
+    vowel=closed?"i":"iː";
+  }else if(hasV("MYANMAR VOWEL SIGN U")){
+    if(wa&&closed)vowel="ʊ";
+    else if(closed)vowel="oʊ";
+    else vowel="u";
+  }else if(hasV("MYANMAR VOWEL SIGN UU")){
+    vowel=closed?"oʊ":"uː";
+  }else if(hasV("MYANMAR VOWEL SIGN AI")){
+    vowel="ɛ";
+  }else if(hasV("MYANMAR VOWEL SIGN TALL AA")||hasV("MYANMAR VOWEL SIGN AA")){
+    if(wa&&closed)vowel=nasalCoda?"ʊ":checkedCoda?"ɛ":null;
+    else vowel="a";
+  }else if(hasV("MYANMAR SIGN ANUSVARA")){
+    vowel=nasalCoda?"ɪ":"a";
   }
-  if(sy.coda)parts.push(ONSETS[sy.coda]?.ipa||"");return parts.join("");
+  if(!vowel){
+    if(!sy.vowels.length&&!sy.coda&&!sy.asat)vowel="a";
+    else if(sy.kinziCoda&&!sy.vowels.length)vowel="ɪ";
+    else return null;
+  }
+  parts.push(vowel);
+  if(coda){
+    if(nasalCoda)parts.push("ɴ");
+    else if(checkedCoda)parts.push("ʔ");
+    else if(coda==="ယ"||coda==="ရ")parts.push("j");
+    else if(coda==="လ")parts.push("l");
+    else if(coda==="ဝ")parts.push("w");
+    else return null;
+  }
+  return parts.join("");
 }
 
 function candidateFor(segment){
-  const direct=PRACTICAL[segment]||PRACTICAL[segment==="θ"?"θ~ð":segment];
+  const direct=PRACTICAL[segment]||PRACTICAL[segment==="θ"?"θ~ð":segment]||PRACTICAL[segment==="ɴ"?"ŋ":segment];
   if(!direct)return{text:"",status:"NOT_ESTABLISHED",reason:"Немає точного правила для цього IPA-сегмента."};
   const row=direct[0];
   return{text:row.ukrainian_candidate,status:(row.status||"UNKNOWN").toUpperCase(),reason:row.policy,ruleIds:(RULES[segment]||RULES["/"+segment+"/"]||[]).map(x=>x.rule_id)};
@@ -107,7 +134,8 @@ function candidateFor(segment){
 
 function renderUkrainian(ipaText){
   if(!ipaText)return{text:"",status:"NOT_ESTABLISHED",parts:[]};
-  const units=ipaText.match(/tɕʰ|tɕ|dʑ|tʰ|kʰ|pʰ|sʰ|dʰ|bʰ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|θ|ð|ɲ|ŋ|ɯ|ɡ|ʔ|[a-zɛɪɔəː]/g)||[];
+  const units=ipaText.match(IPA_UNIT_RE)||[];
+  if(units.join("")!==ipaText)return{text:"",status:"NOT_ESTABLISHED",parts:[]};
   const parts=[];let status="ESTABLISHED";
   for(const u of units){const c=candidateFor(u);parts.push(c);if(!["PROPOSED","ESTABLISHED","WELL_SUPPORTED"].includes(c.status))status=c.status;}
   return{text:parts.map(x=>x.text).join(""),status,parts};
