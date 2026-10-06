@@ -13,9 +13,9 @@ function parseLine(line){
   const cells=[]; let cell=""; let quoted=false;
   for(let i=0;i<line.length;i++){
     const ch=line[i];
-    if(ch===""" && line[i+1]===""" && quoted){cell+=""";i++;continue;}
-    if(ch==="""){quoted=!quoted;continue;}
-    if(ch==="," && !quoted){cells.push(cell);cell="";continue;}
+    if(ch === '"' && line[i+1] === '"' && quoted){cell+='"';i++;continue;}
+    if(ch === '"'){quoted=!quoted;continue;}
+    if(ch === "," && !quoted){cells.push(cell);cell="";continue;}
     cell+=ch;
   }
   cells.push(cell);
