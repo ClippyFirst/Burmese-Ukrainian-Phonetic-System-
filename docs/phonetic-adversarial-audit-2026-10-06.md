@@ -76,3 +76,84 @@ These are project policy decisions, not claims of an official Ukrainian Burmese 
 7. Keep all Ukrainian target mappings evidence-labelled until corpus evaluation supports stronger claims.
 
 The current changes fix demonstrated structural errors; they do not claim that the project is already a complete Burmese G2P system.
+
+## Second hardening pass — closed rimes, codas, and adversarial corrections
+
+The first pass exposed a second-order error: some contextual fixes were still too coarse.
+
+### 5. Closed /i/ is not uniformly /eɪ/
+
+The earlier seed rule "closed i → eɪ" was too broad. Lexical checks show at least two distinct patterns:
+
+- `ပင်` → /pɪ̀ɴ/
+- `တင်` → /tɪ̀ɴ/
+- `စိတ်` → /seɪʔ/
+
+Therefore the engine now distinguishes nasal-final and checked/glottal-final syllables:
+
+- /i/ + nasal final → /ɪ/
+- /i/ + checked final → /eɪ/
+
+This removes a concrete false generalization.
+
+### 6. Burmese final nasals are not simply written /ŋ/
+
+The broad phonological layer frequently represents Burmese final nasal realization as /ɴ/. The engine therefore distinguishes:
+
+- onset /ŋ/ → /ŋ/
+- final nasal realization → /ɴ/
+
+The Ukrainian practical layer maps /ɴ/ conservatively to `нг` and keeps this as a project-level proposed correspondence.
+
+### 7. Checked codas are not the written consonant's full phonetic value
+
+For the common checked-final series, the engine now derives a glottal closure /ʔ/ rather than appending the onset consonant's IPA value. This is necessary for examples such as:
+
+- `စိတ်` → /seɪʔ/
+- `ပိုက်` → /paɪʔ/
+- `ပက်` → /pɛʔ/
+
+This is a major correction because a character-by-character engine would otherwise produce outputs such as seɪt or paɪk.
+
+### 8. Medial `ွ` changes the rime
+
+The medial `ွ` cannot be treated as a literal +w segment in every syllable.
+
+Adversarial examples show contextual rime changes:
+
+- `ကွက်` → /kwɛʔ/
+- `ကွန်` → /kʊ̀ɴ/
+- `ဆွမ်း` → /sʰʊ́ɴ/
+
+The implementation now has conservative rules for common closed `ွ` patterns and refuses to invent a pronunciation for unresolved combinations.
+
+### 9. `ကိုင်` / `ကိုက်` distinguish nasal and checked closure
+
+The spelling `ိ + ု` forms a diphthongal rime in closed syllables:
+
+- `ကိုင်` → /kàɪɴ/
+- `ကိုက်` → /kaɪʔ/
+
+This is represented as /aɪ/ plus the appropriate nasal or glottal coda, rather than two independent vowel segments.
+
+## Corrected regression corpus
+
+| Burmese | Expected structural IPA | Why it is adversarial |
+|---|---|---|
+| `ပင်` | `pɪɴ` | catches overgeneralized closed /i/ → /eɪ/ |
+| `တင်` | `tɪɴ` | same nasal-final distinction |
+| `စိတ်` | `seɪʔ` | checked /i/ contrast |
+| `ပိုက်` | `paɪʔ` | diphthong + checked coda |
+| `ကိုင်` | `kaɪɴ` | diphthong + nasal coda |
+| `ကုန်` | `koʊɴ` | closed /u/ + nasal |
+| `ကွက်` | `kwɛʔ` | medial-wa rime alternation |
+| `ကွန်` | `kwʊɴ` | medial-wa + nasal rime |
+| `ကျောင်း` | `tɕaʊɴ` | compound vowel + nasal final |
+| `မင်္ဂလာ` | separate `မင်္` + `ဂ` | kinzi boundary |
+| `ရှ` | contains `ʃ` | ha-to contextual realization |
+
+### Evidence boundary
+
+The new rules are not a claim that every Burmese closed rime has now been solved. They cover only patterns for which the current evidence supports a deterministic rule. The remaining vowel/rime space stays explicitly incomplete.
+
+This is preferable to a superficially "complete" transliterator whose hidden defaults create systematic phonetic errors.
