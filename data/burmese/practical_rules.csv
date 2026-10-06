@@ -1,4 +1,8 @@
 rule_id,stage,input,output,status,evidence,reason
+UA-BUR-PAL-K,ua_target,tɕ,ч,PROPOSED,UA_ORTH_2026,"Contextual palatal affricate from k + medial y/r."
+UA-BUR-PAL-KH,ua_target,tɕʰ,ч,PROPOSED,UA_ORTH_2026,"Contextual aspirated palatal affricate; aspiration neutralized."
+UA-BUR-PAL-G,ua_target,dʑ,дж,PROPOSED,UA_ORTH_2026,"Contextual voiced palatal affricate from g + medial y/r."
+UA-BUR-SH,ua_target,ʃ,ш,PROPOSED,UA_ORTH_2026,"Standard Burmese ha-to realization in relevant sonorant combinations."
 UA-BUR-ASP-K,ua_target,kʰ,к,PROPOSED,RU_EPSHTEIN_1959;UA_ORTH_2026,"Neutralize aspiration rather than importing Russian кх."
 UA-BUR-ASP-T,ua_target,tʰ,т,PROPOSED,RU_EPSHTEIN_1959;UA_ORTH_2026,"Neutralize aspiration."
 UA-BUR-ASP-P,ua_target,pʰ,п,PROPOSED,RU_EPSHTEIN_1959;UA_ORTH_2026,"Neutralize aspiration."
