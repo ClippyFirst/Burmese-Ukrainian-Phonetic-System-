@@ -42,3 +42,9 @@ test("i+u closed rime becomes aɪ with a glottal coda",async({page})=>{
   await page.locator("#source").fill("ကိုက်");
   await expect(page.locator("#ipa")).toContainText("kaɪʔ");
 });
+
+test("medial wa with a sonorant coda uses the closed u-like rime",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ဆွမ်း");
+  await expect(page.locator("#ipa")).toContainText("sʰʊɴ");
+});
