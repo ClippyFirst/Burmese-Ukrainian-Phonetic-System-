@@ -47,6 +47,16 @@ function parseCluster(raw){
   while(i<raw.length&&VOWEL_CHARS.has(raw[i]))sy.vowels.push(raw[i++]);
   if(i+2<raw.length&&raw.slice(i,i+3)===KINZI){sy.kinziCoda=true;sy.coda="င";i+=3;sy.asat=true;}
   if(!sy.coda&&i+1<raw.length&&BASE.has(raw[i])&&raw[i+1]===ASAT){sy.coda=raw[i];i+=2;sy.asat=true;}
+  // Canonically equivalent Myanmar strings may place DOT BELOW before ASAT.
+  // Read these tail marks without changing the underlying syllable analysis.
+  if(!sy.coda){
+    let j=i;
+    while(j<raw.length&&(raw[j]==="ံ"||raw[j]==="့"||raw[j]==="း"))j++;
+    if(j+1<raw.length&&BASE.has(raw[j])&&raw[j+1]===ASAT){
+      sy.coda=raw[j];i=j+2;sy.asat=true;
+      if(j>i-2)sy.notes.push("Канонічний порядок знаків нормалізовано перед визначенням фіналі.");
+    }
+  }
   while(i<raw.length){
     if(raw[i]===ASAT){sy.asat=true;i++;continue;}
     if(raw[i]==="ံ"||raw[i]==="့"||raw[i]==="း"){sy.notes.push("Просодичний/ритмічний знак збережено як аналітичний маркер.");sy.status="ANALYSIS_DEPENDENT";i++;continue;}
