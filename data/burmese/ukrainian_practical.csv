@@ -1,4 +1,13 @@
 layer,burmese_ipa,burmese_role,russian_practical,ukrainian_candidate,policy,status,evidence
+consonant,tɕ,onset,ч,ч,"Palatalized /k/ + medial is realized as a palatal affricate; practical Ukrainian target ч",proposed,UA_ORTH_2026
+consonant,tɕʰ,onset,ч,ч,"Neutralize aspiration after preserving the palatal affricate",proposed,UA_ORTH_2026
+consonant,dʑ,onset,дж,дж,"Palatalized /g/ + medial is realized as a voiced palatal affricate; practical Ukrainian target дж",proposed,UA_ORTH_2026
+consonant,ʃ,onset,ш,ш,"Standard Burmese ha-to combinations such as ရှ/ယှ are /ʃ/",proposed,UA_ORTH_2026
+consonant,m̥,onset,м,м,"Devoiced sonorant remains mapped to the closest Ukrainian consonant; devoicing is retained upstream",analysis_dependent,UA_ORTH_2026
+consonant,n̥,onset,н,н,"Devoiced sonorant remains mapped to the closest Ukrainian consonant; devoicing is retained upstream",analysis_dependent,UA_ORTH_2026
+consonant,ŋ̊,onset_or_coda,нг,нг,"Devoiced velar nasal remains explicit in IPA; Ukrainian practical output keeps нг",analysis_dependent,UA_ORTH_2026
+consonant,ɲ̥,onset,нь,нь,"Devoiced palatal nasal remains explicit in IPA; Ukrainian practical output keeps нь",analysis_dependent,UA_ORTH_2026
+consonant,l̥,onset,л,л,"Devoiced lateral remains explicit in IPA; Ukrainian practical output keeps л",analysis_dependent,UA_ORTH_2026
 consonant,k,onset,к,к,"Neutralize aspiration because Ukrainian lacks a phonemic aspirated-stop series",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
 consonant,kʰ,onset,кх,к,"Do not copy Russian х; target Ukrainian stop inventory has no aspirated counterpart",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
 consonant,ɡ,onset,г,ґ,"Prefer ґ for a foreign hard /ɡ/ when the canonical Ukrainian inventory confirms it",analysis_dependent,RU_EPSHTEIN_1959;UA_ORTH_2026
