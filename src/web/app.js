@@ -18,7 +18,7 @@ function segment(text){
     const start=i;i++;
     while(i<s.length&&isMyanmar(s[i])){
       const prev=s[i-1],isCodaBase=BASE.has(s[i])&&s[i+1]===ASAT;
-      const isNewBase=BASE.has(s[i])&&!isCodaBase&&prev!==VIRAMA&&prev!==ASAT&&s.slice(Math.max(start,i-3),i)!==KINZI;
+      const isNewBase=BASE.has(s[i])&&!isCodaBase&&prev!==VIRAMA&&prev!==ASAT;
       if(isNewBase)break;i++;
     }
     out.push({raw:s.slice(start,i),nonMyanmar:false});
@@ -37,8 +37,11 @@ function parseCluster(raw){
     else{sy.status="UNCERTAIN";sy.notes.push("Неповна послідовність virama.");break;}
   }
   while(i<raw.length&&MEDIAL_CHARS.has(raw[i]))sy.medials.push(raw[i++]);
-  if(i+1<raw.length&&BASE.has(raw[i])&&raw[i+1]===ASAT){sy.coda=raw[i];i+=2;sy.asat=true;}
+  // Dependent vowels belong to the preceding linguistic syllable; a following
+  // kinzi is its final /ŋ/, even though the Unicode sequence is stored before
+  // the next written base consonant.
   while(i<raw.length&&VOWEL_CHARS.has(raw[i]))sy.vowels.push(raw[i++]);
+  if(i+2<raw.length&&raw.slice(i,i+3)===KINZI){sy.kinziCoda=true;sy.coda="င";i+=3;sy.asat=true;}
   if(!sy.coda&&i+1<raw.length&&BASE.has(raw[i])&&raw[i+1]===ASAT){sy.coda=raw[i];i+=2;sy.asat=true;}
   while(i<raw.length){
     if(raw[i]===ASAT){sy.asat=true;i++;continue;}
@@ -70,7 +73,11 @@ function deriveIpa(sy){
   }
   parts.push(initial);
   if(has("medial_wa"))parts.push("w");
-  if(!sy.vowels.length){if(sy.coda||sy.asat)return null;parts.push("a");}
+  if(!sy.vowels.length){
+    if(sy.kinziCoda){parts.push("ɪ");}
+    else if(sy.coda||sy.asat)return null;
+    else parts.push("a");
+  }
   const vowelIds=sy.vowels.map(sign=>SIGNS[sign]?.unicode_name).filter(Boolean);
   // Common Burmese compound-vowel spellings change quality when the syllable is closed.
   // In particular ော/ေါ is /ɔ/ in open syllables but /aʊ/ before a nasal/velar
