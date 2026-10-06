@@ -12,6 +12,7 @@ consonant,k,onset,к,к,"Neutralize aspiration because Ukrainian lacks a phonemi
 consonant,kʰ,onset,кх,к,"Do not copy Russian х; target Ukrainian stop inventory has no aspirated counterpart",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
 consonant,ɡ,onset,г,ґ,"Prefer ґ for a foreign hard /ɡ/ when the canonical Ukrainian inventory confirms it",analysis_dependent,RU_EPSHTEIN_1959;UA_ORTH_2026
 consonant,ŋ,onset_or_coda,нг,нг,"Expose the velar nasal rather than collapsing it to н; final form may be context-sensitive",proposed,RU_EPSHTEIN_1959
+consonant,ɴ,onset_or_coda,нг,нг,"Burmese final nasal is represented as /ɴ/ in the broad phonological layer; practical Ukrainian keeps the nasal sequence explicit",proposed,UA_ORTH_2026
 consonant,s,onset,с,с,"Direct phonological target",proposed,UA_ORTH_2026
 consonant,sʰ,onset,сх,с,"Neutralize aspiration; do not import Russian сх",proposed,RU_EPSHTEIN_1959
 consonant,z,onset,з,з,"Direct phonological target",proposed,UA_ORTH_2026
