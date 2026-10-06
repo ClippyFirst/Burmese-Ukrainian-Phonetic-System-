@@ -66,7 +66,7 @@ Copy Burmese, IPA and Ukrainian output independently.
 Preserve whitespace, punctuation, Latin text, numbers and unsupported symbols.
 
 ### FR-09 Transparency
-Clearly distinguish ESTABLISHED, WELL_SUPPORTED, ANALYSIS_DEPENDENT, CONTEXT_DEPENDENT, DIALECT_DEPENDENT, UNCERTAIN, NOT_ESTABLISHED and UNSUPPORTED.
+Clearly distinguish ESTABLISHED, WELL_SUPPORTED, PROPOSED, ANALYSIS_DEPENDENT, CONTEXT_DEPENDENT, DIALECT_DEPENDENT, UNCERTAIN, NOT_ESTABLISHED and UNSUPPORTED.
 
 ### FR-10 Accessibility
 Keyboard operation, visible focus, semantic controls, readable contrast, screen-reader labels, reduced motion and mobile layout are required.
