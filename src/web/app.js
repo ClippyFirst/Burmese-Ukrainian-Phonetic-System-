@@ -52,6 +52,7 @@ function parseCluster(raw){
   while(i<raw.length && MEDIAL_CHARS.has(raw[i])){sy.medials.push(raw[i]);i++;}
   if(i+1<raw.length && BASE.has(raw[i]) && raw[i+1]===ASAT){sy.coda=raw[i];i+=2;sy.asat=true;}
   while(i<raw.length && VOWEL_CHARS.has(raw[i])){sy.vowels.push(raw[i]);i++;}
+  if(!sy.coda && i+1<raw.length && BASE.has(raw[i]) && raw[i+1]===ASAT){sy.coda=raw[i];i+=2;sy.asat=true;}
   while(i<raw.length){
     if(raw[i]===ASAT){sy.asat=true;i++;continue;}
     if(raw[i]==="ံ" || raw[i]==="့" || raw[i]==="း"){sy.notes.push("Просодичний/ритмічний знак збережено як аналітичний маркер.");sy.status="ANALYSIS_DEPENDENT";i++;continue;}
