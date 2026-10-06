@@ -1,7 +1,7 @@
 {
   "name":"burmese-ukrainian-phonetic-system",
   "private":true,
-  "version":"0.2.1",
+  "version":"0.2.2",
   "description":"Research-grade Burmese to Ukrainian practical transcription system and local web service.",
   "type":"module",
   "engines":{"node":">=22.12.0"},
