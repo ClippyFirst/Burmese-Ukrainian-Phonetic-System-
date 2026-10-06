@@ -11,7 +11,7 @@
 9. Main service page works on desktop and mobile.
 10. Scientific system page is reachable and internally consistent.
 11. Example outputs are manually inspected against repository policy.
-12. Uncertainty is visible for analysis-dependent cases.
+12. Uncertainty is visible for proposed, analysis-dependent and incomplete cases.
 13. National palette remains accessible and restrained.
 14. README accurately describes the service and its limitations.
 15. GitHub Pages deployment workflow, if enabled, is validated by an actual workflow run.
