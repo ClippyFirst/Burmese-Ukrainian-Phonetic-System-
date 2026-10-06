@@ -10,4 +10,4 @@ UA-BUR-R,ua_target,r,р,PROPOSED,RU_EPSHTEIN_1959,"Preserve Burmese phonological
 UA-BUR-I,ua_target,i,і,PROPOSED,RU_EPSHTEIN_1959;UA_ORTH_2026,"Adapt to Ukrainian i orthography."
 UA-BUR-EPS,ua_target,ɛ,е,PROPOSED,RU_EPSHTEIN_1959;UA_ORTH_2026,"Ukrainian has no э."
 UA-BUR-UR,ua_target,ɯ,и,ANALYSIS_DEPENDENT,RU_EPSHTEIN_1959,"No exact Ukrainian target; retain candidate uncertainty."
-UA-BUR-TONE,practical,tone/register/phonation,metadata,PROPOSED,DUAN2025;GREEN2002;TUN2011,"Do not encode Burmese prosody as Ukrainian stress."
+UA-BUR-TONE,practical,all,metadata,PROPOSED,DUAN2025;GREEN2002;TUN2011,"Do not encode Burmese prosody as Ukrainian stress."
