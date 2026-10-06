@@ -18,7 +18,8 @@ function segment(text){
     const start=i;i++;
     while(i<s.length&&isMyanmar(s[i])){
       const prev=s[i-1],isCodaBase=BASE.has(s[i])&&s[i+1]===ASAT;
-      const isNewBase=BASE.has(s[i])&&!isCodaBase&&prev!==VIRAMA&&prev!==ASAT;
+      const followsKinzi=s.slice(Math.max(start,i-3),i)===KINZI;
+      const isNewBase=BASE.has(s[i])&&!isCodaBase&&prev!==ASAT&&(prev!==VIRAMA||followsKinzi);
       if(isNewBase)break;i++;
     }
     out.push({raw:s.slice(start,i),nonMyanmar:false});
