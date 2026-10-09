@@ -28,7 +28,7 @@ function segment(text){
   while(i<s.length){
     if(!isMyanmarText(s[i])){const start=i++;while(i<s.length&&!isMyanmarText(s[i]))i++;out.push({raw:s.slice(start,i),nonMyanmar:true});continue;}
     const start=i;i++;
-    while(i<s.length&&isMyanmar(s[i])){
+    while(i<s.length&&isMyanmarText(s[i])){
       const prev=s[i-1],isCodaBase=BASE.has(s[i])&&s[i+1]===ASAT;
       const followsKinzi=s.slice(Math.max(start,i-3),i)===KINZI;
       const startsWithKinzi=s.slice(start,i).startsWith(KINZI);
