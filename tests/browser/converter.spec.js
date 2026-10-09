@@ -154,7 +154,7 @@ test("the ည် rime after a ya/ra medial is not misread as a velar nasal endin
   await expect(page.locator("#uk")).toContainText("чи");
 });
 
-test("the E-plus-yat rime in စွယ် is parsed without inventing a final glide",async({page})=>{
+test("the medial-wa plus yat rime in စွယ် is parsed without inventing a final glide",async({page})=>{
   await page.goto("/");
   await page.locator("#source").fill("စွယ်");
   await expect(page.locator("#ipa")).toContainText("swɛ");
@@ -175,4 +175,20 @@ test("prosodic markers are summarized once instead of repeated in every segment 
   await page.locator("#source").fill("ကျောင်း၊ ကျောင်း။");
   await expect(page.locator("#issues")).toContainText("Просодичні знаки збережено в аналітичному шарі");
   await expect(page.locator("#syllables")).not.toContainText("Просодичний/ритмічний знак збережено як аналітичний маркер");
+});
+
+
+test("the medial ra in မြန် is retained in the phonetic layer",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("မြန်");
+  await expect(page.locator("#ipa")).toContainText("mjaɴ");
+  await expect(page.locator("#ipa")).not.toContainText("maɴ");
+});
+
+test("initial Burmese /juː/ is rendered contextually, not as literal candidate alternatives",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ယူ");
+  await expect(page.locator("#ipa")).toContainText("juː");
+  await expect(page.locator("#uk")).toContainText("ю");
+  await expect(page.locator("#uk")).not.toContainText("й/я/є/ю/йо");
 });
