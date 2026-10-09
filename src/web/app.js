@@ -164,7 +164,8 @@ function renderUkrainian(ipaText){
   const units=ipaText.match(IPA_UNIT_RE)||[];
   if(units.join("")!==ipaText)return{text:"",status:"NOT_ESTABLISHED",parts:[]};
   const parts=[];let status="ESTABLISHED";
-  for(const u of units){const c=candidateFor(u);parts.push(c);if(!["PROPOSED","ESTABLISHED","WELL_SUPPORTED"].includes(c.status))status=c.status;}
+  const rank={ESTABLISHED:0,WELL_SUPPORTED:1,PROPOSED:2,ANALYSIS_DEPENDENT:3,NOT_ESTABLISHED:4,UNSUPPORTED:5,UNCERTAIN:6};
+  for(const u of units){const candidate=candidateFor(u);parts.push(candidate);if((rank[candidate.status]??4)>(rank[status]??0))status=candidate.status;}
   return{text:parts.map(x=>x.text).join(""),status,parts};
 }
 
@@ -189,7 +190,7 @@ function render(){
   r.segments.forEach((s,index)=>{const row=document.createElement("div");row.className="syllable";
     if(s.nonMyanmar){row.textContent=s.raw+" · збережено без змін";syllables.append(row);return;}
     const head=document.createElement("strong");head.textContent=String(index+1).padStart(2,"0")+"  "+s.raw;
-    const detail=document.createElement("span");detail.textContent=(s.ipa||"IPA не встановлено")+" → "+(s.uk?.text||"—")+" · "+s.status;row.append(head,detail);
+    const detail=document.createElement("span");const shownStatus=s.uk?.status&&s.uk.status!=="ESTABLISHED"?s.status+" / передача: "+s.uk.status:s.status;detail.textContent=(s.ipa||"IPA не встановлено")+" → "+(s.uk?.text||"—")+" · "+shownStatus;row.append(head,detail);
     if(s.notes.length){const note=document.createElement("small");note.textContent=s.notes.join(" ");row.append(note);}syllables.append(row);
   });
   const problems=r.segments.filter(s=>!s.nonMyanmar&&(!s.ipa||s.status==="UNCERTAIN"||s.status==="NOT_ESTABLISHED"||s.status==="ANALYSIS_DEPENDENT"||s.uk?.status==="PROPOSED"||s.uk?.status==="ANALYSIS_DEPENDENT"));
