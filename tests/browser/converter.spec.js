@@ -62,3 +62,19 @@ test("mixed Myanmar and supplementary-block Myanmar material does not silently b
   await expect(page.locator("#uk-status")).toContainText("UNSUPPORTED");
   await expect(page.locator("#issues")).not.toContainText("збережено без змін");
 });
+
+test("aspirated onset IPA is tokenized and receives a Ukrainian candidate",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ဆာ");
+  await expect(page.locator("#ipa")).toContainText("sʰa");
+  await expect(page.locator("#uk")).toContainText("са");
+  await expect(page.locator("#uk-status")).toContainText("PROPOSED");
+});
+
+test("theta IPA is tokenized through its explicitly marked candidate rule",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("သာ");
+  await expect(page.locator("#ipa")).toContainText("θa");
+  await expect(page.locator("#uk")).toContainText("та");
+  await expect(page.locator("#uk-status")).toContainText("ANALYSIS_DEPENDENT");
+});
