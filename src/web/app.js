@@ -95,7 +95,7 @@ function deriveIpa(sy){
   // an /ɪ/-like rime rather than a nasal coda. Likewise, ယ် after the E
   // vowel sign is part of the rime in forms such as စွယ်, not a final /j/.
   const iCodaVowel=coda==="ည"&&sy.asat&&(has("medial_ya")||has("medial_ra"))&&!sy.vowels.length;
-  const eYatRime=coda==="ယ"&&sy.asat&&sy.vowels.some(v=>SIGNS[v]?.unicode_name==="MYANMAR VOWEL SIGN E");
+  const eYatRime=coda==="ယ"&&sy.asat&&(sy.vowels.some(v=>SIGNS[v]?.unicode_name==="MYANMAR VOWEL SIGN E")||(has("medial_wa")&&!sy.vowels.length));
   const awVowel=sy.asat&&!coda&&sy.vowels.some(v=>SIGNS[v]?.unicode_name==="MYANMAR VOWEL SIGN E")&&sy.vowels.some(v=>["MYANMAR VOWEL SIGN AA","MYANMAR VOWEL SIGN TALL AA"].includes(SIGNS[v]?.unicode_name));
   const nasalCoda=!!coda&&NASAL_CODAS.has(coda)&&!iCodaVowel;
   const checkedCoda=!!coda&&CHECKED_CODAS.has(coda);
@@ -120,6 +120,8 @@ function deriveIpa(sy){
   let vowel=null;
   if(iCodaVowel){
     vowel="ɪ";
+  }else if(eYatRime&&!sy.vowels.length){
+    vowel="ɛ";
   }else if(hasV("MYANMAR VOWEL SIGN E")&&(hasV("MYANMAR VOWEL SIGN AA")||hasV("MYANMAR VOWEL SIGN TALL AA"))){
     // ော် is a conventional vowel spelling; its final asat is not a
     // productive checked coda in this pattern.
