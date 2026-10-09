@@ -104,6 +104,7 @@ function deriveIpa(sy){
     else if(initial==="kʰ")initial="tɕʰ";
     else if(initial==="ɡ")initial="dʑ";
     else if(initial==="ŋ"&&has("medial_ra"))initial="ɲ";
+    else if(initial!=="j"&&initial!=="r")initial+="j";
   }
   if(has("medial_ha")){
     const devoiced={m:"m̥",n:"n̥","ŋ":"ŋ̊","ɲ":"ɲ̥",l:"l̥",w:"ʍ"};
@@ -179,7 +180,8 @@ function candidateFor(segment){
   const direct=PRACTICAL[segment]||PRACTICAL[segment==="θ"?"θ~ð":segment]||PRACTICAL[segment==="ɴ"?"ŋ":segment];
   if(!direct)return{text:"",status:"NOT_ESTABLISHED",reason:"Немає точного правила для цього IPA-сегмента."};
   const row=direct[0];
-  return{text:row.ukrainian_candidate==="∅"?"":row.ukrainian_candidate,status:(row.status||"UNKNOWN").toUpperCase(),reason:row.policy,ruleIds:(RULES[segment]||RULES["/"+segment+"/"]||[]).map(x=>x.rule_id)};
+  const candidate=segment==="j"?"й":(row.ukrainian_candidate==="∅"?"":row.ukrainian_candidate);
+  return{text:candidate,status:(row.status||"UNKNOWN").toUpperCase(),reason:row.policy,ruleIds:(RULES[segment]||RULES["/"+segment+"/"]||[]).map(x=>x.rule_id)};
 }
 
 function renderUkrainian(ipaText){
@@ -187,8 +189,26 @@ function renderUkrainian(ipaText){
   const units=ipaText.match(IPA_UNIT_RE)||[];
   if(units.join("")!==ipaText)return{text:"",status:"NOT_ESTABLISHED",parts:[]};
   const parts=[];let status="ESTABLISHED";
-  const rank={ESTABLISHED:0,WELL_SUPPORTED:1,PROPOSED:2,ANALYSIS_DEPENDENT:3,NOT_ESTABLISHED:4,UNSUPPORTED:5,UNCERTAIN:6};
-  for(const u of units){const candidate=candidateFor(u);parts.push(candidate);if((rank[candidate.status]??4)>(rank[status]??0))status=candidate.status;}
+  for(let i=0;i<units.length;i++){
+    const u=units[i];
+    // At the beginning of a syllable, Ukrainian vowel letters can encode
+    // the /j/ glide plus the following vowel. Never expose the data-layer
+    // alternatives ("й/я/є/ю/йо") literally in the user-facing result.
+    if(i===0&&u==="j"&&units.length>1){
+      const v=units[i+1],long=units[i+2]==="ː";
+      const glideVowels={a:"я",e:"є",ɛ:"є",i:"ї",u:"ю",ʊ:"ю",o:"йо",ɔ:"йо",oʊ:"йоу"};
+      if(glideVowels[v]){
+        const candidates=[candidateFor("j"),candidateFor(v)];
+        if(long)candidates.push({status:"ANALYSIS_DEPENDENT"});
+        const combined={text:glideVowels[v],status:aggregateStatus(candidates.map(x=>x.status)),reason:"Contextual Ukrainian rendering of initial /j/ plus vowel.",ruleIds:[]};
+        parts.push(combined);i+=long?2:1;
+        if((STATUS_RANK[combined.status]??4)>(STATUS_RANK[status]??0))status=combined.status;
+        continue;
+      }
+    }
+    const candidate=candidateFor(u);parts.push(candidate);
+    if((STATUS_RANK[candidate.status]??4)>(STATUS_RANK[status]??0))status=candidate.status;
+  }
   return{text:parts.map(x=>x.text).join(""),status,parts};
 }
 
