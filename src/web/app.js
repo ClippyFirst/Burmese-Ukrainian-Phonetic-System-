@@ -41,7 +41,7 @@ function segment(text){
 }
 
 function parseCluster(raw){
-  const sy={raw,onset:null,kinzi:false,conjunct:[],medials:[],vowels:[],asat:false,status:"ESTABLISHED",ipa:null,uk:null,notes:[]};
+  const sy={raw,onset:null,kinzi:false,conjunct:[],medials:[],vowels:[],asat:false,status:"ESTABLISHED",ipa:null,uk:null,notes:[],prosodyMarks:[]};
   let i=0;
   if(raw.startsWith(KINZI)){sy.kinzi=true;i=3;}
   if(i>=raw.length||!BASE.has(raw[i])){sy.status="UNSUPPORTED";sy.notes.push("Не вдалося визначити початкову приголосну.");return sy;}
@@ -71,7 +71,7 @@ function parseCluster(raw){
   }
   while(i<raw.length){
     if(raw[i]===ASAT){sy.asat=true;i++;continue;}
-    if(raw[i]==="ံ"||raw[i]==="့"||raw[i]==="း"){sy.notes.push("Просодичний/ритмічний знак збережено як аналітичний маркер.");sy.status="ANALYSIS_DEPENDENT";i++;continue;}
+    if(raw[i]==="ံ"||raw[i]==="့"||raw[i]==="း"){sy.prosodyMarks.push(raw[i]);sy.status="ANALYSIS_DEPENDENT";i++;continue;}
     sy.status="UNCERTAIN";sy.notes.push("Нерозібраний знак "+raw[i++]);
   }
   // Keep repeated diagnostics deterministic and readable.
@@ -211,7 +211,8 @@ function render(){
   });
   const problems=r.segments.filter(s=>!s.nonMyanmar&&(!s.ipa||s.status==="UNCERTAIN"||s.status==="NOT_ESTABLISHED"||s.status==="ANALYSIS_DEPENDENT"||s.uk?.status==="PROPOSED"||s.uk?.status==="ANALYSIS_DEPENDENT"));
   const preserved=r.segments.some(s=>s.nonMyanmar&&s.raw.trim()!=="");issues.hidden=problems.length===0&&!preserved;
-  issueText.textContent=[problems.length?"Для "+problems.length+" сегмент"+(problems.length===1?"а":"ів")+" результат містить запропоновану або неповністю встановлену відповідність; сервіс не подає її як доведену.":"",preserved?"Латинський текст, цифри, пробіли та пунктуацію збережено без змін; аналізуються лише сегменти Myanmar.":""].filter(Boolean).join(" ");
+  const hasProsody=r.segments.some(s=>!s.nonMyanmar&&s.prosodyMarks?.length);
+  issueText.textContent=[problems.length?"Для "+problems.length+" сегмент"+(problems.length===1?"а":"ів")+" результат містить запропоновану або неповністю встановлену відповідність; сервіс не подає її як доведену.":"",preserved?"Латинський текст, цифри, пробіли та пунктуацію збережено без змін; аналізуються лише сегменти Myanmar.":"",hasProsody?"Просодичні знаки збережено в аналітичному шарі; вони не перетворюються автоматично на український наголос.":""].filter(Boolean).join(" ");
   live.textContent="Конвертацію завершено. Статус: "+r.status;
 }
 source.addEventListener("input",render);
