@@ -128,3 +128,36 @@ test("a mixed string keeps the most cautious mapping status in the aggregate",as
   await page.locator("#source").fill("ကာ သာ");
   await expect(page.locator("#uk-status")).toContainText("ANALYSIS_DEPENDENT");
 });
+
+
+test("open E vowel sign is analyzed and rendered as a provisional Ukrainian candidate",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကေ");
+  await expect(page.locator("#ipa")).toContainText("ke");
+  await expect(page.locator("#uk")).toContainText("ке");
+  await expect(page.locator("#uk-status")).toContainText("PROPOSED");
+});
+
+test("the conventional ော် rime does not become an unsupported checked coda",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကော်");
+  await expect(page.locator("#ipa")).toContainText("kɔ");
+  await expect(page.locator("#uk")).toContainText("ко");
+  await expect(page.locator("#ipa")).not.toContainText("?");
+});
+
+test("the ည် rime after a ya/ra medial is not misread as a velar nasal ending",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကြည်");
+  await expect(page.locator("#ipa")).toContainText("tɕɪ");
+  await expect(page.locator("#ipa")).not.toContainText("tɕaɴ");
+  await expect(page.locator("#uk")).toContainText("чи");
+});
+
+test("the E-plus-yat rime in စွယ် is parsed without inventing a final glide",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("စွယ်");
+  await expect(page.locator("#ipa")).toContainText("swɛ");
+  await expect(page.locator("#ipa")).not.toContainText("?");
+  await expect(page.locator("#uk")).toContainText("све");
+});
