@@ -48,3 +48,17 @@ test("medial wa with a sonorant coda uses the closed u-like rime",async({page})=
   await page.locator("#source").fill("ဆွမ်း");
   await expect(page.locator("#ipa")).toContainText("sʰʊɴ");
 });
+
+test("Myanmar Extended-B characters are recognized as Myanmar script, then explicitly marked unsupported",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ꩠ");
+  await expect(page.locator("#uk-status")).toContainText("UNSUPPORTED");
+  await expect(page.locator("#issues")).not.toContainText("збережено без змін");
+});
+
+test("mixed Myanmar and supplementary-block Myanmar material does not silently become ordinary passthrough",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("မြန်မာ ꩠ");
+  await expect(page.locator("#uk-status")).toContainText("UNSUPPORTED");
+  await expect(page.locator("#issues")).not.toContainText("збережено без змін");
+});
