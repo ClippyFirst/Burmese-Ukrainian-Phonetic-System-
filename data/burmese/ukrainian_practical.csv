@@ -41,3 +41,9 @@ vowel,o,nucleus,о,о,"Direct target",proposed,UA_ORTH_2026
 vowel,ɔ,nucleus,о,о,"Merge in practical output; retain distinction upstream in IPA",proposed,UA_ORTH_2026
 vowel,e,nucleus,е,е,"Direct target",proposed,UA_ORTH_2026
 tone,all,prosody,not encoded,not encoded,"Tone/register/phonation stay in metadata and IPA modes; never convert automatically to Ukrainian stress",proposed,DUAN2025;GREEN2002;TUN2011
+vowel,ɪ,nucleus,и,и,"Map short lax Burmese /ɪ/ to Ukrainian и as a target-language candidate; keep the distinction visible in IPA",analysis_dependent,UA_ORTH_2026
+vowel,ʊ,nucleus,у,у,"Map short /ʊ/ to Ukrainian у as a practical candidate; retain the IPA distinction upstream",analysis_dependent,UA_ORTH_2026
+vowel,eɪ,diphthong,ей,ей,"Provisional Ukrainian rendering of the Burmese checked diphthong; requires corpus and native-speaker validation",analysis_dependent,UA_ORTH_2026
+vowel,oʊ,diphthong,оу,оу,"Provisional Ukrainian rendering of the Burmese closed /oʊ/ rime; requires corpus and native-speaker validation",analysis_dependent,UA_ORTH_2026
+vowel,aɪ,diphthong,ай,ай,"Provisional Ukrainian rendering of the Burmese /aɪ/ rime; requires corpus and native-speaker validation",analysis_dependent,UA_ORTH_2026
+vowel,aʊ,diphthong,ау,ау,"Provisional Ukrainian rendering of the Burmese /aʊ/ rime; requires corpus and native-speaker validation",analysis_dependent,UA_ORTH_2026
