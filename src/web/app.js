@@ -18,27 +18,37 @@ function aggregateStatus(statuses,emptyStatus="NOT_ESTABLISHED"){
 
 function normalize(text){return text.normalize("NFC");}
 function isMyanmarPunctuation(ch){const n=ch.codePointAt(0);return n===0x104a||n===0x104b;}
-function isMyanmarText(ch){return isMyanmar(ch)&&!isMyanmarPunctuation(ch);}
-function isMyanmar(ch){
-  const n=ch.codePointAt(0);
-  // Myanmar, Myanmar Extended-B, and Myanmar Extended-A blocks.
-  // Keep script recognition broader than the supported phonological inventory:
-  // unsupported Myanmar letters must be reported as unsupported, not preserved
-  // as if they were ordinary Latin/punctuation.
+function isMyanmarCodePoint(n){
+  // Myanmar, Myanmar Extended-A/B, and the supplementary Myanmar block.
+  // Script recognition is intentionally broader than the supported inventory:
+  // unknown Myanmar characters must be reported as unsupported, not passed through.
   return (n>=0x1000&&n<=0x109f)||(n>=0xa9e0&&n<=0xa9ff)||(n>=0xaa60&&n<=0xaa7f)||(n>=0x116d0&&n<=0x116ff);
 }
+function isMyanmar(ch){return isMyanmarCodePoint(ch.codePointAt(0));}
+function isMyanmarTextAt(text,index){
+  const cp=text.codePointAt(index);
+  return isMyanmarCodePoint(cp)&&cp!==0x104a&&cp!==0x104b;
+}
+function widthAt(text,index){return text.codePointAt(index)>0xffff?2:1;}
 
 function segment(text){
   const s=normalize(text),out=[];let i=0;
   while(i<s.length){
-    if(!isMyanmarText(s[i])){const start=i++;while(i<s.length&&!isMyanmarText(s[i]))i++;out.push({raw:s.slice(start,i),nonMyanmar:true});continue;}
-    const start=i;i++;
-    while(i<s.length&&isMyanmarText(s[i])){
-      const prev=s[i-1],isCodaBase=BASE.has(s[i])&&s[i+1]===ASAT;
+    if(!isMyanmarTextAt(s,i)){
+      const start=i;i+=widthAt(s,i);
+      while(i<s.length&&!isMyanmarTextAt(s,i))i+=widthAt(s,i);
+      out.push({raw:s.slice(start,i),nonMyanmar:true});continue;
+    }
+    const start=i;i+=widthAt(s,i);
+    while(i<s.length&&isMyanmarTextAt(s,i)){
+      const ch=String.fromCodePoint(s.codePointAt(i));
+      const prev=i>0?String.fromCodePoint(s.codePointAt(i-widthAt(s,i-widthAt(s,i)))): "";
+      const isCodaBase=BASE.has(ch)&&s[i+ch.length]===ASAT;
       const followsKinzi=s.slice(Math.max(start,i-3),i)===KINZI;
       const startsWithKinzi=s.slice(start,i).startsWith(KINZI);
-      const isNewBase=BASE.has(s[i])&&!isCodaBase&&(prev!==VIRAMA||(followsKinzi&&!startsWithKinzi));
-      if(isNewBase)break;i++;
+      const isNewBase=BASE.has(ch)&&!isCodaBase&&(prev!==VIRAMA||(followsKinzi&&!startsWithKinzi));
+      if(isNewBase)break;
+      i+=widthAt(s,i);
     }
     out.push({raw:s.slice(start,i),nonMyanmar:false});
   }
