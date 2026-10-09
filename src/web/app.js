@@ -8,7 +8,7 @@ const ukStatus=document.querySelector("#uk-status"), ipaStatus=document.querySel
 const KINZI="င်္", VIRAMA="္", ASAT="်";
 const NASAL_CODAS=new Set(["င","န","မ","ည"]);
 const CHECKED_CODAS=new Set(["က","ခ","ဂ","ဃ","စ","ဆ","ဇ","ဈ","တ","ထ","ဒ","ဓ","ပ","ဖ","ဗ","ဘ"]);
-const IPA_UNIT_RE=/t͡?ɕʰ|t͡?ɕ|d͡?ʑ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|ɴ|ŋ|ɲ|ɯ|ɛ|ɪ|ɔ|ə|ʊ|eɪ|oʊ|aɪ|aʊ|[a-zɡʔː]/g;
+const IPA_UNIT_RE=/t͡?ɕʰ|t͡?ɕ|d͡?ʑ|[ktps]ʰ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|ɴ|ŋ|ɲ|ɯ|ɛ|ɪ|ɔ|ə|ʊ|eɪ|oʊ|aɪ|aʊ|θ|ð|[a-zɡʔː]/g;
 const MEDIAL_CHARS=new Set(Object.keys(MEDIALS)), VOWEL_CHARS=new Set(Object.keys(SIGNS)), BASE=new Set(Object.keys(ONSETS));
 
 function normalize(text){return text.normalize("NFC");}
