@@ -11,7 +11,10 @@ const CHECKED_CODAS=new Set(["က","ခ","ဂ","ဃ","စ","ဆ","ဇ","ဈ","�
 const IPA_UNIT_RE=/t͡?ɕʰ|t͡?ɕ|d͡?ʑ|eɪ|oʊ|aɪ|aʊ|[ktpsdb]ʰ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|ɴ|ŋ|ɲ|ɯ|ɛ|ɪ|ɔ|ə|ʊ|θ|ð|[a-zɡʔː]/g;
 const MEDIAL_CHARS=new Set(Object.keys(MEDIALS)), VOWEL_CHARS=new Set(Object.keys(SIGNS)), BASE=new Set(Object.keys(ONSETS));
 
-function normalize(text){return text.normalize("NFC");}\nfunction isMyanmarPunctuation(ch){const n=ch.codePointAt(0);return n===0x104a||n===0x104b;}\nfunction isMyanmarText(ch){return isMyanmar(ch)&&!isMyanmarPunctuation(ch);}\nfunction isMyanmar(ch){
+function normalize(text){return text.normalize("NFC");}
+function isMyanmarPunctuation(ch){const n=ch.codePointAt(0);return n===0x104a||n===0x104b;}
+function isMyanmarText(ch){return isMyanmar(ch)&&!isMyanmarPunctuation(ch);}
+function isMyanmar(ch){
   const n=ch.codePointAt(0);
   // Myanmar, Myanmar Extended-B, and Myanmar Extended-A blocks.
   // Keep script recognition broader than the supported phonological inventory:
@@ -28,7 +31,8 @@ function segment(text){
     while(i<s.length&&isMyanmar(s[i])){
       const prev=s[i-1],isCodaBase=BASE.has(s[i])&&s[i+1]===ASAT;
       const followsKinzi=s.slice(Math.max(start,i-3),i)===KINZI;
-      const startsWithKinzi=s.slice(start,i).startsWith(KINZI);\n      const isNewBase=BASE.has(s[i])&&!isCodaBase&&(prev!==VIRAMA||(followsKinzi&&!startsWithKinzi));
+      const startsWithKinzi=s.slice(start,i).startsWith(KINZI);
+      const isNewBase=BASE.has(s[i])&&!isCodaBase&&(prev!==VIRAMA||(followsKinzi&&!startsWithKinzi));
       if(isNewBase)break;i++;
     }
     out.push({raw:s.slice(start,i),nonMyanmar:false});
@@ -52,7 +56,9 @@ function parseCluster(raw){
   // the next written base consonant.
   while(i<raw.length&&VOWEL_CHARS.has(raw[i]))sy.vowels.push(raw[i++]);
   if(i+2<raw.length&&raw.slice(i,i+3)===KINZI){sy.kinziCoda=true;sy.coda="င";i+=3;sy.asat=true;}
-  if(!sy.coda&&i+1<raw.length&&BASE.has(raw[i])&&raw[i+1]===ASAT){sy.coda=raw[i];i+=2;sy.asat=true;}\n  // A written kinzi after a syllable-final NGA closes the preceding syllable.\n  if(sy.coda==="င"&&raw[i]===VIRAMA&&i===raw.length-1){sy.kinziCoda=true;i++;}
+  if(!sy.coda&&i+1<raw.length&&BASE.has(raw[i])&&raw[i+1]===ASAT){sy.coda=raw[i];i+=2;sy.asat=true;}
+  // A written kinzi after a syllable-final NGA closes the preceding syllable.
+  if(sy.coda==="င"&&raw[i]===VIRAMA&&i===raw.length-1){sy.kinziCoda=true;i++;}
   // Canonically equivalent Myanmar strings may place DOT BELOW before ASAT.
   // Read these tail marks without changing the underlying syllable analysis.
   if(!sy.coda){
@@ -127,7 +133,10 @@ function deriveIpa(sy){
     if(!sy.vowels.length&&wa&&nasalCoda)vowel="ʊ";
     else if(!sy.vowels.length&&wa&&checkedCoda)vowel="ɛ";
     else if(!sy.vowels.length&&!sy.coda&&!sy.asat)vowel="a";
-    else if(sy.kinziCoda&&!sy.vowels.length)vowel="ɪ";\n    else if(!sy.vowels.length&&nasalCoda&&(has("medial_ya")||has("medial_ra")))vowel="a";\n    else if(!sy.vowels.length&&checkedCoda)vowel="a";\n    else if(!sy.vowels.length&&nasalCoda)vowel="ɪ";
+    else if(sy.kinziCoda&&!sy.vowels.length)vowel="ɪ";
+    else if(!sy.vowels.length&&nasalCoda&&(has("medial_ya")||has("medial_ra")))vowel="a";
+    else if(!sy.vowels.length&&checkedCoda)vowel="a";
+    else if(!sy.vowels.length&&nasalCoda)vowel="ɪ";
     else return null;
   }
   parts.push(vowel);
