@@ -98,6 +98,7 @@ function deriveIpa(sy){
     else if(devoiced[initial])initial=devoiced[initial];
     else return null;
   }
+  if(has("medial_wa"))initial+="w";
   parts.push(initial);
   const wa=has("medial_wa");
   const vowelIds=sy.vowels.map(sign=>SIGNS[sign]?.unicode_name).filter(Boolean);
