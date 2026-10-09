@@ -161,3 +161,18 @@ test("the E-plus-yat rime in စွယ် is parsed without inventing a final gl
   await expect(page.locator("#ipa")).not.toContainText("?");
   await expect(page.locator("#uk")).toContainText("све");
 });
+
+
+test("phonological and Ukrainian-candidate evidence statuses are reported independently",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကာ");
+  await expect(page.locator("#uk-status")).toContainText("IPA: ESTABLISHED");
+  await expect(page.locator("#uk-status")).toContainText("українська передача: PROPOSED");
+});
+
+test("prosodic markers are summarized once instead of repeated in every segment row",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကျောင်း၊ ကျောင်း။");
+  await expect(page.locator("#issues")).toContainText("Просодичні знаки збережено в аналітичному шарі");
+  await expect(page.locator("#syllables")).not.toContainText("Просодичний/ритмічний знак збережено як аналітичний маркер");
+});
