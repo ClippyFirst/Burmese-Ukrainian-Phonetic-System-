@@ -74,6 +74,8 @@ function parseCluster(raw){
     if(raw[i]==="ံ"||raw[i]==="့"||raw[i]==="း"){sy.notes.push("Просодичний/ритмічний знак збережено як аналітичний маркер.");sy.status="ANALYSIS_DEPENDENT";i++;continue;}
     sy.status="UNCERTAIN";sy.notes.push("Нерозібраний знак "+raw[i++]);
   }
+  // Keep repeated diagnostics deterministic and readable.
+  sy.notes=[...new Set(sy.notes)];
   sy.ipa=deriveIpa(sy);if(!sy.ipa&&sy.status==="ESTABLISHED")sy.status="NOT_ESTABLISHED";sy.uk=renderUkrainian(sy.ipa);return sy;
 }
 
@@ -84,7 +86,13 @@ function deriveIpa(sy){
   const ids=sy.medials.map(m=>MEDIALS[m]?.id).filter(Boolean);
   const has=key=>ids.includes(key);
   const coda=sy.coda;
-  const nasalCoda=!!coda&&NASAL_CODAS.has(coda);
+  // In common Burmese spellings, ည် after a ya/ra-medial onset represents
+  // an /ɪ/-like rime rather than a nasal coda. Likewise, ယ် after the E
+  // vowel sign is part of the rime in forms such as စွယ်, not a final /j/.
+  const iCodaVowel=coda==="ည"&&sy.asat&&(has("medial_ya")||has("medial_ra"))&&!sy.vowels.length;
+  const eYatRime=coda==="ယ"&&sy.asat&&sy.vowels.some(v=>SIGNS[v]?.unicode_name==="MYANMAR VOWEL SIGN E");
+  const awVowel=sy.asat&&!coda&&sy.vowels.some(v=>SIGNS[v]?.unicode_name==="MYANMAR VOWEL SIGN E")&&sy.vowels.some(v=>["MYANMAR VOWEL SIGN AA","MYANMAR VOWEL SIGN TALL AA"].includes(SIGNS[v]?.unicode_name));
+  const nasalCoda=!!coda&&NASAL_CODAS.has(coda)&&!iCodaVowel;
   const checkedCoda=!!coda&&CHECKED_CODAS.has(coda);
   if(has("medial_ya")||has("medial_ra")){
     if(initial==="k")initial="tɕ";
@@ -103,10 +111,18 @@ function deriveIpa(sy){
   const wa=has("medial_wa");
   const vowelIds=sy.vowels.map(sign=>SIGNS[sign]?.unicode_name).filter(Boolean);
   const hasV=id=>vowelIds.includes(id);
-  const closed=!!coda||sy.asat;
+  const closed=!!coda||(sy.asat&&!awVowel&&!eYatRime&&!iCodaVowel);
   let vowel=null;
-  if(hasV("MYANMAR VOWEL SIGN E")&&(hasV("MYANMAR VOWEL SIGN AA")||hasV("MYANMAR VOWEL SIGN TALL AA"))){
-    vowel=closed?(nasalCoda||checkedCoda?"aʊ":null):"ɔ";
+  if(iCodaVowel){
+    vowel="ɪ";
+  }else if(hasV("MYANMAR VOWEL SIGN E")&&(hasV("MYANMAR VOWEL SIGN AA")||hasV("MYANMAR VOWEL SIGN TALL AA"))){
+    // ော် is a conventional vowel spelling; its final asat is not a
+    // productive checked coda in this pattern.
+    vowel=awVowel?"ɔ":closed?(nasalCoda||checkedCoda?"aʊ":null):"ɔ";
+  }else if(hasV("MYANMAR VOWEL SIGN E")){
+    if(eYatRime)vowel="ɛ";
+    else if(wa&&closed)vowel=nasalCoda||checkedCoda?"ɛ":null;
+    else vowel="e";
   }else if(hasV("MYANMAR VOWEL SIGN I")&&hasV("MYANMAR VOWEL SIGN U")){
     vowel=closed?"aɪ":"o";
   }else if(hasV("MYANMAR VOWEL SIGN I")){
@@ -141,7 +157,7 @@ function deriveIpa(sy){
     else return null;
   }
   parts.push(vowel);
-  if(coda){
+  if(coda&&!iCodaVowel&&!eYatRime){
     if(nasalCoda)parts.push("ɴ");
     else if(checkedCoda)parts.push("ʔ");
     else if(coda==="ယ"||coda==="ရ")parts.push("j");
