@@ -192,3 +192,11 @@ test("initial Burmese /juː/ is rendered contextually, not as literal candidate 
   await expect(page.locator("#uk")).toContainText("ю");
   await expect(page.locator("#uk")).not.toContainText("й/я/є/ю/йо");
 });
+
+
+test("supplementary Myanmar code points are segmented by Unicode code point, not UTF-16 half",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill(String.fromCodePoint(0x116d0));
+  await expect(page.locator("#uk-status")).toContainText("UNSUPPORTED");
+  await expect(page.locator("#issues")).not.toContainText("збережено без змін");
+});
