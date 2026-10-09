@@ -78,3 +78,40 @@ test("theta IPA is tokenized through its explicitly marked candidate rule",async
   await expect(page.locator("#uk")).toContainText("та");
   await expect(page.locator("#uk-status")).toContainText("ANALYSIS_DEPENDENT");
 });
+
+test("kinzi coda is parsed as part of the preceding syllable",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("မင်္ဂလာ");
+  await expect(page.locator("#ipa")).toContainText("mɪɴɡala");
+  await expect(page.locator("#syllables")).not.toContainText("Нерозібраний знак");
+});
+
+test("Burmese comma and full stop do not make a recognized word uncertain",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကျောင်း၊ ကျောင်း။");
+  await expect(page.locator("#ipa")).toContainText("tɕaʊɴ");
+  await expect(page.locator("#uk")).not.toContainText("∅");
+  await expect(page.locator("#syllables")).not.toContainText("Нерозібраний знак ၊");
+  await expect(page.locator("#syllables")).not.toContainText("Нерозібраний знак ။");
+});
+
+test("diphthongs and null checked codas render as readable Ukrainian, not debug symbols",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကျောင်း စိတ် ပိုက် ကိုက်");
+  await expect(page.locator("#uk")).toContainText("чаунг");
+  await expect(page.locator("#uk")).not.toContainText("∅");
+});
+
+test("non-Myanmar runs are grouped instead of displayed one character at a time",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ABC 123 — Test #42");
+  await expect(page.locator("#syllables .syllable")).toHaveCount(1);
+  await expect(page.locator("#syllables .syllable").first()).toContainText("ABC 123 — Test #42");
+});
+
+test("မြန်မာ separates into syllable-like clusters without false unsupported-sign warnings",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("မြန်မာ");
+  await expect(page.locator("#syllables")).not.toContainText("Нерозібраний знак");
+  await expect(page.locator("#syllables")).not.toContainText("UNSUPPORTED");
+});
