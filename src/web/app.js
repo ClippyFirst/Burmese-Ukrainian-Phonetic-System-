@@ -12,7 +12,14 @@ const IPA_UNIT_RE=/t͡?ɕʰ|t͡?ɕ|d͡?ʑ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|ɴ|ŋ|ɲ|�
 const MEDIAL_CHARS=new Set(Object.keys(MEDIALS)), VOWEL_CHARS=new Set(Object.keys(SIGNS)), BASE=new Set(Object.keys(ONSETS));
 
 function normalize(text){return text.normalize("NFC");}
-function isMyanmar(ch){const n=ch.codePointAt(0);return n>=0x1000&&n<=0x109f;}
+function isMyanmar(ch){
+  const n=ch.codePointAt(0);
+  // Myanmar, Myanmar Extended-B, and Myanmar Extended-A blocks.
+  // Keep script recognition broader than the supported phonological inventory:
+  // unsupported Myanmar letters must be reported as unsupported, not preserved
+  // as if they were ordinary Latin/punctuation.
+  return (n>=0x1000&&n<=0x109f)||(n>=0xa9e0&&n<=0xa9ff)||(n>=0xaa60&&n<=0xaa7f)||(n>=0x116d0&&n<=0x116ff);
+}
 
 function segment(text){
   const s=normalize(text),out=[];let i=0;
@@ -54,7 +61,7 @@ function parseCluster(raw){
     while(j<raw.length&&(raw[j]==="ံ"||raw[j]==="့"||raw[j]==="း"))j++;
     if(j+1<raw.length&&BASE.has(raw[j])&&raw[j+1]===ASAT){
       sy.coda=raw[j];i=j+2;sy.asat=true;
-      if(j>i-2)sy.notes.push("Канонічний порядок знаків нормалізовано перед визначенням фіналі.");
+      sy.notes.push("Канонічний порядок знаків нормалізовано перед визначенням фіналі.");
     }
   }
   while(i<raw.length){
@@ -157,7 +164,7 @@ function convert(text){
   const ipaText=parsed.map(s=>s.nonMyanmar?s.raw:(s.ipa||"?")).join(""),ukText=parsed.map(s=>s.nonMyanmar?s.raw:(s.uk?.text||"")).join("");
   const statuses=myanmar.map(s=>s.status),ukStatuses=myanmar.flatMap(s=>s.uk?.parts?.map(p=>p.status)||[]),all=[...statuses,...ukStatuses];
   let status;
-  if(!myanmar.length)status="UNSUPPORTED";else if(all.includes("UNCERTAIN")||all.includes("UNSUPPORTED"))status="UNCERTAIN";
+  if(!myanmar.length)status="UNSUPPORTED";else if(all.includes("UNCERTAIN"))status="UNCERTAIN";else if(all.includes("UNSUPPORTED"))status="UNSUPPORTED";
   else if(all.includes("NOT_ESTABLISHED"))status="NOT_ESTABLISHED";else if(all.includes("ANALYSIS_DEPENDENT"))status="ANALYSIS_DEPENDENT";
   else if(all.includes("PROPOSED"))status="PROPOSED";else status="ESTABLISHED";
   return{input:text,normalized,ipa:ipaText,uk:ukText,status,segments:parsed};
