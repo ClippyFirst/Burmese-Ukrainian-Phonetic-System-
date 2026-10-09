@@ -8,7 +8,7 @@ const ukStatus=document.querySelector("#uk-status"), ipaStatus=document.querySel
 const KINZI="င်္", VIRAMA="္", ASAT="်";
 const NASAL_CODAS=new Set(["င","န","မ","ည"]);
 const CHECKED_CODAS=new Set(["က","ခ","ဂ","ဃ","စ","ဆ","ဇ","ဈ","တ","ထ","ဒ","ဓ","ပ","ဖ","ဗ","ဘ"]);
-const IPA_UNIT_RE=/t͡?ɕʰ|t͡?ɕ|d͡?ʑ|[ktps]ʰ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|ɴ|ŋ|ɲ|ɯ|ɛ|ɪ|ɔ|ə|ʊ|eɪ|oʊ|aɪ|aʊ|θ|ð|[a-zɡʔː]/g;
+const IPA_UNIT_RE=/t͡?ɕʰ|t͡?ɕ|d͡?ʑ|eɪ|oʊ|aɪ|aʊ|[ktpsdb]ʰ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|ɴ|ŋ|ɲ|ɯ|ɛ|ɪ|ɔ|ə|ʊ|θ|ð|[a-zɡʔː]/g;
 const MEDIAL_CHARS=new Set(Object.keys(MEDIALS)), VOWEL_CHARS=new Set(Object.keys(SIGNS)), BASE=new Set(Object.keys(ONSETS));
 
 function normalize(text){return text.normalize("NFC");}
@@ -24,12 +24,12 @@ function isMyanmar(ch){
 function segment(text){
   const s=normalize(text),out=[];let i=0;
   while(i<s.length){
-    if(!isMyanmar(s[i])){out.push({raw:s[i],nonMyanmar:true});i++;continue;}
+    if(!isMyanmar(s[i])){const start=i++;while(i<s.length&&!isMyanmar(s[i]))i++;out.push({raw:s.slice(start,i),nonMyanmar:true});continue;}
     const start=i;i++;
     while(i<s.length&&isMyanmar(s[i])){
       const prev=s[i-1],isCodaBase=BASE.has(s[i])&&s[i+1]===ASAT;
       const followsKinzi=s.slice(Math.max(start,i-3),i)===KINZI;
-      const isNewBase=BASE.has(s[i])&&!isCodaBase&&prev!==ASAT&&(prev!==VIRAMA||followsKinzi);
+      const startsWithKinzi=s.slice(start,i).startsWith(KINZI);\n      const isNewBase=BASE.has(s[i])&&!isCodaBase&&(prev!==VIRAMA||(followsKinzi&&!startsWithKinzi));
       if(isNewBase)break;i++;
     }
     out.push({raw:s.slice(start,i),nonMyanmar:false});
@@ -53,7 +53,7 @@ function parseCluster(raw){
   // the next written base consonant.
   while(i<raw.length&&VOWEL_CHARS.has(raw[i]))sy.vowels.push(raw[i++]);
   if(i+2<raw.length&&raw.slice(i,i+3)===KINZI){sy.kinziCoda=true;sy.coda="င";i+=3;sy.asat=true;}
-  if(!sy.coda&&i+1<raw.length&&BASE.has(raw[i])&&raw[i+1]===ASAT){sy.coda=raw[i];i+=2;sy.asat=true;}
+  if(!sy.coda&&i+1<raw.length&&BASE.has(raw[i])&&raw[i+1]===ASAT){sy.coda=raw[i];i+=2;sy.asat=true;}\n  // A written kinzi after a syllable-final NGA closes the preceding syllable.\n  if(sy.coda==="င"&&raw[i]===VIRAMA&&i===raw.length-1){sy.kinziCoda=true;i++;}
   // Canonically equivalent Myanmar strings may place DOT BELOW before ASAT.
   // Read these tail marks without changing the underlying syllable analysis.
   if(!sy.coda){
@@ -128,7 +128,7 @@ function deriveIpa(sy){
     if(!sy.vowels.length&&wa&&nasalCoda)vowel="ʊ";
     else if(!sy.vowels.length&&wa&&checkedCoda)vowel="ɛ";
     else if(!sy.vowels.length&&!sy.coda&&!sy.asat)vowel="a";
-    else if(sy.kinziCoda&&!sy.vowels.length)vowel="ɪ";
+    else if(sy.kinziCoda&&!sy.vowels.length)vowel="ɪ";\n    else if(!sy.vowels.length&&nasalCoda&&(has("medial_ya")||has("medial_ra")))vowel="a";\n    else if(!sy.vowels.length&&checkedCoda)vowel="a";\n    else if(!sy.vowels.length&&nasalCoda)vowel="ɪ";
     else return null;
   }
   parts.push(vowel);
@@ -147,7 +147,7 @@ function candidateFor(segment){
   const direct=PRACTICAL[segment]||PRACTICAL[segment==="θ"?"θ~ð":segment]||PRACTICAL[segment==="ɴ"?"ŋ":segment];
   if(!direct)return{text:"",status:"NOT_ESTABLISHED",reason:"Немає точного правила для цього IPA-сегмента."};
   const row=direct[0];
-  return{text:row.ukrainian_candidate,status:(row.status||"UNKNOWN").toUpperCase(),reason:row.policy,ruleIds:(RULES[segment]||RULES["/"+segment+"/"]||[]).map(x=>x.rule_id)};
+  return{text:row.ukrainian_candidate==="∅"?"":row.ukrainian_candidate,status:(row.status||"UNKNOWN").toUpperCase(),reason:row.policy,ruleIds:(RULES[segment]||RULES["/"+segment+"/"]||[]).map(x=>x.rule_id)};
 }
 
 function renderUkrainian(ipaText){
