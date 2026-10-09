@@ -11,8 +11,7 @@ const CHECKED_CODAS=new Set(["က","ခ","ဂ","ဃ","စ","ဆ","ဇ","ဈ","�
 const IPA_UNIT_RE=/t͡?ɕʰ|t͡?ɕ|d͡?ʑ|eɪ|oʊ|aɪ|aʊ|[ktpsdb]ʰ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|ɴ|ŋ|ɲ|ɯ|ɛ|ɪ|ɔ|ə|ʊ|θ|ð|[a-zɡʔː]/g;
 const MEDIAL_CHARS=new Set(Object.keys(MEDIALS)), VOWEL_CHARS=new Set(Object.keys(SIGNS)), BASE=new Set(Object.keys(ONSETS));
 
-function normalize(text){return text.normalize("NFC");}
-function isMyanmar(ch){
+function normalize(text){return text.normalize("NFC");}\nfunction isMyanmarPunctuation(ch){const n=ch.codePointAt(0);return n===0x104a||n===0x104b;}\nfunction isMyanmarText(ch){return isMyanmar(ch)&&!isMyanmarPunctuation(ch);}\nfunction isMyanmar(ch){
   const n=ch.codePointAt(0);
   // Myanmar, Myanmar Extended-B, and Myanmar Extended-A blocks.
   // Keep script recognition broader than the supported phonological inventory:
@@ -24,7 +23,7 @@ function isMyanmar(ch){
 function segment(text){
   const s=normalize(text),out=[];let i=0;
   while(i<s.length){
-    if(!isMyanmar(s[i])){const start=i++;while(i<s.length&&!isMyanmar(s[i]))i++;out.push({raw:s.slice(start,i),nonMyanmar:true});continue;}
+    if(!isMyanmarText(s[i])){const start=i++;while(i<s.length&&!isMyanmarText(s[i]))i++;out.push({raw:s.slice(start,i),nonMyanmar:true});continue;}
     const start=i;i++;
     while(i<s.length&&isMyanmar(s[i])){
       const prev=s[i-1],isCodaBase=BASE.has(s[i])&&s[i+1]===ASAT;
