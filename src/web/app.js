@@ -39,16 +39,15 @@ function segment(text){
       while(i<s.length&&!isMyanmarTextAt(s,i))i+=widthAt(s,i);
       out.push({raw:s.slice(start,i),nonMyanmar:true});continue;
     }
-    const start=i;i+=widthAt(s,i);
+    const start=i;let prev=String.fromCodePoint(s.codePointAt(i));i+=widthAt(s,i);
     while(i<s.length&&isMyanmarTextAt(s,i)){
       const ch=String.fromCodePoint(s.codePointAt(i));
-      const prev=i>0?String.fromCodePoint(s.codePointAt(i-widthAt(s,i-widthAt(s,i)))): "";
       const isCodaBase=BASE.has(ch)&&s[i+ch.length]===ASAT;
       const followsKinzi=s.slice(Math.max(start,i-3),i)===KINZI;
       const startsWithKinzi=s.slice(start,i).startsWith(KINZI);
       const isNewBase=BASE.has(ch)&&!isCodaBase&&(prev!==VIRAMA||(followsKinzi&&!startsWithKinzi));
       if(isNewBase)break;
-      i+=widthAt(s,i);
+      prev=ch;i+=widthAt(s,i);
     }
     out.push({raw:s.slice(start,i),nonMyanmar:false});
   }
