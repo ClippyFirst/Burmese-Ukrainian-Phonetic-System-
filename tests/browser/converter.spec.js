@@ -115,3 +115,16 @@ test("မြန်မာ separates into syllable-like clusters without false uns
   await expect(page.locator("#syllables")).not.toContainText("Нерозібраний знак");
   await expect(page.locator("#syllables")).not.toContainText("UNSUPPORTED");
 });
+
+test("provisional Ukrainian mappings are visible in segment-level evidence status",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကာ");
+  await expect(page.locator("#uk-status")).toContainText("PROPOSED");
+  await expect(page.locator("#syllables")).toContainText("передача: PROPOSED");
+});
+
+test("a mixed string keeps the most cautious mapping status in the aggregate",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကာ သာ");
+  await expect(page.locator("#uk-status")).toContainText("ANALYSIS_DEPENDENT");
+});
