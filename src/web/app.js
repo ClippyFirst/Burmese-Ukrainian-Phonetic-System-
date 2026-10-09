@@ -10,6 +10,11 @@ const NASAL_CODAS=new Set(["င","န","မ","ည"]);
 const CHECKED_CODAS=new Set(["က","ခ","ဂ","ဃ","စ","ဆ","ဇ","ဈ","တ","ထ","ဒ","ဓ","ပ","ဖ","ဗ","ဘ"]);
 const IPA_UNIT_RE=/t͡?ɕʰ|t͡?ɕ|d͡?ʑ|eɪ|oʊ|aɪ|aʊ|[ktpsdb]ʰ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|ɴ|ŋ|ɲ|ɯ|ɛ|ɪ|ɔ|ə|ʊ|θ|ð|[a-zɡʔː]/g;
 const MEDIAL_CHARS=new Set(Object.keys(MEDIALS)), VOWEL_CHARS=new Set(Object.keys(SIGNS)), BASE=new Set(Object.keys(ONSETS));
+const STATUS_RANK={ESTABLISHED:0,WELL_SUPPORTED:1,PROPOSED:2,ANALYSIS_DEPENDENT:3,NOT_ESTABLISHED:4,UNSUPPORTED:5,UNCERTAIN:6};
+function aggregateStatus(statuses,emptyStatus="NOT_ESTABLISHED"){
+  if(!statuses.length)return emptyStatus;
+  return statuses.reduce((worst,status)=>(STATUS_RANK[status]??4)>(STATUS_RANK[worst]??0)?status:worst,"ESTABLISHED");
+}
 
 function normalize(text){return text.normalize("NFC");}
 function isMyanmarPunctuation(ch){const n=ch.codePointAt(0);return n===0x104a||n===0x104b;}
@@ -188,19 +193,17 @@ function renderUkrainian(ipaText){
 function convert(text){
   const normalized=normalize(text),parsed=segment(normalized).map(s=>s.nonMyanmar?s:parseCluster(s.raw)),myanmar=parsed.filter(s=>!s.nonMyanmar);
   const ipaText=parsed.map(s=>s.nonMyanmar?s.raw:(s.ipa||"?")).join(""),ukText=parsed.map(s=>s.nonMyanmar?s.raw:(s.uk?.text||"")).join("");
-  const statuses=myanmar.map(s=>s.status),ukStatuses=myanmar.flatMap(s=>s.uk?.parts?.map(p=>p.status)||[]),all=[...statuses,...ukStatuses];
-  let status;
-  if(!myanmar.length)status="UNSUPPORTED";else if(all.includes("UNCERTAIN"))status="UNCERTAIN";else if(all.includes("UNSUPPORTED"))status="UNSUPPORTED";
-  else if(all.includes("NOT_ESTABLISHED"))status="NOT_ESTABLISHED";else if(all.includes("ANALYSIS_DEPENDENT"))status="ANALYSIS_DEPENDENT";
-  else if(all.includes("PROPOSED"))status="PROPOSED";else status="ESTABLISHED";
-  return{input:text,normalized,ipa:ipaText,uk:ukText,status,segments:parsed};
+  const ipaStatus=aggregateStatus(myanmar.map(s=>s.ipa?s.status:(s.status==="UNSUPPORTED"?"UNSUPPORTED":"NOT_ESTABLISHED")),myanmar.length?"ESTABLISHED":"UNSUPPORTED");
+  const ukStatus=aggregateStatus(myanmar.map(s=>s.uk?.status||"NOT_ESTABLISHED"),myanmar.length?"ESTABLISHED":"UNSUPPORTED");
+  const status=aggregateStatus([ipaStatus,ukStatus],myanmar.length?"ESTABLISHED":"UNSUPPORTED");
+  return{input:text,normalized,ipa:ipaText,uk:ukText,status,ipaStatus,ukStatus,segments:parsed};
 }
 
 function render(){
   const text=source.value;count.textContent=text.length+" символів";
   if(!text){empty.hidden=false;results.hidden=true;issues.hidden=true;return;}
   const r=convert(text);empty.hidden=true;results.hidden=false;uk.textContent=r.uk||"—";ipa.textContent=r.ipa||"—";
-  ukStatus.textContent="Статус: "+r.status;
+  ukStatus.textContent="Загальний статус: "+r.status+" · IPA: "+r.ipaStatus+" · українська передача: "+r.ukStatus;
   ipaStatus.textContent=r.segments.some(x=>!x.nonMyanmar&&!x.ipa)?"Частину фонетичної структури не встановлено для цього вводу.":"Структурно розпізнані сегменти.";
   syllables.replaceChildren();
   r.segments.forEach((s,index)=>{const row=document.createElement("div");row.className="syllable";
