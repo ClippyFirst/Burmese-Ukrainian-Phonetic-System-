@@ -225,6 +225,6 @@ test("canonically equivalent Myanmar spellings share normalized analysis",async(
   const firstSyllables=await page.locator("#syllables").innerText();
   const firstIpa=await page.locator("#ipa").innerText();
   await page.locator("#source").fill("ဦ");
-  await expect(page.locator("#syllables")).toHaveText(firstSyllables);
-  await expect(page.locator("#ipa")).toHaveText(firstIpa);
+  expect(await page.locator("#syllables").innerText()).toBe(firstSyllables);
+  expect(await page.locator("#ipa").innerText()).toBe(firstIpa);
 });
