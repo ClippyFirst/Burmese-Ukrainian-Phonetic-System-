@@ -146,3 +146,23 @@ This is the most important reproducibility risk after confirming CI: passing bot
 3. Add differential/contract tests that make runtime disagreement visible without forcing unsupported IPA.
 4. Decide whether the Python library becomes authoritative and the browser consumes its generated rule model, or whether shared declarative rules are generated into both runtimes.
 5. Run CI; record exact run IDs and any unresolved cases here before expanding vowel/coda/tone rules.
+
+
+## Audit cycle 2026-10-20 — Unicode script-range parity fix
+
+### Concrete code change
+
+- Updated `src/burmese_ukrainian/unicode.py` so `is_myanmar()` recognizes U+116D0–U+116FF (Myanmar Extended-C), matching the wider block recognition already used by the browser's `isMyanmarCodePoint()`.
+- Added `test_myanmar_extended_c_is_recognized_as_script_not_foreign_text` in `tests/test_unicode.py`, using U+116D0. The test explicitly distinguishes script-block recognition from linguistic support: a recognized Myanmar character is not thereby assigned a Burmese IPA value.
+- Code commit: `f76e2476a5a953af5ccb1ad463896578570aecc6`.
+- Test commit: `ba7aafa22a7903747c2cc14905f80b3b236b5c57`.
+- These are separate sequential commits to `main`; no local test execution is available in this connector environment. CI is the verification gate.
+
+### Why this is in scope
+
+The browser's Myanmar block predicate already included U+116D0–U+116FF, while Python's predicate did not. This was a concrete cross-runtime script-detection inconsistency. The fix aligns block recognition without pretending that Myanmar Extended-C characters belong to the supported Standard Burmese grapheme/pronunciation inventory.
+
+### Current follow-up
+
+- Verify the two new commits' CI outcomes before claiming the fix passes.
+- Add a shared, versioned adversarial fixture corpus and differential tests next; the major architectural gap remains duplicated browser and Python phonology.
