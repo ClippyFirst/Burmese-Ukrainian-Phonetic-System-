@@ -20,10 +20,10 @@
       }
     },
     {
-      "id": "myanmar-extended-a-a9e0",
+      "id": "myanmar-extended-b-aa60",
       "input": "ꩠ",
       "codepoints": [
-        "U+A9E0"
+        "U+AA60"
       ],
       "category": "recognized_myanmar_script_but_unsupported_inventory",
       "python": {
