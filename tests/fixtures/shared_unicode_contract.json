@@ -18,6 +18,23 @@
         "uk_status": "UNSUPPORTED",
         "must_not_report_passthrough": true
       }
+    },
+    {
+      "id": "myanmar-extended-a-a9e0",
+      "input": "ꩠ",
+      "codepoints": [
+        "U+A9E0"
+      ],
+      "category": "recognized_myanmar_script_but_unsupported_inventory",
+      "python": {
+        "top_level_status": "contains_uncertainty_or_invalid_input",
+        "syllable_status": "unsupported_or_malformed",
+        "graphemes_preserved": true
+      },
+      "browser": {
+        "uk_status": "UNSUPPORTED",
+        "must_not_report_passthrough": true
+      }
     }
   ]
 }
