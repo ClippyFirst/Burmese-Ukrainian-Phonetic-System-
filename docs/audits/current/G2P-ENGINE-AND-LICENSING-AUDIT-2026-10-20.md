@@ -70,3 +70,21 @@ Do not report an engine as better until the independent corpus exists. Record fo
 - license review outcome.
 
 Until then, Epitran is a **candidate baseline**, myG2P is a **license-constrained dictionary/reference**, and the in-repository engine remains a **partial research prototype**, not a validated full-coverage system.
+
+## Pinned mapping-file inspection (Epitran v1.35.0)
+
+Inspected the release-tagged files directly rather than inferring behavior from the package license or README alone:
+
+- Map: https://github.com/dmort27/epitran/blob/v1.35.0/epitran/data/map/mya-Mymr.csv
+- Preprocessor: https://github.com/dmort27/epitran/blob/v1.35.0/epitran/data/pre/mya-Mymr.txt
+- Postprocessor: https://github.com/dmort27/epitran/blob/v1.35.0/epitran/data/post/mya-Mymr.txt
+
+Findings from the tagged data:
+- The mapping table is compact and contains direct grapheme/chunk-to-IPA substitutions (for example `က → kə`, `ဦ → ʔu`, `ော် → aʊʔ`). These are mapping entries, not evidence that a whole lexical word has been correctly analyzed.
+- The preprocessor file is empty at this tag.
+- The postprocessor has explicit rules for medial insertion/reordering and removal of selected inherent `ə` outputs. It maps both `ျ` and `ြ` to `j`, and `ွ` to `w`, in its medial handling.
+- The inspected postprocessor contains no tone reconstruction rule. The map contains segmental/coda-like outputs such as `ɪɴ`, `aʊʔ` and `aɪɴ`, but this is not a tone-labelled lexical corpus.
+- The combination of compact substitutions, postprocessing and the upstream limited-support warning means Epitran can be a useful comparator for grapheme/segmental hypotheses, but cannot supply the missing independent gold targets or validate the project's tone/register model.
+
+This was a static inspection of release-tagged mapping files, not an execution of Epitran. No claim is made about actual output on the project's six structural probes until a reproducible runtime benchmark is run. Do not redistribute these mapping files as part of this repository merely because the package code declares an MIT-Modern-Variant license; keep the tagged third-party data and its licensing/provenance review distinct.
+
