@@ -24,3 +24,12 @@ def test_extended_c_is_not_misreported_as_a_supported_burmese_syllable():
     assert result["status"] == "contains_uncertainty_or_invalid_input"
     assert result["syllables"][0]["status"] == "unsupported_or_malformed"
     assert result["graphemes"] == [character]
+
+
+def test_canonical_equivalent_myanmar_spellings_normalize_identically():
+    # U+1026 has a canonical decomposition U+1025 U+102E. This is a
+    # Unicode normalization contract, not a claim about the pronunciation.
+    decomposed = "\u1025\u102e"
+    composed = "\u1026"
+    assert normalize_burmese(decomposed) == normalize_burmese(composed)
+    assert segment_graphemes(decomposed) == segment_graphemes(composed)
