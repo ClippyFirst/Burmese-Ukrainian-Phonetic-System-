@@ -44,6 +44,7 @@ def build_report(
     engine: str,
     engine_version: str,
     corpus_sha256: str,
+    corpus_path: str,
     mapping_sha256: str | None,
 ) -> dict[str, Any]:
     if len(rows) != len(outputs):
@@ -88,7 +89,7 @@ def build_report(
         "engine": engine,
         "engine_version": engine_version,
         "python_version": platform.python_version(),
-        "corpus_path": str(DEFAULT_CORPUS.relative_to(ROOT)),
+        "corpus_path": corpus_path,
         "corpus_sha256": corpus_sha256,
         "mapping_sha256": mapping_sha256,
         "eligible_verified_gold_count": eligible_gold,
@@ -142,6 +143,7 @@ def main() -> int:
         engine=args.engine,
         engine_version=version,
         corpus_sha256=sha256_file(args.corpus),
+        corpus_path=str(args.corpus),
         mapping_sha256=mapping_sha256,
     )
     rendered = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
