@@ -150,3 +150,16 @@ The Ukrainian system is defensible only when every divergence from Russian can b
 3. Ukrainian phonology;
 4. Ukrainian orthography;
 5. evidence strength.
+
+
+## Current evidence and license audits
+
+- [Phonology coverage audit](docs/audits/current/PHONOLOGY-COVERAGE-AUDIT-2026-10-20.md): implementation status by layer and current coverage limits.
+- [External G2P and licensing audit](docs/audits/current/G2P-ENGINE-AND-LICENSING-AUDIT-2026-10-20.md): Epitran and myG2P roles, restrictions and benchmark gates.
+- [Third-party notices](THIRD_PARTY_NOTICES.md): code/data/model licensing review.
+- [Seed corpus](data/burmese/phonology_corpus.csv): structural probes explicitly marked as not phonological gold data.
+- [Citation metadata](CITATION.cff).
+
+**Current measurement:** no independently adjudicated lexical IPA gold entries are verified yet. Word-level IPA accuracy and Ukrainian name-level accuracy are therefore not measured. The six rows in the seed corpus are structural probes only; blank IPA and Ukrainian fields are intentional, not missing results to be inferred.
+
+The repository currently has no root project license. Do not assume the source code or data are licensed for reuse merely because the repository is public. CITATION.cff uses NOASSERTION until the owner chooses a license.
