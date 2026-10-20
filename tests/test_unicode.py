@@ -15,3 +15,11 @@ def test_myanmar_extended_c_is_recognized_as_script_not_foreign_text():
     # imply that this project has a Burmese pronunciation rule for it.
     assert is_myanmar("\U000116D0")
     assert not is_myanmar("A")
+
+def test_extended_c_is_not_misreported_as_a_supported_burmese_syllable():
+    from burmese_ukrainian import parse_burmese
+
+    result = parse_burmese("\\U000116D0")
+    assert result["status"] == "contains_uncertainty_or_invalid_input"
+    assert result["syllables"][0]["status"] == "unsupported_or_malformed"
+    assert result["graphemes"] == ["\\U000116D0"]
