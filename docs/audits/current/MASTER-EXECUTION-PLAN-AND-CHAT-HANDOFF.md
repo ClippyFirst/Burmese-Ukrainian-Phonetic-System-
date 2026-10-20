@@ -182,3 +182,14 @@ The browser's Myanmar block predicate already included U+116D0–U+116FF, while 
 - Corrected the test in commit `0f5a7217973bb908e4186ce0516b534ba237be0c` to use `character = chr(0x116D0)`, and assert that the parser preserves that actual character. This avoids Python-source escaping ambiguity.
 - The corrected commit's CI is pending and must be polled. The earlier Extended-C parser contract is not considered verified until this corrected test passes.
 - CI runs for `b93e30cb` and `ddad3bc4` failed at `pytest` for the same escaping issue. The Pages run for `ddad3bc4` succeeded, but that does not override the failing test workflow.
+
+
+## Follow-up cycle — shared Unicode contract fixture (2026-10-20)
+
+- The corrected Extended-C parser test and handoff commit `1c81088356907c8f6665dcc32d17b00a9a2a49bc` passed the test workflow: [39484295230](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39484295230). This confirms the parser contract test is now green; it does not establish support for Extended-C pronunciation.
+- Added `tests/fixtures/shared_unicode_contract.json` with a versioned, source-neutral contract for U+116D0: Myanmar-script recognition is broad, while Burmese inventory analysis remains explicitly unsupported. The fixture stores separate Python and browser expectations because their APIs and analysis depth currently differ.
+- Added `tests/test_shared_unicode_contract.py` to read the JSON fixture and assert Python structural status, code point identity, and grapheme preservation.
+- Updated `tests/browser/converter.spec.js` to consume the same fixture and assert browser `UNSUPPORTED` status without ordinary passthrough diagnostics. Updated `tests/adversarial/README.md` to document the fixture contract and prohibit unsupported IPA gold labels.
+- These changes are sequential commits: fixture `cd7204ee`, Python consumer `021ab06b`, browser consumer `c598c69d`, fixture documentation `2fbb39df`.
+- CI for the browser-consumer commit is running as [39484565457](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39484565457); Pages is queued. Poll both before marking this milestone verified. Later commits may supersede these run results.
+- Scope limitation: this is a shared regression contract, not yet a full differential test of linguistic outputs. It deliberately does not prescribe IPA or Ukrainian transcription for U+116D0. Next: expand fixture categories only where expectations are defensible, then add more robust API-level contract comparisons between the Python parser and browser engine.
