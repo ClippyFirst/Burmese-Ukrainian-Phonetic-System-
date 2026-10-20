@@ -163,3 +163,14 @@ The Ukrainian system is defensible only when every divergence from Russian can b
 **Current measurement:** no independently adjudicated lexical IPA gold entries are verified yet. Word-level IPA accuracy and Ukrainian name-level accuracy are therefore not measured. The six rows in the seed corpus are structural probes only; blank IPA and Ukrainian fields are intentional, not missing results to be inferred.
 
 The repository currently has no root project license. Do not assume the source code or data are licensed for reuse merely because the repository is public. CITATION.cff uses NOASSERTION until the owner chooses a license.
+
+### Optional Epitran baseline
+
+`scripts/benchmark_g2p.py` can capture raw output from an independently installed Epitran `mya-Mymr` transducer without making Epitran a runtime dependency:
+
+```bash
+python scripts/benchmark_g2p.py --engine epitran --output epitran-benchmark.json
+```
+
+Run it in an environment where Epitran is installed separately. The report records engine/version and hashes where available. It does not score structural probes as phonological gold data; accuracy remains `null` until rows are independently source-located and marked `GOLD_VERIFIED`. See the [G2P and licensing audit](docs/audits/current/G2P-ENGINE-AND-LICENSING-AUDIT-2026-10-20.md) before redistributing third-party data.
+
