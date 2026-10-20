@@ -88,3 +88,15 @@ Findings from the tagged data:
 
 This was a static inspection of release-tagged mapping files, not an execution of Epitran. No claim is made about actual output on the project's six structural probes until a reproducible runtime benchmark is run. Do not redistribute these mapping files as part of this repository merely because the package code declares an MIT-Modern-Variant license; keep the tagged third-party data and its licensing/provenance review distinct.
 
+## Optional local baseline runner
+
+The repository now includes `scripts/benchmark_g2p.py`. It imports Epitran only when explicitly run, so Epitran is not a project runtime dependency and no third-party mapping files are copied into this repository.
+
+Example in a separate environment where the maintainer has installed Epitran:
+
+```bash
+python scripts/benchmark_g2p.py --engine epitran --output epitran-benchmark.json
+```
+
+The JSON report records raw output, package version, corpus SHA-256 and—when the installed package exposes the file—mapping-table SHA-256. It only scores rows whose evidence status is `GOLD_VERIFIED`, with a non-empty expected IPA, source ID and a non-pending source locator. With the current structural-only seed corpus, the eligible gold count is zero and accuracy remains `null`; this is intentional. The runner has not yet been executed against an installed Epitran environment, so no engine output or accuracy result is claimed in this audit.
+
