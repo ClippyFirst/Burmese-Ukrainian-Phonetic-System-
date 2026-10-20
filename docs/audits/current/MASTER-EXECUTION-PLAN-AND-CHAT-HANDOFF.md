@@ -193,3 +193,11 @@ The browser's Myanmar block predicate already included U+116D0–U+116FF, while 
 - These changes are sequential commits: fixture `cd7204ee`, Python consumer `021ab06b`, browser consumer `c598c69d`, fixture documentation `2fbb39df`.
 - CI for the browser-consumer commit is running as [39484565457](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39484565457); Pages is queued. Poll both before marking this milestone verified. Later commits may supersede these run results.
 - Scope limitation: this is a shared regression contract, not yet a full differential test of linguistic outputs. It deliberately does not prescribe IPA or Ukrainian transcription for U+116D0. Next: expand fixture categories only where expectations are defensible, then add more robust API-level contract comparisons between the Python parser and browser engine.
+
+
+### Verification update and corpus expansion — 2026-10-20
+
+- CI and Pages both succeeded for commit `289765d9`: [tests 39484629387](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39484629387), [Pages 39484629321](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39484629321). The first shared-fixture implementation is verified on that commit.
+- Expanded `tests/fixtures/shared_unicode_contract.json` in commit `990a150a3305ddb75f32259e6b5c32e5cef10b99` with U+A9E0 (`ꩠ`), complementing U+116D0. Both are broad Myanmar-script code points that must remain explicitly unsupported by the current Burmese analysis inventory. The existing browser suite already has direct coverage for U+A9E0; the new shared fixture now ties it to the Python parser test as well.
+- CI for `990a150a` has not yet been polled. Do not call the expansion verified until the latest workflow completes successfully.
+- This fixture corpus currently covers Unicode support-boundary contracts, not complete phonological differential testing. Next priority is to add a small, carefully scoped structural corpus for malformed virama and canonical normalization, with only expectations supported by the parser's documented structural model; then investigate shared browser/Python result schema without fabricating identical outputs where implementations are intentionally different.
