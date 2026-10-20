@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this research prototype, please cite the repository and identify the exact commit or release used."
+title: "Burmese-to-Ukrainian Phonetic-Graphemic Correspondence System"
+type: software
+version: 0.2.2
+date-released: 2026-10-20
+repository-code: "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-"
+url: "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-"
+authors:
+  - name: "ClippyFirst contributors"
+abstract: >-
+  An evidence-gated research prototype for Burmese graphemic and syllabic
+  analysis, partial phonological and IPA analysis, and practical Ukrainian
+  correspondence. It is not a validated complete Burmese G2P system.
+keywords:
+  - Burmese
+  - Myanmar script
+  - grapheme-to-phoneme
+  - IPA
+  - Ukrainian transcription
+  - phonology
+license: "NOASSERTION"
