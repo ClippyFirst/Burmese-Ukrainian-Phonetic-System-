@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-10-20
 Repository: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-
-Default branch used for this review: repository default (previously reported as `main`; branch head SHA was not exposed by the available file-fetch response).
+Default branch used for this review: `main`; verified current head after this audit cycle: `5bc93e81d07d6afbad366c300eae321790b91893` (handoff-only commit; its CI runs were still in progress at last poll).
 Working title: “Burmese-to-Ukrainian Transcription: Graphemic Analysis and an Evidence-Gated Phonological Model”.
 
 ## Operating rule
@@ -25,7 +25,7 @@ Read on 2026-10-20:
 - `docs/practical-transcription.md` (blob SHA `989b30829c9c02161863056416f7064c0b6b40fe`)
 - `docs/russian-vs-ukrainian.md` (blob SHA `5bbdeecb4b3f4e69cdbc0c089cb2cdfcb828cdcd`)
 
-The expected handoff paths `docs/audits/current/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md`, `docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md`, and `CITATION.cff` returned not found during this review. The expected `.github/workflows/ci.yml` path returned not found. Actual `.github/workflows/pages.yml` exists and runs Node 22.12.0, `npm run build`, `npm test`, and `npm run test:browser` before deployment. Python tests also exist, but this Pages workflow does not run `pytest`; discover whether a separate Python workflow exists.
+The handoff file now exists at `docs/audits/current/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md`; `CITATION.cff` is absent. `docs/references.md`, `data/burmese/sources.csv`, and `data/burmese/source_claims.csv` are the current source registries. Both `.github/workflows/test.yml` and `.github/workflows/pages.yml` exist. The separate `test.yml` workflow runs `pytest`, `npm run build`, `npm test`, and `npm run test:browser`. The Pages workflow runs the Node build/unit/browser checks and deployment, but does not run `pytest` itself.
 
 Historical context (not reverified against current branch): on 2026-10-09, prior work reported fixes to `ေ`/`ော်`, `ကြည်`, `ြ`, `စွယ်`, contextual /j/, separate phonetic/Ukrainian statuses, diagnostics, and Unicode code-point handling; Python/build/unit/browser CI was reported passing at that time. Live GitHub Pages deployment was still to be confirmed, including adversarial cases `ကေ`, `ကော်`, `ကြည်`, `စွယ်`, `မြန်`, `ယူ`. Treat these as historical leads, not current verification.
 
@@ -40,19 +40,19 @@ Historical context (not reverified against current branch): on 2026-10-09, prior
 | 5. Tone | TODO | Model contains tone/prosody slots; README says competing analyses are retained. No complete tone derivation should be claimed. |
 | 6. Phonation contrasts | TODO | No complete evidence-gated implementation verified. |
 | 7. Allophony/contextual realization | TODO | No complete phonological-rule engine verified. |
-| 8. IPA | IN_PROGRESS | Partial seed mapping exists. It is not a complete broad IPA system and does not constitute validated surface phonetics. Audit the entire mapping and status semantics. |
+| 8. IPA | IN_PROGRESS | Python `ipa.py` is a small onset+vowel seed mapper; browser `src/web/app.js` has a separate, more elaborate hand-written contextual IPA derivation. These runtimes do not share one authoritative phonology engine and may disagree. Neither is a validated complete surface-phonetic system. |
 | 9. Ukrainian adaptation | IN_PROGRESS | Separate table-driven layer exists with explicit uncertain/not-established outcomes. Its inputs must be validated IPA, not guessed values; test independent from IPA. |
 | 10. Unknown/ambiguous/unsupported inputs | IN_PROGRESS | Parser has malformed/unsupported states; practical layer returns `not_established` for unmapped IPA. Ensure all APIs consistently preserve unknowns and never present placeholders as confident output. |
-| 11. Sources, tests, docs, UI, CI, deployment | IN_PROGRESS | Practical documentation exists; `CITATION.cff` and a sources file at `docs/sources.md` were not found. `.github/workflows/pages.yml` runs Node build/unit/browser tests but not Python pytest. Current run results, mobile behavior, Pages deployment, license/data provenance remain unverified. |
+| 11. Sources, tests, docs, UI, CI, deployment | IN_PROGRESS | `docs/references.md`, `data/burmese/sources.csv`, and `data/burmese/source_claims.csv` exist; `CITATION.cff` does not. Latest pre-handoff commit passed Python, Node and browser CI; latest Pages build and deployment succeeded. The current handoff-only commit's new workflow runs are in progress. Public page response has not been independently verified. |
 
 ## Prioritized task registry
 
 Statuses allowed: `TODO`, `IN_PROGRESS`, `BLOCKED`, `DONE_VERIFIED`, `DEFERRED`, `NOT_APPLICABLE`.
 
 ### Gate 0 — repository integrity and reproducibility
-- **BUR-001 — IN_PROGRESS — P0 — Establish reproducible baseline.** Identify actual default branch/head commit, list repository tree, find workflows and handoff/audit/source registry; run tests and build against that exact commit. Acceptance: commit SHA and exact commands/results recorded. Dependency: none.
-- **BUR-002 — TODO — P0 — Inspect actual CI workflow and deployment configuration.** Acceptance: workflow paths, triggers, latest run/check results, Pages source and live URL status evidenced; no assumptions from old reports. Depends on BUR-001.
-- **BUR-003 — TODO — P0 — Add/maintain this handoff after every work cycle.** Acceptance: exact commit/branch, evidence read, edits, commands/results, IDs, blockers, next command kept current.
+- **BUR-001 — DONE_VERIFIED — P0 — Establish reproducible baseline.** Verified default branch `main`, current head, recursive repository tree, source registry and workflows; latest completed test run passed `pytest`, `npm run build`, `npm test`, and `npm run test:browser`. The handoff-only commit's new CI run remains pending at last poll. Dependency: none.
+- **BUR-002 — IN_PROGRESS — P0 — Inspect actual CI workflow and deployment configuration.** Latest completed test and Pages runs succeeded. The public Pages URL itself was not independently fetchable in the available web check, and the newest documentation commit's CI runs are still pending. Keep these distinct from the successful prior commit. Depends on BUR-001.
+- **BUR-003 — IN_PROGRESS — P0 — Add/maintain this handoff after every work cycle.** This cycle's findings and exact run IDs are appended below; refresh CI results after the current commit completes.
 
 ### Stage A — scientifically honest research prototype
 - **BUR-010 — IN_PROGRESS — P0 — Harden Unicode and grapheme segmentation.** Test NFC/NFD equivalence, Myanmar block boundaries, mixed-script text, punctuation, malformed virama, reordered marks and adversarial cluster sequences. Acceptance: no crashes or silent deletion; stable, documented segmentation; regressions for each confirmed bug. Depends on BUR-001.
@@ -89,7 +89,7 @@ Statuses allowed: `TODO`, `IN_PROGRESS`, `BLOCKED`, `DONE_VERIFIED`, `DEFERRED`,
 - `package.json` — version 0.2.2; scripts include `build`, `test`, `test:browser`, `validate:data`, and `check`.
 - `tests/test_unicode.py` — basic NFC idempotence, dependent-e vowel segmentation and kinzi segmentation tests exist.
 - Local test suite/build: NOT RUN in this environment. The remote connector did not expose a local checkout or execute commands.
-- Current repository HEAD is `main` at `e5bbf24049ec5bb7f6480435e2ea3e07f3e236b8`. The latest `tests` run `39482511445` succeeded and explicitly passed `pytest`, `npm run build`, `npm test`, and `npm run test:browser`. The latest Pages run `39482511514` succeeded through deployment. This verifies CI and deploy workflow completion, not the linguistic correctness of every IPA result.
+- Current repository head after this handoff update is `5bc93e81d07d6afbad366c300eae321790b91893`. The prior head `e5bbf24049ec5bb7f6480435e2ea3e07f3e236b8` passed `pytest`, `npm run build`, `npm test`, and `npm run test:browser` in run `39482511445`; Pages build/deployment succeeded in run `39482511514`. The new head's runs `39483042395` (tests) and `39483042499` (Pages) were in progress at last poll. This verifies CI workflow behavior only, not linguistic correctness.
 
 ## Exact next step
 
@@ -131,9 +131,9 @@ This is the most important reproducibility risk after confirming CI: passing bot
 
 ### Task status update
 
-- BUR-001 — `DONE_VERIFIED`: recursive tree, default branch/head, workflows and current remote CI results checked.
-- BUR-002 — `DONE_VERIFIED`: latest Pages build and deploy jobs succeeded; latest Python/Node/browser test workflow succeeded. Live URL response itself has not been independently fetched, so mark public page content verification as separate follow-up rather than assume it.
-- BUR-003 — `IN_PROGRESS`: this handoff updated with baseline and branch findings.
+- BUR-001 — `DONE_VERIFIED`: recursive tree, default branch/head, workflows and latest completed remote CI baseline checked.
+- BUR-002 — `IN_PROGRESS`: prior Pages build/deploy and test workflow succeeded; public URL response is not independently verified and current-head workflow runs were pending at last poll.
+- BUR-003 — `IN_PROGRESS`: handoff updated; poll current-head runs and record final status.
 - New P0: add a shared, versioned golden/adversarial fixture format consumed by both runtimes; compare graphemic boundaries, phonological status, IPA and Ukrainian-candidate status separately.
 - New P0: make Python and browser runtime ownership explicit. Preferred long-term design is one authoritative rule engine or generated common rule data with contract tests; do not silently claim parity before a differential test demonstrates it.
 - New P1: link every high-impact contextual IPA rule to one or more source claims and an explicitly limited scope; where no reliable source is found, retain a proposal/uncertain status.
