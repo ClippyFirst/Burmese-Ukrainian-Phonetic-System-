@@ -45,6 +45,7 @@ def build_report(
     engine_version: str,
     corpus_sha256: str,
     corpus_path: str,
+    known_source_ids: set[str],
     mapping_sha256: str | None,
 ) -> dict[str, Any]:
     if len(rows) != len(outputs):
@@ -57,7 +58,7 @@ def build_report(
         is_gold = (
             row.get("evidence_status") == "GOLD_VERIFIED"
             and bool(row.get("expected_ipa", "").strip())
-            and bool(row.get("source_id", "").strip())
+            and row.get("source_id", "").strip() in known_source_ids
             and bool(row.get("source_locator", "").strip())
             and "pending" not in row.get("source_locator", "").lower()
         )
@@ -119,6 +120,8 @@ def main() -> int:
         )
 
     rows = load_corpus(args.corpus)
+    with (ROOT / "data" / "burmese" / "sources.csv").open(encoding="utf-8", newline="") as handle:
+        known_source_ids = {row["source_id"] for row in csv.DictReader(handle)}
     transducer = epitran.Epitran("mya-Mymr")
     raw_outputs = [transducer.transliterate(row["orthography"]) for row in rows]
 
@@ -144,6 +147,7 @@ def main() -> int:
         engine_version=version,
         corpus_sha256=sha256_file(args.corpus),
         corpus_path=str(args.corpus),
+        known_source_ids=known_source_ids,
         mapping_sha256=mapping_sha256,
     )
     rendered = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
