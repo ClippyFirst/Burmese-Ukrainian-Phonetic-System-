@@ -208,3 +208,48 @@ The browser's Myanmar block predicate already included U+116D0–U+116FF, while 
 - CI for expanded fixture commit `990a150a` caught a real test-data error: the visible character `ꩠ` normalizes to / is represented as U+AA60 in the Python parser, not U+A9E0. The failure was in the fixture's asserted code point, not in parser support detection: [CI run 39484941062](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39484941062) reported 18 passed, 1 failed.
 - Corrected the fixture case to `myanmar-extended-b-aa60` with expected `U+AA60` in commit `4c9ba6f36abbc61780f8253a2c39526567da474a`. The case remains explicitly unsupported by the current Burmese inventory. Do not claim this correction is verified until CI on the corrected commit succeeds.
 - This illustrates why fixture code points are asserted from actual code points, not inferred from a glyph's appearance or a previous test's label.
+
+
+
+## Evidence-gated phonology and external G2P cycle — 2026-10-20
+
+### Files added
+- CITATION.cff: citation metadata for the research prototype; license is NOASSERTION pending an owner decision.
+- docs/audits/current/PHONOLOGY-COVERAGE-AUDIT-2026-10-20.md: layer-by-layer implementation status and measurable coverage limits.
+- docs/audits/current/G2P-ENGINE-AND-LICENSING-AUDIT-2026-10-20.md: Epitran and myG2P assessment and a reproducible benchmark protocol.
+- THIRD_PARTY_NOTICES.md: separates project license status from third-party code/data/model rights.
+- data/burmese/phonology_corpus.csv: six structural probe rows; all are explicitly STRUCTURAL_ONLY and have no IPA or Ukrainian gold label.
+- README.md: links the audits and states that word-level IPA and Ukrainian name accuracy are not measured.
+
+### Current layer inventory
+- Unicode normalization: partial; Python supports NFC/NFD/NFKC/NFKD while browser uses NFC. Cross-runtime canonical-equivalence tests remain needed.
+- Myanmar block recognition: shared structural/status contract tests cover unknown code points in extended blocks; this is not phonology.
+- Segmentation, consonants, kinzi, medials, vowels and codas: partial; structural parser and browser engine are separate implementations.
+- Tone/register/phonation: documented competing analyses only; no complete runtime derivation verified.
+- Allophony: some browser contextual rules, not a complete evidence-traced rule engine.
+- IPA: partial seed mapper in Python and a separate richer browser derivation; no independent gold corpus and no measured agreement.
+- IPA-to-Ukrainian: table-driven partial policy with uncertainty states; many choices remain project hypotheses, not official norms.
+- Uncertainty handling: partial; align status contracts and test that no unsupported case receives a confident-looking string.
+
+### External engine decision
+Epitran lists mya-Mymr but classifies Burmese as limited support due to orthographic ambiguity. It is retained as a candidate control/baseline, not accepted as primary G2P. The package-code metadata reports MIT-Modern-Variant, but mapping/data provenance still needs component-level review. myG2P declares CC BY-NC-SA 4.0 for its pronunciation dictionary; do not bundle or copy its entries without a separate compatibility/rights review. No external engine has been benchmarked against a verified independent corpus in this cycle.
+
+### License decision
+GitHub reports no detected license and there is no root LICENSE file. This cycle intentionally did not choose a license on behalf of the project owner. CITATION.cff uses NOASSERTION. The next release gate is an explicit maintainer decision on source-code licensing and a separate corpus/data policy.
+
+### Corpus measurement
+Six seed rows exist but all are structural probes, not phonological gold entries. Verified independently adjudicated lexical IPA gold entries: 0. Word-level IPA accuracy, Ukrainian name-level accuracy and browser/Python agreement: not measured. Do not interpret "not measured" as 0% accuracy.
+
+### CI
+The earlier commit 2e1729d5 passed tests and Pages:
+- tests: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39485011447
+- Pages: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39485011474
+
+New audit files triggered several workflows because each file was committed independently. At the time of this handoff update, the latest README commit 4ba1b812 had queued tests run https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39487858083 and Pages run https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39487858082. Poll the latest runs before claiming the audit-file set passes CI.
+
+### Next work
+1. Poll CI and fix any YAML/Markdown/data-validation issues.
+2. Add NFC/NFD equivalence tests to Python and browser using a source-independent structural contract.
+3. Inspect exact Epitran mapping/pre/post files at a pinned release and build a local, non-redistributed benchmark runner.
+4. Obtain exact source page/table locators and build the first real lexical IPA gold entries; do not fill blank seed IPA fields from intuition.
+5. Establish shared layer-specific statuses and differential tests; do not force Python and browser into identical outputs where their intended contracts differ.
