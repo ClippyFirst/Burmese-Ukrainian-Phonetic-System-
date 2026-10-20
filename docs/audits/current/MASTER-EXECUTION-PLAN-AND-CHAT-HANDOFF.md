@@ -2,7 +2,7 @@
 
 Last reviewed: 2026-10-20
 Repository: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-
-Default branch used for this review: `main`; verified current head after this audit cycle: `5bc93e81d07d6afbad366c300eae321790b91893` (handoff-only commit; its CI runs were still in progress at last poll).
+Default branch used for this review: `main`; the prior audit baseline was `5bc93e81d07d6afbad366c300eae321790b91893`. Later commits added normalization regressions, audit corrections, and an optional evidence-gated G2P benchmark runner; see the dated sections below for the exact revision and CI state.
 Working title: “Burmese-to-Ukrainian Transcription: Graphemic Analysis and an Evidence-Gated Phonological Model”.
 
 ## Operating rule
@@ -248,11 +248,11 @@ The earlier commit 2e1729d5 passed tests and Pages:
 New audit files triggered several workflows because each file was committed independently. At the time of this handoff update, the latest README commit 4ba1b812 had queued tests run https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39487858083 and Pages run https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39487858082. Poll the latest runs before claiming the audit-file set passes CI.
 
 ### Next work
-1. Poll CI and fix any YAML/Markdown/data-validation issues.
-2. Add NFC/NFD equivalence tests to Python and browser using a source-independent structural contract.
-3. Inspect exact Epitran mapping/pre/post files at a pinned release and build a local, non-redistributed benchmark runner.
-4. Obtain exact source page/table locators and build the first real lexical IPA gold entries; do not fill blank seed IPA fields from intuition.
-5. Establish shared layer-specific statuses and differential tests; do not force Python and browser into identical outputs where their intended contracts differ.
+1. Poll the latest tests and Pages deployment for the final commit; fix any failures rather than treating queued runs as success.
+2. Obtain exact source page/table/entry locators and build the first independently adjudicated lexical IPA gold entries; do not fill blank seed IPA fields from intuition.
+3. Run the optional Epitran benchmark in a separate, pinned environment and preserve raw outputs plus artifact hashes; current repository CI does not install Epitran.
+4. Establish layer-specific statuses and differential tests; do not force Python and browser into identical outputs where their intended contracts differ.
+5. Decide project code/corpus licensing with the maintainer before adding third-party dictionary data or a root LICENSE.
 
 
 ### Canonical normalization regression and CI correction — 2026-10-20
@@ -271,3 +271,13 @@ New audit files triggered several workflows because each file was committed inde
 - Epitran `mya-Mymr` is a candidate baseline only: upstream describes Burmese support as limited due to orthographic ambiguity. Any benchmark must pin versions, record exact raw outputs and use independently adjudicated source-located targets.
 - Do not copy/bundle `myG2P` dictionary entries without a licensing/compatibility review; its repository declares CC BY-NC-SA 4.0. Keep engine code, mapping files and lexical data licenses separate.
 - Project license remains unresolved; `CITATION.cff` uses `NOASSERTION` rather than guessing an owner decision.
+
+### Epitran inspection and benchmark harness — 2026-10-20
+
+- Inspected Epitran v1.35.0's release-tagged `mya-Mymr` map, preprocessor and postprocessor files. The map is a compact orthography/chunk substitution table; the preprocessor is empty; postprocessing handles medial insertion and selected schwa deletion but does not reconstruct tone. This is static inspection, not an executed engine benchmark.
+- Added `scripts/benchmark_g2p.py`, an optional local runner that imports Epitran only when invoked, preserves raw outputs, records package/corpus/mapping hashes when available, and leaves accuracy `null` when there are no verified gold rows.
+- Benchmark scoring requires `GOLD_VERIFIED`, non-empty expected IPA, a source ID present in `data/burmese/sources.csv`, and a non-pending source locator. Structural-only probes cannot be counted as accuracy examples.
+- Added contract tests for structural-only non-scoring, source-located gold scoring, and corpus status integrity.
+- Related changes include the G2P audit, README usage instructions, `scripts/benchmark_g2p.py`, and `tests/test_contracts.py`. The runner has not yet been executed against an installed Epitran environment.
+- CI for the source-registry guard commit `e257cc89` was still running at the time this handoff was prepared: tests https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39495318894; Pages https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39495318893. An earlier benchmark-runner test run on `6d73bf23` passed, but it predates the source-registry guard and is not a substitute for the latest run.
+
