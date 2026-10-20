@@ -85,3 +85,57 @@ def test_verified_phonology_gold_requires_source_locator_and_ipa():
             assert "pending" not in row["source_locator"].lower(), row["case_id"]
             assert row["expected_ipa"].strip(), row["case_id"]
 
+def test_external_g2p_benchmark_never_scores_structural_probes_as_gold():
+    import runpy
+
+    build_report = runpy.run_path(str(ROOT / "scripts" / "benchmark_g2p.py"))["build_report"]
+    row = {
+        "case_id": "struct-test",
+        "orthography": "ကော်",
+        "expected_ipa": "",
+        "source_id": "U18",
+        "source_locator": "pending",
+        "evidence_status": "STRUCTURAL_ONLY",
+    }
+    report = build_report(
+        [row],
+        ["kɔ̀"],
+        engine="epitran",
+        engine_version="test",
+        corpus_sha256="fixture-hash",
+        corpus_path="fixture.csv",
+        mapping_sha256=None,
+    )
+    assert report["eligible_verified_gold_count"] == 0
+    assert report["exact_match_count"] is None
+    assert report["exact_match_accuracy"] is None
+    assert report["records"][0]["exact_match"] is None
+    assert report["records"][0]["score_status"] == "NOT_SCORED_NO_VERIFIED_GOLD"
+
+
+def test_external_g2p_benchmark_scores_only_source_located_gold():
+    import runpy
+
+    build_report = runpy.run_path(str(ROOT / "scripts" / "benchmark_g2p.py"))["build_report"]
+    row = {
+        "case_id": "gold-test",
+        "orthography": "ကော်",
+        "expected_ipa": "kɔ̀",
+        "source_id": "TEST",
+        "source_locator": "p. 1, example 1",
+        "evidence_status": "GOLD_VERIFIED",
+    }
+    report = build_report(
+        [row],
+        ["kɔ̀"],
+        engine="epitran",
+        engine_version="test",
+        corpus_sha256="fixture-hash",
+        corpus_path="fixture.csv",
+        mapping_sha256="map-hash",
+    )
+    assert report["eligible_verified_gold_count"] == 1
+    assert report["exact_match_count"] == 1
+    assert report["exact_match_accuracy"] == 1.0
+    assert report["records"][0]["score_status"] == "SCORED_EXACT_MATCH"
+
