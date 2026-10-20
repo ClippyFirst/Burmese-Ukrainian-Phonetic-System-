@@ -8,5 +8,12 @@ def normalize_burmese(text:str,form:str="NFC")->str:
     return ud.normalize(form,text)
 def codepoint_name(ch:str)->str: return ud.name(ch,"UNKNOWN")
 def is_myanmar(ch:str)->bool:
-    cp=ord(ch); return 0x1000<=cp<=0x109F or 0xAA60<=cp<=0xAA7F or 0xA9E0<=cp<=0xA9FF
+    """Return whether a code point is in a Myanmar script block supported by Unicode.
+
+    Script-block recognition is deliberately broader than Burmese inventory
+    support: callers must still mark unmodelled Myanmar characters unknown.
+    """
+    cp=ord(ch)
+    return (0x1000<=cp<=0x109F or 0xA9E0<=cp<=0xA9FF
+            or 0xAA60<=cp<=0xAA7F or 0x116D0<=cp<=0x116FF)
 BASE_CONSONANTS=set(chr(cp) for cp in range(0x1000,0x1022))|{"\u1023","\u1024","\u1025","\u1026","\u1027","\u1029","\u102a","\u103f","\u104e"}
