@@ -253,3 +253,11 @@ New audit files triggered several workflows because each file was committed inde
 3. Inspect exact Epitran mapping/pre/post files at a pinned release and build a local, non-redistributed benchmark runner.
 4. Obtain exact source page/table locators and build the first real lexical IPA gold entries; do not fill blank seed IPA fields from intuition.
 5. Establish shared layer-specific statuses and differential tests; do not force Python and browser into identical outputs where their intended contracts differ.
+
+
+### Canonical normalization regression — 2026-10-20
+
+- Added a Python regression in tests/test_unicode.py for the canonical equivalence U+1026 versus U+1025 U+102E; it checks normalization and segmentation equality only, not phonetic equivalence.
+- Added a Playwright regression in tests/browser/converter.spec.js comparing the browser's syllable and IPA displays for the two canonically equivalent spellings.
+- Commits: Python test 6f83f749d856ac9daeb7c15180a98a04a896147a; browser test 6f21b4567302393f5e53711e42f2f151336d774f.
+- CI for commit 4ba1b812 had completed pytest, npm build and npm unit tests successfully, while Playwright browser installation was still in progress. The test workflow for the final browser-test commit 6f21b456 is queued at https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39487921803; Pages is pending at https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39487921933. Do not claim the new browser regression passed until this workflow completes.
