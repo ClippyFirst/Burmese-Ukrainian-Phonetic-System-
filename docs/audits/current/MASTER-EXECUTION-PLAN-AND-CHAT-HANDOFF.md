@@ -175,3 +175,10 @@ The browser's Myanmar block predicate already included U+116D0–U+116FF, while 
 - Added a second regression to `tests/test_unicode.py` on commit `b93e30cb59e563782216e9b86895fa5bb7f08ab1`: U+116D0 must be recognized as Myanmar script but parsed as `unsupported_or_malformed`, with top-level uncertainty and the original grapheme preserved. This guards the distinction between broad Unicode script detection and actual Burmese inventory support.
 - CI for `b93e30c` has not yet been polled; this change is pending remote verification.
 - Next engineering milestone remains the shared adversarial fixture corpus and differential tests between Python and browser engines. Avoid inventing IPA expectations for fixtures unless a source-backed gold analysis exists.
+
+## Follow-up cycle — CI caught a test-fixture escaping error
+
+- Investigated failing Python CI on `ddad3bc4`: `pytest` reported 1 failed / 17 passed. The new test passed the literal ten-character string `\\U000116D0` rather than the actual supplementary Myanmar code point; this was a test construction bug, not evidence that the parser failed to preserve the character.
+- Corrected the test in commit `0f5a7217973bb908e4186ce0516b534ba237be0c` to use `character = chr(0x116D0)`, and assert that the parser preserves that actual character. This avoids Python-source escaping ambiguity.
+- The corrected commit's CI is pending and must be polled. The earlier Extended-C parser contract is not considered verified until this corrected test passes.
+- CI runs for `b93e30cb` and `ddad3bc4` failed at `pytest` for the same escaping issue. The Pages run for `ddad3bc4` succeeded, but that does not override the failing test workflow.
