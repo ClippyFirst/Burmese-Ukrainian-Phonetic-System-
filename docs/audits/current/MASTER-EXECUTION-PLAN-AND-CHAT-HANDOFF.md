@@ -25,7 +25,7 @@ Read on 2026-10-20:
 - `docs/practical-transcription.md` (blob SHA `989b30829c9c02161863056416f7064c0b6b40fe`)
 - `docs/russian-vs-ukrainian.md` (blob SHA `5bbdeecb4b3f4e69cdbc0c089cb2cdfcb828cdcd`)
 
-The expected handoff paths `docs/audits/current/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md`, `docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md`, and `CITATION.cff` returned not found during this review. The expected `.github/workflows/ci.yml` path also returned not found; inspect actual workflow filenames before making any CI claims.
+The expected handoff paths `docs/audits/current/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md`, `docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md`, and `CITATION.cff` returned not found during this review. The expected `.github/workflows/ci.yml` path returned not found. Actual `.github/workflows/pages.yml` exists and runs Node 22.12.0, `npm run build`, `npm test`, and `npm run test:browser` before deployment. Python tests also exist, but this Pages workflow does not run `pytest`; discover whether a separate Python workflow exists.
 
 Historical context (not reverified against current branch): on 2026-10-09, prior work reported fixes to `ေ`/`ော်`, `ကြည်`, `ြ`, `စွယ်`, contextual /j/, separate phonetic/Ukrainian statuses, diagnostics, and Unicode code-point handling; Python/build/unit/browser CI was reported passing at that time. Live GitHub Pages deployment was still to be confirmed, including adversarial cases `ကေ`, `ကော်`, `ကြည်`, `စွယ်`, `မြန်`, `ယူ`. Treat these as historical leads, not current verification.
 
@@ -43,7 +43,7 @@ Historical context (not reverified against current branch): on 2026-10-09, prior
 | 8. IPA | IN_PROGRESS | Partial seed mapping exists. It is not a complete broad IPA system and does not constitute validated surface phonetics. Audit the entire mapping and status semantics. |
 | 9. Ukrainian adaptation | IN_PROGRESS | Separate table-driven layer exists with explicit uncertain/not-established outcomes. Its inputs must be validated IPA, not guessed values; test independent from IPA. |
 | 10. Unknown/ambiguous/unsupported inputs | IN_PROGRESS | Parser has malformed/unsupported states; practical layer returns `not_established` for unmapped IPA. Ensure all APIs consistently preserve unknowns and never present placeholders as confident output. |
-| 11. Sources, tests, docs, UI, CI, deployment | IN_PROGRESS | Source bibliography and practical documentation exist; handoff and citation file not found at expected paths. Current workflow names, full tests, UI/mobile behavior, Pages deployment, license/data provenance remain unverified in this audit. |
+| 11. Sources, tests, docs, UI, CI, deployment | IN_PROGRESS | Practical documentation exists; `CITATION.cff` and a sources file at `docs/sources.md` were not found. `.github/workflows/pages.yml` runs Node build/unit/browser tests but not Python pytest. Current run results, mobile behavior, Pages deployment, license/data provenance remain unverified. |
 
 ## Prioritized task registry
 
@@ -84,9 +84,12 @@ Statuses allowed: `TODO`, `IN_PROGRESS`, `BLOCKED`, `DONE_VERIFIED`, `DEFERRED`,
 
 - GitHub file fetch: README, pyproject, parser, Unicode module, model, IPA seed, package exports, practical adapter, parser tests, practical tests, practical-transcription documentation, Russian-vs-Ukrainian documentation — successful reads.
 - Expected handoff paths and `CITATION.cff` — not found.
-- `.github/workflows/ci.yml` — not found at that exact path; workflow discovery still required.
-- Local test suite/build: NOT RUN in this environment.
-- Current commit/head SHA, latest CI run, live Pages deployment: NOT VERIFIED in this cycle.
+- `.github/workflows/ci.yml` — not found at that exact path.
+- `.github/workflows/pages.yml` — verified; Node build, unit and browser test commands are configured; latest run result not verified.
+- `package.json` — version 0.2.2; scripts include `build`, `test`, `test:browser`, `validate:data`, and `check`.
+- `tests/test_unicode.py` — basic NFC idempotence, dependent-e vowel segmentation and kinzi segmentation tests exist.
+- Local test suite/build: NOT RUN in this environment. The remote connector did not expose a local checkout or execute commands.
+- Current repository HEAD SHA/latest CI run/live Pages deployment: NOT VERIFIED. The handoff file was created in commit `566f97a9f810c3ad3a5c4af7479cfc8a1dd6a9ae`; its file was re-fetched successfully. A combined-status query for that commit returned an empty statuses array, which is not proof that tests passed or failed.
 
 ## Exact next step
 
