@@ -85,12 +85,64 @@ Statuses allowed: `TODO`, `IN_PROGRESS`, `BLOCKED`, `DONE_VERIFIED`, `DEFERRED`,
 - GitHub file fetch: README, pyproject, parser, Unicode module, model, IPA seed, package exports, practical adapter, parser tests, practical tests, practical-transcription documentation, Russian-vs-Ukrainian documentation — successful reads.
 - Expected handoff paths and `CITATION.cff` — not found.
 - `.github/workflows/ci.yml` — not found at that exact path.
-- `.github/workflows/pages.yml` — verified; Node build, unit and browser test commands are configured; latest run result not verified.
+- `.github/workflows/pages.yml` — verified; latest run `39482511514` on `main` commit `e5bbf24049ec5bb7f6480435e2ea3e07f3e236b8` succeeded, including build, Node tests, browser tests, artifact upload and deployment.
 - `package.json` — version 0.2.2; scripts include `build`, `test`, `test:browser`, `validate:data`, and `check`.
 - `tests/test_unicode.py` — basic NFC idempotence, dependent-e vowel segmentation and kinzi segmentation tests exist.
 - Local test suite/build: NOT RUN in this environment. The remote connector did not expose a local checkout or execute commands.
-- Current repository HEAD SHA/latest CI run/live Pages deployment: NOT VERIFIED. The handoff file was created in commit `566f97a9f810c3ad3a5c4af7479cfc8a1dd6a9ae`; its file was re-fetched successfully. A combined-status query for that commit returned an empty statuses array, which is not proof that tests passed or failed.
+- Current repository HEAD is `main` at `e5bbf24049ec5bb7f6480435e2ea3e07f3e236b8`. The latest `tests` run `39482511445` succeeded and explicitly passed `pytest`, `npm run build`, `npm test`, and `npm run test:browser`. The latest Pages run `39482511514` succeeded through deployment. This verifies CI and deploy workflow completion, not the linguistic correctness of every IPA result.
 
 ## Exact next step
 
-Run BUR-001: enumerate the current repository tree and branch head; locate the real audit/handoff/source registry, test and workflow files; then run the suite/build against the exact commit and update this registry with results. Do not start broad phonological expansion until parser and baseline evidence are reproducible.
+BUR-001 is now `DONE_VERIFIED` for repository/tree/workflow discovery and remote CI baseline. Next: inspect the two separate runtime paths (Python library vs browser engine), then add shared golden/adversarial fixtures so both paths have comparable, explicitly scoped expected outputs. Do not claim phonetic completeness or merge old divergent branches wholesale.
+
+
+## Audit cycle 2026-10-20 — verified baseline and branch reconciliation
+
+### Verified repository state
+
+- Default branch: `main`; current head `e5bbf24049ec5bb7f6480435e2ea3e07f3e236b8`.
+- Repository tree fetched recursively; no truncation reported.
+- Current files include both `.github/workflows/test.yml` and `.github/workflows/pages.yml`.
+- Latest test run: [39482511445](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39482511445) — success. Verified steps include `pytest`, `npm run build`, `npm test`, and `npm run test:browser`.
+- Latest Pages run: [39482511514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39482511514) — success. Both build and deploy jobs succeeded; browser test, artifact upload and deployment steps all succeeded.
+- `CITATION.cff` is absent from the current recursive tree. A top-level `docs/references.md`, `data/burmese/sources.csv`, and `data/burmese/source_claims.csv` do exist. The source registry is therefore not absent; it was previously checked at the wrong path/name.
+
+### Branch reconciliation
+
+- `fix/adversarial-burmese-phonology`: graph diverged from `main` (11 commits ahead, 3 behind), but its current `src/web/app.js` and `tests/browser/converter.spec.js` blob SHAs match `main` exactly. Do not merge this branch just to retrieve those files; no unique file changes were established in the compared runtime/test files.
+- `final-hardening`: diverged and stale relative to `main` (6 commits ahead, 47 behind); only a small set of UI/spec/test files differ in the comparison. No wholesale merge recommended.
+- `service-ready`: substantially diverged and stale (33 commits ahead, 50 behind), with older build/workflow/data/UI additions. Treat as historical source for selective review only, not a merge candidate.
+- Branch counts are GitHub compare metadata; they are not a measure of correctness.
+
+### Important architecture finding — duplicated runtime engines
+
+The browser converter in `src/web/app.js` contains its own syllable segmentation, contextual rime logic, IPA derivation and Ukrainian rendering. It imports generated data tables, but the central contextual phonology logic is handwritten in JavaScript.
+
+The Python package's `src/burmese_ukrainian/ipa.py` is a much smaller seed mapper: onset plus vowel-sign concatenation, with `conservative_partial` / `analysis_dependent` status. The Python `parser.py` is structural and does not implement the browser's contextual phonology rules. Therefore the browser and Python APIs are not yet two interfaces to one authoritative phonology engine; they have materially different coverage and can disagree on the same Burmese input.
+
+This is the most important reproducibility risk after confirming CI: passing both suites does not establish that the two runtimes implement the same linguistic model. Resolve it before broadening the rule inventory.
+
+### Evidence and coverage findings
+
+- `docs/methodology.md` and `docs/limitations.md` correctly state that the system is incomplete and should preserve uncertainty.
+- `data/burmese/coverage.csv` marks several areas partial, including vowels, vowel structures, finals, phonological rules, IPA and Ukrainian correspondences. Prosody/phonation have analytical metadata but only partial testing; do not infer tone or surface phonation from orthography alone.
+- `data/burmese/sources.csv`, `source_claims.csv`, `analyses.csv` and `tone_analyses.csv` exist. However, the present claim registry is small compared with the runtime's many contextual exceptions. Before promoting a rule's status, each implemented exception needs traceable source, scope/dialect, uncertainty and a counterexample/limit note.
+- `tests/adversarial/README.md` lists useful required categories (canonical order, kinzi, malformed virama, asat ambiguity, medial combinations, unsupported Myanmar-script material, Pali/Sanskrit, mixed scripts, spaces and U+200B), but the current named browser regression cases do not yet constitute a complete gold-standard lexical benchmark.
+
+### Task status update
+
+- BUR-001 — `DONE_VERIFIED`: recursive tree, default branch/head, workflows and current remote CI results checked.
+- BUR-002 — `DONE_VERIFIED`: latest Pages build and deploy jobs succeeded; latest Python/Node/browser test workflow succeeded. Live URL response itself has not been independently fetched, so mark public page content verification as separate follow-up rather than assume it.
+- BUR-003 — `IN_PROGRESS`: this handoff updated with baseline and branch findings.
+- New P0: add a shared, versioned golden/adversarial fixture format consumed by both runtimes; compare graphemic boundaries, phonological status, IPA and Ukrainian-candidate status separately.
+- New P0: make Python and browser runtime ownership explicit. Preferred long-term design is one authoritative rule engine or generated common rule data with contract tests; do not silently claim parity before a differential test demonstrates it.
+- New P1: link every high-impact contextual IPA rule to one or more source claims and an explicitly limited scope; where no reliable source is found, retain a proposal/uncertain status.
+- New P1: add a reproducible lexical benchmark with held-out cases and no accuracy percentage until a defensible gold set exists.
+
+### Recommended next work cycle
+
+1. Read the current browser rules and Python package contracts side by side.
+2. Create a small shared fixture set for the existing adversarial examples, recording expected parse shape and evidence status separately from exact phonetic output.
+3. Add differential/contract tests that make runtime disagreement visible without forcing unsupported IPA.
+4. Decide whether the Python library becomes authoritative and the browser consumes its generated rule model, or whether shared declarative rules are generated into both runtimes.
+5. Run CI; record exact run IDs and any unresolved cases here before expanding vowel/coda/tone rules.
