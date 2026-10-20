@@ -255,9 +255,19 @@ New audit files triggered several workflows because each file was committed inde
 5. Establish shared layer-specific statuses and differential tests; do not force Python and browser into identical outputs where their intended contracts differ.
 
 
-### Canonical normalization regression — 2026-10-20
+### Canonical normalization regression and CI correction — 2026-10-20
 
-- Added a Python regression in tests/test_unicode.py for the canonical equivalence U+1026 versus U+1025 U+102E; it checks normalization and segmentation equality only, not phonetic equivalence.
-- Added a Playwright regression in tests/browser/converter.spec.js comparing the browser's syllable and IPA displays for the two canonically equivalent spellings.
-- Commits: Python test 6f83f749d856ac9daeb7c15180a98a04a896147a; browser test 6f21b4567302393f5e53711e42f2f151336d774f.
-- CI for commit 4ba1b812 had completed pytest, npm build and npm unit tests successfully, while Playwright browser installation was still in progress. The test workflow for the final browser-test commit 6f21b456 is queued at https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39487921803; Pages is pending at https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39487921933. Do not claim the new browser regression passed until this workflow completes.
+- Added a Python regression in `tests/test_unicode.py` for canonical equivalence U+1026 versus U+1025 U+102E; it checks normalization and segmentation equality only, not a phonetic claim.
+- Added a Playwright regression in `tests/browser/converter.spec.js` comparing browser syllable and IPA displays for the two canonical spellings.
+- The first browser assertion used Playwright `toHaveText` against a value captured with `innerText`. CI exposed whitespace normalization by the matcher, not a phonology mismatch. The test now compares exact `innerText` values.
+- Fix commit: `46a57a4b7cf37aa39fa5cafaacf7589c1927698a`.
+- CI for that commit: tests workflow passed, including pytest, npm build, npm unit tests and all 40 Playwright tests: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39494898579. Pages build/browser checks passed; deployment was still in progress at the time of this note: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39494898537.
+- The test demonstrates equivalence of the current browser display for this one canonical pair only. It does not establish lexical IPA accuracy, complete Burmese normalization coverage, or full Python/browser phonological agreement.
+
+### Evidence and corpus guardrail
+
+- `data/burmese/phonology_corpus.csv` contains six structural regression probes, not six gold IPA entries. Their IPA and Ukrainian target fields remain blank intentionally.
+- The current audited count of independently adjudicated lexical IPA gold entries remains **0 verified**. Word-level IPA accuracy, Ukrainian name-level accuracy and full cross-runtime phonological agreement remain unmeasured.
+- Epitran `mya-Mymr` is a candidate baseline only: upstream describes Burmese support as limited due to orthographic ambiguity. Any benchmark must pin versions, record exact raw outputs and use independently adjudicated source-located targets.
+- Do not copy/bundle `myG2P` dictionary entries without a licensing/compatibility review; its repository declares CC BY-NC-SA 4.0. Keep engine code, mapping files and lexical data licenses separate.
+- Project license remains unresolved; `CITATION.cff` uses `NOASSERTION` rather than guessing an owner decision.
