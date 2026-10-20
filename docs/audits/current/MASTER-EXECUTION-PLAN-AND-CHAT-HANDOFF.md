@@ -167,3 +167,11 @@ The browser's Myanmar block predicate already included U+116D0–U+116FF, while 
 - The `tests` workflow for handoff commit `5ad517106dd159232dca0c4d5eae227aa871abc9` completed successfully: [run 39483567569](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39483567569). Verified steps: `pytest`, `npm run build`, `npm test` and `npm run test:browser`.
 - The Pages workflow for the same commit was still `in_progress` when polled: [run 39483567533](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39483567533). Do not record deployment success until that run completes.
 - The main architectural gap remains duplicated browser and Python phonology. Next: add a shared, versioned adversarial fixture corpus and differential/contract tests without forcing unsupported IPA values.
+
+## Follow-up cycle — Extended-C unsupported-status contract
+
+- Test workflow for commit `5ad517106dd159232dca0c4d5eae227aa871abc9` completed successfully: [39483567569](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39483567569). All listed steps passed, including `pytest`, build, Node tests and Playwright browser tests.
+- Pages workflow for that commit remained in progress at last poll: [39483567533](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39483567533). Deployment is not yet recorded as successful.
+- Added a second regression to `tests/test_unicode.py` on commit `b93e30cb59e563782216e9b86895fa5bb7f08ab1`: U+116D0 must be recognized as Myanmar script but parsed as `unsupported_or_malformed`, with top-level uncertainty and the original grapheme preserved. This guards the distinction between broad Unicode script detection and actual Burmese inventory support.
+- CI for `b93e30c` has not yet been polled; this change is pending remote verification.
+- Next engineering milestone remains the shared adversarial fixture corpus and differential tests between Python and browser engines. Avoid inventing IPA expectations for fixtures unless a source-backed gold analysis exists.
