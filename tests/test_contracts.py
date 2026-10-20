@@ -104,6 +104,7 @@ def test_external_g2p_benchmark_never_scores_structural_probes_as_gold():
         engine_version="test",
         corpus_sha256="fixture-hash",
         corpus_path="fixture.csv",
+        known_source_ids={"U18"},
         mapping_sha256=None,
     )
     assert report["eligible_verified_gold_count"] == 0
@@ -132,6 +133,7 @@ def test_external_g2p_benchmark_scores_only_source_located_gold():
         engine_version="test",
         corpus_sha256="fixture-hash",
         corpus_path="fixture.csv",
+        known_source_ids={"TEST"},
         mapping_sha256="map-hash",
     )
     assert report["eligible_verified_gold_count"] == 1
