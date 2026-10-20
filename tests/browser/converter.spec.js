@@ -1,4 +1,9 @@
 import { test, expect } from "@playwright/test";
+import { readFileSync } from "node:fs";
+
+const sharedUnicodeContract = JSON.parse(
+  readFileSync(new URL("../fixtures/shared_unicode_contract.json", import.meta.url), "utf8")
+);
 
 test("service loads with empty state",async({page})=>{await page.goto("/");await expect(page.locator("h1")).toContainText("Бірманський текст");await expect(page.locator("#empty")).toBeVisible();});
 test("example produces result",async({page})=>{await page.goto("/");await page.click("#example");await expect(page.locator("#results")).toBeVisible();await expect(page.locator("#uk")).toBeVisible();await expect(page.locator("#ipa")).toBeVisible();});
@@ -199,4 +204,16 @@ test("supplementary Myanmar code points are segmented by Unicode code point, not
   await page.locator("#source").fill(String.fromCodePoint(0x116d0));
   await expect(page.locator("#uk-status")).toContainText("UNSUPPORTED");
   await expect(page.locator("#issues")).not.toContainText("збережено без змін");
+});
+
+
+test("shared Unicode contract fixtures preserve unsupported Myanmar status across runtimes", async ({page}) => {
+  for (const fixture of sharedUnicodeContract.cases) {
+    await page.goto("/");
+    await page.locator("#source").fill(fixture.input);
+    await expect(page.locator("#uk-status"), fixture.id).toContainText(fixture.browser.uk_status);
+    if (fixture.browser.must_not_report_passthrough) {
+      await expect(page.locator("#issues"), fixture.id).not.toContainText("збережено без змін");
+    }
+  }
 });
