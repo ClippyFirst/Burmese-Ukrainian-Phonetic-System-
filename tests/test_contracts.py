@@ -57,3 +57,31 @@ def test_practical_rule_keys_match_practical_table():
     practical = ROOT / "data" / "burmese" / "ukrainian_practical.csv"
     rules = ROOT / "data" / "burmese" / "practical_rules.csv"
     assert keys(rules, "input") <= keys(practical, "burmese_ipa")
+
+def test_phonology_corpus_does_not_mislabel_structural_probes_as_gold():
+    path = ROOT / "data" / "burmese" / "phonology_corpus.csv"
+    with path.open(encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+
+    assert rows, "phonology corpus should retain at least its structural regression probes"
+    for row in rows:
+        if row["evidence_status"] == "STRUCTURAL_ONLY":
+            assert not row["expected_ipa"].strip(), row["case_id"]
+            assert not row["expected_ukrainian"].strip(), row["case_id"]
+
+
+def test_verified_phonology_gold_requires_source_locator_and_ipa():
+    corpus_path = ROOT / "data" / "burmese" / "phonology_corpus.csv"
+    sources_path = ROOT / "data" / "burmese" / "sources.csv"
+    with corpus_path.open(encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    with sources_path.open(encoding="utf-8", newline="") as handle:
+        source_ids = {row["source_id"] for row in csv.DictReader(handle)}
+
+    for row in rows:
+        if row["evidence_status"] == "GOLD_VERIFIED":
+            assert row["source_id"] in source_ids, row["case_id"]
+            assert row["source_locator"].strip(), row["case_id"]
+            assert "pending" not in row["source_locator"].lower(), row["case_id"]
+            assert row["expected_ipa"].strip(), row["case_id"]
+
