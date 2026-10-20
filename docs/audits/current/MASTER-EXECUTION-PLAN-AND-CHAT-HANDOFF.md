@@ -164,5 +164,6 @@ The browser's Myanmar block predicate already included U+116D0–U+116FF, while 
 
 ### Current follow-up
 
-- Verify the two new commits' CI outcomes before claiming the fix passes.
-- Add a shared, versioned adversarial fixture corpus and differential tests next; the major architectural gap remains duplicated browser and Python phonology.
+- The `tests` workflow for handoff commit `5ad517106dd159232dca0c4d5eae227aa871abc9` completed successfully: [run 39483567569](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39483567569). Verified steps: `pytest`, `npm run build`, `npm test` and `npm run test:browser`.
+- The Pages workflow for the same commit was still `in_progress` when polled: [run 39483567533](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39483567533). Do not record deployment success until that run completes.
+- The main architectural gap remains duplicated browser and Python phonology. Next: add a shared, versioned adversarial fixture corpus and differential/contract tests without forcing unsupported IPA values.
