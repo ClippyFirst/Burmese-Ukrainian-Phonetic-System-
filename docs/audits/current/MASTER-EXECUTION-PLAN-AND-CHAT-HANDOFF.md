@@ -201,3 +201,10 @@ The browser's Myanmar block predicate already included U+116D0–U+116FF, while 
 - Expanded `tests/fixtures/shared_unicode_contract.json` in commit `990a150a3305ddb75f32259e6b5c32e5cef10b99` with U+A9E0 (`ꩠ`), complementing U+116D0. Both are broad Myanmar-script code points that must remain explicitly unsupported by the current Burmese analysis inventory. The existing browser suite already has direct coverage for U+A9E0; the new shared fixture now ties it to the Python parser test as well.
 - CI for `990a150a` has not yet been polled. Do not call the expansion verified until the latest workflow completes successfully.
 - This fixture corpus currently covers Unicode support-boundary contracts, not complete phonological differential testing. Next priority is to add a small, carefully scoped structural corpus for malformed virama and canonical normalization, with only expectations supported by the parser's documented structural model; then investigate shared browser/Python result schema without fabricating identical outputs where implementations are intentionally different.
+
+
+### Fixture correction — Unicode block label/code point mismatch
+
+- CI for expanded fixture commit `990a150a` caught a real test-data error: the visible character `ꩠ` normalizes to / is represented as U+AA60 in the Python parser, not U+A9E0. The failure was in the fixture's asserted code point, not in parser support detection: [CI run 39484941062](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39484941062) reported 18 passed, 1 failed.
+- Corrected the fixture case to `myanmar-extended-b-aa60` with expected `U+AA60` in commit `4c9ba6f36abbc61780f8253a2c39526567da474a`. The case remains explicitly unsupported by the current Burmese inventory. Do not claim this correction is verified until CI on the corrected commit succeeds.
+- This illustrates why fixture code points are asserted from actual code points, not inferred from a glyph's appearance or a previous test's label.
