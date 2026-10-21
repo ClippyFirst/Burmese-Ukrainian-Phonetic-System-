@@ -78,12 +78,19 @@ def test_verified_phonology_gold_requires_source_locator_and_ipa():
     with sources_path.open(encoding="utf-8", newline="") as handle:
         source_ids = {row["source_id"] for row in csv.DictReader(handle)}
 
+    required_metadata = {
+        "ipa_convention", "scope", "analysis_level", "reviewer", "uncertainty_notes"
+    }
+    assert required_metadata <= rows[0].keys()
+
     for row in rows:
         if row["evidence_status"] == "GOLD_VERIFIED":
             assert row["source_id"] in source_ids, row["case_id"]
             assert row["source_locator"].strip(), row["case_id"]
             assert "pending" not in row["source_locator"].lower(), row["case_id"]
             assert row["expected_ipa"].strip(), row["case_id"]
+            for field in required_metadata:
+                assert row[field].strip(), (row["case_id"], field)
 
 def test_external_g2p_benchmark_never_scores_structural_probes_as_gold():
     import runpy
