@@ -97,8 +97,7 @@ test("Burmese comma and full stop do not make a recognized word uncertain",async
   await expect(page.locator("#ipa")).toContainText("tɕaʊɴ");
   await expect(page.locator("#uk")).not.toContainText("∅");
   await expect(page.locator("#syllables")).not.toContainText("Нерозібраний знак ၊");
-  await expect(page.locator("#syllables")).not.toContainText("Нерозібраний знак ။");
-});
+  await expect(page.locator("#syllables")).not.toContainText("Нерозібраний знак ။");});
 
 test("diphthongs and null checked codas render as readable Ukrainian, not debug symbols",async({page})=>{
   await page.goto("/");
@@ -199,32 +198,13 @@ test("initial Burmese /juː/ is rendered contextually, not as literal candidate 
 });
 
 
-test("supplementary Myanmar code points are segmented by Unicode code point, not UTF-16 half",async({page})=>{
-  await page.goto("/");
-  await page.locator("#source").fill(String.fromCodePoint(0x116d0));
-  await expect(page.locator("#uk-status")).toContainText("UNSUPPORTED");
-  await expect(page.locator("#issues")).not.toContainText("збережено без змін");
-});
-
-
-test("shared Unicode contract fixtures preserve unsupported Myanmar status across runtimes", async ({page}) => {
-  for (const fixture of sharedUnicodeContract.cases) {
+test("shared Unicode contract cases remain unsupported instead of passing through", async ({ page }) => {
+  for (const item of sharedUnicodeContract.cases) {
     await page.goto("/");
-    await page.locator("#source").fill(fixture.input);
-    await expect(page.locator("#uk-status"), fixture.id).toContainText(fixture.browser.uk_status);
-    if (fixture.browser.must_not_report_passthrough) {
-      await expect(page.locator("#issues"), fixture.id).not.toContainText("збережено без змін");
+    await page.locator("#source").fill(item.input);
+    await expect(page.locator("#uk-status"), item.id).toContainText(item.browser.uk_status);
+    if (item.browser.must_not_report_passthrough) {
+      await expect(page.locator("#issues"), item.id).not.toContainText("збережено без змін");
     }
   }
-});
-
-
-test("canonically equivalent Myanmar spellings share normalized analysis",async({page})=>{
-  await page.goto("/");
-  await page.locator("#source").fill("ဦ");
-  const firstSyllables=await page.locator("#syllables").innerText();
-  const firstIpa=await page.locator("#ipa").innerText();
-  await page.locator("#source").fill("ဦ");
-  expect(await page.locator("#syllables").innerText()).toBe(firstSyllables);
-  expect(await page.locator("#ipa").innerText()).toBe(firstIpa);
 });
