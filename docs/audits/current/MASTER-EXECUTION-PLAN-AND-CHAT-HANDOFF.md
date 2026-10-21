@@ -294,3 +294,11 @@ New audit files triggered several workflows because each file was committed inde
 - Verified CI run #259 at implementation commit `1045735c244e96c898c3a675f15ad68f6b79151a`: `pip install -e ".[test]"`, `pytest` (**32 passed**), `npm install`, `npm run build`, canonical web-data validation, generated-data drift check, Playwright installation, and `npm run test:browser` (**40 passed**) all succeeded. Run: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39571014041.
 - Added `tests/test_schema_validation.py` and made CI install the `.[test]` extra. CI now checks the schema definitions, validates representative parser outputs, runs web-data validation/build, and verifies that regenerating `src/web/generated/data.js` leaves no diff. These checks passed in run #251; schema validation still does not cover every source/claim registry row. The optional Epitran benchmark remains unrun, and no Epitran accuracy or phonological accuracy is claimed.
 - Gold-corpus status remains **0 verified lexical IPA entries**. The next linguistic acceptance gate is exact source locators plus independent adjudication for each candidate entry; do not promote `ကေ`, `ကော်`, `ကြည်`, `စွယ်`, `မြန်`, or `ယူ` from structural probes without that evidence. Root code/corpus licensing remains an owner decision.
+
+
+### Website publication update
+
+- The homepage now prominently identifies the converter as a research preview and warns that there are no independently verified lexical IPA gold entries, so output may be incomplete or hypothetical.
+- `system.html#validation-status` now publishes the current validation state: 0 verified lexical IPA gold entries, 6 structural-only probes, and the last verified CI suite counts (32 Python tests and 40 browser tests). It links to the execution matrix.
+- Added a browser regression that checks the public warning, corpus counts, and matrix link. These changes are on the same feature branch and will be published to GitHub Pages after the reviewed PR is merged and the Pages workflow succeeds.
+- The public site is intentionally described as a research prototype, not a validated transcription standard. The linguistic acceptance blocker remains independent adjudication of source-located lexical IPA examples.
