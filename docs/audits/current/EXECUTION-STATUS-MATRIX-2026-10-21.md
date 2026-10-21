@@ -1,0 +1,65 @@
+# Burmese phonology execution status matrix
+
+Updated: 2026-10-21
+Base branch at start: main (latest visible commit: 81ad16ff252c0e8c59d3e5118b58216e5bad70bf)
+Scope: executable status ledger reconciled with the 2026-10-20 phonology and G2P/licensing audits. This is a continuation register, not a claim of full phonological coverage.
+
+## Status vocabulary
+- DONE_VERIFIED — implementation and relevant automated verification both exist.
+- PARTIAL — some executable behavior exists, but the layer acceptance criteria are incomplete.
+- TODO — no sufficient implementation or verification is established.
+- BLOCKED — an external decision, dependency, or missing independent evidence prevents defensible completion.
+- DEFERRED — explicitly outside this iteration.
+- Coverage counts distinguish implemented behavior, regression-tested behavior, and independently validated lexical evidence. Structural tests do not validate phonological analyses.
+
+## Layer-by-layer ledger
+
+| Layer / acceptance gate | Implemented coverage | Tested coverage | Independently validated coverage | Status | Next acceptance criterion |
+|---|---|---|---|---|---|
+| Unicode normalization | Python NFC/NFD/NFKC/NFKD entry points; browser NFC entry point | Python NFC idempotence and one canonical-equivalence pair are tested; browser checks the same pair's normalized analysis; broader compatibility-character policy and corpus coverage remain absent | Not applicable to pronunciation | PARTIAL | Specify the supported normalization contract and expand canonical-equivalence/compatibility tests in both runtimes |
+| Myanmar block recognition | Bounded Myanmar/Extended block recognition | Structural fixture tests reported by audit | Not phonological evidence | DONE_VERIFIED (bounded contract only) | Keep block recognition distinct from parser/phonology support |
+| Grapheme and syllable segmentation | Conservative Python parser and separate browser parser | Shared Unicode contract is exercised in Python and browser for supported-block vs unsupported-inventory cases; annotated differential corpus absent | 0 lexical gold entries established | PARTIAL | Add boundary-annotated corpus covering punctuation, mixed scripts, combining marks, malformed sequences; compare runtimes |
+| Consonant/onset inventory | Small Python onset IPA table and graphemic inventory | Existing parser/IPA regression coverage is limited | No independently adjudicated inventory-wide lexical set | PARTIAL | Source-map each onset and test legal/unsupported contexts |
+| Kinzi | Explicit structural recognition and role metadata | Structural regression coverage exists; contextual phonological tests incomplete | None established | PARTIAL | Source-located onset/medial/coda-context cases and cross-runtime assertions |
+| Medials / complex onsets | Four medial signs parsed; some browser contextual derivation | Partial; full combination gold set absent | None established | PARTIAL | Inventory combinations, competing analyses, environments, counterexamples and paired Python/browser tests |
+| Dependent/inherent vowels | Vowel signs parsed; small vowel-ID-to-IPA map | Structural tests exist; derivation coverage incomplete | None established | PARTIAL | Evidence-backed combination table and context/length/quality tests; no extrapolation from unverified patterns |
+| Codas / checked syllables | Some final structures parsed; browser rime rules reported | Incomplete | None established | PARTIAL | Enumerate coda/rime classes, mark checked-syllable conditions, test each sourced class |
+| Tone | Analysis registries document competing traditional and eight-tone/register analyses; no established runtime realization | Not adequately tested as a phonological layer | 0 tone-labelled gold entries established | TODO | Add scoped, source-located tone examples and separate phonemic category from surface F0 realization |
+| Register / phonation | Competing literature descriptions documented | No complete runtime model verified | 0 independently adjudicated register/phonation entries | TODO | Model alternatives explicitly with dialect/scope and phonetic evidence; avoid consensus claims where sources disagree |
+| Contextual rules / allophony | Partial browser hand-written cases | Rule-complete regression suite absent | None established | PARTIAL | Rule registry with source, environment, output, counterexamples and Python/browser parity tests |
+| IPA result/status contract | Python emits conservative partial strings or analysis-dependent status; browser has separate derivation | No full cross-runtime contract verified | No lexical IPA gold entries | PARTIAL | Every result exposes phonological status independently of parse status; partial IPA must never be labelled complete |
+| IPA → Ukrainian target adapter | Canonical external inventory boundary and candidate registry; explicit unavailable/not-established paths | Practical regression tests exist | No Ukrainian name-level gold evaluation | PARTIAL | Validate adapter against canonical inventory schema and all correspondence policies; test unavailable dependency behavior |
+| Feature-distance ranking | Candidate ranking implementation exists | Limited regression tests; final schema/feature validation not established | No empirical target-ranking validation | PARTIAL | Validate feature definitions and weights against canonical inventory; test deterministic ranking, ties, unknown features and missing inventory |
+| Comparative Russian/Ukrainian policies | Comparative registries and documentary layer present | Practical tests cover selected correspondences | No independent name-level benchmark | PARTIAL | Check every rule provenance, target-language rationale, uncertainty and non-inheritance from Russian |
+| Malformed/unsupported input | Structural and practical uncertainty outcomes exist | Some malformed virama and unknown-target tests | Not a lexical accuracy measure | PARTIAL | Adversarial tests for all API/CLI/browser entry points; no confident output after malformed or incomplete parse |
+| JSON schemas / data validation / generated artifacts | Two JSON Schemas, canonical CSV registries and generated web data | CI validates parser records against the syllable schema, checks schema definitions, runs web CSV validation, and verifies generated-data drift | Structural/schema-contract checks only; no complete source-claim registry-to-schema mapping | PARTIAL | Define explicit schema mappings for all source/claim registries and validate every canonical record, not only parser fixtures |
+| Python/browser parity | Separate implementations exist | Phonological differential coverage not established | None established | TODO | Shared fixtures and parity tests for structural state, uncertainty, IPA, and unsupported cases |
+| Lexical IPA gold corpus | Six rows in data/burmese/phonology_corpus.csv remain STRUCTURAL_ONLY; columns now explicitly reserve IPA convention, scope, analysis level, reviewer and uncertainty notes | Benchmark gate and regression tests require all adjudication metadata plus registered source and non-pending locator | 0 verified gold entries; accuracy not measured | BLOCKED by source-located/adjudicated entries | Add independently sourced broad-IPA entries with exact source locators, transcription convention, scope, analysis level, reviewer and uncertainty notes; keep structural probes separate |
+| Epitran comparator | Optional scripts/benchmark_g2p.py; static Epitran v1.35.0 map/pre/post review documented | Runner not executed in an Epitran-installed environment per audit | No accuracy can be calculated with zero gold entries | BLOCKED by comparator environment and gold corpus | Run pinned comparator; record version, map/pre/post hashes, raw output, configuration and disagreement categories |
+| myG2P data | License risks documented; dictionary not bundled | Licensing review is documentary | Not applicable | DONE_VERIFIED (non-bundling guardrail) | Do not import dictionary material absent separate permission and rights review |
+| Project license | No root LICENSE; CITATION.cff uses NOASSERTION | Presence/absence documented | Not applicable | BLOCKED — owner decision | Owner selects code license and separately resolves corpus/data/model rights; do not infer from public visibility |
+| CI / release readiness | CI configuration now includes schema and generated-artifact gates | CI run #259 passes: pytest (32), web data validation/build, generated-data drift, npm unit tests, and browser tests (40) | No end-to-end phonological validation | PARTIAL | Extend schema validation to all canonical evidence registries; obtain independent lexical IPA gold entries; run pinned Epitran only in a separate environment |
+
+## Gold-corpus rules
+1. Keep the six existing seed cases labelled STRUCTURAL_ONLY; they are not phonological gold.
+2. A scoreable row must have GOLD_VERIFIED, non-empty expected IPA, a registered source ID, and a precise non-pending source locator.
+3. The benchmark enforces non-empty IPA convention, scope/dialect, analysis level (phonemic vs surface phonetic), reviewer and uncertainty/alternative notes. Unit tests verify incomplete metadata is not scored.
+4. Never fill expected IPA from the system under test, Epitran, or myG2P and then use that same output as independent truth.
+5. Report exact-match and feature/category metrics only over the eligible gold set; show unresolved and unsupported cases separately.
+
+## Reproducibility and license gates
+- Epitran is a pinned comparator only. Do not promote it to the primary engine based on agreement with its own mapping or unverified outputs.
+- Preserve raw Epitran output and separately hash installed package metadata, map, preprocessor and postprocessor where available.
+- Keep third-party code, maps, dictionary, model weights, source text and generated artifacts as separate rights-bearing categories.
+- No root license should be added until the owner decides. A public repository is not a license grant.
+
+## Execution evidence and limitations
+This register was prepared from the current README, both named audits, the seed corpus, src/burmese_ukrainian/ipa.py, src/burmese_ukrainian/parser.py, tests/test_parser.py, tests/test_practical.py, and scripts/benchmark_g2p.py. Remote inspection confirmed branches main, final-hardening, fix/adversarial-burmese-phonology, and service-ready; they were not modified or merged. This work is on feat/burmese-phonology-coverage-gates-2026-10-21 and is tracked by open draft PR #4; it has not been merged.
+
+Automated CI run #259 (commit 1045735c244e96c898c3a675f15ad68f6b79151a) completed SUCCESS: editable package install PASS; pytest PASS (32 tests, including JSON Schema checks); npm install PASS; npm run build PASS; canonical web-data validation PASS; generated-data drift check PASS; Playwright installation PASS; npm run test:browser PASS (40 tests). The shared Unicode fixture is exercised in the browser. The Epitran benchmark was not run. The project remains a partial research prototype, not release-ready. Independent gold validation remains blocked; project licensing remains an owner decision.
+
+## Website publication
+
+| Layer | State | Evidence | Remaining acceptance criterion |
+|---|---|---|---|
+| Public disclosure | PARTIAL pending deployment | Homepage and methodology page now disclose the research-preview status, 0 verified lexical IPA gold entries, and 6 structural-only probes; a browser regression asserts the notice and matrix link | Merge only after CI passes, verify GitHub Pages deployment and live page content |

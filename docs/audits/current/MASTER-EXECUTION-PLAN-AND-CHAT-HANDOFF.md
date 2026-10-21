@@ -1,6 +1,6 @@
 # Burmese → Ukrainian: Master Execution Plan and Chat Handoff
 
-Last reviewed: 2026-10-20
+Last reviewed: 2026-10-21
 Repository: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-
 Default branch used for this review: `main`; the prior audit baseline was `5bc93e81d07d6afbad366c300eae321790b91893`. Later commits added normalization regressions, audit corrections, and an optional evidence-gated G2P benchmark runner; see the dated sections below for the exact revision and CI state.
 Working title: “Burmese-to-Ukrainian Transcription: Graphemic Analysis and an Evidence-Gated Phonological Model”.
@@ -25,7 +25,7 @@ Read on 2026-10-20:
 - `docs/practical-transcription.md` (blob SHA `989b30829c9c02161863056416f7064c0b6b40fe`)
 - `docs/russian-vs-ukrainian.md` (blob SHA `5bbdeecb4b3f4e69cdbc0c089cb2cdfcb828cdcd`)
 
-The handoff file now exists at `docs/audits/current/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md`; `CITATION.cff` is absent. `docs/references.md`, `data/burmese/sources.csv`, and `data/burmese/source_claims.csv` are the current source registries. Both `.github/workflows/test.yml` and `.github/workflows/pages.yml` exist. The separate `test.yml` workflow runs `pytest`, `npm run build`, `npm test`, and `npm run test:browser`. The Pages workflow runs the Node build/unit/browser checks and deployment, but does not run `pytest` itself.
+The handoff file exists at `docs/audits/current/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md`; `CITATION.cff` exists and uses `NOASSERTION` pending an owner license decision. `docs/references.md`, `data/burmese/sources.csv`, and `data/burmese/source_claims.csv` are the current source registries. Both `.github/workflows/test.yml` and `.github/workflows/pages.yml` exist. The separate `test.yml` workflow runs `pytest`, `npm run build`, `npm test`, and `npm run test:browser`. The Pages workflow runs the Node build/unit/browser checks and deployment, but does not run `pytest` itself.
 
 Historical context (not reverified against current branch): on 2026-10-09, prior work reported fixes to `ေ`/`ော်`, `ကြည်`, `ြ`, `စွယ်`, contextual /j/, separate phonetic/Ukrainian statuses, diagnostics, and Unicode code-point handling; Python/build/unit/browser CI was reported passing at that time. Live GitHub Pages deployment was still to be confirmed, including adversarial cases `ကေ`, `ကော်`, `ကြည်`, `စွယ်`, `မြန်`, `ယူ`. Treat these as historical leads, not current verification.
 
@@ -43,7 +43,7 @@ Historical context (not reverified against current branch): on 2026-10-09, prior
 | 8. IPA | IN_PROGRESS | Python `ipa.py` is a small onset+vowel seed mapper; browser `src/web/app.js` has a separate, more elaborate hand-written contextual IPA derivation. These runtimes do not share one authoritative phonology engine and may disagree. Neither is a validated complete surface-phonetic system. |
 | 9. Ukrainian adaptation | IN_PROGRESS | Separate table-driven layer exists with explicit uncertain/not-established outcomes. Its inputs must be validated IPA, not guessed values; test independent from IPA. |
 | 10. Unknown/ambiguous/unsupported inputs | IN_PROGRESS | Parser has malformed/unsupported states; practical layer returns `not_established` for unmapped IPA. Ensure all APIs consistently preserve unknowns and never present placeholders as confident output. |
-| 11. Sources, tests, docs, UI, CI, deployment | IN_PROGRESS | `docs/references.md`, `data/burmese/sources.csv`, and `data/burmese/source_claims.csv` exist; `CITATION.cff` does not. Latest pre-handoff commit passed Python, Node and browser CI; latest Pages build and deployment succeeded. The current handoff-only commit's new workflow runs are in progress. Public page response has not been independently verified. |
+| 11. Sources, tests, docs, UI, CI, deployment | IN_PROGRESS | `docs/references.md`, `data/burmese/sources.csv`, and `data/burmese/source_claims.csv` exist; `CITATION.cff` exists with `NOASSERTION` while licensing remains unresolved. Latest pre-handoff commit passed Python, Node and browser CI; latest Pages build and deployment succeeded. The current handoff-only commit's new workflow runs are in progress. Public page response has not been independently verified. |
 
 ## Prioritized task registry
 
@@ -83,7 +83,7 @@ Statuses allowed: `TODO`, `IN_PROGRESS`, `BLOCKED`, `DONE_VERIFIED`, `DEFERRED`,
 ## Checks run in this cycle
 
 - GitHub file fetch: README, pyproject, parser, Unicode module, model, IPA seed, package exports, practical adapter, parser tests, practical tests, practical-transcription documentation, Russian-vs-Ukrainian documentation — successful reads.
-- Expected handoff paths and `CITATION.cff` — not found.
+- Historical missing-file finding superseded: the handoff now exists, and `CITATION.cff` is present with `NOASSERTION`.
 - `.github/workflows/ci.yml` — not found at that exact path.
 - `.github/workflows/pages.yml` — verified; latest run `39482511514` on `main` commit `e5bbf24049ec5bb7f6480435e2ea3e07f3e236b8` succeeded, including build, Node tests, browser tests, artifact upload and deployment.
 - `package.json` — version 0.2.2; scripts include `build`, `test`, `test:browser`, `validate:data`, and `check`.
@@ -105,7 +105,7 @@ BUR-001 is now `DONE_VERIFIED` for repository/tree/workflow discovery and remote
 - Current files include both `.github/workflows/test.yml` and `.github/workflows/pages.yml`.
 - Latest test run: [39482511445](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39482511445) — success. Verified steps include `pytest`, `npm run build`, `npm test`, and `npm run test:browser`.
 - Latest Pages run: [39482511514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39482511514) — success. Both build and deploy jobs succeeded; browser test, artifact upload and deployment steps all succeeded.
-- `CITATION.cff` is absent from the current recursive tree. A top-level `docs/references.md`, `data/burmese/sources.csv`, and `data/burmese/source_claims.csv` do exist. The source registry is therefore not absent; it was previously checked at the wrong path/name.
+- The earlier missing-file finding was superseded by later repository state: `CITATION.cff` exists and uses `NOASSERTION`; `docs/references.md`, `data/burmese/sources.csv`, and `data/burmese/source_claims.csv` are present.
 
 ### Branch reconciliation
 
@@ -276,8 +276,29 @@ New audit files triggered several workflows because each file was committed inde
 
 - Inspected Epitran v1.35.0's release-tagged `mya-Mymr` map, preprocessor and postprocessor files. The map is a compact orthography/chunk substitution table; the preprocessor is empty; postprocessing handles medial insertion and selected schwa deletion but does not reconstruct tone. This is static inspection, not an executed engine benchmark.
 - Added `scripts/benchmark_g2p.py`, an optional local runner that imports Epitran only when invoked, preserves raw outputs, records package/corpus/mapping hashes when available, and leaves accuracy `null` when there are no verified gold rows.
-- Benchmark scoring requires `GOLD_VERIFIED`, non-empty expected IPA, a source ID present in `data/burmese/sources.csv`, and a non-pending source locator. Structural-only probes cannot be counted as accuracy examples.
+- Benchmark scoring requires `GOLD_VERIFIED`, non-empty expected IPA, a source ID present in `data/burmese/sources.csv`, a precise non-pending source locator, and non-empty IPA convention, scope, analysis level, reviewer and uncertainty notes. Structural-only probes cannot be counted as accuracy examples.
 - Added contract tests for structural-only non-scoring, source-located gold scoring, and corpus status integrity.
 - Related changes include the G2P audit, README usage instructions, `scripts/benchmark_g2p.py`, and `tests/test_contracts.py`. The runner has not yet been executed against an installed Epitran environment.
 - CI for the source-registry guard commit `e257cc89` was still running at the time this handoff was prepared: tests https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39495318894; Pages https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39495318893. An earlier benchmark-runner test run on `6d73bf23` passed, but it predates the source-registry guard and is not a substitute for the latest run.
 
+
+
+### Continuation execution — 2026-10-21
+
+- Dedicated branch: `feat/burmese-phonology-coverage-gates-2026-10-21`, based on `main` at `81ad16ff252c0e8c59d3e5118b58216e5bad70bf`. The branch is carried by draft PR [#4](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/4); it has not been merged. Existing branches `final-hardening`, `fix/adversarial-burmese-phonology`, and `service-ready` were inspected and left untouched.
+- Added `docs/audits/current/EXECUTION-STATUS-MATRIX-2026-10-21.md` as the canonical status ledger and `tests/test_ipa_status_contract.py` to keep parse success separate from phonological certainty.
+- Extended `data/burmese/phonology_corpus.csv` with explicit `ipa_convention`, `scope`, `analysis_level`, `reviewer`, and `uncertainty_notes` columns. All six rows remain `STRUCTURAL_ONLY`; their new metadata fields remain blank intentionally.
+- Tightened `scripts/benchmark_g2p.py`: a `GOLD_VERIFIED` label is insufficient by itself; rows missing any adjudication metadata are excluded from scoring. Raw outputs and metadata are retained in the benchmark report.
+- Added `tests/test_benchmark_g2p.py` for three cases: all current structural probes remain unscored, incomplete adjudication metadata remains unscored, and a fully documented synthetic unit-test fixture can be scored. The synthetic fixture is not Burmese linguistic evidence and is not part of the corpus.
+- Preserved and verified the existing browser test that consumes `tests/fixtures/shared_unicode_contract.json` and checks that recognized Myanmar-script characters outside the supported Burmese inventory are marked `UNSUPPORTED`, not passed through as ordinary foreign text. The complete existing browser suite was restored after an intermediate edit accidentally omitted its final tests; no existing browser regressions are intentionally removed.
+- Verified CI run #259 at implementation commit `1045735c244e96c898c3a675f15ad68f6b79151a`: `pip install -e ".[test]"`, `pytest` (**32 passed**), `npm install`, `npm run build`, canonical web-data validation, generated-data drift check, Playwright installation, and `npm run test:browser` (**40 passed**) all succeeded. Run: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39571014041.
+- Added `tests/test_schema_validation.py` and made CI install the `.[test]` extra. CI now checks the schema definitions, validates representative parser outputs, runs web-data validation/build, and verifies that regenerating `src/web/generated/data.js` leaves no diff. These checks passed in run #251; schema validation still does not cover every source/claim registry row. The optional Epitran benchmark remains unrun, and no Epitran accuracy or phonological accuracy is claimed.
+- Gold-corpus status remains **0 verified lexical IPA entries**. The next linguistic acceptance gate is exact source locators plus independent adjudication for each candidate entry; do not promote `ကေ`, `ကော်`, `ကြည်`, `စွယ်`, `မြန်`, or `ယူ` from structural probes without that evidence. Root code/corpus licensing remains an owner decision.
+
+
+### Website publication update
+
+- The homepage now prominently identifies the converter as a research preview and warns that there are no independently verified lexical IPA gold entries, so output may be incomplete or hypothetical.
+- `system.html#validation-status` now publishes the current validation state: 0 verified lexical IPA gold entries, 6 structural-only probes, and the last verified CI suite counts (32 Python tests and 40 browser tests). It links to the execution matrix.
+- Added a browser regression that checks the public warning, corpus counts, and matrix link. These changes are on the same feature branch and will be published to GitHub Pages after the reviewed PR is merged and the Pages workflow succeeds.
+- The public site is intentionally described as a research prototype, not a validated transcription standard. The linguistic acceptance blocker remains independent adjudication of source-located lexical IPA examples.

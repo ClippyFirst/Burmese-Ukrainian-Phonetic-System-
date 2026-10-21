@@ -55,12 +55,22 @@ def build_report(
     eligible_gold = 0
     exact_matches = 0
     for row, raw_output in zip(rows, outputs, strict=True):
+        source_locator = row.get("source_locator", "").strip()
+        required_metadata = (
+            "ipa_convention",
+            "scope",
+            "analysis_level",
+            "reviewer",
+            "uncertainty_notes",
+        )
+        has_metadata = all(row.get(field, "").strip() for field in required_metadata)
         is_gold = (
             row.get("evidence_status") == "GOLD_VERIFIED"
             and bool(row.get("expected_ipa", "").strip())
             and row.get("source_id", "").strip() in known_source_ids
-            and bool(row.get("source_locator", "").strip())
-            and "pending" not in row.get("source_locator", "").lower()
+            and bool(source_locator)
+            and "pending" not in source_locator.lower()
+            and has_metadata
         )
         match = None
         score_status = "NOT_SCORED_NO_VERIFIED_GOLD"
@@ -77,6 +87,11 @@ def build_report(
                 "evidence_status": row.get("evidence_status", ""),
                 "source_id": row.get("source_id", ""),
                 "source_locator": row.get("source_locator", ""),
+                "ipa_convention": row.get("ipa_convention", ""),
+                "scope": row.get("scope", ""),
+                "analysis_level": row.get("analysis_level", ""),
+                "reviewer": row.get("reviewer", ""),
+                "uncertainty_notes": row.get("uncertainty_notes", ""),
                 "expected_ipa": row.get("expected_ipa", ""),
                 "raw_output_ipa": raw_output,
                 "exact_match": match,

@@ -10,14 +10,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install -e .
-      - run: pip install pytest
+      - run: pip install -e ".[test]"
       - run: pytest
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       - run: npm install
       - run: npm run build
+      - name: Check generated web data is up to date
+        run: npm run generate:web && git diff --exit-code -- src/web/generated/data.js
       - run: npm test
       - run: npx playwright install --with-deps chromium
       - run: npm run test:browser

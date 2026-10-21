@@ -78,12 +78,19 @@ def test_verified_phonology_gold_requires_source_locator_and_ipa():
     with sources_path.open(encoding="utf-8", newline="") as handle:
         source_ids = {row["source_id"] for row in csv.DictReader(handle)}
 
+    required_metadata = {
+        "ipa_convention", "scope", "analysis_level", "reviewer", "uncertainty_notes"
+    }
+    assert required_metadata <= rows[0].keys()
+
     for row in rows:
         if row["evidence_status"] == "GOLD_VERIFIED":
             assert row["source_id"] in source_ids, row["case_id"]
             assert row["source_locator"].strip(), row["case_id"]
             assert "pending" not in row["source_locator"].lower(), row["case_id"]
             assert row["expected_ipa"].strip(), row["case_id"]
+            for field in required_metadata:
+                assert row[field].strip(), (row["case_id"], field)
 
 def test_external_g2p_benchmark_never_scores_structural_probes_as_gold():
     import runpy
@@ -119,16 +126,21 @@ def test_external_g2p_benchmark_scores_only_source_located_gold():
 
     build_report = runpy.run_path(str(ROOT / "scripts" / "benchmark_g2p.py"))["build_report"]
     row = {
-        "case_id": "gold-test",
-        "orthography": "ကော်",
-        "expected_ipa": "kɔ̀",
+        "case_id": "synthetic-gold-gate-test",
+        "orthography": "TEST",
+        "expected_ipa": "tɛst",
         "source_id": "TEST",
-        "source_locator": "p. 1, example 1",
+        "source_locator": "synthetic unit-test fixture",
         "evidence_status": "GOLD_VERIFIED",
+        "ipa_convention": "broad IPA",
+        "scope": "synthetic test fixture",
+        "analysis_level": "phonemic",
+        "reviewer": "test-suite",
+        "uncertainty_notes": "No linguistic claim; synthetic gate test only.",
     }
     report = build_report(
         [row],
-        ["kɔ̀"],
+        ["tɛst"],
         engine="epitran",
         engine_version="test",
         corpus_sha256="fixture-hash",
@@ -140,4 +152,3 @@ def test_external_g2p_benchmark_scores_only_source_located_gold():
     assert report["exact_match_count"] == 1
     assert report["exact_match_accuracy"] == 1.0
     assert report["records"][0]["score_status"] == "SCORED_EXACT_MATCH"
-
