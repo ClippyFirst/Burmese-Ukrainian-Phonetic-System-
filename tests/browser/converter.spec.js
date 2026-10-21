@@ -228,3 +228,13 @@ test("canonically equivalent Myanmar spellings share normalized analysis",async(
   expect(await page.locator("#syllables").innerText()).toBe(firstSyllables);
   expect(await page.locator("#ipa").innerText()).toBe(firstIpa);
 });
+
+test("research validation limits are visible to site visitors", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".research-notice")).toContainText("дослідницький попередній перегляд");
+  await expect(page.locator(".research-notice")).toContainText("незалежно перевірених лексичних IPA-еталонів поки немає");
+  await page.goto("/system.html");
+  await expect(page.locator("#validation-status")).toContainText("0 GOLD IPA");
+  await expect(page.locator("#validation-status")).toContainText("6 STRUCTURAL_ONLY");
+  await expect(page.locator("#validation-status a")).toHaveAttribute("href", /EXECUTION-STATUS-MATRIX-2026-10-21\.md/);
+});
