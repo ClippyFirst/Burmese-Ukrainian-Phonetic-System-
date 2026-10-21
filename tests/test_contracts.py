@@ -124,7 +124,8 @@ def test_external_g2p_benchmark_never_scores_structural_probes_as_gold():
 def test_external_g2p_benchmark_scores_only_source_located_gold():
     import runpy
 
-    build_report = runpy.run_path(str(ROOT / "scripts" / "benchmark_g2p.py"))["build_report"]    row = {
+    build_report = runpy.run_path(str(ROOT / "scripts" / "benchmark_g2p.py"))["build_report"]
+    row = {
         "case_id": "synthetic-gold-gate-test",
         "orthography": "TEST",
         "expected_ipa": "tɛst",
