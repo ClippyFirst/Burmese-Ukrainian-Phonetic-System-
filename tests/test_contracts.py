@@ -117,18 +117,22 @@ def test_external_g2p_benchmark_never_scores_structural_probes_as_gold():
 def test_external_g2p_benchmark_scores_only_source_located_gold():
     import runpy
 
-    build_report = runpy.run_path(str(ROOT / "scripts" / "benchmark_g2p.py"))["build_report"]
-    row = {
-        "case_id": "gold-test",
-        "orthography": "ကော်",
-        "expected_ipa": "kɔ̀",
+    build_report = runpy.run_path(str(ROOT / "scripts" / "benchmark_g2p.py"))["build_report"]    row = {
+        "case_id": "synthetic-gold-gate-test",
+        "orthography": "TEST",
+        "expected_ipa": "tɛst",
         "source_id": "TEST",
-        "source_locator": "p. 1, example 1",
+        "source_locator": "synthetic unit-test fixture",
         "evidence_status": "GOLD_VERIFIED",
+        "ipa_convention": "broad IPA",
+        "scope": "synthetic test fixture",
+        "analysis_level": "phonemic",
+        "reviewer": "test-suite",
+        "uncertainty_notes": "No linguistic claim; synthetic gate test only.",
     }
     report = build_report(
         [row],
-        ["kɔ̀"],
+        ["tɛst"],
         engine="epitran",
         engine_version="test",
         corpus_sha256="fixture-hash",
@@ -140,4 +144,3 @@ def test_external_g2p_benchmark_scores_only_source_located_gold():
     assert report["exact_match_count"] == 1
     assert report["exact_match_accuracy"] == 1.0
     assert report["records"][0]["score_status"] == "SCORED_EXACT_MATCH"
-
