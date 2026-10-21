@@ -1,11 +1,11 @@
 """Gold-corpus eligibility is stricter than a status label alone."""
 import csv
+import runpy
 from pathlib import Path
-
-from scripts.benchmark_g2p import build_report
 
 
 ROOT = Path(__file__).resolve().parents[1]
+build_report = runpy.run_path(str(ROOT / "scripts" / "benchmark_g2p.py"))["build_report"]
 
 
 def _report(rows, outputs, known_source_ids):
