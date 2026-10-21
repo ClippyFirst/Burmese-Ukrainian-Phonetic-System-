@@ -49,12 +49,18 @@ Bulgarian remains NOT_ESTABLISHED until a primary Burmese-specific source is loc
 
 ## Usage
 
-Install the package in editable mode and run the test suite:
+Install the package with test-only dependencies and run the test suite:
 
 ```bash
-pip install -e .
-pip install pytest
+pip install -e ".[test]"
 pytest
+```
+
+The test extra includes `pytest` and `jsonschema`; schema validation is test-only and is not a runtime dependency. CI also checks that regenerating web data leaves `src/web/generated/data.js` unchanged:
+
+```bash
+npm run generate:web
+git diff --exit-code -- src/web/generated/data.js
 ```
 
 Structural Burmese parsing is available directly through the Python package.
