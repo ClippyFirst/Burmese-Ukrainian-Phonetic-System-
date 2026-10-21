@@ -25,7 +25,7 @@ Read on 2026-10-20:
 - `docs/practical-transcription.md` (blob SHA `989b30829c9c02161863056416f7064c0b6b40fe`)
 - `docs/russian-vs-ukrainian.md` (blob SHA `5bbdeecb4b3f4e69cdbc0c089cb2cdfcb828cdcd`)
 
-The handoff file now exists at `docs/audits/current/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md`; `CITATION.cff` is absent. `docs/references.md`, `data/burmese/sources.csv`, and `data/burmese/source_claims.csv` are the current source registries. Both `.github/workflows/test.yml` and `.github/workflows/pages.yml` exist. The separate `test.yml` workflow runs `pytest`, `npm run build`, `npm test`, and `npm run test:browser`. The Pages workflow runs the Node build/unit/browser checks and deployment, but does not run `pytest` itself.
+The handoff file exists at `docs/audits/current/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md`; `CITATION.cff` exists and uses `NOASSERTION` pending an owner license decision. `docs/references.md`, `data/burmese/sources.csv`, and `data/burmese/source_claims.csv` are the current source registries. Both `.github/workflows/test.yml` and `.github/workflows/pages.yml` exist. The separate `test.yml` workflow runs `pytest`, `npm run build`, `npm test`, and `npm run test:browser`. The Pages workflow runs the Node build/unit/browser checks and deployment, but does not run `pytest` itself.
 
 Historical context (not reverified against current branch): on 2026-10-09, prior work reported fixes to `ေ`/`ော်`, `ကြည်`, `ြ`, `စွယ်`, contextual /j/, separate phonetic/Ukrainian statuses, diagnostics, and Unicode code-point handling; Python/build/unit/browser CI was reported passing at that time. Live GitHub Pages deployment was still to be confirmed, including adversarial cases `ကေ`, `ကော်`, `ကြည်`, `စွယ်`, `မြန်`, `ယူ`. Treat these as historical leads, not current verification.
 
@@ -43,7 +43,7 @@ Historical context (not reverified against current branch): on 2026-10-09, prior
 | 8. IPA | IN_PROGRESS | Python `ipa.py` is a small onset+vowel seed mapper; browser `src/web/app.js` has a separate, more elaborate hand-written contextual IPA derivation. These runtimes do not share one authoritative phonology engine and may disagree. Neither is a validated complete surface-phonetic system. |
 | 9. Ukrainian adaptation | IN_PROGRESS | Separate table-driven layer exists with explicit uncertain/not-established outcomes. Its inputs must be validated IPA, not guessed values; test independent from IPA. |
 | 10. Unknown/ambiguous/unsupported inputs | IN_PROGRESS | Parser has malformed/unsupported states; practical layer returns `not_established` for unmapped IPA. Ensure all APIs consistently preserve unknowns and never present placeholders as confident output. |
-| 11. Sources, tests, docs, UI, CI, deployment | IN_PROGRESS | `docs/references.md`, `data/burmese/sources.csv`, and `data/burmese/source_claims.csv` exist; `CITATION.cff` does not. Latest pre-handoff commit passed Python, Node and browser CI; latest Pages build and deployment succeeded. The current handoff-only commit's new workflow runs are in progress. Public page response has not been independently verified. |
+| 11. Sources, tests, docs, UI, CI, deployment | IN_PROGRESS | `docs/references.md`, `data/burmese/sources.csv`, and `data/burmese/source_claims.csv` exist; `CITATION.cff` exists with `NOASSERTION` while licensing remains unresolved. Latest pre-handoff commit passed Python, Node and browser CI; latest Pages build and deployment succeeded. The current handoff-only commit's new workflow runs are in progress. Public page response has not been independently verified. |
 
 ## Prioritized task registry
 
@@ -83,7 +83,7 @@ Statuses allowed: `TODO`, `IN_PROGRESS`, `BLOCKED`, `DONE_VERIFIED`, `DEFERRED`,
 ## Checks run in this cycle
 
 - GitHub file fetch: README, pyproject, parser, Unicode module, model, IPA seed, package exports, practical adapter, parser tests, practical tests, practical-transcription documentation, Russian-vs-Ukrainian documentation — successful reads.
-- Expected handoff paths and `CITATION.cff` — not found.
+- Historical missing-file finding superseded: the handoff now exists, and `CITATION.cff` is present with `NOASSERTION`.
 - `.github/workflows/ci.yml` — not found at that exact path.
 - `.github/workflows/pages.yml` — verified; latest run `39482511514` on `main` commit `e5bbf24049ec5bb7f6480435e2ea3e07f3e236b8` succeeded, including build, Node tests, browser tests, artifact upload and deployment.
 - `package.json` — version 0.2.2; scripts include `build`, `test`, `test:browser`, `validate:data`, and `check`.
@@ -105,7 +105,7 @@ BUR-001 is now `DONE_VERIFIED` for repository/tree/workflow discovery and remote
 - Current files include both `.github/workflows/test.yml` and `.github/workflows/pages.yml`.
 - Latest test run: [39482511445](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39482511445) — success. Verified steps include `pytest`, `npm run build`, `npm test`, and `npm run test:browser`.
 - Latest Pages run: [39482511514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39482511514) — success. Both build and deploy jobs succeeded; browser test, artifact upload and deployment steps all succeeded.
-- `CITATION.cff` is absent from the current recursive tree. A top-level `docs/references.md`, `data/burmese/sources.csv`, and `data/burmese/source_claims.csv` do exist. The source registry is therefore not absent; it was previously checked at the wrong path/name.
+- The earlier missing-file finding was superseded by later repository state: `CITATION.cff` exists and uses `NOASSERTION`; `docs/references.md`, `data/burmese/sources.csv`, and `data/burmese/source_claims.csv` are present.
 
 ### Branch reconciliation
 
