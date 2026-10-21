@@ -1,6 +1,6 @@
 # Burmese → Ukrainian: Master Execution Plan and Chat Handoff
 
-Last reviewed: 2026-10-20
+Last reviewed: 2026-10-21
 Repository: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-
 Default branch used for this review: `main`; the prior audit baseline was `5bc93e81d07d6afbad366c300eae321790b91893`. Later commits added normalization regressions, audit corrections, and an optional evidence-gated G2P benchmark runner; see the dated sections below for the exact revision and CI state.
 Working title: “Burmese-to-Ukrainian Transcription: Graphemic Analysis and an Evidence-Gated Phonological Model”.
@@ -276,8 +276,21 @@ New audit files triggered several workflows because each file was committed inde
 
 - Inspected Epitran v1.35.0's release-tagged `mya-Mymr` map, preprocessor and postprocessor files. The map is a compact orthography/chunk substitution table; the preprocessor is empty; postprocessing handles medial insertion and selected schwa deletion but does not reconstruct tone. This is static inspection, not an executed engine benchmark.
 - Added `scripts/benchmark_g2p.py`, an optional local runner that imports Epitran only when invoked, preserves raw outputs, records package/corpus/mapping hashes when available, and leaves accuracy `null` when there are no verified gold rows.
-- Benchmark scoring requires `GOLD_VERIFIED`, non-empty expected IPA, a source ID present in `data/burmese/sources.csv`, and a non-pending source locator. Structural-only probes cannot be counted as accuracy examples.
+- Benchmark scoring requires `GOLD_VERIFIED`, non-empty expected IPA, a source ID present in `data/burmese/sources.csv`, a precise non-pending source locator, and non-empty IPA convention, scope, analysis level, reviewer and uncertainty notes. Structural-only probes cannot be counted as accuracy examples.
 - Added contract tests for structural-only non-scoring, source-located gold scoring, and corpus status integrity.
 - Related changes include the G2P audit, README usage instructions, `scripts/benchmark_g2p.py`, and `tests/test_contracts.py`. The runner has not yet been executed against an installed Epitran environment.
 - CI for the source-registry guard commit `e257cc89` was still running at the time this handoff was prepared: tests https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39495318894; Pages https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39495318893. An earlier benchmark-runner test run on `6d73bf23` passed, but it predates the source-registry guard and is not a substitute for the latest run.
 
+
+
+### Continuation execution — 2026-10-21
+
+- Dedicated branch: `feat/burmese-phonology-coverage-gates-2026-10-21`, based on `main` at `81ad16ff252c0e8c59d3e5118b58216e5bad70bf`. The branch is carried by draft PR [#4](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/4); it has not been merged. Existing branches `final-hardening`, `fix/adversarial-burmese-phonology`, and `service-ready` were inspected and left untouched.
+- Added `docs/audits/current/EXECUTION-STATUS-MATRIX-2026-10-21.md` as the canonical status ledger and `tests/test_ipa_status_contract.py` to keep parse success separate from phonological certainty.
+- Extended `data/burmese/phonology_corpus.csv` with explicit `ipa_convention`, `scope`, `analysis_level`, `reviewer`, and `uncertainty_notes` columns. All six rows remain `STRUCTURAL_ONLY`; their new metadata fields remain blank intentionally.
+- Tightened `scripts/benchmark_g2p.py`: a `GOLD_VERIFIED` label is insufficient by itself; rows missing any adjudication metadata are excluded from scoring. Raw outputs and metadata are retained in the benchmark report.
+- Added `tests/test_benchmark_g2p.py` for three cases: all current structural probes remain unscored, incomplete adjudication metadata remains unscored, and a fully documented synthetic unit-test fixture can be scored. The synthetic fixture is not Burmese linguistic evidence and is not part of the corpus.
+- Added a browser test that consumes `tests/fixtures/shared_unicode_contract.json` and checks that recognized Myanmar-script characters outside the supported Burmese inventory are marked `UNSUPPORTED`, not passed through as ordinary foreign text.
+- Verified CI run #236 at commit `594539ceb4c8a86e927763ed7a40daf9cbbb220e`: `pip install -e .`, `pip install pytest`, `pytest` (**30 passed**), `npm install`, `npm run build`, `npm test`, Playwright installation, and `npm run test:browser` (**38 passed**) all succeeded. Run: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/39570268265.
+- JSON Schema validation, generated-artifact drift validation, and Epitran execution are not in the existing CI workflow and have not been verified in this run. No Epitran accuracy or phonological accuracy is claimed.
+- Gold-corpus status remains **0 verified lexical IPA entries**. The next linguistic acceptance gate is exact source locators plus independent adjudication for each candidate entry; do not promote `ကေ`, `ကော်`, `ကြည်`, `စွယ်`, `မြန်`, or `ယူ` from structural probes without that evidence. Root code/corpus licensing remains an owner decision.
