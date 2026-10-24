@@ -31,3 +31,10 @@ Check keyboard order, focus visibility, semantic labels, live status, contrast, 
 ## Release evidence
 
 The release report must distinguish local unit-test result, browser-test result, build result and CI result. Never report CI as green without an actual workflow result.
+
+
+## IPA fail-closed regression — 2026-10-24
+
+The IPA adapter must not emit a plausible-looking partial transcription from a cluster the parser did not fully consume. `src/burmese_ukrainian/ipa.py` now returns no segment IPA unless the parser status is exactly `established`. The top-level serializer keeps an explicit `?` placeholder for unresolved syllables, rather than leaking a partial onset-based string such as `k?` from malformed input. A regression assertion covers the malformed virama sequence `က္`; the existing partial-inherent-vowel case `က` remains explicitly partial and is not upgraded to supported IPA.
+
+This change does not fill the known phonology gaps for medials, codas, tones, or inherent-vowel realization. Full tests must still pass in CI before merge, and empirical accuracy remains unmeasured.
