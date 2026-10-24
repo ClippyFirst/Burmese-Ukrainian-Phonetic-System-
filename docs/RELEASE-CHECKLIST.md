@@ -24,3 +24,13 @@
 - GitHub Pages deployment: [run 40113299248](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40113299248) passed for the merged HEAD.
 - The malformed-parse guard prevents IPA generation when the parser did not fully consume the syllable. It does not resolve the documented research gaps in medials, codas, tones or inherent-vowel realization.
 - Release status remains **research prototype**: engineering checks are green, but independent gold IPA is absent and empirical accuracy is not measured.
+
+
+## External IPA/G2P and benchmark continuation — 2026-10-24
+
+- Registry and per-language evidence notes: `data/external-ipa-renderers.json` and `docs/benchmarking-and-external-ipa.md`.
+- External outputs are diagnostics only unless compared against a versioned, independently adjudicated gold set. Engineering fixtures and source-attested dictionary entries are not automatically gold.
+- Shared harness: `scripts/benchmark_ipa.py`; empty templates at `data/benchmark/gold.tsv` and `data/benchmark/predictions.tsv`; tests at `tests/test_benchmark_ipa.py`.
+- New research branch: `research/third-party-ipa-systems-20261024`. PR and workflow outcomes must be checked before this work is considered integrated.
+- Keep IPA adaptation boundary: source spelling → structural parse → source phonology → typed IPA → Ukrainian adapter. Third-party candidates remain optional and disabled in production.
+- Current true blocker: a source-located, independently adjudicated language-specific gold corpus with a documented dialect and IPA convention. Do not report accuracy until it exists.
