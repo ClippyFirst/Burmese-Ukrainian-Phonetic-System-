@@ -89,7 +89,7 @@
       "license": "Upstream project reports an open-source license; verify the exact pinned release, bundled mapping/data licenses, and notices before reuse or redistribution.",
       "verified_in_repo": false,
       "enabled_by_default": false,
-      "latest_run_id": 40119616115,
+      "latest_run_id": 40121355875,
       "execution_status": "SMOKE_VERIFIED_NOT_ACCURACY",
       "smoke_evidence": {
         "id": "epitran",
@@ -103,6 +103,16 @@
         "independent_gold_count": 0,
         "accuracy": null,
         "score_status": "NOT_SCORED_NO_INDEPENDENT_GOLD"
+      },
+      "latest_run_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40121355875",
+      "latest_artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40121355875/artifacts/12570708227",
+      "latest_artifact_zip_sha256": "28c05acec1658a4002dce200a059026a2b14395a5c5f0232b2a449f620e7e424",
+      "latest_smoke_summary": {
+        "input_count": 6,
+        "successful_outputs": 6,
+        "runtime_errors": 0,
+        "independent_gold_count": 0,
+        "accuracy": null
       }
     },
     {

@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0",
   "language": "Burmese",
-  "run_id": 40119998823,
+  "run_id": 40121355875,
   "engine": "Epitran",
   "engine_version": "1.35.3",
-  "artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40119998823/artifacts/12569969269",
-  "artifact_zip_sha256": "14d2edaf7dadbb4089918b94d28d958c33798538bbfa31217ad1107991ccc2cb",
+  "artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40121355875/artifacts/12570708227",
+  "artifact_zip_sha256": "28c05acec1658a4002dce200a059026a2b14395a5c5f0232b2a449f620e7e424",
   "input_count": 6,
   "runtime_errors": 0,
   "independent_gold_count": 0,
@@ -41,5 +41,13 @@
       "raw_ipa": "ju"
     }
   ],
-  "interpretation": "All six cases are structural probes with pending source locators and blank gold IPA. This confirms that the pinned Epitran path executes and produces outputs, not that its Burmese pronunciations are accurate. Hashes permit later reproduction of the mapping and preprocessing assets."
+  "interpretation": "All six cases are structural probes with pending source locators and blank gold IPA. This confirms that the pinned Epitran path executes and produces outputs, not that its Burmese pronunciations are accurate. Hashes permit later reproduction of the mapping and preprocessing assets.",
+  "latest_run_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40121355875",
+  "latest_smoke_summary": {
+    "input_count": 6,
+    "successful_outputs": 6,
+    "runtime_errors": 0,
+    "independent_gold_count": 0,
+    "accuracy": null
+  }
 }
