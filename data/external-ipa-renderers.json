@@ -61,8 +61,8 @@
       "name": "Goruut",
       "url": "https://github.com/neurlang/goruut",
       "kind": "multilingual IPA phonemizer",
-      "status": "candidate",
-      "output": "Burmese support is claimed; verify standard/dialect, tones, register/phonation and IPA convention",
+      "status": "UPSTREAM_SUPPORT_CLAIM_CONFIRMED; EXECUTION_NOT_RUN",
+      "output": "Upstream README lists Burmese and says phone set is IPA; project-local pinned run and independent accuracy are pending.",
       "license": "Verify current upstream license and model/data terms",
       "verified_in_repo": false,
       "enabled_by_default": false
@@ -83,11 +83,12 @@
       "name": "Epitran",
       "url": "https://github.com/dmort27/epitran",
       "kind": "grapheme-to-IPA transliteration library",
-      "status": "candidate",
-      "output": "An optional raw-output baseline is already implemented in scripts/benchmark_g2p.py using the mya-Mymr mapping; verify Burmese coverage, dialect, tone/phonation, IPA convention, and mapping provenance before interpreting outputs.",
+      "status": "RAW_OUTPUT_SMOKE_VERIFIED; GOLD_ACCURACY_UNMEASURED",
+      "output": "Pinned Epitran 1.35.3 smoke captured 6 raw outputs, 0 runtime errors, 0 independently adjudicated gold rows. Mapping/pre/postprocessor hashes are recorded in observed_experiments.",
       "license": "Upstream project reports an open-source license; verify the exact pinned release, bundled mapping/data licenses, and notices before reuse or redistribution.",
-      "verified_in_repo": false,
-      "enabled_by_default": false
+      "verified_in_repo": true,
+      "enabled_by_default": false,
+      "latest_run_id": 40119616115
     },
     {
       "id": "charis-sil",
