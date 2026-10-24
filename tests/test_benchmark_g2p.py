@@ -73,3 +73,11 @@ def test_fully_documented_gold_row_can_be_scored():
     assert report["exact_match_count"] == 1
     assert report["exact_match_accuracy"] == 1.0
     assert report["records"][0]["score_status"] == "SCORED_EXACT_MATCH"
+
+
+def test_epitran_mapping_lookup_does_not_shadow_importlib_metadata():
+    # An in-function "import importlib.resources" binds importlib locally and
+    # breaks the later importlib.metadata.version(...) call in main().
+    source = SCRIPT.read_text(encoding="utf-8")
+    assert "import importlib.resources" not in source
+    assert "from importlib import resources" in source
