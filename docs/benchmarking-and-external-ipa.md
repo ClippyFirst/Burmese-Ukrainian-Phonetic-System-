@@ -53,3 +53,13 @@ These are research leads, not verified availability claims. Before executing a c
 - The existing source audit inspected Epitran's tagged `mya-Mymr` mapping/pre/postprocessor statically and records upstream warnings that Burmese support is limited by orthographic ambiguity. Static inspection is not a runtime benchmark.
 - [Goruut](https://github.com/neurlang/goruut) lists Burmese support upstream, but is not yet executed here. [myG2P](https://github.com/ye-kyaw-thu/myG2P) is license-constrained: the repository's existing audit identifies its pronunciation dictionary as CC BY-NC-SA 4.0, so do not bundle it for commercial use without permission.
 - Next: run pinned Epitran smoke, retain every output/error and mapping hash, then compare only after independently adjudicating Burmese tone/phonation, medials, codas, and lexical readings.
+
+
+## Upstream provenance and suitability warning (checked 2026-10-24)
+
+| Candidate | Verified upstream fact | Evidence boundary / next step |
+|---|---|---|
+| [Epitran 1.35.3](https://github.com/dmort27/epitran) | The upstream language/script inventory includes mya-Mymr (Burmese), but explicitly places Burmese among pairs with limited support due to highly ambiguous orthographies. | Our pinned smoke produced six outputs with zero runtime errors. This verifies execution only, not phonological accuracy; do not treat a clean run as evidence that ambiguity is solved. Prioritize a reviewed gold set and report errors by inherent vowel, medials, coda and phonation/tonal convention. |
+| [Goruut](https://github.com/neurlang/goruut) | Upstream advertises an IPA phone set and Burmese support. | Support claim only; no successful run recorded here. Compare its raw output to Epitran and ClippyFirst only on identical, source-attested inputs; engine agreement is not gold. |
+
+Epitran code/mapping availability does not itself establish the provenance or redistribution rights of every mapping table. Record the installed package version, exact language code, mapping/preprocessor/postprocessor hashes and any upstream data attribution. The current six-probe smoke has zero independently adjudicated gold labels, so accuracy remains NOT MEASURED.
