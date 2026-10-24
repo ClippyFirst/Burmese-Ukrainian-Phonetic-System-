@@ -26,3 +26,7 @@ def test_malformed_cluster_does_not_gain_phonological_certainty():
     result = to_ipa("က္")
     assert result["syllables"]
     assert all(s["phonetic_status"] != "supported" for s in result["syllables"])
+    assert result["syllables"][0]["ipa"] is None
+    assert result["syllables"][0]["phonetic_status"] == "analysis_dependent"
+    assert result["ipa"] == "?"
+
