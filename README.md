@@ -180,3 +180,8 @@ python scripts/benchmark_g2p.py --engine epitran --output epitran-benchmark.json
 
 Run it in an environment where Epitran is installed separately. The report records engine/version and hashes where available. It does not score structural probes as phonological gold data; accuracy remains `null` until rows are independently source-located and marked `GOLD_VERIFIED`. See the [G2P and licensing audit](docs/audits/current/G2P-ENGINE-AND-LICENSING-AUDIT-2026-10-20.md) before redistributing third-party data.
 
+
+
+## External IPA renderers and G2P candidates
+
+The research registry records external pronunciation engines, IPA dictionaries, and Unicode IPA display fonts without treating unvalidated output as ground truth. See [`docs/external-ipa-renderers.md`](docs/external-ipa-renderers.md) and the machine-readable [`data/external-ipa-renderers.json`](data/external-ipa-renderers.json). These are candidate inventories only; no third-party engine is enabled by default, and the ClippyFirst IPA → Ukrainian adapter remains the sole target adaptation boundary.
