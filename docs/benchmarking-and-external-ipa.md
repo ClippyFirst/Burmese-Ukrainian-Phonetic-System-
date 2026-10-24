@@ -63,3 +63,10 @@ These are research leads, not verified availability claims. Before executing a c
 | [Goruut](https://github.com/neurlang/goruut) | Upstream advertises an IPA phone set and Burmese support. | Support claim only; no successful run recorded here. Compare its raw output to Epitran and ClippyFirst only on identical, source-attested inputs; engine agreement is not gold. |
 
 Epitran code/mapping availability does not itself establish the provenance or redistribution rights of every mapping table. Record the installed package version, exact language code, mapping/preprocessor/postprocessor hashes and any upstream data attribution. The current six-probe smoke has zero independently adjudicated gold labels, so accuracy remains NOT MEASURED.
+
+
+## Benchmark metric semantics — 2026-10-24
+
+- `exact_match_rate` is strict string equality after the declared Unicode normalization and is comparable only when the same IPA profile/conventions are used. Tone, length, stress, syllable boundaries, tie bars and other IPA distinctions are not silently removed.
+- `character_error_rate` is Levenshtein distance over Unicode code points, not a phoneme/segment error rate. IPA affricates, combining diacritics, length marks and tone symbols can occupy multiple code points; interpret this field as a string-distance diagnostic only.
+- A valid score still requires a non-empty independently adjudicated gold set with source locator and profile. Smoke output, engineering fixtures, source-attested but unadjudicated entries, and inter-engine agreement are not accuracy.
