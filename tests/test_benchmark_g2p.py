@@ -5,6 +5,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+SCRIPT = ROOT / "scripts" / "benchmark_g2p.py"
 build_report = runpy.run_path(str(ROOT / "scripts" / "benchmark_g2p.py"))["build_report"]
 
 
@@ -27,6 +28,8 @@ def test_current_structural_probes_are_never_scored_as_gold():
     report = _report(rows, ["dummy"] * len(rows), {"U18", "GREEN2002"})
 
     assert len(rows) == 6
+    assert report["preprocessor_sha256"] is None
+    assert report["postprocessor_sha256"] is None
     assert report["eligible_verified_gold_count"] == 0
     assert report["exact_match_count"] is None
     assert report["exact_match_accuracy"] is None
