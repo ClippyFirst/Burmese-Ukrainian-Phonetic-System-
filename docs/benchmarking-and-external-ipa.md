@@ -46,3 +46,10 @@ These are research leads, not verified availability claims. Before executing a c
 - Adjudicated language-specific gold rows: not yet established by this document.
 - Candidate engine availability, version, licenses, and language-specific output quality: unverified until recorded as run evidence.
 - Release status: research prototype; no accuracy claim is authorized by this registry.
+
+## Existing external run evidence (reconciled 2026-10-24)
+
+- `scripts/benchmark_g2p.py` and `.github/workflows/optional-epitran-benchmark.yml` are present and pin `epitran==1.35.3`, but no successful workflow artifact was confirmed in this pass. Treat execution as **NOT VERIFIED**, not done.
+- The existing source audit inspected Epitran's tagged `mya-Mymr` mapping/pre/postprocessor statically and records upstream warnings that Burmese support is limited by orthographic ambiguity. Static inspection is not a runtime benchmark.
+- [Goruut](https://github.com/neurlang/goruut) lists Burmese support upstream, but is not yet executed here. [myG2P](https://github.com/ye-kyaw-thu/myG2P) is license-constrained: the repository's existing audit identifies its pronunciation dictionary as CC BY-NC-SA 4.0, so do not bundle it for commercial use without permission.
+- Next: run pinned Epitran smoke, retain every output/error and mapping hash, then compare only after independently adjudicating Burmese tone/phonation, medials, codas, and lexical readings.
