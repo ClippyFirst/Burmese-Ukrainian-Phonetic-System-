@@ -61,11 +61,12 @@
       "name": "Goruut",
       "url": "https://github.com/neurlang/goruut",
       "kind": "multilingual IPA phonemizer",
-      "status": "UPSTREAM_SUPPORT_CLAIM_CONFIRMED; EXECUTION_NOT_RUN",
+      "status": "candidate",
       "output": "Upstream README lists Burmese and says phone set is IPA; project-local pinned run and independent accuracy are pending.",
       "license": "Verify current upstream license and model/data terms",
       "verified_in_repo": false,
-      "enabled_by_default": false
+      "enabled_by_default": false,
+      "execution_status": "UPSTREAM_SUPPORT_CLAIM_EXECUTION_NOT_RUN"
     },
     {
       "id": "espeak-ng",
@@ -83,12 +84,13 @@
       "name": "Epitran",
       "url": "https://github.com/dmort27/epitran",
       "kind": "grapheme-to-IPA transliteration library",
-      "status": "RAW_OUTPUT_SMOKE_VERIFIED; GOLD_ACCURACY_UNMEASURED",
+      "status": "candidate",
       "output": "Pinned Epitran 1.35.3 smoke captured 6 raw outputs, 0 runtime errors, 0 independently adjudicated gold rows. Mapping/pre/postprocessor hashes are recorded in observed_experiments.",
       "license": "Upstream project reports an open-source license; verify the exact pinned release, bundled mapping/data licenses, and notices before reuse or redistribution.",
-      "verified_in_repo": true,
+      "verified_in_repo": false,
       "enabled_by_default": false,
-      "latest_run_id": 40119616115
+      "latest_run_id": 40119616115,
+      "execution_status": "SMOKE_VERIFIED_NOT_ACCURACY"
     },
     {
       "id": "charis-sil",
