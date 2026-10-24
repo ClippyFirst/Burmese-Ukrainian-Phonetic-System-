@@ -349,3 +349,10 @@ This note supersedes earlier handoff statements that current-main checks or the 
 - Current `main`: `32f6f3da9328aa96e746d63b63912c4e64793646`.
 - Main tests [40128844973](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40128844973), Pages deployment [40128844976](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40128844976), and optional Epitran smoke [40128845097](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40128845097) all completed successfully.
 - This verifies software checks and candidate raw-output execution, not phonological accuracy. Six structural probes; independent gold count 0; accuracy null. The separate source-adjudicated corpus, tone/phonation and contextual phonology work remains open. Do not copy unlicensed external corpora or enable Epitran in production.
+
+## Final current-main verification and smoke checkpoint — 2026-10-25
+
+- Workflow-trigger fix PR #24 merged as `c012023e5ae4fdd4257d2c59b0cbbbb369021f8b`. It removes evidence-only registry/benchmark-doc changes from automatic Epitran smoke triggers while retaining manual dispatch and executable input/source/script changes.
+- Post-merge current-main tests and deployment are still being verified separately; do not claim them green until their push runs finish.
+- Current-main optional Epitran smoke [40134067758](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40134067758) passed. Inspected artifact [12576415800](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40134067758/artifacts/12576415800), ZIP SHA-256 `6ff7fd5d70f386d76eefb37d50d2718d9de3f4e410749cf94848af9afeab788c`; Epitran 1.35.3 / Python 3.12.15; 6 outputs, 0 runtime errors. Corpus/mapping/pre/post hashes are recorded in the registry. Gold count remains 0 and accuracy null.
+- This is raw-output smoke evidence only. Phonological coverage, tone-aware evaluation, source-located lexical gold, Python/browser parity and owner licensing decisions remain open.
