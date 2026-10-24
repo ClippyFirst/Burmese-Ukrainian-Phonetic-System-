@@ -110,6 +110,8 @@ def build_report(
         "corpus_path": corpus_path,
         "corpus_sha256": corpus_sha256,
         "mapping_sha256": mapping_sha256,
+        "preprocessor_sha256": preprocessor_sha256,
+        "postprocessor_sha256": postprocessor_sha256,
         "eligible_verified_gold_count": eligible_gold,
         "exact_match_count": exact_matches if eligible_gold else None,
         "exact_match_accuracy": (exact_matches / eligible_gold) if eligible_gold else None,
