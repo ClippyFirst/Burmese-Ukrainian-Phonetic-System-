@@ -318,3 +318,10 @@ New audit files triggered several workflows because each file was committed inde
 - Successful rerun: [40092717790](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40092717790). Epitran 1.35.3 / Python 3.12.15; 6 raw outputs, 0 runtime errors; corpus SHA-256 `bc7d4f138581b7cfd48594b41891a26ec45123ea4488af977b48567201f0b19b`; mapping SHA-256 `de8660a0cdccb4192993d423342ad775a59ade19b8081829eb70da18f291dfe4`; artifact SHA-256 `1ca54b638897f41f124147df0744f9929e651757b720552082d701748794e475`.
 - Raw candidate outputs: `ကေ → ke`; `ကော် → kaʊʔ`; `ကြည် → t͡ɕi`; `စွယ် → səwɛ`; `မြန် → məjaɴ`; `ယူ → ju`. All six rows remain STRUCTURAL_ONLY. Report confirms `eligible_verified_gold_count=0`, `exact_match_count=null`, `exact_match_accuracy=null`.
 - Raw-output smoke is DONE_VERIFIED; linguistic scoring remains BLOCKED by exact source locators and independent adjudication. No engine promoted to production and no myG2P entries copied.
+
+
+## Final checkpoint — Burmese Epitran smoke and test suite (2026-10-24)
+
+Latest code head before this documentation-only update: fa5a5e7dbb292b88d05bc8cadb3e35ac2809c08d. Verification run 40093021155 passed: pytest, npm build, generated-data drift validation, npm tests, and Playwright browser tests. Optional Epitran run 40093021146 passed using Epitran 1.35.3 and Python 3.12.15.
+
+The six structural probes produced raw candidate outputs ke, kaʊʔ, t͡ɕi, səwɛ, məjaɴ, ju. Corpus SHA-256 bc7d4f138581b7cfd48594b41891a26ec45123ea4488af977b48567201f0b19b; mapping SHA-256 de8660a0cdccb4192993d423342ad775a59ade19b8081829eb70da18f291dfe4; empty preprocessor SHA-256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855; postprocessor SHA-256 0eac185c50b19b7c2682d1395afad97a7662a5ff22e2344195eb0d3ffcbed7af; artifact ZIP SHA-256 6abad56759caa47868dee8af5e82068c143f810336454099ba9c149dc74e8f09. Gold count is zero and accuracy is null. This remains a raw-output smoke run only; no production dependency was added.
