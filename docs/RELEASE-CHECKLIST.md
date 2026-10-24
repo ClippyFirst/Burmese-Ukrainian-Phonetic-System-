@@ -43,3 +43,8 @@ PR #15 merged as `2e2487ef0bd22a3d6aa1c1c3a5eabacedde6ec1b`. Latest tests passed
 - Keep IPA adaptation boundary: source spelling → structural parse → source phonology → typed IPA → Ukrainian adapter. Third-party candidates remain optional and disabled in production.
 - Current true blocker: a source-located, independently adjudicated language-specific gold corpus with a documented dialect and IPA convention. Do not report accuracy until it exists.
 
+
+
+### Latest Epitran smoke artifact — 2026-10-24
+
+- Successful run [40121355875](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40121355875): Epitran 1.35.3, 6 probes, 0 runtime errors, independent gold count 0, accuracy null. Epitran itself flags Burmese as limited support due to orthographic ambiguity. Artifact ZIP SHA-256: `28c05acec1658a4002dce200a059026a2b14395a5c5f0232b2a449f620e7e424`.
