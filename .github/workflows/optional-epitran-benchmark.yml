@@ -7,8 +7,6 @@ on:
       - "scripts/benchmark_g2p.py"
       - "data/burmese/phonology_corpus.csv"
       - "data/burmese/sources.csv"
-      - "data/external-ipa-renderers.json"
-      - "docs/benchmarking-and-external-ipa.md"
       - ".github/workflows/optional-epitran-benchmark.yml"
   pull_request:
     paths:
