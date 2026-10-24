@@ -1,0 +1,46 @@
+name: Optional Burmese Epitran raw-output benchmark
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "scripts/benchmark_g2p.py"
+      - "data/burmese/phonology_corpus.csv"
+      - "data/burmese/sources.csv"
+      - ".github/workflows/optional-epitran-benchmark.yml"
+  pull_request:
+    paths:
+      - "scripts/benchmark_g2p.py"
+      - "data/burmese/phonology_corpus.csv"
+      - "data/burmese/sources.csv"
+      - ".github/workflows/optional-epitran-benchmark.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  raw-output:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install pinned optional comparator
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "epitran==1.35.3"
+      - name: Run raw-output benchmark
+        run: |
+          mkdir -p artifacts
+          python scripts/benchmark_g2p.py --engine epitran --output artifacts/burmese-epitran-raw-output.json
+      - name: Upload raw-output report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: burmese-epitran-raw-output
+          path: artifacts/burmese-epitran-raw-output.json
+          if-no-files-found: warn
+          retention-days: 30

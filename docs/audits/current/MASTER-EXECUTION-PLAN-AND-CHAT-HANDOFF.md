@@ -302,3 +302,26 @@ New audit files triggered several workflows because each file was committed inde
 - `system.html#validation-status` now publishes the current validation state: 0 verified lexical IPA gold entries, 6 structural-only probes, and the last verified CI suite counts (32 Python tests and 40 browser tests). It links to the execution matrix.
 - Added a browser regression that checks the public warning, corpus counts, and matrix link. These changes are on the same feature branch and will be published to GitHub Pages after the reviewed PR is merged and the Pages workflow succeeds.
 - The public site is intentionally described as a research prototype, not a validated transcription standard. The linguistic acceptance blocker remains independent adjudication of source-located lexical IPA examples.
+
+
+## Handoff update — pinned Epitran smoke workflow (2026-10-24)
+
+- Branch: `ci/optional-epitran-smoke-2026-10-24`.
+- Added `.github/workflows/optional-epitran-benchmark.yml`: installs `epitran==1.35.3` only in an isolated GitHub Actions job, runs `scripts/benchmark_g2p.py`, and uploads `artifacts/burmese-epitran-raw-output.json` for 30 days.
+- Existing strict score gate is retained: current corpus rows are STRUCTURAL_ONLY; no gold row means accuracy, exact-match count and denominator remain null/zero as appropriate. Epitran remains a candidate baseline only, especially given limited Burmese support and absent tone reconstruction.
+- Update the execution matrix in place; task status is IN_PROGRESS pending workflow run and artifact inspection. Gold-corpus work remains BLOCKED until exact source locators and independent adjudication exist. Do not copy myG2P data.
+
+
+## Handoff update — Epitran smoke verified; scoring still blocked (2026-10-24)
+
+- First workflow [40092549134](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40092549134) exposed a real harness bug: local `import importlib.resources` shadowed the module used for `importlib.metadata.version`, causing `UnboundLocalError` after Epitran ran. Fixed by `from importlib import resources`; added a regression test.
+- Successful rerun: [40092717790](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40092717790). Epitran 1.35.3 / Python 3.12.15; 6 raw outputs, 0 runtime errors; corpus SHA-256 `bc7d4f138581b7cfd48594b41891a26ec45123ea4488af977b48567201f0b19b`; mapping SHA-256 `de8660a0cdccb4192993d423342ad775a59ade19b8081829eb70da18f291dfe4`; artifact SHA-256 `1ca54b638897f41f124147df0744f9929e651757b720552082d701748794e475`.
+- Raw candidate outputs: `ကေ → ke`; `ကော် → kaʊʔ`; `ကြည် → t͡ɕi`; `စွယ် → səwɛ`; `မြန် → məjaɴ`; `ယူ → ju`. All six rows remain STRUCTURAL_ONLY. Report confirms `eligible_verified_gold_count=0`, `exact_match_count=null`, `exact_match_accuracy=null`.
+- Raw-output smoke is DONE_VERIFIED; linguistic scoring remains BLOCKED by exact source locators and independent adjudication. No engine promoted to production and no myG2P entries copied.
+
+
+## Final checkpoint — Burmese Epitran smoke and test suite (2026-10-24)
+
+Latest code head before this documentation-only update: fa5a5e7dbb292b88d05bc8cadb3e35ac2809c08d. Verification run 40093021155 passed: pytest, npm build, generated-data drift validation, npm tests, and Playwright browser tests. Optional Epitran run 40093021146 passed using Epitran 1.35.3 and Python 3.12.15.
+
+The six structural probes produced raw candidate outputs ke, kaʊʔ, t͡ɕi, səwɛ, məjaɴ, ju. Corpus SHA-256 bc7d4f138581b7cfd48594b41891a26ec45123ea4488af977b48567201f0b19b; mapping SHA-256 de8660a0cdccb4192993d423342ad775a59ade19b8081829eb70da18f291dfe4; empty preprocessor SHA-256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855; postprocessor SHA-256 0eac185c50b19b7c2682d1395afad97a7662a5ff22e2344195eb0d3ffcbed7af; artifact ZIP SHA-256 6abad56759caa47868dee8af5e82068c143f810336454099ba9c149dc74e8f09. Gold count is zero and accuracy is null. This remains a raw-output smoke run only; no production dependency was added.

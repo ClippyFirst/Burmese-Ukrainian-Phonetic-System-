@@ -47,6 +47,8 @@ def build_report(
     corpus_path: str,
     known_source_ids: set[str],
     mapping_sha256: str | None,
+    preprocessor_sha256: str | None = None,
+    postprocessor_sha256: str | None = None,
 ) -> dict[str, Any]:
     if len(rows) != len(outputs):
         raise ValueError("There must be exactly one raw engine output per corpus row.")
@@ -108,6 +110,8 @@ def build_report(
         "corpus_path": corpus_path,
         "corpus_sha256": corpus_sha256,
         "mapping_sha256": mapping_sha256,
+        "preprocessor_sha256": preprocessor_sha256,
+        "postprocessor_sha256": postprocessor_sha256,
         "eligible_verified_gold_count": eligible_gold,
         "exact_match_count": exact_matches if eligible_gold else None,
         "exact_match_accuracy": (exact_matches / eligible_gold) if eligible_gold else None,
@@ -146,12 +150,26 @@ def main() -> int:
         version = "unknown"
 
     mapping_sha256 = None
+    preprocessor_sha256 = None
+    postprocessor_sha256 = None
     try:
-        import importlib.resources
+        from importlib import resources
 
-        mapping = importlib.resources.files("epitran").joinpath("data/map/mya-Mymr.csv")
-        if mapping.is_file():
-            mapping_sha256 = hashlib.sha256(mapping.read_bytes()).hexdigest()
+        data = resources.files("epitran").joinpath("data")
+        for relative, key in (
+            ("map/mya-Mymr.csv", "mapping"),
+            ("pre/mya-Mymr.txt", "preprocessor"),
+            ("post/mya-Mymr.txt", "postprocessor"),
+        ):
+            resource = data.joinpath(relative)
+            if resource.is_file():
+                digest = hashlib.sha256(resource.read_bytes()).hexdigest()
+                if key == "mapping":
+                    mapping_sha256 = digest
+                elif key == "preprocessor":
+                    preprocessor_sha256 = digest
+                else:
+                    postprocessor_sha256 = digest
     except (AttributeError, FileNotFoundError, ModuleNotFoundError):
         pass
 
@@ -161,9 +179,15 @@ def main() -> int:
         engine=args.engine,
         engine_version=version,
         corpus_sha256=sha256_file(args.corpus),
-        corpus_path=str(args.corpus),
+        corpus_path=(
+            str(args.corpus.resolve().relative_to(ROOT.resolve()))
+            if args.corpus.resolve().is_relative_to(ROOT.resolve())
+            else str(args.corpus)
+        ),
         known_source_ids=known_source_ids,
         mapping_sha256=mapping_sha256,
+        preprocessor_sha256=preprocessor_sha256,
+        postprocessor_sha256=postprocessor_sha256,
     )
     rendered = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
     if args.output:
