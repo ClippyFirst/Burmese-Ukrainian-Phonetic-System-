@@ -302,3 +302,11 @@ New audit files triggered several workflows because each file was committed inde
 - `system.html#validation-status` now publishes the current validation state: 0 verified lexical IPA gold entries, 6 structural-only probes, and the last verified CI suite counts (32 Python tests and 40 browser tests). It links to the execution matrix.
 - Added a browser regression that checks the public warning, corpus counts, and matrix link. These changes are on the same feature branch and will be published to GitHub Pages after the reviewed PR is merged and the Pages workflow succeeds.
 - The public site is intentionally described as a research prototype, not a validated transcription standard. The linguistic acceptance blocker remains independent adjudication of source-located lexical IPA examples.
+
+
+## Handoff update — pinned Epitran smoke workflow (2026-10-24)
+
+- Branch: `ci/optional-epitran-smoke-2026-10-24`.
+- Added `.github/workflows/optional-epitran-benchmark.yml`: installs `epitran==1.35.3` only in an isolated GitHub Actions job, runs `scripts/benchmark_g2p.py`, and uploads `artifacts/burmese-epitran-raw-output.json` for 30 days.
+- Existing strict score gate is retained: current corpus rows are STRUCTURAL_ONLY; no gold row means accuracy, exact-match count and denominator remain null/zero as appropriate. Epitran remains a candidate baseline only, especially given limited Burmese support and absent tone reconstruction.
+- Update the execution matrix in place; task status is IN_PROGRESS pending workflow run and artifact inspection. Gold-corpus work remains BLOCKED until exact source locators and independent adjudication exist. Do not copy myG2P data.
