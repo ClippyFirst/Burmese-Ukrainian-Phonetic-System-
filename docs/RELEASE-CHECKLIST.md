@@ -34,3 +34,12 @@
 - New research branch: `research/third-party-ipa-systems-20261024`. PR and workflow outcomes must be checked before this work is considered integrated.
 - Keep IPA adaptation boundary: source spelling → structural parse → source phonology → typed IPA → Ukrainian adapter. Third-party candidates remain optional and disabled in production.
 - Current true blocker: a source-located, independently adjudicated language-specific gold corpus with a documented dialect and IPA convention. Do not report accuracy until it exists.
+
+
+### Verified status as of 2026-10-24
+
+PR #15 merged as `2e2487ef0bd22a3d6aa1c1c3a5eabacedde6ec1b`. Latest tests passed: 42 Python tests, 26 subtests, web data validation, and 41 Playwright tests. Epitran 1.35.3 smoke: 6 outputs, 0 runtime errors, independent gold=0, accuracy=null; mapping hashes are recorded. Durable report: `data/benchmark/runs/external-g2p-smoke-2026-10-24.json`; artifact: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40119998823/artifacts/12569969269.
+
+- Keep IPA adaptation boundary: source spelling → structural parse → source phonology → typed IPA → Ukrainian adapter. Third-party candidates remain optional and disabled in production.
+- Current true blocker: a source-located, independently adjudicated language-specific gold corpus with a documented dialect and IPA convention. Do not report accuracy until it exists.
+
