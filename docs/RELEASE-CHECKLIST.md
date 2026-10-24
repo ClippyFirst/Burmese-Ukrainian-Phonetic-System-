@@ -38,6 +38,6 @@
 
 ### Verified status as of 2026-10-24
 
-- Fail-closed parse guard and evidence checklist are merged on main; the current smoke/report registry update is in PR #20.
+- Fail-closed parse guard and evidence checklist are merged on main. PR #20 also merged the current smoke/report registry update.
 - Latest successful Epitran 1.35.3 run [40121355875](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40121355875): 6 probes, 0 runtime errors, 0 independently adjudicated gold rows, accuracy null. Epitran explicitly flags Burmese as limited support due to orthographic ambiguity.
 - Artifact ZIP SHA-256: `28c05acec1658a4002dce200a059026a2b14395a5c5f0232b2a449f620e7e424`. Raw outputs and mapping/preprocessor/postprocessor hashes are recorded in the durable report/artifact. Do not infer pronunciation accuracy from successful execution.
