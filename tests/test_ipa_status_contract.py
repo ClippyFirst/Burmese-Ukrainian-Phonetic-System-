@@ -26,3 +26,15 @@ def test_malformed_cluster_does_not_gain_phonological_certainty():
     result = to_ipa("က္")
     assert result["syllables"]
     assert all(s["phonetic_status"] != "supported" for s in result["syllables"])
+    assert result["syllables"][0]["ipa"] is None
+    assert result["syllables"][0]["phonetic_status"] == "analysis_dependent"
+    assert result["ipa"] == "?"
+
+
+def test_partially_unparsed_cluster_does_not_emit_partial_ipa():
+    # A recognized onset must not leak a plausible-looking transcription if
+    # the parser could not consume the entire source grapheme cluster.
+    result = to_ipa("ကေ့က")
+    partial = [s for s in result["syllables"] if s["status"] != "established"]
+    assert partial
+    assert all(s["ipa"] is None for s in partial)
