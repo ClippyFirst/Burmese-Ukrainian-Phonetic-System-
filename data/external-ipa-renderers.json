@@ -79,6 +79,17 @@
       "enabled_by_default": false
     },
     {
+      "id": "epitran",
+      "name": "Epitran",
+      "url": "https://github.com/dmort27/epitran",
+      "kind": "grapheme-to-IPA transliteration library",
+      "status": "candidate",
+      "output": "An optional raw-output baseline is already implemented in scripts/benchmark_g2p.py using the mya-Mymr mapping; verify Burmese coverage, dialect, tone/phonation, IPA convention, and mapping provenance before interpreting outputs.",
+      "license": "Upstream project reports an open-source license; verify the exact pinned release, bundled mapping/data licenses, and notices before reuse or redistribution.",
+      "verified_in_repo": false,
+      "enabled_by_default": false
+    },
+    {
       "id": "charis-sil",
       "name": "Charis SIL",
       "url": "https://software.sil.org/charis/",
