@@ -182,5 +182,41 @@
     "external_engines_enabled_by_default": false,
     "notes": "Registry membership does not establish language support, IPA output semantics, reproducibility, accuracy, or license compatibility. Preserve raw output and record exact versions and model/data licenses."
   },
-  "last_reviewed": "2026-10-24"
+  "last_reviewed": "2026-10-24",
+  "observed_experiments": [
+    {
+      "engine": "Epitran",
+      "version": "1.35.3 (workflow pin)",
+      "run_url": null,
+      "corpus": "data/burmese/phonology_corpus.csv",
+      "runtime_errors": null,
+      "independent_gold_count": 0,
+      "accuracy": null,
+      "status": "HARNESS_AND_WORKFLOW_EXIST_RUN_NOT_VERIFIED",
+      "interpretation": "A workflow is defined but no artifact/run evidence was confirmed in this pass; static mapping inspection is not execution."
+    }
+  ],
+  "upstream_evidence": [
+    {
+      "engine": "Epitran",
+      "url": "https://github.com/dmort27/epitran",
+      "fact": "Repository has an optional mya-Mymr runner; project audit notes the upstream documentation flags Burmese as limited due to orthographic ambiguity.",
+      "status": "CANDIDATE_BASELINE_NOT_GOLD",
+      "caveat": "Pin package and map/pre/postprocessor hashes; assess coverage and tones/phonation against adjudicated IPA."
+    },
+    {
+      "engine": "Goruut",
+      "url": "https://github.com/neurlang/goruut",
+      "fact": "README lists Burmese among supported languages and claims IPA phone set and MIT repository license.",
+      "status": "UPSTREAM_CLAIM_ONLY_NOT_EXECUTED",
+      "caveat": "No pinned output or model/data-specific license audit."
+    },
+    {
+      "engine": "myG2P",
+      "url": "https://github.com/ye-kyaw-thu/myG2P",
+      "fact": "Existing audit reports the pronunciation dictionary as CC BY-NC-SA 4.0.",
+      "status": "LICENSE_CONSTRAINED_REFERENCE",
+      "caveat": "Not a default dependency; non-commercial restriction needs separate permission for commercial use."
+    }
+  ]
 }
