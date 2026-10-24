@@ -54,3 +54,11 @@ named.
 The repository currently contains no separate historical corpus that requires
 archiving. If later history reveals a unique rejected analysis, it should be
 moved to research/historical/ or research/decisions/ rather than deleted.
+
+
+## External IPA and benchmark audit — 2026-10-24
+
+- The malformed-parse guard and fail-closed benchmark gold-provenance gate are on main; an ADJUDICATED row without non-empty IPA, source_id or profile now stops scoring instead of silently changing the denominator.
+- Epitran 1.35.3 ran successfully on 6 Burmese probes with 0 runtime errors in [run 40121355875](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40121355875). This verifies execution only. Epitran upstream explicitly flags Burmese support as limited due to orthographic ambiguity.
+- Independent gold count is 0; accuracy is null. Inherent vowels, medials, coda/phonation and tone conventions still require a source-located, independently adjudicated corpus. External systems remain optional and disabled in production.
+- Latest smoke artifact ZIP SHA-256: `28c05acec1658a4002dce200a059026a2b14395a5c5f0232b2a449f620e7e424`; durable report and registry are aligned to this run.
