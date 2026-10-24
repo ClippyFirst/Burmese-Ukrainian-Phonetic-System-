@@ -147,9 +147,9 @@ def main() -> int:
 
     mapping_sha256 = None
     try:
-        import importlib.resources
+        from importlib import resources
 
-        mapping = importlib.resources.files("epitran").joinpath("data/map/mya-Mymr.csv")
+        mapping = resources.files("epitran").joinpath("data/map/mya-Mymr.csv")
         if mapping.is_file():
             mapping_sha256 = hashlib.sha256(mapping.read_bytes()).hexdigest()
     except (AttributeError, FileNotFoundError, ModuleNotFoundError):
