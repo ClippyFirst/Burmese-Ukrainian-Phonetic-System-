@@ -341,3 +341,11 @@ Authoritative readiness checkpoint — 2026-10-24 12:38 UTC
 - Current-main test run 40093806758 and deployment 40093806746 passed.
 - The Epitran 1.35.3 smoke is repeatable but unscored: six structural probes, zero runtime errors, independent gold count 0, accuracy null. Artifact SHA-256 6abad56759caa47868dee8af5e82068c143f810336454099ba9c149dc74e8f09.
 - Remaining blocker: source-adjudicated lexical corpus and tone-aware evaluation. No Epitran production dependency; no gold IPA inferred from grapheme mapping.
+
+## Authoritative current-head checkpoint — 2026-10-25
+
+This note supersedes earlier handoff statements that current-main checks or the Epitran smoke were still pending.
+
+- Current `main`: `32f6f3da9328aa96e746d63b63912c4e64793646`.
+- Main tests [40128844973](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40128844973), Pages deployment [40128844976](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40128844976), and optional Epitran smoke [40128845097](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40128845097) all completed successfully.
+- This verifies software checks and candidate raw-output execution, not phonological accuracy. Six structural probes; independent gold count 0; accuracy null. The separate source-adjudicated corpus, tone/phonation and contextual phonology work remains open. Do not copy unlicensed external corpora or enable Epitran in production.
