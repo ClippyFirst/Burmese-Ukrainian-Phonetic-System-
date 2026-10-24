@@ -42,6 +42,14 @@ External systems must be treated as upstream phonetic-result providers or benchm
 - **License:** Verify current upstream license and model/data terms
 - **Repository integration:** not yet enabled; upstream behavior and license must be checked before dependency, data, or code reuse.
 
+### 6. [Epitran](https://github.com/dmort27/epitran)
+
+- **Role:** grapheme-to-IPA transliteration library
+- **Status:** candidate / raw-output benchmark baseline only
+- **Output/validation:** The repository already contains an optional benchmark script using the `mya-Mymr` mapping. This is not proof of standard Burmese coverage or accurate tone, phonation, dialect, or IPA convention. Treat output as diagnostic until independently adjudicated.
+- **License:** Verify the exact pinned release and the license/provenance of the language mapping data before reuse or redistribution.
+- **Repository integration:** not enabled in the runtime; the benchmark requires separate installation and does not change the production IPA-to-Ukrainian path.
+
 ### 5. [eSpeak NG](https://github.com/espeak-ng/espeak-ng)
 
 - **Role:** speech engine / phoneme output
