@@ -94,3 +94,12 @@ Corpus path is relative: data/burmese/phonology_corpus.csv. Corpus SHA-256: bc7d
 ## Merge and final acceptance record — 2026-10-24
 
 PR #9 merged at `b71e2075b1e7dcebd17b54164bc017eb99eececd`. The raw-output smoke and full verification suite passed on the code-tested head; the report hashes the corpus and Epitran mapping/pre/post resources and keeps the gold denominator at zero. The raw-output task is DONE_VERIFIED; accuracy and source-adjudicated corpus tasks remain BLOCKED/TODO.
+
+
+Authoritative readiness checkpoint — 2026-10-24 12:38 UTC
+
+- Current main HEAD: b7a44e6e0ff7ec0010d58c30c2ceb0101e72761b.
+- Engineering verification: DONE_VERIFIED. Current-main tests 40093806758 and Pages deploy 40093806746 both passed. Test suite includes Python, generated-data drift, npm, build and Playwright checks.
+- Epitran smoke: DONE_VERIFIED as raw-output execution only. Pinned Epitran 1.35.3 / Python 3.12.15; six structural probes; zero runtime errors; artifact SHA-256 6abad56759caa47868dee8af5e82068c143f810336454099ba9c149dc74e8f09. Verified independent gold count 0 and accuracy null.
+- Remaining TODO/BLOCKED: independent IPA gold corpus, tone-aware validation, lexical/context coverage, and source adjudication of candidate outputs. Do not add Epitran as a runtime dependency or call these six probes an accuracy benchmark.
+- Readiness: engineering prototype verified; not empirically accuracy-certified or release-ready as a complete transcription engine.
