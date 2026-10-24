@@ -310,3 +310,11 @@ New audit files triggered several workflows because each file was committed inde
 - Added `.github/workflows/optional-epitran-benchmark.yml`: installs `epitran==1.35.3` only in an isolated GitHub Actions job, runs `scripts/benchmark_g2p.py`, and uploads `artifacts/burmese-epitran-raw-output.json` for 30 days.
 - Existing strict score gate is retained: current corpus rows are STRUCTURAL_ONLY; no gold row means accuracy, exact-match count and denominator remain null/zero as appropriate. Epitran remains a candidate baseline only, especially given limited Burmese support and absent tone reconstruction.
 - Update the execution matrix in place; task status is IN_PROGRESS pending workflow run and artifact inspection. Gold-corpus work remains BLOCKED until exact source locators and independent adjudication exist. Do not copy myG2P data.
+
+
+## Handoff update — Epitran smoke verified; scoring still blocked (2026-10-24)
+
+- First workflow [40092549134](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40092549134) exposed a real harness bug: local `import importlib.resources` shadowed the module used for `importlib.metadata.version`, causing `UnboundLocalError` after Epitran ran. Fixed by `from importlib import resources`; added a regression test.
+- Successful rerun: [40092717790](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40092717790). Epitran 1.35.3 / Python 3.12.15; 6 raw outputs, 0 runtime errors; corpus SHA-256 `bc7d4f138581b7cfd48594b41891a26ec45123ea4488af977b48567201f0b19b`; mapping SHA-256 `de8660a0cdccb4192993d423342ad775a59ade19b8081829eb70da18f291dfe4`; artifact SHA-256 `1ca54b638897f41f124147df0744f9929e651757b720552082d701748794e475`.
+- Raw candidate outputs: `ကေ → ke`; `ကော် → kaʊʔ`; `ကြည် → t͡ɕi`; `စွယ် → səwɛ`; `မြန် → məjaɴ`; `ယူ → ju`. All six rows remain STRUCTURAL_ONLY. Report confirms `eligible_verified_gold_count=0`, `exact_match_count=null`, `exact_match_accuracy=null`.
+- Raw-output smoke is DONE_VERIFIED; linguistic scoring remains BLOCKED by exact source locators and independent adjudication. No engine promoted to production and no myG2P entries copied.
