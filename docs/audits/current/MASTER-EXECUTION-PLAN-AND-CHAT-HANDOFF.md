@@ -333,3 +333,11 @@ The six structural probes produced raw candidate outputs ke, kaʊʔ, t͡ɕi, sə
 - Code-tested head `fa5a5e7dbb292b88d05bc8cadb3e35ac2809c08d`: full test/build/browser suite [40093021155](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40093021155) passed; pinned Epitran run [40093021146](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40093021146) passed and artifact inspected.
 - Artifact SHA-256 `6abad56759caa47868dee8af5e82068c143f810336454099ba9c149dc74e8f09`; Epitran 1.35.3, Python 3.12.15; corpus SHA-256 `bc7d4f138581b7cfd48594b41891a26ec45123ea4488af977b48567201f0b19b`; mapping SHA-256 `de8660a0cdccb4192993d423342ad775a59ade19b8081829eb70da18f291dfe4`; preprocessor empty hash `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`; postprocessor hash `0eac185c50b19b7c2682d1395afad97a7662a5ff22e2344195eb0d3ffcbed7af`.
 - Six structural probes, zero runtime errors, verified gold count zero, exact-match count and accuracy null. External Epitran remains a candidate-only comparator; no data was copied from myG2P and no production dependency was added.
+
+
+Authoritative readiness checkpoint — 2026-10-24 12:38 UTC
+
+- Current main HEAD: b7a44e6e0ff7ec0010d58c30c2ceb0101e72761b.
+- Current-main test run 40093806758 and deployment 40093806746 passed.
+- The Epitran 1.35.3 smoke is repeatable but unscored: six structural probes, zero runtime errors, independent gold count 0, accuracy null. Artifact SHA-256 6abad56759caa47868dee8af5e82068c143f810336454099ba9c149dc74e8f09.
+- Remaining blocker: source-adjudicated lexical corpus and tone-aware evaluation. No Epitran production dependency; no gold IPA inferred from grapheme mapping.
