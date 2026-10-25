@@ -32,7 +32,10 @@ def _ipa(s):
         return None
     v = s.get("vowel")
     if not v:
-        return o + "?"
+        # No evidence-backed surface realization exists for the inherent vowel
+        # in this adapter yet. Returning onset + '?' looks like a partial IPA
+        # string and can be mistaken for a usable phonetic result.
+        return None
     vals = [VOWEL_IPA.get(x["id"]) for x in v["signs"]]
     if any(x is None for x in vals):
         return None
