@@ -36,5 +36,5 @@ def test_non_burmese_myanmar_extension_letter_is_not_accepted_as_burmese():
     assert len(result["syllables"]) == 1
     syllable = result["syllables"][0]
     assert syllable["raw"] == text
-    assert syllable["onset"] is None
+    assert syllable["onset"] == {}
     assert syllable["analysis"]["status"] == "unsupported_or_malformed"
