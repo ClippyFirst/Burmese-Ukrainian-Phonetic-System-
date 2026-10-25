@@ -1,2 +1,2 @@
-rule_id,input,environment,output,status,source_id
-NO_DIRECT_TONE_VOWEL_RULE,tonal_category,vowel_alternation_context,do_not_apply_as_direct_rule,analysis_dependent,MOONEY2021
+rule_id,input,environment,output,status,source_id,claim_id,source_locator,scope,test_reference
+NO_DIRECT_TONE_VOWEL_RULE,tonal_category,vowel_alternation_context,do_not_apply_as_direct_rule,analysis_dependent,MOONEY2021,CLM-PHON-001,"Abstract; §3.1 Analysis: Vowel Centralization and Diphthongization; https://doi.org/10.3765/plsa.v6i1.4900","Central Burmese vowel alternations discussed by Mooney & Repetti-Ludlow (2021); analysis-dependent, not a universal prohibition on all tone-segment interactions",tests/test_source_rule_evidence.py
