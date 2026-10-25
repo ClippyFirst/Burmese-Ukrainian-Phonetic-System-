@@ -60,3 +60,20 @@ def test_burmese_tone_vowel_claim_preserves_analysis_scope():
     assert claim["status"] == "ANALYSIS_DEPENDENT"
     assert "tone-independent" in claim["claim"]
     assert "Central Burmese" in claim["scope"]
+
+
+def test_misplaced_virama_guard_is_grounded_as_orthographic_not_phonetic_evidence():
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    rules = {row["rule_id"]: row for row in _rows(DATA / "phonological_rules.csv")}
+    claim = claims["CLM-ORTH-001"]
+    rule = rules["MALFORMED_VIRAMA_WITHHOLD_IPA"]
+
+    assert claim["source_id"] == "U18"
+    assert claim["evidence_type"] == "orthographic_structure"
+    assert claim["status"] == "ESTABLISHED"
+    assert "U+1039" in claim["claim"]
+    assert rule["source_id"] == claim["source_id"]
+    assert rule["claim_id"] == claim["claim_id"]
+    assert rule["status"] == "established"
+    assert rule["test_reference"] == "tests/test_malformed_ipa_withholding.py"
+    assert "not a pronunciation rule" in rule["scope"]
