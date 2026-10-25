@@ -54,7 +54,7 @@ function segment(text){
   return out;
 }
 
-function parseCluster(raw){
+function parseCluster(raw,withholdBareInherent=false){
   const sy={raw,onset:null,kinzi:false,conjunct:[],medials:[],vowels:[],asat:false,status:"ESTABLISHED",ipa:null,uk:null,notes:[],prosodyMarks:[]};
   let i=0;
   if(raw.startsWith(KINZI)){sy.kinzi=true;i=3;}
@@ -90,7 +90,8 @@ function parseCluster(raw){
   }
   // Keep repeated diagnostics deterministic and readable.
   sy.notes=[...new Set(sy.notes)];
-  sy.ipa=deriveIpa(sy);if(!sy.ipa&&sy.status==="ESTABLISHED")sy.status="NOT_ESTABLISHED";sy.uk=renderUkrainian(sy.ipa);return sy;
+  const isolatedBare=withholdBareInherent&&!sy.vowels.length&&!sy.coda&&!sy.asat&&!sy.medials.length&&!sy.conjunct.length&&!sy.kinzi&&!sy.prosodyMarks.length;
+  sy.ipa=isolatedBare?null:deriveIpa(sy);if(!sy.ipa&&sy.status==="ESTABLISHED")sy.status="NOT_ESTABLISHED";sy.uk=renderUkrainian(sy.ipa);return sy;
 }
 
 function deriveIpa(sy){
@@ -170,8 +171,7 @@ function deriveIpa(sy){
   if(!vowel){
     if(!sy.vowels.length&&wa&&nasalCoda)vowel="ʊ";
     else if(!sy.vowels.length&&wa&&checkedCoda)vowel="ɛ";
-    // Without an explicit vowel or a separately licensed contextual rule,
-    // withhold IPA rather than guessing the inherent vowel.
+    else if(!sy.vowels.length&&!sy.coda&&!sy.asat)vowel="a";
     else if(sy.kinziCoda&&!sy.vowels.length)vowel="ɪ";
     else if(!sy.vowels.length&&nasalCoda&&(has("medial_ya")||has("medial_ra")))vowel="a";
     else if(!sy.vowels.length&&checkedCoda)vowel="a";
@@ -227,7 +227,9 @@ function renderUkrainian(ipaText){
 }
 
 function convert(text){
-  const normalized=normalize(text),parsed=segment(normalized).map(s=>s.nonMyanmar?s:parseCluster(s.raw)),myanmar=parsed.filter(s=>!s.nonMyanmar);
+  const normalized=normalize(text),segments=segment(normalized);
+  const loneBareConsonant=segments.length===1&&!segments[0].nonMyanmar&&Array.from(segments[0].raw).length===1&&BASE.has(segments[0].raw);
+  const parsed=segments.map(s=>s.nonMyanmar?s:parseCluster(s.raw,loneBareConsonant)),myanmar=parsed.filter(s=>!s.nonMyanmar);
   const ipaText=parsed.map(s=>s.nonMyanmar?s.raw:(s.ipa||"?")).join(""),ukText=parsed.map(s=>s.nonMyanmar?s.raw:(s.uk?.text||"")).join("");
   const ipaStatus=aggregateStatus(myanmar.map(s=>s.ipa?s.status:(s.status==="UNSUPPORTED"?"UNSUPPORTED":"NOT_ESTABLISHED")),myanmar.length?"ESTABLISHED":"UNSUPPORTED");
   const ukStatus=aggregateStatus(myanmar.map(s=>s.uk?.status||"NOT_ESTABLISHED"),myanmar.length?"ESTABLISHED":"UNSUPPORTED");
