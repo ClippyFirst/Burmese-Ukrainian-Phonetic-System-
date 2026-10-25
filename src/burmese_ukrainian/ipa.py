@@ -21,6 +21,12 @@ def _ipa(s):
     if s.get("status") != "established":
         return None
 
+    # Coda/asat and prosodic marks are parsed structurally but do not yet have
+    # an evidence-backed surface-IPA realization in this adapter. Withhold the
+    # whole syllable rather than silently dropping contrastive material.
+    if s.get("coda") or s.get("tone_mark"):
+        return None
+
     o = ONSET_IPA.get(s.get("onset", {}).get("character"))
     if o is None:
         return None
