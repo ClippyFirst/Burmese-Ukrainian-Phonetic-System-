@@ -31,8 +31,10 @@ def _ipa(s):
     if o is None:
         return None
     v = s.get("vowel")
-    if not v:
-        return o + "?"
+    # No dependent vowel sign is not enough evidence for a concrete inherent
+    # vowel in this incomplete adapter. Withhold the whole syllable instead.
+    if not v or not v.get("signs"):
+        return None
     # Anusvara is currently only recognized orthographically. Its nasal/coda
     # realization is contextual and has no evidence-backed IPA mapping here;
     # do not let the empty placeholder silently delete it from the output.
