@@ -406,3 +406,11 @@ This note supersedes earlier handoff statements that current-main checks or the 
 
 
 - Post-merge evidence: PR #30 merged as `6d1ecc79d8dff72cd8a6476bd832a5047515c720`; exact-head CI [40209303104](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40209303104) passed. The fix corrects only the empty-input API status and does not change phonological output for non-empty inputs.
+
+
+## Unicode control-character withholding — 2026-10-25
+
+- Found a Python/browser contract gap: Python treats DEL/C1 controls as unsupported structural input, while the browser grouped them with ordinary non-Myanmar text and copied them into Ukrainian output unchanged.
+- Browser segmentation now isolates C0/C1 controls (except tab, LF and CR) as unsupported input units; ordinary spaces, punctuation and foreign-script runs retain the established passthrough contract.
+- Added shared fixture cases for U+007F and U+009F. The existing Python shared-contract test checks malformed status and preserved code points; the browser Playwright fixture loop checks UNSUPPORTED status and absence of passthrough reporting.
+- This is an input-integrity/parity fix, not phonological evidence. Burmese contextual phonology and independent IPA gold remain open.
