@@ -2,13 +2,34 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "LinguisticEvidence",
   "type": "object",
-  "required": ["claim_id", "claim", "source_id", "status"],
+  "required": [
+    "claim_id",
+    "claim",
+    "source_id",
+    "evidence_type",
+    "scope",
+    "status"
+  ],
   "properties": {
-    "claim_id": {"type": "string"},
-    "claim": {"type": "string"},
-    "source_id": {"type": "string"},
-    "page_or_section": {"type": "string"},
-    "scope": {"type": "string"},
+    "claim_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "page_or_section": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
     "status": {
       "enum": [
         "ESTABLISHED",
@@ -19,8 +40,13 @@
         "UNCERTAIN",
         "DISPUTED",
         "NOT_ESTABLISHED",
-        "UNSUPPORTED"
+        "UNSUPPORTED",
+        "DOCUMENTARY"
       ]
+    },
+    "evidence_type": {
+      "type": "string",
+      "minLength": 1
     }
   },
   "additionalProperties": false
