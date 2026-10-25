@@ -124,3 +124,18 @@ def test_phonology_corpus_rows_respect_evidence_and_gold_contract():
             assert row["reviewer"].strip(), row["case_id"]
             assert row["uncertainty_notes"].strip(), row["case_id"]
             assert "pending" not in row["source_locator"].lower(), row["case_id"]
+
+
+def test_unicode_corpus_rows_have_exact_section_locators_without_claiming_gold():
+    with (ROOT / "data" / "burmese" / "phonology_corpus.csv").open(
+        encoding="utf-8", newline=""
+    ) as handle:
+        rows = list(csv.DictReader(handle))
+    unicode_rows = [row for row in rows if row["source_id"] == "U18"]
+    assert unicode_rows
+    for row in unicode_rows:
+        assert "pending" not in row["source_locator"].lower(), row["case_id"]
+        assert "§16.3.1" in row["source_locator"], row["case_id"]
+        assert row["evidence_status"] == "STRUCTURAL_ONLY", row["case_id"]
+        assert not row["expected_ipa"].strip(), row["case_id"]
+        assert not row["expected_ukrainian"].strip(), row["case_id"]
