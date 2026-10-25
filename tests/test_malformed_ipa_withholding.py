@@ -27,3 +27,11 @@ def test_unresolved_prosodic_mark_is_not_silently_dropped_from_ipa():
     assert result["syllables"][0]["tone_mark"] is not None
     assert result["syllables"][0]["ipa"] is None
     assert result["ipa"] == "?"
+
+
+def test_unresolved_anusvara_is_not_silently_deleted_from_ipa():
+    result = to_ipa("ကံ")
+
+    assert any(sign["id"] == "anusvara" for sign in result["syllables"][0]["vowel"]["signs"])
+    assert result["syllables"][0]["ipa"] is None
+    assert result["ipa"] == "?"

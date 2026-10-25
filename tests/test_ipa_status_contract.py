@@ -13,13 +13,13 @@ def test_parse_success_does_not_claim_supported_phonology():
     assert syllable["phonetic_status"] != "supported"
 
 
-def test_partial_ipa_is_not_silently_promoted_to_complete_output():
+def test_unresolved_inherent_vowel_withholds_ipa_instead_of_emitting_placeholder():
     result = to_ipa("က")
     syllable = result["syllables"][0]
 
-    assert syllable["ipa"] is not None
-    assert "?" in syllable["ipa"]
-    assert syllable["phonetic_status"] == "conservative_partial"
+    assert syllable["ipa"] is None
+    assert syllable["phonetic_status"] == "analysis_dependent"
+    assert result["ipa"] == "?"
 
 
 def test_malformed_cluster_does_not_gain_phonological_certainty():

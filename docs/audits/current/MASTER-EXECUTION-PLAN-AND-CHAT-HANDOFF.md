@@ -364,3 +364,29 @@ This note supersedes earlier handoff statements that current-main checks or the 
 - The IPA adapter now withholds a syllable-level IPA result when parsed coda/asat or prosodic marks lack an evidence-backed surface realization, rather than silently dropping that material. Regression tests cover a dangling virama, unresolved asat coda and unresolved prosodic mark.
 - Workflow for the original test-only commit [40192527691](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40192527691) passed. The follow-up implementation/test commit `495d34517c29540982791653f5e4b35bc2a1a856` had workflow `40192661638` still in progress at this checkpoint; do not mark this follow-up verified until that run completes successfully.
 - This is conservative correctness hardening, not a claim of complete Burmese phonology. Independent gold count remains 0; contextual vowel realization, tone/phonation and source-adjudicated lexical data remain open.
+
+
+## Anusvara IPA-withholding correction — 2026-10-25
+
+- Branch: `fix/burmese-withhold-unresolved-anusvara-20261025`; PR [#28](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/28).
+- Defect: `VOWEL_SIGNS` parses U+1036 ANUSVARA as an orthographic vowel sign, while `ipa.py` used an empty-string placeholder for it and filtered empty mapped values. Consequently `to_ipa("ကံ")` returned `k`, silently deleting unresolved nasal/coda material.
+- Test-first evidence: [run 40195598572](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40195598572) failed on the new regression as expected: actual syllable IPA was `k` instead of `None`.
+- Fix: both the Python IPA adapter and browser `deriveIpa()` now withhold the whole syllable whenever an anusvara sign is present, until its contextual nasal/coda realization has an evidence-backed rule. The browser regression also verifies `#ipa` shows the unresolved placeholder, Ukrainian output remains unavailable, and aggregate status is `NOT_ESTABLISHED`. Neither runtime guesses a nasal consonant or claims a new IPA mapping.
+- Verification: post-fix Python-only run [40195614032](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40195614032) passed. After adding the browser guard and Playwright regression, exact branch-head run [40196136958](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40196136958) **passed** pytest, npm build, generated-web-data check, npm tests, and Playwright browser tests.
+- This closes one conservative adapter defect only. Complete contextual vowels, codas, tone/phonation, Python/browser parity, independent lexical IPA gold, and accuracy measurement remain open; gold count is still 0.
+
+
+## Inherent-vowel withholding correction — 2026-10-25
+
+- Follow-up defect found while checking the Python/browser boundary: Python emitted `k?` for bare `က`, while the browser supplied an unqualified `a` and returned `ka`. The current adapter has not yet established the inherent-vowel realization for every context, so these outputs contradicted the conservative evidence gate.
+- Fix: Python now returns no IPA when the parsed vowel object is absent or has no explicit signs; browser removes the unconditional open-syllable `a` fallback. Separately licensed contextual patterns remain available; this change does not erase those rules.
+- Regression coverage: `tests/test_ipa_status_contract.py` asserts bare `က` has no syllable IPA, status `analysis_dependent`, and aggregate placeholder `?`; Playwright checks browser IPA is withheld, Ukrainian output is `—`, and status is `NOT_ESTABLISHED`.
+- Exact-head CI is pending at [run 40196926842](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40196926842) for code commit `7cfbe105e6e26b0321bf07013748e9f1eea77f0c). Do not call the change verified until Python, generated-data, npm, and browser checks finish.
+- This is a conservative adapter correction, not a claim that every Burmese inherent vowel is unresolved. Context-specific rules must be separately source-adjudicated and tested. Independent gold remains 0 and accuracy remains unmeasured.
+
+
+### Follow-up: preserve contextual inherent-vowel rules
+
+- The first attempt to remove the browser's generic inherent-vowel fallback failed existing browser regressions for `ရှ` and `မင်္ဂလာ` (run [40196926842](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40196926842)). That change was too broad: it suppressed contextual cases already represented by the engine.
+- Narrowed the guard to an **isolated one-codepoint bare consonant input only**. Existing contextual fallbacks remain intact for multi-grapheme input; Python and browser both withhold the isolated bare-consonant result. This is a deliberate conservative boundary, not a general claim that inherent vowels are unresolved in all contexts.
+- Exact revised code-head CI is [40197108302](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40197108302); pending at this checkpoint. Earlier failures are retained as honest regression evidence, not hidden.
