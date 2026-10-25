@@ -31,10 +31,8 @@ def _ipa(s):
     if o is None:
         return None
     v = s.get("vowel")
-    # No dependent vowel sign is not enough evidence for a concrete inherent
-    # vowel in this incomplete adapter. Withhold the whole syllable instead.
-    if not v or not v.get("signs"):
-        return None
+    if not v:
+        return o + "?"
     # Anusvara is currently only recognized orthographically. Its nasal/coda
     # realization is contextual and has no evidence-backed IPA mapping here;
     # do not let the empty placeholder silently delete it from the output.
@@ -49,8 +47,21 @@ def _ipa(s):
 
 def to_ipa(text: str) -> dict:
     result = parse_burmese(text)
+    # An isolated bare consonant is incomplete user input, not a safe basis
+    # for guessing its inherent vowel. Keep contextual syllables in a word
+    # on their existing path until those contexts are separately adjudicated.
+    bare_isolated = (
+        len(result["normalized"]) == 1
+        and len(result["syllables"]) == 1
+        and not result["syllables"][0].get("vowel")
+        and not result["syllables"][0].get("coda")
+        and not result["syllables"][0].get("medials")
+        and not result["syllables"][0].get("conjunct")
+        and not result["syllables"][0].get("kinzi")
+        and not result["syllables"][0].get("tone_mark")
+    )
     for syllable in result["syllables"]:
-        syllable["ipa"] = _ipa(syllable)
+        syllable["ipa"] = None if bare_isolated else _ipa(syllable)
         syllable["phonetic_status"] = (
             "conservative_partial" if syllable["ipa"] else "analysis_dependent"
         )
