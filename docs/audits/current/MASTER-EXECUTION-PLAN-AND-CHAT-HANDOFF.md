@@ -397,3 +397,9 @@ This note supersedes earlier handoff statements that current-main checks or the 
 - PR #28 merged to `main` as `62cb4ab49bd88736faea89f2b378d10b009ce640`.
 - Exact PR-head workflow [40197390660](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40197390660) passed after the inherent-vowel guard was narrowed to isolated bare consonants; contextual fallbacks remain intact.
 - This verifies the specific anusvara-loss and isolated-bare-input contracts. It does not establish the contextual vowel/coda system, tone/phonation, full Python/browser parity, or independent accuracy. Independent gold remains 0.
+
+
+## Empty-input contract regression — 2026-10-25
+
+- `parse_burmese` previously treated empty input as successful because `all([])` is true. It now returns explicit `empty_input` for empty or whitespace-only strings and does not synthesize grapheme/syllable records.
+- Regression tests cover `""`, ordinary spaces, and tab/newline-only input. The phonological IPA status remains unchanged for non-empty input.
