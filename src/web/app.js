@@ -170,7 +170,8 @@ function deriveIpa(sy){
   if(!vowel){
     if(!sy.vowels.length&&wa&&nasalCoda)vowel="ʊ";
     else if(!sy.vowels.length&&wa&&checkedCoda)vowel="ɛ";
-    else if(!sy.vowels.length&&!sy.coda&&!sy.asat)vowel="a";
+    // Without an explicit vowel or a separately licensed contextual rule,
+    // withhold IPA rather than guessing the inherent vowel.
     else if(sy.kinziCoda&&!sy.vowels.length)vowel="ɪ";
     else if(!sy.vowels.length&&nasalCoda&&(has("medial_ya")||has("medial_ra")))vowel="a";
     else if(!sy.vowels.length&&checkedCoda)vowel="a";
