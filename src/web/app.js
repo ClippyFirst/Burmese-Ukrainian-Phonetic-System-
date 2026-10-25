@@ -30,13 +30,23 @@ function isMyanmarTextAt(text,index){
   return isMyanmarCodePoint(cp)&&cp!==0x104a&&cp!==0x104b;
 }
 function widthAt(text,index){return text.codePointAt(index)>0xffff?2:1;}
+// Keep ordinary whitespace and punctuation available for text passthrough, but
+// never silently preserve invisible C0/C1 controls as if they were user prose.
+function isUnsafeControlAt(text,index){
+  const cp=text.codePointAt(index);
+  return (cp>=0x0000&&cp<=0x0008)||(cp>=0x000b&&cp<=0x000c)||(cp>=0x000e&&cp<=0x001f)||(cp>=0x007f&&cp<=0x009f);
+}
 
 function segment(text){
   const s=normalize(text),out=[];let i=0;
   while(i<s.length){
+    if(isUnsafeControlAt(s,i)){
+      const raw=String.fromCodePoint(s.codePointAt(i));
+      out.push({raw,nonMyanmar:false,unsupportedControl:true});i+=widthAt(s,i);continue;
+    }
     if(!isMyanmarTextAt(s,i)){
       const start=i;i+=widthAt(s,i);
-      while(i<s.length&&!isMyanmarTextAt(s,i))i+=widthAt(s,i);
+      while(i<s.length&&!isMyanmarTextAt(s,i)&&!isUnsafeControlAt(s,i))i+=widthAt(s,i);
       out.push({raw:s.slice(start,i),nonMyanmar:true});continue;
     }
     const start=i;let prev=String.fromCodePoint(s.codePointAt(i));i+=widthAt(s,i);
