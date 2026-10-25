@@ -42,6 +42,8 @@ def test_source_schema_is_valid_and_accepts_minimal_evidence_record():
         "claim_id": claim["claim_id"],
         "claim": claim["claim"],
         "source_id": claim["source_id"],
+        "evidence_type": claim["evidence_type"],
+        "scope": claim["scope"],
         "status": claim["status"],
     }
     Draft202012Validator(schema).validate(record)
