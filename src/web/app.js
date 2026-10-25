@@ -95,6 +95,10 @@ function parseCluster(raw){
 
 function deriveIpa(sy){
   const onset=ONSETS[sy.onset];if(!onset)return null;
+  // The browser parser can recognize anusvara structurally, but its contextual
+  // nasal/coda realization is not yet adjudicated. Match the Python adapter's
+  // fail-closed boundary rather than mapping the sign to a bare vowel.
+  if(sy.vowels.some(sign=>SIGNS[sign]?.unicode_name==="MYANMAR SIGN ANUSVARA"))return null;
   let initial=onset.ipa;const parts=[];
   if(sy.kinzi)parts.push("ŋ");
   const ids=sy.medials.map(m=>MEDIALS[m]?.id).filter(Boolean);
