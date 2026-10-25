@@ -406,3 +406,11 @@ This note supersedes earlier handoff statements that current-main checks or the 
 
 
 - Post-merge evidence: PR #30 merged as `6d1ecc79d8dff72cd8a6476bd832a5047515c720`; exact-head CI [40209303104](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40209303104) passed. The fix corrects only the empty-input API status and does not change phonological output for non-empty inputs.
+
+
+## Boundary-aware bare consonants and Unicode control rejection — 2026-10-25
+
+- The first browser run for the boundary-aware bare-consonant guard failed only because the assertion expected the English string `not established` while the UI correctly displays Ukrainian `не встановлено`. Updated the test to match the user-facing language; no runtime behavior changed for that assertion.
+- Also fixed a Python/browser gap: DEL/C1 controls were treated as ordinary non-Myanmar text in the browser and copied through, while Python marked them unsupported. Browser segmentation now isolates C0/C1 controls except tab/LF/CR and routes them through the unsupported-input status path.
+- Shared Unicode fixture cases cover U+007F and U+009F and are consumed by Python and Playwright tests. This is input integrity/parity, not phonological gold.
+- Exact-head CI [40211417858](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40211417858) passed Python tests, web data validation/build, generated-data drift and Playwright browser tests. This was a standard CI run, not an external Epitran smoke.

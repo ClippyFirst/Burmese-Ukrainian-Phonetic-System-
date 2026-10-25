@@ -30,13 +30,23 @@ function isMyanmarTextAt(text,index){
   return isMyanmarCodePoint(cp)&&cp!==0x104a&&cp!==0x104b;
 }
 function widthAt(text,index){return text.codePointAt(index)>0xffff?2:1;}
+// Keep ordinary whitespace and punctuation available for text passthrough, but
+// never silently preserve invisible C0/C1 controls as if they were user prose.
+function isUnsafeControlAt(text,index){
+  const cp=text.codePointAt(index);
+  return (cp>=0x0000&&cp<=0x0008)||(cp>=0x000b&&cp<=0x000c)||(cp>=0x000e&&cp<=0x001f)||(cp>=0x007f&&cp<=0x009f);
+}
 
 function segment(text){
   const s=normalize(text),out=[];let i=0;
   while(i<s.length){
+    if(isUnsafeControlAt(s,i)){
+      const raw=String.fromCodePoint(s.codePointAt(i));
+      out.push({raw,nonMyanmar:false,unsupportedControl:true});i+=widthAt(s,i);continue;
+    }
     if(!isMyanmarTextAt(s,i)){
       const start=i;i+=widthAt(s,i);
-      while(i<s.length&&!isMyanmarTextAt(s,i))i+=widthAt(s,i);
+      while(i<s.length&&!isMyanmarTextAt(s,i)&&!isUnsafeControlAt(s,i))i+=widthAt(s,i);
       out.push({raw:s.slice(start,i),nonMyanmar:true});continue;
     }
     const start=i;let prev=String.fromCodePoint(s.codePointAt(i));i+=widthAt(s,i);
@@ -226,10 +236,19 @@ function renderUkrainian(ipaText){
   return{text:parts.map(x=>x.text).join(""),status,parts};
 }
 
+function isStandaloneBareConsonant(segments,index){
+  const current=segments[index];
+  if(current.nonMyanmar)return false;
+  const chars=Array.from(current.raw);
+  if(chars.length!==1||!BASE.has(chars[0]))return false;
+  const previous=segments[index-1],next=segments[index+1];
+  // Do not apply the single-token guard to adjacent Myanmar clusters: those
+  // remain on the existing contextual path until separately adjudicated.
+  return (!previous||previous.nonMyanmar)&&(!next||next.nonMyanmar);
+}
 function convert(text){
   const normalized=normalize(text),segments=segment(normalized);
-  const loneBareConsonant=segments.length===1&&!segments[0].nonMyanmar&&Array.from(segments[0].raw).length===1&&BASE.has(segments[0].raw);
-  const parsed=segments.map(s=>s.nonMyanmar?s:parseCluster(s.raw,loneBareConsonant)),myanmar=parsed.filter(s=>!s.nonMyanmar);
+  const parsed=segments.map((s,index)=>s.nonMyanmar?s:parseCluster(s.raw,isStandaloneBareConsonant(segments,index))),myanmar=parsed.filter(s=>!s.nonMyanmar);
   const ipaText=parsed.map(s=>s.nonMyanmar?s.raw:(s.ipa||"?")).join(""),ukText=parsed.map(s=>s.nonMyanmar?s.raw:(s.uk?.text||"")).join("");
   const ipaStatus=aggregateStatus(myanmar.map(s=>s.ipa?s.status:(s.status==="UNSUPPORTED"?"UNSUPPORTED":"NOT_ESTABLISHED")),myanmar.length?"ESTABLISHED":"UNSUPPORTED");
   const ukStatus=aggregateStatus(myanmar.map(s=>s.uk?.status||"NOT_ESTABLISHED"),myanmar.length?"ESTABLISHED":"UNSUPPORTED");

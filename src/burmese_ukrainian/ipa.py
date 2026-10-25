@@ -1,4 +1,5 @@
 from .parser import parse_burmese
+from .unicode import BASE_CONSONANTS, KINZI, MEDIALS, SPECIAL, VOWEL_SIGNS
 
 ONSET_IPA = {
     "က": "k", "ခ": "kʰ", "ဂ": "ɡ", "ဃ": "ɡ", "င": "ŋ",
@@ -45,23 +46,46 @@ def _ipa(s):
     return o + "".join(x for x in vals if x)
 
 
+def _is_myanmar_phonological_char(char: str) -> bool:
+    return (
+        char in BASE_CONSONANTS
+        or char in VOWEL_SIGNS
+        or char in MEDIALS
+        or char in SPECIAL
+        or char in KINZI
+    )
+
+
+def _standalone_bare_consonant_indices(syllables: list[dict]) -> set[int]:
+    """Find bare consonant clusters bounded by non-Myanmar text or input edges.
+
+    Adjacent Myanmar syllable clusters stay on the existing contextual path.
+    A bare consonant separated by whitespace, Latin text, or punctuation is a
+    standalone token even when the overall input contains multiple characters.
+    """
+    standalone = set()
+    for index, syllable in enumerate(syllables):
+        raw = syllable.get("raw", "")
+        if len(raw) != 1 or raw not in BASE_CONSONANTS:
+            continue
+        previous_raw = syllables[index - 1].get("raw", "") if index else ""
+        next_raw = syllables[index + 1].get("raw", "") if index + 1 < len(syllables) else ""
+        left_is_myanmar = bool(previous_raw) and _is_myanmar_phonological_char(previous_raw[-1])
+        right_is_myanmar = bool(next_raw) and _is_myanmar_phonological_char(next_raw[0])
+        if not left_is_myanmar and not right_is_myanmar:
+            standalone.add(index)
+    return standalone
+
+
 def to_ipa(text: str) -> dict:
     result = parse_burmese(text)
-    # An isolated bare consonant is incomplete user input, not a safe basis
-    # for guessing its inherent vowel. Keep contextual syllables in a word
-    # on their existing path until those contexts are separately adjudicated.
-    bare_isolated = (
-        len(result["normalized"]) == 1
-        and len(result["syllables"]) == 1
-        and not result["syllables"][0].get("vowel")
-        and not result["syllables"][0].get("coda")
-        and not result["syllables"][0].get("medials")
-        and not result["syllables"][0].get("conjunct")
-        and not result["syllables"][0].get("kinzi")
-        and not result["syllables"][0].get("tone_mark")
-    )
-    for syllable in result["syllables"]:
-        syllable["ipa"] = None if bare_isolated else _ipa(syllable)
+    # A bare consonant bounded as its own token is incomplete input. Do not
+    # let unrelated Latin text or whitespace disable the conservative guard.
+    # Contiguous Myanmar syllables retain the existing contextual fallback
+    # until those inherent-vowel contexts are separately adjudicated.
+    bare_isolated = _standalone_bare_consonant_indices(result["syllables"])
+    for index, syllable in enumerate(result["syllables"]):
+        syllable["ipa"] = None if index in bare_isolated else _ipa(syllable)
         syllable["phonetic_status"] = (
             "conservative_partial" if syllable["ipa"] else "analysis_dependent"
         )
