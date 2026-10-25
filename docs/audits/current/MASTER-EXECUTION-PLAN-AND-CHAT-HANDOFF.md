@@ -356,3 +356,11 @@ This note supersedes earlier handoff statements that current-main checks or the 
 - Post-merge current-main tests and deployment are still being verified separately; do not claim them green until their push runs finish.
 - Current-main optional Epitran smoke [40134067758](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40134067758) passed. Inspected artifact [12576415800](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40134067758/artifacts/12576415800), ZIP SHA-256 `6ff7fd5d70f386d76eefb37d50d2718d9de3f4e410749cf94848af9afeab788c`; Epitran 1.35.3 / Python 3.12.15; 6 outputs, 0 runtime errors. Corpus/mapping/pre/post hashes are recorded in the registry. Gold count remains 0 and accuracy null.
 - This is raw-output smoke evidence only. Phonological coverage, tone-aware evaluation, source-located lexical gold, Python/browser parity and owner licensing decisions remain open.
+
+
+## IPA withholding for unresolved coda/prosody — 2026-10-25
+
+- PR #26: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/26
+- The IPA adapter now withholds a syllable-level IPA result when parsed coda/asat or prosodic marks lack an evidence-backed surface realization, rather than silently dropping that material. Regression tests cover a dangling virama, unresolved asat coda and unresolved prosodic mark.
+- Workflow for the original test-only commit [40192527691](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40192527691) passed. The follow-up implementation/test commit `495d34517c29540982791653f5e4b35bc2a1a856` had workflow `40192661638` still in progress at this checkpoint; do not mark this follow-up verified until that run completes successfully.
+- This is conservative correctness hardening, not a claim of complete Burmese phonology. Independent gold count remains 0; contextual vowel realization, tone/phonation and source-adjudicated lexical data remain open.
