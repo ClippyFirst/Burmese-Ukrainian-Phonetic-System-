@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BurmesePhonologyCorpusRecord",
+  "type": "object",
+  "required": [
+    "case_id",
+    "orthography",
+    "phenomenon",
+    "expected_graphemic_or_syllabic_analysis",
+    "expected_ipa",
+    "expected_ukrainian",
+    "source_id",
+    "source_locator",
+    "evidence_status",
+    "confidence",
+    "notes",
+    "ipa_convention",
+    "scope",
+    "analysis_level",
+    "reviewer",
+    "uncertainty_notes"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "orthography": {
+      "type": "string",
+      "minLength": 1
+    },
+    "phenomenon": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_graphemic_or_syllabic_analysis": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_ipa": {
+      "type": "string"
+    },
+    "expected_ukrainian": {
+      "type": "string"
+    },
+    "source_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_locator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_status": {
+      "enum": [
+        "STRUCTURAL_ONLY",
+        "SOURCE_ATTESTED",
+        "GOLD_VERIFIED",
+        "CONFLICTING_SOURCE_ANALYSES",
+        "NOT_ESTABLISHED",
+        "UNRESOLVED",
+        "PENDING_REVIEW"
+      ]
+    },
+    "confidence": {
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        "not_assessed",
+        ""
+      ]
+    },
+    "notes": {
+      "type": "string"
+    },
+    "ipa_convention": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "analysis_level": {
+      "type": "string"
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "uncertainty_notes": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "evidence_status": {
+            "const": "STRUCTURAL_ONLY"
+          }
+        },
+        "required": [
+          "evidence_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "expected_ipa": {
+            "const": ""
+          },
+          "expected_ukrainian": {
+            "const": ""
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_status": {
+            "const": "GOLD_VERIFIED"
+          }
+        },
+        "required": [
+          "evidence_status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "expected_ipa": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ipa_convention": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "analysis_level": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reviewer": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uncertainty_notes": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "expected_ipa",
+          "ipa_convention",
+          "scope",
+          "analysis_level",
+          "reviewer",
+          "uncertainty_notes"
+        ]
+      }
+    }
+  ],
+  "additionalProperties": false
+}

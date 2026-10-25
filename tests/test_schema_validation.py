@@ -89,3 +89,38 @@ def test_all_canonical_evidence_registries_validate_against_schemas():
         assert rule["source_id"] in sources_by_id, rule["rule_id"]
         assert rule["claim_id"] in claims_by_id, rule["rule_id"]
         assert claims_by_id[rule["claim_id"]]["source_id"] == rule["source_id"], rule["rule_id"]
+
+
+def test_phonology_corpus_rows_respect_evidence_and_gold_contract():
+    schema = _load_schema("phonology_corpus.schema.json")
+    validator = Draft202012Validator(schema)
+    with (ROOT / "data" / "burmese" / "phonology_corpus.csv").open(
+        encoding="utf-8", newline=""
+    ) as handle:
+        rows = list(csv.DictReader(handle))
+    with (ROOT / "data" / "burmese" / "sources.csv").open(
+        encoding="utf-8", newline=""
+    ) as handle:
+        source_ids = {row["source_id"] for row in csv.DictReader(handle)}
+
+    assert rows
+    seen = set()
+    for index, row in enumerate(rows, start=2):
+        errors = sorted(validator.iter_errors(row), key=lambda error: list(error.path))
+        assert not errors, (index, row, [error.message for error in errors])
+        assert row["case_id"] not in seen, row["case_id"]
+        seen.add(row["case_id"])
+        assert row["source_id"] in source_ids, row["case_id"]
+
+        if row["evidence_status"] == "STRUCTURAL_ONLY":
+            assert not row["expected_ipa"].strip(), row["case_id"]
+            assert not row["expected_ukrainian"].strip(), row["case_id"]
+            assert not row["reviewer"].strip(), row["case_id"]
+        if row["evidence_status"] == "GOLD_VERIFIED":
+            assert row["expected_ipa"].strip(), row["case_id"]
+            assert row["ipa_convention"].strip(), row["case_id"]
+            assert row["scope"].strip(), row["case_id"]
+            assert row["analysis_level"].strip(), row["case_id"]
+            assert row["reviewer"].strip(), row["case_id"]
+            assert row["uncertainty_notes"].strip(), row["case_id"]
+            assert "pending" not in row["source_locator"].lower(), row["case_id"]
