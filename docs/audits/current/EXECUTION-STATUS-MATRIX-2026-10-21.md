@@ -126,3 +126,5 @@ This checkpoint supersedes older baseline SHAs and statements that the current-h
 - Found a top-level API bug: `parse_burmese("")` previously returned `status="ok"` because Python's `all([])` is true, even though no syllable was analyzed.
 - Empty and whitespace-only input now return `status="empty_input"`, preserving normalized input but producing no graphemes/syllables.
 - This is an API status correction, not a pronunciation rule. Exact-head CI must pass Python tests, schema checks, build and browser tests.
+
+| Unicode control characters | Python treats DEL/C1 as unsupported; browser previously passed them through as non-Myanmar text | Shared Unicode fixture now covers U+007F and U+009F; exact-head CI pending | Not an IPA accuracy metric | IN_PROGRESS | Verify Python, browser and built UI on exact branch head; retain ordinary whitespace/punctuation passthrough |
