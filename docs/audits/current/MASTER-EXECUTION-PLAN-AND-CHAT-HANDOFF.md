@@ -414,3 +414,12 @@ This note supersedes earlier handoff statements that current-main checks or the 
 - Also fixed a Python/browser gap: DEL/C1 controls were treated as ordinary non-Myanmar text in the browser and copied through, while Python marked them unsupported. Browser segmentation now isolates C0/C1 controls except tab/LF/CR and routes them through the unsupported-input status path.
 - Shared Unicode fixture cases cover U+007F and U+009F and are consumed by Python and Playwright tests. This is input integrity/parity, not phonological gold.
 - Exact-head CI [40211417858](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40211417858) passed Python tests, web data validation/build, generated-data drift and Playwright browser tests. This was a standard CI run, not an external Epitran smoke.
+
+
+## Burmese source-to-rule evidence traceability gate — 2026-10-25
+
+- PR [#37](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/37) merged as `7afa5fd727051f9904a83d817761434c3fad1c4a`.
+- Added `CLM-PHON-001` for Mooney & Repetti-Ludlow (2021) and extended `data/burmese/phonological_rules.csv` with `claim_id`, `source_locator`, `scope`, and `test_reference`. The existing `NO_DIRECT_TONE_VOWEL_RULE` remains `analysis_dependent`; the claim is scoped to the vowel alternations analyzed in that paper and is not a universal prohibition on tone-segment interactions.
+- Added `tests/test_source_rule_evidence.py`, which verifies unique rule IDs, registered source/claim references, source-ID agreement, a non-empty locator and scope, valid evidence status, and existence of a referenced test file.
+- Exact-head full test workflow [40220190045](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40220190045) passed. This is provenance/contract evidence, not a phonological accuracy benchmark. Independent adjudicated Burmese IPA gold remains 0.
+- Matrix status: source → claim → rule → test traceability is `DONE_VERIFIED` for the current rule rows. The broader tone/register/phonation model, vowel/coda coverage and independent lexical gold corpus remain unresolved.
