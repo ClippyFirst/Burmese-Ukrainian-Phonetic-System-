@@ -117,6 +117,12 @@ def _parse_cluster(cluster: str) -> Syllable:
 
     while i < len(cluster) and cluster[i] in SPECIAL:
         role = SPECIAL[cluster[i]]
+        # Virama is only licensed in the immediately parsed conjunct sequence
+        # above. Treating it as a generic trailing special sign would silently
+        # discard a malformed virama after a vowel or medial.
+        if role == "virama":
+            sy.analysis.status = "invalid"
+            return sy
         if role == "asat":
             sy.coda = {
                 "marker": "asat",
