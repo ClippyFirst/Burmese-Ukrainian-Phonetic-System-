@@ -403,3 +403,6 @@ This note supersedes earlier handoff statements that current-main checks or the 
 
 - `parse_burmese` previously treated empty input as successful because `all([])` is true. It now returns explicit `empty_input` for empty or whitespace-only strings and does not synthesize grapheme/syllable records.
 - Regression tests cover `""`, ordinary spaces, and tab/newline-only input. The phonological IPA status remains unchanged for non-empty input.
+
+
+- Post-merge evidence: PR #30 merged as `6d1ecc79d8dff72cd8a6476bd832a5047515c720`; exact-head CI [40209303104](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40209303104) passed. The fix corrects only the empty-input API status and does not change phonological output for non-empty inputs.
