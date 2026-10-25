@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "purpose": "Shared regression contract for broad Myanmar Unicode recognition versus supported Burmese inventory. These expectations are structural/status contracts, not phonetic gold data.",
+  "purpose": "Shared regression contract for broad Myanmar Unicode recognition versus supported Burmese inventory. These expectations are structural/status contracts, not phonetic gold data. C0/C1 control characters are not ordinary non-Myanmar passthrough.",
   "cases": [
     {
       "id": "myanmar-extended-c-116d0",
@@ -26,6 +26,40 @@
         "U+AA60"
       ],
       "category": "recognized_myanmar_script_but_unsupported_inventory",
+      "python": {
+        "top_level_status": "contains_uncertainty_or_invalid_input",
+        "syllable_status": "unsupported_or_malformed",
+        "graphemes_preserved": true
+      },
+      "browser": {
+        "uk_status": "UNSUPPORTED",
+        "must_not_report_passthrough": true
+      }
+    },
+    {
+      "id": "del-control-007f",
+      "input": "",
+      "codepoints": [
+        "U+007F"
+      ],
+      "category": "unsupported_unicode_control",
+      "python": {
+        "top_level_status": "contains_uncertainty_or_invalid_input",
+        "syllable_status": "unsupported_or_malformed",
+        "graphemes_preserved": true
+      },
+      "browser": {
+        "uk_status": "UNSUPPORTED",
+        "must_not_report_passthrough": true
+      }
+    },
+    {
+      "id": "c1-control-009f",
+      "input": "",
+      "codepoints": [
+        "U+009F"
+      ],
+      "category": "unsupported_unicode_control",
       "python": {
         "top_level_status": "contains_uncertainty_or_invalid_input",
         "syllable_status": "unsupported_or_malformed",
