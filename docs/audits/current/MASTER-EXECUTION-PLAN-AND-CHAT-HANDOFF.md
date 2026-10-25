@@ -390,3 +390,10 @@ This note supersedes earlier handoff statements that current-main checks or the 
 - The first attempt to remove the browser's generic inherent-vowel fallback failed existing browser regressions for `ရှ` and `မင်္ဂလာ` (run [40196926842](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40196926842)). That change was too broad: it suppressed contextual cases already represented by the engine.
 - Narrowed the guard to an **isolated one-codepoint bare consonant input only**. Existing contextual fallbacks remain intact for multi-grapheme input; Python and browser both withhold the isolated bare-consonant result. This is a deliberate conservative boundary, not a general claim that inherent vowels are unresolved in all contexts.
 - Exact revised code-head CI is [40197108302](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40197108302); pending at this checkpoint. Earlier failures are retained as honest regression evidence, not hidden.
+
+
+## Post-merge checkpoint — 2026-10-25
+
+- PR #28 merged to `main` as `62cb4ab49bd88736faea89f2b378d10b009ce640`.
+- Exact PR-head workflow [40197390660](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40197390660) passed after the inherent-vowel guard was narrowed to isolated bare consonants; contextual fallbacks remain intact.
+- This verifies the specific anusvara-loss and isolated-bare-input contracts. It does not establish the contextual vowel/coda system, tone/phonation, full Python/browser parity, or independent accuracy. Independent gold remains 0.
