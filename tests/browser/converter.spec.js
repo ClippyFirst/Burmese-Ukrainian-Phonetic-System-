@@ -255,3 +255,19 @@ test("unresolved inherent vowel is withheld instead of guessed in browser IPA",a
   await expect(page.locator("#uk")).toHaveText("—");
   await expect(page.locator("#uk-status")).toContainText("NOT_ESTABLISHED");
 });
+
+
+test("bare consonant bounded by Latin text is withheld even in a multi-token input",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("က A");
+  await expect(page.locator("#ipa")).toContainText("?");
+  await expect(page.locator("#ipa")).not.toContainText("ka");
+  await expect(page.locator("#ipa-status")).toContainText("not established");
+});
+
+test("contiguous Myanmar bare clusters retain the existing contextual fallback",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကမ");
+  await expect(page.locator("#ipa")).toContainText("kama");
+  await expect(page.locator("#issues")).toBeVisible();
+});
