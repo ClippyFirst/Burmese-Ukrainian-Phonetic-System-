@@ -1,2 +1,4 @@
 rule_id,input,environment,output,status,source_id,claim_id,source_locator,scope,test_reference
 NO_DIRECT_TONE_VOWEL_RULE,tonal_category,vowel_alternation_context,do_not_apply_as_direct_rule,analysis_dependent,MOONEY2021,CLM-PHON-001,"Abstract; §3.1 Analysis: Vowel Centralization and Diphthongization; https://doi.org/10.3765/plsa.v6i1.4900","Central Burmese vowel alternations discussed by Mooney & Repetti-Ludlow (2021); analysis-dependent, not a universal prohibition on all tone-segment interactions",tests/test_source_rule_evidence.py
+MALFORMED_VIRAMA_WITHHOLD_IPA,"U+1039 VIRAMA","not immediately followed by a base consonant in the conjunct parse","invalid; withhold IPA and Ukrainian output",established,U18,CLM-ORTH-001,"Unicode 18.0.0 §16.3.1, Table 16-4 (Modern Burmese Syllabic Structure; orthographic structure only)","Structural validity of the Myanmar virama/conjunct sequence; not a pronunciation rule",tests/test_malformed_ipa_withholding.py
+
