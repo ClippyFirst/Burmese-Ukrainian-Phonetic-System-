@@ -144,6 +144,16 @@ def _serialize_syllable(syllable: Syllable) -> dict:
 
 def parse_burmese(text: str) -> dict:
     normalized = normalize_burmese(text)
+    # Empty/whitespace-only input is not a successful pronunciation analysis.
+    # Preserve the normalized source string, but return no synthetic graphemes.
+    if not normalized.strip():
+        return {
+            "input": text,
+            "normalized": normalized,
+            "graphemes": [],
+            "syllables": [],
+            "status": "empty_input",
+        }
     syllables = segment_syllables(normalized)
     records = [_serialize_syllable(s) for s in syllables]
     ok = all(s.analysis.status == "established" for s in syllables)
