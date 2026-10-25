@@ -238,3 +238,12 @@ test("research validation limits are visible to site visitors", async ({ page })
   await expect(page.locator("#validation-status")).toContainText("6 STRUCTURAL_ONLY");
   await expect(page.locator("#validation-status a")).toHaveAttribute("href", /EXECUTION-STATUS-MATRIX-2026-10-21\.md/);
 });
+
+test("unresolved anusvara is not silently deleted from browser IPA",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကံ");
+  await expect(page.locator("#ipa")).toHaveText("?");
+  await expect(page.locator("#uk")).toHaveText("—");
+  await expect(page.locator("#uk-status")).toContainText("NOT_ESTABLISHED");
+  await expect(page.locator("#syllables")).toContainText("IPA не встановлено");
+});
