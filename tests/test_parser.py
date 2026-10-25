@@ -9,7 +9,7 @@ def test_malformed_virama_not_phonologized():
 
 
 def test_empty_and_whitespace_only_input_are_not_successful_analysis():
-    for text in ("", " ", "\\t\\n"):
+    for text in ("", " ", "\t\n"):
         result = parse_burmese(text)
         assert result["status"] == "empty_input"
         assert result["normalized"] == text
