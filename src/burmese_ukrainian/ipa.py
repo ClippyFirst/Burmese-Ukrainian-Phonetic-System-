@@ -33,6 +33,12 @@ def _ipa(s):
     v = s.get("vowel")
     if not v:
         return o + "?"
+    # Anusvara is currently only recognized orthographically. Its nasal/coda
+    # realization is contextual and has no evidence-backed IPA mapping here;
+    # do not let the empty placeholder silently delete it from the output.
+    if any(sign.get("id") == "anusvara" for sign in v["signs"]):
+        return None
+
     vals = [VOWEL_IPA.get(x["id"]) for x in v["signs"]]
     if any(x is None for x in vals):
         return None
