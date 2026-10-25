@@ -430,5 +430,12 @@ This note supersedes earlier handoff statements that current-main checks or the 
 - Added `CLM-ORTH-001` to `data/burmese/source_claims.csv`, scoped to modern Burmese orthographic structure and U+1039, using Unicode 18.0.0 §16.3.1 / Table 16-4. The claim is structural; it does not assert IPA for the affected forms.
 - Added `MALFORMED_VIRAMA_WITHHOLD_IPA` to `data/burmese/phonological_rules.csv` as a traceable guard: U+1039 not immediately followed by a base consonant in the parsed conjunct must remain invalid and must not be silently discarded into plausible IPA/Ukrainian output.
 - Extended `tests/test_source_rule_evidence.py` to assert source/claim/rule/test linkage and distinguish the orthographic source from phonetic evidence.
-- Exact-head CI is pending. No local test execution is claimed. Acceptance: all schema/source-rule tests, Python tests, build and browser tests pass on this exact branch head.
+- Exact-head CI passed on the final branch head: runs [40225162339](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40225162339) and [40225149612](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40225149612) completed successfully. Post-merge main test workflow [40225276414](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40225276414) passed; a separate main workflow [40225276247](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40225276247) was still in progress at checkpoint time. No local test execution is claimed.
 - This documents an existing malformed-input guard; it adds no phonetic realization and no independent Burmese IPA gold. Independent gold remains 0.
+
+
+## Post-merge virama-evidence CI checkpoint — 2026-10-25
+
+- PR [#45](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/45) merged as `eb194333f50eccb9f16c9a94f37c079aa69e5ea9`.
+- Exact-head workflows [40225162339](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40225162339) and [40225149612](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40225149612) passed. Post-merge main test workflow [40225276414](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40225276414) passed; separate main workflow [40225276247](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40225276247) remained in progress at the time of writing.
+- The registry now records an orthographic structural guard for malformed U+1039. This does not establish a phonological rule or add IPA gold; independent adjudicated gold remains 0.
