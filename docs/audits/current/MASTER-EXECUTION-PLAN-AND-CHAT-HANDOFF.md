@@ -364,3 +364,13 @@ This note supersedes earlier handoff statements that current-main checks or the 
 - The IPA adapter now withholds a syllable-level IPA result when parsed coda/asat or prosodic marks lack an evidence-backed surface realization, rather than silently dropping that material. Regression tests cover a dangling virama, unresolved asat coda and unresolved prosodic mark.
 - Workflow for the original test-only commit [40192527691](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40192527691) passed. The follow-up implementation/test commit `495d34517c29540982791653f5e4b35bc2a1a856` had workflow `40192661638` still in progress at this checkpoint; do not mark this follow-up verified until that run completes successfully.
 - This is conservative correctness hardening, not a claim of complete Burmese phonology. Independent gold count remains 0; contextual vowel realization, tone/phonation and source-adjudicated lexical data remain open.
+
+
+## Anusvara IPA-withholding correction — 2026-10-25
+
+- Branch: `fix/burmese-withhold-unresolved-anusvara-20261025`; PR [#28](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/28).
+- Defect: `VOWEL_SIGNS` parses U+1036 ANUSVARA as an orthographic vowel sign, while `ipa.py` used an empty-string placeholder for it and filtered empty mapped values. Consequently `to_ipa("ကံ")` returned `k`, silently deleting unresolved nasal/coda material.
+- Test-first evidence: [run 40195598572](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40195598572) failed on the new regression as expected: actual syllable IPA was `k` instead of `None`.
+- Fix: the IPA adapter now explicitly withholds the whole syllable whenever an anusvara sign is present, until its contextual nasal/coda realization has an evidence-backed rule. It does not guess a nasal consonant or claim a new IPA mapping.
+- Verification: post-fix run [40195614032](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40195614032) **passed**: pytest, npm build, generated-web-data check, npm tests, and Playwright browser tests.
+- This closes one conservative adapter defect only. Complete contextual vowels, codas, tone/phonation, Python/browser parity, independent lexical IPA gold, and accuracy measurement remain open; gold count is still 0.
