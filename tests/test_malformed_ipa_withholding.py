@@ -27,3 +27,12 @@ def test_unresolved_prosodic_mark_is_not_silently_dropped_from_ipa():
     assert result["syllables"][0]["tone_mark"] is not None
     assert result["syllables"][0]["ipa"] is None
     assert result["ipa"] == "?"
+
+
+def test_unresolved_inherent_vowel_does_not_emit_onset_plus_question_mark():
+    result = to_ipa("က")
+
+    assert result["syllables"][0]["vowel"] is None
+    assert result["syllables"][0]["ipa"] is None
+    assert result["syllables"][0]["phonetic_status"] == "analysis_dependent"
+    assert result["ipa"] == "?"
