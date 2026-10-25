@@ -1,5 +1,5 @@
 source_id,title,author,year,type,scope,url
-U18,Unicode Standard 18.0.0 Chapter 16: Southeast Asia-I, §16.3.1 Myanmar,Unicode Consortium,2025,standard,Burmese Myanmar script and Modern Burmese Syllabic Structure (Table 16-4),https://unicode.org/versions/Unicode18.0.0/core-spec/chapter-16/
+U18,"Unicode Standard 18.0.0 Chapter 16: Southeast Asia-I, §16.3.1 Myanmar",Unicode Consortium,2025,standard,"Burmese Myanmar script and Modern Burmese Syllabic Structure (Table 16-4)",https://unicode.org/versions/Unicode18.0.0/core-spec/chapter-16/
 UTN11,Representing Myanmar in Unicode,Unicode Consortium,2007,technical_note,Myanmar script and encoding,https://www.unicode.org/notes/tn11/
 GREEN2002,Word Foot and Syllable Structure in Burmese,Anthony Green,2002,chapter,Burmese syllable and tone analysis,https://roa.rutgers.edu/files/551-1002/551-1002-GREEN-0-1.PDF
 MOONEY2021,Sonority and syllable structure: The case of Burmese tone,Kate Mooney; Chiara Repetti-Ludlow,2021,peer_reviewed,Burmese tone and vowel alternations,https://journals.linguisticsociety.org/proceedings/index.php/PLSA/article/view/4900
