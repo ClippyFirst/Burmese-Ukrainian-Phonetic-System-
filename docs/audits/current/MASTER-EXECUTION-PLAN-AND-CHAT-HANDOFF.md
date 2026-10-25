@@ -423,3 +423,12 @@ This note supersedes earlier handoff statements that current-main checks or the 
 - Added `tests/test_source_rule_evidence.py`, which verifies unique rule IDs, registered source/claim references, source-ID agreement, a non-empty locator and scope, valid evidence status, and existence of a referenced test file.
 - Exact-head full test workflow [40220190045](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40220190045) passed. This is provenance/contract evidence, not a phonological accuracy benchmark. Independent adjudicated Burmese IPA gold remains 0.
 - Matrix status: source → claim → rule → test traceability is `DONE_VERIFIED` for the current rule rows. The broader tone/register/phonation model, vowel/coda coverage and independent lexical gold corpus remain unresolved.
+
+
+## Unicode-backed misplaced-virama evidence link — 2026-10-25
+
+- Added `CLM-ORTH-001` to `data/burmese/source_claims.csv`, scoped to modern Burmese orthographic structure and U+1039, using Unicode 18.0.0 §16.3.1 / Table 16-4. The claim is structural; it does not assert IPA for the affected forms.
+- Added `MALFORMED_VIRAMA_WITHHOLD_IPA` to `data/burmese/phonological_rules.csv` as a traceable guard: U+1039 not immediately followed by a base consonant in the parsed conjunct must remain invalid and must not be silently discarded into plausible IPA/Ukrainian output.
+- Extended `tests/test_source_rule_evidence.py` to assert source/claim/rule/test linkage and distinguish the orthographic source from phonetic evidence.
+- Exact-head CI is pending. No local test execution is claimed. Acceptance: all schema/source-rule tests, Python tests, build and browser tests pass on this exact branch head.
+- This documents an existing malformed-input guard; it adds no phonetic realization and no independent Burmese IPA gold. Independent gold remains 0.
