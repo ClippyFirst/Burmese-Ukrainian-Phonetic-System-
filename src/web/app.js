@@ -2,7 +2,7 @@ import { ONSETS, SIGNS, MEDIALS, PRACTICAL, RULES } from "./generated/data.js";
 
 const source=document.querySelector("#source"), results=document.querySelector("#results"), empty=document.querySelector("#empty");
 const issues=document.querySelector("#issues"), issueText=document.querySelector("#issue-text"), count=document.querySelector("#count");
-const uk=document.querySelector("#uk"), ipa=document.querySelector("#ipa"), syllables=document.querySelector("#syllables");
+const uk=document.querySelector("#uk"), ipa=document.querySelector("#ipa"), romanization=document.querySelector("#romanization"), syllables=document.querySelector("#syllables");
 const ukStatus=document.querySelector("#uk-status"), ipaStatus=document.querySelector("#ipa-status"), live=document.querySelector("#live");
 
 const KINZI="င်္", VIRAMA="္", ASAT="်";
@@ -257,9 +257,10 @@ function convert(text){
 }
 
 function render(){
-  const text=source.value;count.textContent=text.length+" символів";
+  const text=source.value;count.textContent=[...text].length+" символів";
   if(!text){empty.hidden=false;results.hidden=true;issues.hidden=true;return;}
   const r=convert(text);empty.hidden=true;results.hidden=false;uk.textContent=r.uk||"—";ipa.textContent=r.ipa||"—";
+  romanization.textContent=typeof window.mya2rom==="function" ? text.split(/([\s၊။၊,!?;:()[\]{}“”«»]+)/u).map(part=>/[\u1000-\u109f\uA9E0-\uA9FF\uAA60-\uAA7F\u116D0-\u116FF]/u.test(part) ? window.mya2rom(part,"mlcts2") : part).join("") : "Романізатор не завантажився; результат не сформовано.";
   ukStatus.textContent="Загальний статус: "+r.status+" · IPA: "+r.ipaStatus+" · українська передача: "+r.ukStatus;
   ipaStatus.textContent=r.segments.some(x=>!x.nonMyanmar&&!x.ipa)?"Частину фонетичної структури не встановлено для цього вводу.":"Структурно розпізнані сегменти.";
   syllables.replaceChildren();

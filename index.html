@@ -38,12 +38,12 @@
 <section id="empty" class="empty" aria-live="polite"><span class="empty-glyph" aria-hidden="true">မြ</span><div><strong>Тут з’явиться результат</strong><span>Вставте бірманський текст або відкрийте приклад, щоб почати.</span></div></section>
 
 <section id="results" class="results" hidden aria-labelledby="results-heading">
-  <div class="bar"><div class="section-title"><span class="section-number">B</span><div><p class="kicker">Вихід</p><h2 id="results-heading">Результати</h2></div></div><span class="result-note">аналіз → IPA → українська передача</span></div>
+  <div class="bar"><div class="section-title"><span class="section-number">B</span><div><p class="kicker">Вихід</p><h2 id="results-heading">Результати</h2></div></div><span class="result-note">романізація → IPA → українська</span></div>
 
-  <article class="result-card primary-result">
-    <div class="result-meta"><span class="result-index">01</span><div><h3>Українська практична транскрипція</h3><p>Авторська система, побудована від аналізу вимови, а не від прямої заміни знаків.</p></div><button class="copy" data-copy="uk" type="button">Копіювати</button></div>
-    <p id="uk" class="result-value" lang="uk"></p>
-    <div id="uk-status" class="status-line"></div>
+  <article class="result-card">
+    <div class="result-meta"><span class="result-index">01</span><div><h3>Романізація · MLCTS2</h3><p>Модифікована транскрипційна система MLC/SEALang; окремо від IPA й українського результату.</p></div><button class="copy" data-copy="romanization" type="button">Копіювати</button></div>
+    <p id="romanization" class="result-value" lang="en"></p>
+    <div id="romanization-status" class="status-line">Mya2Rom 0.4.4 · можливі обмеження для окремих словникових форм.</div>
   </article>
 
   <article class="result-card">
@@ -52,8 +52,14 @@
     <div id="ipa-status" class="status-line"></div>
   </article>
 
+  <article class="result-card primary-result">
+    <div class="result-meta"><span class="result-index">03</span><div><h3>Українська практична транскрипція</h3><p>Авторська система, побудована від аналізу вимови, а не від прямої заміни знаків.</p></div><button class="copy" data-copy="uk" type="button">Копіювати</button></div>
+    <p id="uk" class="result-value" lang="uk"></p>
+    <div id="uk-status" class="status-line"></div>
+  </article>
+
   <article class="result-card">
-    <div class="result-meta"><span class="result-index">03</span><div><h3>Структурний аналіз</h3><p>Як Unicode-послідовність розібрана на бірманські графемні кластери.</p></div></div>
+    <div class="result-meta"><span class="result-index">04</span><div><h3>Структурний аналіз</h3><p>Як Unicode-послідовність розібрана на бірманські графемні кластери.</p></div></div>
     <div id="syllables" class="syllables"></div>
   </article>
 </section>
@@ -68,6 +74,8 @@
 <footer class="footer"><div><strong>မြန်မာ / УКРАЇНСЬКА</strong><span>Дослідницький інструмент практичної передачі бірманської мови українською.</span></div><div><span>© 2026 Vitalii Tkachuk · ClippyFirst</span><a href="https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-" target="_blank" rel="noreferrer">GitHub ↗</a></div></footer>
 <p id="live" class="sr-only" aria-live="polite"></p>
 </main>
+<script src="./vendor/mya2rom/romanisations.js"></script>
+<script src="./vendor/mya2rom/mya2rom.js"></script>
 <script type="module" src="./src/web/app.js"></script>
 </body>
 </html>
