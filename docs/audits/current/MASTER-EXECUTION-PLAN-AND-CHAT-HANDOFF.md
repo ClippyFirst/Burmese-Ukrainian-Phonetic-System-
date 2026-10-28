@@ -432,3 +432,12 @@ This note supersedes earlier handoff statements that current-main checks or the 
 - Extended `tests/test_source_rule_evidence.py` to assert source/claim/rule/test linkage and distinguish the orthographic source from phonetic evidence.
 - Exact-head CI is pending. No local test execution is claimed. Acceptance: all schema/source-rule tests, Python tests, build and browser tests pass on this exact branch head.
 - This documents an existing malformed-input guard; it adds no phonetic realization and no independent Burmese IPA gold. Independent gold remains 0.
+
+
+## Romanization → IPA → Ukrainian result order — 2026-10-29
+
+- Open draft PR [#47](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/47) adds a separate Burmese romanization result before IPA and Ukrainian practical transcription.
+- Engine: vendored Mya2Rom 0.4.4, profile `MLCTS2` (modified MLC/SEALang transcription), licensed CC-BY-SA-4.0 with upstream license and attribution notice preserved. The upstream project documents limitations for stacked forms, some asat forms, sandhi, alternate pronunciations, and Pali/Sanskrit-derived words. The output is not a pronunciation gold standard.
+- Exact-head CI for `e79c03aa97f7a7e171e8477e6488c7007d45b69c`: [tests run 40780283987](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40780283987) **passed**, including existing Python/web checks and Playwright browser tests. Added browser regression checks the documented `မြို့ → mjou.` output and the visible Romanization → IPA → Ukrainian order.
+- Status: UI/engine integration **PARTIAL / CI-PASS**. Existing Burmese IPA and Ukrainian candidate limitations are unchanged; romanization is an independent output and does not repair the unresolved lexical IPA gold gap.
+- Next acceptance gates: broaden source-backed MLCTS2 fixtures, manually inspect punctuation/mixed-script behavior and copy controls, review share-alike attribution obligations, and retain the research-grade warning. Keep PR draft pending owner review.
