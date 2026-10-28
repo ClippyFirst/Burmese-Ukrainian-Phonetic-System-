@@ -441,3 +441,14 @@ This note supersedes earlier handoff statements that current-main checks or the 
 - Exact-head CI for `e79c03aa97f7a7e171e8477e6488c7007d45b69c`: [tests run 40780283987](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40780283987) **passed**, including existing Python/web checks and Playwright browser tests. Added browser regression checks the documented `မြို့ → mjou.` output and the visible Romanization → IPA → Ukrainian order.
 - Status: UI/engine integration **PARTIAL / CI-PASS**. Existing Burmese IPA and Ukrainian candidate limitations are unchanged; romanization is an independent output and does not repair the unresolved lexical IPA gold gap.
 - Next acceptance gates: broaden source-backed MLCTS2 fixtures, manually inspect punctuation/mixed-script behavior and copy controls, review share-alike attribution obligations, and retain the research-grade warning. Keep PR draft pending owner review.
+
+
+## Publication checkpoint — 2026-10-29
+
+This checkpoint supersedes earlier notes in this handoff saying the romanization PR was open/draft.
+
+- PR #47 was merged to main as 977548d3044ff0645ec80e96886f59983243b4b8.
+- Exact post-merge tests [40782829530](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40782829530) passed, including npm build/tests and Playwright browser regression.
+- Exact post-merge GitHub Pages deployment [40782829421](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40782829421) passed and reported URL: https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/
+- Published output order: Burmese romanization (MLCTS2) → IPA → Ukrainian practical transcription. Mya2Rom profile and phonological coverage limitations remain as documented above.
+- Remaining acceptance gates include more sourced MLCTS2 fixtures, manual punctuation/mixed-script/copy QA, and licensing review. Publication does not mean linguistic completeness.
