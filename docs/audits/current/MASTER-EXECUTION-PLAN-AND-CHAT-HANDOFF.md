@@ -452,3 +452,10 @@ This checkpoint supersedes earlier notes in this handoff saying the romanization
 - Exact post-merge GitHub Pages deployment [40782829421](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40782829421) passed and reported URL: https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/
 - Published output order: Burmese romanization (MLCTS2) → IPA → Ukrainian practical transcription. Mya2Rom profile and phonological coverage limitations remain as documented above.
 - Remaining acceptance gates include more sourced MLCTS2 fixtures, manual punctuation/mixed-script/copy QA, and licensing review. Publication does not mean linguistic completeness.
+
+
+## User-reported MLCTS2 Pages defect — 2026-10-29
+
+- PR #48 (fix/burmese-romanizer-pages-asset-2026-10-29) addresses a production-only defect: Vite serves root-level vendor scripts during development but does not copy them into dist/ by default. The built GitHub Pages artifact therefore omitted Mya2Rom's two scripts even though the source HTML referenced them.
+- scripts/copy-vendor-assets.mjs copies only romanisations.js and mya2rom.js into public/vendor/mya2rom/ before the build. Playwright now uses vite preview and asserts window.mya2rom is a function as well as checking the known MLCTS2 output.
+- The Pages workflow uploads the same production artifact exercised by Playwright. Exact-head CI is queued at https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40835694096; do not mark verified until build, tests and production-preview browser tests pass.
