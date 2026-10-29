@@ -489,3 +489,10 @@ This checkpoint supersedes earlier notes in this handoff saying the romanization
 - GitHub Status reported Actions operational at this checkpoint; account/repository concurrency limits or runner provisioning/permission issues remain possible. The exact Burmese PR-head run [40842022531](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40842022531) is still queued without initialized steps. No Python, data validation, production build, Playwright, or Pages deployment command has run on this exact head.
 - Local `git ls-remote` failed because this execution environment could not resolve `github.com`; no local test execution is claimed. The queue pattern is plausible evidence of shared runner saturation, not proof of the root cause. Do not merge until exact-head Python/data checks, production build, Playwright preview, and live Pages verification pass.
 - The implementation fix remains specific: the production build copies both vendored Mya2Rom scripts into Vite's public output, and the browser test checks that the romanizer global loads and produces the expected result. Static source inspection passed; runtime acceptance remains pending.
+
+## Handoff checkpoint — 2026-10-29
+
+- Latest verified code revision at this checkpoint: `92dccf6619fc487b97164349ae11be79f356e2ce` on `fix/burmese-romanizer-pages-asset-2026-10-29`.
+- Exact-head CI [40848298933](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40848298933) passed Python tests, data validation, generated-data consistency, `npm test`, production build and the full Playwright browser suite.
+- Root cause fixed: `vite.config.js` previously built only `index.html`, despite the browser suite and service contract requiring `system.html`; the methodology page is now included as a second production entry.
+- Still open: live Pages deployment verification, independent IPA gold set and linguistic accuracy. Do not merge until reviewing all required checks and confirming deployment expectations; this CI pass verifies the tested PR merge ref, not live production.
