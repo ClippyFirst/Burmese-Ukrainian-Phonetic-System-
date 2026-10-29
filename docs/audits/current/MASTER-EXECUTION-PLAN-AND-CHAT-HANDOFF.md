@@ -481,3 +481,11 @@ This checkpoint supersedes earlier notes in this handoff saying the romanization
 - Updated `.github/workflows/test.yml` so feature-branch pushes no longer launch a duplicate run alongside the PR workflow; pushes to `main` still run tests.
 - Added a per-PR concurrency group with `cancel-in-progress: true` to avoid retaining superseded checks once this workflow revision is active.
 - This is queue hygiene, not proof that the underlying runner issue is fixed. Latest exact-head CI still needs to execute Python tests, data validation, production build and Playwright against the production preview. Do not merge based on queued/cancelled jobs.
+
+
+## Shared Actions queue investigation — 2026-10-29 08:38 UTC
+
+- Cross-repository inspection found the Korean benchmark PR's latest 100 workflow runs included 36 queued and 9 in progress, with repeated model/benchmark jobs across earlier commits. A queue-hygiene commit (`a10e2bb7ea9b636a816f13c972589fd0d8e505ec`) adds per-PR concurrency cancellation to eight relevant Korean workflows and restricts the general verification workflow's push trigger to `main`.
+- GitHub Status reported Actions operational at this checkpoint; account/repository concurrency limits or runner provisioning/permission issues remain possible. The exact Burmese PR-head run [40842022531](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40842022531) is still queued without initialized steps. No Python, data validation, production build, Playwright, or Pages deployment command has run on this exact head.
+- Local `git ls-remote` failed because this execution environment could not resolve `github.com`; no local test execution is claimed. The queue pattern is plausible evidence of shared runner saturation, not proof of the root cause. Do not merge until exact-head Python/data checks, production build, Playwright preview, and live Pages verification pass.
+- The implementation fix remains specific: the production build copies both vendored Mya2Rom scripts into Vite's public output, and the browser test checks that the romanizer global loads and produces the expected result. Static source inspection passed; runtime acceptance remains pending.
