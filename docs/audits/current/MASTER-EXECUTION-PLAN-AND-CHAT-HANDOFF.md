@@ -466,3 +466,11 @@ This checkpoint supersedes earlier notes in this handoff saying the romanization
 - Exact-head workflows [40225162339](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40225162339) and [40225149612](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40225149612) both completed successfully on `c7354631f7c3b894e4a6b61e28b77991a0b20dab`.
 - Both post-merge workflows [40225276414](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40225276414) and [40225276247](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40225276247) completed successfully on `eb194333f50eccb9f16c9a94f37c079aa69e5ea9`.
 - These runs validate the structural malformed-U+1039 guard and repository checks only; they add no phonological realization or independently adjudicated IPA gold. Independent Burmese gold remains 0.
+
+
+## Exact-head production browser gate — 2026-10-29
+
+- PR #48 now also defines `"preview": "vite preview"` because its Playwright webServer command invokes `npm run preview`; the command had previously been missing from `package.json`. This was found by static cross-file inspection before a production browser run could verify the configuration.
+- Current PR head at this checkpoint: `5a80ff4ebc0bbaa2b7c1897d11eba3fbfcfd7eac`. Exact-head run [40839467646](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40839467646) remains queued with no steps at last observation.
+- Do not equate historical green runs with the current asset/preview fix. Required gate: data validation, unit tests, Vite production build, Playwright against the production preview, Pages deployment, and verification of the live output.
+- No linguistic evidence changed: independently adjudicated Burmese lexical IPA gold remains zero; no word-level accuracy score is justified.
