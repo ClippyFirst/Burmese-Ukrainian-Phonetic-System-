@@ -474,3 +474,10 @@ This checkpoint supersedes earlier notes in this handoff saying the romanization
 - Current PR head at this checkpoint: `5a80ff4ebc0bbaa2b7c1897d11eba3fbfcfd7eac`. Exact-head run [40839467646](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40839467646) remains queued with no steps at last observation.
 - Do not equate historical green runs with the current asset/preview fix. Required gate: data validation, unit tests, Vite production build, Playwright against the production preview, Pages deployment, and verification of the live output.
 - No linguistic evidence changed: independently adjudicated Burmese lexical IPA gold remains zero; no word-level accuracy score is justified.
+
+
+## CI queue hygiene follow-up — 2026-10-29
+
+- Updated `.github/workflows/test.yml` so feature-branch pushes no longer launch a duplicate run alongside the PR workflow; pushes to `main` still run tests.
+- Added a per-PR concurrency group with `cancel-in-progress: true` to avoid retaining superseded checks once this workflow revision is active.
+- This is queue hygiene, not proof that the underlying runner issue is fixed. Latest exact-head CI still needs to execute Python tests, data validation, production build and Playwright against the production preview. Do not merge based on queued/cancelled jobs.
