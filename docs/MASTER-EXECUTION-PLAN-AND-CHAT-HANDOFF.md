@@ -98,3 +98,12 @@ Do not mark the repository 80% ready based on file count, test count, UI complet
 - The three Unicode-sourced structural rows now point to §16.3.1 / Table 16-4 in Unicode 18.0.0. Their status remains structural-only; no IPA/Ukrainian expected values were added.
 - Exact-head test/build/generated-data/browser verification passed in [40223402689](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40223402689). Optional Epitran comparison [40223406632](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40223406632) is not gold evidence.
 - Remaining source-data work: inspect Green 2002 at exact source pages, then obtain independent IPA adjudication. No accuracy estimate is currently justified.
+
+
+## Production Pages romanizer repair — 2026-10-29
+
+- PR [#48](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/48), branch `fix/burmese-romanizer-pages-asset-2026-10-29`. Production asset copying is implemented by `scripts/copy-vendor-assets.mjs`; the build copies the two required Mya2Rom files into `public/vendor/mya2rom/`, and Playwright is configured to test Vite's production preview rather than the dev server.
+- Further static inspection found a second integration issue: `playwright.config.js` invokes `npm run preview`, but `package.json` did not define that script. The branch now defines `"preview": "vite preview"` so the production browser server command resolves.
+- Exact-head test run [40837542767](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40837542767) remained queued with no steps at the last check. The new preview-script commit's own workflow run/status has not yet appeared in the connector results; do not claim exact-head CI or production browser verification.
+- Historical CI success is not evidence for this new head. Acceptance requires exact-head `npm test`, `npm run build`, and Playwright tests against `dist`, followed by a successful Pages deployment and live-site verification.
+- Linguistic status remains research-grade/partial: independent lexical IPA gold is still zero, so no word-level accuracy estimate is claimed. This code fix addresses production asset loading, not linguistic coverage.
