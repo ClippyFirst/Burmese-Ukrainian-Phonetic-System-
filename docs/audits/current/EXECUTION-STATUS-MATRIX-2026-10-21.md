@@ -158,3 +158,15 @@ This checkpoint supersedes older baseline SHAs and statements that the current-h
 ## Evidence update — 2026-10-25
 
 The misplaced-virama guard now has an explicit source → claim → rule → test link through `CLM-ORTH-001` / `MALFORMED_VIRAMA_WITHHOLD_IPA`. Unicode establishes script/syllable structure, not the pronunciation of malformed input. The implementation continues to return invalid status and withhold IPA.
+
+## Exact-head CI checkpoint — 2026-10-29
+
+| Task | Status | Evidence / acceptance |
+|---|---|---|
+| Python tests and package install | `DONE_VERIFIED` on tested revision | Run [40848298933](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40848298933), SHA `92dccf6619fc487b97164349ae11be79f356e2ce`; `pip install -e ".[test]"` and `pytest` passed. |
+| Data validation, generated-data drift, npm tests, production build | `DONE_VERIFIED` on tested revision | Same run; `npm run build`, generated-data check and `npm test` passed. |
+| Production-preview browser suite | `DONE_VERIFIED` on tested revision | Same run; Playwright completed successfully after adding `system.html` to Vite's multi-page build input. |
+| Live GitHub Pages deployment and live-site romanization | `TODO` | PR head is not merged/deployed; acceptance requires successful Pages deployment and a live browser check that loads Mya2Rom and returns `mjou.` for `မြို့`. |
+| Linguistic accuracy | `PARTIAL` | No independently adjudicated lexical IPA gold set; do not claim measured word-level accuracy. |
+
+Previous failure diagnosis: run [40844036409](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40844036409) passed Python, data, npm and build steps but Playwright could not find `#validation-status` because Vite emitted only `dist/index.html`. Fix committed as `92dccf6619fc487b97164349ae11be79f356e2ce`; exact-head run above passed.
