@@ -14,7 +14,8 @@
     "test": "npm run generate:web && node --test tests/web/*.test.mjs",
     "test:browser": "npm run build && playwright test",
     "build": "npm run validate:data && npm run generate:web && node scripts/copy-vendor-assets.mjs && vite build --base=./",
-    "check": "npm run validate:data && npm test"
+    "check": "npm run validate:data && npm test",
+    "preview": "vite preview"
   },
   "dependencies": {},
   "devDependencies": {
