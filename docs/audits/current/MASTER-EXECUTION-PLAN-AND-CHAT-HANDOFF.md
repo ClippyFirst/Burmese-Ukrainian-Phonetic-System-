@@ -459,3 +459,10 @@ This checkpoint supersedes earlier notes in this handoff saying the romanization
 - PR #48 (fix/burmese-romanizer-pages-asset-2026-10-29) addresses a production-only defect: Vite serves root-level vendor scripts during development but does not copy them into dist/ by default. The built GitHub Pages artifact therefore omitted Mya2Rom's two scripts even though the source HTML referenced them.
 - scripts/copy-vendor-assets.mjs copies only romanisations.js and mya2rom.js into public/vendor/mya2rom/ before the build. Playwright now uses vite preview and asserts window.mya2rom is a function as well as checking the known MLCTS2 output.
 - The Pages workflow uploads the same production artifact exercised by Playwright. Exact-head CI is queued at https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40835694096; do not mark verified until build, tests and production-preview browser tests pass.
+
+## Post-merge virama-evidence CI checkpoint — 2026-10-25 (ported 2026-10-29)
+
+- PR [#45](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/45) merged as `eb194333f50eccb9f16c9a94f37c079aa69e5ea9`.
+- Exact-head workflows [40225162339](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40225162339) and [40225149612](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40225149612) both completed successfully on `c7354631f7c3b894e4a6b61e28b77991a0b20dab`.
+- Both post-merge workflows [40225276414](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40225276414) and [40225276247](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40225276247) completed successfully on `eb194333f50eccb9f16c9a94f37c079aa69e5ea9`.
+- These runs validate the structural malformed-U+1039 guard and repository checks only; they add no phonological realization or independently adjudicated IPA gold. Independent Burmese gold remains 0.
