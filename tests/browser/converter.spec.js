@@ -237,7 +237,7 @@ test("research validation limits are visible to site visitors", async ({ page })
   await page.goto("/system.html");
   await expect(page.locator("#validation-status")).toContainText("0 GOLD IPA");
   await expect(page.locator("#validation-status")).toContainText("STRUCTURAL PROBES");
-  await expect(page.locator("#validation-status a")).toHaveAttribute("href", /EXECUTION-STATUS-MATRIX-2026-10-21\.md/);
+  await expect(page.locator('#validation-status a[href*="EXECUTION-STATUS-MATRIX-2026-10-21.md"]')).toHaveAttribute("href", /EXECUTION-STATUS-MATRIX-2026-10-21\.md/);
 });
 
 test("unresolved anusvara is not silently deleted from browser IPA",async({page})=>{
