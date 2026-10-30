@@ -17,11 +17,10 @@ consonant,ɴ,onset_or_coda,нг,нг,"Burmese final nasal is represented as /ɴ/
 consonant,w,onset_or_coda,у,в,"Use Ukrainian в for /w/ in practical consonantal position; vocalic /u/ remains у",proposed,UA_ORTH_2026
 consonant,h,onset,х,г,"Foreign /h/ is adapted as Ukrainian г; this is a target-language approximation, not phonetic identity",proposed,UA_ORTH_2026
 consonant,x,onset,х,х,"A real velar fricative /x/ remains х and is not merged with /h/",proposed,UA_ORTH_2026
-consonant,dʑ,onset,дж,дж,"Voiced palatal affricate is represented with the Ukrainian digraph дж",proposed,UA_ORTH_2026
 consonant,r,onset,й,р,"Do not inherit a Russian collapse where Burmese phonology is /r/",proposed,RU_EPSHTEIN_1959
-consonant,i,nucleus,и,і,"Adapt to Ukrainian i orthography",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
-consonant,ɛ,nucleus,э,е,"Ukrainian has no э",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
-consonant,ɯ,nucleus,ы/у,и,"No exact Ukrainian target; retain candidate uncertainty",analysis_dependent,RU_EPSHTEIN_1959
+vowel,i,nucleus,и,і,"Adapt to Ukrainian i orthography",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
+vowel,ɛ,nucleus,э,е,"Ukrainian has no э",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
+vowel,ɯ,nucleus,ы/у,и,"No exact Ukrainian target; retain candidate uncertainty",analysis_dependent,RU_EPSHTEIN_1959
 consonant,ʔ,onset,∅,∅,"Glottal stop is not aspiration and does not trigger the apostrophe convention",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
 vowel,a,nucleus,а,а,"Direct target; quantity remains analytical",proposed,UA_ORTH_2026
 vowel,ɛ,nucleus,э,е,"Ukrainian has no э; use е",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
