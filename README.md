@@ -41,6 +41,8 @@ The comparison shows several systematic target-language differences:
 
 Aspiration is preserved with an apostrophe in the Ukrainian practical layer; /ʔ/ does not trigger it. The distinctions /h/ → г, /ɡ/ → ґ and /x/ → х are project-wide target conventions, not claims that foreign /h/ is identical to Ukrainian /ɦ/.
 
+The shared target conventions are documented in the canonical [foreign IPA → Ukrainian adaptation policy](https://github.com/ClippyFirst/Ukrainian-Phonetic-Inventory/blob/main/docs/foreign-target-adaptation.md). This repository's executable Burmese correspondences and regression tests implement the aspiration apostrophe, /h/ → г, /ɡ/ → ґ and /x/ → х distinctions without changing Burmese IPA.
+
 ## Serbian and Bulgarian comparators
 
 A dedicated Burmese-specific Serbian or Bulgarian practical transcription system of comparable codified status was NOT_ESTABLISHED in the present review.
