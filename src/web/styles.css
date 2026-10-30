@@ -22,3 +22,10 @@
   .nav a{font-size:.78rem}
   .hero h1{font-size:clamp(2.5rem,11vw,3.6rem);line-height:1.06}
 }
+
+
+/* Readability baseline: supporting copy must remain legible beside large script output. */
+.eyebrow,.kicker,.local,.count,.result-note,.result-index{font-size:.75rem}
+.input-hint,.result-meta p,.status-line,.syllable,.issues p,.feedback p:last-child,.footer{font-size:.78rem;line-height:1.55}
+.document p,.document li{font-size:.9rem;line-height:1.7}
+.button,.copy{font-size:.78rem;min-height:40px}
