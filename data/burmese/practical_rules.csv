@@ -24,3 +24,4 @@ UA-BUR-DIPHTHONG-EI,ua_target,eɪ,ей,ANALYSIS_DEPENDENT,UA_ORTH_2026,"Provisio
 UA-BUR-DIPHTHONG-OU,ua_target,oʊ,оу,ANALYSIS_DEPENDENT,UA_ORTH_2026,"Provisional rendering of Burmese /oʊ/; requires corpus and native-speaker validation."
 UA-BUR-DIPHTHONG-AI,ua_target,aɪ,ай,ANALYSIS_DEPENDENT,UA_ORTH_2026,"Provisional rendering of Burmese /aɪ/; requires corpus and native-speaker validation."
 UA-BUR-DIPHTHONG-AU,ua_target,aʊ,ау,ANALYSIS_DEPENDENT,UA_ORTH_2026,"Provisional rendering of Burmese /aʊ/; requires corpus and native-speaker validation."
+UA-BUR-DENTAL-FRICATIVE,ua_target,θ~ð,т,ANALYSIS_DEPENDENT,RU_EPSHTEIN_1959,"No exact Ukrainian dental fricative; т is a conservative project candidate and remains analysis-dependent."
