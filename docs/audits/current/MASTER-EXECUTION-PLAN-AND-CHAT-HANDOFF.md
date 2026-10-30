@@ -452,3 +452,18 @@ This checkpoint supersedes earlier notes in this handoff saying the romanization
 - Exact post-merge GitHub Pages deployment [40782829421](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40782829421) passed and reported URL: https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/
 - Published output order: Burmese romanization (MLCTS2) → IPA → Ukrainian practical transcription. Mya2Rom profile and phonological coverage limitations remain as documented above.
 - Remaining acceptance gates include more sourced MLCTS2 fixtures, manual punctuation/mixed-script/copy QA, and licensing review. Publication does not mean linguistic completeness.
+
+
+## Cross-language Ukrainian target policy checkpoint — 2026-10-30
+
+The shared target conventions are now explicit in the central Ukrainian Phonetic Inventory and implemented in the Burmese practical layer:
+
+- aspiration is marked after the corresponding Ukrainian consonant with ASCII apostrophe: к', т', п', с', ч';
+- /h/ → г, /ɡ/ → ґ, genuine /x/ → х;
+- Burmese /tɕ/ → ч and /dʑ/ → дж;
+- /ʔ/ is not aspiration and never triggers the apostrophe marker;
+- /θ~ð/ remains a conservative, explicitly ANALYSIS_DEPENDENT candidate, not a claimed exact Ukrainian equivalent.
+
+The exact PR #49 head `e43c4e0121d9f29bc942e5f470d795c114c2085e` passed the full workflow [41075332863](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41075332863): Python tests, generated browser data, build, Node tests and Playwright. Current continuation branch is `fix/shared-ukrainian-phonetics-2026-10-30`; PR #49 is draft. PR #48 remains untouched.
+
+This is a target orthography policy update only. It does not increase the count of independently adjudicated Burmese IPA gold examples (still 0), does not establish accuracy, and does not close the previously listed phonology, tone/register, corpus or licensing tasks. Keep the research-grade limitation visible.
