@@ -34,3 +34,10 @@ def test_glottal_stop_is_not_aspiration():
 
 def test_unknown_value_is_not_silently_guessed():
     assert rank_ukrainian_candidates("ɤ")[0].status == "not_established"
+
+
+def test_dental_fricative_candidate_remains_analysis_dependent():
+    result = practical_from_ipa("θ~ð")
+    assert result["status"] == "analysis_dependent"
+    assert result["candidates"][0]["text"] == "т"
+    assert "RU_EPSHTEIN_1959" in result["candidates"][0]["evidence"]
