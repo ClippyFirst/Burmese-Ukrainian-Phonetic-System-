@@ -231,8 +231,9 @@ test("canonically equivalent Myanmar spellings share normalized analysis",async(
 
 test("research validation limits are visible to site visitors", async ({ page }) => {
   await page.goto("/");
-  await expect(page.locator(".research-notice")).toContainText(/дослідницький попередній перегляд/i);
-  await expect(page.locator(".research-notice")).toContainText("незалежно перевірених лексичних IPA-еталонів поки немає");
+  await expect(page.locator(".research-notice")).toContainText(/дослідницький прототип/i);
+  await expect(page.locator(".research-notice")).toContainText("Незалежного лексичного IPA gold corpus ще немає");
+  await expect(page.locator(".research-notice")).toContainText("/h/ → г");
   await page.goto("/system.html");
   await expect(page.locator("#validation-status")).toContainText("0 GOLD IPA");
   await expect(page.locator("#validation-status")).toContainText("6 STRUCTURAL_ONLY");
