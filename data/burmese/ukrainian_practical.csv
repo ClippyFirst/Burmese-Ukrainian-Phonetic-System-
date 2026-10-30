@@ -37,3 +37,4 @@ vowel,eɪ,diphthong,ей,ей,"Provisional Ukrainian rendering of the Burmese ch
 vowel,oʊ,diphthong,оу,оу,"Provisional Ukrainian rendering of the Burmese closed /oʊ/ rime; requires corpus and native-speaker validation",analysis_dependent,UA_ORTH_2026
 vowel,aɪ,diphthong,ай,ай,"Provisional Ukrainian rendering of the Burmese /aɪ/ rime; requires corpus and native-speaker validation",analysis_dependent,UA_ORTH_2026
 vowel,aʊ,diphthong,ау,ау,"Provisional Ukrainian rendering of the Burmese /aʊ/ rime; requires corpus and native-speaker validation",analysis_dependent,UA_ORTH_2026
+consonant,θ~ð,onset,т,т,"No dedicated Ukrainian dental fricative; т is conservative",analysis_dependent,RU_EPSHTEIN_1959
