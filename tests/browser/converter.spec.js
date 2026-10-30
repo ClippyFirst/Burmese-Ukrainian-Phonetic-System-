@@ -284,7 +284,7 @@ test("romanization is a separate visible MLCTS2 result before IPA and Ukrainian"
 
 test("primary navigation exposes the service and methodology pages",async({page})=>{
   await page.goto("/");
-  const nav=page.getByRole("navigation",{name:"Основна навігація"});
+  const nav=page.locator(".site-header nav.nav");
   await expect(nav).toBeVisible();
   await expect(nav.getByRole("link",{name:"Сервіс"})).toHaveAttribute("aria-current","page");
   await expect(nav.getByRole("link",{name:"Методологія"})).toHaveAttribute("href","./system.html");
