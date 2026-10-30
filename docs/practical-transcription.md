@@ -31,10 +31,10 @@ Its main limitation for Ukrainian is that it is optimized for Russian phonology 
 
 | Burmese phenomenon | Russian | Ukrainian project |
 |---|---|---|
-| /kʰ/ | кх | к |
-| /tʰ/ | тх | т |
-| /pʰ/ | пх | п |
-| /sʰ/ | сх | с |
+| /kʰ/ | кх | к' |
+| /tʰ/ | тх | т' |
+| /pʰ/ | пх | п' |
+| /sʰ/ | сх | с' |
 | /i/ | и | і |
 | /ɛ/ | э | е |
 | /ɯ/ | ы/у | и* |
@@ -49,15 +49,15 @@ The Ukrainian choices are not all established; asterisked items remain validatio
 
 ## 3. Aspiration
 
-Russian preserves /kʰ pʰ tʰ/ as кх пх тх. Ukrainian has no corresponding native aspirated-stop series, so the practical layer normally neutralizes aspiration:
+Russian preserves /kʰ pʰ tʰ/ as кх пх тх. The project preserves aspiration in IPA and marks it in Ukrainian practical output with an ASCII apostrophe:
 
-- /k, kʰ/ → к
-- /t, tʰ/ → т
-- /p, pʰ/ → п
-- /s, sʰ/ → с
-- /tɕ, tɕʰ/ → ч where the Burmese phonological analysis establishes the affricate.
+- /k/ → к; /kʰ/ → к'
+- /t/ → т; /tʰ/ → т'
+- /p/ → п; /pʰ/ → п'
+- /s/ → с; /sʰ/ → с'
+- /tɕ/ → ч; /tɕʰ/ → ч' where the Burmese phonological analysis establishes the affricate.
 
-This does not claim aspiration is absent in Burmese.
+The apostrophe marks aspiration only; it does not transcribe /ʔ/ and does not replace the upstream IPA feature.
 
 ## 4. /ŋ/
 
@@ -73,7 +73,7 @@ This is a target-language optimization.
 
 ## 6. /h/
 
-Russian х reflects Russian target-language phonology. Ukrainian distinguishes г /ɦ/ and х /x/. The project baseline is therefore г for foreign /h/, with х retained as an alternative candidate pending corpus adjudication.
+Russian х reflects Russian target-language phonology. Ukrainian distinguishes г /ɦ/ and х /x/. The project baseline is therefore г for foreign /h/. A genuine /x/ remains х; these are distinct source sounds and must not be merged.
 
 ## 7. /r/ and /j/
 
@@ -125,21 +125,22 @@ The system therefore does not import Russian ы, э, кх, тх, пх, or Russia
 
 ## 12. Baseline policy
 
-- /k kʰ/ → к
-- /t tʰ/ → т
-- /p pʰ/ → п
-- /s sʰ/ → с
-- /tɕ tɕʰ/ → ч
-- /ɡ/ → ґ*
+- /k/ → к; /kʰ/ → к'
+- /t/ → т; /tʰ/ → т'
+- /p/ → п; /pʰ/ → п'
+- /s/ → с; /sʰ/ → с'
+- /tɕ/ → ч; /tɕʰ/ → ч'
+- /ɡ/ → ґ
+- /x/ → х
 - /ŋ/ → нг
 - /ɲ/ → нь
 - /j/ → й / я / є / ю / йо
 - /r/ → р
 - /l/ → л
 - /w/ → в
-- /h/ → г*; х alternative
+- /h/ → г
 - /θ ð/ → т*
-- /ʔ/ → ∅
+- /ʔ/ → ∅ (not the aspiration apostrophe)
 - /i/ → і
 - /ɛ/ → е
 - /ɯ/ → и*
