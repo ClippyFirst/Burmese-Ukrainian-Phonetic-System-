@@ -72,7 +72,7 @@ test("aspirated onset IPA is tokenized and receives a Ukrainian candidate",async
   await page.goto("/");
   await page.locator("#source").fill("ဆာ");
   await expect(page.locator("#ipa")).toContainText("sʰa");
-  await expect(page.locator("#uk")).toContainText("са");
+  await expect(page.locator("#uk")).toContainText("с\u0027а");
   await expect(page.locator("#uk-status")).toContainText("PROPOSED");
 });
 
