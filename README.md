@@ -24,20 +24,22 @@ The comparison shows several systematic target-language differences:
 
 | Burmese | Russian practical | Ukrainian project baseline |
 |---|---|---|
-| /kʰ/ | кх | к |
-| /tʰ/ | тх | т |
-| /pʰ/ | пх | п |
-| /sʰ/ | сх | с |
+| /kʰ/ | кх | к' |
+| /tʰ/ | тх | т' |
+| /pʰ/ | пх | п' |
+| /sʰ/ | сх | с' |
 | /i/ | и | і |
 | /ɛ/ | э | е |
 | /ɯ/ | ы/у | и* |
 | /ŋ/ | нг | нг |
 | /w/ | у | в |
-| /h/ | х | г* |
+| /h/ | х | г |
+| /ɡ/ | г | ґ |
+| /x/ | х | х |
 | /r/ | й/r-dependent | р |
 | tone | not encoded | not encoded |
 
-The starred choices are project hypotheses/target-language decisions and are not presented as official Ukrainian norms.
+Aspiration is preserved with an apostrophe in the Ukrainian practical layer; /ʔ/ does not trigger it. The distinctions /h/ → г, /ɡ/ → ґ and /x/ → х are project-wide target conventions, not claims that foreign /h/ is identical to Ukrainian /ɦ/.
 
 ## Serbian and Bulgarian comparators
 
