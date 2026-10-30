@@ -40,7 +40,9 @@ Its main limitation for Ukrainian is that it is optimized for Russian phonology 
 | /ɯ/ | ы/у | и* |
 | /ŋ/ | нг | нг |
 | /w/ | у | в |
-| /h/ | х | г* |
+| /h/ | х | г |
+| /ɡ/ | г | ґ |
+| /x/ | х | х |
 | /r/ | й/r-dependent | р* |
 | /ɲ/ | нь | нь |
 | tone | not encoded | not encoded |
