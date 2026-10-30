@@ -464,6 +464,6 @@ The shared target conventions are now explicit in the central Ukrainian Phonetic
 - /ʔ/ is not aspiration and never triggers the apostrophe marker;
 - /θ~ð/ remains a conservative, explicitly ANALYSIS_DEPENDENT candidate, not a claimed exact Ukrainian equivalent.
 
-The exact PR #49 head `e43c4e0121d9f29bc942e5f470d795c114c2085e` passed the full workflow [41075332863](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41075332863): Python tests, generated browser data, build, Node tests and Playwright. Current continuation branch is `fix/shared-ukrainian-phonetics-2026-10-30`; PR #49 is draft. PR #48 remains untouched.
+The exact current PR #49 head `0300f004236cbd710c613fe83897dc53e7b5e0c9` passed the full workflow [41076697277](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41076697277): Python tests, generated browser data, build, Node tests and Playwright. Current continuation branch is `fix/shared-ukrainian-phonetics-2026-10-30`; PR #49 is draft. PR #48 remains untouched.
 
 This is a target orthography policy update only. It does not increase the count of independently adjudicated Burmese IPA gold examples (still 0), does not establish accuracy, and does not close the previously listed phonology, tone/register, corpus or licensing tasks. Keep the research-grade limitation visible.
