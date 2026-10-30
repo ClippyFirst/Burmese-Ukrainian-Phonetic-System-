@@ -281,3 +281,11 @@ test("romanization is a separate visible MLCTS2 result before IPA and Ukrainian"
   const headings=await page.locator("#results article h3").allTextContents();
   expect(headings.slice(0,3)).toEqual(["Романізація · MLCTS2","IPA","Українська практична транскрипція"]);
 });
+
+test("primary navigation exposes the service and methodology pages",async({page})=>{
+  await page.goto("/");
+  const nav=page.locator(".site-header nav.nav");
+  await expect(nav).toBeVisible();
+  await expect(nav.getByRole("link",{name:"Сервіс"})).toHaveAttribute("aria-current","page");
+  await expect(nav.getByRole("link",{name:"Методологія"})).toHaveAttribute("href","./system.html");
+});
