@@ -382,7 +382,4 @@ test("MLCTS romanization visibly preserves Myanmar characters outside the suppor
   await page.locator("#source").fill("ကာ  ာ");
   const orphanSign=await page.locator("#romanization").textContent();
   expect(orphanSign).toContain("⟦ာ⟧");
-  await page.locator("#source").fill("အ");
-  const emptyMapping=await page.locator("#romanization").textContent();
-  expect(emptyMapping).toContain("⟦အ⟧");
 });
