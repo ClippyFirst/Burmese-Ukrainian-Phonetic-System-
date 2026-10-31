@@ -54,7 +54,10 @@ jobs:
           curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/src/web/app.js" -o /tmp/app.js
           curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/src/web/styles.css" -o /tmp/styles.css
           curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/vendor/mya2rom/mya2rom.js" -o /tmp/mya2rom.js
+          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/vendor/mya2rom/romanisations.js" -o /tmp/romanisations.js
           grep -q 'id="source"' /tmp/index.html
           grep -q 'src="./src/web/app.js' /tmp/index.html
+          grep -q 'src="./vendor/mya2rom/mya2rom.js' /tmp/index.html
+          grep -q 'src="./vendor/mya2rom/romanisations.js' /tmp/index.html
           grep -q '<title>' /tmp/system.html
-          test -s /tmp/app.js && test -s /tmp/styles.css && test -s /tmp/mya2rom.js
+          test -s /tmp/app.js && test -s /tmp/styles.css && test -s /tmp/mya2rom.js && test -s /tmp/romanisations.js
