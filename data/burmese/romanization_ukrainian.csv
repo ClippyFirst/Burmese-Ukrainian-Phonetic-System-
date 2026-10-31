@@ -33,4 +33,4 @@ source_unit,unit_type,mlcts,ukrainian_candidate,ukrainian_status,context,source_
 ဿ,onset,s,с,PROPOSED,syllable onset,https://github.com/myanmaropenwordnet/mya2rom,vendor/mya2rom/romanisations.js: consonants object; MLCTS column,Separate source grapheme retained despite shared MLCTS value.
 ဟ,onset,h,г,PROPOSED,syllable onset,https://github.com/myanmaropenwordnet/mya2rom,vendor/mya2rom/romanisations.js: consonants object; MLCTS column,Project Ukrainian target policy; does not establish IPA for unsupported lexical forms.
 ဠ,onset,l,л,PROPOSED,syllable onset,https://github.com/myanmaropenwordnet/mya2rom,vendor/mya2rom/romanisations.js: consonants object; MLCTS column,Separate source grapheme retained despite shared MLCTS value.
-အ,onset,, ,EVIDENCE_LIMITED,syllable onset,https://github.com/myanmaropenwordnet/mya2rom,vendor/mya2rom/romanisations.js: consonants object; MLCTS column,MLCTS has a zero-onset carrier; do not delete the syllable nucleus.
+အ,onset,,,EVIDENCE_LIMITED,syllable onset,https://github.com/myanmaropenwordnet/mya2rom,vendor/mya2rom/romanisations.js: consonants object; MLCTS column,MLCTS has a zero-onset carrier; do not delete the syllable nucleus.
