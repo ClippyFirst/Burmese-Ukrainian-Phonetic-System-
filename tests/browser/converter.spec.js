@@ -336,6 +336,21 @@ test("full Burmese greeting sentence preserves every segmented source unit",asyn
   await expect(page.locator("#uk")).toContainText("⟦မင်္⟧");
 });
 
+
+test("Myanmar digits and punctuation are preserved in both output modes",async({page})=>{
+  const sentence="မင်္ဂလာပါ ၁၂၃။ မြန်မာစာ။";
+  await page.goto("/");
+  await page.locator("#source").fill(sentence);
+  await page.locator("#mode-romanization").click();
+  const romanized=await page.locator("#romanization").textContent();
+  expect(romanized).toMatch(/[A-Za-z]/u);
+  expect(romanized).toContain("၁၂၃");
+  expect(romanized.match(/။/gu) ?? []).toHaveLength(2);
+  await page.locator("#mode-phonetic").click();
+  await expect(page.locator("#uk")).toContainText("၁၂၃");
+  await expect(page.locator("#uk")).toContainText("။");
+});
+
 test("full Burmese greeting sentence preserves Burmese sentence stops in MLCTS mode",async({page})=>{
   const sentence="မင်္ဂလာပါ။ ကျွန်တော့်နာမည် မောင်မောင်ပါ။ ကျွန်တော် မြန်မာနိုင်ငံက လာပါတယ်။ ဘာသာစကားအသစ်တွေကို လေ့လာရတာ ကြိုက်ပါတယ်။";
   await page.goto("/");
