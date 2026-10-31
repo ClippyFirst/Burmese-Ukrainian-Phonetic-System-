@@ -311,3 +311,11 @@ test("romanization and phonetic outputs are separate selectable modes",async({pa
   await expect(page.locator("#ua-panel")).toBeVisible();
   await expect(page.locator("#romanization-panel")).toBeHidden();
 });
+
+test("unsupported Myanmar units remain visible in mixed Ukrainian output",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကာ ꩠ");
+  await expect(page.locator("#uk")).toContainText("⟦ꩠ⟧");
+  await expect(page.locator("#uk")).toContainText("ка");
+  await expect(page.locator("#uk-status")).toContainText("UNSUPPORTED");
+});
