@@ -11,8 +11,23 @@ Select **Myanmar Language Commission Transcription System (MLCTS)** for the orth
 
 This distinction matches the product contract: the romanization tab represents written structure consistently, while the phonetic tab derives pronunciation through source phonology and IPA. MLCTS2 remains useful as a comparator/secondary display but must not be confused with the orthographic romanization mode.
 
+Selection comparison:
+| Candidate | Scope / strength | Decision |
+|---|---|---|
+| MLCTS (1980) | Orthographic transcription system attributed to the Myanmar Language Commission; intended for formal Burmese and useful in linguistic publications | SELECTED for the orthographic text mode; its implementation and row-level coverage still require independent verification |
+| MLCTS modified / MLCTS2 | More phonetic variant associated with the MLC Myanmar-English dictionary and SEAlang | Not the orthographic mode; may be retained as a comparison profile |
+| BGN/PCGN 1970 | Officially documented geographic-name system based on the 1907 government table; UNGEGN reports no UN-approved Burmese system and says this romanization is not reversible | Not selected for general text; keep as a geographic-name comparator |
+| ALA-LC Burmese (2011) | Library cataloguing romanization table; authoritative for cataloguing scope | Candidate for future cross-check, not the selected default |
+| Sawada Roman Transliteration System | Scholarly Basic-Latin script transliteration developed for transcribing Burmese script; its publisher notes limits for embedded Burmese forms in publications | Candidate for specialist/reversible orthographic comparison |
+
+The choice is a project-specific best fit for the requested orthographic mode, not a claim that Myanmar has one universally accepted romanization standard. John Okell's guide surveys multiple systems and distinguishes transliteration, transcription and combined methods. Exact system choice must remain visible in metadata.
+
 Sources:
 - Mya2Rom upstream documentation: https://github.com/myanmaropenwordnet/mya2rom (documents the MLCTS / modified MLCTS distinction, implementation interface and upstream attributions).
+- John Okell, A Guide to the Romanization of Burmese (2002): https://www.routledge.com/A-Guide-to-the-Romanization-of-Burmese/Okell/p/book/9781138406049
+- Library of Congress, ALA-LC Romanization Tables, Burmese (2011): https://www.loc.gov/catdir/cpso/roman
+- Hideo Sawada, Roman Transliteration System for Burmese Script (ILCAA / TUFS): https://lingdy.aa-ken.jp/en/publications/tools-and-archives/211110/
+- UNGEGN, Burmese romanization status: https://unstats.un.org/unsd/geoinfo/ungegn/docs/8th-uncsgn-docs/crp/8th_UNCSGN_econf.94_crp.81.pdf
 - BGN/PCGN, Romanization of Burmese, 1970 Agreement (official comparator): https://assets.publishing.service.gov.uk/media/5ab4dec7ed915d78bc23450f/ROMANIZATION_OF_BURMESE.pdf. This is a separate geographic-name romanization convention; it is not silently substituted for MLCTS.
 
 ## Licensing and provenance
@@ -83,7 +98,7 @@ This is a research crosswalk, not an adjudicated Ukrainian name standard. A tabl
 | ID | Status | Acceptance |
 |---|---|---|
 | MYA-ROM-STD-001 | DONE_VERIFIED (source review) | MLCTS selected as orthographic profile; MLCTS2 retained only as comparator |
-| MYA-ROM-PROFILE-001 | TODO | Switch browser call and UI label from MLCTS2 to MLCTS; add exact-output regression |
+| MYA-ROM-PROFILE-001 | DONE_VERIFIED | Browser calls MLCTS; result card labels MLCTS; test-first exact sample proves MLCTS mrui. vs MLCTS2 mjou.; exact-head workflow 41229019002 passed |
 | MYA-ROM-UA-001 | TODO | Independent MLCTS-syllable → Ukrainian adapter |
 | MYA-ROM-MATRIX-001 | PARTIAL | Full consonant, medial, vowel, coda, independent vowel, kinzi, asat, numeral and punctuation inventory |
 | MYA-ROM-LIC-001 | PARTIAL | Audit all vendored source components and preserve CC-BY-SA-4.0 attribution |
