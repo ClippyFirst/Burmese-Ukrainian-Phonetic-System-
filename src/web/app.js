@@ -23,6 +23,7 @@ const CHECKED_CODAS=new Set(["က","ခ","ဂ","ဃ","စ","ဆ","ဇ","ဈ","�
 const IPA_UNIT_RE=/t͡?ɕʰ|t͡?ɕ|d͡?ʑ|eɪ|oʊ|aɪ|aʊ|[ktpsdb]ʰ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|ɴ|ŋ|ɲ|ɯ|ɛ|ɪ|ɔ|ə|ʊ|θ|ð|[a-zɡʔː]/g;
 const MEDIAL_CHARS=new Set(Object.keys(MEDIALS)), VOWEL_CHARS=new Set(Object.keys(SIGNS)), BASE=new Set(Object.keys(ONSETS));
 const ROMANIZATION_SUPPORTED_CHARS=new Set(ROMANIZATION_SUPPORTED), ROMANIZATION_BASE_CHARS=new Set(ROMANIZATION_BASES);
+const PHONETIC_INPUT_CHARS=new Set([...BASE,...VOWEL_CHARS,...MEDIAL_CHARS,ASAT,VIRAMA,"့","း"]);
 const STATUS_RANK={ESTABLISHED:0,WELL_SUPPORTED:1,PROPOSED:2,ANALYSIS_DEPENDENT:3,NOT_ESTABLISHED:4,UNSUPPORTED:5,UNCERTAIN:6};
 function aggregateStatus(statuses,emptyStatus="NOT_ESTABLISHED"){
   if(!statuses.length)return emptyStatus;
@@ -91,8 +92,13 @@ function segment(text){
       out.push({raw:s.slice(start,i),nonMyanmar:true});continue;
     }
     const start=i;let prev=String.fromCodePoint(s.codePointAt(i));i+=widthAt(s,i);
+    if(!PHONETIC_INPUT_CHARS.has(prev)){
+      out.push({raw:prev,nonMyanmar:false});
+      continue;
+    }
     while(i<s.length&&isMyanmarTextAt(s,i)){
       const ch=String.fromCodePoint(s.codePointAt(i));
+      if(!PHONETIC_INPUT_CHARS.has(ch))break;
       const isCodaBase=BASE.has(ch)&&s[i+ch.length]===ASAT;
       const followsKinzi=s.slice(Math.max(start,i-3),i)===KINZI;
       const startsWithKinzi=s.slice(start,i).startsWith(KINZI);
