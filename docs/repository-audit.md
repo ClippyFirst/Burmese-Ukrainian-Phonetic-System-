@@ -115,7 +115,7 @@ moved to research/historical/ or research/decisions/ rather than deleted.
 - Root cause: the browser app's Myanmar-script predicate classified U+1040–1049 numerals and U+104A–104B punctuation as romanizable script. Passing them to Mya2Rom caused source loss. The fix preserves those code points and romanizes only contiguous Myanmar text runs, preserving adjacent Latin text and separators.
 - Browser regressions cover the four-stop greeting and mixed text with \`ABC\`, \`၁၂၃\`, Myanmar comma \`၊\` and sentence stop \`။\`, in phonetic and MLCTS modes. MLCTS period characters inside romanized forms are not confused with sentence punctuation.
 - This verifies bounded source preservation only. It does not establish complete MLCTS coverage, MLC primary-source conformity, or an MLCTS-to-Ukrainian adapter. The 94-row rime table remains vendor-derived; original MLC source is BLOCKED/EVIDENCE_LIMITED; independent lexical IPA gold remains 0.
-- PR #53 remains open/unmerged and was not changed. The Pages workflow is configured for main pushes and performs deployed HTML/runtime/vendor-asset smoke tests, but a deployment after PR #69 was not verified in this run.
+- PR #53 remains open/unmerged and was not changed. At the time of this checkpoint, a deployment after PR #69 was not yet verified. A later check confirmed Pages deployment [41242001050](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41242001050) succeeded with deployed HTML/runtime/vendor-asset smoke tests; see the cross-mode source-integrity checkpoint.
 
 
 ### Cross-mode Myanmar source-integrity fix — 2026-10-31
