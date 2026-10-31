@@ -373,7 +373,7 @@ test("full Burmese greeting sentence preserves Burmese sentence stops in MLCTS m
 
 test("MLCTS romanization visibly preserves Myanmar characters outside the supported inventory",async({page})=>{
   await page.goto("/");
-  await page.locator("#source").fill("ကာ ꩠ");
+  await page.locator("#source").fill("ကာꩠကာ");
   await page.locator("#mode-romanization").click();
   const romanized=await page.locator("#romanization").textContent();
   expect(romanized).toMatch(/[A-Za-z]/u);
