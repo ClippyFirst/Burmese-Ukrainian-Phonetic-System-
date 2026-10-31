@@ -139,3 +139,8 @@ moved to research/historical/ or research/decisions/ rather than deleted.
 
 - PR #74 exact-main tests [41245969998](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41245969998) and Pages deployment [41245969938](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41245969938) succeeded on `6ec5c6a15af45fce5d993933c3c429d8e9a82c79`, including the deployed-site/runtime smoke test.
 - Documentation PR #75 merged as `48bb45cf2a5c6cc95057fecacdfbc6e852b760b1`; exact-head tests [41246079334](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41246079334) passed. Post-merge main tests [41246294703](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41246294703) and Pages [41246294821](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41246294821) were in progress when this note was prepared.
+
+
+### Final main verification correction — 2026-10-31
+
+- Main SHA `48bb45cf2a5c6cc95057fecacdfbc6e852b760b1` passed exact-main tests [41246294703](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41246294703) and Pages deployment [41246294821](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41246294821), including deployed-site/runtime smoke test. The prior in-progress status has been superseded.
