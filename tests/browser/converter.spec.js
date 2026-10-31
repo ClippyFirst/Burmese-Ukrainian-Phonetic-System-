@@ -314,9 +314,10 @@ test("romanization and phonetic outputs are separate selectable modes",async({pa
 
 test("unsupported Myanmar units remain visible in mixed Ukrainian output",async({page})=>{
   await page.goto("/");
-  await page.locator("#source").fill("ကာ ꩠ");
-  await expect(page.locator("#uk")).toContainText("⟦ꩠ⟧");
-  await expect(page.locator("#uk")).toContainText("ка");
+  await page.locator("#source").fill("ကာꩠ");
+  await expect(page.locator("#source")).toHaveValue("ကာꩠ");
+  await expect(page.locator("#syllables")).toContainText("ꩠ");
+  await expect(page.locator("#uk")).toHaveText("ка⟦ꩠ⟧");
   await expect(page.locator("#uk-status")).toContainText("UNSUPPORTED");
 });
 
@@ -369,4 +370,16 @@ test("full Burmese greeting sentence preserves Burmese sentence stops in MLCTS m
   await expect(page.locator("#ua-romanization-result")).toHaveText("⟦МАТРИЦЯ НЕ ЗАВЕРШЕНА⟧");
   await expect(page.locator("#ua-romanization-status")).toContainText("PARTIAL");
   await expect(page.locator("#output-method-note")).toContainText("MLCTS");
+});
+
+test("MLCTS romanization visibly preserves Myanmar characters outside the supported inventory",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကာꩠကာ");
+  await page.locator("#mode-romanization").click();
+  const romanized=await page.locator("#romanization").textContent();
+  expect(romanized).toMatch(/[A-Za-z]/u);
+  expect(romanized).toContain("⟦ꩠ⟧");
+  await page.locator("#source").fill("ကာ  ာ");
+  const orphanSign=await page.locator("#romanization").textContent();
+  expect(orphanSign).toContain("⟦ာ⟧");
 });
