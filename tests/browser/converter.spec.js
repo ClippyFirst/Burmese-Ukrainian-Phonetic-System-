@@ -273,13 +273,13 @@ test("contiguous Myanmar bare clusters retain the existing contextual fallback",
   await expect(page.locator("#issues")).toBeVisible();
 });
 
-test("romanization is a separate visible MLCTS2 result before IPA and Ukrainian",async({page})=>{
+test("romanization uses orthographic MLCTS, not modified phonetic MLCTS2",async({page})=>{
   await page.goto("/");
   await page.locator("#source").fill("မြို့");
-  await expect(page.locator("#romanization")).toHaveText("mjou.");
+  await expect(page.locator("#romanization")).toHaveText("mrui.");
   await expect(page.locator("#romanization-status")).toContainText("Mya2Rom 0.4.4");
   const headings=await page.locator("#results article h3").allTextContents();
-  expect(headings.slice(0,3)).toEqual(["Романізація · MLCTS2","IPA","Українська практична транскрипція"]);
+  expect(headings.slice(0,3)).toEqual(["Романізація · MLCTS","IPA","Українська практична транскрипція"]);
 });
 
 test("primary navigation exposes the service and methodology pages",async({page})=>{
