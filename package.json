@@ -10,8 +10,10 @@
     "generate:web":"node scripts/generate-web-data.mjs",
     "validate:data":"node scripts/validate-web-data.mjs",
     "test":"npm run generate:web && node --test tests/web/*.test.mjs",
-    "test:browser":"npm run generate:web && playwright test",
-    "build":"npm run validate:data && npm run generate:web && vite build --base=./",
+    "test:browser":"npm run build && playwright test",
+    "test:browser:built":"playwright test",
+    "preview":"vite preview",
+    "build":"npm run validate:data && npm run generate:web && node scripts/copy-vendor-assets.mjs && vite build --base=./",
     "check":"npm run validate:data && npm test"
   },
   "dependencies":{},
