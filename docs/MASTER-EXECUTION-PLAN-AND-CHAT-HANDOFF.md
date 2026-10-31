@@ -183,3 +183,11 @@ Do not mark the repository 80% ready based on file count, test count, UI complet
 - The matrix now explains why MLCTS (the orthographic MLC transcription profile) is selected over BGN/PCGN 1970 for general written-text mode. BGN/PCGN 1970 remains a useful geographical-name comparator, but UNGEGN says it is not reversible and PCGN notes that some choices depend on pronunciation. The original MLC publication has not yet been obtained; Mya2Rom's vendor data remains a secondary implementation source.
 - No runtime files changed in this PR; no new Pages deployment is required. Existing site: https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/.
 - Verification PR: [#59](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/59), branch `verify/romanization-evidence-20261031`. PR #58 contains the earlier test attempt and is superseded by #59.
+
+
+## Post-merge main checkpoint — 2026-10-31
+
+- PR #59 merged by squash as `d468c6ec16289009da553ed4696932e7c7f7d79f`; this is the main-branch implementation merge SHA for the romanization evidence inventory.
+- Exact code-verification workflow [41232548770](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41232548770) passed: 64 Python tests + 29 subtests; Vite build; generated-data drift check; Node 4/4; Playwright 48 against the built artifact passed. The exact code-verification run checked out head `a514943e96d8e2b5bc5fc8815898cb96aae39721`; subsequent changes before merge were documentation-only.
+- The bounded source inventory and its tests are now on `main`. The overall orthographic matrix and runtime adapter remain incomplete; see the PARTIAL/TODO statuses above.
+- No runtime behavior or Pages build inputs changed in this PR; the already deployed GitHub Pages site remains the existing public service. A new Pages deployment was not necessary for these data/documentation-only changes.
