@@ -100,3 +100,10 @@ moved to research/historical/ or research/decisions/ rather than deleted.
 - Exact-head CI [41238825573](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41238825573) passed pytest 64 + 29 subtests, Node 4/4, Vite build, generated-data drift check, and Playwright 50/50. The full greeting sentence is reconstructed exactly from rendered source-unit rows.
 - This verifies source preservation and output honesty, not full phonetic accuracy. Independent lexical IPA gold remains 0 verified entries; MLCTS → Ukrainian syllable adapter and original MLC primary source remain incomplete/blocked.
 - Pages deployment [41238926334](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41238926334) completed successfully and deployed `d0b7f6351a4151b974ec9ee379f81f7a06da9613` at https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/. Main verification [41238926148](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41238926148) passed.
+
+
+### Diverged layout PR reconciliation — 2026-10-31
+
+- Rechecked open PR #53 (`design/burmese-layout-20261030`) against current main `d0b7f6351a4151b974ec9ee379f81f7a06da9613`: branch is diverged, 5 commits ahead and 11 behind (merge base `272da3970c0e8791c5bc5406cc4289e2c841eeef`). Its only changed files are `index.html`, `system.html`, and a wholesale replacement of `src/web/styles.css`; it contains no engine fix or unique regression test.
+- The required responsive behavior was already ported as focused overrides in PR #62 (`78f56512f59bbfa6fc881ccd35e34c4bf1fff7b1`) and verified. The older stylesheet replacement is not safe to merge wholesale because it would replace current IPA typography and method-switch styling.
+- PR #53 remains open and untouched. No unique code or test from it was ported in this pass.
