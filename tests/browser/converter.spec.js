@@ -345,6 +345,8 @@ test("full Burmese greeting sentence reaches MLCTS mode and normalizes sentence 
   expect(romanized).toMatch(/[A-Za-z]/u);
   expect(romanized).toContain(" ");
   expect(romanized).toContain(".");
+  expect(romanized).not.toMatch(/[\u1000-\u109f]/u);
+  expect(romanized.match(/\./gu) ?? []).toHaveLength(4);
   await expect(page.locator("#ua-romanization-result")).toHaveText("⟦МАТРИЦЯ НЕ ЗАВЕРШЕНА⟧");
   await expect(page.locator("#ua-romanization-status")).toContainText("PARTIAL");
   await expect(page.locator("#output-method-note")).toContainText("MLCTS");
