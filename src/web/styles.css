@@ -29,3 +29,5 @@
 .input-hint,.result-meta p,.status-line,.syllable,.issues p,.feedback p:last-child,.footer{font-size:.78rem;line-height:1.55}
 .document p,.document li{font-size:.9rem;line-height:1.7}
 .button,.copy{font-size:.78rem;min-height:40px}
+
+.method-switch{display:flex;gap:8px;margin:10px 0 6px}.method-button{border:1px solid #d8d6cf;background:transparent;color:#151719;padding:9px 14px;font:inherit;font-size:.7rem;font-weight:700;line-height:1.2;cursor:pointer}.method-button.is-active{background:#151719;border-color:#151719;color:#fff}.method-button:focus-visible{outline:3px solid #d62828;outline-offset:2px}.method-note{margin:0 0 12px;color:#686b6f;font-size:.68rem;line-height:1.5}.results [data-method-panel][hidden]{display:none!important}

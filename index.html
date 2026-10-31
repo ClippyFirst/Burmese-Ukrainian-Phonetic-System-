@@ -38,33 +38,45 @@
 <section id="empty" class="empty" aria-live="polite"><span class="empty-glyph" aria-hidden="true">မြ</span><div><strong>Тут з’явиться результат</strong><span>Вставте бірманський текст або відкрийте приклад, щоб почати.</span></div></section>
 
 <section id="results" class="results" hidden aria-labelledby="results-heading">
-  <div class="bar"><div class="section-title"><span class="section-number">B</span><div><p class="kicker">Вихід</p><h2 id="results-heading">Результати</h2></div></div><span class="result-note">романізація → IPA → українська</span></div>
+  <div class="bar"><div class="section-title"><span class="section-number">B</span><div><p class="kicker">Вихід</p><h2 id="results-heading">Результати</h2></div></div><span class="result-note">оберіть метод</span></div>
+  <div class="method-switch" role="group" aria-label="Метод українського запису">
+    <button id="mode-phonetic" class="method-button is-active" type="button" aria-pressed="true">Фонетичний</button>
+    <button id="mode-romanization" class="method-button" type="button" aria-pressed="false">За романізацією</button>
+  </div>
+  <p id="output-method-note" class="method-note" aria-live="polite">Фонетичний режим: Burmese phonology → IPA → українська практична адаптація.</p>
 
-  <article class="result-card">
+  <article id="romanization-panel" class="result-card" data-method-panel="romanization">
     <div class="result-meta"><span class="result-index">01</span><div><h3>Романізація · MLCTS</h3><p>Орфографічна система Myanmar Language Commission; окремо від IPA й українського результату.</p></div><button class="copy" data-copy="romanization" type="button">Копіювати</button></div>
     <p id="romanization" class="result-value" lang="en"></p>
-    <div id="romanization-status" class="status-line">Mya2Rom 0.4.4 · можливі обмеження для окремих словникових форм.</div>
+    <div id="romanization-status" class="status-line">Mya2Rom 0.4.4 · MLCTS (орфографічний профіль).</div>
   </article>
 
-  <article class="result-card">
-    <div class="result-meta"><span class="result-index">02</span><div><h3>IPA</h3><p>Фонетичний / фонологічний шар, наскільки його встановлено для конкретного сегмента.</p></div><button class="copy" data-copy="ipa" type="button">Копіювати</button></div>
+  <article id="ua-romanization-panel" class="result-card" data-method-panel="romanization">
+    <div class="result-meta"><span class="result-index">02</span><div><h3>Українська за романізацією</h3><p>Окрема орфографічна матриця, не IPA-адаптація.</p></div></div>
+    <p id="ua-romanization-result" class="result-value">⟦МАТРИЦЯ НЕ ЗАВЕРШЕНА⟧</p>
+    <div id="ua-romanization-status" class="status-line">PARTIAL · MLCTS → українська таблиця поки охоплює лише початкові графеми; повний складовий адаптер не реалізований. Фонетичний результат не підставляється.</div>
+    <p class="unit-note"><a href="https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/blob/main/docs/romanization-to-ukrainian-matrix.md">Переглянути таблицю відповідників і статуси доказовості ↗</a></p>
+  </article>
+
+  <article id="ipa-panel" class="result-card" data-method-panel="phonetic">
+    <div class="result-meta"><span class="result-index">03</span><div><h3>IPA</h3><p>Фонетичний / фонологічний шар, наскільки його встановлено для конкретного сегмента.</p></div><button class="copy" data-copy="ipa" type="button">Копіювати</button></div>
     <p id="ipa" class="result-value ipa" lang="und-fonipa"></p>
     <div id="ipa-status" class="status-line"></div>
   </article>
 
-  <article class="result-card primary-result">
-    <div class="result-meta"><span class="result-index">03</span><div><h3>Українська практична транскрипція</h3><p>Авторська система, побудована від аналізу вимови, а не від прямої заміни знаків.</p></div><button class="copy" data-copy="uk" type="button">Копіювати</button></div>
+  <article id="ua-panel" class="result-card primary-result" data-method-panel="phonetic">
+    <div class="result-meta"><span class="result-index">04</span><div><h3>Українська практична транскрипція</h3><p>Авторська система, побудована від аналізу вимови, а не від прямої заміни знаків.</p></div><button class="copy" data-copy="uk" type="button">Копіювати</button></div>
     <p id="uk" class="result-value" lang="uk"></p>
     <div id="uk-status" class="status-line"></div>
   </article>
 
-  <article class="result-card">
-    <div class="result-meta"><span class="result-index">04</span><div><h3>Структурний аналіз</h3><p>Як Unicode-послідовність розібрана на бірманські графемні кластери.</p></div></div>
+  <article id="structure-panel" class="result-card" data-method-panel="phonetic">
+    <div class="result-meta"><span class="result-index">05</span><div><h3>Структурний аналіз</h3><p>Як Unicode-послідовність розібрана на бірманські графемні кластери.</p></div></div>
     <div id="syllables" class="syllables"></div>
   </article>
 </section>
 
-<section id="issues" class="issues" hidden aria-live="polite"><span aria-hidden="true">!</span><div><strong>Потребує уваги</strong><p id="issue-text"></p></div></section>
+<section id="issues" class="issues" data-method-panel="phonetic" hidden aria-live="polite"><span aria-hidden="true">!</span><div><strong>Потребує уваги</strong><p id="issue-text"></p></div></section>
 
 <section class="feedback">
   <div><p class="kicker">Методологія</p><h2>Це не переклад і не механічна кирилізація.</h2><p>Російська практична традиція використовується як контрольний історичний шар. Кінцеве рішення формується за українською фонетикою, орфографією та зафіксованою в репозиторії доказовою політикою.</p></div>

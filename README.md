@@ -189,3 +189,8 @@ Run it in an environment where Epitran is installed separately. The report recor
 ## External IPA renderers and G2P candidates
 
 The research registry records external pronunciation engines, IPA dictionaries, and Unicode IPA display fonts without treating unvalidated output as ground truth. See [`docs/external-ipa-renderers.md`](docs/external-ipa-renderers.md) and the machine-readable [`data/external-ipa-renderers.json`](data/external-ipa-renderers.json). These are candidate inventories only; no third-party engine is enabled by default, and the ClippyFirst IPA → Ukrainian adapter remains the sole target adaptation boundary.
+
+
+## Two output methods
+
+The service separates the orthographic MLCTS romanization route from the IPA-first phonetic route. The romanization tab currently exposes a PARTIAL Ukrainian crosswalk and never falls back to phonetic output. See the [romanization → Ukrainian research matrix](docs/romanization-to-ukrainian-matrix.md) for the selected profile, source comparison and onset table.

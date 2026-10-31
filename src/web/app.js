@@ -4,6 +4,18 @@ const source=document.querySelector("#source"), results=document.querySelector("
 const issues=document.querySelector("#issues"), issueText=document.querySelector("#issue-text"), count=document.querySelector("#count");
 const uk=document.querySelector("#uk"), ipa=document.querySelector("#ipa"), romanization=document.querySelector("#romanization"), syllables=document.querySelector("#syllables");
 const ukStatus=document.querySelector("#uk-status"), ipaStatus=document.querySelector("#ipa-status"), live=document.querySelector("#live");
+const modePhonetic=document.querySelector("#mode-phonetic"), modeRomanization=document.querySelector("#mode-romanization"), outputMethodNote=document.querySelector("#output-method-note");
+
+function setOutputMode(mode){
+  document.querySelectorAll("[data-method-panel]").forEach(panel=>{panel.hidden=panel.dataset.methodPanel!==mode;});
+  modePhonetic.classList.toggle("is-active",mode==="phonetic");
+  modePhonetic.setAttribute("aria-pressed",String(mode==="phonetic"));
+  modeRomanization.classList.toggle("is-active",mode==="romanization");
+  modeRomanization.setAttribute("aria-pressed",String(mode==="romanization"));
+  outputMethodNote.textContent=mode==="phonetic"
+    ?"Фонетичний режим: Burmese phonology → IPA → українська практична адаптація."
+    :"Романізаційний режим: Burmese orthography → MLCTS → окрема українська матриця. Український результат PARTIAL; фонетичний результат не використовується як fallback.";
+}
 
 const KINZI="င်္", VIRAMA="္", ASAT="်";
 const NASAL_CODAS=new Set(["င","န","မ","ည"]);
@@ -276,6 +288,9 @@ function render(){
   issueText.textContent=[problems.length?"Для "+problems.length+" сегмент"+(problems.length===1?"а":"ів")+" результат містить запропоновану або неповністю встановлену відповідність; сервіс не подає її як доведену.":"",preserved?"Латинський текст, цифри, пробіли та пунктуацію збережено без змін; аналізуються лише сегменти Myanmar.":"",hasProsody?"Просодичні знаки збережено в аналітичному шарі; вони не перетворюються автоматично на український наголос.":""].filter(Boolean).join(" ");
   live.textContent="Конвертацію завершено. Статус: "+r.status;
 }
+modePhonetic.addEventListener("click",()=>setOutputMode("phonetic"));
+modeRomanization.addEventListener("click",()=>setOutputMode("romanization"));
+setOutputMode("phonetic");
 source.addEventListener("input",render);
 document.querySelector("#example").addEventListener("click",()=>{source.value="ကာ မြန်မာ";render();source.focus();});
 document.querySelector("#clear").addEventListener("click",()=>{source.value="";render();source.focus();});

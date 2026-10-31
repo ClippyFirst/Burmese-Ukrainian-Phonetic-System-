@@ -279,7 +279,7 @@ test("romanization uses orthographic MLCTS, not modified phonetic MLCTS2",async(
   await expect(page.locator("#romanization")).toHaveText("mrui.");
   await expect(page.locator("#romanization-status")).toContainText("Mya2Rom 0.4.4");
   const headings=await page.locator("#results article h3").allTextContents();
-  expect(headings.slice(0,3)).toEqual(["Романізація · MLCTS","IPA","Українська практична транскрипція"]);
+  expect(headings.slice(0,3)).toEqual(["Романізація · MLCTS","Українська за романізацією","IPA"]);
 });
 
 test("primary navigation exposes the service and methodology pages",async({page})=>{
@@ -288,4 +288,25 @@ test("primary navigation exposes the service and methodology pages",async({page}
   await expect(nav).toBeVisible();
   await expect(nav.getByRole("link",{name:"Сервіс"})).toHaveAttribute("aria-current","page");
   await expect(nav.getByRole("link",{name:"Методологія"})).toHaveAttribute("href","./system.html");
+});
+
+
+test("romanization and phonetic outputs are separate selectable modes",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("မြို့");
+  await expect(page.locator("#mode-phonetic")).toHaveAttribute("aria-pressed","true");
+  await expect(page.locator("#ipa-panel")).toBeVisible();
+  await expect(page.locator("#ua-panel")).toBeVisible();
+  await expect(page.locator("#romanization-panel")).toBeHidden();
+  await page.locator("#mode-romanization").click();
+  await expect(page.locator("#mode-romanization")).toHaveAttribute("aria-pressed","true");
+  await expect(page.locator("#romanization-panel")).toBeVisible();
+  await expect(page.locator("#ua-romanization-panel")).toBeVisible();
+  await expect(page.locator("#ua-romanization-status")).toContainText("PARTIAL");
+  await expect(page.locator("#ipa-panel")).toBeHidden();
+  await expect(page.locator("#ua-panel")).toBeHidden();
+  await page.locator("#mode-phonetic").click();
+  await expect(page.locator("#ipa-panel")).toBeVisible();
+  await expect(page.locator("#ua-panel")).toBeVisible();
+  await expect(page.locator("#romanization-panel")).toBeHidden();
 });
