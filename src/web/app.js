@@ -29,17 +29,12 @@ function aggregateStatus(statuses,emptyStatus="NOT_ESTABLISHED"){
 }
 
 function normalize(text){return text.normalize("NFC");}
-function isMyanmarNumberOrPunctuation(ch){
-  const cp=ch.codePointAt(0);
-  return cp>=0x1040&&cp<=0x104b;
-}
 function isMyanmarCodePoint(n){
   // Myanmar, Myanmar Extended-A/B, and the supplementary Myanmar block.
   // Script recognition is intentionally broader than the supported inventory:
   // unknown Myanmar characters must be reported as unsupported, not passed through.
   return (n>=0x1000&&n<=0x109f)||(n>=0xa9e0&&n<=0xa9ff)||(n>=0xaa60&&n<=0xaa7f)||(n>=0x116d0&&n<=0x116ff);
 }
-function isMyanmar(ch){return isMyanmarCodePoint(ch.codePointAt(0))&&!isMyanmarNumberOrPunctuation(ch);}
 function isMyanmarTextAt(text,index){
   const cp=text.codePointAt(index);
   return isMyanmarCodePoint(cp)&&!(cp>=0x1040&&cp<=0x104b);
