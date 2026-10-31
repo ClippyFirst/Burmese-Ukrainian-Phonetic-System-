@@ -132,6 +132,8 @@ Russian practical transcription is documentary evidence for Russian practice. It
 
 ## Research artifacts
 
+- data/burmese/romanization_ukrainian.csv — 35-entry MLCTS onset crosswalk.
+- data/burmese/romanization_rimes_inventory.csv — 94 vendor-derived MLCTS rime keys with explicit EVIDENCE_LIMITED Ukrainian status.
 - data/burmese/cyrillic_systems.csv
 - data/burmese/russian_practical_transcription.csv
 - data/burmese/ukrainian_practical.csv

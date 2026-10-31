@@ -108,3 +108,20 @@ This is a research crosswalk, not an adjudicated Ukrainian name standard. A tabl
 | MYA-ROM-MATRIX-001 | PARTIAL | Medial, vowel, coda, independent vowel, kinzi, asat, numeral and punctuation inventory still required |
 | MYA-ROM-LIC-001 | PARTIAL | Audit all vendored source components and preserve CC-BY-SA-4.0 attribution |
 | MYA-IPA-001 | PARTIAL | Contextual vowel/coda/tone/phonation IPA coverage and independent lexical gold remain incomplete |
+
+
+
+## Why MLCTS rather than BGN/PCGN 1970
+
+The BGN/PCGN 1970 system is a legitimate, source-backed alternative, but its documented scope is geographical-name romanization. UNGEGN reports that Myanmar had no official national romanization system and that no Burmese system had been put forward to UN conferences; it identifies BGN/PCGN 1970 as the only known system at that time and notes that it is not reversible to the original script. The official PCGN guide itself is explicitly titled *Romanization of Burmese, BGN/PCGN 1970 Agreement* and says that some romanization choices depend on actual pronunciation.
+
+For this project's **orthographic** mode, choose **MLCTS** instead: Mya2Rom's documentation identifies the Myanmar Language Commission Transcription System as an orthographical transcription system created by the MLC, and distinguishes it from modified MLCTS, described as more phonetic. That distinction fits the user-approved contract: the romanization tab represents written Burmese independently of the IPA-first pronunciation tab. The selected runtime profile is the standard `mlcts` column, not MLCTS-SL/MLCTS2. The current vendor table is a practical implementation source, not a substitute for obtaining and checking the original MLC publication; its rime inventory is therefore explicitly evidence-limited.
+
+Primary/reference sources:
+- UNGEGN, *Report on the Current Status of United Nations Romanization Systems for Geographical Names*, Burmese section (2013): https://unstats.un.org/unsd/ungegn/working_groups/wg5/documents/wgrr4burmese.pdf
+- UK PCGN, *Romanization of Burmese*, BGN/PCGN 1970 Agreement (checked October 2017): https://assets.publishing.service.gov.uk/media/5ab4dec7ed915d78bc23450f/ROMANIZATION_OF_BURMESE.pdf
+- Mya2Rom project documentation and attribution: https://github.com/myanmaropenwordnet/mya2rom (CC-BY-SA-4.0; its extended tables are attributed to Wikipedia/Wiktionary-derived material).
+
+## Machine-readable MLCTS rime inventory
+
+[data/burmese/romanization_rimes_inventory.csv](../data/burmese/romanization_rimes_inventory.csv) records the 94 rime keys present in the vendored Mya2Rom 0.4.4 `vowels` object and the exact second-column MLCTS form. This is explicitly a vendor-derived inventory, not a claim that every row was checked against an original Myanmar Language Commission publication. The Ukrainian candidate is intentionally blank and the status is `EVIDENCE_LIMITED` for every row until the MLCTS source form, syllable context and Ukrainian target value are independently adjudicated. Do not promote these rows to output mappings merely because the upstream library returns a Latin string.
