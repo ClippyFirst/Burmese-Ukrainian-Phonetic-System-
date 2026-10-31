@@ -194,3 +194,8 @@ The research registry records external pronunciation engines, IPA dictionaries, 
 ## Two output methods
 
 The service separates the orthographic MLCTS romanization route from the IPA-first phonetic route. The romanization tab currently exposes a PARTIAL Ukrainian crosswalk and never falls back to phonetic output. See the [romanization → Ukrainian research matrix](docs/romanization-to-ukrainian-matrix.md) for the selected profile, source comparison and onset table.
+
+
+## Production build and GitHub Pages
+
+The production build includes both the service and methodology pages and copies the Mya2Rom browser assets into the Vite artifact. Playwright runs against the built preview, not only the development server.
