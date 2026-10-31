@@ -234,7 +234,7 @@ function renderUkrainian(ipaText){
       const v=units[i+1],long=units[i+2]==="ː";
       const glideVowels={a:"я",e:"є",ɛ:"є",i:"ї",u:"ю",ʊ:"ю",o:"йо",ɔ:"йо",oʊ:"йоу"};
       if(glideVowels[v]){
-        const candidates=[candidateFor("j"),candidateFor(v)];
+        const candidates=[candidateFor(v)];
         if(long)candidates.push({status:"ANALYSIS_DEPENDENT"});
         const combined={text:glideVowels[v],status:aggregateStatus(candidates.map(x=>x.status)),reason:"Contextual Ukrainian rendering of initial /j/ plus vowel.",ruleIds:[]};
         parts.push(combined);i+=long?2:1;
