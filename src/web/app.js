@@ -261,7 +261,7 @@ function isStandaloneBareConsonant(segments,index){
 function convert(text){
   const normalized=normalize(text),segments=segment(normalized);
   const parsed=segments.map((s,index)=>s.nonMyanmar?s:parseCluster(s.raw,isStandaloneBareConsonant(segments,index))),myanmar=parsed.filter(s=>!s.nonMyanmar);
-  const ipaText=parsed.map(s=>s.nonMyanmar?s.raw:(s.ipa||"?")).join(""),ukText=parsed.map(s=>s.nonMyanmar?s.raw:(s.uk?.text||"")).join("");
+  const ipaText=parsed.map(s=>s.nonMyanmar?s.raw:(s.ipa||"?")).join(""),ukText=parsed.map(s=>s.nonMyanmar?s.raw:(s.uk&&s.uk.status!=="NOT_ESTABLISHED"?s.uk.text:"⟦"+s.raw+"⟧")).join("");
   const ipaStatus=aggregateStatus(myanmar.map(s=>s.ipa?s.status:(s.status==="UNSUPPORTED"?"UNSUPPORTED":"NOT_ESTABLISHED")),myanmar.length?"ESTABLISHED":"UNSUPPORTED");
   const ukStatus=aggregateStatus(myanmar.map(s=>s.uk?.status||"NOT_ESTABLISHED"),myanmar.length?"ESTABLISHED":"UNSUPPORTED");
   const status=aggregateStatus([ipaStatus,ukStatus],myanmar.length?"ESTABLISHED":"UNSUPPORTED");
