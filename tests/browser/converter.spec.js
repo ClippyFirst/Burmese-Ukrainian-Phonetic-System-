@@ -244,7 +244,7 @@ test("unresolved anusvara is not silently deleted from browser IPA",async({page}
   await page.goto("/");
   await page.locator("#source").fill("ကံ");
   await expect(page.locator("#ipa")).toHaveText("?");
-  await expect(page.locator("#uk")).toHaveText("—");
+  await expect(page.locator("#uk")).toHaveText("⟦ကံ⟧");
   await expect(page.locator("#uk-status")).toContainText("NOT_ESTABLISHED");
   await expect(page.locator("#syllables")).toContainText("IPA не встановлено");
 });
@@ -253,7 +253,7 @@ test("unresolved inherent vowel is withheld instead of guessed in browser IPA",a
   await page.goto("/");
   await page.locator("#source").fill("က");
   await expect(page.locator("#ipa")).toHaveText("?");
-  await expect(page.locator("#uk")).toHaveText("—");
+  await expect(page.locator("#uk")).toHaveText("⟦က⟧");
   await expect(page.locator("#uk-status")).toContainText("NOT_ESTABLISHED");
 });
 
