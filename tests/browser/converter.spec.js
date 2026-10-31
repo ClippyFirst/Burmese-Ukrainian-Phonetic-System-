@@ -275,6 +275,7 @@ test("contiguous Myanmar bare clusters retain the existing contextual fallback",
 
 test("romanization uses orthographic MLCTS, not modified phonetic MLCTS2",async({page})=>{
   await page.goto("/");
+  expect(await page.evaluate(() => typeof window.mya2rom)).toBe("function");
   await page.locator("#source").fill("မြို့");
   await expect(page.locator("#romanization")).toHaveText("mrui.");
   await expect(page.locator("#romanization-status")).toContainText("Mya2Rom 0.4.4");
