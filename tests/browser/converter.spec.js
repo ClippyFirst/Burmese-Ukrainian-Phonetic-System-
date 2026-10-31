@@ -330,7 +330,7 @@ test("full Burmese greeting sentence preserves every segmented source unit",asyn
   await expect(page.locator("#ipa")).not.toHaveText("");
   const reconstructed = await page.locator("#syllables .syllable").evaluateAll(rows => rows.map(row => {
     const source = row.querySelector("strong");
-    return source ? source.textContent.replace(/^\\d+\\s+/u, "") : row.textContent.split(" · ")[0];
+    return source ? source.textContent.replace(/^\d+\s+/u, "") : row.textContent.split(" · ")[0];
   }).join(""));
   expect(reconstructed).toBe(sentence.normalize("NFC"));
   await expect(page.locator("#uk")).toContainText("⟦မင်္⟧");
