@@ -21,4 +21,4 @@ jobs:
         run: npm run generate:web && git diff --exit-code -- src/web/generated/data.js
       - run: npm test
       - run: npx playwright install --with-deps chromium
-      - run: npm run test:browser
+      - run: npm run test:browser:built
