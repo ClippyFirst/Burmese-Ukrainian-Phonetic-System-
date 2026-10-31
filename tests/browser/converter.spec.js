@@ -289,3 +289,24 @@ test("primary navigation exposes the service and methodology pages",async({page}
   await expect(nav.getByRole("link",{name:"Сервіс"})).toHaveAttribute("aria-current","page");
   await expect(nav.getByRole("link",{name:"Методологія"})).toHaveAttribute("href","./system.html");
 });
+
+
+test("romanization and phonetic outputs are separate selectable modes",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("မြို့");
+  await expect(page.locator("#mode-phonetic")).toHaveAttribute("aria-pressed","true");
+  await expect(page.locator("#ipa-panel")).toBeVisible();
+  await expect(page.locator("#ua-panel")).toBeVisible();
+  await expect(page.locator("#romanization-panel")).toBeHidden();
+  await page.locator("#mode-romanization").click();
+  await expect(page.locator("#mode-romanization")).toHaveAttribute("aria-pressed","true");
+  await expect(page.locator("#romanization-panel")).toBeVisible();
+  await expect(page.locator("#ua-romanization-panel")).toBeVisible();
+  await expect(page.locator("#ua-romanization-status")).toContainText("PARTIAL");
+  await expect(page.locator("#ipa-panel")).toBeHidden();
+  await expect(page.locator("#ua-panel")).toBeHidden();
+  await page.locator("#mode-phonetic").click();
+  await expect(page.locator("#ipa-panel")).toBeVisible();
+  await expect(page.locator("#ua-panel")).toBeVisible();
+  await expect(page.locator("#romanization-panel")).toBeHidden();
+});
