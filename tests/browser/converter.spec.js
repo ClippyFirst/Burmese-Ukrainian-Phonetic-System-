@@ -336,7 +336,7 @@ test("full Burmese greeting sentence preserves every segmented source unit",asyn
   await expect(page.locator("#uk")).toContainText("⟦မင်္⟧");
 });
 
-test("full Burmese greeting sentence reaches MLCTS mode and normalizes sentence punctuation",async({page})=>{
+test("full Burmese greeting sentence preserves Burmese sentence stops in MLCTS mode",async({page})=>{
   const sentence="မင်္ဂလာပါ။ ကျွန်တော့်နာမည် မောင်မောင်ပါ။ ကျွန်တော် မြန်မာနိုင်ငံက လာပါတယ်။ ဘာသာစကားအသစ်တွေကို လေ့လာရတာ ကြိုက်ပါတယ်။";
   await page.goto("/");
   await page.locator("#source").fill(sentence);
@@ -345,8 +345,8 @@ test("full Burmese greeting sentence reaches MLCTS mode and normalizes sentence 
   expect(romanized).toMatch(/[A-Za-z]/u);
   expect(romanized).toContain(" ");
   expect(romanized).toContain(".");
-  expect(romanized).not.toMatch(/[\u1000-\u109f]/u);
-  expect(romanized.match(/\./gu) ?? []).toHaveLength(4);
+  expect(romanized.match(/။/gu) ?? []).toHaveLength(4);
+  expect(romanized).not.toMatch(/[\u1000-\u1049\u104c-\u109f]/u);
   await expect(page.locator("#ua-romanization-result")).toHaveText("⟦МАТРИЦЯ НЕ ЗАВЕРШЕНА⟧");
   await expect(page.locator("#ua-romanization-status")).toContainText("PARTIAL");
   await expect(page.locator("#output-method-note")).toContainText("MLCTS");
