@@ -211,3 +211,15 @@ Test-first RED: [41230779647](https://github.com/ClippyFirst/Burmese-Ukrainian-P
 - Pages deployment [41231199596](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41231199596) succeeded: https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/ .
 - Final statuses: MYA-ROM-PROFILE-001 DONE_VERIFIED; MYA-ROM-MATRIX-ONSET-001 DONE_VERIFIED; MYA-ROM-MATRIX-001 PARTIAL; MYA-ROM-UA-001 TODO; MYA-PAGES-ARTIFACT-001 DONE_VERIFIED; MYA-PHONETIC-COVERAGE PARTIAL/BLOCKED pending independent lexical gold and expert adjudication.
 - The romanization tab's Ukrainian result is intentionally PARTIAL. Do not claim full romanization coverage until a complete source → MLCTS → Ukrainian syllable matrix and adapter pass exact coverage tests.
+
+
+## Browser output integrity and full-sentence regression — 2026-10-31
+
+| Task | Status | Evidence |
+|---|---|---|
+| Preserve unresolved/unsupported Burmese source units in Ukrainian browser output | DONE_VERIFIED | PR [#64](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/64) merged as `d0b7f6351a4151b974ec9ee379f81f7a06da9613`; unresolved units now render as `⟦source⟧` rather than disappearing or exposing incomplete per-syllable mappings |
+| Preserve supported contextual initial /j/ + vowel rendering | DONE_VERIFIED | Existing `/juː/ → ю` browser regression remains green after correcting status aggregation for the contextual target |
+| Full user-supplied Burmese greeting sentence source reconstruction | DONE_VERIFIED | Playwright reconstructs the normalized sentence from rendered source-unit rows and asserts exact equality; unresolved Ukrainian units remain explicitly marked |
+| Full Burmese phonetic/target accuracy for the sentence | BLOCKED / EVIDENCE_LIMITED | No independent lexical IPA gold and no complete Ukrainian mapping inventory; do not infer missing pronunciations or spellings to force a full output |
+
+Exact final PR-head workflow [41238825573](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41238825573) passed: pytest 64 + 29 subtests, Node 4/4, Vite build, generated-data drift check, and Playwright 50/50 against the built artifact. The Pages workflow [41238926334](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41238926334) completed successfully and deployed merged main `d0b7f6351a4151b974ec9ee379f81f7a06da9613` to https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/. Main verification [41238926148](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41238926148) also completed successfully.
