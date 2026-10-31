@@ -29,19 +29,35 @@ function aggregateStatus(statuses,emptyStatus="NOT_ESTABLISHED"){
 }
 
 function normalize(text){return text.normalize("NFC");}
-function isMyanmarPunctuation(ch){const n=ch.codePointAt(0);return n===0x104a||n===0x104b;}
 function isMyanmarCodePoint(n){
   // Myanmar, Myanmar Extended-A/B, and the supplementary Myanmar block.
   // Script recognition is intentionally broader than the supported inventory:
   // unknown Myanmar characters must be reported as unsupported, not passed through.
   return (n>=0x1000&&n<=0x109f)||(n>=0xa9e0&&n<=0xa9ff)||(n>=0xaa60&&n<=0xaa7f)||(n>=0x116d0&&n<=0x116ff);
 }
-function isMyanmar(ch){return isMyanmarCodePoint(ch.codePointAt(0));}
 function isMyanmarTextAt(text,index){
   const cp=text.codePointAt(index);
-  return isMyanmarCodePoint(cp)&&cp!==0x104a&&cp!==0x104b;
+  return isMyanmarCodePoint(cp)&&!(cp>=0x1040&&cp<=0x104b);
 }
 function widthAt(text,index){return text.codePointAt(index)>0xffff?2:1;}
+function romanizeTextPreservingNonMyanmar(text,romanizer){
+  let result="",buffer="",bufferIsMyanmar=null;
+  const flush=()=>{
+    if(!buffer)return;
+    result+=bufferIsMyanmar?romanizer(buffer,"mlcts"):buffer;
+    buffer="";
+  };
+  for(let index=0;index<text.length;index+=widthAt(text,index)){
+    const character=String.fromCodePoint(text.codePointAt(index));
+    const isMyanmarRun=isMyanmarTextAt(text,index);
+    if(buffer&&isMyanmarRun!==bufferIsMyanmar)flush();
+    buffer+=character;
+    bufferIsMyanmar=isMyanmarRun;
+  }
+  flush();
+  return result;
+}
+
 // Keep ordinary whitespace and punctuation available for text passthrough, but
 // never silently preserve invisible C0/C1 controls as if they were user prose.
 function isUnsafeControlAt(text,index){
@@ -272,7 +288,7 @@ function render(){
   const text=source.value;count.textContent=[...text].length+" символів";
   if(!text){empty.hidden=false;results.hidden=true;issues.hidden=true;return;}
   const r=convert(text);empty.hidden=true;results.hidden=false;uk.textContent=r.uk||"—";ipa.textContent=r.ipa||"—";
-  romanization.textContent=typeof window.mya2rom==="function" ? text.split(/([\s၊။၊,!?;:()[\]{}“”«»]+)/u).map(part=>/[\u1000-\u109f\uA9E0-\uA9FF\uAA60-\uAA7F\u116D0-\u116FF]/u.test(part) ? window.mya2rom(part,"mlcts") : part).join("") : "Романізатор не завантажився; результат не сформовано.";
+  romanization.textContent=typeof window.mya2rom==="function" ? romanizeTextPreservingNonMyanmar(text,window.mya2rom) : "Романізатор не завантажився; результат не сформовано.";
   ukStatus.textContent="Загальний статус: "+r.status+" · IPA: "+r.ipaStatus+" · українська передача: "+r.ukStatus;
   ipaStatus.textContent=r.segments.some(x=>!x.nonMyanmar&&!x.ipa)?"Частину фонетичної структури не встановлено для цього вводу.":"Структурно розпізнані сегменти.";
   syllables.replaceChildren();
