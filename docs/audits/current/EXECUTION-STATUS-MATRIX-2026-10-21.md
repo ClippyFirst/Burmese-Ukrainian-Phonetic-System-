@@ -240,3 +240,9 @@ These are source-integrity regressions, not evidence of Burmese IPA accuracy, fu
 
 - PR #74's post-merge main tests [41245969998](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41245969998) and Pages deployment [41245969938](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41245969938) completed successfully on `6ec5c6a15af45fce5d993933c3c429d8e9a82c79`; deployed-site/runtime smoke test passed. This supersedes the earlier queued status in the preceding checkpoint.
 - The subsequent documentation-only PR #75 merged as `48bb45cf2a5c6cc95057fecacdfbc6e852b760b1`; exact PR-head tests [41246079334](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41246079334) passed. Its post-merge exact-main tests [41246294703](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41246294703) and Pages [41246294821](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41246294821) were still running at this checkpoint.
+
+
+## Final main verification correction — 2026-10-31
+
+- Exact-main tests [41246294703](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41246294703) and Pages [41246294821](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41246294821) completed successfully on `48bb45cf2a5c6cc95057fecacdfbc6e852b760b1`. The earlier in-progress note above is superseded; deployed-site/runtime smoke test passed.
+- Follow-up documentation PR-head verification remains required before merge.
