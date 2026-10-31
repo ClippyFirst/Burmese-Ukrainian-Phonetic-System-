@@ -223,3 +223,14 @@ Test-first RED: [41230779647](https://github.com/ClippyFirst/Burmese-Ukrainian-P
 | Full Burmese phonetic/target accuracy for the sentence | BLOCKED / EVIDENCE_LIMITED | No independent lexical IPA gold and no complete Ukrainian mapping inventory; do not infer missing pronunciations or spellings to force a full output |
 
 Exact final PR-head workflow [41238825573](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41238825573) passed: pytest 64 + 29 subtests, Node 4/4, Vite build, generated-data drift check, and Playwright 50/50 against the built artifact. The Pages workflow [41238926334](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41238926334) completed successfully and deployed merged main `d0b7f6351a4151b974ec9ee379f81f7a06da9613` to https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/. Main verification [41238926148](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41238926148) also completed successfully.
+
+
+## Mixed-text and unsupported-source preservation — 2026-10-31
+
+| Task | Status | Evidence / acceptance |
+|---|---|---|
+| Python parser exact source reconstruction for mixed sentences | DONE_VERIFIED (PR-head evidence) | PR #74 merged as `6ec5c6a15af45fce5d993933c3c429d8e9a82c79`; exact-head workflow [41244535813](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41244535813) passed all configured Python, Node, build, generated-data and Playwright steps. Tests cover Latin text, ASCII digits, Burmese digits, Myanmar punctuation and exact source-unit reconstruction. |
+| Python withholding for unsupported Myanmar Extended-A adjacent to a valid syllable | DONE_VERIFIED (bounded parser behavior) | Regression asserts the complete raw cluster is preserved and status is `partially_unparsed`; no unsupported unit is silently dropped or promoted to IPA. |
+| Exact post-merge main verification and Pages deployment | IN_PROGRESS / BLOCKED pending CI | Main SHA `6ec5c6a15af45fce5d993933c3c429d8e9a82c79`; runs [41245969998](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41245969998) and [41245969938](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41245969938) were queued at checkpoint time. Acceptance: both exact-SHA workflows complete successfully; Pages smoke test confirms deployed runtime assets. |
+
+These are source-integrity regressions, not evidence of Burmese IPA accuracy, full Unicode coverage, or completion of the MLCTS → Ukrainian adapter. Independent lexical IPA gold remains 0.
