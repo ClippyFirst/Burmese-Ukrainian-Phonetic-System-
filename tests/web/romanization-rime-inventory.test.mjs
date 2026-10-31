@@ -36,7 +36,7 @@ function vendorMlctsRimes(source) {
   for (const line of source.slice(start, end).split(/\r?\n/u)) {
     const match = line.match(/^\s*"([^"]+)"\s*:\s*\[([^\]]+)\]/u);
     if (!match) continue;
-    const values = [...match[2].matchAll(/"((?:\\.|[^"])*)"/gu)].map((item) => item[1].replace(/\\\"/gu, '"'));
+    const values = [...match[2].matchAll(/"((?:\\.|[^"])*)"/gu)].map((item) => item[1]);
     assert.ok(values.length >= 2, "every vendor vowel row must expose an MLCTS column");
     rows.push([match[1], values[1]]);
   }
