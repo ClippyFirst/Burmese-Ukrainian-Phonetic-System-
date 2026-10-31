@@ -338,7 +338,7 @@ test("full Burmese greeting sentence preserves every segmented source unit",asyn
 
 
 test("Myanmar digits and punctuation are preserved in both output modes",async({page})=>{
-  const sentence="မင်္ဂလာပါ ABC ၁၂၃။ မြန်မာစာ။";
+  const sentence="မင်္ဂလာပါ ABC ၁၂၃၊ မြန်မာစာ။";
   await page.goto("/");
   await page.locator("#source").fill(sentence);
   await page.locator("#mode-romanization").click();
@@ -346,7 +346,8 @@ test("Myanmar digits and punctuation are preserved in both output modes",async({
   expect(romanized).toMatch(/[A-Za-z]/u);
   expect(romanized).toContain("ABC");
   expect(romanized).toContain("၁၂၃");
-  expect(romanized.match(/။/gu) ?? []).toHaveLength(2);
+  expect(romanized).toContain("၊");
+  expect(romanized.match(/။/gu) ?? []).toHaveLength(1);
   expect(romanized).not.toMatch(/[\u1000-\u103f\u104c-\u109f]/u);
   await page.locator("#mode-phonetic").click();
   await expect(page.locator("#uk")).toContainText("ABC");
