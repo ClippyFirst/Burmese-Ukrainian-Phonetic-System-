@@ -346,7 +346,7 @@ test("Myanmar digits and punctuation are preserved in both output modes",async({
   expect(romanized).toMatch(/[A-Za-z]/u);
   expect(romanized).toContain("၁၂၃");
   expect(romanized.match(/။/gu) ?? []).toHaveLength(2);
-  expect(romanized).not.toMatch(/[\\u1000-\\u103f\\u104c-\\u109f]/u);
+  expect(romanized).not.toMatch(/[\u1000-\u103f\u104c-\u109f]/u);
   await page.locator("#mode-phonetic").click();
   await expect(page.locator("#uk")).toContainText("၁၂၃");
   await expect(page.locator("#uk")).toContainText("။");
@@ -362,7 +362,7 @@ test("full Burmese greeting sentence preserves Burmese sentence stops in MLCTS m
   expect(romanized).toContain(" ");
   expect(romanized).toContain(".");
   expect(romanized.match(/။/gu) ?? []).toHaveLength(4);
-  expect(romanized).not.toMatch(/[\u1000-\u1049\u104c-\u109f]/u);
+  expect(romanized).not.toMatch(/[\u1000-\u103f\u104c-\u109f]/u);
   await expect(page.locator("#ua-romanization-result")).toHaveText("⟦МАТРИЦЯ НЕ ЗАВЕРШЕНА⟧");
   await expect(page.locator("#ua-romanization-status")).toContainText("PARTIAL");
   await expect(page.locator("#output-method-note")).toContainText("MLCTS");
