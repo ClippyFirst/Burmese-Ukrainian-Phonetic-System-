@@ -328,5 +328,5 @@ test("full Burmese greeting sentence preserves every segmented source unit",asyn
   await expect(page.locator("#results")).toBeVisible();
   await expect(page.locator("#uk")).not.toHaveText("");
   await expect(page.locator("#ipa")).not.toHaveText("");
-  await expect(page.locator("#syllables")).toContainText("မင်္ဂ");
+  await expect(page.locator("#syllables .syllable").first()).toContainText("မင်္");
 });
