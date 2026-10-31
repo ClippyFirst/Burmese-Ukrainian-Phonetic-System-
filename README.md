@@ -199,3 +199,10 @@ The service separates the orthographic MLCTS romanization route from the IPA-fir
 ## Production build and GitHub Pages
 
 The production build includes both the service and methodology pages and copies the Mya2Rom browser assets into the Vite artifact. Playwright runs against the built preview, not only the development server.
+
+
+## Live service
+
+GitHub Pages: https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/
+
+The production build contains both the service and methodology pages and the Mya2Rom assets. Playwright runs against the built Vite preview. The romanization tab is separate from the IPA-first phonetic tab; its Ukrainian crosswalk is still marked PARTIAL.
