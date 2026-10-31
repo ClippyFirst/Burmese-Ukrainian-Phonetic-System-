@@ -279,7 +279,7 @@ test("romanization uses orthographic MLCTS, not modified phonetic MLCTS2",async(
   await expect(page.locator("#romanization")).toHaveText("mrui.");
   await expect(page.locator("#romanization-status")).toContainText("Mya2Rom 0.4.4");
   const headings=await page.locator("#results article h3").allTextContents();
-  expect(headings.slice(0,3)).toEqual(["Романізація · MLCTS","IPA","Українська практична транскрипція"]);
+  expect(headings.slice(0,3)).toEqual(["Романізація · MLCTS","Українська за романізацією","IPA"]);
 });
 
 test("primary navigation exposes the service and methodology pages",async({page})=>{
