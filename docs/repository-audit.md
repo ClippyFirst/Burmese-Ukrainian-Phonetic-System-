@@ -90,3 +90,13 @@ moved to research/historical/ or research/decisions/ rather than deleted.
 - Located the Library of Congress 2011 *Burmese Romanization Table*. It is explicitly an ALA-LC table, not the MLC/MLCTS source, so it must not be used to validate the project's MLCTS rows. Its medial, conjunct, final, tone-mark, punctuation, numeral and word-division conventions are a distinct system.
 - The SIL catalogue endpoint referenced in secondary metadata returned HTTP 403; the original MLC publication remains unavailable. The 94-row Mya2Rom-derived rime inventory is still a vendor implementation inventory with parity tests, not primary-source verification.
 - No MLCTS-to-Ukrainian candidate, IPA form, or source permission was added on the basis of this search.
+
+
+### Browser output integrity regression — 2026-10-31
+
+- PR #64 merged as `d0b7f6351a4151b974ec9ee379f81f7a06da9613`.
+- Before the fix, unsupported Myanmar `ꩠ` was present in analysis/status but silently absent from the Ukrainian output (`ကာ ꩠ` rendered as `ка `). The browser output now shows `⟦ꩠ⟧`; unresolved and partially mapped units remain visible as source markers rather than being silently omitted.
+- The contextual initial `/j/` + vowel rule now grades the combined Ukrainian target as one unit; `/juː/ → ю` remains covered by the existing browser test.
+- Exact-head CI [41238825573](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41238825573) passed pytest 64 + 29 subtests, Node 4/4, Vite build, generated-data drift check, and Playwright 50/50. The full greeting sentence is reconstructed exactly from rendered source-unit rows.
+- This verifies source preservation and output honesty, not full phonetic accuracy. Independent lexical IPA gold remains 0 verified entries; MLCTS → Ukrainian syllable adapter and original MLC primary source remain incomplete/blocked.
+- Pages deployment for merged main commit `d0b7f6351a4151b974ec9ee379f81f7a06da9613` is workflow [41238926334](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41238926334); it was queued at audit time and must be confirmed before claiming the fix is live.
