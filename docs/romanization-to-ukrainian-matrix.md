@@ -105,7 +105,7 @@ This is a research crosswalk, not an adjudicated Ukrainian name standard. A tabl
 | MYA-ROM-PROFILE-001 | DONE_VERIFIED | Browser calls MLCTS; result card labels MLCTS; test-first exact sample proves MLCTS mrui. vs MLCTS2 mjou.; exact-head workflow 41229019002 passed |
 | MYA-ROM-UA-001 | TODO | Independent MLCTS-syllable → Ukrainian adapter |
 | MYA-ROM-MATRIX-ONSET-001 | DONE_VERIFIED | 35 MLCTS onset rows in data/burmese/romanization_ukrainian.csv; exact source inventory and provenance/status checks passed in workflow 41229245383 |
-| MYA-ROM-MATRIX-001 | PARTIAL | Medial, vowel, coda, independent vowel, kinzi, asat, numeral and punctuation inventory still required |
+| MYA-ROM-MATRIX-001 | PARTIAL | Medial, vowel, coda, independent vowel, kinzi, asat, numeral and punctuation inventory still required |\n| MYA-ROM-OUTPUT-INTEGRITY-001 | DONE_VERIFIED | Basic Myanmar digits/punctuation and mixed text pass through; unsupported code points and orphan signs remain visible; exact-head CI 41243831142/41243825927 passed |
 | MYA-ROM-LIC-001 | PARTIAL | Audit all vendored source components and preserve CC-BY-SA-4.0 attribution |
 | MYA-IPA-001 | PARTIAL | Contextual vowel/coda/tone/phonation IPA coverage and independent lexical gold remain incomplete |
 
