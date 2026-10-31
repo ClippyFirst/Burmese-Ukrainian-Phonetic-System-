@@ -467,3 +467,14 @@ The shared target conventions are now explicit in the central Ukrainian Phonetic
 The exact PR #49 head `e43c4e0121d9f29bc942e5f470d795c114c2085e` passed the full workflow [41075332863](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41075332863): Python tests, generated browser data, build, Node tests and Playwright. Current continuation branch is `fix/shared-ukrainian-phonetics-2026-10-30`; PR #49 is draft. PR #48 remains untouched.
 
 This is a target orthography policy update only. It does not increase the count of independently adjudicated Burmese IPA gold examples (still 0), does not establish accuracy, and does not close the previously listed phonology, tone/register, corpus or licensing tasks. Keep the research-grade limitation visible.
+
+
+## Final main / Pages checkpoint — 2026-10-31
+
+- Final main commit: fff943db823ae5ca0f4fed50b572cc75cb743f84.
+- PR #54: MLCTS profile and onset matrix; PR #55: two separate method tabs; PR #56: production asset copy, multi-page build and preview-based browser tests.
+- PR #48 was closed as superseded by #56; its old branch was left intact. PR #53 styling work remains open and untouched.
+- Main verification [41231199684](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41231199684) passed: pytest 63 + 29 subtests; Node 3/3; Playwright 48 against the built artifact.
+- Pages deployment [41231199596](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41231199596) succeeded: https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/ .
+- Final statuses: MYA-ROM-PROFILE-001 DONE_VERIFIED; MYA-ROM-MATRIX-ONSET-001 DONE_VERIFIED; MYA-ROM-MATRIX-001 PARTIAL; MYA-ROM-UA-001 TODO; MYA-PAGES-ARTIFACT-001 DONE_VERIFIED; MYA-PHONETIC-COVERAGE PARTIAL/BLOCKED pending independent lexical gold and expert adjudication.
+- The romanization tab's Ukrainian result is intentionally PARTIAL. Do not claim full romanization coverage until a complete source → MLCTS → Ukrainian syllable matrix and adapter pass exact coverage tests.
