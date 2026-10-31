@@ -45,7 +45,12 @@ function romanizeTextPreservingNonMyanmar(text,romanizer){
   let result="",buffer="",bufferIsMyanmar=null;
   const flush=()=>{
     if(!buffer)return;
-    result+=bufferIsMyanmar?romanizer(buffer,"mlcts"):buffer;
+    if(bufferIsMyanmar){
+      const romanized=romanizer(buffer,"mlcts");
+      result+=romanized||"⟦"+buffer+"⟧";
+    }else{
+      result+=buffer;
+    }
     buffer="";
   };
   for(let index=0;index<text.length;index+=widthAt(text,index)){
