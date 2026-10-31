@@ -108,3 +108,8 @@ This is a research crosswalk, not an adjudicated Ukrainian name standard. A tabl
 | MYA-ROM-MATRIX-001 | PARTIAL | Medial, vowel, coda, independent vowel, kinzi, asat, numeral and punctuation inventory still required |
 | MYA-ROM-LIC-001 | PARTIAL | Audit all vendored source components and preserve CC-BY-SA-4.0 attribution |
 | MYA-IPA-001 | PARTIAL | Contextual vowel/coda/tone/phonation IPA coverage and independent lexical gold remain incomplete |
+
+
+## Machine-readable MLCTS rime inventory
+
+[data/burmese/romanization_rimes_inventory.csv](../data/burmese/romanization_rimes_inventory.csv) records the 94 rime keys present in the vendored Mya2Rom 0.4.4 `vowels` object and the exact second-column MLCTS form. This is explicitly a vendor-derived inventory, not a claim that every row was checked against an original Myanmar Language Commission publication. The Ukrainian candidate is intentionally blank and the status is `EVIDENCE_LIMITED` for every row until the MLCTS source form, syllable context and Ukrainian target value are independently adjudicated. Do not promote these rows to output mappings merely because the upstream library returns a Latin string.
