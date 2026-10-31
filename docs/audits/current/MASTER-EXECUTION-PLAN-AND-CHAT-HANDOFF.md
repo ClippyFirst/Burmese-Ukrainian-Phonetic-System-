@@ -478,3 +478,14 @@ This is a target orthography policy update only. It does not increase the count 
 - Pages deployment [41231199596](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41231199596) succeeded: https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/ .
 - Final statuses: MYA-ROM-PROFILE-001 DONE_VERIFIED; MYA-ROM-MATRIX-ONSET-001 DONE_VERIFIED; MYA-ROM-MATRIX-001 PARTIAL; MYA-ROM-UA-001 TODO; MYA-PAGES-ARTIFACT-001 DONE_VERIFIED; MYA-PHONETIC-COVERAGE PARTIAL/BLOCKED pending independent lexical gold and expert adjudication.
 - The romanization tab's Ukrainian result is intentionally PARTIAL. Do not claim full romanization coverage until a complete source → MLCTS → Ukrainian syllable matrix and adapter pass exact coverage tests.
+
+
+## Browser output integrity regression — 2026-10-31
+
+- PR [#64](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/64) merged as `d0b7f6351a4151b974ec9ee379f81f7a06da9613`.
+- Root cause: `convert()` concatenated `s.uk?.text || ""`; a Myanmar segment with no established Ukrainian candidate therefore vanished from the aggregate output. The browser reproduced this with `ကာ ꩠ` → `ка ` while the second unit was explicitly UNSUPPORTED.
+- Fix: the browser output now preserves unresolved/unsupported source units as `⟦source⟧`; the status rank also withholds partially mapped syllables instead of emitting a misleading partial candidate. The contextual initial `/j/` + vowel rule is treated as one target unit so the existing `/juː/ → ю` behavior remains valid.
+- The user-supplied Burmese greeting sentence is now a Playwright regression. It reconstructs the normalized source exactly from rendered analysis rows; it does not assert unreviewed IPA or Ukrainian gold. Unsupported target units remain marked.
+- Exact PR-head workflow [41238825573](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41238825573) passed pytest 64 + 29 subtests, Node 4/4, Vite build, generated-data drift check and Playwright 50/50 against the built artifact.
+- Status: output-integrity and sentence-source-reconstruction tasks DONE_VERIFIED; full sentence-level phonetic accuracy remains BLOCKED/EVIDENCE_LIMITED by absent independent lexical IPA gold and incomplete target mapping. The MLC primary-source blocker and MLCTS-to-Ukrainian adapter TODO are unchanged.
+- Pages deployment for the merge, workflow [41238926334](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41238926334), was queued when this handoff was written. Verify its completion before stating the live site contains this fix.
