@@ -107,3 +107,12 @@ moved to research/historical/ or research/decisions/ rather than deleted.
 - Rechecked open PR #53 (`design/burmese-layout-20261030`) against current main `d0b7f6351a4151b974ec9ee379f81f7a06da9613`: branch is diverged, 5 commits ahead and 11 behind (merge base `272da3970c0e8791c5bc5406cc4289e2c841eeef`). Its only changed files are `index.html`, `system.html`, and a wholesale replacement of `src/web/styles.css`; it contains no engine fix or unique regression test.
 - The required responsive behavior was already ported as focused overrides in PR #62 (`78f56512f59bbfa6fc881ccd35e34c4bf1fff7b1`) and verified. The older stylesheet replacement is not safe to merge wholesale because it would replace current IPA typography and method-switch styling.
 - PR #53 remains open and untouched. No unique code or test from it was ported in this pass.
+
+## Burmese full-sentence romanization and source-preservation fix — 2026-10-31
+
+- PR #68 merged as \`9075b6e1f8384cc9ae71fe75f12a0b6cc699db15\`; exact-head workflow [41240518900](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41240518900) passed the full configured suite.
+- PR #69 merged as \`b6ce024a26bef44c76744aa231b52de551c12c16\`; exact-head workflow [41241791556](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41241791556) passed Python tests, Vite build, generated-data drift, Node tests and Playwright: **52 passed**.
+- Root cause: the browser app's Myanmar-script predicate classified U+1040–1049 numerals and U+104A–104B punctuation as romanizable script. Passing them to Mya2Rom caused source loss. The fix preserves those code points and romanizes only contiguous Myanmar text runs, preserving adjacent Latin text and separators.
+- Browser regressions cover the four-stop greeting and mixed text with \`ABC\`, \`၁၂၃\`, Myanmar comma \`၊\` and sentence stop \`။\`, in phonetic and MLCTS modes. MLCTS period characters inside romanized forms are not confused with sentence punctuation.
+- This verifies bounded source preservation only. It does not establish complete MLCTS coverage, MLC primary-source conformity, or an MLCTS-to-Ukrainian adapter. The 94-row rime table remains vendor-derived; original MLC source is BLOCKED/EVIDENCE_LIMITED; independent lexical IPA gold remains 0.
+- PR #53 remains open/unmerged and was not changed. The Pages workflow is configured for main pushes and performs deployed HTML/runtime/vendor-asset smoke tests, but a deployment after PR #69 was not verified in this run.
