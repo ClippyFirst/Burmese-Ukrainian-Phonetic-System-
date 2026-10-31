@@ -319,3 +319,14 @@ test("unsupported Myanmar units remain visible in mixed Ukrainian output",async(
   await expect(page.locator("#uk")).toContainText("ка");
   await expect(page.locator("#uk-status")).toContainText("UNSUPPORTED");
 });
+
+test("full Burmese greeting sentence preserves every segmented source unit",async({page})=>{
+  const sentence="မင်္ဂလာပါ။ ကျွန်တော့်နာမည် မောင်မောင်ပါ။ ကျွန်တော် မြန်မာနိုင်ငံက လာပါတယ်။ ဘာသာစကားအသစ်တွေကို လေ့လာရတာ ကြိုက်ပါတယ်။";
+  await page.goto("/");
+  await page.locator("#source").fill(sentence);
+  await expect(page.locator("#source")).toHaveValue(sentence);
+  await expect(page.locator("#results")).toBeVisible();
+  await expect(page.locator("#uk")).not.toHaveText("");
+  await expect(page.locator("#ipa")).not.toHaveText("");
+  await expect(page.locator("#syllables")).toContainText("မင်္ဂ");
+});
