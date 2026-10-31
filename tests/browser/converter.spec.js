@@ -370,3 +370,12 @@ test("full Burmese greeting sentence preserves Burmese sentence stops in MLCTS m
   await expect(page.locator("#ua-romanization-status")).toContainText("PARTIAL");
   await expect(page.locator("#output-method-note")).toContainText("MLCTS");
 });
+
+test("MLCTS romanization visibly preserves Myanmar characters outside the supported inventory",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကာ ꩠ");
+  await page.locator("#mode-romanization").click();
+  const romanized=await page.locator("#romanization").textContent();
+  expect(romanized).toMatch(/[A-Za-z]/u);
+  expect(romanized).toContain("⟦ꩠ⟧");
+});
