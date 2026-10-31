@@ -83,3 +83,10 @@ moved to research/historical/ or research/decisions/ rather than deleted.
 - Exact-head CI [41234651088](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41234651088) passed pytest, Vite build, generated-data drift, Node tests, and Playwright against the built artifact.
 - Existing IPA typography and method-switch styles were preserved. PR #53 remains open/unmerged because its branch is diverged and its older stylesheet snapshot was not safe to merge wholesale.
 - Original MLC publication, complete MLCTS syllable inventory, MLCTS → Ukrainian syllable adapter, and adjudicated phonetic gold remain open. This is UI verification only; no new Pages deployment is claimed here.
+
+
+### Primary-source boundary clarification — 2026-10-31
+
+- Located the Library of Congress 2011 *Burmese Romanization Table*. It is explicitly an ALA-LC table, not the MLC/MLCTS source, so it must not be used to validate the project's MLCTS rows. Its medial, conjunct, final, tone-mark, punctuation, numeral and word-division conventions are a distinct system.
+- The SIL catalogue endpoint referenced in secondary metadata returned HTTP 403; the original MLC publication remains unavailable. The 94-row Mya2Rom-derived rime inventory is still a vendor implementation inventory with parity tests, not primary-source verification.
+- No MLCTS-to-Ukrainian candidate, IPA form, or source permission was added on the basis of this search.
