@@ -1,4 +1,4 @@
-import { ONSETS, SIGNS, MEDIALS, PRACTICAL, RULES } from "./generated/data.js";
+import { ONSETS, SIGNS, MEDIALS, PRACTICAL, RULES, ROMANIZATION_SUPPORTED } from "./generated/data.js";
 
 const source=document.querySelector("#source"), results=document.querySelector("#results"), empty=document.querySelector("#empty");
 const issues=document.querySelector("#issues"), issueText=document.querySelector("#issue-text"), count=document.querySelector("#count");
@@ -22,6 +22,7 @@ const NASAL_CODAS=new Set(["င","န","မ","ည"]);
 const CHECKED_CODAS=new Set(["က","ခ","ဂ","ဃ","စ","ဆ","ဇ","ဈ","တ","ထ","ဒ","ဓ","ပ","ဖ","ဗ","ဘ"]);
 const IPA_UNIT_RE=/t͡?ɕʰ|t͡?ɕ|d͡?ʑ|eɪ|oʊ|aɪ|aʊ|[ktpsdb]ʰ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|ɴ|ŋ|ɲ|ɯ|ɛ|ɪ|ɔ|ə|ʊ|θ|ð|[a-zɡʔː]/g;
 const MEDIAL_CHARS=new Set(Object.keys(MEDIALS)), VOWEL_CHARS=new Set(Object.keys(SIGNS)), BASE=new Set(Object.keys(ONSETS));
+const ROMANIZATION_SUPPORTED_CHARS=new Set(ROMANIZATION_SUPPORTED);
 const STATUS_RANK={ESTABLISHED:0,WELL_SUPPORTED:1,PROPOSED:2,ANALYSIS_DEPENDENT:3,NOT_ESTABLISHED:4,UNSUPPORTED:5,UNCERTAIN:6};
 function aggregateStatus(statuses,emptyStatus="NOT_ESTABLISHED"){
   if(!statuses.length)return emptyStatus;
@@ -50,6 +51,12 @@ function romanizeTextPreservingNonMyanmar(text,romanizer){
   for(let index=0;index<text.length;index+=widthAt(text,index)){
     const character=String.fromCodePoint(text.codePointAt(index));
     const isMyanmarRun=isMyanmarTextAt(text,index);
+    if(isMyanmarRun&&!ROMANIZATION_SUPPORTED_CHARS.has(character)){
+      flush();
+      result+="⟦"+character+"⟧";
+      bufferIsMyanmar=null;
+      continue;
+    }
     if(buffer&&isMyanmarRun!==bufferIsMyanmar)flush();
     buffer+=character;
     bufferIsMyanmar=isMyanmarRun;
