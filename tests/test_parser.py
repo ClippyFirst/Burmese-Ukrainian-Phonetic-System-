@@ -38,3 +38,24 @@ def test_non_burmese_myanmar_extension_letter_is_not_accepted_as_burmese():
     assert syllable["raw"] == text
     assert syllable["onset"] == {}
     assert syllable["analysis"]["status"] == "unsupported_or_malformed"
+
+
+def test_adjacent_unknown_myanmar_extension_is_preserved_after_valid_syllable():
+    source = "ကာ\uAA60"
+    result = parse_burmese(source)
+
+    assert result["normalized"] == source
+    assert "".join(result["graphemes"]) == source
+    assert len(result["syllables"]) == 1
+    syllable = result["syllables"][0]
+    assert syllable["raw"] == source
+    assert syllable["analysis"]["status"] == "partially_unparsed"
+
+
+def test_python_parser_reconstructs_mixed_sentence_source_units():
+    source = "ကာ ABC-42 ၁၂၃၊။"
+    result = parse_burmese(source)
+
+    assert result["normalized"] == source
+    assert "".join(result["graphemes"]) == source
+    assert "".join(syllable["raw"] for syllable in result["syllables"]) == source
