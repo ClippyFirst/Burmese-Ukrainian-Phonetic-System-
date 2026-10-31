@@ -31,3 +31,39 @@
 .button,.copy{font-size:.78rem;min-height:40px}
 
 .method-switch{display:flex;gap:8px;margin:10px 0 6px}.method-button{border:1px solid #d8d6cf;background:transparent;color:#151719;padding:9px 14px;font:inherit;font-size:.7rem;font-weight:700;line-height:1.2;cursor:pointer}.method-button.is-active{background:#151719;border-color:#151719;color:#fff}.method-button:focus-visible{outline:3px solid #d62828;outline-offset:2px}.method-note{margin:0 0 12px;color:#686b6f;font-size:.68rem;line-height:1.5}.results [data-method-panel][hidden]{display:none!important}
+
+
+/* Focused responsive layout port.
+   Preserve current IPA typography and method-switch styles from main. */
+.controls{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:10px}
+.controls>*{flex:0 1 auto;min-width:0}
+.controls button,.controls select{min-height:44px}
+.results>.bar,.primary-result{grid-column:1/-1}
+.result-meta{min-width:0}
+.result-value,.syllable span{overflow-wrap:anywhere}
+.document .table-wrap{max-width:100%;overflow-x:auto}
+@media(max-width:760px){
+  .shell{width:calc(100% - 28px);padding-top:18px}
+  .topline{align-items:flex-start;flex-wrap:wrap}
+  .local{display:none}
+  .hero{padding:42px 0 26px}
+  .hero.compact{padding-top:32px}
+  .hero h1{font-size:clamp(2.5rem,10.5vw,3.7rem);line-height:1.06}
+  .subtitle{font-size:1rem}
+  .bar{align-items:flex-start}
+  .workspace,.results{padding:16px}
+  .results{grid-template-columns:minmax(0,1fr)}
+  .results>.bar,.primary-result,.result-card:last-child{grid-column:auto}
+  .result-meta{grid-template-columns:28px minmax(0,1fr)}
+  .result-meta .copy{grid-column:2;justify-self:start}
+  .controls{justify-content:stretch}
+  .controls>*{flex:1 1 145px}
+  .feedback{align-items:stretch;flex-direction:column}
+  .footer{grid-template-columns:1fr}
+  .footer div:last-child{text-align:left}
+  .document{padding:20px}
+  .status-grid{grid-template-columns:1fr}
+  .syllable{grid-template-columns:1fr}
+  .syllable small{grid-column:1}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
