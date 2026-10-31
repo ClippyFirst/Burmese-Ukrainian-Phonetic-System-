@@ -51,13 +51,18 @@ jobs:
           base="${PAGE_URL%/}"
           curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/" -o /tmp/index.html
           curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/system.html" -o /tmp/system.html
-          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/src/web/app.js" -o /tmp/app.js
-          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/src/web/styles.css" -o /tmp/styles.css
-          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/vendor/mya2rom/mya2rom.js" -o /tmp/mya2rom.js
-          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/vendor/mya2rom/romanisations.js" -o /tmp/romanisations.js
           grep -q 'id="source"' /tmp/index.html
-          grep -q 'src="./src/web/app.js' /tmp/index.html
+          grep -q 'type="module"' /tmp/index.html
           grep -q 'src="./vendor/mya2rom/mya2rom.js' /tmp/index.html
           grep -q 'src="./vendor/mya2rom/romanisations.js' /tmp/index.html
           grep -q '<title>' /tmp/system.html
+          script_src="$(grep -oE '<script type="module"[^>]*src="[^"]+\\.js"' /tmp/index.html | sed -E 's/.*src="([^"]+)".*/\\1/' | head -n1)"
+          css_src="$(grep -oE 'href="[^"]+\\.css"' /tmp/index.html | head -n1 | cut -d'"' -f2)"
+          test -n "$script_src" && test -n "$css_src"
+          case "$script_src" in http*) script_url="$script_src" ;; /*) script_url="$base$script_src" ;; *) script_url="$base/\${script_src#./}" ;; esac
+          case "$css_src" in http*) css_url="$css_src" ;; /*) css_url="$base$css_src" ;; *) css_url="$base/\${css_src#./}" ;; esac
+          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$script_url" -o /tmp/app.js
+          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$css_url" -o /tmp/styles.css
+          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/vendor/mya2rom/mya2rom.js" -o /tmp/mya2rom.js
+          curl --fail --silent --show-error --retry 8 --retry-delay 5 --retry-all-errors "$base/vendor/mya2rom/romanisations.js" -o /tmp/romanisations.js
           test -s /tmp/app.js && test -s /tmp/styles.css && test -s /tmp/mya2rom.js && test -s /tmp/romanisations.js
