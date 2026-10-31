@@ -315,6 +315,8 @@ test("romanization and phonetic outputs are separate selectable modes",async({pa
 test("unsupported Myanmar units remain visible in mixed Ukrainian output",async({page})=>{
   await page.goto("/");
   await page.locator("#source").fill("ကာꩠ");
+  await expect(page.locator("#source")).toHaveValue("ကာꩠ");
+  await expect(page.locator("#syllables")).toContainText("ꩠ");
   await expect(page.locator("#uk")).toHaveText("ка⟦ꩠ⟧");
   await expect(page.locator("#uk-status")).toContainText("UNSUPPORTED");
 });
