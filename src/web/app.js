@@ -234,7 +234,7 @@ function renderUkrainian(ipaText){
       const v=units[i+1],long=units[i+2]==="ː";
       const glideVowels={a:"я",e:"є",ɛ:"є",i:"ї",u:"ю",ʊ:"ю",o:"йо",ɔ:"йо",oʊ:"йоу"};
       if(glideVowels[v]){
-        const candidates=[candidateFor("j"),candidateFor(v)];
+        const candidates=[candidateFor(v)];
         if(long)candidates.push({status:"ANALYSIS_DEPENDENT"});
         const combined={text:glideVowels[v],status:aggregateStatus(candidates.map(x=>x.status)),reason:"Contextual Ukrainian rendering of initial /j/ plus vowel.",ruleIds:[]};
         parts.push(combined);i+=long?2:1;
@@ -261,7 +261,7 @@ function isStandaloneBareConsonant(segments,index){
 function convert(text){
   const normalized=normalize(text),segments=segment(normalized);
   const parsed=segments.map((s,index)=>s.nonMyanmar?s:parseCluster(s.raw,isStandaloneBareConsonant(segments,index))),myanmar=parsed.filter(s=>!s.nonMyanmar);
-  const ipaText=parsed.map(s=>s.nonMyanmar?s.raw:(s.ipa||"?")).join(""),ukText=parsed.map(s=>s.nonMyanmar?s.raw:(s.uk?.text||"")).join("");
+  const ipaText=parsed.map(s=>s.nonMyanmar?s.raw:(s.ipa||"?")).join(""),ukText=parsed.map(s=>s.nonMyanmar?s.raw:(s.uk&&(STATUS_RANK[s.uk.status]??4)<STATUS_RANK.NOT_ESTABLISHED?s.uk.text:"⟦"+s.raw+"⟧")).join("");
   const ipaStatus=aggregateStatus(myanmar.map(s=>s.ipa?s.status:(s.status==="UNSUPPORTED"?"UNSUPPORTED":"NOT_ESTABLISHED")),myanmar.length?"ESTABLISHED":"UNSUPPORTED");
   const ukStatus=aggregateStatus(myanmar.map(s=>s.uk?.status||"NOT_ESTABLISHED"),myanmar.length?"ESTABLISHED":"UNSUPPORTED");
   const status=aggregateStatus([ipaStatus,ukStatus],myanmar.length?"ESTABLISHED":"UNSUPPORTED");

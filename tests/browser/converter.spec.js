@@ -244,7 +244,7 @@ test("unresolved anusvara is not silently deleted from browser IPA",async({page}
   await page.goto("/");
   await page.locator("#source").fill("ကံ");
   await expect(page.locator("#ipa")).toHaveText("?");
-  await expect(page.locator("#uk")).toHaveText("—");
+  await expect(page.locator("#uk")).toHaveText("⟦ကံ⟧");
   await expect(page.locator("#uk-status")).toContainText("NOT_ESTABLISHED");
   await expect(page.locator("#syllables")).toContainText("IPA не встановлено");
 });
@@ -253,7 +253,7 @@ test("unresolved inherent vowel is withheld instead of guessed in browser IPA",a
   await page.goto("/");
   await page.locator("#source").fill("က");
   await expect(page.locator("#ipa")).toHaveText("?");
-  await expect(page.locator("#uk")).toHaveText("—");
+  await expect(page.locator("#uk")).toHaveText("⟦က⟧");
   await expect(page.locator("#uk-status")).toContainText("NOT_ESTABLISHED");
 });
 
@@ -310,4 +310,28 @@ test("romanization and phonetic outputs are separate selectable modes",async({pa
   await expect(page.locator("#ipa-panel")).toBeVisible();
   await expect(page.locator("#ua-panel")).toBeVisible();
   await expect(page.locator("#romanization-panel")).toBeHidden();
+});
+
+test("unsupported Myanmar units remain visible in mixed Ukrainian output",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကာ ꩠ");
+  await expect(page.locator("#uk")).toContainText("⟦ꩠ⟧");
+  await expect(page.locator("#uk")).toContainText("ка");
+  await expect(page.locator("#uk-status")).toContainText("UNSUPPORTED");
+});
+
+test("full Burmese greeting sentence preserves every segmented source unit",async({page})=>{
+  const sentence="မင်္ဂလာပါ။ ကျွန်တော့်နာမည် မောင်မောင်ပါ။ ကျွန်တော် မြန်မာနိုင်ငံက လာပါတယ်။ ဘာသာစကားအသစ်တွေကို လေ့လာရတာ ကြိုက်ပါတယ်။";
+  await page.goto("/");
+  await page.locator("#source").fill(sentence);
+  await expect(page.locator("#source")).toHaveValue(sentence);
+  await expect(page.locator("#results")).toBeVisible();
+  await expect(page.locator("#uk")).not.toHaveText("");
+  await expect(page.locator("#ipa")).not.toHaveText("");
+  const reconstructed = await page.locator("#syllables .syllable").evaluateAll(rows => rows.map(row => {
+    const source = row.querySelector("strong");
+    return source ? source.textContent.replace(/^\d+\s+/u, "") : row.textContent.split(" · ")[0];
+  }).join(""));
+  expect(reconstructed).toBe(sentence.normalize("NFC"));
+  await expect(page.locator("#uk")).toContainText("⟦မင်္⟧");
 });
