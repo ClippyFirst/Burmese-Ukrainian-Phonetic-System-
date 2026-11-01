@@ -128,3 +128,8 @@ The optional workflow builds the pinned source in an ephemeral CI checkout, capt
 Three-repeat re-evaluation: 7/8 probe inputs returned usable output and all 7 were stable across three repetitions; Burmese punctuation sentence `ကေ၊ ကော်။` returned no output in all three. This establishes limited repeatability, not IPA accuracy.
 
 See `docs/audits/current/GORUUT-RUNTIME-EVALUATION-2026-11-01.md` for exact run links, hashes and per-language interpretation.
+
+
+## Cross-engine comparator evidence — 2026-11-01
+
+Cross-engine check: Epitran 1.35.3 returned 6/6 raw outputs; Goruut returned 7/8 usable probes and failed the Burmese punctuation sentence. Exact string agreement between Epitran and Goruut was 0/6. Epitran is largely tone-less in these examples while Goruut emits tone-marked strings; without a common IPA convention and expert gold this is disagreement, not an accuracy ranking. Latest Goruut run had 7 stable usable outputs; a prior run showed one unstable `ကြည်` output.
