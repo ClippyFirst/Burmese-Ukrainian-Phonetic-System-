@@ -133,3 +133,8 @@ See `docs/audits/current/GORUUT-RUNTIME-EVALUATION-2026-11-01.md` for exact run 
 ## Cross-engine comparator evidence — 2026-11-01
 
 Cross-engine check: Epitran 1.35.3 returned 6/6 raw outputs; Goruut returned 7/8 usable probes and failed the Burmese punctuation sentence. Exact string agreement between Epitran and Goruut was 0/6. Epitran is largely tone-less in these examples while Goruut emits tone-marked strings; without a common IPA convention and expert gold this is disagreement, not an accuracy ranking. Latest Goruut run had 7 stable usable outputs; a prior run showed one unstable `ကြည်` output.
+
+
+### Latest pinned Goruut + Epitran run — exact PR head
+
+PR #82 exact head `d8b065bc66dce5fdd9959c4f0eb932a29acaedba` built and ran successfully: [runtime workflow](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41310771082), artifact SHA-256 `0eb19d7079de818736ecff095f700405fc4b46de3791dd6e4fd68762346218fa`. Goruut returned 7/8 usable results; six were stable and one (`ကြည်`) varied across three repetitions; Burmese punctuation returned no output. Epitran 1.35.3 returned 6/6; exact string agreement was 0/6. This is not accuracy or a winner selection; gold=0. Missing `weights9.bin.zlib` warning remains unexplained.
