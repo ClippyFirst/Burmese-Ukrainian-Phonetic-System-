@@ -67,3 +67,12 @@ The exact current PR #82 head `d8b065bc66dce5fdd9959c4f0eb932a29acaedba` was exe
 - The server logs `weights9.bin.zlib: file does not exist`; the pinned Burmese tree contains `weights8.bin.zlib`, not `weights9.bin.zlib`. Its causal relation to punctuation failure or output variation is unproven.
 
 **Disposition: retain Goruut and Epitran only as raw-output comparators; neither is validated for production phonology.** Independent adjudicated Burmese gold remains 0.
+
+
+## Upstream cause of nondeterministic dictionary selection — Burmese
+
+Pinned Goruut source explains the instability signal. In [parts_of_speech_selector_service.go](https://github.com/neurlang/goruut/blob/b224bde02151f8f86d0fe260804e4ca743bda620/repo/services/parts_of_speech_selector_service.go#L168-L205), `SelectE` counts multiple dictionary pronunciations for a word; when more than one exists it increments the escape counters. If the homograph selector has not marked a `preferred` pronunciation, the fallback loop iterates the dictionary mapping and selects a dictionary pronunciation; the upstream source comment explicitly describes this as random selection when no homograph model is available. The [sentence use case](https://github.com/neurlang/goruut/blob/b224bde02151f8f86d0fe260804e4ca743bda620/usecases/phonemize_usecase.go#L84-L85) exposes those counters as `RandomizationWordsCount` and `RandomizationWordsChoices` in the HTTP response.
+
+The only unstable input (ကြည်) carried RandomizationWordsCount=1 and RandomizationWordsChoices=2 on all three responses. The other seven inputs had no such metadata; six were reproducible and one punctuation input returned no output.
+
+This gives a source-level explanation for the observed unstable cases. It does **not** establish that the separate `weights9.bin.zlib` warning causes the selection behavior; that warning remains independently unresolved. The project does not patch Goruut or choose a random pronunciation as acceptable output. Any result carrying these ambiguity counters should remain flagged as non-deterministic/ambiguous for downstream use.
