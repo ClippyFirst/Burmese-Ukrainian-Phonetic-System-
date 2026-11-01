@@ -333,7 +333,7 @@ test("full Burmese greeting sentence preserves every segmented source unit",asyn
     const source = row.querySelector("strong");
     return source ? source.textContent.replace(/^\d+\s+/u, "") : row.textContent.split(" · ")[0];
   }).join(""));
-  expect(reconstructed).toBe(sentence.normalize("NFC"));
+  expect(reconstructed).toBe(browserValue);
   await expect(page.locator("#uk")).toContainText("⟦မင်္⟧");
 });
 
@@ -387,9 +387,11 @@ test("MLCTS romanization visibly preserves Myanmar characters outside the suppor
 
 test("browser preserves a multiline mixed-script message around unsupported Myanmar units",async({page})=>{
   const sentence="ကာ\tABC-42\r\n၁၂၃၊။\u200b𑛐 😀 العربية ဂီ";
+  // HTML textarea values canonicalize CRLF to LF; compare against that declared browser boundary.
+  const browserValue=sentence.replace(/\r\n/gu,"\n").normalize("NFC");
   await page.goto("/");
   await page.locator("#source").fill(sentence);
-  await expect(page.locator("#source")).toHaveValue(sentence);
+  await expect(page.locator("#source")).toHaveValue(browserValue);
   await expect(page.locator("#results")).toBeVisible();
 
   const reconstructed = await page.locator("#syllables .syllable").evaluateAll(rows => rows.map(row => {
