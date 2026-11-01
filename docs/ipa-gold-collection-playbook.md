@@ -79,3 +79,8 @@ Existing numeric thresholds (100 train / 25 dev / 25 test) are minimum engineeri
 
 - Mooney & Repetti-Ludlow (2021), Sonority and syllable structure: The case of Burmese tone: https://journals.linguisticsociety.org/proceedings/index.php/PLSA/article/view/4900
 - Existing source evidence and rights restrictions: docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md
+
+
+## Burmese speech resource lead — 2026-11-01
+
+A potentially useful audio/source lead exists: Oo et al. (LREC 2020), “Burmese Speech Corpus, Finite-State Text Normalization and Pronunciation Grammars with an Application to Text-to-Speech.” The available resource summary describes 2,528 utterances from 20 female speakers, recorded at 48 kHz, with manually segmented transcriptions, plus text-normalization and G2P grammars: https://lacuna.tiptreesystems.com/work/burmese-speech-corpus-finite-state-text-normalization-and-pronunciation-grammars/wrk_32839cc3e1a87a7ffdba33d7dde9f886. This is not an IPA gold corpus by itself. Before using it, inspect the primary paper/repository, exact audio/transcript license, consent and permitted research uses, variety/speaker metadata, transcription format, and whether IPA annotations exist. If rights and profile fit, it may provide controlled audio stimuli for specialist re-transcription; do not infer IPA from its graphemic transcripts or G2P outputs.
