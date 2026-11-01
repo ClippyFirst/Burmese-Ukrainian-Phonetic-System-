@@ -277,3 +277,12 @@ Do not mark the repository 80% ready based on file count, test count, UI complet
 
 - The exact-main test run [41246294703](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41246294703) and Pages deployment [41246294821](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41246294821) have now both completed successfully on main SHA `48bb45cf2a5c6cc95057fecacdfbc6e852b760b1`. Pages build, deploy and deployed-site/runtime smoke test passed.
 - Therefore the post-PR #75 main checkpoint is DONE_VERIFIED. The only remaining CI status for this documentation sequence is the exact PR-head workflow for this follow-up documentation PR; its result must be inspected before merge.
+
+
+## Whole-message adversarial regression — 2026-11-01
+
+- Added PR [#77](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/77), merged as `7a85219f67082ca3d225a31d79429068719349c6`.
+- New test `test_python_parser_preserves_multiline_mixed_script_adversarial_input` exercises a single message containing supported Burmese syllables on both sides of an unsupported Myanmar-script character, tab, Latin identifier, ASCII digits, CRLF, Myanmar digits and punctuation, U+200B, emoji and Arabic-script text.
+- The contract checks exact reconstruction through both grapheme and syllable source records; the unsupported Khamti/Extended-C code point remains explicitly unsupported and valid neighboring Burmese syllables remain structurally established.
+- Exact PR-head CI [41289738055](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41289738055) passed: pytest, production build, generated-web-data drift check, Node tests, Playwright install and built-browser tests.
+- This is a source-integrity/structural probe, not an IPA gold row. Independent lexical IPA gold remains 0; phonological accuracy remains NOT MEASURED.
