@@ -333,7 +333,7 @@ test("full Burmese greeting sentence preserves every segmented source unit",asyn
     const source = row.querySelector("strong");
     return source ? source.textContent.replace(/^\d+\s+/u, "") : row.textContent.split(" · ")[0];
   }).join(""));
-  expect(reconstructed).toBe(browserValue);
+  expect(reconstructed).toBe(sentence.normalize("NFC"));
   await expect(page.locator("#uk")).toContainText("⟦မင်္⟧");
 });
 
