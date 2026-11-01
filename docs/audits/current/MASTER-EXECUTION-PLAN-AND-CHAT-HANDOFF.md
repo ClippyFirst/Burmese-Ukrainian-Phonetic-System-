@@ -489,3 +489,29 @@ This is a target orthography policy update only. It does not increase the count 
 - Exact PR-head workflow [41238825573](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41238825573) passed pytest 64 + 29 subtests, Node 4/4, Vite build, generated-data drift check and Playwright 50/50 against the built artifact.
 - Status: output-integrity and sentence-source-reconstruction tasks DONE_VERIFIED; full sentence-level phonetic accuracy remains BLOCKED/EVIDENCE_LIMITED by absent independent lexical IPA gold and incomplete target mapping. The MLC primary-source blocker and MLCTS-to-Ukrainian adapter TODO are unchanged.
 - Pages deployment [41238926334](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41238926334) completed successfully and published `d0b7f6351a4151b974ec9ee379f81f7a06da9613` at https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/. Main workflow [41238926148](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41238926148) passed after merge.
+
+
+## IPA gold corpus implementation checkpoint — 2026-11-01
+
+### Current task ledger
+
+| Task | Status | Evidence / remaining acceptance |
+|---|---|---|
+| IPA-GOLD-SCHEMA-001 | DONE_VERIFIED | Four versioned JSON Schemas; empty JSONL templates; validator and regression tests in exact-head CI |
+| IPA-GOLD-DOUBLE-ANNOTATION-001 | PARTIAL | Enforces two distinct annotators and third independent adjudicator; actual blind collection needs qualified human annotators and controlled intake |
+| IPA-GOLD-ADJUDICATION-001 | PARTIAL | Agreement/resolved/unresolved semantics and rationale validation implemented; no real adjudicated rows exist |
+| IPA-GOLD-SPLIT-001 | DONE_VERIFIED | Deterministic SHA-256 split assignment, preserves frozen assignments, prevents lexeme-group leakage; current manifest empty |
+| IPA-GOLD-EXPORT-001 | DONE_VERIFIED | Exports only adjudicated, redistributable rows into existing benchmark TSV; current export has header only |
+| IPA-TYPED-BENCHMARK-001 | DONE_VERIFIED | PHONEMIC / PHONETIC_BROAD / PHONETIC_NARROW retained; type mismatch cannot count as exact match |
+| IPA-GOLD-RELEASE-GATE-001 | PARTIAL | Tag/manual workflow requires 100/25/25 adjudicated split rows and rights; owner must require the check in release rulesets/procedure |
+| BURMESE-ORTHO-KINZI-MEDIAL-001 | PARTIAL | Unicode 17 sequence order and kinzi/medial inventory documented; full orthography-to-phonology mapping still requires adversarial coverage |
+| BURMESE-VOWEL-CODA-001 | PARTIAL | Green (1995) and Mooney & Repetti-Ludlow (2021) source conflicts/questions mapped; vowel × coda × sonority realization incomplete |
+| BURMESE-TONE-PHONATION-001 | TODO | Expert adjudication needed to separate tone, phonation, segmental glottal closure and checked-syllable representation |
+| BURMESE-UKRAINIAN-IPA-ADAPTER-001 | PARTIAL | Existing target layer retained; typed surface IPA and expert-reviewed mappings remain incomplete |
+| BURMESE-PYTHON-BROWSER-PHONOLOGY-PARITY-001 | TODO | Existing source-preservation parity does not establish phonological output parity; requires shared expert-backed fixtures |
+
+### Evidence boundary
+
+The four JSONL files are empty templates. `gold.tsv` is header-only; independent expert gold=0 and accuracy=null. Green (1995) explicitly notes competing Burmese tone labels and predictable vowel duration; Mooney & Repetti-Ludlow (2021) argue some vowel alternations are sonority-conditioned rather than tone-conditioned. Neither source is automatically a project gold label. No IPA labels were added.
+
+See [IPA gold protocol](docs/ipa-gold-corpus.md) and [Burmese phonology research workpack](docs/audits/current/PHONOLOGY-RESEARCH-WORKPACK-2026-11-01.md).
