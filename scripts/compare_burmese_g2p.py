@@ -64,7 +64,7 @@ def main() -> int:
     epitran = json.loads(args.epitran.read_text(encoding="utf-8"))
     report = compare_reports(goruut, epitran)
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+    args.output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({k: report[k] for k in ("compared_inputs", "exact_string_matches", "independent_gold_count", "accuracy")}, indent=2))
     return 0
 
