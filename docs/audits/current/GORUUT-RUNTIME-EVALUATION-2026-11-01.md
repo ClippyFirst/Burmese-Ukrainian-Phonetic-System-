@@ -24,3 +24,16 @@ Goruut is a functioning optional HTTP comparator for several Burmese probes, but
 - Optional runtime workflow: [41308074710](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41308074710) (initial completed runtime probe); latest exact-head run is tracked by PR #82.
 - Artifact includes raw responses and server log; retention is 30 days.
 - Accuracy remains null; independent gold count remains 0.
+
+
+## Repeatability follow-up — 2026-11-01
+
+Each of the eight inputs was sent three times to the same server:
+
+- Seven inputs returned usable phonetic tokens; all seven were identical across all three repetitions.
+- The punctuation case `ကေ၊ ကော်။` returned no phonetic output in all three attempts.
+- Thus the observed output is stable for the covered lexical probes, but punctuation coverage is incomplete. No independent IPA concordance or accuracy result is available.
+
+Three-repeat evidence: [workflow 41309099367](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41309099367). Effective config SHA-256 `d725cc8e99a779e7928dc05685c3187b89df9ed87228b1875e290455b8014ef1`; probe fixture SHA-256 `44fdecc507b92c9b18199972f9150b0b9f29b9a04928474e447ff70e6608bb9f`.
+
+**Disposition:** useful stable raw-output comparator for these limited cases, not an IPA-validated production provider.
