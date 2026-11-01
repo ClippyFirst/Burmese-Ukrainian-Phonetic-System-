@@ -433,3 +433,27 @@ Fresh runtime [41324681722](https://github.com/ClippyFirst/Burmese-Ukrainian-Pho
 - Final PR-head Goruut/myG2P runtime [41325432725](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41325432725) PASS; artifact [13091201287](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41325432725/artifacts/13091201287), SHA-256 `eb8bd2018467eb2ca92f20677aac1b62601a3f9d6eb29857b3abc190c7f52f67`. On 100 myG2P entries: 98 Goruut outputs, 2 none; 43 complete / 55 partial / 2 unknown; 98 stable, no randomization metadata; 69 unphonemized source fragments; 0 strict and 17 limited-notation source-label matches. Epitran 1.35.3 also had 0 exact source-label matches. The separate 8-case probe had 7 outputs, 7 complete, 6 stable and 1 unstable/randomized case.
 - Parser, comparison workflow and exact-head tests: **DONE_VERIFIED**. Production phonology remains **PARTIAL/BLOCKED**: 55/100 Goruut outputs are partial; 2/100 absent; myG2P labels are source-attested, not independent gold; independent expert Burmese IPA gold remains 0. myG2P CC BY-NC-SA 4.0 is used only under the owner's temporary test-only authorization; no dictionary data is committed or bundled. The `weights9.bin.zlib` warning remains unexplained.
 - No local checkout was available; engineering verification is from exact-head and post-merge GitHub Actions. See runtime audit and execution matrix for details.
+
+
+## Linguistic completion register — 2026-11-01
+
+- Current verified `main` baseline: `4ddb9d3f10427275ce75c7ae73270468d3721106`; latest exact-main engineering workflow: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41326473323 (success). See the linked current audit register for the verified status and next acceptance criteria: [Linguistic completion register](audits/current/LINGUISTIC-COMPLETION-REGISTER-2026-11-01.md).
+- Reconfirmed `data/benchmark/gold.tsv` contains only its header. Independent expert-adjudicated lexical IPA gold remains **0**; empirical accuracy remains **null**. No external source-attested labels or engine outputs are promoted to gold.
+- The register separates implementable repository work from external expert, primary-source and licensing blockers. Preserve existing canonical plans, registries, tests and generated data; do not create parallel corpora or weaken fail-closed behavior.
+- No local checkout was available for this pass. GitHub Actions provide exact-main engineering evidence only; they do not prove linguistic accuracy, manual accessibility QA or legal permissions.
+## Current master-matrix status override — 2026-11-01
+
+The following current statuses supersede older checkpoint rows above where they conflict; historical evidence remains preserved.
+
+| Workstream | Current status | Current acceptance boundary |
+|---|---|---|
+| Independent Burmese IPA gold | BLOCKED | Gold TSV is header-only; no independently adjudicated lexical IPA; accuracy=null. Requires licensed audio/source, dialect/speaker metadata, double annotation and adjudication. |
+| Consonant/kinzi/medial analysis | PARTIAL | Structural parsing exists; source-backed phonological contexts and full cross-runtime differential corpus remain incomplete. |
+| Vowel combinations and codas | PARTIAL | Full vowel derivation, checked-syllable and contextual coda realization are not implemented. |
+| Tone/register/phonation | TODO | Specialist adjudication of competing analyses and a scoped runtime model are required; do not collapse them into guessed tone labels. |
+| IPA → Ukrainian | PARTIAL | Canonical external inventory boundary exists; candidate policy and expert-reviewed correspondence coverage remain incomplete. |
+| MLCTS → Ukrainian | TODO | Separate source-aware orthographic adapter is not implemented; verify rules against primary MLC sources. |
+| Goruut/myG2P/Epitran comparisons | DONE_VERIFIED (diagnostic harness only) | Runtime artifacts and parsing are verified; 55/100 Goruut outputs were partial in the myG2P probe; no accuracy or production claim. myG2P remains temporary test-only under CC BY-NC-SA 4.0. |
+| Python/browser phonological parity | TODO | Existing source-preservation parity does not establish phonological result parity. Add shared expert-backed phonology fixtures. |
+| Manual UI/accessibility QA | TODO | Deployed visual, keyboard, screen-reader and mobile QA not evidenced by CI. |
+| Release readiness | PARTIAL | Blocked by gold, phonological coverage, primary-source and asset-rights gates. |
