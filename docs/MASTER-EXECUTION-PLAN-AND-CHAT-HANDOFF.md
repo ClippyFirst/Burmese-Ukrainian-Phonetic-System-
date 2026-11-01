@@ -1,5 +1,29 @@
 # Master execution plan and chat handoff — Burmese → Ukrainian
 
+**Current checkpoint:** 2026-11-02  
+**Default branch:** `main` at `4ddb9d3f10427275ce75c7ae73270468d3721106`  
+**Active review branch:** `feat/ipa-gold-corpus-20261101-review` at `4ec79cb3b9bfc022c151e9874120cccc2c95ea11`  
+**Open implementation PR:** [#84](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/84)  
+**Branch comparison:** 93 commits ahead of main, 0 behind.  
+**Exact-head engineering verification:** [tests PR 41354492843](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41354492843) and [push 41354488001](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41354488001) both SUCCESS; 131 tests and 48 subtests, plus 54 Playwright browser tests; optional Goruut and Epitran diagnostics also SUCCESS.
+**Research status:** research prototype only; independent expert-adjudicated IPA gold = **0**; `data/benchmark/gold.tsv` is header-only; empirical accuracy = **null**.
+
+## Current task ledger and next blocker
+
+- **DONE_VERIFIED (engineering):** independent IPA corpus schemas, runtime validation, deterministic split/rights gates, source/evidence documentation, and exact-head automated engineering checks are present on the active branch. This is not linguistic validation.
+- **PARTIAL:** source-language phonology, IPA conventions, and Ukrainian target adaptation remain bounded by the language-specific evidence matrices and unresolved cases.
+- **BLOCKED:** the 30-lexeme blind pilot cannot start until the target variety/profile and IPA convention are approved, two qualified independent annotators and a separate adjudicator are confirmed, rights-cleared source packets are prepared, and the blind intake dry-run passes.
+- **TODO:** manual deployed-site visual, keyboard, assistive-technology, and mobile QA.
+- **Next actionable human milestone:** resolve the recruitment and convention checklist in [issue #85](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/issues/85) and follow [the controlled acquisition protocol](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/blob/feat/ipa-gold-corpus-20261101-review/docs/ipa-gold-collection-playbook.md).
+
+No local checkout was available for this checkpoint; do not interpret hosted CI as local test execution, expert adjudication, visual QA, or release approval. Preserve the fail-closed pipeline and do not create IPA/gold labels from model output or unsupported spelling inference.
+
+## Historical records
+
+The dated entries below are retained as audit history. When a historical status or SHA conflicts with this current checkpoint, the active branch ref, completion register, and exact-head workflow run above are authoritative.
+
+## Historical master handoff snapshot — 2026-10-25
+
 **Last reviewed:** 2026-10-25  
 **Repository:** https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-  
 **Default branch:** `main`  
