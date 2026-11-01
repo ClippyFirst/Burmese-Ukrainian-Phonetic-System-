@@ -343,3 +343,9 @@ The final PR #82 runtime [41324681722](https://github.com/ClippyFirst/Burmese-Uk
 | BURMESE-PYTHON-BROWSER-PHONOLOGY-PARITY-001 | TODO | Requires shared expert-backed IPA fixtures |
 
 **Gold status:** 0 independent adjudicated records; `gold.tsv` header-only; accuracy=null. The new workpack is a research specification, not completed phonological coverage.
+
+
+Additional current controls:
+- `IPA-GOLD-RIGHTS-001` — DONE_VERIFIED (mechanism): allowlisted license registry, required per-record rights evidence and non-redistributable license rejection. Source-by-source legal review remains required.
+- `IPA-GOLD-PROVENANCE-EXPORT-001` — DONE_VERIFIED: export and benchmark report preserve source ID, license ID and rights-evidence locator.
+- `IPA-GOLD-BLIND-INTAKE-001` — BLOCKED: qualified annotators and a controlled blind intake channel are not connected; public Git history cannot enforce blinding.
