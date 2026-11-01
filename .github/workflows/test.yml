@@ -10,6 +10,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Validate independent IPA gold corpus structure
+        run: python scripts/ipa_gold_corpus.py validate --language burmese
       - run: pip install -e ".[test]"
       - run: pytest
       - uses: actions/setup-node@v4
