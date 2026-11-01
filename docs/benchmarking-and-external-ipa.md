@@ -138,3 +138,10 @@ Cross-engine check: Epitran 1.35.3 returned 6/6 raw outputs; Goruut returned 7/8
 ### Latest pinned Goruut + Epitran run — exact PR head
 
 PR #82 exact head `d8b065bc66dce5fdd9959c4f0eb932a29acaedba` built and ran successfully: [runtime workflow](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41310771082), artifact SHA-256 `0eb19d7079de818736ecff095f700405fc4b46de3791dd6e4fd68762346218fa`. Goruut returned 7/8 usable results; six were stable and one (`ကြည်`) varied across three repetitions; Burmese punctuation returned no output. Epitran 1.35.3 returned 6/6; exact string agreement was 0/6. This is not accuracy or a winner selection; gold=0. Missing `weights9.bin.zlib` warning remains unexplained.
+
+
+### Goruut dictionary ambiguity and instability
+
+The only unstable input (ကြည်) carried RandomizationWordsCount=1 and RandomizationWordsChoices=2 on all three responses. The other seven inputs had no such metadata; six were reproducible and one punctuation input returned no output.
+
+Pinned upstream code counts dictionary homographs and falls back to a random dictionary pronunciation when no preferred entry is selected; it exposes this through `RandomizationWordsCount` / `RandomizationWordsChoices`. See the exact [selector code](https://github.com/neurlang/goruut/blob/b224bde02151f8f86d0fe260804e4ca743bda620/repo/services/parts_of_speech_selector_service.go#L168-L205) and [response counter propagation](https://github.com/neurlang/goruut/blob/b224bde02151f8f86d0fe260804e4ca743bda620/usecases/phonemize_usecase.go#L84-L85). Treat flagged outputs as ambiguous; the missing `weights9.bin.zlib` warning is a separate unresolved issue.
