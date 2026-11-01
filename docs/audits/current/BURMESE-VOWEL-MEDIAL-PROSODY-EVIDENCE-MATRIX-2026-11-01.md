@@ -113,3 +113,6 @@ LREC 2020 explicitly describes tone cues as pitch, contour, length and phonation
 ## 9. Rights boundary for LREC 2020 resources
 
 The paper states that the authors' in-house Burmese speech corpora and segmentation corpus are not in the public domain (pp. 6328–6330). The article itself is CC BY-NC, but that does not grant redistribution rights to the underlying speech data. Do not copy or train on the in-house speech corpus. The Google language-resource grammar/code must be rights-reviewed separately from the speech data; the project does not import either as production assets in this change.
+
+
+**Extraction limit:** Green's 50-rhyme table is present in the source PDF, but the available text extraction corrupts several IPA symbols and tone marks. This pass records the table count and the source's explicit phonotactic restrictions, but does not reconstruct all 50 entries from corrupted OCR. A page-image/manual linguistic transcription is required before turning the table into machine-readable rows.
