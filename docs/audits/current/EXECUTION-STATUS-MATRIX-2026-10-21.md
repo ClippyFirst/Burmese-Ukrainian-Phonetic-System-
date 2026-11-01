@@ -300,3 +300,13 @@ The user explicitly authorized temporary test-only use regardless of upstream li
 ### Repeat-run reconciliation — 2026-11-01
 
 The first independent 8-probe run (artifact 13085043436) showed one unstable output for `ကြည်`; the later run [41312361052](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41312361052) showed the same word stable across three repeats but retained `RandomizationWordsCount=1` and `RandomizationWordsChoices=2` in every response. Thus a stable three-sample result does not remove the upstream ambiguity: random choice may happen to repeat the same candidate. The later run classified 7/8 as complete source coverage and one punctuation sentence as no output. The source-coverage and randomization gates must both pass before any source-attested comparison; no gold/accuracy claim.
+
+
+### Final myG2P / Goruut exact-head verification — 2026-11-01
+
+| Task | Status | Evidence | Acceptance / blocker |
+|---|---|---|---|
+| MYA-MYG2P-PARSER-001 | DONE_VERIFIED | PR #82 head `dcd9dfb6f1306ce01547f922238aba3fdefd6586`; tests workflow [41313487752](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41313487752) PASS; `scripts/prepare_myg2p_probe.py`; parser tests | 24,802 physical lines; 24,009 unique IPA entries; 793 duplicate headwords skipped; 0 malformed and 0 missing-IPA rows. Deterministic 100-row source-located probe generated; not gold. |
+| MYA-MYG2P-COMPARISON-001 | DONE_VERIFIED | Runtime [41313487703](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41313487703) PASS; artifact [13086900774](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41313487703/artifacts/13086900774), SHA-256 `ca165ac84ee6b284a423a988a5ee32d951a883c36073b01fd5f086ba83022f77` | Goruut 98/100 outputs; 43 complete / 55 partial / 2 unknown; 98 stable; 0 randomized; 69 unphonemized fragments; strict source concordance 0/100 and limited notation diagnostic 17/100. Epitran 1.35.3 raw output captured. Accuracy=null, independent gold=0. |
+
+**Evidence boundary:** myG2P declares CC BY-NC-SA 4.0 and remains temporary test-only input under explicit owner authorization. It is not copied into product data or runtime. Source labels are not independently adjudicated gold; neither raw engine agreement nor dictionary concordance establishes accuracy. The 8-case engineering probe separately had 7/8 outputs, 7 complete, 1 unstable/randomized and 1 no-output. Production promotion remains blocked pending qualified expert IPA gold and dialect/profile adjudication.
