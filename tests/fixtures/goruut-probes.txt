@@ -1,0 +1,7 @@
+# Structural probes only; no expected IPA is asserted.
+ကေ
+ကော်
+ကြည်
+စွယ်
+မြန်
+ယူ
