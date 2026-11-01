@@ -79,3 +79,12 @@ Unicode and LREC 2020 establish the script-level facts: consonants can be stacke
 
 
 See the [Burmese vowel × medial × checked-syllable × prosody evidence matrix](BURMESE-VOWEL-MEDIAL-PROSODY-EVIDENCE-MATRIX-2026-11-01.md) for Green's 50-rhyme analysis, nasal/checked restrictions, major/minor syllable split, medial uncertainties and competing tone/register accounts.
+
+
+### Reconciliation update: Green editions and sonorant phonation
+
+The canonical detailed rhyme source is Green's October 2002 ROA paper (ROA 551–1002), also published as a 2005 chapter in *Studies in Burmese Linguistics*, pp. 1–25. The 1995 Cornell working paper is a separate earlier version/title. The 2002 text explicitly argues that voiceless sonorants are phonologically [spread glottis], not simply [voice].
+
+Repetti-Ludlow (2023) is now linked to its full text. Its controlled production study used eight sonorant types (/w, w̥, l, l̥, ŋ, ŋ̥, m, m̥/), high/low tones, one /a/ nucleus and phrase-medial tokens; 78% of voiceless tokens had a spread-glottis interval and 22% did not. Strong correlates include SG duration, sonorant F0/duration and following-vowel strength of excitation. This supports a separate consonantal phonation/voicelessness feature, not a generic breathy-vowel label.
+
+Duan & Zhu (2025) is confirmed as an open-access CC BY 4.0 peer-reviewed article (Language and Linguistics 26(3), 387–430) proposing modal vs lower/breathy registers and eight tones. Publisher full-text retrieval was not available in this pass; abstract and outline only are verified. Keep it as a competing hypothesis.
