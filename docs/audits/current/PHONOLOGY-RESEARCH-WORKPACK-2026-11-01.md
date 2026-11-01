@@ -88,3 +88,10 @@ The canonical detailed rhyme source is Green's October 2002 ROA paper (ROA 551�
 Repetti-Ludlow (2023) is now linked to its full text. Its controlled production study used eight sonorant types (/w, w̥, l, l̥, ŋ, ŋ̥, m, m̥/), high/low tones, one /a/ nucleus and phrase-medial tokens; 78% of voiceless tokens had a spread-glottis interval and 22% did not. Strong correlates include SG duration, sonorant F0/duration and following-vowel strength of excitation. This supports a separate consonantal phonation/voicelessness feature, not a generic breathy-vowel label.
 
 Duan & Zhu (2025) is confirmed as an open-access CC BY 4.0 peer-reviewed article (Language and Linguistics 26(3), 387–430) proposing modal vs lower/breathy registers and eight tones. Publisher full-text retrieval was not available in this pass; abstract and outline only are verified. Keep it as a competing hypothesis.
+
+
+### LREC 2020 full-text clarification
+
+Section 4.3 provides an explicit two-set vowel model: eight vowels (including schwa) in orthographically open, non-nasalized syllables; a second set of four vowels in nasalized or /ʔ/-closed syllables, with /ɛ/ and /a/ shared and /ɛ/ restricted to non-nasalized syllables; and four diphthongs in that second set, requiring /ʔ/ or placeless /N/. The paper describes four tones (low, high, creaky, checked) and says checked tone always includes final /ʔ/ and is not possible with nasal rhymes. This is a separate model from Green's analysis, not a merged inventory.
+
+Rights correction: LREC 2020 explicitly states that its in-house speech and segmentation corpora are not public domain. The paper's CC BY-NC license does not grant data reuse. The research description may be cited; the corpus itself is excluded from our data and model assets.
