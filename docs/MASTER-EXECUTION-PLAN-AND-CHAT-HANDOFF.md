@@ -457,3 +457,12 @@ The following current statuses supersede older checkpoint rows above where they 
 | Python/browser phonological parity | TODO | Existing source-preservation parity does not establish phonological result parity. Add shared expert-backed phonology fixtures. |
 | Manual UI/accessibility QA | TODO | Deployed visual, keyboard, screen-reader and mobile QA not evidenced by CI. |
 | Release readiness | PARTIAL | Blocked by gold, phonological coverage, primary-source and asset-rights gates. |
+
+
+### 2026-11-01 follow-up — validator and Burmese evidence audit
+
+- IPA-GOLD-SCHEMA-001 remains DONE_VERIFIED (mechanism), now with runtime/schema parity checks: closed object properties, mandatory annotation notes, string uncertainty arrays, ISO dates and optional field types.
+- IPA-TYPED-BENCHMARK-001 remains DONE_VERIFIED (mechanism): adjudicated gold requires a valid IPA kind; missing/different prediction kinds cannot score as exact matches or enter CER.
+- Green's major/minor syllable analysis and rhyme restrictions now have explicit source locators; Mooney & Repetti-Ludlow (2021) challenges direct tone-to-vowel mapping; Duan & Zhu (2025) presents an unresolved eight-tone/two-register proposal; Repetti-Ludlow (2023) separates voiceless-sonorant cues from vowel phonation.
+- Orthographic medials remain separate from phonological /j,w/ or other source analyses. Checked coda /ʔ/, nasalization, creaky phonation and tone are not collapsed.
+- Independent expert gold remains 0; gold.tsv remains header-only. No IPA labels or unverified runtime rules were added.
