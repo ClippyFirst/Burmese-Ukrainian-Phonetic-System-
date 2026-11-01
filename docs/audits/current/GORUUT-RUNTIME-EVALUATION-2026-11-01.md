@@ -112,3 +112,20 @@ The updated harness completed on PR branch commit `422ee1f991203275af21031e0ee3b
 - Epitran 1.35.3 returned six outputs on the original six structural probes; raw exact agreement remains 0/6. No independent gold; accuracy null.
 
 This run reinforces that repeat stability alone is insufficient: Goruut's ambiguity counters must also be clear before source concordance is even reported.
+
+
+## Final exact-head verification — 2026-11-01
+
+The final PR #82 head `dcd9dfb6f1306ce01547f922238aba3fdefd6586` completed both required workflows:
+
+- Repository tests/build/browser [41313487752](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41313487752): PASS. The run completed pytest, npm build, generated web-data drift validation, Node tests and Playwright built-browser tests.
+- Goruut + Epitran + myG2P [41313487703](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41313487703): PASS. It built pinned Goruut commit `b224bde02151f8f86d0fe260804e4ca743bda620`, installed Epitran 1.35.3, prepared the deterministic 100-row myG2P v2.0 probe and captured three Goruut repeats.
+- Artifact [13086900774](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41313487703/artifacts/13086900774), ZIP SHA-256 `ca165ac84ee6b284a423a988a5ee32d951a883c36073b01fd5f086ba83022f77`; downloaded archive hash independently recomputed and matched GitHub's digest. myG2P source commit `54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225`, source SHA-256 `19353bb3b8bbbdd24feb8beca4a82c39b7764b6ca8b8f60dcb6965df1f23bd3d`, output probe SHA-256 `e9026cd2cfbe29664a7422e9bc009f8d9bd737711035ec0538f4aa8bc86714b6`.
+
+The 100-row myG2P diagnostic returned 98 Goruut outputs and 2 no-output cases. Coverage was 43 complete, 55 partial and 2 unknown/no-output; 98 outputs were repeat-stable, none unstable, and no randomization counters were reported. There were 69 unphonemized source fragments. Strict source-attested exact matches were 0/100; a limited notation diagnostic found 17/100. Only 43 rows were eligible for Goruut's complete/deterministic source-attested comparison. Epitran and Goruut each had 0 exact matches to source labels in their respective diagnostics; this is not accuracy or a winner result.
+
+The separate eight-case engineering probe returned 7 outputs and 1 no-output; 7 had complete source coverage, 6 were stable and 1 carried dictionary-randomization metadata and was unstable. The server logs the unresolved `weights9.bin.zlib` warning; no causal link is established.
+
+myG2P declares CC BY-NC-SA 4.0. Its dictionary is used only in temporary test artifacts under the owner's explicit test-only authorization; it is not committed, vendored or bundled. The 100 labels are source-attested, not independent gold; per-entry adjudication and dialect/register are underspecified. Accuracy remains null and independent gold=0.
+
+**Disposition:** exact-head engineering verification and comparator execution are DONE_VERIFIED. Goruut and Epitran remain raw comparators, not production phonology providers. A qualified Burmese expert IPA gold set and dialect-scoped adjudication remain BLOCKED/PARTIAL.
