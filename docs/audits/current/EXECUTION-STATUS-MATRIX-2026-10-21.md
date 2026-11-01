@@ -295,3 +295,8 @@ The source-coverage contract reconstructs the input from PrePunct + CleanWord + 
 | MYA-MYG2P-COMPARISON-001 | PARTIAL | Optional Goruut workflow now checks out myG2P commit `54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225`; same 100 rows go to Goruut (3 repeats) and Epitran 1.35.3 | Await exact-head runtime artifact. Report raw outputs, coverage, randomization and source-attested concordance only; accuracy must remain null and independent gold=0. |
 
 The user explicitly authorized temporary test-only use regardless of upstream license review. The dictionary is not committed to this repository or bundled into product runtime. Per-entry IPA is source-attested, not independently adjudicated gold.
+
+
+### Repeat-run reconciliation — 2026-11-01
+
+The first independent 8-probe run (artifact 13085043436) showed one unstable output for `ကြည်`; the later run [41312361052](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41312361052) showed the same word stable across three repeats but retained `RandomizationWordsCount=1` and `RandomizationWordsChoices=2` in every response. Thus a stable three-sample result does not remove the upstream ambiguity: random choice may happen to repeat the same candidate. The later run classified 7/8 as complete source coverage and one punctuation sentence as no output. The source-coverage and randomization gates must both pass before any source-attested comparison; no gold/accuracy claim.
