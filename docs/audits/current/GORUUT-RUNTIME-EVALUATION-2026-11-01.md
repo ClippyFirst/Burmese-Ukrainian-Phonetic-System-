@@ -49,3 +49,8 @@ The optional Goruut workflow now runs the existing Epitran baseline on the same 
 - Both reports retain raw outputs and hashes; independent gold=0, accuracy=null.
 
 Evidence: [Goruut + Epitran workflow 41310125185](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41310125185). Epitran version `1.35.3`; Goruut pinned commit `b224bde02151f8f86d0fe260804e4ca743bda620`.
+
+
+## Model-asset warning interpretation
+
+The runtime warning needs upstream diagnosis: the pinned Burmese language module contains `weights8.bin.zlib`, but the server logs `weights9.bin.zlib` as missing; no `weights9` asset was found in the pinned source tree. Its relationship to punctuation failure or phonetic output differences is unproven. Do not infer causation from correlation.
