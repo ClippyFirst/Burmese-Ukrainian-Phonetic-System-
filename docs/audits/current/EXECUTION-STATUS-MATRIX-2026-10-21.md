@@ -257,3 +257,14 @@ These are source-integrity regressions, not evidence of Burmese IPA accuracy, fu
 | myG2P | BLOCKED for commercial redistribution absent rights decision | Upstream license is CC BY-NC-SA 4.0; do not vendor into the commercial runtime absent permission/legal review. |
 
 No accuracy score or engine winner is available. Promotion requires independent expert-adjudicated IPA and a separate license/provenance audit for all model and dictionary assets.
+
+
+## 2026-11-01 exact-head runtime update — Goruut
+
+| Task | Status | Evidence | Acceptance / blocker |
+|---|---|---|---|
+| MYA-GORUUT-RUNTIME-001 | PARTIAL | PR #82 exact head `d8b065bc66dce5fdd9959c4f0eb932a29acaedba`; [runtime workflow 41310771082](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41310771082); artifact ZIP SHA-256 `0eb19d7079de818736ecff095f700405fc4b46de3791dd6e4fd68762346218fa` | Pinned Go build succeeds; 7/8 usable Goruut outputs, 6 stable and 1 unstable; punctuation probe has no output. Epitran 1.35.3 returns 6/6; raw exact match 0/6. Accuracy remains null, independent gold=0. |
+| MYA-GORUUT-ASSET-WARNING-001 | BLOCKED | Runtime server log in artifact; `weights9.bin.zlib` missing while pinned tree has `weights8.bin.zlib` | Diagnose upstream loader/asset path and determine whether it affects output; no causal claim yet. |
+| MYA-PHONETIC-GOLD-001 | TODO | Current source triage audit | Create independently double-annotated, adjudicated audio-backed IPA gold with dialect/speaker metadata; no engine scoring until then. |
+
+The exact-head results supersede earlier one-shot claims of full stability: `ကြည်` varied between `tɕì` and `tɕɪ̀ɴ` across repeated requests. No external engine is selected as production provider.
