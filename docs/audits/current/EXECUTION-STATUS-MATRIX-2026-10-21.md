@@ -275,3 +275,13 @@ The exact-head results supersede earlier one-shot claims of full stability: `က
 Pinned upstream `SelectE` counts multiple dictionary pronunciations and, when no homograph-model preferred entry is selected, falls through to a random dictionary pronunciation. The upstream source comment names this behavior; the response counters `RandomizationWordsCount` / `RandomizationWordsChoices` are populated by the sentence use case. Exact sources: [selector](https://github.com/neurlang/goruut/blob/b224bde02151f8f86d0fe260804e4ca743bda620/repo/services/parts_of_speech_selector_service.go#L168-L205), [counter propagation](https://github.com/neurlang/goruut/blob/b224bde02151f8f86d0fe260804e4ca743bda620/usecases/phonemize_usecase.go#L84-L85).
 
 The latest Burmese artifact shows the only unstable input `ကြည်` carried these counters on all three repetitions (1 ambiguous word, 2 choices); the other seven inputs had no ambiguity metadata. The optional benchmark script now parses and aggregates those counters as randomized input/repetition counts while leaving accuracy null. This is an ambiguity signal, not a claim that all homographs are incorrect. The missing `weights9.bin.zlib` warning is separate and its causal relationship remains unproven.
+
+
+### Source-coverage gate update — 2026-11-01
+
+| Task | Status | Evidence | Acceptance / blocker |
+|---|---|---|---|
+| MYA-GORUUT-SOURCE-COVERAGE-001 | PARTIAL | Exact-head artifact 13085043436; raw-output re-analysis | 7/8 Goruut outputs passed source-field reconstruction and punctuation-field letter checks; one punctuation sentence returned no output. Eight probes do not establish broad coverage. |
+| MYA-GORUUT-RANDOMIZATION-REPORT-001 | PARTIAL | Pinned upstream selector source; test-first assertions added | Harness parses RandomizationWordsCount/Choices and has coverage tests. Exact-head CI for the new parser is pending. |
+
+The source-coverage contract reconstructs the input from PrePunct + CleanWord + PostPunct after NFC/whitespace removal and flags letters, combining marks or numbers left in PrePunct/PostPunct. This is a coverage check, not phonetic accuracy. The new implementation must pass CI before the task can be marked DONE_VERIFIED.
