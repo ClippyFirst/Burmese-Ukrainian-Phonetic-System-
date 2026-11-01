@@ -609,3 +609,10 @@ The subsequent documentation-only handoff/register state at commit `0021dae7ea34
 - The current branch contains the open-rights invariant: `rights_status=OPEN` requires `redistributable=true` in both the Python validator and `schemas/ipa-gold-record.schema.json`, with a regression test.
 - Independent expert-adjudicated gold remains **0**; `gold.tsv` remains header-only; empirical accuracy remains **null**. Engineering CI does not close human annotation, profile/convention approval, or linguistic validation gates.
 - This entry supersedes earlier handoff statements that described the documentation/code checkpoint as awaiting exact-head CI. The PR description may contain older or superseded SHA references; the branch ref and exact-head run above are authoritative.
+
+
+## IPA gold nested-record contract hardening — 2026-11-01
+
+- Test-first regression run [41352936278](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41352936278) failed as expected: undeclared fields inside orthography, profile, source and rights_evidence passed runtime validation, and the schema left those objects open.
+- Runtime fix and schema closure: unknown properties are now rejected at all four nested boundaries. Exact code/schema head `4e4bcde92ed9af7348b51b0b13dfe9a86eb64cbd`; exact-head core CI [41353062069](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41353062069) SUCCESS (131 pytest tests + 48 subtests; npm build, generated-data drift, npm tests and 54 Playwright browser tests passed).
+- Engineering-only change: no linguistic rules, IPA labels, gold records, source data or accuracy claims added. Independent expert gold remains 0; accuracy remains null. Hosted CI only; no local checkout was available.
