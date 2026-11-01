@@ -41,3 +41,38 @@
 - [ ] Implement the IPA → Ukrainian adapter only from adjudicated typed IPA, with a distinct orthographic MLCTS route if required.
 
 **Current status:** PARTIAL. Unicode orthographic decomposition exists, but full phonological vowel/coda/tone/phonation coverage and Python/browser phonological parity remain open. Independent gold remains 0. No new Burmese IPA labels are added in this workpack.
+
+
+## Verified phonological evidence audit — 2026-11-01
+
+### Syllable, vowel and coda restrictions
+
+Antony Green's “Word, Foot, and Syllable Structure in Burmese” (revised from the 1995 Cornell Working Papers article; [full text](https://roa.rutgers.edu/files/551-1002/551-1002-GREEN-0-1.PDF)) provides a detailed, inspectable analysis:
+
+- Major syllables have an obligatory onset and a rhyme; Green lists 50 major-syllable rhymes and analyzes the structure as C(G)V((V)C). Diphthongs do not occur in open syllables.
+- The diphthongs /ei, ai, ou, au/ require a placeless coda /ʔ/ or /N/ in the analysis; mid monophthongs /e, o, ə/ occur only in open syllables; /ə/ has its own restricted distribution.
+- Vowel length is not contrastive in Green's account. Major syllables are bimoraic; open vowels may carry the two moras, while in closed syllables the vowel and coda each support one. Rhyme duration varies substantially by tone category.
+- Green describes four categories in major syllables (low, high, creaky, checked); only low, high and creaky are possible with nasal rhymes. Checked and nasal coda structures cannot simply be combined as an unrestricted cross-product.
+- Minor syllables contain schwa only, are open and toneless, have a simple onset, and cannot be word-final. Do not assign them a major-syllable tone.
+
+These are Green's analysis and transcription conventions, not a universal merged consensus. Preserve source ID, profile, transcription convention and conflicting analyses for each rule.
+
+### Independent challenge to tone-driven vowel rules
+
+Mooney & Repetti-Ludlow (2021), [open CC BY 4.0 article](https://doi.org/10.3765/plsa.v6i1.4900), report a phonetic study of Burmese vowel alternations and argue that the alternations are tone-independent and follow sonority sequencing preferences. This directly challenges a simplistic rule that derives vowel quality from tone alone. The vowel × coda × syllable-weight matrix must encode these environments separately.
+
+### Newer register/tone proposal — unresolved
+
+Duan & Zhu (2025), [publisher record and abstract](https://doi.org/10.1075/lali.00203.dua), propose eight tones divided across modal and lower/breathy registers, splitting the traditional four categories into eight. The publisher abstract confirms this is a peer-reviewed competing analysis, but the full article and its underlying acoustic data have not been independently inspected in this checkpoint. Treat it as a live research hypothesis, not an implemented model or a reason to replace Green's four-way account.
+
+### Phonation of sonorant consonants is not vowel register
+
+Repetti-Ludlow (2023), *Phonetica* 80(6):433–463, [DOI](https://doi.org/10.1515/phon-2022-0026), finds that Burmese voiceless sonorants have a spread-glottis period with turbulent airflow in 78% of tokens; duration, F0 and following-vowel excitation also distinguish voiced and voiceless sonorants. Keep consonantal aspiration/voicelessness distinct from breathy or creaky vowel phonation and from lexical tone.
+
+### Orthographic medials
+
+Unicode and LREC 2020 establish the script-level facts: consonants can be stacked using virama; dependent vowels and tone signs surround consonants; asat suppresses the inherent vowel in certain coda contexts. These are orthographic/encoding facts, not a one-to-one phonological inventory. The written medial ya/ra/wa/ha categories must be mapped separately to modern phonemic onsets, glides, historical correspondences or other effects by source and variety. Green's C(G)V analysis supports glide-bearing onsets in his model, but it does not justify treating every written medial as an independent /j/ or /w/ segment.
+
+**Research acceptance matrix:** record for each row (1) orthographic sequence, (2) structural parse, (3) phonemic analysis, (4) phonetic realization, (5) tone/register/phonation convention, (6) profile/speaker, (7) source locator and confidence. Keep Green's four-tone model, Duan & Zhu's eight-tone proposal and any future speaker-level analysis in separate columns until adjudicated.
+
+**Status update:** vowel/coda and major/minor constraints are now more explicitly source-grounded; the complete lexical matrix, modern medial correspondence table, checked-syllable phonetic adjudication and competing register analyses remain PARTIAL/BLOCKED. No new IPA labels or automatic phonological rules were added.
