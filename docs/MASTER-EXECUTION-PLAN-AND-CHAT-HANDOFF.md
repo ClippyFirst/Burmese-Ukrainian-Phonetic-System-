@@ -591,3 +591,12 @@ These checks validate the committed repository and its automated engineering con
 ## Follow-up handoff-head CI — 2026-11-01
 
 The subsequent documentation-only handoff/register state at commit `0021dae7ea3450b99f63509c39d3dd384241284e` was also checked on its exact head: tests [41345383752](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41345383752) SUCCESS; optional Goruut [41345383729](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41345383729) SUCCESS; optional Epitran [41345383623](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41345383623) SUCCESS. These runs validate the updated documentation and existing automated checks, not future IPA annotations. Any later branch update must be checked again on its new exact head.
+
+
+## Open-rights state consistency fix — 2026-11-01
+
+- Code review found that a source could pass corpus validation with `rights_status: OPEN` but `redistributable: false`. The export and release gate would later exclude/reject it, but the canonical record itself was contradictory.
+- Added a test-first regression. Test-only commit `644d897cefeb613a74aaa6ea9110ba4e9a5303e2` failed as expected in the language CI because validation incorrectly returned success for that contradictory state.
+- Added the fail-closed Python validation and matching conditional in `schemas/ipa-gold-record.schema.json`; regression also asserts the schema condition. Exact code/schema head: `0f0a8a013887a7366aea2424935b0252f5b11778`.
+- Exact-head CI [41348005124](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41348005124) passed: 129 pytest tests + 41 subtests; npm build, generated-data drift, npm tests and 54 built-browser Playwright tests passed; optional Goruut and Epitran diagnostics passed.
+- No external corpus, restricted source data, IPA label or benchmark record was imported or created. Gold remains 0; `gold.tsv` remains header-only; empirical accuracy remains null.
