@@ -2,10 +2,10 @@
 
 **Current checkpoint:** 2026-11-02  
 **Default branch:** `main` at `4ddb9d3f10427275ce75c7ae73270468d3721106`  
-**Active review branch:** `feat/ipa-gold-corpus-20261101-review` at `5f8d7dd20e449de3349926021c52011c89791193`
+**Active review branch at methodology documentation checkpoint:** `feat/ipa-gold-corpus-20261101-review` at `b5c50772c3d8f1494bb68d0a85a41b6fee82d1ec`
 **Open implementation PR:** [#84](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/84)  
-**Branch comparison:** 97 commits ahead of main, 0 behind.
-**Pre-refresh implementation verification:** [core CI](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41356926219) SUCCESS; 131 tests + 48 subtests and 54 Playwright browser tests; optional Goruut 41356926181 and Epitran 41356926100 SUCCESS.
+**Branch comparison at this checkpoint:** 98 commits ahead of main, 0 behind.
+**Exact-head methodology verification:** [tests 41358676730](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41358676730) SUCCESS; optional diagnostics [41358676910](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41358676910) and [41358676749](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41358676749) SUCCESS.
 **Research status:** research prototype only; independent expert-adjudicated IPA gold = **0**; `data/benchmark/gold.tsv` is header-only; empirical accuracy = **null**.
 
 ## Current task ledger and next blocker
@@ -670,3 +670,11 @@ The subsequent documentation-only handoff/register state at commit `0021dae7ea34
 - **Superpowers 7.0.1** remains pinned at `2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`; preserve untracked work on refused worktree cleanup and keep human-authored report sections genuinely human-authored.
 - **Ponytail 5.3.3** remains pinned at `7801d061243d7b753bad0e0b3c057cd250b11755`. Upstream `main` at `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846` only adds a README product/logo mention after the method pin; no methodology update is warranted.
 - No upstream skill bundle, code, dependency, dataset, or runtime integration was copied.
+
+
+## Exact-head verification — methodology refresh 2026-11-02
+
+- Documentation and agent guidance checkpoint: `b5c50772c3d8f1494bb68d0a85a41b6fee82d1ec`.
+- [tests 41358676730](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41358676730) completed SUCCESS on this exact commit; pytest, npm build, generated-data drift check, npm tests and built-browser Playwright all passed.
+- Optional diagnostic runs [41358676910](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41358676910) and [41358676749](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41358676749) also completed SUCCESS. These diagnostics are not accuracy evidence.
+- The current branch has one subsequent documentation-only evidence-register commit; its exact-head CI is recorded in the final session report. No engine, linguistic rules, IPA labels, gold records, datasets, or runtime dependencies were changed.
