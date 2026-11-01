@@ -37,3 +37,15 @@ Each of the eight inputs was sent three times to the same server:
 Three-repeat evidence: [workflow 41309099367](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41309099367). Effective config SHA-256 `d725cc8e99a779e7928dc05685c3187b89df9ed87228b1875e290455b8014ef1`; probe fixture SHA-256 `44fdecc507b92c9b18199972f9150b0b9f29b9a04928474e447ff70e6608bb9f`.
 
 **Disposition:** useful stable raw-output comparator for these limited cases, not an IPA-validated production provider.
+
+
+## Additional comparator: Epitran 1.35.3 — 2026-11-01
+
+The optional Goruut workflow now runs the existing Epitran baseline on the same six structural probes and emits a raw side-by-side comparison:
+
+- Epitran returned 6/6 outputs; Goruut returned usable output for 7/8 probes, with the Burmese punctuation sentence failing.
+- Goruut vs Epitran exact string agreement: 0/6. This is not a winner/loser result: Epitran's sample strings are largely tone-less (e.g. `ke`, `kaʊʔ`, `t͡ɕi`), while Goruut returns different phone sequences and tone-marked strings (e.g. `kè`, `kɔ̀`, `tɕì`). The outputs are not directly comparable without an agreed phonetic convention and expert gold.
+- In the latest three-repeat run, seven usable Goruut outputs were stable; a prior run showed one unstable `ကြည်` output, so repeatability across fresh server processes still needs more sampling.
+- Both reports retain raw outputs and hashes; independent gold=0, accuracy=null.
+
+Evidence: [Goruut + Epitran workflow 41310125185](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41310125185). Epitran version `1.35.3`; Goruut pinned commit `b224bde02151f8f86d0fe260804e4ca743bda620`.
