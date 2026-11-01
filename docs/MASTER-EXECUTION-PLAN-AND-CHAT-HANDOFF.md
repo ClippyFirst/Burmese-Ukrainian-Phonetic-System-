@@ -571,3 +571,11 @@ The following current statuses supersede older checkpoint rows above where they 
 ## Controlled IPA acquisition documentation CI — 2026-11-01
 
 The documentation-only playbook, corpus-guide and handoff changes at the preceding branch head were checked by GitHub Actions. Burmese: tests 41343513461 SUCCESS; optional Epitran 41343513473 SUCCESS; optional Goruut 41343513505 SUCCESS. No language-engine runtime or gold data changed. This validates the repository state, not the linguistic correctness of future annotations. Pages deployment and release-gate workflow were not run.
+
+
+## Source acquisition update — 2026-11-01
+
+- **Leading audio candidate:** OpenSLR 80 (SLR80), https://openslr.org/80, CC BY-SA 4.0. The primary paper (Oo et al. 2020, https://aclanthology.org/2020.lrec-1.777.pdf, pp. 6333–6334) reports 2,528 utterances from 20 female native Burmese speakers aged 25–35, recorded in Yangon at 48 kHz mono. It includes hand-curated word-segmented orthographic transcripts; trained native speakers checked audio/transcript match, volume, noise and fluency. Only female recordings were released at the time of publication.
+- **Use boundary:** SLR80 supplies sentence-context audio and text, not IPA. The paper's FST G2P is intended to generate/seed pronunciations for later human checking, not to serve as gold. The recording location does not establish each speaker's dialect; word-level timestamps are not provided and must be manually verified. Female-only speakers limit generalization claims.
+- Recommended split: a separately labelled contextual phonetic subset from SLR80, plus a distinct citation-form lexical set elicited from qualified speakers of the approved target variety. Never mix their accuracy denominators or claim citation-form accuracy from sentence-context tokens.
+- `MYA-GOLD-001` remains `BLOCKED`; independent gold 0 and accuracy `null`. No audio or IPA data imported. Next acceptance step: specialist approves the SLR80 profile and 30 contextual token sample, while a separate citation-form recording session is arranged.
