@@ -515,3 +515,13 @@ This is a target orthography policy update only. It does not increase the count 
 The four JSONL files are empty templates. `gold.tsv` is header-only; independent expert gold=0 and accuracy=null. Green (1995) explicitly notes competing Burmese tone labels and predictable vowel duration; Mooney & Repetti-Ludlow (2021) argue some vowel alternations are sonority-conditioned rather than tone-conditioned. Neither source is automatically a project gold label. No IPA labels were added.
 
 See [IPA gold protocol](docs/ipa-gold-corpus.md) and [Burmese phonology research workpack](docs/audits/current/PHONOLOGY-RESEARCH-WORKPACK-2026-11-01.md).
+
+### Additional rights and export controls
+
+| Task | Status | Acceptance / remaining work |
+|---|---|---|
+| IPA-GOLD-RIGHTS-001 | DONE_VERIFIED (mechanism) | Approved license registry, per-record rights evidence, rejection of unregistered/non-redistributable licenses; legal verification of future source-specific records remains required |
+| IPA-GOLD-PROVENANCE-EXPORT-001 | DONE_VERIFIED | Gold TSV and benchmark rows retain source ID, license ID and rights-evidence locator |
+| IPA-GOLD-BLIND-INTAKE-001 | BLOCKED | Requires external controlled intake; public GitHub history cannot provide blind annotation |
+
+The rights registry does not itself grant permission. Each real source still needs its exact license/permission verified by a responsible curator, and share-alike/attribution terms must be honored in distribution.
