@@ -95,3 +95,6 @@ Duan & Zhu (2025) is confirmed as an open-access CC BY 4.0 peer-reviewed article
 Section 4.3 provides an explicit two-set vowel model: eight vowels (including schwa) in orthographically open, non-nasalized syllables; a second set of four vowels in nasalized or /ʔ/-closed syllables, with /ɛ/ and /a/ shared and /ɛ/ restricted to non-nasalized syllables; and four diphthongs in that second set, requiring /ʔ/ or placeless /N/. The paper describes four tones (low, high, creaky, checked) and says checked tone always includes final /ʔ/ and is not possible with nasal rhymes. This is a separate model from Green's analysis, not a merged inventory.
 
 Rights correction: LREC 2020 explicitly states that its in-house speech and segmentation corpora are not public domain. The paper's CC BY-NC license does not grant data reuse. The research description may be cited; the corpus itself is excluded from our data and model assets.
+
+
+Green's 50-rhyme table is identified, but the available PDF text extraction corrupts several symbols/tones; the full 50-row inventory is deliberately not transcribed from OCR. Only the readable structural restrictions are recorded until a manual page-image extraction is available.
