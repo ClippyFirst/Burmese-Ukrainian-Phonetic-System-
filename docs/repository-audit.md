@@ -153,3 +153,12 @@ moved to research/historical/ or research/decisions/ rather than deleted.
 - The contract checks exact reconstruction through both grapheme and syllable source records; the unsupported Khamti/Extended-C code point remains explicitly unsupported and valid neighboring Burmese syllables remain structurally established.
 - Exact PR-head CI [41289738055](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41289738055) passed: pytest, production build, generated-web-data drift check, Node tests, Playwright install and built-browser tests.
 - This is a source-integrity/structural probe, not an IPA gold row. Independent lexical IPA gold remains 0; phonological accuracy remains NOT MEASURED.
+
+
+## Python/browser whole-message parity — 2026-11-01
+
+- PR [#78](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/78) merged as `a137274d90579bde6aedefee4068942f93e9c00f`.
+- Added a built-browser Playwright regression for the same difficult mixed message as the Python source-integrity test: Burmese syllables around unsupported Myanmar Extended-C, Latin identifier, tab, CRLF, Myanmar digits and punctuation, U+200B, emoji and Arabic script.
+- The browser test checks that the textarea preserves its content under the platform's standard CRLF→LF value canonicalization, that rendered syllable source records reconstruct that browser-normalized input, and that unsupported Myanmar material remains visible with aggregate UNSUPPORTED status while foreign text and digits remain visible.
+- Exact PR-head workflow [41290257958](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41290257958) passed pytest, production build, generated-web-data drift, Node tests, Playwright installation and all built-browser tests.
+- Together with PR #77, this establishes Python and browser whole-message source-integrity coverage. It still does not establish independent IPA gold or phonological accuracy.
