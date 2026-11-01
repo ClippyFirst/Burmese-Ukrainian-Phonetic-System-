@@ -110,3 +110,10 @@ This is **not IPA gold**. The line index contains orthographic transcripts; the 
 Use SLR80 for a separately labelled contextual phonetic pilot after specialist profile review. For lexical citation-form G2P gold, arrange controlled elicitation from qualified target-variety speakers. Keep contextual and citation-form corpora/splits separate.
 
 Status remains `MYA-GOLD-001 = BLOCKED`: no annotations, annotators or adjudications have been created. Independent gold remains 0 and accuracy remains null.
+
+
+## Final exact-head verification — 2026-11-01
+
+Branch `feat/ipa-gold-corpus-20261101-review`, final handoff commit `083ddb740d825b2c1e227cd0f19d051beba097a6`. Burmese exact-head CI: tests [41344959952](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41344959952) SUCCESS; optional Goruut [41344959963](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41344959963) SUCCESS; optional Epitran [41344959950](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41344959950) SUCCESS. Core job passed corpus structure validation, pytest, npm build, generated-data drift check, npm tests and built-browser Playwright tests.
+
+These checks validate the committed repository and its automated engineering contracts. They do **not** validate the linguistic correctness of future human annotations, create gold labels, or change the release blocker. Gold remains empty and accuracy remains null.
