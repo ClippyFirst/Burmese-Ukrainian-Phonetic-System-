@@ -69,3 +69,28 @@ Keep separate: (a) segmental checked coda /ʔ/, (b) creaky phonation, and (c) le
 6. No deterministic output changes until independent expert annotations cover the relevant cell and Python/browser implementations agree.
 
 **Status:** PARTIAL. Green supplies an inspectable rhyme model, but modern dialect, medials and newer register analyses remain unresolved. Independent expert gold = 0. No IPA labels or unsupported rules were added.
+
+
+## 6. Consonantal phonation and voiceless sonorants
+
+Green's 2002 analysis (also published as a 2005 chapter) argues that the contrast between voiced and voiceless sonorants is probably [spread glottis], i.e. phonological aspiration, rather than simply [voice] (Green §1.2, pp. 4–5). This is a consonant-level laryngeal contrast and must remain distinct from vowel breathiness or a lower register.
+
+Repetti-Ludlow (2023), [full text](https://d-nb.info/1311139060/34), supplies an acoustic test but has a narrow sample:
+
+| Design/result | Evidence |
+|---|---|
+| Target sonorants | /w, w̥, l, l̥, ŋ, ŋ̥, m, m̥/ |
+| Prosodic controls | monosyllabic minimal pairs, high and low tones, one nucleus vowel /a/ |
+| Position | phrase-medial tokens only |
+| SG realization | spread-glottis gesture in 78% of voiceless-sonorant tokens; no SG gesture in 22% |
+| Strong cues | SG duration, sonorant F0 and duration, strength of excitation in following vowel |
+| Limitation | does not test all six voiced/voiceless sonorant pairs, all vowels, all tones or all syllable positions |
+
+The paper therefore supports a typed distinction between phonemic voicelessness and its variable phonetic realization; it does not justify turning every voiceless sonorant into a fixed aspirated sequence in all contexts.
+
+## 7. Source reconciliation and licensing
+
+- Green (2002) is the October 2002 ROA paper; Green (2005) is the published chapter in *Studies in Burmese Linguistics*, pp. 1–25. Both are the same research line; cite the exact edition used.
+- LREC 2020 is CC BY-NC. Its phonological description is usable as research evidence, but its corpus and resource package must not be copied into a commercial project without a separate rights review.
+- Duan & Zhu (2025) is an open-access CC BY 4.0 article. The publisher abstract and article outline establish the eight-tone/two-register proposal; the full empirical tables have not been extracted in this pass, so it remains a competing analysis, not implemented consensus.
+- Repetti-Ludlow (2023) is a production study of a restricted subset of sonorants and contexts, not a general register or tone study.
