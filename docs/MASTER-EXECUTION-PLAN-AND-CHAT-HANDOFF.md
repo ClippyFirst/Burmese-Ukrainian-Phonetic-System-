@@ -2,10 +2,10 @@
 
 **Current checkpoint:** 2026-11-02  
 **Default branch:** `main` at `4ddb9d3f10427275ce75c7ae73270468d3721106`  
-**Active review branch:** `feat/ipa-gold-corpus-20261101-review` at `4ec79cb3b9bfc022c151e9874120cccc2c95ea11`  
+**Active review branch:** `feat/ipa-gold-corpus-20261101-review` at `5f8d7dd20e449de3349926021c52011c89791193`
 **Open implementation PR:** [#84](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/84)  
-**Branch comparison:** 93 commits ahead of main, 0 behind.  
-**Pre-refresh implementation verification:** [tests PR 41354492843](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41354492843) and [push 41354488001](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41354488001) both SUCCESS; 131 tests and 48 subtests, plus 54 Playwright browser tests; optional Goruut and Epitran diagnostics also SUCCESS.
+**Branch comparison:** 97 commits ahead of main, 0 behind.
+**Pre-refresh implementation verification:** [core CI](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41356926219) SUCCESS; 131 tests + 48 subtests and 54 Playwright browser tests; optional Goruut 41356926181 and Epitran 41356926100 SUCCESS.
 **Research status:** research prototype only; independent expert-adjudicated IPA gold = **0**; `data/benchmark/gold.tsv` is header-only; empirical accuracy = **null**.
 
 ## Current task ledger and next blocker
@@ -25,7 +25,7 @@ No local checkout was available for this checkpoint; do not interpret hosted CI 
 The adopted engineering references were checked against current upstream revisions without importing them as runtime dependencies:
 
 - Superpowers 7.0.1: `obra/superpowers@2ce8aa15d05bd57213e6f746f953aafb7ded7a8b` — explicit plans, true RED/GREEN TDD, systematic debugging, code review, and verification-before-completion. At GREEN, verify the project suite, not only the narrow test that first went red.
-- mattpocock/skills current main: `4ae2317ddb22b046e26455e4f9c9b3aaaf62212d` — composable skills, source-backed research, test-first implementation, and two-axis review (spec compliance separately from repository standards).
+- mattpocock/skills current main: `d1478fcb140db0b93c0c8df17bcfd311844749d0` — composable skills, source-backed research, test-first implementation, and two-axis review (spec compliance separately from repository standards).
 - Ponytail 5.3.3: `7801d061243d7b753bad0e0b3c057cd250b11755` — codebase/data-flow audit, connected-code review, minimal complete changes, and explicit preservation of security, data integrity, and accessibility.
 
 These references guide the method; project-specific linguistic, provenance, privacy, rights, and fail-closed requirements remain authoritative.
@@ -662,3 +662,11 @@ The subsequent documentation-only handoff/register state at commit `0021dae7ea34
 - Removed four consecutive duplicate nested-object validation calls from `scripts/ipa_gold_corpus.py` (orthography, profile, source, and rights_evidence). This removes redundant work without changing the contract. The resulting file has the same blob SHA across all three repositories: `a072297e320b4b91a36c59fc90328b6ff98d2a5f`.
 - Code commit: `76c2639c57dfdf7da5a4a39a3fae999f2a646532`. - Core PR CI: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41354250746 (SUCCESS); core push CI: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41354246209 (SUCCESS); optional language diagnostics: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41354250460, https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41354250457 (SUCCESS).
 - No schema, source data, linguistic rule, IPA label, or gold row changed. Independent expert-adjudicated gold remains 0; accuracy remains null. The next substantive blocker is still qualified target-variety annotation and adjudication, not more validator scaffolding.
+
+
+### Upstream methodology review — follow-up 2026-11-02
+
+- **mattpocock/skills v1.3.2**: `d1478fcb140db0b93c0c8df17bcfd311844749d0` (released 2026-10-29). Applied separate spec/acceptance and repository-standards review; standards-file discovery; genuine-RED evidence requiring proof that a mutation changed relevant source; and repository-specific issue/PR template and ownership checks.
+- **Superpowers 7.0.1** remains pinned at `2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`; preserve untracked work on refused worktree cleanup and keep human-authored report sections genuinely human-authored.
+- **Ponytail 5.3.3** remains pinned at `7801d061243d7b753bad0e0b3c057cd250b11755`. Upstream `main` at `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846` only adds a README product/logo mention after the method pin; no methodology update is warranted.
+- No upstream skill bundle, code, dependency, dataset, or runtime integration was copied.
