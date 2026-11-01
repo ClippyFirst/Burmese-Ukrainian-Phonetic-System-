@@ -5,7 +5,7 @@
 **Active review branch:** `feat/ipa-gold-corpus-20261101-review` at `4ec79cb3b9bfc022c151e9874120cccc2c95ea11`  
 **Open implementation PR:** [#84](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/84)  
 **Branch comparison:** 93 commits ahead of main, 0 behind.  
-**Exact-head engineering verification:** [tests PR 41354492843](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41354492843) and [push 41354488001](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41354488001) both SUCCESS; 131 tests and 48 subtests, plus 54 Playwright browser tests; optional Goruut and Epitran diagnostics also SUCCESS.
+**Pre-refresh implementation verification:** [tests PR 41354492843](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41354492843) and [push 41354488001](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41354488001) both SUCCESS; 131 tests and 48 subtests, plus 54 Playwright browser tests; optional Goruut and Epitran diagnostics also SUCCESS.
 **Research status:** research prototype only; independent expert-adjudicated IPA gold = **0**; `data/benchmark/gold.tsv` is header-only; empirical accuracy = **null**.
 
 ## Current task ledger and next blocker
@@ -29,6 +29,8 @@ The adopted engineering references were checked against current upstream revisio
 - Ponytail 5.3.3: `7801d061243d7b753bad0e0b3c057cd250b11755` — codebase/data-flow audit, connected-code review, minimal complete changes, and explicit preservation of security, data integrity, and accessibility.
 
 These references guide the method; project-specific linguistic, provenance, privacy, rights, and fail-closed requirements remain authoritative.
+
+**Methodology refresh commit:** `8bdcf3e07ed1359d443aad21b53d00b6db3812f2` on the active review branch. **Exact-head verification:** [PR tests 41356409847](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41356409847) and [push tests 41356404196](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41356404196) SUCCESS; 131 tests + 48 subtests and 54 Playwright tests; [Goruut 41356409749](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41356409749) and [Epitran 41356409786](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41356409786) SUCCESS.
 
 ## Historical records
 
