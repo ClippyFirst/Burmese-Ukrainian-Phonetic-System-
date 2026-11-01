@@ -325,6 +325,23 @@ The final PR #82 runtime [41324681722](https://github.com/ClippyFirst/Burmese-Uk
 - Remaining blocker: qualified expert-adjudicated, dialect-scoped Burmese IPA gold and review of the partial-coverage cases. No model/data redistribution is authorized by test-only use.
 
 
+## Current status override — 2026-11-01
+
+This current-head reconciliation supersedes older status cells above where they conflict; the dated historical checkpoints remain intact.
+
+| Workstream | Current status | Acceptance / blocker |
+|---|---|---|
+| Independent lexical IPA gold | BLOCKED | `data/benchmark/gold.tsv` is header-only; independent gold=0 and accuracy=null. Requires licensed audio/source, dialect/speaker metadata, two independent IPA annotators and adjudication. |
+| Consonant, kinzi and medial phonology | PARTIAL | Structural parsing exists; source-backed contextual phonological coverage and a differential corpus remain incomplete. |
+| Vowel combinations and coda realization | PARTIAL | Full vowel derivation, checked-syllable and contextual coda realization are not implemented. |
+| Tone/register/phonation | TODO | Specialist adjudication of competing analyses and scoped implementation are required; do not infer or collapse them. |
+| IPA → Ukrainian | PARTIAL | Canonical external inventory boundary exists; target policies remain proposal-level and need expert review. |
+| MLCTS → Ukrainian | TODO | Separate source-aware orthographic adapter is not implemented; verify MLCTS rules against primary MLC sources. |
+| Goruut/myG2P/Epitran harness | DONE_VERIFIED (diagnostic only) | Parser, comparison and runtime artifacts verified; 55/100 Goruut outputs partial; myG2P remains temporary test-only under CC BY-NC-SA 4.0. No accuracy or production claim. |
+| Python/browser phonological parity | TODO | Existing source-preservation parity does not establish phonological result parity; add shared expert-backed phonology fixtures. |
+| Manual UI/accessibility QA | TODO | Deployed visual, keyboard, screen-reader and mobile QA not evidenced by CI. |
+| Release readiness | PARTIAL | Blocked by gold, phonological coverage, primary-source and asset-rights gates. |
+
 
 ## Independent IPA gold corpus status — 2026-11-01
 
