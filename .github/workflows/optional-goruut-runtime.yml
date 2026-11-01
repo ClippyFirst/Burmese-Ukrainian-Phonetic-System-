@@ -62,6 +62,10 @@ jobs:
             --engine-commit b224bde02151f8f86d0fe260804e4ca743bda620 \
             --output artifacts/goruut-burmese-raw-output.json
           python scripts/benchmark_g2p.py --engine epitran --output artifacts/burmese-epitran-raw-output.json
+          python scripts/compare_burmese_g2p.py \
+            --goruut artifacts/goruut-burmese-raw-output.json \
+            --epitran artifacts/burmese-epitran-raw-output.json \
+            --output artifacts/burmese-goruut-vs-epitran.json
       - name: Upload raw output and server log
         if: always()
         uses: actions/upload-artifact@v4
