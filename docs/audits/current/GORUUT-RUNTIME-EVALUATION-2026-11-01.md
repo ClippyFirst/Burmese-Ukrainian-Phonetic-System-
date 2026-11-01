@@ -1,0 +1,26 @@
+# Goruut runtime evaluation — Burmese — 2026-11-01
+
+## Execution
+
+- Upstream: [neurlang/goruut](https://github.com/neurlang/goruut), pinned commit `b224bde02151f8f86d0fe260804e4ca743bda620`.
+- Language identifier: `Burmese`; explicitly enabled in `BuiltinDictLanguages`.
+- Runtime: Go 1.23.12, HTTP `POST /tts/phonemize/sentence`.
+- Test-only checkout; no upstream model/dictionary assets copied into this repository or production bundle.
+- Effective config SHA-256: `d725cc8e99a779e7928dc05685c3187b89df9ed87228b1875e290455b8014ef1`.
+
+## Results
+
+1. Eight probes were submitted: six existing structural probes, a multiword probe and a punctuation probe.
+2. Seven returned usable phonetic tokens; one returned no phonetic output for `ကေ၊ ကော်။` (Burmese punctuation).
+3. Example raw outputs include `ကေ` → `kè`, `ကော်` → `kɔ̀`, `ကြည်` → `tɕì`, `စွယ်` → `swɛ̀`, `မြန်` → `mjàɴ`, `ယူ` → `jù`. These are preserved as raw strings; the run does not establish that Goruut's output convention is equivalent to the project's required IPA convention.
+4. The server log repeatedly reports `weights9.bin.zlib: file does not exist`. This is an unresolved model-asset warning and may explain missing or fallback behavior.
+
+## Interpretation
+
+Goruut is a functioning optional HTTP comparator for several Burmese probes, but punctuation handling is incomplete and phonetic output has not been checked against an independent source-attested Burmese IPA set. **Do not promote it to a production provider or score its output as IPA accuracy.** Current independent, project-owned, expert-adjudicated Burmese gold remains 0.
+
+## Evidence and artifacts
+
+- Optional runtime workflow: [41308074710](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41308074710) (initial completed runtime probe); latest exact-head run is tracked by PR #82.
+- Artifact includes raw responses and server log; retention is 30 days.
+- Accuracy remains null; independent gold count remains 0.
