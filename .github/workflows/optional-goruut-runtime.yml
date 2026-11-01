@@ -1,0 +1,115 @@
+name: Optional Goruut Burmese runtime probe
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "scripts/benchmark_goruut.py"
+      - "tests/test_goruut_benchmark.py"
+      - "tests/fixtures/goruut-probes.txt"
+      - "scripts/prepare_myg2p_probe.py"
+      - "scripts/benchmark_g2p.py"
+      - "scripts/compare_burmese_g2p.py"
+      - "tests/test_prepare_myg2p_probe.py"
+      - "tests/test_compare_burmese_g2p.py"
+      - ".github/workflows/optional-goruut-runtime.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  raw-output:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: neurlang/goruut
+          ref: b224bde02151f8f86d0fe260804e4ca743bda620
+          path: goruut
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: ye-kyaw-thu/myG2P
+          ref: 54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225
+          path: myg2p
+          persist-credentials: false
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23.x"
+          cache-dependency-path: goruut/go.sum
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned optional Epitran comparator
+        run: python -m pip install "epitran==1.35.3"
+      - name: Prepare deterministic 100-row myG2P source-attested sample
+        run: |
+          mkdir -p artifacts
+          python scripts/prepare_myg2p_probe.py \
+            --input myg2p/ver2/myg2p.ver2.0.txt \
+            --output artifacts/myg2p-v2-probe.csv \
+            --summary artifacts/myg2p-v2-probe-summary.json \
+            --limit 100
+      - name: Configure the exact built-in language under test
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("goruut/configs/config.json")
+          config = json.loads(path.read_text(encoding="utf-8"))
+          config["BuiltinDictLanguages"] = ["Burmese"]
+          path.write_text(json.dumps(config, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+      - name: Build pinned Goruut source
+        working-directory: goruut
+        run: go build -trimpath -o ../goruut-bin ./cmd/goruut
+      - name: Start server and capture raw responses
+        run: |
+          mkdir -p artifacts
+          ./goruut-bin -configfile goruut/configs/config.json > artifacts/goruut-server.log 2>&1 &
+          echo $! > artifacts/goruut.pid
+          go version | tee artifacts/go-version.txt
+          python scripts/benchmark_goruut.py \
+            --input tests/fixtures/goruut-probes.txt \
+            --config-file goruut/configs/config.json \
+            --runtime-version "$(go version)" \
+            --repeat 3 \
+            --server-log artifacts/goruut-server.log \
+            --language Burmese \
+            --engine-commit b224bde02151f8f86d0fe260804e4ca743bda620 \
+            --output artifacts/goruut-burmese-raw-output.json
+          python scripts/benchmark_g2p.py --engine epitran --output artifacts/burmese-epitran-raw-output.json
+          python scripts/compare_burmese_g2p.py \
+            --goruut artifacts/goruut-burmese-raw-output.json \
+            --epitran artifacts/burmese-epitran-raw-output.json \
+            --output artifacts/burmese-goruut-vs-epitran.json
+          python scripts/benchmark_goruut.py \
+            --input artifacts/myg2p-v2-probe.csv \
+            --input-format csv \
+            --text-column orthography \
+            --expected-column expected_ipa \
+            --config-file goruut/configs/config.json \
+            --runtime-version "$(go version)" \
+            --repeat 3 \
+            --server-log artifacts/goruut-server.log \
+            --language Burmese \
+            --engine-commit b224bde02151f8f86d0fe260804e4ca743bda620 \
+            --output artifacts/goruut-burmese-myg2p-raw-output.json
+          python scripts/benchmark_g2p.py \
+            --engine epitran \
+            --corpus artifacts/myg2p-v2-probe.csv \
+            --output artifacts/burmese-epitran-myg2p-raw-output.json
+          python scripts/compare_burmese_g2p.py \
+            --goruut artifacts/goruut-burmese-myg2p-raw-output.json \
+            --epitran artifacts/burmese-epitran-myg2p-raw-output.json \
+            --output artifacts/burmese-goruut-vs-epitran-myg2p.json
+      - name: Upload raw output and server log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: goruut-burmese-raw-output
+          path: artifacts/
+          if-no-files-found: warn
+          retention-days: 30
