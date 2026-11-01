@@ -323,3 +323,23 @@ The final PR #82 runtime [41324681722](https://github.com/ClippyFirst/Burmese-Uk
 - Post-merge pytest, npm build, generated-data validation, Node tests and Playwright built-browser suite: [41326238767](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41326238767) PASS. Pages build/deploy and deployed-site/runtime smoke test: [41326238774](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41326238774) PASS.
 - MYA-MYG2P-PARSER-001 and MYA-MYG2P-COMPARISON-001 remain DONE_VERIFIED as temporary research tooling, not production phonology. The 100-row diagnostic is 98/100 outputs, 43 complete / 55 partial / 2 unknown, 98 stable, 0 randomization metadata, 69 unphonemized fragments, 0 strict / 17 limited-notation matches. Source labels remain not-gold; independent gold=0, accuracy=null.
 - Remaining blocker: qualified expert-adjudicated, dialect-scoped Burmese IPA gold and review of the partial-coverage cases. No model/data redistribution is authorized by test-only use.
+
+
+
+## Independent IPA gold corpus status — 2026-11-01
+
+| Task | Status | Acceptance / blocker |
+|---|---|---|
+| IPA-GOLD-SCHEMA-001 | DONE_VERIFIED | Four JSON Schemas, empty JSONL templates and cross-file validator |
+| IPA-GOLD-DOUBLE-ANNOTATION-001 | PARTIAL | Enforces two distinct annotators and third adjudicator; blind human collection remains external |
+| IPA-GOLD-ADJUDICATION-001 | PARTIAL | Agreement/resolved/unresolved semantics verified; no real adjudicated examples |
+| IPA-GOLD-SPLIT-001 | DONE_VERIFIED | Deterministic frozen lexeme-group splits and regression tests |
+| IPA-GOLD-EXPORT-001 | DONE_VERIFIED | Rights-filtered export to existing benchmark contract; current output header-only |
+| IPA-TYPED-BENCHMARK-001 | DONE_VERIFIED | IPA kind mismatch is not scored as exact match |
+| IPA-GOLD-RELEASE-GATE-001 | PARTIAL | Tag/manual gate requires 100/25/25 gold; repository ruleset/release procedure must require it |
+| BURMESE-ORTHO-KINZI-MEDIAL-001 | PARTIAL | Unicode structure documented; complete mapping and adversarial coverage open |
+| BURMESE-VOWEL-CODA-001 | PARTIAL | Sonority/coda-conditioned vowel model needs expert-backed matrix |
+| BURMESE-TONE-PHONATION-001 | TODO | Tone vs phonation vs segmental glottal closure requires specialist adjudication |
+| BURMESE-PYTHON-BROWSER-PHONOLOGY-PARITY-001 | TODO | Requires shared expert-backed IPA fixtures |
+
+**Gold status:** 0 independent adjudicated records; `gold.tsv` header-only; accuracy=null. The new workpack is a research specification, not completed phonological coverage.
