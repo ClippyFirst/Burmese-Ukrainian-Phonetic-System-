@@ -54,3 +54,16 @@ Evidence: [Goruut + Epitran workflow 41310125185](https://github.com/ClippyFirst
 ## Model-asset warning interpretation
 
 The runtime warning needs upstream diagnosis: the pinned Burmese language module contains `weights8.bin.zlib`, but the server logs `weights9.bin.zlib` as missing; no `weights9` asset was found in the pinned source tree. Its relationship to punctuation failure or phonetic output differences is unproven. Do not infer causation from correlation.
+
+
+## Exact-head three-repeat runtime evidence — 2026-11-01
+
+The exact current PR #82 head `d8b065bc66dce5fdd9959c4f0eb932a29acaedba` was executed in GitHub Actions, including a clean pinned-source Go build and three HTTP requests per input.
+
+- Runtime workflow: [41310771082](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41310771082); artifact [13085043436](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41310771082/artifacts/13085043436); ZIP SHA-256 `0eb19d7079de818736ecff095f700405fc4b46de3791dd6e4fd68762346218fa`.
+- Engine `b224bde02151f8f86d0fe260804e4ca743bda620`, Go `1.23.12`, language `Burmese`, effective config SHA-256 `d725cc8e99a779e7928dc05685c3187b89df9ed87228b1875e290455b8014ef1`.
+- Goruut: 7/8 inputs returned usable output; the punctuation sentence `ကေ၊ ကော်။` returned no phonetic output in all three repeats. Six outputs were identical across all three repetitions; `ကြည်` was unstable (`tɕì`, `tɕì`, `tɕɪ̀ɴ`).
+- Epitran 1.35.3 returned 6/6 outputs for the six structural probes. Exact Goruut/Epitran string agreement was 0/6. This is only raw-output difference evidence: no shared adjudicated IPA convention or independent gold exists, so neither engine wins.
+- The server logs `weights9.bin.zlib: file does not exist`; the pinned Burmese tree contains `weights8.bin.zlib`, not `weights9.bin.zlib`. Its causal relation to punctuation failure or output variation is unproven.
+
+**Disposition: retain Goruut and Epitran only as raw-output comparators; neither is validated for production phonology.** Independent adjudicated Burmese gold remains 0.
