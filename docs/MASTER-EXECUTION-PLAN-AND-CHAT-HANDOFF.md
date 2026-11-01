@@ -466,3 +466,9 @@ The following current statuses supersede older checkpoint rows above where they 
 - Green's major/minor syllable analysis and rhyme restrictions now have explicit source locators; Mooney & Repetti-Ludlow (2021) challenges direct tone-to-vowel mapping; Duan & Zhu (2025) presents an unresolved eight-tone/two-register proposal; Repetti-Ludlow (2023) separates voiceless-sonorant cues from vowel phonation.
 - Orthographic medials remain separate from phonological /j,w/ or other source analyses. Checked coda /ʔ/, nasalization, creaky phonation and tone are not collapsed.
 - Independent expert gold remains 0; gold.tsv remains header-only. No IPA labels or unverified runtime rules were added.
+
+
+### Research artifact — Burmese
+
+- [BURMESE vowel × medial × checked-syllable × prosody evidence matrix](docs/audits/current/BURMESE-VOWEL-MEDIAL-PROSODY-EVIDENCE-MATRIX-2026-11-01.md): source-located Green rhyme restrictions, major/minor syllables, medial evidence limits and competing tone/register analyses.
+- Checked /ʔ/, nasal /N/, creaky tone, vowel phonation and voiceless-sonorant cues remain distinct; no unsupported rules or IPA labels were added.
