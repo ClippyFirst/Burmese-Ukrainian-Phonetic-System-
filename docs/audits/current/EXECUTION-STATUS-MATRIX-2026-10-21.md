@@ -285,3 +285,13 @@ The latest Burmese artifact shows the only unstable input `ကြည်` carried
 | MYA-GORUUT-RANDOMIZATION-REPORT-001 | PARTIAL | Pinned upstream selector source; test-first assertions added | Harness parses RandomizationWordsCount/Choices and has coverage tests. Exact-head CI for the new parser is pending. |
 
 The source-coverage contract reconstructs the input from PrePunct + CleanWord + PostPunct after NFC/whitespace removal and flags letters, combining marks or numbers left in PrePunct/PostPunct. This is a coverage check, not phonetic accuracy. The new implementation must pass CI before the task can be marked DONE_VERIFIED.
+
+
+### myG2P v2.0 100-row comparison — PARTIAL, CI pending
+
+| Task | Status | Evidence | Acceptance / blocker |
+|---|---|---|---|
+| MYA-MYG2P-PARSER-001 | PARTIAL | `scripts/prepare_myg2p_probe.py`; `tests/test_prepare_myg2p_probe.py` | Parses pinned five-column dictionary, tracks malformed/missing/duplicate rows, creates deterministic 100 unique source-located rows, and labels them SOURCE_ATTESTED_NOT_GOLD. Exact-head test CI pending. |
+| MYA-MYG2P-COMPARISON-001 | PARTIAL | Optional Goruut workflow now checks out myG2P commit `54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225`; same 100 rows go to Goruut (3 repeats) and Epitran 1.35.3 | Await exact-head runtime artifact. Report raw outputs, coverage, randomization and source-attested concordance only; accuracy must remain null and independent gold=0. |
+
+The user explicitly authorized temporary test-only use regardless of upstream license review. The dictionary is not committed to this repository or bundled into product runtime. Per-entry IPA is source-attested, not independently adjudicated gold.
