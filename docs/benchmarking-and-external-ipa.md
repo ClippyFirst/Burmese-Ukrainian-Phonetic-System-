@@ -158,3 +158,14 @@ A second inspection of the saved raw JSON used the API's `PrePunct`, `CleanWord`
 - This re-analysis confirms no partial-source-coverage response in the small Burmese probe set, but eight cases are far too few to establish language coverage.
 
 Raw artifact: [13085043436](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41310771082/artifacts/13085043436), ZIP SHA-256 `0eb19d7079de818736ecff095f700405fc4b46de3791dd6e4fd68762346218fa`.
+
+
+## Owner scope decision — temporary test-only use — 2026-11-01
+
+The repository owner explicitly directed that external Goruut assets may be used for temporary verification and comparison without blocking these tests on license review. Accordingly:
+
+- **Test-only execution:** authorized for this research task; do not stop runtime probes because the external asset license is unresolved.
+- **No data/model import:** no Goruut dictionary, model weight, or MekongPhon source row is copied into the product runtime or committed as a corpus by this decision.
+- **Production packaging or redistribution:** not authorized by this instruction and remains outside this test-only scope; asset provenance/rights must be revisited before any bundling, redistribution, or production deployment.
+
+This is a project scope decision, not a legal conclusion about the upstream assets.
