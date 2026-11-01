@@ -516,3 +516,13 @@ The following current statuses supersede older checkpoint rows above where they 
 - Exact-head verification: [tests 41339669408](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41339669408) SUCCESS; [optional Epitran diagnostic 41339669397](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41339669397) SUCCESS.
 - Verified workflow coverage: 124 Python tests + 31 subtests, web-data validation, production build, generated-data drift check, npm tests and 54 built-browser Playwright tests passed on the exact code commit.
 - Local checkout was unavailable; verification evidence is GitHub Actions. The gold corpus remains empty and empirical accuracy remains unmeasured.
+
+
+## Frozen split-manifest schema parity — 2026-11-01
+
+- Status: `DONE_VERIFIED`.
+- Review found that `assign-splits` accepted unknown properties in existing split rows even though the split JSON Schema is closed; the generator could silently discard those fields when rewriting the manifest.
+- RED evidence: regression `test_assign_splits_rejects_unknown_properties_in_existing_manifest` failed as expected on test-only commit `3f20dcc5f2f90940b600fdb2fd378d4976d3a098` ([run 41340275371](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41340275371)).
+- GREEN implementation: shared `SPLIT_PROPERTIES` is now used by both cross-file validation and `assign-splits`; the generator rejects unknown fields instead of dropping them. Code commit: `76af91582a760b44ce18f029f80dbf9a35f7a4c7`.
+- Exact-head verification: [tests 41340417848](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41340417848) SUCCESS — 125 Python tests + 31 subtests; web-data validation, production build, generated-data drift check, npm tests and 54 built-browser Playwright tests passed.
+- Shared implementation and regression test are byte-identical across Lao, Khmer and Burmese branches. No corpus rows or IPA labels were added; independent gold remains zero and accuracy remains null.
