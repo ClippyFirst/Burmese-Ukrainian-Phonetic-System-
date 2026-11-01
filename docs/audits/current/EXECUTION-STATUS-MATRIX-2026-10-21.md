@@ -246,3 +246,14 @@ These are source-integrity regressions, not evidence of Burmese IPA accuracy, fu
 
 - Exact-main tests [41246294703](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41246294703) and Pages [41246294821](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41246294821) completed successfully on `48bb45cf2a5c6cc95057fecacdfbc6e852b760b1`. The earlier in-progress note above is superseded; deployed-site/runtime smoke test passed.
 - Follow-up documentation PR-head verification remains required before merge.
+
+
+## External G2P candidate register update — 2026-11-01
+
+| Candidate | Status | Evidence / acceptance |
+|---|---|---|
+| Goruut | PARTIAL — upstream advertised support only | Pinned source commit `b224bde02151f8f86d0fe260804e4ca743bda620`; README lists Burmese and an IPA phone set. No syllable tokens or tie bars; numbers/dates unsupported. MIT source-code license verified, embedded asset licenses not yet audited. Run in isolated optional CI and retain raw output before considering further use. |
+| Epitran 1.35.3 | DONE_VERIFIED as raw-output smoke only | Existing six structural probes and resource hashes remain diagnostic; documented limited Burmese support; independent gold remains 0. |
+| myG2P | BLOCKED for commercial redistribution absent rights decision | Upstream license is CC BY-NC-SA 4.0; do not vendor into the commercial runtime absent permission/legal review. |
+
+No accuracy score or engine winner is available. Promotion requires independent expert-adjudicated IPA and a separate license/provenance audit for all model and dictionary assets.
