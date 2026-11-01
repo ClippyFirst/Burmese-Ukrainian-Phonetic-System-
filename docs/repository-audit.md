@@ -177,3 +177,8 @@ moved to research/historical/ or research/decisions/ rather than deleted.
 The repository now has a standard-library JSONL validator, five versioned JSON Schemas, a source-license registry, independent annotation/adjudication records, deterministic split manifests, a typed IPA export into the existing benchmark and a tag/manual gold release gate. The corpus files remain empty and `gold.tsv` remains header-only. This is infrastructure completion, not scientific completion: independent expert gold=0, accuracy=null, and production readiness remains blocked.
 
 Blind annotation cannot be guaranteed in a public Git repository. Two submissions must be collected separately in a controlled channel and merged only after both are locked. Every future source still requires a human-verified license/permission locator; a registry entry is not itself a grant of rights.
+
+
+## 2026-11-01 closeout
+
+The independent IPA gold-corpus implementation and Burmese evidence matrix are in [PR #84](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/84). PR CI passed 121 Python tests + 31 subtests, four generated-data/web tests, 54 built-browser tests, production build and generated-data drift checks; optional Epitran diagnostic passed. The LREC 2020 speech/segmentation corpora are not public domain and were not imported. Independent gold remains 0. Main was not changed. Legacy PR #53 remains untouched.
