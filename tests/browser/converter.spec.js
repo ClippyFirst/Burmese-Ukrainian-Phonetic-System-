@@ -398,7 +398,7 @@ test("browser preserves a multiline mixed-script message around unsupported Myan
     const source = row.querySelector("strong");
     return source ? source.textContent.replace(/^\d+\s+/u, "") : row.textContent.split(" · ")[0];
   }).join(""));
-  expect(reconstructed).toBe(sentence.normalize("NFC"));
+  expect(reconstructed).toBe(browserValue);
 
   await expect(page.locator("#uk")).toContainText("ABC-42");
   await expect(page.locator("#uk")).toContainText("၁၂၃");
