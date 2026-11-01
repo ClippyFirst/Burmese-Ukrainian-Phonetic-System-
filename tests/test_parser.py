@@ -59,3 +59,19 @@ def test_python_parser_reconstructs_mixed_sentence_source_units():
     assert result["normalized"] == source
     assert "".join(result["graphemes"]) == source
     assert "".join(syllable["raw"] for syllable in result["syllables"]) == source
+
+
+def test_python_parser_preserves_multiline_mixed_script_adversarial_input():
+    # Structural/source-integrity probe only: the unsupported Khamti code point
+    # must remain visible between valid Burmese units. This is not IPA gold.
+    source = "ကာ\\tABC-42\\r\\n၁၂၃၊။\\u200b𑛐 😀 العربية ဂီ"
+    result = parse_burmese(source)
+
+    assert result["normalized"] == source
+    assert "".join(result["graphemes"]) == source
+    assert "".join(syllable["raw"] for syllable in result["syllables"]) == source
+
+    by_raw = {syllable["raw"]: syllable for syllable in result["syllables"]}
+    assert by_raw["ကာ"]["analysis"]["status"] == "established"
+    assert by_raw["𑛐"]["analysis"]["status"] == "unsupported_or_malformed"
+    assert by_raw["ဂီ"]["analysis"]["status"] == "established"
