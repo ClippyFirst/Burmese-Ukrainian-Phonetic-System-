@@ -366,3 +366,10 @@ Additional current controls:
 - `IPA-GOLD-RIGHTS-001` — DONE_VERIFIED (mechanism): allowlisted license registry, required per-record rights evidence and non-redistributable license rejection. Source-by-source legal review remains required.
 - `IPA-GOLD-PROVENANCE-EXPORT-001` — DONE_VERIFIED: export and benchmark report preserve source ID, license ID and rights-evidence locator.
 - `IPA-GOLD-BLIND-INTAKE-001` — BLOCKED: qualified annotators and a controlled blind intake channel are not connected; public Git history cannot enforce blinding.
+
+
+## CI action runtime modernization — 2026-11-01
+
+| ID | Status | Evidence | Scope / acceptance |
+|---|---|---|---|
+| BUR-CI-ACTIONS-001 | DONE_VERIFIED | Code commit `a1ef4e13105937cd282e6edd67020a74207f649b`; exact-head [tests 41339669408](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41339669408) and [Epitran diagnostic 41339669397](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41339669397) both SUCCESS | All five workflow files use current Node.js 24-compatible action majors; Python, Node, build, generated-data, and 54 Playwright browser checks passed. No phonological behavior changed. |
