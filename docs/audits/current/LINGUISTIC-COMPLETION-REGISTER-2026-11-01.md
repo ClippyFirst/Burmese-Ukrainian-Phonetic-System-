@@ -99,3 +99,14 @@ Preserve `Burmese orthography → structural/medial analysis → Burmese phonolo
 | ID | Priority | Status | Scope / evidence | Acceptance criteria / dependencies |
 |---|---|---|---|---|
 | BUR-IPA-RELEASE-THRESHOLDS-001 | P1 | DONE_VERIFIED | RED test on `52fbfd77a12ef2e592debbaea7e07b0650d5fd3b`; GREEN code commit `fc77d3e8073e58ae75a86693db971ff3fc0a162a`; exact-head CI [41341757201](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41341757201) passed | All split minimums reject zero and negative values; threshold errors aggregate with other release-gate findings. Default minimums remain 100/25/25. |
+
+
+## Audio-source review update — 2026-11-01
+
+OpenSLR 80 (SLR80) is now the leading documented Burmese audio candidate: https://openslr.org/80. The primary paper (Oo et al. 2020, https://aclanthology.org/2020.lrec-1.777.pdf, corpus section pp. 6333–6334) reports 2,528 utterances from 20 female native Burmese speakers aged 25–35, recorded in Yangon at 48 kHz mono, with hand-curated word-segmented transcripts and native-speaker audio/transcript QC. The resource is CC BY-SA 4.0. Only female recordings were released at the time of the paper.
+
+This is **not IPA gold**. The line index contains orthographic transcripts; the paper's FST G2P is a pronunciation-generation/lexicon-bootstrapping tool, not independent adjudicated truth. The recording location does not by itself establish every speaker's dialect. No word-level acoustic timestamps are supplied, so any token selection requires manual alignment verification. The female-only sample cannot support gender-balanced generalization.
+
+Use SLR80 for a separately labelled contextual phonetic pilot after specialist profile review. For lexical citation-form G2P gold, arrange controlled elicitation from qualified target-variety speakers. Keep contextual and citation-form corpora/splits separate.
+
+Status remains `MYA-GOLD-001 = BLOCKED`: no annotations, annotators or adjudications have been created. Independent gold remains 0 and accuracy remains null.
