@@ -579,3 +579,10 @@ The documentation-only playbook, corpus-guide and handoff changes at the precedi
 - **Use boundary:** SLR80 supplies sentence-context audio and text, not IPA. The paper's FST G2P is intended to generate/seed pronunciations for later human checking, not to serve as gold. The recording location does not establish each speaker's dialect; word-level timestamps are not provided and must be manually verified. Female-only speakers limit generalization claims.
 - Recommended split: a separately labelled contextual phonetic subset from SLR80, plus a distinct citation-form lexical set elicited from qualified speakers of the approved target variety. Never mix their accuracy denominators or claim citation-form accuracy from sentence-context tokens.
 - `MYA-GOLD-001` remains `BLOCKED`; independent gold 0 and accuracy `null`. No audio or IPA data imported. Next acceptance step: specialist approves the SLR80 profile and 30 contextual token sample, while a separate citation-form recording session is arranged.
+
+
+## Final exact-head verification — 2026-11-01
+
+Branch `feat/ipa-gold-corpus-20261101-review`, final handoff commit `083ddb740d825b2c1e227cd0f19d051beba097a6`. Burmese exact-head CI: tests [41344959952](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41344959952) SUCCESS; optional Goruut [41344959963](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41344959963) SUCCESS; optional Epitran [41344959950](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41344959950) SUCCESS. Core job passed corpus structure validation, pytest, npm build, generated-data drift check, npm tests and built-browser Playwright tests.
+
+These checks validate the committed repository and its automated engineering contracts. They do **not** validate the linguistic correctness of future human annotations, create gold labels, or change the release blocker. Gold remains empty and accuracy remains null.
