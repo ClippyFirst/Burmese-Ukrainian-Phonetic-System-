@@ -536,3 +536,13 @@ The following current statuses supersede older checkpoint rows above where they 
 - GREEN implementation: a redistributable license must explicitly set `commercial_use: true` and boolean `attribution_required` + `share_alike`; the JSON Schema now encodes the same conditional rule. Code/schema commit: `7383191ca2ca9e8c24099ae2f55483c6f6351d68`.
 - Exact-head verification: [tests 41341030962](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41341030962) SUCCESS — 127 Python tests + 35 subtests; web-data validation, production build, generated-data drift check, npm tests and 54 built-browser Playwright tests passed.
 - This is a conservative product-corpus eligibility rule, not a legal opinion about all uses of these licenses. Each real source still needs human rights review. No IPA gold rows were added; independent gold remains zero and accuracy remains null.
+
+
+## Release-gate threshold validation — 2026-11-01
+
+- Status: `DONE_VERIFIED`.
+- Review found that the CLI accepted zero/negative `--min-train`, `--min-dev` and `--min-test` thresholds. That could let an operator weaken a release gate below a meaningful non-empty split requirement.
+- RED evidence: the six invalid threshold cases (0 and -1 for each split) failed as expected on test-only commit `52fbfd77a12ef2e592debbaea7e07b0650d5fd3b` ([run 41341548544](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41341548544)).
+- GREEN implementation: all three minimums must be positive integers. Invalid threshold configuration is added to the gate's aggregated findings rather than raised before corpus checks, preserving diagnostics for other blockers. Final code commit: `fc77d3e8073e58ae75a86693db971ff3fc0a162a`.
+- Exact-head verification: [tests 41341757201](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41341757201) SUCCESS — 128 Python tests + 41 subtests; web-data validation, production build, generated-data drift check, npm tests and 54 built-browser Playwright tests passed.
+- The configured release-gate defaults remain train=100, dev=25, test=25. No gold rows or IPA labels were added; independent gold remains zero and accuracy remains null.
