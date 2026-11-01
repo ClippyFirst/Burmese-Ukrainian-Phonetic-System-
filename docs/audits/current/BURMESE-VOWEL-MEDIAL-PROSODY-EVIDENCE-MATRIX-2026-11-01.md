@@ -94,3 +94,22 @@ The paper therefore supports a typed distinction between phonemic voicelessness 
 - LREC 2020 is CC BY-NC. Its phonological description is usable as research evidence, but its corpus and resource package must not be copied into a commercial project without a separate rights review.
 - Duan & Zhu (2025) is an open-access CC BY 4.0 article. The publisher abstract and article outline establish the eight-tone/two-register proposal; the full empirical tables have not been extracted in this pass, so it remains a competing analysis, not implemented consensus.
 - Repetti-Ludlow (2023) is a production study of a restricted subset of sonorants and contexts, not a general register or tone study.
+
+
+## 8. LREC 2020's explicit open/closed vowel partition
+
+The LREC 2020 paper gives a second, distinct inventory following Watkins (2000/2001). It should not be merged silently with Green's 50-rhyme analysis.
+
+| Set | Distribution | Reported inventory | Evidence locator |
+|---|---|---|---|
+| Open, non-nasal set | Orthographically open syllables, not nasalized | Eight vowels including /ə/ | LREC 2020 §4.3, pp. 6331–6332 |
+| Closed/nasal set | Nasalized syllables or syllables closed by /ʔ/ | Four vowels; /ɛ/ and /a/ overlap with the first set, while /ɛ/ is restricted to non-nasalized syllables | LREC 2020 §4.3 |
+| Diphthongs | Only in the second set | Four diphthongs; must be closed by /ʔ/ or placeless /N/ | LREC 2020 §4.3 |
+| Tone categories | Low, high, creaky, checked | Four categories | LREC 2020 §3 |
+| Checked tone | Always has final /ʔ/; unavailable with nasal rhymes | Segmental coda + tone interaction | LREC 2020 §4.3 |
+
+LREC 2020 explicitly describes tone cues as pitch, contour, length and phonation type. It also describes 34 consonants. This is a system-description/G2P analysis, not an independent gold dataset.
+
+## 9. Rights boundary for LREC 2020 resources
+
+The paper states that the authors' in-house Burmese speech corpora and segmentation corpus are not in the public domain (pp. 6328–6330). The article itself is CC BY-NC, but that does not grant redistribution rights to the underlying speech data. Do not copy or train on the in-house speech corpus. The Google language-resource grammar/code must be rights-reviewed separately from the speech data; the project does not import either as production assets in this change.
