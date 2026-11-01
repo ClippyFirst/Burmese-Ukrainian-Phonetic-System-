@@ -76,3 +76,6 @@ Unicode and LREC 2020 establish the script-level facts: consonants can be stacke
 **Research acceptance matrix:** record for each row (1) orthographic sequence, (2) structural parse, (3) phonemic analysis, (4) phonetic realization, (5) tone/register/phonation convention, (6) profile/speaker, (7) source locator and confidence. Keep Green's four-tone model, Duan & Zhu's eight-tone proposal and any future speaker-level analysis in separate columns until adjudicated.
 
 **Status update:** vowel/coda and major/minor constraints are now more explicitly source-grounded; the complete lexical matrix, modern medial correspondence table, checked-syllable phonetic adjudication and competing register analyses remain PARTIAL/BLOCKED. No new IPA labels or automatic phonological rules were added.
+
+
+See the [Burmese vowel × medial × checked-syllable × prosody evidence matrix](BURMESE-VOWEL-MEDIAL-PROSODY-EVIDENCE-MATRIX-2026-11-01.md) for Green's 50-rhyme analysis, nasal/checked restrictions, major/minor syllable split, medial uncertainties and competing tone/register accounts.
