@@ -129,3 +129,14 @@ The separate eight-case engineering probe returned 7 outputs and 1 no-output; 7 
 myG2P declares CC BY-NC-SA 4.0. Its dictionary is used only in temporary test artifacts under the owner's explicit test-only authorization; it is not committed, vendored or bundled. The 100 labels are source-attested, not independent gold; per-entry adjudication and dialect/register are underspecified. Accuracy remains null and independent gold=0.
 
 **Disposition:** exact-head engineering verification and comparator execution are DONE_VERIFIED. Goruut and Epitran remain raw comparators, not production phonology providers. A qualified Burmese expert IPA gold set and dialect-scoped adjudication remain BLOCKED/PARTIAL.
+
+
+## Latest exact-head repeatability clarification — 2026-11-01
+
+The final PR #82 head `5613d25084e2a655eb4b4b9e6873ae0701bd54fb` was re-run after the handoff update. Runtime [41324681722](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41324681722), artifact [13090128004](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41324681722/artifacts/13090128004), ZIP SHA-256 `0a1948d0662835a0cfaa7e8e08f49f481e2fec5569e63491a052c06b4a4fdac9`; downloaded hash matches GitHub digest.
+
+- The 100-row myG2P result is unchanged: Goruut 98 outputs, 2 no-output; 43 complete / 55 partial / 2 unknown; 98 stable, 0 unstable; 0 randomization metadata; 69 unphonemized source fragments; 0/100 strict source-label matches and 17/100 limited-notation matches. Accuracy null, independent gold=0.
+- The separate eight-case engineering probe returned 7 outputs and 1 no-output; 7/7 returned outputs had complete source coverage. All seven were repeat-stable in this run, but one still carried `RandomizationWordsCount=1` and `RandomizationWordsChoices=2` on all three repetitions. Thus this run had **0 unstable outputs**, not one; the dictionary ambiguity signal persists despite identical sampled outputs. A previous fresh server run did produce an unstable output.
+- The `weights9.bin.zlib` warning persists and remains causally unlinked to the observed outputs.
+
+This corrects the previous addendum's 8-case instability count. Stable repeated strings do not clear upstream ambiguity metadata.
