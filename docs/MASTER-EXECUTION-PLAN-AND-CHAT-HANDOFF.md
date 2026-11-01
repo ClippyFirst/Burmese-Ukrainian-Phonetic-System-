@@ -472,3 +472,27 @@ The following current statuses supersede older checkpoint rows above where they 
 
 - [BURMESE vowel × medial × checked-syllable × prosody evidence matrix](docs/audits/current/BURMESE-VOWEL-MEDIAL-PROSODY-EVIDENCE-MATRIX-2026-11-01.md): source-located Green rhyme restrictions, major/minor syllables, medial evidence limits and competing tone/register analyses.
 - Checked /ʔ/, nasal /N/, creaky tone, vowel phonation and voiceless-sonorant cues remain distinct; no unsupported rules or IPA labels were added.
+
+
+## 2026-11-01 implementation and verification closeout
+
+- Starting main SHA: 4ddb9d3f10427275ce75c7ae73270468d3721106 (main remains unchanged).
+- Implementation branch: feat/ipa-gold-corpus-20261101-review.
+- Comprehensive PR: [#84](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/84); PR-head implementation checkpoint SHA: 1129048b96546187bace51ed8e3c665cd3d1d7cc.
+- PR CI: [tests](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41337415201) SUCCESS — 121 Python tests + 31 subtests; four generated-data/web tests; 54 built-browser Playwright tests; production build and generated-data drift checks passed.
+- Optional diagnostic: [Epitran raw-output benchmark](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41337415197) SUCCESS. It remains diagnostic evidence, not independent gold.
+- This branch includes the previous documentation-only PR #83 in full; #83 was closed as superseded after its content was verified in #84. No branch was deleted.
+- Legacy PR [#53](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/53) remains open and untouched: it is a divergent legacy CSS/layout patch and was not blindly merged.
+- Existing feature branch feat/independent-ipa-gold-corpus-20261101 was left untouched because its history is substantially broader; the narrower review branch is the PR source.
+- No local checkout was available; all verification claims above are GitHub Actions evidence, not local command runs.
+
+### Final task ledger
+
+- Corpus schemas/runtime validator, license registry, frozen group-safe splits and typed benchmark: DONE_VERIFIED (implementation and CI only).
+- Actual independent expert annotations and adjudicated gold: BLOCKED — no qualified annotators or adjudicated source dataset supplied; gold.tsv remains header-only, gold count 0, accuracy null.
+- Full vowel/medial/checked-syllable/tone/register/phonation model: PARTIAL/BLOCKED — see the Burmese evidence matrix; Green, LREC 2020, Mooney & Repetti-Ludlow, Duan & Zhu and Repetti-Ludlow use different analyses and sample scopes.
+- LREC 2020 in-house speech and segmentation corpora are not public domain and are excluded from project data/assets.
+- Release gate: PARTIAL — count, rights, adjudication and split checks exist and fail closed on empty gold; project owner must require the gate in repository rulesets/release procedure, and feature-coverage thresholds require an expert-approved matrix.
+- Manual UI/accessibility review: TODO.
+
+**Readiness:** research infrastructure is substantially improved; the language system remains a research prototype, not production/release-ready.
