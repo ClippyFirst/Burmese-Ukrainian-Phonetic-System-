@@ -410,3 +410,12 @@ The updated harness completed on PR branch commit `422ee1f991203275af21031e0ee3b
 
 This run reinforces that repeat stability alone is insufficient: Goruut's ambiguity counters must also be clear before source concordance is even reported.
 
+
+
+## Final Burmese PR #82 / myG2P reconciliation — 2026-11-01
+
+- Final head `dcd9dfb6f1306ce01547f922238aba3fdefd6586`: repository verification [41313487752](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41313487752) and Goruut/Epitran/myG2P runtime [41313487703](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41313487703) both **PASS**. The repository run included pytest, npm build, generated-data validation, Node tests and Playwright built-browser tests.
+- The 100-row myG2P v2.0 comparison (source commit `54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225`) yielded Goruut coverage 43 complete / 55 partial / 2 unknown; 98/100 responses; 98 stable, 0 unstable; no randomization metadata; 69 unphonemized source fragments. Strict source-attested exact matches 0/100; limited notation diagnostic 17/100. Epitran 1.35.3 also had 0/100 exact source-label matches. These are not accuracy scores.
+- The separate eight-case probe had 7 outputs, 1 no-output, 7 complete-coverage responses, 6 stable and 1 unstable/randomized. The `weights9.bin.zlib` warning remains unexplained.
+- Artifact [13086900774](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41313487703/artifacts/13086900774), SHA-256 `ca165ac84ee6b284a423a988a5ee32d951a883c36073b01fd5f086ba83022f77`; downloaded archive hash matched GitHub digest. myG2P CC BY-NC-SA 4.0 is used only in temporary verification under explicit owner authorization; no source dictionary is committed or packaged. Independent gold=0; accuracy=null.
+- Parser, comparison, runtime workflow and exact-head engineering checks are **DONE_VERIFIED**. Phonetic correctness and production selection remain **BLOCKED/PARTIAL** pending expert-adjudicated, dialect-scoped Burmese IPA gold and further analysis of partial source coverage.
