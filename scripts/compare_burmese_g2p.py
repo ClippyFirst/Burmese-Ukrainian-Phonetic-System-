@@ -29,15 +29,52 @@ def compare_reports(goruut: dict[str, Any], epitran: dict[str, Any]) -> dict[str
         epitran_raw = row.get("raw_output_ipa", "")
         stable = len(usable) == len(repetitions) and len(set(outputs)) == 1
         goruut_raw = outputs[0] if outputs else None
+        expected_ipa = row.get("expected_ipa", "").strip()
+        source_coverage_complete = g.get("source_coverage_complete") is True
+        ambiguous_dictionary_selection = g.get("ambiguous_dictionary_selection") is True
+        goruut_source_comparable = bool(
+            expected_ipa and stable and source_coverage_complete
+            and not ambiguous_dictionary_selection
+        )
+        goruut_source_match = (
+            goruut_raw == expected_ipa if goruut_source_comparable else None
+        )
+        epitran_source_match = (
+            epitran_raw == expected_ipa if expected_ipa else None
+        )
         comparisons.append({
             "orthography": text,
+            "source_attested_ipa": expected_ipa or None,
             "goruut_raw": goruut_raw,
             "goruut_reproducible": stable,
+            "goruut_source_coverage_status": g.get("source_coverage_status", "UNKNOWN"),
+            "goruut_ambiguous_dictionary_selection": ambiguous_dictionary_selection,
             "goruut_repeat_outputs": outputs,
             "epitran_raw": epitran_raw,
             "exact_string_match": bool(stable and goruut_raw == epitran_raw),
+            "goruut_source_attested_exact_match": goruut_source_match,
+            "epitran_source_attested_exact_match": epitran_source_match,
         })
     matches = sum(row["exact_string_match"] for row in comparisons)
+    source_rows = [row for row in comparisons if row["source_attested_ipa"]]
+    source_diagnostic = {
+        "source_attested_inputs": len(source_rows),
+        "goruut_complete_deterministic_inputs": sum(
+            row["goruut_source_attested_exact_match"] is not None for row in source_rows
+        ),
+        "goruut_exact_matches": sum(
+            row["goruut_source_attested_exact_match"] is True for row in source_rows
+        ),
+        "epitran_exact_matches": sum(
+            row["epitran_source_attested_exact_match"] is True for row in source_rows
+        ),
+        "status": "SOURCE_ATTESTED_CONCORDANCE_ONLY_NOT_GOLD",
+        "interpretation": (
+            "myG2P v2.0 dictionary labels are source-attested, not independent project gold. "
+            "Goruut rows are compared only when all repeats are stable, source coverage is complete, "
+            "and no upstream dictionary-randomization counters are present. These are not accuracy scores."
+        ),
+    }
     return {
         "schema_version": 1,
         "purpose": "Raw-output engine comparison only; neither system is treated as gold.",
@@ -47,6 +84,7 @@ def compare_reports(goruut: dict[str, Any], epitran: dict[str, Any]) -> dict[str
         "compared_inputs": len(comparisons),
         "exact_string_matches": matches,
         "different_or_unstable_outputs": len(comparisons) - matches,
+        "source_attested_diagnostic": source_diagnostic,
         "independent_gold_count": 0,
         "accuracy": None,
         "interpretation": "Exact string agreement is not phonetic correctness. Differences may reflect transcription convention, dialect, tone/phonation representation, missing features or engine error. Do not select a winner without independent expert IPA gold.",
