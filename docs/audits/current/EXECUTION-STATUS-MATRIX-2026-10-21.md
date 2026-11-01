@@ -315,3 +315,11 @@ The first independent 8-probe run (artifact 13085043436) showed one unstable out
 ### Final exact-head evidence correction — 2026-11-01
 
 The final PR #82 runtime [41324681722](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41324681722), artifact [13090128004](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41324681722/artifacts/13090128004), supersedes the previous 8-case wording: 7/8 outputs, 7/7 complete and stable, 1/8 carried upstream dictionary-randomization metadata despite identical output across the three sampled repeats, 1/8 no output. The 100-row myG2P comparison remains 98 outputs, 43 complete / 55 partial / 2 unknown, 98 stable, no randomization metadata, 69 unphonemized fragments, 0 strict and 17 limited-notation source-label matches. These are not accuracy; independent gold=0. The downloaded archive SHA-256 matches the GitHub digest.
+
+
+### Session closeout — PR #82 merged, 2026-11-01
+
+- PR #82 merged into `main` as `e9c83322f304a670dd25e121dcc5b60e1cf3a896`.
+- Post-merge pytest, npm build, generated-data validation, Node tests and Playwright built-browser suite: [41326238767](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41326238767) PASS. Pages build/deploy and deployed-site/runtime smoke test: [41326238774](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41326238774) PASS.
+- MYA-MYG2P-PARSER-001 and MYA-MYG2P-COMPARISON-001 remain DONE_VERIFIED as temporary research tooling, not production phonology. The 100-row diagnostic is 98/100 outputs, 43 complete / 55 partial / 2 unknown, 98 stable, 0 randomization metadata, 69 unphonemized fragments, 0 strict / 17 limited-notation matches. Source labels remain not-gold; independent gold=0, accuracy=null.
+- Remaining blocker: qualified expert-adjudicated, dialect-scoped Burmese IPA gold and review of the partial-coverage cases. No model/data redistribution is authorized by test-only use.
