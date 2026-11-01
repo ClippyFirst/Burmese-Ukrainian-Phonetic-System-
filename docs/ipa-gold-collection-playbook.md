@@ -84,3 +84,31 @@ Existing numeric thresholds (100 train / 25 dev / 25 test) are minimum engineeri
 ## Burmese speech resource lead — 2026-11-01
 
 A potentially useful audio/source lead exists: Oo et al. (LREC 2020), “Burmese Speech Corpus, Finite-State Text Normalization and Pronunciation Grammars with an Application to Text-to-Speech.” The available resource summary describes 2,528 utterances from 20 female speakers, recorded at 48 kHz, with manually segmented transcriptions, plus text-normalization and G2P grammars: https://lacuna.tiptreesystems.com/work/burmese-speech-corpus-finite-state-text-normalization-and-pronunciation-grammars/wrk_32839cc3e1a87a7ffdba33d7dde9f886. This is not an IPA gold corpus by itself. Before using it, inspect the primary paper/repository, exact audio/transcript license, consent and permitted research uses, variety/speaker metadata, transcription format, and whether IPA annotations exist. If rights and profile fit, it may provide controlled audio stimuli for specialist re-transcription; do not infer IPA from its graphemic transcripts or G2P outputs.
+
+
+## OpenSLR 80 audio source — primary-source review, 2026-11-01
+
+**Resource:** Burmese Speech Corpus (SLR80), https://openslr.org/80. **Paper:** Oo et al. (2020), https://aclanthology.org/2020.lrec-1.777.pdf.
+
+The OpenSLR landing page lists CC BY-SA 4.0, a 541 KB female-speaker line index and a 948 MB female-audio archive. The paper's corpus section (pp. 6333–6334) gives substantially better provenance:
+
+- 2,528 utterances from 20 female native Burmese speakers, aged 25–35;
+- recorded in Yangon in a rented studio, at 48 kHz, mono, 16-bit PCM;
+- each speaker read approximately 150–200 sentences;
+- hand-curated, word-segmented transcriptions are paired with the recordings;
+- trained native speakers performed audio/transcript QC and discarded utterances with mismatches, noise, disfluencies or mispronunciations;
+- the released corpus is CC BY-SA 4.0; only female recordings were released at the time of the paper.
+
+This is the strongest currently verified Burmese audio lead. It is still **not IPA gold**: the line index contains orthographic transcriptions, not independent IPA annotations. The paper's separate FST G2P is a pronunciation-generation component intended to bootstrap lexicons for later human checking; its output must not be used as the gold label.
+
+### Suitability and limits
+
+- The recording location is Yangon, but the paper does not establish a speaker-by-speaker dialect classification. Record the provisional profile as “native Burmese recorded in Yangon; individual dialect not independently classified” until a Burmese specialist approves a narrower profile.
+- The release contains only female speakers, so it cannot support claims about gender-balanced speaker generalization.
+- The word-segmented line index does not provide verified word-level acoustic timestamps. Any token-level selection needs manual alignment/verification against the audio; automatic forced alignment may propose boundaries but cannot certify them.
+- These are sentence-context tokens. They can support a separately labelled **contextual phonetic** subset, preserving tone, phonation, coda and prosodic context. They do not automatically provide isolated citation-form pronunciations for the lexical G2P benchmark.
+- Keep the external audio in its source distribution; record release, file ID, transcript, time interval and checksum in the private annotation packet. Never attempt to identify speakers.
+
+### Collection decision
+
+Use SLR80 as the leading source for a small contextual-audio annotation pilot after a specialist confirms the profile and the selected tokens. For the lexical citation-form benchmark, add a separate controlled elicitation session with qualified Yangon speakers. Maintain distinct corpus/profile IDs for contextual SLR80 tokens and elicited citation forms; never merge their accuracy denominators.
