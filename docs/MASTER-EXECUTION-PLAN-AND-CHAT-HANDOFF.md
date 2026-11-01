@@ -303,3 +303,11 @@ Do not mark the repository 80% ready based on file count, test count, UI complet
 - Inspected and pinned upstream Goruut commit `b224bde02151f8f86d0fe260804e4ca743bda620`; upstream README advertises Burmese, IPA output, word tokens and tonal phones, but no syllable tokens or tie bars and no number/date normalization. MIT applies to source code only; embedded model/dictionary asset licenses remain unaudited.
 - Added the candidate record to `docs/benchmarking-and-external-ipa.md` and reconciled adjacent candidates: Epitran 1.35.3 remains the runnable baseline with its documented limited-support caveat; myG2P remains CC BY-NC-SA 4.0 and unsuitable for commercial redistribution absent permission; the Burmese FST publication is a research lead, not proof of a licensed installable package. PR [#79](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/79).
 - No Goruut runtime invocation or output artifact was produced. Independent gold remains 0; no accuracy or winner claim. Next acceptance: run pinned Goruut in isolated optional CI, audit model/dictionary provenance, review tone/register/phonation/medials/codas and dialect against independent expert-adjudicated IPA.
+
+
+## Goruut asset licensing reconciliation — 2026-11-01
+
+- Task `BURMESE-G2P-GORUUT-001` remains `BLOCKED` for runtime execution, not merely PARTIAL: the source-code MIT license does not establish rights for the language-specific lexicon/model assets.
+- The pinned Goruut source tree contains embedded files under `dicts/burmese/`; Goruut's own data-preparation documentation states these model assets derive from a `lexicon.tsv`. The corresponding separate `neurlang/dataset/burmese/` lexicon is present, but dataset repo metadata declares no license, root tree has no LICENSE/COPYING, and the README does not allocate a license/provenance to this language.
+- No runtime invocation, output artifact, or quality claim is made. Next acceptance: per-language source/provenance and rights for both lexicon and derived weights, then owner-approved usage decision, followed by isolated pinned execution and independent expert IPA adjudication.
+- Detailed evidence and exact upstream paths: `docs/audits/current/GORUUT-ASSET-LICENSE-REVIEW-2026-11-01.md`.
