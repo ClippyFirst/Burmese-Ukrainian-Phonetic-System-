@@ -35,7 +35,7 @@ def sha256_file(path: Path) -> str:
 def read_rows(path: Path) -> list[dict[str, str]]:
     with path.open(encoding="utf-8", newline="") as stream:
         rows = list(csv.DictReader(stream))
-    required = {"case_id", "orthography", "expected_ipa", "syllable_broken_word"}
+    required = {"case_id", "orthography", "expected_ipa", "syllable_broken_word", "source_locator", "source_id", "ipa_convention"}
     missing = required - set(rows[0] if rows else [])
     if missing:
         raise ValueError(f"probe CSV missing required columns: {', '.join(sorted(missing))}")
@@ -65,6 +65,11 @@ def build_feature_input(
             "case_id": row["case_id"],
             "orthography": row["orthography"],
             "source_ipa": row["expected_ipa"],
+            "source_locator": row["source_locator"],
+            "source_id": row["source_id"],
+            "ipa_convention": row["ipa_convention"],
+            "scope": row.get("scope", ""),
+            "uncertainty_notes": row.get("uncertainty_notes", ""),
             "syllables": syllables,
         })
     if not prepared:
@@ -149,6 +154,11 @@ def run_probe(
             "predicted_syllables": len(prediction),
             "predicted_ipa": predicted_ipa,
             "source_ipa": source_ipa,
+            "source_locator": row["source_locator"],
+            "source_id": row["source_id"],
+            "ipa_convention": row["ipa_convention"],
+            "scope": row["scope"],
+            "uncertainty_notes": row["uncertainty_notes"],
             "source_concordant": bool(source_ipa) and nfc(predicted_ipa) == nfc(source_ipa),
             "evidence_status": "SOURCE_ATTESTED_NOT_GOLD",
         })
