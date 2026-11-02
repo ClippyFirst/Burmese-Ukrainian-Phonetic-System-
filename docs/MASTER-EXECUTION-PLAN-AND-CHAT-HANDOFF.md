@@ -707,3 +707,12 @@ Current key findings:
 - The next step is a pinned, same-input, held-out benchmark with independent expert references and feature-specific metrics; exact model/dataset versions and provenance must be recorded before execution.
 
 No runtime engine benchmark was run in this documentation update. Hosted CI verifies repository engineering, not linguistic correctness or benchmark accuracy.
+
+
+## External engine smoke evidence — 2026-11-02
+
+Detailed methods, benchmark context, limitations and per-feature acceptance requirements: [external G2P benchmark and engine coverage audit](research/external-g2p-benchmark-and-engine-coverage-2026-11-02.md).
+
+Burmese: Epitran 1.35.3 returned six structural-only outputs, zero eligible verified gold; Goruut on 100 source-attested myG2P rows had 0/100 exact, 17/100 limited notation-normalized matches, 98 outputs, 2 failures, 43 complete/55 partial/2 unknown coverage, and 69 unphonemized fragments. No independent gold; accuracy=null. Runs: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41409098332 and https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41409098207.
+
+These are raw-output concordance/coverage diagnostics, not accuracy measurements. All independent gold counts remain zero and accuracy remains null. The missing `weights9.bin.zlib` diagnostic in Goruut's logs is recorded for investigation. Declared language support is not accepted as proof of adequate coverage. No gold labels or production rules were changed based on these runs.
