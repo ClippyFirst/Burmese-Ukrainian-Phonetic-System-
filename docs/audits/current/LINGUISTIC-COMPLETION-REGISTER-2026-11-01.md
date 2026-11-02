@@ -13,7 +13,7 @@
 | MYA-IPA-001 | PARTIAL | Phonological vs phonetic IPA conventions and analysis of tone/register/phonation require specialist adjudication. | Versioned IPA convention, syllable/segment alignment, tone/phonation fields and adjudicated alternatives. |
 | MYA-ROM-001 | PARTIAL | MLCTS inventory/crosswalk and MLCTS → Ukrainian adapter remain incomplete; 94 rime keys derive from Mya2Rom rather than a fully verified primary MLC publication. | Primary MLC/official source evidence for rules, complete orthographic matrix, source-aware adapter and explicit ambiguity handling. |
 | MYA-G2P-001 | DONE_VERIFIED (diagnostic harness only) | Goruut has 55/100 partial-coverage outputs; myG2P is CC BY-NC-SA 4.0 and temporary test-only. | No production promotion or source-data import without independent gold and explicit rights clearance. |
-| MYA-UI-001 | TODO | Manual visual, keyboard, assistive-technology and mobile QA is not established by CI. | Recorded test matrix and deployed-site results. |
+| MYA-UI-001 | PARTIAL | Existing Playwright Chromium suite exercises the built app and result panels (54 tests pass on the exact review head). Manual visual, keyboard, assistive-technology, mobile and external public-URL interaction QA remain open. | Run browser interaction tests against the deployed Pages URL; record human keyboard, screen-reader and mobile results. |
 | MYA-REL-001 | PARTIAL | Production readiness blocked by gold, phonological coverage and external asset licensing. | All release gates met; owner makes any project-license decision; no restricted data/model bundled. |
 
 ## Current diagnostic evidence
@@ -276,3 +276,10 @@ This is an engineering-state recheck only. Independent expert-adjudicated IPA go
 ## Public website verification — 2026-11-02
 
 Burmese: DONE_VERIFIED — current-main Pages build/deploy smoke and Playwright Chromium result-path tests passed (run 41424921607); exact review-head CI is running as 41531149722 at this checkpoint. PARTIAL — Playwright covers built-app interaction and output panels, but post-deploy public-URL browser interaction and manual assistive/mobile QA remain unverified. BLOCKED — direct live-site access from this runner failed at DNS resolution; this is not evidence of a site outage. TODO — add a post-deploy browser interaction smoke and complete manual keyboard/screen-reader/mobile QA. See master handoff for evidence and acceptance criteria.
+
+
+## Browser interaction verification — 2026-11-03
+
+| ID | Status | Evidence | Remaining acceptance |
+|---|---|---|---|
+| MYA-UI-001 | PARTIAL | Exact review-head CI [41531295647](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41531295647) SUCCESS; the existing Playwright Chromium suite passed 54 tests against the built site, including result rendering and fail-closed input cases. | Verify the public Pages URL after deployment and complete manual keyboard, screen-reader and mobile QA. This is UI engineering evidence, not phonetic accuracy. |
