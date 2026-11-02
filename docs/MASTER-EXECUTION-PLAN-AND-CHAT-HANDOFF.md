@@ -818,3 +818,20 @@ Issue [#85](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/is
 The map traces parse_burmese → to_ipa → Ukrainian inventory and keeps MLCTS separate; it explicitly records that no Python CLI exists.
 
 **Scope note:** this batch changes agent navigation and engineering workflow only. It does not add IPA labels, import external corpora, alter runtime behavior, or change the current empirical accuracy status. Continue from the existing language-specific blockers in the completion register.
+
+
+## Benchmark and corpus review — 2026-11-02
+
+**Status: PARTIAL / evidence reviewed; independent accuracy remains NOT_MEASURED.**
+
+- shared_unicode_contract.json and goruut-probes.txt are structural probes, not IPA gold.
+- phonology_corpus.csv has six rows explicitly marked STRUCTURAL_ONLY; expected IPA and Ukrainian output are blank. Some source locators remain pending/low confidence.
+- Gold lifecycle JSONL files are empty; gold.tsv is header-only. Independent adjudicated gold = 0. MLCTS is a separate orthographic route.
+- Epitran 1.35.3: 6/6 outputs on structural probes; execution only. Burmese support is documented as limited; default tone handling can omit tone.
+- Goruut pinned b224bde: 7/8 probes yielded output; punctuation sentence failed all three repeats. One lexical item varied and carried upstream random-homograph metadata. On 100 source-attested myG2P entries: 98 outputs, 2 missing; 43 complete source coverage, 55 partial, 2 unknown; 69 source fragments unphonemized; strict concordance 0/100 and limited notation concordance 17/100. Not accuracy.
+- Published Burmese CRF raw-output smoke: 100/100 predictions, 84/100 exact source concordance. Model training membership may overlap myG2P; input syllable segmentation was supplied, so end-to-end segmentation and sentence handling are not measured. Status NOT_SCORED_POSSIBLE_TRAINING_OVERLAP.
+- myG2P v2 is CC BY-NC-SA 4.0; commercial import/redistribution is blocked absent written permission. Raw comparator output is not independent gold.
+
+**Interpretation:** green structural/parser tests do not establish phonological coverage. The six-row corpus is not a tone/register/phonation test. CRF 84/100 is a useful diagnostic lead only; resolve leakage, profile and convention before any performance claim. Goruut is not production-ready.
+
+**Next acceptance:** approve a Standard Burmese/Yangon IPA convention; recover disjoint lexical-group held-out CRF data and verify model membership; test sentence segmentation separately; commission independent annotation/adjudication; do not fill blank IPA fields by inference. Exact-head CI https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41469225580 SUCCESS; engineering verification only.
