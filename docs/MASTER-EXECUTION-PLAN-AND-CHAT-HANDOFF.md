@@ -798,3 +798,23 @@ No local tests were run in this session: outbound GitHub access from the executi
 This is a bounded target for the first pilot, not a claim that Yangon speech is homogeneous or that the current engine fully implements this profile. An Oxford-hosted linguistic overview identifies the standard dialect with Lower Burma, specifically Yangon. The grammar literature documents regional differences in tone realization and speaker-sensitive changes in younger urban Yangon speech; these are reasons to constrain the pilot and record register/context, not to encode blanket rules. Keep regional dialects and casual/young-urban styles out of the same pilot score.
 
 Issue [#85](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/issues/85) now records this profile decision as complete. The IPA convention sheet, annotator/adjudicator recruitment, blind intake, rights-cleared 30-item selection and independent adjudication remain open. Gold remains 0; accuracy remains null. References: https://ora.ox.ac.uk/objects/uuid:5f1311b9-e18d-48b3-8536-ab30b832f0aa ; https://api.pageplace.de/preview/DT0400.9781317309314_A29527879/preview-9781317309314_A29527879.pdf ; https://doi.org/10.3765/plsa.v6i1.4900.
+
+
+## Engineering-method application — 2026-11-02
+
+**Status: DONE_VERIFIED (repository-context integration and exact-head engineering CI only).** Applied the three requested engineering references in this repository without importing external runtime dependencies or duplicating their skill trees.
+
+- **Superpowers:** scoped the task, checked the relevant entry points and acceptance constraints, and used evidence-gated verification. No production behavior was changed in this batch, so no artificial test-only change or TDD cycle was introduced.
+- **Matt Pocock Skills:** added the repository-specific domain glossary and GitHub issue-tracker configuration so downstream research, interface design and code-review work has stable project vocabulary and tracker instructions.
+- **Ponytail:** added a source-verified codebase map that follows the real execution/data flow, identifies high-risk seams and lists the actual verification commands. No speculative abstraction or dependency was added.
+- **Agent entry point:** AGENTS.md links all three context documents and refreshes upstream method pins to Superpowers 2ce8aa1, mattpocock/skills 4ae2317, and Ponytail 96608e0.
+
+**Files:** GLOSSARY.md; docs/agents/issue-tracker.md; docs/agents/codebase-map.md; AGENTS.md.
+
+**Context-file commits:** glossary 89baf4c0a830d5ff0aa2d756f79cd26f459c872b; issue tracker 3f605da7c3e31fa61c96bd280beb3a89ca190dde; codebase map 515ca5ff816cb45b560ac84e1109926e54ddf8b3; AGENTS bda6c087aa0e10c0388112ee6da8da29d152830b.
+
+**Exact-head verification for the context-file head:** [workflow 41468949170](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41468949170) — SUCCESS. This verifies repository CI, not linguistic accuracy, independent IPA gold, expert review or manual accessibility.
+
+The map traces parse_burmese → to_ipa → Ukrainian inventory and keeps MLCTS separate; it explicitly records that no Python CLI exists.
+
+**Scope note:** this batch changes agent navigation and engineering workflow only. It does not add IPA labels, import external corpora, alter runtime behavior, or change the current empirical accuracy status. Continue from the existing language-specific blockers in the completion register.
