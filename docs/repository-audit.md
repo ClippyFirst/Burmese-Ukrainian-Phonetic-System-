@@ -182,3 +182,11 @@ Blind annotation cannot be guaranteed in a public Git repository. Two submission
 ## 2026-11-01 closeout
 
 The independent IPA gold-corpus implementation and Burmese evidence matrix are in [PR #84](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/84). PR CI passed 121 Python tests + 31 subtests, four generated-data/web tests, 54 built-browser tests, production build and generated-data drift checks; optional Epitran diagnostic passed. The LREC 2020 speech/segmentation corpora are not public domain and were not imported. Independent gold remains 0. Main was not changed. Legacy PR #53 remains untouched.
+
+
+## Pull-request and branch reconciliation — 2026-11-03
+
+- Legacy layout PR [#53](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/53) is **closed without merge**. Its responsive styling/cache-busting intent was ported to current main by merged PR [#87](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/87), followed by merged Pages cache-buster fix [#88](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/88). Do not revive or merge the stale stylesheet snapshot wholesale.
+- Legacy documentation-only PR [#83](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/83) is **closed as superseded**; its register/matrix content was reconciled into merged PR [#84](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/84) and the current continuation branch. Its branch remains preserved.
+- Current research PR [#89](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/89) remains open and mergeable, zero commits behind current main. Latest work on it is documentation-only; code remains the previously tested implementation.
+- No PR was merged or release published during this pass.
