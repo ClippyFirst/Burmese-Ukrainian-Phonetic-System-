@@ -38,6 +38,8 @@ def test_build_feature_input_preserves_word_sequence_boundaries():
     ]
     assert [row["case_id"] for row in prepared] == ["one", "two"]
     assert [len(row["syllables"]) for row in prepared] == [1, 3]
+    assert prepared[0]["source_locator"] == "https://example.invalid/source#L1"
+    assert prepared[1]["ipa_convention"] == "test IPA"
     assert skipped == []
 
 
