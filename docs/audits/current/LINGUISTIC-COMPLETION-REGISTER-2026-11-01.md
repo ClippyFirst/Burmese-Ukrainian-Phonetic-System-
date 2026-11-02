@@ -283,3 +283,15 @@ Burmese: DONE_VERIFIED — current-main Pages build/deploy smoke and Playwright 
 | ID | Status | Evidence | Remaining acceptance |
 |---|---|---|---|
 | MYA-UI-001 | PARTIAL | Exact review-head CI [41531295647](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41531295647) SUCCESS; the existing Playwright Chromium suite passed 54 tests against the built site, including result rendering and fail-closed input cases. | Verify the public Pages URL after deployment and complete manual keyboard, screen-reader and mobile QA. This is UI engineering evidence, not phonetic accuracy. |
+
+
+## New source-level evidence — Burmese tone, lexicon and speech resources (2026-11-03)
+
+| ID | Status | New evidence | Acceptance / limitation |
+|---|---|---|---|
+| MYA-PHONETIC-PROFILE-SOURCE-001 | PARTIAL | Watkins (2001), DOI [10.1017/S0025100301002122](https://doi.org/10.1017/S0025100301002122), describes one Yangon male reading slowly/deliberately; broad transcription combines pitch, phonation and length in tone diacritics. Gruber (2011), DOI [10.3765/EXABS.V0I0.557](https://doi.org/10.3765/EXABS.V0I0.557), supports joint perceptual contribution of duration, pitch and phonation. | Freeze an explicit project annotation convention; retain separate tone category, phonation, duration and pitch fields where evidenced. Do not treat the JIPA broad notation as exhaustive narrow IPA gold. |
+| MYA-G2P-2016-EVIDENCE-001 | PARTIAL | Thu et al. (2016), [ACL Anthology W16-3702](https://aclanthology.org/W16-3702): 25,300 MLC dictionary entries; 25,000 train and three 100-word open test sets; own phoneme inventory/PER; no documented independent adjudication or project-compatible IPA standard. | Historical baseline only. MLC dictionary data rights are not established by the article; no redistribution/import until rights are verified. |
+| MYA-SLR80-CORPUS-001 | PARTIAL | Oo et al. (2020), [ACL Anthology 2020.lrec-1.777](https://aclanthology.org/2020.lrec-1.777): 2,528 utterances, 20 female Yangon speakers, 22,443 word tokens, 9,941 unique words; speech corpus CC BY-SA 4.0; separate Thrax/WFST pronunciation grammar. | Corpus transcriptions are word-level orthography, not IPA; no public train/dev/test split or dialect-stratified metadata established. Review grammar licensing separately; not IPA gold. |
+| MYA-GOLD-PILOT-001 | BLOCKED | No annotations or adjudications created by this audit. | Require frozen IPA/profile conventions, source-rights checks, two independent qualified annotators, separate adjudicator, blind intake and explicit uncertainty. Gold remains 0; accuracy null. |
+
+No dataset was imported and no model was promoted. Concordance/PER from published studies is not repository accuracy.
