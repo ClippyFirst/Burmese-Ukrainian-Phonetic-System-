@@ -295,3 +295,14 @@ Burmese: DONE_VERIFIED — current-main Pages build/deploy smoke and Playwright 
 | MYA-GOLD-PILOT-001 | BLOCKED | No annotations or adjudications created by this audit. | Require frozen IPA/profile conventions, source-rights checks, two independent qualified annotators, separate adjudicator, blind intake and explicit uncertainty. Gold remains 0; accuracy null. |
 
 No dataset was imported and no model was promoted. Concordance/PER from published studies is not repository accuracy.
+
+
+## Follow-up source corrections and annotation acceptance — 2026-11-03
+
+| ID | Status | Evidence update | Acceptance / limitation |
+|---|---|---|---|
+| MYA-ORTHO-SYLLABIFICATION-001 | DONE_VERIFIED (scope clarified) | Hlaing & Mikami (2014), DOI [10.4038/ICTER.V6I2.7150](https://doi.org/10.4038/ICTER.V6I2.7150), full-text review: rule-based FST; 11,732 orthographic words; 99.93% word-syllabification; all reported errors in stacked consonants (245/253). Count discrepancy 32,238 vs 32,283 syllables. | This metric is strictly orthographic segmentation, not G2P, phoneme or IPA accuracy. Do not use as a pronunciation benchmark score. |
+| MYA-TONE-VOWEL-ANALYSIS-001 | PARTIAL | Mooney & Repetti-Ludlow (2021), DOI [10.3765/plsa.v6i1.4900](https://doi.org/10.3765/plsa.v6i1.4900), propose syllable-structure/sonority-conditioned vowel alternations rather than tone-conditioned vowel sets; acoustic experiments use one Yangon speaker. | Preserve as competing analysis. Do not silently replace four traditional surface tone labels or encode vowel quality as tone without project-specific expert review. |
+| MYA-GOLD-AGREEMENT-001 | TODO | Annotation-method evidence: Cucchiarini (1996), DOI [10.3109/02699209608985167](https://doi.org/10.3109/02699209608985167); Oller & Ramsdell (2006), DOI [10.1044/1092-4388(2006/100)]. | Pilot must report exact normalized agreement plus alignment-aware feature-weighted agreement, separate tone/duration/phonation/vowel/coda/boundary metrics, unresolved alternatives and adjudication rate. Raw percent agreement is supplementary only. |
+
+No labels, lexemes or corpus data added. Independent expert gold remains 0; accuracy null.
