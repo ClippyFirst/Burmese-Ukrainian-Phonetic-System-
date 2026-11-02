@@ -247,3 +247,6 @@ The three references are used as methods, not runtime dependencies: Superpowers 
 | BENCH-REVIEW-001 | PARTIAL (existing diagnostic evidence reviewed) | Reviewed fixtures, corpus files, gold lifecycle files, benchmark harnesses and external raw-output reports. Exact-head engineering CI: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41469225580 SUCCESS. | Independent expert gold remains 0; resolve profile/convention, rights, held-out split and double-annotation/adjudication blockers before accuracy scoring. |
 
 Comparator concordance is not accuracy. See the dated benchmark review in the canonical master handoff for language-specific results and acceptance criteria.
+
+
+| BENCH-MYG2P-001 | PARTIAL | Direct upstream README confirms IPA-output ver2, known sentence-level failures for particles/postpositions, and CC BY-NC-SA 4.0; WSSANLP 2016 primary paper compares CRF/PBSMT/WFST and manually inspects tone, voicing, consonant and vowel errors. | Recover exact model/training membership and a disjoint lexical-group held-out split; test sentence particles/postpositions separately; approve Yangon tone/register/phonation IPA convention; obtain independent adjudication. Existing 84/100 concordance remains unscored and cannot be called accuracy; commercial reuse remains blocked absent permission. |
