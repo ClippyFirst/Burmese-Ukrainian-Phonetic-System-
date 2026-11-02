@@ -271,3 +271,8 @@ Comparator concordance is not accuracy. See the dated benchmark review in the ca
 | Local clean checkout | BLOCKED: `git clone` could not resolve `github.com`; no local test execution claimed |
 
 This is an engineering-state recheck only. Independent expert-adjudicated IPA gold remains 0; empirical pronunciation accuracy remains null. Existing linguistic, source-rights, held-out-split, human-adjudication and manual accessibility acceptance criteria remain unchanged. No linguistic labels or runtime rules were altered by this checkpoint.
+
+
+## Public website verification — 2026-11-02
+
+Burmese: DONE_VERIFIED — current-main Pages build/deploy smoke and Playwright Chromium result-path tests passed (run 41424921607); exact review-head CI is running as 41531149722 at this checkpoint. PARTIAL — Playwright covers built-app interaction and output panels, but post-deploy public-URL browser interaction and manual assistive/mobile QA remain unverified. BLOCKED — direct live-site access from this runner failed at DNS resolution; this is not evidence of a site outage. TODO — add a post-deploy browser interaction smoke and complete manual keyboard/screen-reader/mobile QA. See master handoff for evidence and acceptance criteria.
