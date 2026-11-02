@@ -1,7 +1,7 @@
 # Burmese linguistic completion register — 2026-11-01
 
-**Baseline:** `main` `4ddb9d3f10427275ce75c7ae73270468d3721106`.
-**Latest exact-main engineering evidence:** tests [41326473323](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41326473323) and Pages/deployed smoke [41326473352](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41326473352) succeeded.
+**Baseline:** `main` `aab45f9165d7f9cd7423425ff28186e1c29af0bf`.
+**Latest exact-main engineering evidence:** tests [41424921603](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41424921603) and Pages/deployed smoke [41424921607](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41424921607) succeeded.
 **Scope:** continue the existing master handoff; this register does not replace it.
 
 ## Evidence-based task ledger
