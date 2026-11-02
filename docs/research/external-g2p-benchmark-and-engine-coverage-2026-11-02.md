@@ -55,3 +55,11 @@ The comparator must be tested for: Unicode normalization; syllable segmentation;
 ## Evidence limitations
 
 The WSSANLP 2016 abstract establishes the methods and broad ranking but does not provide enough details here to reproduce its exact numeric results. The LREC 2020 abstract establishes the existence and scope of grammars/corpus but not full modern profile coverage. Epitran/Goruut declarations are not independent linguistic evaluations. No new runtime benchmark was executed in this documentation-only audit.
+
+## Hosted raw-output diagnostics on the audit branch — 2026-11-02
+
+Exact branch-head runs:
+- Pinned Epitran 1.35.3 raw-output probe: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41409098332 — SUCCESS. Six structural-only probes returned IPA strings, but every row has empty expected IPA, zero eligible verified gold, and `NOT_SCORED_NO_VERIFIED_GOLD`. This verifies only that the mapping executes; it says nothing about Burmese pronunciation accuracy.
+- Pinned Goruut Burmese raw-output probe: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41409098207 — SUCCESS as collection. On 100 source-attested myG2P examples: exact matches=0/100; notation-normalized matches=17/100; successful outputs=98, failed=2; complete source coverage=43, partial=55, unknown=2; unphonemized source fragments=69. The run logged missing `weights9.bin.zlib`; investigate before treating the runtime as stable.
+
+All results are `NOT_SCORED_NO_INDEPENDENT_GOLD`. The 17/100 notation-normalized result is not an accuracy score; it only reflects the documented limited normalization, while phone/tone/length distinctions remain significant. The myG2P references are source-attested diagnostic material, not independently adjudicated gold for the project's Standard Burmese profile.
