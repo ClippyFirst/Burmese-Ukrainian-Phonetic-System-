@@ -156,6 +156,7 @@ def run_probe(
     report = {
         "schema_version": "1.0",
         "engine": "kyaw-yethu/burmese-G2P CRFsuite ver2",
+        "input_scope": "syllable-segmented lexical entries; source syllabification is supplied and not evaluated",
         "model_source_commit": MODEL_SOURCE_COMMIT,
         "model_sha256": sha256_file(model_path),
         "crfsuite_source_commit": CRFSUITE_SOURCE_COMMIT,
@@ -171,6 +172,7 @@ def run_probe(
         "scoring_status": "NOT_SCORED_POSSIBLE_TRAINING_OVERLAP",
         "limitations": [
             "The model's exact training membership is not established.",
+            "The probe supplies source syllable boundaries and does not evaluate end-to-end Burmese syllabification.",
             "The model and probe labels derive from related myG2P resources, so train/test leakage is possible.",
             "The upstream README acknowledges sentence-level errors for particles and postpositional markers.",
             "The source IPA is not independently adjudicated for this project's Standard Burmese profile.",
