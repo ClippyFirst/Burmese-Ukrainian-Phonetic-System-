@@ -6,6 +6,16 @@
 **Previous checkpoint:** `4ddb9d3f10427275ce75c7ae73270468d3721106` and branch/PR details below are historical and superseded by the merged main state.
 
 
+## Current task ledger and next blocker
+
+- **DONE_VERIFIED (engineering):** conservative Myanmar structural parsing, malformed-input guards, source/evidence traceability, typed IPA corpus contracts, Python/browser source-integrity checks, separate MLCTS orthographic mode, production build and current-main Pages smoke.
+- **PARTIAL:** complete vowel combinations, coda/checked-syllable realization, tone/register/phonation, contextual allophony, MLCTS primary-source conformance and MLCTS → Ukrainian coverage.
+- **BLOCKED:** independent expert-adjudicated Burmese lexical IPA gold remains 0; accuracy is null. A qualified double-annotation/adjudication workflow and rights-cleared speaker/audio material are required.
+- **TODO:** manual deployed-site keyboard, screen-reader, mobile and touch QA.
+- **Next blocker:** expert phonological adjudication and primary MLC source access; do not replace either with external G2P agreement or inferred labels.
+
+
+
 ## Historical records
 
 The dated entries below are retained as audit history. When a historical status or SHA conflicts with this current checkpoint, the active branch ref, completion register, and exact-head workflow run above are authoritative.
