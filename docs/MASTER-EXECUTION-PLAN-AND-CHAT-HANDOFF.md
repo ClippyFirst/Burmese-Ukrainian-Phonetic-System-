@@ -869,3 +869,8 @@ Superpowers remains pinned to its verified v7.0.1 release commit `2ce8aa15d05bd5
 - This is the strongest available evidence that the site's result UI works. The deployed smoke itself checks HTTP/assets; the Playwright interaction suite runs against the built app before deployment, not against the public URL.
 - Direct live-site access from this execution environment was blocked by DNS resolution failure for `clippyfirst.github.io`; do not interpret this as a confirmed site outage. GitHub-hosted Pages smoke and Playwright evidence are available.
 - **TODO:** add a post-deploy browser interaction smoke against the actual deployed URL and retain manual keyboard/screen-reader/mobile QA. Acceptance: deployed-page Playwright test enters known input and asserts visible Ukrainian/IPA output plus clear/mode behavior.
+
+
+## UI completion-register reconciliation — 2026-11-03
+
+The canonical completion register now classifies `MYA-UI-001` as **PARTIAL**, not TODO: the existing Playwright suite passed 54 Chromium tests on exact review head [41531295647](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41531295647). Remaining acceptance is external deployed-URL interaction plus manual keyboard, screen-reader and mobile QA. This handoff-only update changes no application code or test definitions; the exact-head verification cited above covers the unchanged implementation. No direct live Pages interaction was possible from this environment.
