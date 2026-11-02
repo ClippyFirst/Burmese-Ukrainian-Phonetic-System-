@@ -1,36 +1,10 @@
 # Master execution plan and chat handoff — Burmese → Ukrainian
 
-**Current checkpoint:** 2026-11-02  
-**Default branch:** `main` at `4ddb9d3f10427275ce75c7ae73270468d3721106`  
-**Active review branch at methodology documentation checkpoint:** `feat/ipa-gold-corpus-20261101-review` at `b5c50772c3d8f1494bb68d0a85a41b6fee82d1ec`
-**Open implementation PR:** [#84](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/84)  
-**Branch comparison at this checkpoint:** 98 commits ahead of main, 0 behind.
-**Exact-head methodology verification:** [tests 41358676730](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41358676730) SUCCESS; optional diagnostics [41358676910](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41358676910) and [41358676749](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41358676749) SUCCESS.
-**Research status:** research prototype only; independent expert-adjudicated IPA gold = **0**; `data/benchmark/gold.tsv` is header-only; empirical accuracy = **null**.
+**Current checkpoint:** 2026-11-02 (reconciled after latest main publication)  
+**Default branch:** `main` at `aab45f9165d7f9cd7423425ff28186e1c29af0bf`  
+**Current main verification:** [tests 41424921603](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41424921603) SUCCESS; Pages deployment [41424921607](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41424921607) SUCCESS.  
+**Previous checkpoint:** `4ddb9d3f10427275ce75c7ae73270468d3721106` and branch/PR details below are historical and superseded by the merged main state.
 
-## Current task ledger and next blocker
-
-- **DONE_VERIFIED (engineering):** independent IPA corpus schemas, runtime validation, deterministic split/rights gates, source/evidence documentation, and exact-head automated engineering checks are present on the active branch. This is not linguistic validation.
-- **PARTIAL:** source-language phonology, IPA conventions, and Ukrainian target adaptation remain bounded by the language-specific evidence matrices and unresolved cases.
-- **BLOCKED:** the 30-lexeme blind pilot cannot start until the target variety/profile and IPA convention are approved, two qualified independent annotators and a separate adjudicator are confirmed, rights-cleared source packets are prepared, and the blind intake dry-run passes.
-- **TODO:** manual deployed-site visual, keyboard, assistive-technology, and mobile QA.
-- **Next actionable human milestone:** resolve the recruitment and convention checklist in [issue #85](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/issues/85) and follow [the controlled acquisition protocol](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/blob/feat/ipa-gold-corpus-20261101-review/docs/ipa-gold-collection-playbook.md).
-
-No local checkout was available for this checkpoint; do not interpret hosted CI as local test execution, expert adjudication, visual QA, or release approval. Preserve the fail-closed pipeline and do not create IPA/gold labels from model output or unsupported spelling inference.
-
-
-
-## Methodology source refresh — 2026-11-02
-
-The adopted engineering references were checked against current upstream revisions without importing them as runtime dependencies:
-
-- Superpowers 7.0.1: `obra/superpowers@2ce8aa15d05bd57213e6f746f953aafb7ded7a8b` — explicit plans, true RED/GREEN TDD, systematic debugging, code review, and verification-before-completion. At GREEN, verify the project suite, not only the narrow test that first went red.
-- mattpocock/skills current main: `d1478fcb140db0b93c0c8df17bcfd311844749d0` — composable skills, source-backed research, test-first implementation, and two-axis review (spec compliance separately from repository standards).
-- Ponytail 5.3.3: `7801d061243d7b753bad0e0b3c057cd250b11755` — codebase/data-flow audit, connected-code review, minimal complete changes, and explicit preservation of security, data integrity, and accessibility.
-
-These references guide the method; project-specific linguistic, provenance, privacy, rights, and fail-closed requirements remain authoritative.
-
-**Methodology refresh commit:** `8bdcf3e07ed1359d443aad21b53d00b6db3812f2` on the active review branch. **Exact-head verification:** [PR tests 41356409847](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41356409847) and [push tests 41356404196](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41356404196) SUCCESS; 131 tests + 48 subtests and 54 Playwright tests; [Goruut 41356409749](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41356409749) and [Epitran 41356409786](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41356409786) SUCCESS.
 
 ## Historical records
 
@@ -781,3 +755,16 @@ The older design PR [#53](https://github.com/ClippyFirst/Burmese-Ukrainian-Phone
 ### Pages smoke-test compatibility follow-up — 2026-11-02
 
 The cache-busted stylesheet URL introduced by the UI polish exposed an overly strict CSS-link extractor in the deployed-site smoke test. Fixed in PR [#88](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/88), merge `fea5f6e44680b6202e07e5e896eb175699c101c2`; the extractor now accepts an optional query string. PR CI passed (41424690731). The Pages workflow is now compatible with the deployed CSS URL. The post-merge Pages deployment and live-site smoke-test result are still **BLOCKED for independent verification** because external DNS/network access and a workflow-run listing endpoint were unavailable; do not infer deployment success from a merged PR or a successful pull-request CI run.
+
+
+## Quality review — 2026-11-02
+
+- Main was re-read after PRs #84, #86, #87 and #88 were merged. The latest main commit is `aab45f9165d7f9cd7423425ff28186e1c29af0bf`; exact-main tests run 41424921603 and Pages/deployed smoke run 41424921607 both completed SUCCESS. The two responsive-UI and cache-busted-CSS changes are therefore preserved on main; no old design branch was resurrected.
+- **MYA-GOLD-001 — BLOCKED:** the independent lexical IPA gold corpus remains empty/header-only; no empirical pronunciation accuracy can be reported.
+- **MYA-PHON-001 / MYA-IPA-001 — PARTIAL:** vowel-combination derivation, checked-coda realization, tone/register/phonation and contextual allophony remain incomplete. The evidence matrix contains competing analyses; these must remain distinct rather than being averaged into invented rules.
+- **MYA-ROM-001 — PARTIAL:** the MLCTS path is orthographic and separate from IPA-first phonetic transcription. The current vendor-derived Mya2Rom rime inventory does not establish full primary MLC conformance or full Ukrainian coverage.
+- **MYA-G2P-001 — DONE_VERIFIED (diagnostic harness only):** optional engines are comparators, not gold or production truth. Licensing restrictions and unverified lexical labels continue to prevent promotion.
+- **MYA-UI-001 — TODO:** automated browser/deployment checks do not replace manual screen-reader, keyboard, touch and mobile QA.
+- **Release judgement:** research prototype, not release-ready for claims of accurate general-purpose Burmese phonetic transcription. The latest green workflows verify engineering/deployment only.
+
+No local tests were run in this session: outbound GitHub access from the execution container was unavailable. No IPA, gold labels, corpus records or phonological rules were invented.
