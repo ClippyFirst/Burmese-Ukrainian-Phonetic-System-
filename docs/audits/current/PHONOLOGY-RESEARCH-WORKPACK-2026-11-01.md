@@ -59,7 +59,7 @@ These are Green's analysis and transcription conventions, not a universal merged
 
 ### Independent challenge to tone-driven vowel rules
 
-Mooney & Repetti-Ludlow (2021), [open CC BY 4.0 article](https://doi.org/10.3765/plsa.v6i1.4900), report a phonetic study of Burmese vowel alternations and argue that the alternations are tone-independent and follow sonority sequencing preferences. This directly challenges a simplistic rule that derives vowel quality from tone alone. The vowel × coda × syllable-weight matrix must encode these environments separately.
+Mooney & Repetti-Ludlow (2021), [open CC BY 4.0 article](https://doi.org/10.3765/plsa.v6i1.4900), present two acoustic experiments with one female native Yangon consultant in her late 20s. In isolation, duration and voice-quality measures (CPP, H1*-H2*, H1*-A1*) distinguish four tone categories; F0 distinguishes selected pairs but not all four jointly. In sentential frames, duration distinctions largely neutralize while pitch remains robust. The authors argue that vowel alternations are tone-independent and follow sonority sequencing preferences: closed-syllable codas condition vowel centralization/diphthongization; phrase-final nasal codas may delete their C-slot while nasal features remain on the vowel. They retain four traditional surface categories and hypothesize killed H → HL neutralization with a coda and underlying HL for creaky tone; this is a proposal for further work, not a settled tone inventory. It directly challenges a simplistic rule that derives vowel quality from tone alone. The vowel × coda × syllable-weight matrix must encode these environments separately (pp. 26–37).
 
 ### Newer register/tone proposal — unresolved
 
