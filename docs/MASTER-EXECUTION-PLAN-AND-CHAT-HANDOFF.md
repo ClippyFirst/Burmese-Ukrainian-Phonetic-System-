@@ -835,3 +835,12 @@ The map traces parse_burmese → to_ipa → Ukrainian inventory and keeps MLCTS 
 **Interpretation:** green structural/parser tests do not establish phonological coverage. The six-row corpus is not a tone/register/phonation test. CRF 84/100 is a useful diagnostic lead only; resolve leakage, profile and convention before any performance claim. Goruut is not production-ready.
 
 **Next acceptance:** approve a Standard Burmese/Yangon IPA convention; recover disjoint lexical-group held-out CRF data and verify model membership; test sentence segmentation separately; commission independent annotation/adjudication; do not fill blank IPA fields by inference. Exact-head CI https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41469225580 SUCCESS; engineering verification only.
+
+
+## External Burmese G2P source verification — 2026-11-02 follow-up
+
+The upstream [myG2P repository](https://github.com/kyaw-yethu/burmese-G2P) was inspected directly. Its README distinguishes an intuitive romanized ver1 from an IPA-output ver2, explicitly documents that the current model does not handle sentence-level particles and post-positional markers reliably, and declares CC BY-NC-SA 4.0. This corroborates the existing restriction: do not import or redistribute its data/model in a commercial product without permission, and do not treat its sentence output as complete Standard Burmese G2P.
+
+The primary 2016 WSSANLP paper, [Comparison of Grapheme-to-Phoneme Conversion Methods on a Myanmar Pronunciation Dictionary](https://aclanthology.org/W16-3702/), compares seven methods (including CRF, PBSMT and WFST) and reports manual error inspection for voicing, tones, consonants and vowels. It supports retaining CRF as a research comparator, but it does not validate this project's model, the current Yangon profile, the split used by the current model artifact, or the supplied syllabification boundary.
+
+**Status:** no production phonological rules or corpus labels are added from these sources. The current 84/100 CRF source-concordance diagnostic remains `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`; it is not accuracy. Acceptance still requires recovery of the exact training lexicon and a disjoint lexical-group held-out split, verification of model membership, explicit tone/register/phonation convention, sentence-level particle/postposition tests, and independent expert adjudication. Keep the current fail-closed IPA path and the commercial-use restriction.
