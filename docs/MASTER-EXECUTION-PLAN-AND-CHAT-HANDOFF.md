@@ -789,3 +789,12 @@ No local tests were run in this session: outbound GitHub access from the executi
 - Next genuine blockers: independent Burmese IPA gold (0 rows), expert adjudication of tone/register/phonation and checked-syllable/coda realization, primary MLC evidence for MLCTS, and manual accessibility QA. No unsupported IPA was added.
 - PR remains open and mergeable; no existing branch was deleted or rewritten. The latest completion-register entry reconciles stale PR #53 as closed without merge and identifies #87/#88 as the current-main replacement work.
 
+
+
+## Pilot profile decision — 2026-11-02
+
+**Selected annotation target:** contemporary Standard Burmese, Yangon reference variety, careful citation-form speech. Project-local profile ID: `my-yangon-careful-citation-v1`.
+
+This is a bounded target for the first pilot, not a claim that Yangon speech is homogeneous or that the current engine fully implements this profile. An Oxford-hosted linguistic overview identifies the standard dialect with Lower Burma, specifically Yangon. The grammar literature documents regional differences in tone realization and speaker-sensitive changes in younger urban Yangon speech; these are reasons to constrain the pilot and record register/context, not to encode blanket rules. Keep regional dialects and casual/young-urban styles out of the same pilot score.
+
+Issue [#85](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/issues/85) now records this profile decision as complete. The IPA convention sheet, annotator/adjudicator recruitment, blind intake, rights-cleared 30-item selection and independent adjudication remain open. Gold remains 0; accuracy remains null. References: https://ora.ox.ac.uk/objects/uuid:5f1311b9-e18d-48b3-8536-ab30b832f0aa ; https://api.pageplace.de/preview/DT0400.9781317309314_A29527879/preview-9781317309314_A29527879.pdf ; https://doi.org/10.3765/plsa.v6i1.4900.
