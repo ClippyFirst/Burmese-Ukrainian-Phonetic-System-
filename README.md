@@ -208,3 +208,7 @@ The production build includes both the service and methodology pages and copies 
 GitHub Pages: https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/
 
 The production build contains both the service and methodology pages and the Mya2Rom assets. Playwright runs against the built Vite preview. The romanization tab is separate from the IPA-first phonetic tab; its Ukrainian crosswalk is still marked PARTIAL.
+
+## Independent IPA gold corpus
+
+The project uses a provenance-backed, double-annotated IPA gold workflow. See [the corpus protocol](docs/ipa-gold-corpus.md) and [the language-specific phonology research workpack](docs/audits/current/PHONOLOGY-RESEARCH-WORKPACK-2026-11-01.md). The corpus is currently empty by design; no phonetic accuracy claim is available until expert adjudication is complete.
