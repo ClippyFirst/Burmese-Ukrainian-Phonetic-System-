@@ -22,7 +22,7 @@ The latest recorded myG2P v2.0/Goruut 100-row comparison is 98 outputs, 2 none; 
 
 ## Open PR and branch reconciliation
 
-PR [#53](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/53) remains open and untouched. Its branch is 5 commits ahead and 38 behind current main, changes only `index.html`, `system.html` and `src/web/styles.css`, and replaces the stylesheet wholesale. It is not safe to merge as-is; re-evaluate only if a fresh visual audit identifies a still-missing requirement, then port focused CSS changes on current main with browser tests. No existing user branch was deleted or rewritten.
+PR [#53](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/53) was closed without merge on 2026-11-02 (the former layout branch is not open). The responsive UI work was subsequently ported onto current main by merged PR [#87](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/87), and the cache-busted CSS Pages smoke test was fixed by merged PR [#88](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/88). These are the current-main replacements; do not revive the stale whole-stylesheet branch. As of this register update, the only open PR is the present quality-review PR [#89](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/89). No existing branch was deleted or rewritten.
 
 ## Execution order
 
