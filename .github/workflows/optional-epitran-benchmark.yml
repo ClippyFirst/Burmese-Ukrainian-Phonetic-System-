@@ -8,12 +8,18 @@ on:
       - "data/burmese/phonology_corpus.csv"
       - "data/burmese/sources.csv"
       - ".github/workflows/optional-epitran-benchmark.yml"
+      - "scripts/benchmark_burmese_crf.py"
+      - "scripts/prepare_myg2p_probe.py"
+      - "tests/test_burmese_crf_benchmark.py"
   pull_request:
     paths:
       - "scripts/benchmark_g2p.py"
       - "data/burmese/phonology_corpus.csv"
       - "data/burmese/sources.csv"
       - ".github/workflows/optional-epitran-benchmark.yml"
+      - "scripts/benchmark_burmese_crf.py"
+      - "scripts/prepare_myg2p_probe.py"
+      - "tests/test_burmese_crf_benchmark.py"
 
 permissions:
   contents: read
@@ -42,5 +48,70 @@ jobs:
         with:
           name: burmese-epitran-raw-output
           path: artifacts/burmese-epitran-raw-output.json
+          if-no-files-found: warn
+          retention-days: 30
+
+  crf-baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: kyaw-yethu/burmese-G2P
+          ref: de0f06056cf334b8cdd5a1efd1226f01c8162b77
+          path: burmese-g2p
+          persist-credentials: false
+      - uses: actions/checkout@v7
+        with:
+          repository: ye-kyaw-thu/myG2P
+          ref: 54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225
+          path: myg2p
+          persist-credentials: false
+      - uses: actions/checkout@v7
+        with:
+          repository: chokkan/crfsuite
+          ref: a2a1547727985e3aff6a35cffe073f57f0223e9d
+          path: crfsuite
+          persist-credentials: false
+      - name: Install pinned CRFsuite build prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential autoconf automake libtool liblbfgs-dev
+      - name: Build and install pinned CRFsuite CLI
+        working-directory: crfsuite
+        run: |
+          ./autogen.sh
+          ./configure
+          make -j2
+          sudo make install
+          sudo ldconfig
+          command -v crfsuite
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Prepare deterministic source-attested myG2P probe
+        run: |
+          mkdir -p artifacts
+          python scripts/prepare_myg2p_probe.py \
+            --input myg2p/ver2/myg2p.ver2.0.txt \
+            --output artifacts/myg2p-v2-probe.csv \
+            --summary artifacts/myg2p-v2-probe-summary.json \
+            --limit 100
+      - name: Run the pinned CRF model as a raw-output diagnostic only
+        run: |
+          python scripts/benchmark_burmese_crf.py \
+            --input artifacts/myg2p-v2-probe.csv \
+            --model burmese-g2p/ver2/g2p.model \
+            --chunking-script burmese-g2p/crfsuite/chunking.py \
+            --crfsuite-example-dir crfsuite/example \
+            --crfsuite-bin crfsuite \
+            --output artifacts/burmese-crf-raw-output.json
+      - name: Upload raw predictions and provenance
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: burmese-crf-raw-output
+          path: artifacts/
           if-no-files-found: warn
           retention-days: 30
