@@ -778,3 +778,14 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 - **Release judgement:** research prototype, not release-ready for claims of accurate general-purpose Burmese phonetic transcription. The latest green workflows verify engineering/deployment only.
 
 No local tests were run in this session: outbound GitHub access from the execution container was unavailable. No IPA, gold labels, corpus records or phonological rules were invented.
+
+
+## Execution handoff — 2026-11-02
+
+- Review PR: [#89](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/89), branch `research/burmese-quality-review-20261102`, based on main `aab45f9165d7f9cd7423425ff28186e1c29af0bf`.
+- Implementation/documentation checkpoint before this handoff note: `310ea6aae34a0a1921f830d2975f08a6b6e36afd`.
+- Exact-head CI at that checkpoint: [41457740723](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41457740723) SUCCESS — 139 Python tests + 48 subtests, 4 generated-data checks, 54 Playwright browser tests. Current-main test and Pages evidence: 41424921603 / 41424921607, both SUCCESS.
+- Commands/limitations: attempted `git clone --depth 1` in the execution container; DNS resolution for github.com failed. No local tests were run. Hosted GitHub Actions on the exact branch head provide the verification evidence above.
+- Next genuine blockers: independent Burmese IPA gold (0 rows), expert adjudication of tone/register/phonation and checked-syllable/coda realization, primary MLC evidence for MLCTS, and manual accessibility QA. No unsupported IPA was added.
+- PR remains open and mergeable; no existing branch was deleted or rewritten. The latest completion-register entry reconciles stale PR #53 as closed without merge and identifies #87/#88 as the current-main replacement work.
+
