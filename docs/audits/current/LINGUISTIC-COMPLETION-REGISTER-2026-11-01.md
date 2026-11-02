@@ -222,3 +222,10 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 - Gold: 0 independent expert-adjudicated lexical IPA records; accuracy=null. Keep MYA-GOLD-001 BLOCKED, MYA-PHON-001 and MYA-IPA-001 PARTIAL, MYA-ROM-001 PARTIAL, MYA-UI-001 TODO.
 - No phonological labels or mappings were added in this review. The external G2P runs remain diagnostics and licensing-limited, not gold or production approval.
 
+
+
+## Pilot profile decision — 2026-11-02
+
+| ID | Status | Decision / evidence | Remaining acceptance |
+|---|---|---|---|
+| MYA-PROFILE-001 | DONE_VERIFIED (pilot-scope decision only) | Contemporary Standard Burmese, Yangon reference variety, careful citation forms; project-local ID `my-yangon-careful-citation-v1`. Oxford-hosted overview identifies Standard Burmese with Lower Burma/Yangon; grammar literature documents regional and speaker-sensitive variation. Issue #85 and canonical handoff updated. | Approve IPA convention for tone/register/phonation, vowels, codas, medials and minor syllables; recruit two annotators + independent adjudicator; curate rights-cleared 30-item sample; blind dry-run and adjudicate. No claim of runtime completeness or linguistic accuracy. |
