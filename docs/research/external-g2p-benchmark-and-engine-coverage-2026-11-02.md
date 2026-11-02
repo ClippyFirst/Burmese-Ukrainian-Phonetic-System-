@@ -14,7 +14,13 @@ The paper compares seven methods: S-AROW, CRF, joint-sequence models, phrase-bas
 
 Reference: https://aclanthology.org/W16-3702/
 
-### myG2P dictionary resource\n\nThe public myG2P resource documents a Myanmar Language Commission pronunciation-dictionary foundation extended for foreign pronunciations. It describes 23 phonetic symbols for 33 consonants, 87 vowel combinations and 20 special symbols; it also notes contextual voicing and context-dependent word pronunciations. This is important because a useful Burmese G2P comparator must model combinations and context, not just map individual characters.\n\nReference: https://github.com/ye-kyaw-thu/myG2P\n\n### Burmese speech corpus and FST grammars (LREC 2020)
+### myG2P dictionary resource
+
+The public myG2P resource documents a Myanmar Language Commission pronunciation-dictionary foundation extended for foreign pronunciations. It describes 23 phonetic symbols for 33 consonants, 87 vowel combinations and 20 special symbols; it also notes contextual voicing and context-dependent word pronunciations. This is important because a useful Burmese G2P comparator must model combinations and context, not just map individual characters.
+
+Reference: https://github.com/ye-kyaw-thu/myG2P
+
+### Burmese speech corpus and FST grammars (LREC 2020)
 
 Oo et al., “Burmese Speech Corpus, Finite-State Text Normalization and Pronunciation Grammars with an Application to Text-to-Speech”, LREC 2020.
 
