@@ -14,7 +14,7 @@ The paper compares seven methods: S-AROW, CRF, joint-sequence models, phrase-bas
 
 Reference: https://aclanthology.org/W16-3702/
 
-### Burmese speech corpus and FST grammars (LREC 2020)
+### myG2P dictionary resource\n\nThe public myG2P resource documents a Myanmar Language Commission pronunciation-dictionary foundation extended for foreign pronunciations. It describes 23 phonetic symbols for 33 consonants, 87 vowel combinations and 20 special symbols; it also notes contextual voicing and context-dependent word pronunciations. This is important because a useful Burmese G2P comparator must model combinations and context, not just map individual characters.\n\nReference: https://github.com/ye-kyaw-thu/myG2P\n\n### Burmese speech corpus and FST grammars (LREC 2020)
 
 Oo et al., “Burmese Speech Corpus, Finite-State Text Normalization and Pronunciation Grammars with an Application to Text-to-Speech”, LREC 2020.
 
@@ -59,7 +59,7 @@ The WSSANLP 2016 abstract establishes the methods and broad ranking but does not
 ## Hosted raw-output diagnostics on the audit branch — 2026-11-02
 
 Exact branch-head runs:
-- Pinned Epitran 1.35.3 raw-output probe: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41409098332 — SUCCESS. Six structural-only probes returned IPA strings, but every row has empty expected IPA, zero eligible verified gold, and `NOT_SCORED_NO_VERIFIED_GOLD`. This verifies only that the mapping executes; it says nothing about Burmese pronunciation accuracy.
-- Pinned Goruut Burmese raw-output probe: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41409098207 — SUCCESS as collection. On 100 source-attested myG2P examples: exact matches=0/100; notation-normalized matches=17/100; successful outputs=98, failed=2; complete source coverage=43, partial=55, unknown=2; unphonemized source fragments=69. The run logged missing `weights9.bin.zlib`; investigate before treating the runtime as stable.
+- Epitran 1.35.3 raw-output probe: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41409098332 — SUCCESS. Six structural-only probes returned IPA strings, but every row has empty expected IPA, zero eligible verified gold, and `NOT_SCORED_NO_VERIFIED_GOLD`. This verifies only that the mapping executes; it says nothing about Burmese pronunciation accuracy.
+- Goruut source snapshot `b224bde` Burmese raw-output probe: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41409098207 — SUCCESS as collection. On 100 source-attested myG2P examples: exact matches=0/100; notation-normalized matches=17/100; successful outputs=98, failed=2; complete source coverage=43, partial=55, unknown=2; unphonemized source fragments=69. The run logged missing `weights9.bin.zlib`; investigate before treating the runtime as stable.
 
 All results are `NOT_SCORED_NO_INDEPENDENT_GOLD`. The 17/100 notation-normalized result is not an accuracy score; it only reflects the documented limited normalization, while phone/tone/length distinctions remain significant. The myG2P references are source-attested diagnostic material, not independently adjudicated gold for the project's Standard Burmese profile.
