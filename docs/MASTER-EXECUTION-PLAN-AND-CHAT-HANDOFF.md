@@ -860,3 +860,12 @@ Superpowers remains pinned to its verified v7.0.1 release commit `2ce8aa15d05bd5
 - A clean local checkout was attempted with `git clone --filter=blob:none --no-checkout https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-.git`; the environment could not resolve `github.com` (DNS/network blocker). Consequently no local Python/browser/build commands are claimed as run in this session.
 - No production phonological rules, IPA labels, corpus records, or license assertions were changed in this continuation audit. The independent expert-adjudicated gold count remains 0 and empirical accuracy remains null. Keep all human annotation, item-level rights, profile/convention and manual accessibility gates open until their stated evidence is supplied.
 - No PR was merged, no branch was deleted, and no force-push was performed. Preserve this PR for owner review/integration after the documented gates are considered.
+
+
+## Public-site result-path verification — 2026-11-02
+
+- Current-main Pages deployment [41424921607](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41424921607) completed successfully on main SHA `aab45f9165d7f9cd7423425ff28186e1c29af0bf`. The build job passed npm build/tests, Playwright Chromium browser tests, artifact upload; the deploy job passed the post-deploy HTTP/runtime-asset smoke test.
+- The browser suite includes real page interactions: opening the example, asserting visible result/IPA/Ukrainian panels, preserving source text, clearing input, switching phonetic/MLCTS modes, and exercising mixed/unsupported Unicode and research-status UI. Latest review-branch exact-head CI [41530164259](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41530164259) also passed its built-browser Playwright step.
+- This is the strongest available evidence that the site's result UI works. The deployed smoke itself checks HTTP/assets; the Playwright interaction suite runs against the built app before deployment, not against the public URL.
+- Direct live-site access from this execution environment was blocked by DNS resolution failure for `clippyfirst.github.io`; do not interpret this as a confirmed site outage. GitHub-hosted Pages smoke and Playwright evidence are available.
+- **TODO:** add a post-deploy browser interaction smoke against the actual deployed URL and retain manual keyboard/screen-reader/mobile QA. Acceptance: deployed-page Playwright test enters known input and asserts visible Ukrainian/IPA output plus clear/mode behavior.
