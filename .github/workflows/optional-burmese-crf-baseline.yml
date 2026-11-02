@@ -54,7 +54,7 @@ jobs:
           make -j2
           sudo make install
           sudo ldconfig
-          crfsuite -h
+          command -v crfsuite
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
