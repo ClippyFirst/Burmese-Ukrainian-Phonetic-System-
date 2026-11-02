@@ -45,7 +45,7 @@ jobs:
       - name: Install pinned CRFsuite build prerequisites
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential autoconf automake libtool
+          sudo apt-get install -y build-essential autoconf automake libtool liblbfgs-dev
       - name: Build and install pinned CRFsuite CLI
         working-directory: crfsuite
         run: |
