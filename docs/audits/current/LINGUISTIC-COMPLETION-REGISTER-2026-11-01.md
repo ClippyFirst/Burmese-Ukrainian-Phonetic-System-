@@ -250,3 +250,10 @@ Comparator concordance is not accuracy. See the dated benchmark review in the ca
 
 
 | BENCH-MYG2P-001 | PARTIAL | Direct upstream README confirms IPA-output ver2, known sentence-level failures for particles/postpositions, and CC BY-NC-SA 4.0; WSSANLP 2016 primary paper compares CRF/PBSMT/WFST and manually inspects tone, voicing, consonant and vowel errors. | Recover exact model/training membership and a disjoint lexical-group held-out split; test sentence particles/postpositions separately; approve Yangon tone/register/phonation IPA convention; obtain independent adjudication. Existing 84/100 concordance remains unscored and cannot be called accuracy; commercial reuse remains blocked absent permission. |
+
+
+## Upstream methodology pin reconciliation — 2026-11-02
+
+| ID | Status | Evidence | Acceptance / limitation |
+|---|---|---|---|
+| ENG-METHOD-PIN-002 | DONE_VERIFIED (documentation provenance correction) | Corrected `AGENTS.md` and the canonical handoff to distinguish `mattpocock/skills` release v1.3.2 (`d1478fcb140db0b93c0c8df17bcfd311844749d0`) from the latest inspected `main` snapshot (`4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`, 2026-10-31). The newer main commit adds the `software-factory` glossary/design skill; no unrelated factory workflow was imported. | Methodology metadata only. No runtime, linguistic rules, corpus, license grants or accuracy metrics changed. Recheck upstream pins when methodology sources are intentionally refreshed. |
