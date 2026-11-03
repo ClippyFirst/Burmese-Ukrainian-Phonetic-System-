@@ -63,3 +63,26 @@ official Ukrainian norm merely because it appears in a machine-readable table.
 A 1958 Epstein bibliographic lead concerning Burmese proper-name transcription
 is retained in the source registry. Its article-level record was not
 independently verified during the 2026-10-05 audit, so it is marked UNCERTAIN.
+
+
+### External G2P and speech-resource references
+
+- Kyaw Thu, Ye; Pa Pa, Win; Sagisaka, Yoshinori; Iwahashi, Naoto. 2016.
+  *Comparison of Grapheme-to-Phoneme Conversion Methods on a Myanmar
+  Pronunciation Dictionary.* Proceedings of the 6th Workshop on South and
+  Southeast Asian Natural Language Processing (WSSANLP2016), 11–22.
+  https://aclanthology.org/W16-3702/. This is a historical G2P comparator
+  using a romanized phoneme inventory; it is not project IPA gold, and the
+  paper citation does not establish redistribution rights for the MLC
+  dictionary.
+
+- Oo, Yin May; Wattanavekin, Theeraphol; Li, Chenfang; De Silva, Pasindu;
+  Sarin, Supheakmungkol; Pipatsrisawat, Knot; Jansche, Martin; Kjartansson,
+  Oddur; Gutkin, Alexander. 2020. *Burmese Speech Corpus, Finite-State Text
+  Normalization and Pronunciation Grammars with an Application to
+  Text-to-Speech.* Proceedings of the Twelfth Language Resources and
+  Evaluation Conference, 6328–6339.
+  https://aclanthology.org/2020.lrec-1.777/. The article describes public
+  speech and FST/G2P resources, but any in-house or third-party resource must
+  retain its own rights and provenance; the paper's licence does not
+  automatically cover every referenced dataset.
