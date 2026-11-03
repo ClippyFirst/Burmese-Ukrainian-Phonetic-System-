@@ -21,21 +21,47 @@ from .unicode import (
 )
 
 
+def _is_unsafe_control(char: str) -> bool:
+    cp = ord(char)
+    return (0x0000 <= cp <= 0x0008 or 0x000B <= cp <= 0x001F
+            or 0x007F <= cp <= 0x009F)
+
+
+def _is_myanmar_text(char: str) -> bool:
+    """Match the browser's Myanmar text boundary, not just Unicode block membership.
+
+    Myanmar digits and punctuation U+1040..U+104B are preserved as ordinary
+    mixed-text separators; Extended-A/B/C letters remain recognized as
+    Myanmar script even when this Burmese inventory cannot pronounce them.
+    """
+    cp = ord(char)
+    return is_myanmar(char) and not 0x1040 <= cp <= 0x104B
+
+
 def segment_graphemes(text: str) -> list[str]:
-    """Segment Myanmar-script clusters conservatively."""
+    """Segment Myanmar clusters and preserve contiguous mixed-text runs."""
     s = normalize_burmese(text)
     out: list[str] = []
     i = 0
 
     while i < len(s):
-        if not is_myanmar(s[i]):
+        if _is_unsafe_control(s[i]):
             out.append(s[i])
             i += 1
             continue
 
+        if not _is_myanmar_text(s[i]):
+            start = i
+            i += 1
+            while (i < len(s) and not _is_unsafe_control(s[i])
+                   and not _is_myanmar_text(s[i])):
+                i += 1
+            out.append(s[start:i])
+            continue
+
         start = i
         i += 1
-        while i < len(s) and is_myanmar(s[i]):
+        while i < len(s) and _is_myanmar_text(s[i]):
             if (
                 s[i] in BASE_CONSONANTS
                 and s[i - 1] != "\u1039"
