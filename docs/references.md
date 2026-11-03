@@ -14,6 +14,8 @@ authority for every phonological interpretation.
 ### Burmese phonology
 
 - Green, Anthony. 2002. *Word, Foot, and Syllable Structure in Burmese.*
+- Hlaing, Tin Htay & Yoshiki Mikami. 2013 (published online 2014). “Automatic Syllable Segmentation of Myanmar Texts using Finite State Transducer.” *The International Journal on Advances in ICT for Emerging Regions* 6(2). DOI: [10.4038/ICTER.V6I2.7150](https://doi.org/10.4038/ICTER.V6I2.7150). Orthographic syllabification only; not G2P or IPA evaluation.
+- Kyaw Thu, Ye; Win Pa Pa; Yoshinori Sagisaka; Naoto Iwahashi. 2016. “Comparison of Grapheme-to-Phoneme Conversion Methods on a Myanmar Pronunciation Dictionary.” *Proceedings of the 6th Workshop on South and Southeast Asian Natural Language Processing*, 11–22. [ACL Anthology W16-3702](https://aclanthology.org/W16-3702/). Its PER is defined on the paper's romanized phoneme inventory, not project IPA gold.
 - Mooney, Kate; Repetti-Ludlow, Chiara. 2021. *Sonority and syllable
   structure: The case of Burmese tone.*
 - Duan, Haifeng; Zhu, Xiaonong. 2025. “Double registers and eight tones in
