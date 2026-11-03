@@ -10,7 +10,7 @@ This is a source-backed research audit, not an accuracy claim for this repositor
 
 Ye Kyaw Thu, Win Pa Pa, Yoshinori Sagisaka, and Naoto Iwahashi (2016). “Comparison of Grapheme-to-Phoneme Conversion Methods on a Myanmar Pronunciation Dictionary.” *Proceedings of WSSANLP 2016*, 11–22. https://aclanthology.org/W16-3702/.
 
-The paper compares seven methods: S-AROW, CRF, joint-sequence models, phrase-based SMT, RNN, SVM point-wise classification, and WFST on a manually tagged Myanmar phoneme dictionary. It reports automatic phoneme error rate plus manual review of voicing, tones, consonant, and vowel errors; CRF, PBSMT, and WFST are reported as the strongest methods. This is directly relevant G2P evidence, but it is historical and must not be treated as a score for current engines or this project's Standard Burmese IPA convention.
+The paper compares seven methods: S-AROW, CRF, joint-sequence models, phrase-based SMT, RNN, SVM point-wise classification, and WFST on a manually tagged Myanmar phoneme dictionary. Its full text specifies 25,300 MLC dictionary words: 25,000 used for training and three open test sets of 100 words each; a separate 100-word closed test was sampled from the training data. The paper reports automatic phoneme error rate plus manual review of voicing, tones, consonant, and vowel errors; CRF, PBSMT, and WFST are reported as the strongest methods. This is directly relevant historical G2P evidence, but the paper's romanized phoneme inventory and evaluation do not constitute project IPA gold or a score for current engines or this project's Standard Burmese IPA convention.
 
 Reference: https://aclanthology.org/W16-3702/
 
