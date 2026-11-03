@@ -799,3 +799,11 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 - Added a regression test for creating a new, independent split manifest using a new empty JSONL `--splits` input and explicit new seed/version. Updated `docs/ipa-gold-corpus.md` to state that a new `--output` alone does not reset the existing input manifest.
 - Exact-head CI [41638537232](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41638537232) SUCCESS — 145 pytest tests + 48 subtests; web data validation OK; 54 browser tests passed.
 - Linguistic gold remains 0; gold export remains header-only; empirical accuracy remains `null`. This is split lifecycle/reproducibility engineering, not phonetic validation.
+
+
+## Source and benchmark citation reconciliation — 2026-11-03
+
+- Ported the reviewed source-registry, references and benchmark-audit changes from prior PR [#91](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/91) onto current `main` in a clean documentation branch; the original branch is not rewritten.
+- Added the missing WSSANLP 2016 source record with exact authors and ACL Anthology locator, corrected author–year citations, and retained the benchmark's distinction between romanized phone inventory and this project's typed IPA gold. No external labels or dictionary data imported.
+- Prior exact-head CI [41639387068](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41639387068) SUCCESS (tests) and [41639386952](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41639386952) SUCCESS (optional Epitran diagnostic). This clean port requires its own exact-head CI.
+- This is bibliographic/source-scope work only; source redistribution rights remain unresolved, independent IPA gold remains 0 and accuracy remains `null`.
