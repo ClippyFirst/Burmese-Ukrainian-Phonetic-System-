@@ -2,8 +2,8 @@
 
 ## Current repository state — 2026-11-03
 
-- **Default branch:** `main` at `8524e94cc3bdd40075cde9d1c3f7a44e9c15e6c9`.
-- **Open pull requests:** none at the time of this checkpoint; all relevant integration PRs are merged or explicitly superseded/closed.
+- **Default branch:** [`main`](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/tree/main); PR base snapshot: `f506b80744b1f96996e9ecdfb7e03622b152907d` (the live branch may advance independently).
+- **Open pull requests at this checkpoint:** #100 (`fix/heldout-ipa-benchmark-20261103`) carries the benchmark integrity correction; documentation-only PR #99 was subsequently superseded by the handoff/register reconciliation on this branch.
 - **Integrated engineering and research changes:** manifest-wide split identity; WSSANP 2016 citation; source-scoped evidence matrix and corpus audit; glossary, codebase map and agent guidance; current Pages deployment.
 - **Exact-main verification:** tests [41649547740](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41649547740) SUCCESS; Pages/deployed smoke [41649547721](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41649547721) SUCCESS.
 - **Research boundary:** independent expert-adjudicated IPA gold remains 0; `gold.tsv` remains header-only; empirical accuracy remains `null`. Passing engineering/browser/deployment checks is not evidence of phonetic accuracy.
