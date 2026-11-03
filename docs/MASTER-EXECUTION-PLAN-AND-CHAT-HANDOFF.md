@@ -2,7 +2,7 @@
 
 ## Current repository state — 2026-11-03
 
-- **Default branch:** `main` at `8524e94cc3bdd40075cde9d1c3f7a44e9c15e6c9`.
+- **Default branch:** [`main`](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/tree/main) (live repository ref; use the linked branch for the current head SHA).
 - **Open pull requests:** none at the time of this checkpoint; all relevant integration PRs are merged or explicitly superseded/closed.
 - **Integrated engineering and research changes:** manifest-wide split identity; WSSANP 2016 citation; source-scoped evidence matrix and corpus audit; glossary, codebase map and agent guidance; current Pages deployment.
 - **Exact-main verification:** tests [41649547740](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41649547740) SUCCESS; Pages/deployed smoke [41649547721](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41649547721) SUCCESS.
