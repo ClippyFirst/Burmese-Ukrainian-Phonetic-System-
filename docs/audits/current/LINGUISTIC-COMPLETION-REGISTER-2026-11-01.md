@@ -1,10 +1,34 @@
 # Burmese linguistic completion register — 2026-11-01
 
-**Baseline:** `main` `8524e94cc3bdd40075cde9d1c3f7a44e9c15e6c9`.
+**Baseline code commit:** `f506b80744b1f96996e9ecdfb7e03622b152907d` (PR base snapshot; subsequent benchmark and handoff changes are on the review branch).
 **Latest exact-main evidence:** tests [41649547740](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41649547740) SUCCESS; Pages/deployed smoke [41649547721](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41649547721) SUCCESS.
-**Open pull requests:** none at this checkpoint.
+**Open pull requests at this checkpoint:** implementation PR #100. Documentation-only PR #99 was subsequently closed as superseded after its equivalent handoff/register correction was ported into the implementation branch.
 **Latest exact-main engineering evidence:** tests [41326473323](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41326473323) and Pages/deployed smoke [41326473352](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41326473352) succeeded.
 **Scope:** continue the existing master handoff; this register does not replace it.
+
+## Engineering integrity continuation — 2026-11-03
+
+- **TSV-INPUT-001 — DONE_VERIFIED:** benchmark TSV ingestion now rejects duplicate/blank headers and nonblank rows with extra or missing fields; blank physical lines are ignored. Regression cases cover gold/prediction duplicate headers, extra gold cells, and truncated prediction rows.
+- **Evidence:** test-first RED [41665726081](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41665726081); focused implementation GREEN [41665859814](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41665859814); implementation commit `f5951bb1248a0bee66a795bd375f7e4e80ce7043`.
+- **Acceptance boundary:** input shape is validated before scoring. This does not create adjudicated IPA data or alter language accuracy status (gold 0; accuracy null).
+
+## Strict JSON syntax — 2026-11-03
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| JSON-INPUT-003 | DONE_VERIFIED | Reject `NaN`, `Infinity`, and `-Infinity` in JSONL and license registry inputs. RED 41692649780; implementation CI 41694102074 SUCCESS (159 Python tests + 64 subtests; 54 built-site browser tests). | Reject non-standard JSON constants before corpus or rights validation; no linguistic labels or license terms changed. |
+
+## License registry JSON integrity — 2026-11-03
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| JSONL-INPUT-002 | DONE_VERIFIED | Duplicate top-level and nested keys in `licenses.json` rejected. RED 41690120271; implementation CI 41690280710 SUCCESS (157 Python tests + 58 subtests; 54 built-site browser tests). | Rights registry cannot silently apply last-key-wins semantics; no license permission is inferred or broadened. |
+
+## JSONL input integrity — 2026-11-03
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| JSONL-INPUT-001 | DONE_VERIFIED | Duplicate top-level and nested JSON object keys are rejected. RED 41687392202; exact implementation-head CI 41687710686 SUCCESS (155 Python tests + 58 subtests; 54 built-site browser tests). | Prevent silent last-key-wins corruption before corpus schema/provenance validation. No linguistic data or accuracy claims added. |
 
 ## Evidence-based task ledger
 
@@ -274,3 +298,29 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 **Status: DONE_VERIFIED (reference audit).** Superpowers v7.0.1 current main: `2ce8aa15d05bd57213e6f746f953aafb7ded7a8b`; mattpocock/skills v1.3.2 release: `d1478fcb140db0b93c0c8df17bcfd311844749d0`, current main snapshot: `4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`; Ponytail v5.3.3 release: `7801d061243d7b753bad0e0b3c057cd250b11755`, current main: `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846` (README-only post-pin change).
 
 - Release pins and current-main snapshots are distinguished. No third-party runtime or skill files imported.
+
+## 2026-11-03 — held-out benchmark split enforcement
+
+| Task | Status | Evidence / remaining acceptance |
+|---|---|---|
+| IPA-BENCH-SPLIT-001 | DONE_VERIFIED (engineering contract) | Export preserves the frozen group-safe split; scorer defaults to test and requires explicit selection for train/dev/all. Exact-head tests [41651876020](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41651876020) SUCCESS on `af3ff6c5d3104a45ce5c1524b6083850c6dacd83`. This fixes the evaluation boundary, not linguistic gold. |
+
+Independent gold remains 0 and accuracy remains null. No data labels were fabricated. The split-aware benchmark documentation is in `docs/benchmarking-and-external-ipa.md`.
+
+## Frozen split manifest provenance — 2026-11-03
+
+The export and benchmark now preserve and validate the complete frozen split identity, not only the bucket name: `split`, `split_seed`, and `split_version`. Every adjudicated row must carry non-empty seed/version metadata, and the benchmark rejects a TSV that mixes manifest identities. The report exposes the manifest seed/version and selected scoring split. This makes the evaluated test partition traceable to one exact manifest; it does not create linguistic gold or change the current zero-row accuracy status.
+
+
+## 2026-11-03 — empty benchmark prediction input
+
+| Task | Status | Evidence / remaining acceptance |
+|---|---|---|
+| IPA-BENCH-EMPTY-PREDICTIONS-001 | DONE_VERIFIED (engineering guard) | Header-only prediction TSV previously exited 0 and produced an empty `engines` object. Test-first regression failed on all three language repositories; the scorer now rejects an empty prediction dataset after checking gold and frozen split provenance. Missing individual predictions within a named engine remain denominator-counted. RED: [41655173696](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41655173696). Final exact-head tests: [41655504734](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41655504734) SUCCESS. |
+
+
+## 2026-11-03 — benchmark identifier validation
+
+| Task | Status | Evidence / acceptance |
+|---|---|---|
+| IPA-BENCH-IDENTIFIERS-001 | DONE_VERIFIED (engineering guard) | Reject whitespace-only gold IDs, prediction IDs and engine names while preserving non-empty identifiers exactly. Test-first RED: gold-ID run 41660769932; prediction-ID/engine run 41662075069. Final exact-code-head CI: 41662232565 SUCCESS (152 Python tests + 54 subtests; 54 built-site browser tests passed).  No linguistic labels or accuracy claims were added. |
