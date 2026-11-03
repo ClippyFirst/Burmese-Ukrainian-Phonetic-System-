@@ -3,7 +3,7 @@
 ## Bibliography and source-registry checkpoint — 2026-11-03
 
 - Dedicated documentation branch: `docs/source-citation-audit-20261103`; source-backed benchmark citation and registry corrections are recorded in the completion register.
-- Added the missing WSSANLP 2016 bibliography record with exact authors and ACL Anthology locator; corrected the external benchmark citations to author–year form. The LREC 2020 citation is reconciled with the existing source entry. Neither paper is treated as project IPA gold or evidence of transferable accuracy.
+- Added the missing WSSANLP 2016 bibliography record with exact authors and ACL Anthology locator; corrected the external benchmark citations to author–year form. Full-text review confirms 25,300 MLC entries, 25,000 train, three 100-word open test sets and a separate 100-word closed test drawn from training data; the paper's romanized phoneme inventory is not IPA gold. The LREC 2020 citation is reconciled with the existing source entry. Neither paper is treated as project IPA gold or evidence of transferable accuracy.
 - Academic Writing Toolkit: four BibTeX records structurally validated with 0 issues; British-English check returned 0 issues for all three benchmark audit documents after the Khmer spelling correction. Its citation-audit parser did not reliably parse the repositories' CSV/JSON source registries, so no false 'citation clean' claim is made; citations and metadata were checked directly against the primary ACL Anthology/LREC records and full text where available.
 - No external pronunciation labels or data imported; independent gold remains 0, accuracy remains `null`; no license permission inferred from article/model licenses.
 
