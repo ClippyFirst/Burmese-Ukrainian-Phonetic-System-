@@ -795,7 +795,7 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 
 ## Split-manifest continuation update — 2026-11-03
 
-- Current PR [#90](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/90) head: `acc29c519c72d9ba9cc48f30191e0c8a6ae73ae7`; 16 commits ahead / 0 behind current main; GitHub reports mergeable. No merge performed.
+- Final PR [#90](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/90) documentation head: `239da6add4d23654a0cdb9ecb2a25c77fd588b58`; 18 commits ahead / 0 behind current main; GitHub reports mergeable. The last code/test checkpoint was `acc29c519c72d9ba9cc48f30191e0c8a6ae73ae7`; the three commits after it change only documentation. No merge performed.
 - Added a regression test for creating a new, independent split manifest using a new empty JSONL `--splits` input and explicit new seed/version. Updated `docs/ipa-gold-corpus.md` to state that a new `--output` alone does not reset the existing input manifest.
 - Exact-head CI [41638537232](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41638537232) SUCCESS — 145 pytest tests + 48 subtests; web data validation OK; 54 browser tests passed.
 - Linguistic gold remains 0; gold export remains header-only; empirical accuracy remains `null`. This is split lifecycle/reproducibility engineering, not phonetic validation.
