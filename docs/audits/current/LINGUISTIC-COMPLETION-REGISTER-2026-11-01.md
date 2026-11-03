@@ -1,10 +1,17 @@
 # Burmese linguistic completion register — 2026-11-01
 
-**Baseline code commit:** `f506b80744b1f96996e9ecdfb7e03622b152907d` (PR base snapshot; subsequent benchmark and handoff changes are on the review branch).
-**Latest exact-main evidence:** tests [41649547740](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41649547740) SUCCESS; Pages/deployed smoke [41649547721](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41649547721) SUCCESS.
-**Open pull requests at this checkpoint:** implementation PR #100. Documentation-only PR #99 was subsequently closed as superseded after its equivalent handoff/register correction was ported into the implementation branch.
-**Latest exact-main engineering evidence:** tests [41326473323](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41326473323) and Pages/deployed smoke [41326473352](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41326473352) succeeded.
+**Current main commit:** `a5b844ec1d4f9be9264764ffa3652211fe78b6c5` (benchmark integrity PR #100 squash-merged).
+**Latest post-merge exact-main evidence:** [engineering verification](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41707518082) SUCCESS; [Pages/deployed-site smoke](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41707518030) SUCCESS.
+**Open pull requests:** none at this checkpoint.
+**Research boundary:** Independent expert-adjudicated Burmese IPA gold remains 0; `data/benchmark/gold.tsv` is header-only; empirical accuracy remains null.
 **Scope:** continue the existing master handoff; this register does not replace it.
+
+## Held-out IPA benchmark integrity — 2026-11-03
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| IPA-BENCH-HELDOUT-001 | DONE_VERIFIED | PR #100 merged as `a5b844ec1d4f9be9264764ffa3652211fe78b6c5`; exact-main verification [workflow](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41707518082) SUCCESS; Pages/deployed-site smoke [workflow](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41707518030) SUCCESS. Export preserves split bucket and frozen manifest seed/version; scoring defaults to held-out test; explicit all-split mode is marked diagnostic; malformed/mixed split metadata and empty predictions fail closed. | Engineering evaluation integrity only. Independent expert-adjudicated Burmese IPA gold remains 0; `data/benchmark/gold.tsv` is header-only; empirical accuracy remains null. No gold rows, IPA labels or accuracy claims were fabricated. |
+
 
 ## Engineering integrity continuation — 2026-11-03
 

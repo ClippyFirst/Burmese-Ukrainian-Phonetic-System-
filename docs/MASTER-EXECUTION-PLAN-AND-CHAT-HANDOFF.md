@@ -29,20 +29,21 @@
 - **Regression coverage:** duplicate gold and prediction headers, extra gold fields, and short prediction rows. Test-first RED: [41665726081](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41665726081); focused GREEN after implementation: [41665859814](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41665859814).
 - **Scope boundary:** this is TSV/input-integrity hardening only. It does not add IPA labels, change linguistic rules, or establish empirical accuracy. Independent adjudicated gold remains 0 and accuracy remains null.
 
-## Current repository state — 2026-11-03
+## Current repository state — 2026-11-03 (post-merge)
 
-- **Default branch:** [`main`](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/tree/main); PR base snapshot: `f506b80744b1f96996e9ecdfb7e03622b152907d` (the live branch may advance independently).
-- **Open pull requests at this checkpoint:** #100 (`fix/heldout-ipa-benchmark-20261103`) carries the benchmark integrity correction; documentation-only PR #99 was subsequently superseded by the handoff/register reconciliation on this branch.
-- **Integrated engineering and research changes:** manifest-wide split identity; WSSANP 2016 citation; source-scoped evidence matrix and corpus audit; glossary, codebase map and agent guidance; current Pages deployment.
-- **Exact-main verification:** tests [41649547740](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41649547740) SUCCESS; Pages/deployed smoke [41649547721](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41649547721) SUCCESS.
-- **Research boundary:** independent expert-adjudicated IPA gold remains 0; `gold.tsv` remains header-only; empirical accuracy remains `null`. Passing engineering/browser/deployment checks is not evidence of phonetic accuracy.
+- **Default branch:** `main` at `a5b844ec1d4f9be9264764ffa3652211fe78b6c5`.
+- **Open pull requests:** none. Benchmark integrity PR [#100](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/100) was squash-merged into this exact main head.
+- **Held-out benchmark contract:** gold export preserves `split`, `split_seed`, and `split_version`; adjudicated records without a frozen split fail closed; the scorer defaults to `test`; train/dev/all require explicit diagnostic selection; mixed manifest identities and empty prediction files are rejected.
+- **Input integrity:** benchmark TSV headers/row widths, whitespace-only identifiers, duplicate JSON object keys, and non-standard JSON constants are rejected with regression coverage.
+- **Post-merge exact-main verification:** Post-merge tests and GitHub Pages build/deployment plus deployed-site/runtime-asset smoke all passed on the exact `main` head. The workflow included Python validation/tests, npm tests/build, generated-web-data drift check, and built-site Chromium tests. [workflow](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41707518082); [Pages/deployed-site smoke](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41707518030).
+- **Research boundary:** Independent expert-adjudicated Burmese IPA gold remains 0; `data/benchmark/gold.tsv` is header-only; empirical accuracy remains null. Engineering, browser and deployment checks do not establish pronunciation accuracy.
 
 ## Current task ledger and blockers
 
-- **DONE_VERIFIED:** manifest-wide split identity is enforced; the default branch has current CI evidence; source citations and evidence scope have been reconciled; project agent guidance is in place.
-- **PARTIAL:** source-language phonology, IPA conventions, and Ukrainian target adaptation remain bounded by language-specific evidence and unresolved cases. Any external benchmark remains diagnostic until rights, profile and IPA conventions are independently validated.
-- **BLOCKED:** independent gold collection requires an approved profile and IPA convention, two qualified independent annotators, a separate adjudicator, blinded intake and source-specific rights clearance.
-- **TODO:** complete manual visual, keyboard, screen-reader, responsive and mobile QA on the deployed site; automated browser smoke is not a substitute.
+- **DONE_VERIFIED:** deterministic manifest-wide split identity; export/scorer held-out split integrity; strict TSV and JSON input validation; post-merge exact-main engineering verification.
+- **PARTIAL:** The complete vowel/medial/coda engine, tone/register/phonation and checked-syllable realization, contextual allophony, and primary-source-backed MLCTS → Ukrainian adapter remain incomplete.
+- **BLOCKED:** Approve a versioned IPA convention; recruit two qualified independent Burmese phonetic annotators and a separate adjudicator; secure licensed audio and source-specific derived-label rights.
+- **TODO:** Manual visual, keyboard, screen-reader, responsive and mobile QA on the deployed site remains TODO.
 
 ## Historical checkpoints (retained for audit; superseded by the current state above)
 
