@@ -6,6 +6,7 @@
 - Fixed a reproducibility gap in the IPA gold split lifecycle: all rows in one manifest now share one frozen seed/version, and extending an existing manifest preserves that identity. Conflicting explicit overrides are rejected; redesigns require a separate versioned manifest.
 - RED evidence (tests-only change): [41612967105](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41612967105) failed on the three intended regression behaviors. GREEN evidence: [41613349719](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41613349719) SUCCESS — 142 Python tests + 48 subtests plus the repository workflow's remaining checks.
 - Linguistic gold remains 0; `gold.tsv` remains header-only; empirical accuracy remains `null`. This fix improves split reproducibility only.
+- Second RED/GREEN cycle also preserves CLI strictness: empty explicit `--seed`/`--version` values were shown to be silently defaulted by the first fix, regression tests failed on the test-only commit 41615393679, and exact-head GREEN 41615574734 passed after changing default resolution to distinguish `None` from an empty string.
 - No PR merged and no release published in this continuation.
 
 
