@@ -1,5 +1,13 @@
 # Master execution plan and chat handoff — Burmese → Ukrainian
 
+## Continuation update — strict JSON constants (2026-11-03)
+
+- **JSON-INPUT-003 — DONE_VERIFIED:** JSONL corpus records and the license registry now reject JavaScript-only constants `NaN`, `Infinity`, and `-Infinity` through the JSON decoder's `parse_constant` hook. Diagnostics retain file and line context.
+- **Regression coverage:** invalid constants in a corpus JSONL row and in `licenses.json`.
+- **Test-first RED:** [41692649780](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41692649780) — exactly the two new regression tests failed before the parser change.
+- **Implementation-head CI:** [41693080642](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41693080642) SUCCESS — 159 Python tests + 58 subtests; 54 built-site browser tests.
+- **Scope boundary:** this enforces RFC-compliant JSON syntax only; no corpus labels, license permissions, or gold records were changed.
+
 ## Continuation update — duplicate JSON keys in license registry (2026-11-03)
 
 - **JSONL-INPUT-002 — DONE_VERIFIED:** the standalone `data/benchmark/licenses.json` registry is now parsed with the same duplicate-key rejection as JSONL corpus files. Duplicate top-level `licenses` and nested `redistributable` keys fail with path-qualified diagnostics; this prevents last-key-wins ambiguity in redistribution decisions.
