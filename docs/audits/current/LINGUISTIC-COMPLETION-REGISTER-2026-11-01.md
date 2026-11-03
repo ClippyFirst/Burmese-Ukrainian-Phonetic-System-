@@ -1,3 +1,5 @@
+# Burmese linguistic completion register — 2026-11-01
+
 **Current main commit:** `a5b844ec1d4f9be9264764ffa3652211fe78b6c5` (benchmark integrity PR #100 squash-merged).
 **Latest post-merge exact-main evidence:** [engineering verification](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41707518082) SUCCESS; [Pages/deployed-site smoke](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41707518030) SUCCESS.
 **Open pull requests:** none at this checkpoint.
