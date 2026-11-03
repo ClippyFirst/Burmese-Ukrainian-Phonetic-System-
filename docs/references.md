@@ -7,7 +7,7 @@
 - Unicode Consortium. Unicode Standard, Chapter 16: Myanmar.
 - Unicode Consortium. Unicode Technical Note #11, Representing Myanmar in Unicode.
 
-These sources are authoritative for Unicode encoding, code-point behavior,
+These sources are authoritative for Unicode encoding, code-point behaviour,
 canonical ordering and script mechanics. They are not treated as automatic
 authority for every phonological interpretation.
 
