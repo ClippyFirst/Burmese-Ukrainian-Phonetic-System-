@@ -219,7 +219,7 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 
 - Current main: `aab45f9165d7f9cd7423425ff28186e1c29af0bf`; exact-main tests [41424921603](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41424921603) and Pages/deployed smoke [41424921607](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41424921607) SUCCESS.
 - Overall status: research prototype. Structural/engineering contracts are materially stronger, but phonological realization, tone/register/phonation, MLCTS-to-Ukrainian completeness and independent gold remain incomplete.
-- Gold: 0 independent expert-adjudicated lexical IPA records; accuracy=null. Keep MYA-GOLD-001 BLOCKED, MYA-PHON-001 and MYA-IPA-001 PARTIAL, MYA-ROM-001 PARTIAL, MYA-UI-001 TODO.
+- Gold: 0 independent expert-adjudicated lexical IPA records; accuracy=null. Keep MYA-GOLD-001 BLOCKED, MYA-PHON-001 and MYA-IPA-001 PARTIAL, MYA-ROM-001 PARTIAL, MYA-UI-001 PARTIAL.
 - No phonological labels or mappings were added in this review. The external G2P runs remain diagnostics and licensing-limited, not gold or production approval.
 
 
@@ -301,8 +301,13 @@ No dataset was imported and no model was promoted. Concordance/PER from publishe
 
 | ID | Status | Evidence update | Acceptance / limitation |
 |---|---|---|---|
-| MYA-ORTHO-SYLLABIFICATION-001 | PARTIAL (external evidence reviewed; not implemented as ClippyFirst G2P) | Hlaing & Mikami (2014), DOI [10.4038/ICTER.V6I2.7150](https://doi.org/10.4038/ICTER.V6I2.7150), full-text review: rule-based FST; 11,732 orthographic words; 99.93% word-syllabification; the consonant-stacking subset is 245/253 correct (96.83%); the text also discusses a free-standing-vowel error. Count discrepancy 32,238 vs 32,283 syllables. | This metric is strictly orthographic segmentation, not G2P, phoneme or IPA accuracy. Do not use as a pronunciation benchmark score. |
+| MYA-ORTHO-SYLLABIFICATION-001 | PARTIAL (external evidence reviewed; not implemented as ClippyFirst G2P) | Hlaing & Mikami (2013; published online 2014), DOI [10.4038/ICTER.V6I2.7150](https://doi.org/10.4038/ICTER.V6I2.7150), full-text review: rule-based FST; 11,732 orthographic words; 99.93% word-syllabification; the consonant-stacking subset is 245/253 correct (96.83%); the text also discusses a free-standing-vowel error. Count discrepancy 32,238 vs 32,283 syllables. | This metric is strictly orthographic segmentation, not G2P, phoneme or IPA accuracy. Do not use as a pronunciation benchmark score. |
 | MYA-TONE-VOWEL-ANALYSIS-001 | PARTIAL | Mooney & Repetti-Ludlow (2021), DOI [10.3765/plsa.v6i1.4900](https://doi.org/10.3765/plsa.v6i1.4900): two acoustic experiments with one female native Yangon consultant in her late 20s; duration/voice-quality measures distinguish four categories in isolation, F0 distinguishes selected pairs; in sentential frames duration largely neutralizes and pitch remains robust. Vowel alternations are argued to be coda/sonority-conditioned. Four surface categories are retained; killed H→HL and creaky HL are proposed underlying analyses, explicitly left for further work. | Preserve as a narrow-sample competing analysis. Do not encode as a universal rule or replace the four-category surface model without independent expert evidence. |
 | MYA-GOLD-AGREEMENT-001 | TODO | Annotation-method evidence: Cucchiarini (1996), DOI [10.3109/02699209608985167](https://doi.org/10.3109/02699209608985167); Oller & Ramsdell (2006), DOI [10.1044/1092-4388(2006/100)]. | Pilot must report exact normalized agreement plus alignment-aware feature-weighted agreement, separate tone/duration/phonation/vowel/coda/boundary metrics, unresolved alternatives and adjudication rate. Raw percent agreement is supplementary only. |
 
 No labels, lexemes or corpus data added. Independent expert gold remains 0; accuracy null.
+
+## Bibliographic correction — 2026-11-03
+
+- Hlaing & Mikami's article is assigned to *The International Journal on Advances in ICT for Emerging Regions*, Vol. 6 No. 2 (2013); the journal page gives an online publication date of 2014-01-03. The source-level note now cites it as 2013 (published online 2014), avoiding a false year conflict. The reported 99.93% remains orthographic syllabification, not G2P/IPA.
+- Duan & Zhu (2025) is now fully identified as “Double registers and eight tones in Burmese: From the perspective of The Syllabic Phonology and tono-typology”, *Language and Linguistics* 26(3), 387–430, DOI 10.1075/lali.00203.dua. It remains a competing analysis, not settled runtime consensus.
