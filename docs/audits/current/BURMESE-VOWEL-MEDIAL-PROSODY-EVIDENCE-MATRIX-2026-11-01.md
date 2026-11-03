@@ -24,7 +24,7 @@ Antony Green, “Word, Foot, and Syllable Structure in Burmese” (revised from 
 | Source | Claim | Status |
 |---|---|---|
 | Green (1995/revised chapter) | Four-way low/high/creaky/checked analysis with major/minor syllables | SOURCE_ANALYSIS |
-| Mooney & Repetti-Ludlow (2021), [CC BY 4.0](https://doi.org/10.3765/plsa.v6i1.4900) | Vowel alternations are argued to be tone-independent and related to sonority sequencing | PEER_REVIEWED_COMPETING_ANALYSIS |
+| Mooney & Repetti-Ludlow (2021), [CC BY 4.0](https://doi.org/10.3765/plsa.v6i1.4900) | Two acoustic experiments with one female native Yangon consultant; duration/voice quality distinguish four tones in isolation, F0 distinguishes selected pairs; in sentential contexts duration largely neutralizes and pitch remains robust. Vowel alternations are argued to be coda/sonority-conditioned, not tone-driven. Four surface categories retained; killed H→HL with coda and creaky HL are hypotheses, not settled analysis. | PEER_REVIEWED_COMPETING_ANALYSIS; narrow one-speaker sample |
 | Duan & Zhu (2025), [publisher record](https://doi.org/10.1075/lali.00203.dua) | Two registers (modal and lower/breathy) and eight tones | PEER_REVIEWED_COMPETING_ANALYSIS; full paper/data not inspected |
 | Repetti-Ludlow (2023), [Phonetica DOI](https://doi.org/10.1515/phon-2022-0026) | Voiceless sonorants show spread-glottis/turbulent cues; duration, F0 and following-vowel excitation contribute | CONSONANT_PHONATION_EVIDENCE, not vowel-tone inventory |
 | LREC 2020, [paper](https://aclanthology.org/2020.lrec-1.777.pdf) | Reports 34 consonants, seven basic vowels, schwa, four diphthongs and four tone categories; tone cues include pitch, contour, length and phonation | SYSTEM_DESCRIPTION, not gold data |
