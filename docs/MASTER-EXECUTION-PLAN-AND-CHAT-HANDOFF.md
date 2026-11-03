@@ -808,3 +808,10 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 - Exact-main push verification: [41643388974](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41643388974) SUCCESS. Main test workflow [41643388974](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41643388974) passed. Pages build/deploy and live deployed-site smoke [41643388999](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41643388999) also passed, including Chromium built-site tests, Pages upload/deploy and deployed runtime-asset smoke.
 - This is a reproducibility/engineering correction, not a linguistic accuracy result. Independent adjudicated IPA gold remains 0; accuracy remains `null`.
 - The previously open documentation PRs [#91](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/91) and quality-audit PR [#89](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/89) now each lag current `main` by one commit; they require reconciliation and fresh exact-head checks. Their prior CI successes do not constitute post-merge verification.
+
+
+## Source-citation port on latest main — 2026-11-03
+
+- Reconciles the source-registry, references and research-audit changes from superseded PR #91 onto current `main` after split-manifest and handoff integrations.
+- The missing WSSANP 2016 record and exact ACL Anthology locator are included; author–year citations are corrected. The paper's romanized phoneme inventory is not treated as project IPA gold; dataset redistribution rights remain unverified.
+- Earlier source/citation PR exact-head CI succeeded, but this new branch requires its own exact-head checks. No external labels or model outputs imported; independent IPA gold remains 0 and accuracy remains `null`.

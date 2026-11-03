@@ -240,3 +240,11 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 ## Split-manifest integration checkpoint — 2026-11-03
 
 **Burmese PR #90: DONE_VERIFIED on main.** Merged as `01d0d193f043508c6283ba77d70f9e9439402997`. The global manifest identity invariant and separate-manifest creation acceptance are now in the default branch. Exact-main workflow [41643388974](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41643388974) succeeded. No gold rows were added; adjudicated gold remains 0 and empirical accuracy remains `null`.
+
+
+## Source-citation reconciliation — 2026-11-03
+
+**Status: PARTIAL pending exact-head verification.** Added the WSSANLP 2016 record, exact ACL Anthology locator and scoped author–year references on a clean branch from latest main.
+
+- Superseded PR #91 is not used as a merge candidate; this port must pass exact-head CI.
+- No pronunciation labels or corpus records imported; source rights remain source-specific; independent gold remains 0 and accuracy remains `null`.
