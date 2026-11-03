@@ -907,3 +907,10 @@ The 30-lexeme annotation pilot should add alignment-aware feature-weighted agree
 ## Automated IPA-gold gate limitation — 2026-11-03
 
 The CLI release gate enforces independent double annotation/adjudication, rights-cleared export, deterministic group splits and numeric 100/25/25 thresholds. It does not calculate language-specific phonological contrast coverage. A separate versioned coverage matrix and expert sign-off remain mandatory before any language benchmark release. A green numeric gate alone is not sufficient.
+## Final continuation closeout — 2026-11-03
+
+- Final pre-closeout branch head: `1124d9259cd025973451cb0c4730fb687a5ad3bc`; PR #89 remains open, mergeable, 56 ahead / 0 behind `main` (`aab45f9165d7f9cd7423425ff28186e1c29af0bf`).
+- Exact-head workflow [41604936328](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41604936328) succeeded: 139 pytest tests plus 48 subtests, npm tests, production build, generated-web-data drift check and 54 built-site Chromium tests.
+- Source registry now corrects Hlaing & Mikami's journal issue year (2013; online 2014), registers full Kyaw Thu et al. (2016) bibliographic metadata and Duan & Zhu (2025) DOI/pages. Orthographic syllabification and romanized PER remain structural/G2P comparators, not IPA gold.
+- Gold files remain empty: 0 records, 0 annotations, 0 adjudications, 0 splits. Accuracy remains null.
+- Changes in this continuation are documentation/evidence only. No runtime phonology, IPA labels, schema or generated artifacts changed. Next blockers: independent Yangon-profile annotation/adjudication, rights for dictionaries/models, manual deployed UI/accessibility QA and owner review/merge.
