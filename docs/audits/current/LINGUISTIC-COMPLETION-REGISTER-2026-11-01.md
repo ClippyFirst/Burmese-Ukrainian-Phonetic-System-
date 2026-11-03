@@ -221,3 +221,7 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 
 - Four benchmark BibTeX records (MekongPhon 2026, Myanmar dictionary G2P 2016, Burmese LREC 2020, Khmer G2P 2019) passed the Academic Writing Toolkit's structural BibTeX check with 0 issues. Primary metadata was checked against ACL Anthology / LREC Proceedings; the Khmer 2019 paper's title/authors/volume/pages/DOI and conflicting WER values were cross-checked against the available full text.
 - No external corpus, dictionary, pronunciation label or model was imported. Rights clearance remains source-specific; independent gold remains 0 and empirical accuracy remains `null`.
+
+## WSSANLP 2016 full-text dataset detail — 2026-11-03
+
+**Status: DONE_VERIFIED (bibliographic and benchmark metadata only).** The full paper confirms 25,300 Myanmar Language Commission dictionary words, 25,000 training items, three separate 100-word open test sets, and a separate 100-word closed test drawn from training data. This detail is now in the source registry, external benchmark audit and handoff. The paper's romanized phone inventory and its benchmark are not independent IPA gold for this project; dataset redistribution rights remain unestablished by the citation. Gold remains 0; accuracy remains null.
