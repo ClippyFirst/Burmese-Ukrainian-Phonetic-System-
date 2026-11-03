@@ -248,3 +248,12 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 
 - Superseded PR #91 is not used as a merge candidate; this port must pass exact-head CI.
 - No pronunciation labels or corpus records imported; source rights remain source-specific; independent gold remains 0 and accuracy remains `null`.
+
+
+## MYA-EVIDENCE-AUDIT-001 — source scope and phonology matrix — 2026-11-03
+
+**Status: PARTIAL pending exact-head CI and specialist review.** Updated the Burmese vowel/medial/prosody matrix and external-corpus triage with precise source scopes. Mooney & Repetti-Ludlow (2021) is a one-speaker competing analysis; Hlaing & Mikami's 99.93% is orthographic syllabification, not G2P; Oo et al. (2020) is orthographic speech, not IPA gold; Thu et al. (2016) uses a romanized inventory.
+
+- No lexicon rows or pronunciation labels imported. License claims remain specific to individual artifacts; the LREC grammar and corpus rights are not conflated.
+- Original PR #89 workflow [41631406950](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41631406950) succeeded before this clean port; fresh exact-head CI required.
+- Independent gold remains 0 and empirical accuracy remains `null`.
