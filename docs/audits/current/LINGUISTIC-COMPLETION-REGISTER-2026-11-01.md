@@ -1,6 +1,6 @@
 # Burmese linguistic completion register — 2026-11-01
 
-**Baseline:** `main` `8524e94cc3bdd40075cde9d1c3f7a44e9c15e6c9`.
+**Baseline code commit:** `8524e94cc3bdd40075cde9d1c3f7a44e9c15e6c9` (implementation state underlying the recorded exact-main evidence; subsequent changes in this handoff series are documentation-only).
 **Latest exact-main evidence:** tests [41649547740](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41649547740) SUCCESS; Pages/deployed smoke [41649547721](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41649547721) SUCCESS.
 **Open pull requests:** none at this checkpoint.
 **Latest exact-main engineering evidence:** tests [41326473323](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41326473323) and Pages/deployed smoke [41326473352](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41326473352) succeeded.
