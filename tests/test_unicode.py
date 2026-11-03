@@ -49,6 +49,6 @@ def test_mixed_text_runs_and_myanmar_digits_match_browser_boundaries():
 
 
 def test_c0_c1_controls_remain_isolated_unsupported_units():
-    source = "A\\x7fB\\x85C\\x01D"
+    source = "A\x7fB\x85C\x01D"
 
-    assert segment_graphemes(source) == ["A", "\\x7f", "B", "\\x85", "C", "\\x01", "D"]
+    assert segment_graphemes(source) == ["A", "\x7f", "B", "\x85", "C", "\x01", "D"]
