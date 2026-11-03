@@ -235,3 +235,11 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 - PR [#90](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/90), final documentation head `239da6add4d23654a0cdb9ecb2a25c77fd588b58`; code/test checkpoint `acc29c519c72d9ba9cc48f30191e0c8a6ae73ae7` (the three subsequent commits are docs-only).
 - Exact-head CI [41638537232](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41638537232) SUCCESS — 145 pytest tests + 48 subtests; web data validation OK; 54 browser tests passed.
 - No linguistic gold rows were added; independent gold remains 0 and empirical accuracy remains `null`.
+
+
+## Source and benchmark citation reconciliation — 2026-11-03
+
+**Status: PARTIAL pending exact-head verification of the clean port.** Added the missing WSSANLP 2016 source record and exact ACL Anthology locator, corrected author–year citations, and explicitly distinguished the paper's romanized phone inventory from project IPA gold.
+
+- Original PR #91 exact-head tests [41639387068](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41639387068) and optional diagnostic [41639386952](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41639386952) succeeded. The clean port requires its own CI.
+- No external pronunciation labels or dictionary data imported; source redistribution rights remain unresolved; independent gold remains 0 and empirical accuracy remains `null`.
