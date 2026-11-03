@@ -843,3 +843,12 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 - `mattpocock/skills` current `main` is `4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`; the latest commit adds a software-factory glossary and example runs. The release reference remains v1.3.2 at `d1478fcb140db0b93c0c8df17bcfd311844749d0`; distinguish the immutable release pin from the current-main snapshot.
 - `DietrichGebert/ponytail` current `main` is `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`, release v5.3.3. The post-pin change inspected is a README product/logo addition, not a methodology change; the method reference remains the v5.3.3 release commit `7801d061243d7b753bad0e0b3c057cd250b11755`.
 - No upstream skill files were copied into product/runtime code. These are traceable method references only.
+
+## Continuation — held-out IPA benchmark correction (2026-11-03)
+
+- Base `main`: `f506b80744b1f96996e9ecdfb7e03622b152907d`; work branch: `fix/heldout-ipa-benchmark-20261103`.
+- Finding: the frozen split manifest existed, but the gold TSV export discarded split identity and the scorer included all adjudicated rows. This could allow train/dev examples into a purported independent evaluation.
+- Implemented: export now requires a frozen assignment and emits `split`; the gold TSV header includes the field; benchmark validation requires a valid split, defaults to `test`, and supports explicit `--split train|dev|all` for non-held-out diagnostics. Reports identify the selected split and distinguish all adjudicated rows from the scored denominator.
+- Exact code/test-head verification: [tests run 41651876020](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41651876020) SUCCESS on `af3ff6c5d3104a45ce5c1524b6083850c6dacd83`, including pytest, npm build, generated web-data check, npm tests and built-site Playwright Chromium tests.
+- **IPA-BENCH-SPLIT-001 — DONE_VERIFIED (engineering contract).** Independent expert-adjudicated gold remains 0; `gold.tsv` remains header-only; empirical accuracy remains `null`. No phonetic labels were added.
+- Still blocked: two qualified independent annotators, a separate adjudicator, approved IPA convention, controlled blind intake and source-specific rights evidence. Manual visual/keyboard/screen-reader/mobile QA remains TODO.
