@@ -1,7 +1,9 @@
 # Master execution plan and chat handoff — Burmese → Ukrainian
 
-**Current checkpoint:** 2026-11-02 (reconciled after latest main publication)  
+**Current checkpoint:** 2026-11-03 (source and citation reconciliation)  
 **Default branch:** `main` at `aab45f9165d7f9cd7423425ff28186e1c29af0bf`  
+**Current review PR:** [#89](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/89), branch `research/burmese-quality-review-20261102`; documentation checkpoint based on `161f70628c3035b47021299b1cbd9410b50b1ade`.  
+**Latest exact code-head verification:** [tests 41605477450](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41605477450) and [41605470641](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41605470641) SUCCESS on code head `b0f83165b4f6a9271f3f6d7ad1598b944ac03a07`; later commits in this documentation checkpoint change no runtime code.  
 **Current main verification:** [tests 41424921603](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41424921603) SUCCESS; Pages deployment [41424921607](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41424921607) SUCCESS.  
 **Previous checkpoint:** `4ddb9d3f10427275ce75c7ae73270468d3721106` and branch/PR details below are historical and superseded by the merged main state.
 
@@ -914,3 +916,11 @@ The CLI release gate enforces independent double annotation/adjudication, rights
 - Source registry now corrects Hlaing & Mikami's journal issue year (2013; online 2014), registers full Kyaw Thu et al. (2016) bibliographic metadata and Duan & Zhu (2025) DOI/pages. Orthographic syllabification and romanized PER remain structural/G2P comparators, not IPA gold.
 - Gold files remain empty: 0 records, 0 annotations, 0 adjudications, 0 splits. Accuracy remains null.
 - Changes in this continuation are documentation/evidence only. No runtime phonology, IPA labels, schema or generated artifacts changed. Next blockers: independent Yangon-profile annotation/adjudication, rights for dictionaries/models, manual deployed UI/accessibility QA and owner review/merge.
+
+
+## Bibliographic and citation reconciliation — 2026-11-03
+
+- Corrected the playbook's venue-only “Oo et al. (LREC 2020)” to the unambiguous **Oo et al. (2020)** author-year citation.
+- Added the complete ACL Anthology record for Oo et al. (2020), including all authors, conference title, pages 6328–6339 and stable ACL URL, to `docs/references.md`. The paper describes a Burmese speech corpus and finite-state text-normalization/G2P grammars; it does not supply independently adjudicated project IPA gold.
+- Corrected the Ye Kyaw Thu et al. (2016) author ordering and completed its proceedings metadata. Its PER remains tied to the paper's romanized phoneme inventory, not this project's IPA benchmark.
+- These are targeted bibliographic fixes. Repository-wide citation completeness and source-scope audit remains PARTIAL. No labels or data were imported; independent gold remains 0 and accuracy null.
