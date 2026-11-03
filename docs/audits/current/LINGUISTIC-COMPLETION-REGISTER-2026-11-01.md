@@ -311,3 +311,12 @@ No labels, lexemes or corpus data added. Independent expert gold remains 0; accu
 
 - Hlaing & Mikami's article is assigned to *The International Journal on Advances in ICT for Emerging Regions*, Vol. 6 No. 2 (2013); the journal page gives an online publication date of 2014-01-03. The source-level note now cites it as 2013 (published online 2014), avoiding a false year conflict. The reported 99.93% remains orthographic syllabification, not G2P/IPA.
 - Duan & Zhu (2025) is now fully identified as “Double registers and eight tones in Burmese: From the perspective of The Syllabic Phonology and tono-typology”, *Language and Linguistics* 26(3), 387–430, DOI 10.1075/lali.00203.dua. It remains a competing analysis, not settled runtime consensus.
+
+
+## Citation metadata reconciliation — 2026-11-03
+
+| ID | Status | Work remaining | Acceptance |
+|---|---|---|---|
+| MYA-CITE-001 | PARTIAL | Oo et al. (2020) and Ye Kyaw Thu et al. (2016) records were corrected/expanded; repository-wide citation completeness and claim-level evidence audit remain open. | Every in-text citation maps to complete source metadata; claims distinguish corpus/G2P evidence from independent IPA gold and retain exact source scope. |
+
+The Oo et al. (2020) paper documents corpus and FST G2P resources, not independent project IPA gold. Current code verification remains runs [41605477450](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41605477450) and [41605470641](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41605470641) on `b0f83165b4f6a9271f3f6d7ad1598b944ac03a07`; later documentation commits did not change code. Independent gold remains 0; accuracy null.
