@@ -1,5 +1,15 @@
 # Master execution plan and chat handoff — Burmese → Ukrainian
 
+## Current continuation checkpoint — 2026-11-03
+
+- Dedicated fix branch: `fix/ipa-gold-split-manifest-coherence-20261103`; final documented branch head before this handoff refresh `331f6609a7a54da5bc28a817d0e3b9a7652acf09`; PR [#90](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/90) is open against `main`, 8 commits ahead / 0 behind, mergeable.
+- Fixed a reproducibility gap in the IPA gold split lifecycle: all rows in one manifest now share one frozen seed/version, and extending an existing manifest preserves that identity. Conflicting explicit overrides are rejected; redesigns require a separate versioned manifest.
+- RED evidence (tests-only change): [41612967105](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41612967105) failed on the three intended regression behaviors. GREEN evidence: [41613349719](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41613349719) SUCCESS — 142 Python tests + 48 subtests plus the repository workflow's remaining checks.
+- Linguistic gold remains 0; `gold.tsv` remains header-only; empirical accuracy remains `null`. This fix improves split reproducibility only.
+- Second RED/GREEN cycle also preserves CLI strictness: empty explicit `--seed`/`--version` values were shown to be silently defaulted by the first fix, regression tests failed on the test-only commit 41615393679, and exact-head GREEN 41615574734 passed after changing default resolution to distinguish `None` from an empty string.
+- No PR merged and no release published in this continuation.
+
+
 **Current checkpoint:** 2026-11-02  
 **Default branch:** `main` at `4ddb9d3f10427275ce75c7ae73270468d3721106`  
 **Active review branch at methodology documentation checkpoint:** `feat/ipa-gold-corpus-20261101-review` at `b5c50772c3d8f1494bb68d0a85a41b6fee82d1ec`
@@ -781,3 +791,11 @@ The older design PR [#53](https://github.com/ClippyFirst/Burmese-Ukrainian-Phone
 ### Pages smoke-test compatibility follow-up — 2026-11-02
 
 The cache-busted stylesheet URL introduced by the UI polish exposed an overly strict CSS-link extractor in the deployed-site smoke test. Fixed in PR [#88](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/88), merge `fea5f6e44680b6202e07e5e896eb175699c101c2`; the extractor now accepts an optional query string. PR CI passed (41424690731). The Pages workflow is now compatible with the deployed CSS URL. The post-merge Pages deployment and live-site smoke-test result are still **BLOCKED for independent verification** because external DNS/network access and a workflow-run listing endpoint were unavailable; do not infer deployment success from a merged PR or a successful pull-request CI run.
+
+
+## Split-manifest continuation update — 2026-11-03
+
+- PR [#90](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/90) remains open and mergeable, 18 commits ahead / 0 behind current main. The last verified code/test checkpoint was `acc29c519c72d9ba9cc48f30191e0c8a6ae73ae7`; all commits after that checkpoint change only documentation. Read the PR page for its live documentation head; no merge performed.
+- Added a regression test for creating a new, independent split manifest using a new empty JSONL `--splits` input and explicit new seed/version. Updated `docs/ipa-gold-corpus.md` to state that a new `--output` alone does not reset the existing input manifest.
+- Exact-head CI [41638537232](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41638537232) SUCCESS — 145 pytest tests + 48 subtests; web data validation OK; 54 browser tests passed.
+- Linguistic gold remains 0; gold export remains header-only; empirical accuracy remains `null`. This is split lifecycle/reproducibility engineering, not phonetic validation.
