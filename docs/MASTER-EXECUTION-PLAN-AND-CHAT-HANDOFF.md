@@ -1,5 +1,12 @@
 # Master execution plan and chat handoff — Burmese → Ukrainian
 
+## Continuation update — strict benchmark TSV validation (2026-11-03)
+
+- **Implementation commit:** `f5951bb1248a0bee66a795bd375f7e4e80ce7043` on `fix/heldout-ipa-benchmark-20261103` (PR #100; subsequent documentation commits follow it).
+- **DONE_VERIFIED (input integrity):** `read_tsv()` now rejects duplicate column names, blank header names, and nonblank rows with missing or extra fields. Physically blank lines remain ignored; values are not silently padded, truncated, or rewritten.
+- **Regression coverage:** duplicate gold and prediction headers, extra gold fields, and short prediction rows. Test-first RED: [41665726081](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41665726081); focused GREEN after implementation: [41665859814](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41665859814).
+- **Scope boundary:** this is TSV/input-integrity hardening only. It does not add IPA labels, change linguistic rules, or establish empirical accuracy. Independent adjudicated gold remains 0 and accuracy remains null.
+
 ## Current repository state — 2026-11-03
 
 - **Default branch:** [`main`](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/tree/main); PR base snapshot: `f506b80744b1f96996e9ecdfb7e03622b152907d` (the live branch may advance independently).
