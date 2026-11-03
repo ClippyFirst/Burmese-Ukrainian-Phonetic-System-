@@ -1,3 +1,9 @@
+## Post-merge provenance checkpoint — 2026-11-03
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-G2P-PROVENANCE-001 | DONE_VERIFIED (PR-head verified; post-merge push CI not independently surfaced) | PR [#106](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/106) merged as 76426383038ee18a4cf5f2136379b25c08a40d7e. Exact implementation/workflow-head tests [41726477853](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41726477853), optional Epitran/CRF [41726478205](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41726478205), and optional Goruut [41726477909](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41726477909) all SUCCESS; downloaded artifact contents inspected. | Report provenance, preserved Epitran resource hashes and sidecar integrity only. Gold remains 0; accuracy null. |
+
 ## External diagnostic report provenance — 2026-11-03
 
 | ID | Status | Evidence | Acceptance boundary |
