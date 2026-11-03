@@ -257,3 +257,11 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 - No lexicon rows or pronunciation labels imported. License claims remain specific to individual artifacts; the LREC grammar and corpus rights are not conflated.
 - Original PR #89 workflow [41631406950](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41631406950) succeeded before this clean port; fresh exact-head CI required.
 - Independent gold remains 0 and empirical accuracy remains `null`.
+
+
+## Continuation status sync — 2026-11-03
+
+- Current main: `36ee99a83e6dd2bcf4670860908c3dbf53301ab8`; exact-main checks: tests 41647872126 SUCCESS; Pages/deployed-site 41647872084 SUCCESS.
+- PR #89 is closed without merge; its mainline source and agent-guidance work was ported in focused commits. No open PRs were returned by the current open-PR query.
+- Engineering improvements on main are verified at the stated commit; this does not promote linguistic validation or manual accessibility tasks to DONE.
+- IPA gold remains 0; empirical accuracy remains null. Annotation staffing, convention approval, rights clearance, blind intake and adjudication remain BLOCKED on external human/evidence dependencies.
