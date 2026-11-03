@@ -1,3 +1,10 @@
+## Post-merge reconciliation — Burmese G2P diagnostic provenance (2026-11-03)
+
+- PR [#106](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/106) is merged into main as **76426383038ee18a4cf5f2136379b25c08a40d7e**; this is the current mainline checkpoint for this change.
+- The exact implementation/workflow head 942b6e8834878538c4e478c9195420b9618acd3 was verified: tests [41726477853](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41726477853) SUCCESS (162 Python tests + 64 subtests; 54 browser tests); optional Epitran/CRF [41726478205](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41726478205) SUCCESS; optional Goruut [41726477909](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41726477909) SUCCESS. The downloaded Epitran artifact contains JSON + .json.sha256 and is retained 90 days.
+- Later commits on the PR reconciled the handoff/register only. The post-merge push-run result was not available through the connected workflow-run query at this checkpoint; no post-merge CI result is claimed.
+- Research boundary unchanged: independent adjudicated Burmese IPA gold remains 0; empirical accuracy remains null.
+
 ## Continuation update — external Burmese G2P report provenance and integrity (2026-11-03)
 
 - **BURMESE-G2P-PROVENANCE-001 — DONE_VERIFIED (diagnostic reproducibility only):** scripts/benchmark_g2p.py now embeds exact harness SHA-256, corpus path/hash, engine name/version, Python version/implementation, platform, and clearly named GitHub event SHA/ref/head-ref fields. Existing Epitran mapping/preprocessor/postprocessor hashes remain intact. A supplied JSON output path produces a .json.sha256 sidecar and creates parent directories.
