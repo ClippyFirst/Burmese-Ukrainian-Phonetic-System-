@@ -1,3 +1,11 @@
+## Unicode segmentation parity correction — 2026-11-03
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| UNICODE-SEGMENTATION-002 | DONE_VERIFIED | [PR #103](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/103), squash merge `8ca42933dec5f830ca70e092f25acaefe1e35ecc`; exact-head Python, Node, build, and built-site browser tests passed in [41713878227](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41713878227) and [41713891844](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41713891844). | Python now groups contiguous mixed-text runs like the browser, excludes Myanmar digits/punctuation U+1040..U+104B from phonetic text segmentation, retains unsupported Myanmar extensions as Myanmar units, and isolates C0/C1 controls. Structural parity only; no pronunciation claim. |
+
+**Research boundary unchanged:** independent adjudicated Burmese IPA gold remains 0; empirical accuracy remains null.
+
 # Burmese linguistic completion register — 2026-11-01
 
 **Benchmark implementation merge:** `a5b844ec1d4f9be9264764ffa3652211fe78b6c5` (PR #100). **Handoff/register reconciliation merge:** `367819f9085eadc022079809a711b504527220ab` (PR #101).
