@@ -872,4 +872,5 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Test-first RED for whitespace-only gold IDs: [workflow run 41660769932](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41660769932) FAILED on the new regression as expected.
 - Test-first RED for prediction engine/ID fields: [workflow run 41662075069](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41662075069).
 - Final exact-code-head verification: [workflow run 41662232565](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41662232565) SUCCESS; 152 Python tests + 54 subtests; 54 built-site browser tests passed.
+- Verified implementation commit: `7d6a5a5f207a7e6040c632032f18d6acc303234a`; exact-code-head CI [workflow run 41662232565](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41662232565) SUCCESS.
 - **IPA-BENCH-IDENTIFIERS-001 — DONE_VERIFIED (engineering input-integrity guard).** No linguistic labels, gold records or accuracy claims were added.
