@@ -815,3 +815,13 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 - Reconciles the source-registry, references and research-audit changes from superseded PR #91 onto current `main` after split-manifest and handoff integrations.
 - The missing WSSANP 2016 record and exact ACL Anthology locator are included; author–year citations are corrected. The paper's romanized phoneme inventory is not treated as project IPA gold; dataset redistribution rights remain unverified.
 - Earlier source/citation PR exact-head CI succeeded, but this new branch requires its own exact-head checks. No external labels or model outputs imported; independent IPA gold remains 0 and accuracy remains `null`.
+
+
+## Burmese focused source audit and agent guidance — 2026-11-03
+
+- Ported the evidence-matrix and agent-navigation portion of prior PR #89 onto current main after the manifest-wide split fix (#90) and WSSANP citation reconciliation (#94). Split runtime code, tests and source-registry changes were intentionally excluded because they are already merged.
+- Updated the vowel/medial/prosody evidence matrix to describe Mooney & Repetti-Ludlow (2021) precisely: two acoustic experiments with one female native Yangon consultant; isolated vs sentential cue differences; coda/sonority-conditioned vowel alternations remain a competing analysis, not a settled replacement for traditional tone categories.
+- Added source-level distinctions: Hlaing & Mikami's reported 99.93% is orthographic word syllabification, not G2P/IPA; Oo et al. (2020) is a 20-female-speaker Yangon orthographic speech corpus, not IPA gold; Thu et al. (2016) evaluates a romanized phone inventory, not project IPA gold. Dataset and grammar licenses remain artifact-specific.
+- Added the root glossary, verified codebase map, issue-tracker instructions and AGENTS.md routing to the canonical handoff.
+- No lexicon rows, IPA labels or model predictions imported. Independent adjudicated gold remains 0; accuracy remains `null`.
+- Exact-head CI is pending for this documentation port; original PR #89 CI [41631406950](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41631406950) succeeded on its earlier head and is not evidence for this new branch.

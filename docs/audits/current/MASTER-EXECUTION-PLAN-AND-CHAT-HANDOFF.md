@@ -1,6 +1,6 @@
 # Burmese → Ukrainian: Master Execution Plan and Chat Handoff
 
-Last reviewed: 2026-10-21
+Last reviewed: 2026-11-03
 Repository: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-
 Default branch used for this review: `main`; the prior audit baseline was `5bc93e81d07d6afbad366c300eae321790b91893`. Later commits added normalization regressions, audit corrections, and an optional evidence-gated G2P benchmark runner; see the dated sections below for the exact revision and CI state.
 Working title: “Burmese-to-Ukrainian Transcription: Graphemic Analysis and an Evidence-Gated Phonological Model”.
@@ -525,3 +525,8 @@ See [IPA gold protocol](docs/ipa-gold-corpus.md) and [Burmese phonology research
 | IPA-GOLD-BLIND-INTAKE-001 | BLOCKED | Requires external controlled intake; public GitHub history cannot provide blind annotation |
 
 The rights registry does not itself grant permission. Each real source still needs its exact license/permission verified by a responsible curator, and share-alike/attribution terms must be honored in distribution.
+
+
+## Current continuation pointer — 2026-11-03
+
+The canonical current handoff is [docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md](../../MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md); the current evidence register is [LINGUISTIC-COMPLETION-REGISTER-2026-11-01.md](LINGUISTIC-COMPLETION-REGISTER-2026-11-01.md), and the execution ledger is [EXECUTION-STATUS-MATRIX-2026-10-21.md](EXECUTION-STATUS-MATRIX-2026-10-21.md). New source-level corrections: Hlaing & Mikami's 99.93% is orthographic syllabification, not G2P/IPA; Mooney & Repetti-Ludlow present a one-speaker competing tone/vowel analysis; SLR80 is a 20-female-speaker Yangon orthographic speech corpus with CC BY-SA 4.0 data, not IPA gold. Independent expert gold remains 0 and accuracy null. See the current handoff for detailed source, license and acceptance notes.

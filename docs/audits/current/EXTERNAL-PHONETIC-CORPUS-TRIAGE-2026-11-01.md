@@ -70,3 +70,12 @@ The three-repeat raw outputs are preserved in workflow artifacts and summarized 
 ## Cross-engine comparison update
 
 Cross-engine check: Epitran 1.35.3 returned 6/6 raw outputs; Goruut returned 7/8 usable probes and failed the Burmese punctuation sentence. Exact string agreement between Epitran and Goruut was 0/6. Epitran is largely tone-less in these examples while Goruut emits tone-marked strings; without a common IPA convention and expert gold this is disagreement, not an accuracy ranking. Latest Goruut run had 7 stable usable outputs; a prior run showed one unstable `ကြည်` output.
+
+
+## Burmese corpus/G2P source-level clarification — 2026-11-03
+
+- Oo et al. (2020), [Burmese Speech Corpus, Finite-State Text Normalization and Pronunciation Grammars with an Application to Text-to-Speech](https://aclanthology.org/2020.lrec-1.777): 2,528 utterances, 20 female Yangon speakers, 22,443 word tokens and 9,941 unique words. The speech corpus is CC BY-SA 4.0. The Thrax/WFST pronunciation grammar is a separate artifact; its license must be checked separately. The released corpus is orthographic speech/text, not IPA gold, and no public benchmark split is established by the paper.
+- Thu et al. (2016), [Comparison of Grapheme-to-Phoneme Conversion Methods on a Myanmar Pronunciation Dictionary](https://aclanthology.org/W16-3702): 25,300 MLC dictionary entries, 25,000 train and three 100-word open test sets; reports PER on its own romanized phoneme inventory. It does not document independent IPA adjudication or a project-compatible IPA convention; the dictionary's redistribution license is not established by the paper.
+- Hlaing & Mikami (2013; published online 2014), [Automatic syllable segmentation of Myanmar texts using finite state transducer](https://doi.org/10.4038/ICTER.V6I2.7150): 11,732 orthographic words and 99.93% word-syllabification accuracy from a rule-based FST; the table reports 245/253 consonant-stacking words correct (96.83%); the text also discusses a free-standing-vowel error. This is orthographic segmentation, not G2P/IPA accuracy.
+
+No rows/models imported. These resources are structural or external G2P comparators only; independent expert IPA gold remains 0 and accuracy null.
