@@ -869,7 +869,7 @@ A further benchmark review found that a header-only prediction TSV exited succes
 
 A code review found that truthiness-only identifier checks accepted whitespace-only gold IDs, prediction IDs and engine names. Such values could create visually empty keys and make malformed prediction rows look like a named engine. Validation now rejects identifiers whose trimmed value is empty while preserving non-empty identifiers verbatim for exact matching. Regression tests cover each field separately.
 
-- Test-first RED for whitespace-only gold IDs: [Lao 41660769932](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41660769932), [Burmese 41660769932](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41660769932), [Khmer 41660769932](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41660769932).
+- Test-first RED for whitespace-only gold IDs: [workflow run 41660769932](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41660769932) FAILED on the new regression as expected.
 - Test-first RED for prediction engine/ID fields: [workflow run 41662075069](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41662075069).
 - Final exact-code-head verification: [workflow run 41662232565](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41662232565) SUCCESS; 152 Python tests + 54 subtests; 54 built-site browser tests passed.
 - **IPA-BENCH-IDENTIFIERS-001 — DONE_VERIFIED (engineering input-integrity guard).** No linguistic labels, gold records or accuracy claims were added.
