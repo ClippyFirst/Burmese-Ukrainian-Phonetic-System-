@@ -94,7 +94,7 @@ def test_report_provenance_and_checksum_sidecar_are_reproducible(tmp_path, monke
     monkeypatch.setenv("GITHUB_SHA", "c" * 40)
     provenance = module["build_provenance"]("fixture.csv", "d" * 64, "epitran", "9.9")
     assert provenance["harness_sha256"] == module["sha256_file"](SCRIPT)
-    assert provenance["source_revision"] == "c" * 40
+    assert provenance["github_event_sha"] == "c" * 40
     assert provenance["python_implementation"]
     assert provenance["platform"]
     target = tmp_path / "report.json"
