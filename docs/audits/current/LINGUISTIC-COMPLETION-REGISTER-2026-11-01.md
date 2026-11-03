@@ -6,6 +6,12 @@
 **Latest exact-main engineering evidence:** tests [41326473323](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41326473323) and Pages/deployed smoke [41326473352](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41326473352) succeeded.
 **Scope:** continue the existing master handoff; this register does not replace it.
 
+## Engineering integrity continuation — 2026-11-03
+
+- **TSV-INPUT-001 — DONE_VERIFIED:** benchmark TSV ingestion now rejects duplicate/blank headers and nonblank rows with extra or missing fields; blank physical lines are ignored. Regression cases cover gold/prediction duplicate headers, extra gold cells, and truncated prediction rows.
+- **Evidence:** test-first RED [41665726081](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41665726081); focused implementation GREEN [41665859814](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41665859814); implementation commit `f5951bb1248a0bee66a795bd375f7e4e80ce7043`.
+- **Acceptance boundary:** input shape is validated before scoring. This does not create adjudicated IPA data or alter language accuracy status (gold 0; accuracy null).
+
 ## Evidence-based task ledger
 
 | ID | Status | Work remaining | Acceptance |
