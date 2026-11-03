@@ -1,5 +1,13 @@
 # Master execution plan and chat handoff — Burmese → Ukrainian
 
+## Bibliography and source-registry checkpoint — 2026-11-03
+
+- Dedicated documentation branch: `docs/source-citation-audit-20261103`; source-backed benchmark citation and registry corrections are recorded in the completion register.
+- Added the missing WSSANLP 2016 bibliography record with exact authors and ACL Anthology locator; corrected the external benchmark citations to author–year form. The LREC 2020 citation is reconciled with the existing source entry. Neither paper is treated as project IPA gold or evidence of transferable accuracy.
+- Academic Writing Toolkit: four BibTeX records structurally validated with 0 issues; British-English check returned 0 issues for all three benchmark audit documents after the Khmer spelling correction. Its citation-audit parser did not reliably parse the repositories' CSV/JSON source registries, so no false 'citation clean' claim is made; citations and metadata were checked directly against the primary ACL Anthology/LREC records and full text where available.
+- No external pronunciation labels or data imported; independent gold remains 0, accuracy remains `null`; no license permission inferred from article/model licenses.
+
+
 **Current checkpoint:** 2026-11-02  
 **Default branch:** `main` at `4ddb9d3f10427275ce75c7ae73270468d3721106`  
 **Active review branch at methodology documentation checkpoint:** `feat/ipa-gold-corpus-20261101-review` at `b5c50772c3d8f1494bb68d0a85a41b6fee82d1ec`
