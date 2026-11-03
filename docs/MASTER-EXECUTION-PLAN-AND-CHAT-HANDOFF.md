@@ -1,24 +1,23 @@
 # Master execution plan and chat handoff — Burmese → Ukrainian
 
-## Current continuation checkpoint — 2026-11-03
+## Current repository state — 2026-11-03
 
-- Dedicated fix branch: `fix/ipa-gold-split-manifest-coherence-20261103`; final documented branch head before this handoff refresh `331f6609a7a54da5bc28a817d0e3b9a7652acf09`; PR [#90](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/90) is open against `main`, 8 commits ahead / 0 behind, mergeable.
-- Fixed a reproducibility gap in the IPA gold split lifecycle: all rows in one manifest now share one frozen seed/version, and extending an existing manifest preserves that identity. Conflicting explicit overrides are rejected; redesigns require a separate versioned manifest.
-- RED evidence (tests-only change): [41612967105](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41612967105) failed on the three intended regression behaviors. GREEN evidence: [41613349719](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41613349719) SUCCESS — 142 Python tests + 48 subtests plus the repository workflow's remaining checks.
-- Linguistic gold remains 0; `gold.tsv` remains header-only; empirical accuracy remains `null`. This fix improves split reproducibility only.
-- Second RED/GREEN cycle also preserves CLI strictness: empty explicit `--seed`/`--version` values were shown to be silently defaulted by the first fix, regression tests failed on the test-only commit 41615393679, and exact-head GREEN 41615574734 passed after changing default resolution to distinguish `None` from an empty string.
-- PR [#90](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/90) was merged; see the post-merge checkpoint below. No release published.
+- **Default branch:** `main` at `8524e94cc3bdd40075cde9d1c3f7a44e9c15e6c9`.
+- **Open pull requests:** none at the time of this checkpoint; all relevant integration PRs are merged or explicitly superseded/closed.
+- **Integrated engineering and research changes:** manifest-wide split identity; WSSANP 2016 citation; source-scoped evidence matrix and corpus audit; glossary, codebase map and agent guidance; current Pages deployment.
+- **Exact-main verification:** tests [41649547740](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41649547740) SUCCESS; Pages/deployed smoke [41649547721](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41649547721) SUCCESS.
+- **Research boundary:** independent expert-adjudicated IPA gold remains 0; `gold.tsv` remains header-only; empirical accuracy remains `null`. Passing engineering/browser/deployment checks is not evidence of phonetic accuracy.
+
+## Current task ledger and blockers
+
+- **DONE_VERIFIED:** manifest-wide split identity is enforced; the default branch has current CI evidence; source citations and evidence scope have been reconciled; project agent guidance is in place.
+- **PARTIAL:** source-language phonology, IPA conventions, and Ukrainian target adaptation remain bounded by language-specific evidence and unresolved cases. Any external benchmark remains diagnostic until rights, profile and IPA conventions are independently validated.
+- **BLOCKED:** independent gold collection requires an approved profile and IPA convention, two qualified independent annotators, a separate adjudicator, blinded intake and source-specific rights clearance.
+- **TODO:** complete manual visual, keyboard, screen-reader, responsive and mobile QA on the deployed site; automated browser smoke is not a substitute.
+
+## Historical checkpoints (retained for audit; superseded by the current state above)
 
 
-**Current checkpoint:** 2026-11-03 (split-manifest fix merged)  
-**Default branch:** `main` at `01d0d193f043508c6283ba77d70f9e9439402997`  
-**Active review branch at methodology documentation checkpoint:** `feat/ipa-gold-corpus-20261101-review` at `b5c50772c3d8f1494bb68d0a85a41b6fee82d1ec`
-**Open implementation PR:** [#84](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/84)  
-**Branch comparison at this checkpoint:** 98 commits ahead of main, 0 behind.
-**Exact-head methodology verification:** [tests 41358676730](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41358676730) SUCCESS; optional diagnostics [41358676910](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41358676910) and [41358676749](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41358676749) SUCCESS.
-**Research status:** research prototype only; independent expert-adjudicated IPA gold = **0**; `data/benchmark/gold.tsv` is header-only; empirical accuracy = **null**.
-
-## Current task ledger and next blocker
 
 - **DONE_VERIFIED (engineering):** independent IPA corpus schemas, runtime validation, deterministic split/rights gates, source/evidence documentation, and exact-head automated engineering checks are present on the active branch. This is not linguistic validation.
 - **PARTIAL:** source-language phonology, IPA conventions, and Ukrainian target adaptation remain bounded by the language-specific evidence matrices and unresolved cases.
