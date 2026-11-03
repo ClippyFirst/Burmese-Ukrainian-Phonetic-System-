@@ -47,9 +47,9 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: burmese-epitran-raw-output
-          path: artifacts/burmese-epitran-raw-output.json
+          path: artifacts/burmese-epitran-raw-output.json*
           if-no-files-found: warn
-          retention-days: 30
+          retention-days: 90
 
   crf-baseline:
     runs-on: ubuntu-latest
