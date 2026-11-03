@@ -1,3 +1,10 @@
+## Continuation update — Python/browser mixed-script segmentation parity (2026-11-03)
+
+- **UNICODE-SEGMENTATION-002 — DONE_VERIFIED:** Python segmentation now follows the browser's text-boundary contract: contiguous non-Myanmar text is retained as one segment; Myanmar digits and punctuation U+1040..U+104B are treated as mixed-text separators, not Burmese phonetic units; Myanmar Extended-A/B/C letters remain recognized as Myanmar script even when unsupported by the Burmese phonetic inventory; C0/C1 controls remain isolated unsupported units.
+- **Implementation:** [PR #103](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/103), squash merge `8ca42933dec5f830ca70e092f25acaefe1e35ecc`.
+- **Test-first / CI evidence:** the first run exposed an incorrectly escaped test fixture (not a parser defect); the fixture was corrected to contain actual control code points. Exact final PR-head `1c61bd1ec91a5275e2dc88a845a8c1740fa8d657`: Python tests, Node tests, generated web build, and built-site browser tests all passed in [push workflow 41713878227](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41713878227) and [PR workflow 41713891844](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41713891844).
+- **Scope boundary:** source segmentation/API parity only. No phonological rules, IPA labels, gold examples, or accuracy claims were added. The broad `is_myanmar` Unicode block recognizer remains unchanged so unsupported Myanmar extensions are not misclassified as ordinary foreign-script passthrough.
+
 # Master execution plan and chat handoff — Burmese → Ukrainian
 
 ## Continuation update — strict JSON constants (2026-11-03)
