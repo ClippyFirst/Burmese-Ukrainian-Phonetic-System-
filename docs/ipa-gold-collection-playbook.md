@@ -121,3 +121,30 @@ Use SLR80 as the leading source for a small contextual-audio annotation pilot af
 - **Mooney & Repetti-Ludlow (2021)**, [Sonority and syllable structure: The case of Burmese tone](https://doi.org/10.3765/plsa.v6i1.4900): two acoustic experiments with one female native Yangon consultant in her late 20s. Four traditional surface tone categories are retained. Duration/voice-quality measures distinguish the categories in isolation; F0 distinguishes selected pairs; in sentential frames duration largely neutralizes while pitch remains robust. Vowel alternations are argued to be coda/sonority-conditioned. Killed H→HL and creaky HL are hypotheses for further work, not a new settled tone inventory.
 
 The 30-item pilot must preserve this uncertainty: record tone category, phonation, duration, F0, coda and prosodic context separately; do not adopt a single-speaker competing analysis as a universal runtime rule.
+
+
+## Recruitment and source leads — reviewed 2026-11-03
+
+These are prospective leads only. No person has been contacted, consented, recruited, or approved as annotator/adjudicator. A publication or thesis is not proof of availability or qualification for independent IPA adjudication.
+
+### Prospective linguistic reviewers
+
+- Tanintorn Limpasiri (Mahidol University, Research Institute for Languages and Cultures of Asia) and Yuttaporn Naksuk co-authored a review synthesizing initial consonant phoneme analyses across eight Burmese dialects, including Yangon. This is a useful comparative-phonology lead for checking dialect boundaries and onset coverage, not evidence that either can independently annotate the full Yangon IPA corpus. Publication: https://so01.tci-thaijo.org/index.php/damrong/article/view/265701
+- Sandar Linn completed a 2018 MA thesis specifically on Yangon Burmese phonology, with data partly collected through native-speaker interviews. This is a directly scoped prospective research lead; availability, current affiliation and suitability for independent IPA adjudication are unverified. Thesis: https://e-thesis.mcu.ac.th/storage/oeuomIhxw82QqWsYOqbHrlviHcugHfDqVOMRQhJs.pdf
+- Justin Watkins authored the Journal of the IPA Burmese description. Its accompanying audio files are licensed to the IPA for personal use and may not be incorporated into another product without Cambridge University Press permission; the description is a reference lead, not a reusable audio corpus. https://www.cambridge.org/core/journals/journal-of-the-international-phonetic-association/article/burmese/334DD11C94575EF39A51109B008FB090
+
+### Existing source and rights position
+
+- OpenSLR SLR80 remains the strongest rights-declared speech source: CC BY-SA 4.0, 20 female Yangon-recorded speakers and 2,528 utterances. Its transcripts are orthographic and sentence-contextual, not IPA; speaker dialects are not independently classified, and it cannot support gender-balanced generalization.
+- Mahidol University's 2000 Yangon Burmese phonology thesis is open access but explicitly reserved for study, requires attribution, prohibits modification and commercial use. It may be read as research evidence; do not reproduce its tables or derivative transcriptions into a redistributed project corpus without permission: https://repository.li.mahidol.ac.th/items/ed2d6600-f7c8-49be-9827-7984d398da49
+- Mooney & Repetti-Ludlow (2021) is CC BY 4.0 and useful for competing phonetic analyses, but uses one female Yangon consultant. It cannot establish population-wide variation or settle the project's tone/phonation convention: https://journals.linguisticsociety.org/proceedings/index.php/PLSA/article/view/4900
+
+### Immediate unblock sequence
+
+1. Invite a prospective Yangon-focused reviewer to review a draft versioned convention sheet separating tone/prosody, phonation, vowel quality/length, checked codas, medials, minor syllables and uncertainty.
+2. Ask the reviewer to nominate two independent native-speaker annotators and a separate adjudicator; independently confirm dialect competence and role separation.
+3. Use SLR80 only as a separately labelled contextual-audio candidate; verify clip-level transcript/audio correspondence and manually establish token intervals before annotation.
+4. Do not extract/relicense the Mahidol thesis or JIPA audio into the project corpus without written permission.
+5. Prepare 30 candidate lexeme groups only after source locator and item-level rights review; complete a private blind-intake dry run.
+
+Status remains BLOCKED for pilot execution: candidate researchers and sources have been identified, but no recruitment, rights clearance for derived thesis data, expert-approved convention, or adjudicated IPA labels exist.
