@@ -84,3 +84,22 @@ def test_epitran_mapping_lookup_does_not_shadow_importlib_metadata():
     source = SCRIPT.read_text(encoding="utf-8")
     assert "import importlib.resources" not in source
     assert "from importlib import resources" in source
+
+
+def test_report_provenance_and_checksum_sidecar_are_reproducible(tmp_path, monkeypatch):
+    import hashlib
+    import json
+    import runpy
+    module = runpy.run_path(str(SCRIPT))
+    monkeypatch.setenv("GITHUB_SHA", "c" * 40)
+    provenance = module["build_provenance"]("fixture.csv", "d" * 64, "epitran", "9.9")
+    assert provenance["harness_sha256"] == module["sha256_file"](SCRIPT)
+    assert provenance["source_revision"] == "c" * 40
+    assert provenance["python_implementation"]
+    assert provenance["platform"]
+    target = tmp_path / "report.json"
+    report = {"provenance": provenance, "exact_match_accuracy": None}
+    module["write_report"](target, report)
+    expected = hashlib.sha256(target.read_bytes()).hexdigest()
+    assert target.with_suffix(".json.sha256").read_text(encoding="utf-8").strip() == expected
+    assert json.loads(target.read_text(encoding="utf-8"))["exact_match_accuracy"] is None
