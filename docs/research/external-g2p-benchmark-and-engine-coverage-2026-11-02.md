@@ -6,9 +6,9 @@ This is a source-backed research audit, not an accuracy claim for this repositor
 
 ## Relevant benchmark evidence
 
-### Myanmar pronunciation dictionary G2P comparison (WSSANLP 2016)
+### Myanmar pronunciation dictionary G2P comparison (Kyaw Thu et al., 2016)
 
-Kyaw Thu, Pa Pa, Sagisaka & Iwahashi, “Comparison of Grapheme-to-Phoneme Conversion Methods on a Myanmar Pronunciation Dictionary”, WSSANLP 2016, pp. 11–22.
+Kyaw Thu, Y., Pa Pa, W., Sagisaka, Y., & Iwahashi, N. (2016). “Comparison of Grapheme-to-Phoneme Conversion Methods on a Myanmar Pronunciation Dictionary.” *Proceedings of WSSANLP 2016*, 11–22. https://aclanthology.org/W16-3702/.
 
 The paper compares seven methods: S-AROW, CRF, joint-sequence models, phrase-based SMT, RNN, SVM point-wise classification, and WFST on a manually tagged Myanmar phoneme dictionary. It reports automatic phoneme error rate plus manual review of voicing, tones, consonant, and vowel errors; CRF, PBSMT, and WFST are reported as the strongest methods. This is directly relevant G2P evidence, but it is historical and must not be treated as a score for current engines or this project's Standard Burmese IPA convention.
 
@@ -20,7 +20,7 @@ The public myG2P resource documents a Myanmar Language Commission pronunciation-
 
 Reference: https://github.com/ye-kyaw-thu/myG2P
 
-### Burmese speech corpus and FST grammars (LREC 2020)
+### Burmese speech corpus and FST grammars (Oo et al., 2020)
 
 Oo et al., “Burmese Speech Corpus, Finite-State Text Normalization and Pronunciation Grammars with an Application to Text-to-Speech”, LREC 2020.
 
