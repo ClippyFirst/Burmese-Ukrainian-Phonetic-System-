@@ -1,3 +1,9 @@
+## External diagnostic report provenance — 2026-11-03
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-G2P-PROVENANCE-001 | DONE_VERIFIED (diagnostic reproducibility only) | PR [#106](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/106), current head 8a3fd150a247144320c880756f187a256a890e2f; test-first RED [41725146714](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41725146714); exact-head tests [41725456860](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41725456860) SUCCESS (162 Python tests + 64 subtests; 54 browser tests); optional Epitran [41725456964](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41725456964) SUCCESS; optional Goruut [41725457027](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41725457027) SUCCESS. | Report records harness SHA-256, corpus hash, engine/version, Python implementation/version, platform and CI source revision; preserves Epitran resource hashes; JSON report has adjacent SHA-256 sidecar. Diagnostic integrity only. Independent adjudicated gold remains 0; accuracy null. |
+
 ## Unicode segmentation parity correction — 2026-11-03
 
 | ID | Status | Evidence | Acceptance boundary |
