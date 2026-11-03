@@ -16,8 +16,9 @@ authority for every phonological interpretation.
 - Green, Anthony. 2002. *Word, Foot, and Syllable Structure in Burmese.*
 - Mooney, Kate; Repetti-Ludlow, Chiara. 2021. *Sonority and syllable
   structure: The case of Burmese tone.*
-- Duan, Haifeng; Zhu, Xiaonong. 2025. *Double registers and eight tones in
-  Burmese.*
+- Duan, Haifeng; Zhu, Xiaonong. 2025. “Double registers and eight tones in
+  Burmese: From the perspective of The Syllabic Phonology and tono-typology.”
+  *Language and Linguistics* 26(3): 387–430. DOI: [10.1075/lali.00203.dua](https://doi.org/10.1075/lali.00203.dua).
 - Tun, Than Naing et al. 2011. *Myanmar text-to-speech system with rule-based
   tone synthesis.*
 
