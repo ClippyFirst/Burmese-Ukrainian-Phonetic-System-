@@ -1,5 +1,13 @@
 # Master execution plan and chat handoff — Burmese → Ukrainian
 
+## Continuation update — duplicate JSON object-key rejection (2026-11-03)
+
+- **JSONL-INPUT-001 — DONE_VERIFIED:** `scripts/ipa_gold_corpus.py` now rejects duplicate JSON object member names at every nesting level. The parser reports the source path and line number instead of allowing Python's default decoder to silently retain only the last value.
+- **Regression coverage:** duplicate top-level `record_id` and nested `orthography.text` keys, using otherwise valid corpus records.
+- **Test-first RED:** 41687392202.
+- **Exact implementation-head verification:** 41687710686 SUCCESS — 155 Python tests + 58 subtests; 54 built-site browser tests.
+- **Scope boundary:** this protects annotation/provenance/profile/split input integrity; no linguistic labels, source data, schemas, or gold rows were added or changed. Independent adjudicated gold remains 0; empirical accuracy remains null.
+
 ## Continuation update — strict benchmark TSV validation (2026-11-03)
 
 - **Implementation commit:** `f5951bb1248a0bee66a795bd375f7e4e80ce7043` on `fix/heldout-ipa-benchmark-20261103` (PR #100; subsequent documentation commits follow it).
