@@ -1,6 +1,6 @@
 # Burmese linguistic completion register — 2026-11-01
 
-**Current main commit:** `a5b844ec1d4f9be9264764ffa3652211fe78b6c5` (benchmark integrity PR #100 squash-merged).
+**Benchmark implementation merge:** `a5b844ec1d4f9be9264764ffa3652211fe78b6c5` (PR #100). **Handoff/register reconciliation merge:** `367819f9085eadc022079809a711b504527220ab` (PR #101).
 **Latest post-merge exact-main evidence:** [engineering verification](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41707518082) SUCCESS; [Pages/deployed-site smoke](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41707518030) SUCCESS.
 **Open pull requests:** none at this checkpoint.
 **Research boundary:** Independent expert-adjudicated Burmese IPA gold remains 0; `data/benchmark/gold.tsv` is header-only; empirical accuracy remains null.

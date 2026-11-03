@@ -31,8 +31,7 @@
 
 ## Current repository state — 2026-11-03 (post-merge)
 
-- **Default branch:** `main` at `a5b844ec1d4f9be9264764ffa3652211fe78b6c5`.
-- **Open pull requests:** none. Benchmark integrity PR [#100](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/100) was squash-merged into this exact main head.
+- **Mainline integration:** benchmark implementation PR #100 was squash-merged as `a5b844ec1d4f9be9264764ffa3652211fe78b6c5`; the handoff/register reconciliation PR #101 was squash-merged as `367819f9085eadc022079809a711b504527220ab`. No open PRs remained at this checkpoint.
 - **Held-out benchmark contract:** gold export preserves `split`, `split_seed`, and `split_version`; adjudicated records without a frozen split fail closed; the scorer defaults to `test`; train/dev/all require explicit diagnostic selection; mixed manifest identities and empty prediction files are rejected.
 - **Input integrity:** benchmark TSV headers/row widths, whitespace-only identifiers, duplicate JSON object keys, and non-standard JSON constants are rejected with regression coverage.
 - **Post-merge exact-main verification:** Post-merge tests and GitHub Pages build/deployment plus deployed-site/runtime-asset smoke all passed on the exact `main` head. The workflow included Python validation/tests, npm tests/build, generated-web-data drift check, and built-site Chromium tests. [workflow](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41707518082); [Pages/deployed-site smoke](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41707518030).
