@@ -789,3 +789,11 @@ The older design PR [#53](https://github.com/ClippyFirst/Burmese-Ukrainian-Phone
 ### Pages smoke-test compatibility follow-up — 2026-11-02
 
 The cache-busted stylesheet URL introduced by the UI polish exposed an overly strict CSS-link extractor in the deployed-site smoke test. Fixed in PR [#88](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/88), merge `fea5f6e44680b6202e07e5e896eb175699c101c2`; the extractor now accepts an optional query string. PR CI passed (41424690731). The Pages workflow is now compatible with the deployed CSS URL. The post-merge Pages deployment and live-site smoke-test result are still **BLOCKED for independent verification** because external DNS/network access and a workflow-run listing endpoint were unavailable; do not infer deployment success from a merged PR or a successful pull-request CI run.
+
+
+## Academic Writing Toolkit verification scope — 2026-11-03
+
+- Offline BibTeX validator: 4 entries, 0 structural issues. Its response contained empty `verified`, `metadata_checks`, and `online_sources` arrays; therefore this is a structural check only, not independent online metadata verification.
+- British-English check: 0 issues after correcting behaviour→behaviour. Citation audit flags compound/short surnames and treats last-author names in full bibliographic lines as citations; these are parser limitations, not missing sources, and primary metadata was checked manually.
+- Primary bibliographic metadata was separately checked against the ACL Anthology/LREC proceedings and publisher or institutional records. Tool citation parsing is not treated as an authority over compound surnames, two-letter surnames, or full reference-list entries; no unsupported citation-clean claim is made.
+- No pronunciation labels, external corpus rows, or model artifacts were imported as gold.
