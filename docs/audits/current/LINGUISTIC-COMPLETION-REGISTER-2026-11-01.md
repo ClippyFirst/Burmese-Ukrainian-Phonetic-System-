@@ -231,5 +231,5 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 
 - PR [#91](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/91) includes the current source/citation reconciliation.
 - Four supplied BibTeX records passed offline structural validation with 0 issues; the toolkit returned no online metadata checks, so metadata verification is recorded separately against primary sources.
-- British-English check: 0 issues after correcting the US spelling behaviour→behaviour. Citation-audit parser does not reliably resolve the compound surname Kyaw Thu or the two-letter surname Oo and misreads last authors in full reference-list entries; source records were checked against primary ACL Anthology metadata.
+- British-English check: 0 issues after correcting the US spelling behavior→behaviour. Citation-audit parser does not reliably resolve the compound surname Kyaw Thu or the two-letter surname Oo and misreads last authors in full reference-list entries; source records were checked against primary ACL Anthology metadata.
 - No external pronunciation labels were added; gold remains 0 and empirical accuracy remains `null`.
