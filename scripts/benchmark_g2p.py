@@ -13,6 +13,7 @@ import csv
 import hashlib
 import importlib.metadata
 import json
+import os
 import platform
 import sys
 from datetime import datetime, timezone
@@ -30,6 +31,37 @@ def sha256_file(path: Path) -> str:
         for chunk in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def build_provenance(
+    corpus_path: str,
+    corpus_sha256: str,
+    engine: str,
+    engine_version: str,
+) -> dict[str, Any]:
+    """Bind a diagnostic report to its exact harness, inputs and runtime."""
+    return {
+        "harness_path": "scripts/benchmark_g2p.py",
+        "harness_sha256": sha256_file(Path(__file__).resolve()),
+        "corpus_path": corpus_path,
+        "corpus_sha256": corpus_sha256,
+        "engine": engine,
+        "engine_version": engine_version,
+        "python_version": platform.python_version(),
+        "python_implementation": platform.python_implementation(),
+        "platform": platform.platform(),
+        "source_revision": os.environ.get("GITHUB_SHA"),
+    }
+
+
+def write_report(path: Path, report: dict[str, Any]) -> str:
+    """Write stable JSON and an adjacent SHA-256 sidecar."""
+    rendered = json.dumps(report, ensure_ascii=False, indent=2) + "\\n"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(rendered, encoding="utf-8")
+    digest = sha256_file(path)
+    path.with_suffix(path.suffix + ".sha256").write_text(digest + "\\n", encoding="ascii")
+    return digest
 
 
 def load_corpus(path: Path) -> list[dict[str, str]]:
@@ -107,6 +139,7 @@ def build_report(
         "engine": engine,
         "engine_version": engine_version,
         "python_version": platform.python_version(),
+        "provenance": build_provenance(corpus_path, corpus_sha256, engine, engine_version),
         "corpus_path": corpus_path,
         "corpus_sha256": corpus_sha256,
         "mapping_sha256": mapping_sha256,
@@ -191,7 +224,9 @@ def main() -> int:
     )
     rendered = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
     if args.output:
-        args.output.write_text(rendered, encoding="utf-8")
+        report_sha256 = write_report(args.output, report)
+        print(f"Raw-output report: {args.output}")
+        print(f"Report SHA-256: {report_sha256}")
     else:
         sys.stdout.write(rendered)
     return 0
