@@ -12,6 +12,12 @@
 - **Evidence:** test-first RED [41665726081](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41665726081); focused implementation GREEN [41665859814](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41665859814); implementation commit `f5951bb1248a0bee66a795bd375f7e4e80ce7043`.
 - **Acceptance boundary:** input shape is validated before scoring. This does not create adjudicated IPA data or alter language accuracy status (gold 0; accuracy null).
 
+## Strict JSON syntax — 2026-11-03
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| JSON-INPUT-003 | DONE_VERIFIED | Reject `NaN`, `Infinity`, and `-Infinity` in JSONL and license registry inputs. RED 41692649780; implementation CI 41693080642 SUCCESS (159 Python tests + 58 subtests; 54 built-site browser tests). | Reject non-standard JSON constants before corpus or rights validation; no linguistic labels or license terms changed. |
+
 ## License registry JSON integrity — 2026-11-03
 
 | ID | Status | Evidence | Acceptance boundary |
