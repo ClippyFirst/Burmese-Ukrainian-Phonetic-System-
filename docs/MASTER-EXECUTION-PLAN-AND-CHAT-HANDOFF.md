@@ -903,3 +903,7 @@ The 30-lexeme annotation pilot should add alignment-aware feature-weighted agree
 - Source-level corrections now distinguish Hlaing & Mikami's 2013 journal issue (online publication 2014) and identify Duan & Zhu (2025) with complete journal/pages/DOI metadata. Neither source supplies independent project IPA gold; 99.93% is orthographic syllabification.
 - SLR80 remains a contextual audio candidate (20 female native Burmese speakers recorded in Yangon, orthographic word-segmented transcripts, CC BY-SA 4.0) but not IPA gold or a gender-balanced/citation-form benchmark. Independent expert-adjudicated gold remains 0; accuracy remains null.
 - The source and bibliography updates are documentation-only; no phonology runtime rules or gold labels changed.
+
+## Automated IPA-gold gate limitation — 2026-11-03
+
+The CLI release gate enforces independent double annotation/adjudication, rights-cleared export, deterministic group splits and numeric 100/25/25 thresholds. It does not calculate language-specific phonological contrast coverage. A separate versioned coverage matrix and expert sign-off remain mandatory before any language benchmark release. A green numeric gate alone is not sufficient.
