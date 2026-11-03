@@ -825,3 +825,14 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 - Added the root glossary, verified codebase map, issue-tracker instructions and AGENTS.md routing to the canonical handoff.
 - No lexicon rows, IPA labels or model predictions imported. Independent adjudicated gold remains 0; accuracy remains `null`.
 - Exact-head CI is pending for this documentation port; original PR #89 CI [41631406950](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41631406950) succeeded on its earlier head and is not evidence for this new branch.
+
+
+## Current repository continuation checkpoint — 2026-11-03
+
+- Verified default branch `main` at `36ee99a83e6dd2bcf4670860908c3dbf53301ab8`.
+- Latest exact-main CI: tests 41647872126 SUCCESS; Pages/deployed-site 41647872084 SUCCESS.
+- PR reconciliation: PR #89 is closed without merge; its mainline source and agent-guidance work was ported in focused commits. No open PRs were returned by the current open-PR query.
+- Current engineering state: The latest main includes manifest-wide split identity, WSSANP/benchmark citation reconciliation, focused Burmese vowel/medial/prosody evidence corrections, agent navigation, and current Pages deployment. The research matrix still treats the single-consultant acoustic evidence as bounded, not a universal tone/vowel analysis.
+- Linguistic evidence boundary: 0 independent adjudicated IPA records; gold.tsv header-only; empirical accuracy null. CI and deterministic fixtures verify engineering behavior only; they do not establish pronunciation accuracy.
+- Human/research blockers remain: approve the versioned IPA convention; recruit two qualified independent annotators and a separate adjudicator; establish blinded intake; verify source-specific data rights; collect and adjudicate a profile-specific pilot; complete deployed-site manual keyboard, screen-reader, responsive and mobile QA.
+- No gold labels, source-derived IPA guesses, phonological rules, or benchmark scores were created in this checkpoint.
