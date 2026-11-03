@@ -213,3 +213,11 @@ The older design PR [#53](https://github.com/ClippyFirst/Burmese-Ukrainian-Phone
 ### Pages smoke-test compatibility follow-up — 2026-11-02
 
 The cache-busted stylesheet URL introduced by the UI polish exposed an overly strict CSS-link extractor in the deployed-site smoke test. Fixed in PR [#88](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/88), merge `fea5f6e44680b6202e07e5e896eb175699c101c2`; the extractor now accepts an optional query string. PR CI passed (41424690731). The Pages workflow is now compatible with the deployed CSS URL. The post-merge Pages deployment and live-site smoke-test result are still **BLOCKED for independent verification** because external DNS/network access and a workflow-run listing endpoint were unavailable; do not infer deployment success from a merged PR or a successful pull-request CI run.
+
+
+## External G2P bibliography reconciliation — 2026-11-03
+
+**Status: DONE_VERIFIED (bibliographic/source-registry correction; not linguistic validation).** Added the missing WSSANLP 2016 bibliography record with exact authors and ACL Anthology locator; corrected the external benchmark citations to author–year form. The LREC 2020 citation is reconciled with the existing source entry. Neither paper is treated as project IPA gold or evidence of transferable accuracy.
+
+- Four benchmark BibTeX records (MekongPhon 2026, Myanmar dictionary G2P 2016, Burmese LREC 2020, Khmer G2P 2019) passed the Academic Writing Toolkit's structural BibTeX check with 0 issues. Primary metadata was checked against ACL Anthology / LREC Proceedings; the Khmer 2019 paper's title/authors/volume/pages/DOI and conflicting WER values were cross-checked against the available full text.
+- No external corpus, dictionary, pronunciation label or model was imported. Rights clearance remains source-specific; independent gold remains 0 and empirical accuracy remains `null`.
