@@ -225,3 +225,11 @@ The cache-busted stylesheet URL introduced by the UI polish exposed an overly st
 ## WSSANLP 2016 full-text dataset detail — 2026-11-03
 
 **Status: DONE_VERIFIED (bibliographic and benchmark metadata only).** The full paper confirms 25,300 Myanmar Language Commission dictionary words, 25,000 training items, three separate 100-word open test sets, and a separate 100-word closed test drawn from training data. This detail is now in the source registry, external benchmark audit and handoff. The paper's romanized phone inventory and its benchmark are not independent IPA gold for this project; dataset redistribution rights remain unestablished by the citation. Gold remains 0; accuracy remains null.
+
+
+## Academic writing quality checks — 2026-11-03
+
+- PR [#91](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/91) includes the current source/citation reconciliation.
+- Four supplied BibTeX records passed offline structural validation with 0 issues; the toolkit returned no online metadata checks, so metadata verification is recorded separately against primary sources.
+- British-English check: 0 issues after correcting the US spelling behaviour→behaviour. Citation-audit parser does not reliably resolve the compound surname Kyaw Thu or the two-letter surname Oo and misreads last authors in full reference-list entries; source records were checked against primary ACL Anthology metadata.
+- No external pronunciation labels were added; gold remains 0 and empirical accuracy remains `null`.
