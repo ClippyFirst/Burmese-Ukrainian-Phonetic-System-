@@ -190,3 +190,7 @@ The independent IPA gold-corpus implementation and Burmese evidence matrix are i
 - Legacy documentation-only PR [#83](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/83) is **closed as superseded**; its register/matrix content was reconciled into merged PR [#84](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/84) and the current continuation branch. Its branch remains preserved.
 - Current research PR [#89](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/89) remains open and mergeable, zero commits behind current main. Latest work on it is documentation-only; code remains the previously tested implementation.
 - No PR was merged or release published during this pass.
+
+## Parallel PR reconciliation — 2026-11-03
+
+- PR #90 is the separate, verified implementation of the manifest-wide split seed/version invariant (exact-head tests 41615796407); PR #91 is the separate WSSANLP 2016 source-registry/G2P citation update (tests 41615159273; optional raw-output workflow 41615159106 operationally successful but unscored: 100 predictions, 84 source-concordant rows, gold_count 0, accuracy null). Both are open, mergeable and zero commits behind main. They are complementary to #89; do not duplicate their script/source-registry changes. Their handoff/register documentation overlaps and should be reconciled deliberately. No PR merged.
