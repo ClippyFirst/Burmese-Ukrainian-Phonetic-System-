@@ -33,3 +33,22 @@ def test_canonical_equivalent_myanmar_spellings_normalize_identically():
     composed = "\u1026"
     assert normalize_burmese(decomposed) == normalize_burmese(composed)
     assert segment_graphemes(decomposed) == segment_graphemes(composed)
+
+
+
+def test_mixed_text_runs_and_myanmar_digits_match_browser_boundaries():
+    source = "ကာ\\tABC-42\\r\\n၁၂၃၊။\\u200b𑛐 😀 العربية ဂီ"
+
+    assert segment_graphemes(source) == [
+        "ကာ",
+        "\\tABC-42\\r\\n၁၂၃၊။\\u200b",
+        "𑛐",
+        " 😀 العربية ",
+        "ဂီ",
+    ]
+
+
+def test_c0_c1_controls_remain_isolated_unsupported_units():
+    source = "A\\x7fB\\x85C\\x01D"
+
+    assert segment_graphemes(source) == ["A", "\\x7f", "B", "\\x85", "C", "\\x01", "D"]
