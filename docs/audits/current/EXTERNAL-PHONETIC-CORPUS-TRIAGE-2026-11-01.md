@@ -99,7 +99,7 @@ These are documentary facts from different sources, not a legal resolution. The 
 
 - Upstream repository: https://github.com/ye-kyaw-thu/myG2P
 - Pinned inspected revision: `54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225` (2026-09-02).
-- Version 2.0 dictionary file: `ver2/myg2p.ver2.0.txt` (2,329,808 bytes at the inspected tree).
+- Version 2.0 dictionary file: `ver2/myg2p.ver2.0.txt` (2,329,808 bytes; Git blob SHA `0b2735f9a6f7fe28ae94c4baaf323d1db3015c3b` at the pinned revision).
 - README documents five tab-separated fields: Word-ID, orthography, syllable-broken word, pronunciation respelling and IPA. It says the dictionary is based mainly on Myanmar Language Commission dictionary words and includes context-dependent pronunciations and foreign-word extensions.
 - The README explicitly declares **CC BY-NC-SA 4.0** and asks users to cite the ICCA 2015 / COLING 2016 papers. It lists contributors and acknowledges named researchers who checked G2P mappings.
 - This strengthens provenance and artifact pinning compared with the earlier generic myG2P reference. It does not provide a project-compatible dialect/IPA convention for every row, a per-entry audio locator, two independent IPA annotations plus separate adjudication, or permission for commercial use.
