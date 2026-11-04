@@ -2,7 +2,7 @@
 
 - Reviewed the Hugging Face dataset card, its JSONL file metadata, and the upstream Wiktionary copyright policy.
 - Dataset card reports 22,191 word–POS rows, 20,759 unique headwords, and only 113 IPA values (0.51%); MLCTS has full coverage but is not IPA.
-- The card declares CC BY 4.0 while identifying Myanmar Wiktionary as the source. Upstream Wiktionary states entry text is dual-licensed CC BY-SA 4.0 and GFDL 1.1-or-later. This is a potential license compatibility/relicensing issue; rights stay CONFLICT/UNKNOWN pending clarification.
+- The card declares CC BY 4.0 while identifying Myanmar Wiktionary as the source. The Myanmar Wiktionary local policy page (last edited 2024-12-06) states CC BY-SA 3.0 Unported and GFDL. This is a potential license compatibility/relicensing issue; rights stay CONFLICT/UNKNOWN pending clarification. Source policy: https://my.wiktionary.org/wiki/%E1%80%9D%E1%80%85%E1%80%BA%E1%80%9B%E1%80%BE%E1%80%84%E1%80%BA%E1%80%94%E1%80%9B%E1%80%AE:%E1%80%A1%E1%80%91%E1%80%BD%E1%80%B1%E1%80%91%E1%80%BD%E1%80%B1_%E1%80%9E%E1%80%90%E1%80%AD%E1%80%95%E1%80%BC%E1%80%AF%E1%80%96%E1%80%BD%E1%80%9A.
 - The dataset provides no per-entry dialect/convention, audio, annotator/adjudication, or detailed source locator in the card. Treat as a sparse discovery lead, not independent gold. No rows imported.
 - Evidence: https://huggingface.co/datasets/its-autumn/burmese-wiktionary; https://en.wiktionary.org/wiki/Wiktionary:Copyrights.
 
