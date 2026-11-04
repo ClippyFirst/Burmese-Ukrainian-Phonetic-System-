@@ -39,6 +39,14 @@
 
 # Master execution plan and chat handoff
 
+## Verified mainline checkpoint — Burmese Wiktionary provenance (2026-11-04)
+
+- Current main: `f4764d124e73005dab57512c93fdd59938e60ec3` (PR #112). No open PRs at checkpoint.
+- PR #111 merged as `8c323ff0d1236c5c6d36b2c2be0eac4d493163ab`, splitting dataset-card CC BY 4.0 from Myanmar Wiktionary local policy CC BY-SA 3.0 Unported/GFDL into separate source records and documentary claims. Main tests [41798078257](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41798078257), optional Epitran [41798080052](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41798080052), Pages [41798078321](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41798078321) SUCCESS.
+- PR #112 merged as `f4764d124e73005dab57512c93fdd59938e60ec3`, reconciling the triage, completion register and handoff. PR-head tests [41799540057](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41799540057) SUCCESS; post-merge main tests [41799853697](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41799853697) and Pages deployment [41799853678](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41799853678) SUCCESS.
+- Research boundary: source attribution is now accurate, but rights are still CONFLICT/UNKNOWN. The snapshot has 113 IPA values (0.51%) and no item-level dialect/convention, audio, detailed locators or adjudication. No dataset import, gold labels or accuracy claims.
+
+
 ## Burmese Wiktionary source-provenance checkpoint — 2026-11-04
 
 - PR #111 merged as `8c323ff0d1236c5c6d36b2c2be0eac4d493163ab`. The dataset card's CC BY 4.0 declaration and the upstream Myanmar Wiktionary local policy's CC BY-SA 3.0 Unported/GFDL statement are now represented by separate source records and separate documentary claims.
