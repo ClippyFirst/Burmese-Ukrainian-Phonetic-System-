@@ -985,3 +985,35 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - These are leads only: no one has been contacted or recruited; no IPA convention has been approved; no rights have been granted; no IPA labels were generated.
 - The 30-item pilot remains BLOCKED until the acceptance conditions in the playbook are met. Candidate lexicon entries, phonetic respellings, model outputs, orthographic transcripts and source descriptions are not gold IPA.
 - The next external action is to contact a qualified prospective reviewer and request nominations for two independent annotators plus a separate adjudicator; separately complete item-level rights review and blind-intake dry run.
+
+
+## One-pass continuation checkpoint — 2026-11-04
+
+- Current default branch: `main`; verified head `21b7160342423cce4cf844485e15452457b11386` (latest commit after PR #114).
+- Open PR query on 2026-11-04 returned none. Latest relevant merges: #108–#114. These register the Burmese Wiktionary snapshot, correct and separate the dataset-card and Myanmar Wiktionary policy claims, and reconcile the post-merge evidence.
+- Exact-head hosted verification for PR #111: tests 41797849174 SUCCESS; optional Epitran raw-output benchmark 41797849167 SUCCESS. PRs #112–#114 are documentation-only reconciliation. The current main combined-status endpoint returned no status entries; this is not evidence of a failed or successful main push run.
+- Preserved evidence boundary: the Wiktionary snapshot reports 22,191 word–POS rows, 20,759 headwords and only 113 IPA values (0.51%); MLCTS coverage is not IPA coverage. The dataset card's CC BY 4.0 conflicts with the upstream Myanmar Wiktionary policy's CC BY-SA 3.0 Unported/GFDL terms. Rights remain **CONFLICT/UNKNOWN**; no rows or IPA labels were imported.
+- Task ledger: source claim separation, provenance and regression coverage **DONE_VERIFIED**; independent adjudicated Burmese IPA gold **BLOCKED** (0 records; gold export header-only; accuracy null); specialist approval of IPA/tone/register convention, two independent annotators, separate adjudicator, item-level rights and blind intake **BLOCKED**; full vowel/coda/checked-syllable/tone/phonation/contextual allophony and MLCTS crosswalk remain **PARTIAL**; manual keyboard/screen-reader/mobile QA **TODO**.
+- Do not treat MLCTS, Epitran, Goruut, Wiktionary's sparse IPA, or model output as project gold. No phonology or Ukrainian mapping rules changed in the latest source-evidence merges.
+- The initial checkpoint commit was documentation-only; a subsequent test-only change now uses Burmese script and a neutral test profile in the IPA-corpus fixtures. Hosted CI results for the final head are recorded separately; local tests were not run in this connector session. Hosted CI evidence above is tied to the exact PR head, not a claim of fresh local verification.
+
+
+## Hosted verification update — 2026-11-04
+
+- Draft PR #115 exact head `3c7e54150186406dda3bf2033202f9baac84ef55`: Tests run [41844585137](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41844585137) **SUCCESS**.
+- The completed job reports success for independent IPA gold corpus structure validation, editable Python package installation and pytest, Node dependency installation, site build, generated-web-data reproducibility, npm tests, Chromium installation and browser tests against the built site.
+- This verifies the docs-only PR head and the repository's current CI contract. It does not resolve the Burmese Wiktionary rights conflict, establish phonological accuracy, or create missing IPA gold; the evidence and expert-review blockers above remain unchanged.
+
+
+## Test-fixture correction — 2026-11-04
+
+- Review found that the shared IPA-corpus validator test file used Lao orthography and a Lao-specific profile description even in the Khmer and Burmese repositories. This did not affect production validation, but made the fixtures misleading and weakened language-specific test coverage.
+- The test fixtures now use the repository's script (Lao / Khmer / Myanmar), neutral `test-<language>` profile identifiers and `Test fixture (<language>)` variety labels. A regression test asserts the fixture characters fall within the corresponding Unicode block and that profile metadata matches the repository language.
+- This is a test-harness correction only. It does not validate language phonology, IPA correctness, or script-specific parser behavior; the production validator still intentionally validates corpus structure rather than imposing a single script restriction on all orthographic records.
+
+
+## Final test-fixture PR verification — 2026-11-04
+
+- Test and handoff changes were present at head `75577df557671c5c0c275e2c65ca20582aeb2a01` when the following hosted checks completed: Tests [41847155216](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41847155216) **SUCCESS**.
+- The successful checks include the language-specific IPA-corpus fixture regression, repository data validation, language-specific Python test suite, web build/reproducibility checks and Chromium browser checks where configured.
+- Exact job steps were inspected; every reported step completed with `success`. These are engineering/structural checks, not a linguistic accuracy benchmark. No local tests were run in this connector session.
