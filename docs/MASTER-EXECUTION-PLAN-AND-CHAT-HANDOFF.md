@@ -1042,7 +1042,7 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 ## IPA gold release-gate profile consistency — 2026-11-04
 
 - Found a concrete gap in the shared `scripts/ipa_gold_corpus.py`: the release gate checked adjudicated-record counts, frozen splits and source redistribution rights, but did not enforce the playbooks' one-target-profile / one-IPA-convention requirement. A mixed-variety or mixed-kind corpus could therefore pass the numeric/rights gate and be scored as one benchmark.
-- Added regression tests first for mixed profile and mixed IPA kind in each of the three repositories. The first Lao test run failed on both new cases as expected; after adjusting the fixture to populate all three deterministic split buckets, the regression remained targeted. The Khmer and Burmese test runs are being verified on their final code heads.
+- Added regression tests first for mixed profile and mixed IPA kind in each of the three repositories. The first Lao test run failed on both new cases as expected; after adjusting the fixture to populate all three deterministic split buckets, the regression remained targeted. The Khmer and Burmese exact-head runs subsequently passed; final run IDs and merge evidence are recorded below.
 - Added shared gate checks: one signature across adjudicated records (`profile.id`, `variety`, `region`, `register`) and exactly one adjudicated IPA kind. Per-record speaker/audio IDs are deliberately excluded from target-profile identity.
 - Updated the corpus documentation and completion register. The checks do not replace approved convention sheets, human reviewer qualifications, blind annotation evidence, or language-specific contrast-coverage reports. The gate still does not calculate contrast coverage from free-text phonological metadata.
 - No IPA labels, pronunciation rules, Ukrainian mappings, source data, or benchmark scores were added. Independent adjudicated gold remains 0 in all three projects.
@@ -1059,3 +1059,12 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - The Burmese execution status matrix was updated in the same branch. Lao and Khmer have no separate execution-matrix file; their canonical handoff and linguistic completion register were updated.
 - This verifies an engineering fail-closed guard only. The CLI still does not calculate language-specific contrast coverage, and human convention approval, blind workflow evidence, expert adjudication and rights review remain required. No linguistic data or rules changed.
 - No local checkout/tests were available in this connector session; all test claims above refer to inspected hosted GitHub Actions logs.
+
+
+## Mainline merge verification — IPA gold release-profile guard — 2026-11-04
+
+- PR #117 merged to `main` as `085ce5a2da4a07dfbf606a9892c78a4d3bbb9d91`; current main was confirmed at the same SHA immediately after merge.
+- Exact PR-head verification: [41870132273](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41870132273) **SUCCESS** (168 tests; 64 subtests; 54 built-site browser tests).
+- Post-merge tests [41870579420](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41870579420) **SUCCESS** and Pages [41870579398](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41870579398) **SUCCESS**.
+- The branch was based on latest main with zero commits behind at merge; no conflicting PRs were present. The exact diff was reviewed and merged with an expected-head SHA guard.
+- The release guard is now on main. Independent expert-adjudicated gold remains 0; this work does not establish phonetic accuracy or benchmark readiness.
