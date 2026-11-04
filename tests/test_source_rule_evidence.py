@@ -109,6 +109,7 @@ def test_external_burmese_pronunciation_and_audio_sources_keep_rights_boundaries
     myg2p = sources["MYG2P2026"]
     assert "54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225" in myg2p["scope"]
     assert "five tab-separated fields" in myg2p["scope"]
+    assert "0b2735f9a6f7fe28ae94c4baaf323d1db3015c3b" in myg2p["scope"]
     assert "IPA" in myg2p["scope"]
     assert "CC BY-NC-SA 4.0" in myg2p["scope"]
     assert "not an independently adjudicated project gold" in myg2p["scope"]
