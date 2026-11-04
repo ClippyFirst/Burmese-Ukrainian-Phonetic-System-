@@ -13,3 +13,5 @@ CLM-WIKT-IPA-001,"The 2026-08-01 Burmese Wiktionary snapshot contains 22,191 rec
 CLM-WIKT-LICENSE-001,"The Burmese Wiktionary dataset card declares CC BY 4.0.",MYWIKTIONARY2026,license_metadata,"Hugging Face dataset card metadata",DOCUMENTARY
 
 CLM-WIKT-UPSTREAM-LICENSE-001,"Myanmar Wiktionary local policy states CC BY-SA 3.0 Unported and GNU Free Documentation License (GFDL).",MYWIKTIONARYPOLICY2024,license_metadata,"Local policy page last edited 2024-12-06",DOCUMENTARY
+CLM-MYG2P-001,"myG2P Version 2.0 publishes a five-field Burmese pronunciation dictionary with orthography, syllable segmentation, romanized pronunciation and IPA; its README states that the dictionary is based mainly on Myanmar Language Commission dictionary words and is licensed CC BY-NC-SA 4.0.",MYG2P2026,dataset_documentation,Burmese dictionary and pronunciation mapping, DOCUMENTARY
+CLM-OPENSLR80-001,"OpenSLR SLR80 lists a CC BY-SA 4.0 license for manually quality-checked volunteer Burmese sentence recordings and orthographic transcripts; the resource does not provide IPA labels.",OPENSLR80,dataset_metadata,Burmese sentence audio and transcripts,DOCUMENTARY
