@@ -12,7 +12,7 @@
 ## Post-merge handoff audit — 2026-11-04
 
 - The base `main` SHA for this implementation branch was `58c509080eb5ae6d22c2d5277904d2688b9d246e`. This is an immutable branch-base fact, not a claim that it remains the live `main` head after this implementation PR is merged.
-- Previous documentation checkpoint PR #122 had exact head `60a92b8a54abd05fa3a6d9d069282a7a95c2397b`. Its diff was manually inspected; no CI status/workflow evidence surfaced for that PR head, so its CI remains **NOT VERIFIED**.
+- Previous documentation checkpoint PR #122 had exact head `60a92b8a54bb2a2955e7eb7ad5502f8e749d504f`. Its diff was manually inspected; no CI status/workflow evidence surfaced for that PR head, so its CI remains **NOT VERIFIED**.
 - The duplicate follow-up PR #123 was closed unmerged. The replacement implementation PR is #124; it includes the validator, regression tests, workflow-label correction, agent guidance and this handoff update. The branch's code-bearing implementation commit is `42d2d478bd025aceb67bddac7e9f335121da0f4b`; GitHub PR metadata is the source of the eventual merge SHA.
 - The exact-head workflow evidence and any still-running steps are recorded in the engineering-gate section above. This document intentionally records immutable branch-base history rather than a self-referential live-main SHA.
 - Independent expert-adjudicated IPA gold remains 0; `data/benchmark/gold.tsv` remains header-only; empirical accuracy remains null. The profile confirmation does not substitute for expert convention approval, independent annotators/adjudicator, curator, blind intake, contrast coverage or independently verified source rights.
