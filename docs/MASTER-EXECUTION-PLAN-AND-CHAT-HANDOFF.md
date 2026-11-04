@@ -1068,3 +1068,20 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Post-merge tests [41870579420](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41870579420) **SUCCESS** and Pages [41870579398](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41870579398) **SUCCESS**.
 - The branch was based on latest main with zero commits behind at merge; no conflicting PRs were present. The exact diff was reviewed and merged with an expected-head SHA guard.
 - The release guard is now on main. Independent expert-adjudicated gold remains 0; this work does not establish phonetic accuracy or benchmark readiness.
+
+
+## Expert recruitment lead revalidation — 2026-11-04
+
+- Branch: `research/expert-recruitment-leads-20261104`, based on main immediately before this research pass.
+- Rechecked official institutional and publication sources for prospective expert reviewers/referral routes; appended a dated, qualification-limited section to `docs/ipa-gold-collection-playbook.md` and added `BURMESE-IPA-GOLD-RECRUITMENT-LEADS-001` to the existing completion register.
+- Candidate fit is limited to the evidence actually published: no availability, willingness, native target-variety competence, role independence or consent is inferred. No one was contacted. Public institutional emails are included only where published by the institution/research journal.
+- The pilot remains blocked on actual recruitment, versioned convention approval, two independent target-variety annotators, separate adjudicator, non-annotating curator, source/item rights and secure blind intake. No IPA labels or gold data were added.
+- Hosted CI pending for this branch; no local checkout/tests were available in this connector session.
+
+
+## Final expert-lead research PR verification — 2026-11-04
+
+- Exact PR head: `e56d4f4ea8692fded1e074cc74bc0d0725104c90`; Tests [41872785717](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41872785717) **SUCCESS**. Inspected steps: IPA corpus structure, editable Python install, pytest, Node install, production build, generated-data freshness, npm tests and built-site Chromium browser tests all passed.
+- The update only improves recruitment evidence. No recruitment, IPA labels, gold data or production phonology changed.
+- No local checkout or local tests were available; these results refer only to the hosted GitHub Actions runs linked above.
+- The human pilot remains blocked on actual invitations/consent, approved versioned IPA convention, two qualified independent target-variety annotators, separate adjudicator, curator, item-level rights and secure blind intake.
