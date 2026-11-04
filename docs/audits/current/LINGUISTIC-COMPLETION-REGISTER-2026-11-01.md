@@ -410,3 +410,13 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BURMESE-IPA-GOLD-FIXTURE-001 | DONE_VERIFIED | PR [#115](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/115) merged as `28ac47949efb725610023a24b69df1c584d598a7`; exact-main tests [41847895975](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41847895975) and Pages/deployed-site smoke [41847895765](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41847895765) SUCCESS. | Test fixture now uses Myanmar script and neutral test profile; regression asserts the Myanmar Unicode-block and matching profile metadata. This validates test-fixture integrity only, not phonological rules or IPA accuracy. Gold remains 0; accuracy null. |
+
+
+## Burmese external pronunciation/audio source audit — 2026-11-04
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-MYG2P-SOURCE-001 | DONE_VERIFIED (source pinned and provenance/rights documented; no import) | Upstream `ye-kyaw-thu/myG2P` revision `54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225`; Version 2.0 file `ver2/myg2p.ver2.0.txt`, 2,329,808 bytes, five tab-separated fields including IPA; CC BY-NC-SA 4.0. Registered as `MYG2P2026`. | External diagnostic/comparator only. Non-commercial/share-alike terms, per-entry provenance, dialect and IPA convention must be respected. Existing test-only probe does not become gold or production approval. |
+| BURMESE-OPENSLR80-AUDIO-001 | PARTIAL (audio source registered; pilot not performed) | OpenSLR SLR80 provider record lists CC BY-SA 4.0; manually quality-checked Burmese volunteer sentence audio and orthographic transcripts; visible female subset includes 541 KB index and 948 MB WAV archive. Registered as `OPENSLR80`. | No IPA labels; dialect/profile not sufficiently established. Any pilot requires specialist screening, exact provider locators, blind double IPA annotation and independent adjudication; assess share-alike before publishing derived labels. |
+
+**Evidence boundary:** source records and provenance tests are complete; no external dictionary or audio was imported. Independent adjudicated Burmese IPA gold remains 0; accuracy remains null.
