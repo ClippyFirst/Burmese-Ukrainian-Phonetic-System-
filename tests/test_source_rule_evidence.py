@@ -85,10 +85,18 @@ def test_burmese_wiktionary_ipa_source_is_sparse_and_rights_gated():
     assert "113 IPA values (0.51%)" in source["scope"]
     assert "MLCTS coverage is not IPA coverage" in source["scope"]
     assert "CC BY 4.0" in source["scope"]
-    assert "CC BY-SA 3.0 Unported" in source["scope"]
     assert "rights_status=CONFLICT/UNKNOWN" in source["scope"]
-    rights_claim = claims["CLM-WIKT-LICENSE-001"]
-    assert rights_claim["source_id"] == "MYWIKTIONARY2026"
-    assert rights_claim["status"] == "UNCERTAIN"
-    assert "CC BY 4.0" in rights_claim["claim"]
-    assert "CC BY-SA 3.0 Unported" in rights_claim["claim"]
+    rights_source = sources["MYWIKTIONARY2026"]
+    policy_source = sources["MYWIKTIONARYPOLICY2024"]
+    assert "CC BY 4.0" in rights_source["scope"]
+    assert "CC BY-SA 3.0 Unported" in policy_source["scope"]
+    assert "GFDL" in policy_source["scope"]
+    card_claim = claims["CLM-WIKT-LICENSE-001"]
+    policy_claim = claims["CLM-WIKT-UPSTREAM-LICENSE-001"]
+    assert card_claim["source_id"] == "MYWIKTIONARY2026"
+    assert card_claim["status"] == "DOCUMENTARY"
+    assert "CC BY 4.0" in card_claim["claim"]
+    assert policy_claim["source_id"] == "MYWIKTIONARYPOLICY2024"
+    assert policy_claim["status"] == "DOCUMENTARY"
+    assert "CC BY-SA 3.0 Unported" in policy_claim["claim"]
+    assert "GFDL" in policy_claim["claim"]
