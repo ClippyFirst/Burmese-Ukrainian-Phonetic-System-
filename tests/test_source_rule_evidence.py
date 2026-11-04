@@ -100,3 +100,26 @@ def test_burmese_wiktionary_ipa_source_is_sparse_and_rights_gated():
     assert policy_claim["status"] == "DOCUMENTARY"
     assert "CC BY-SA 3.0 Unported" in policy_claim["claim"]
     assert "GFDL" in policy_claim["claim"]
+
+
+def test_external_burmese_pronunciation_and_audio_sources_keep_rights_boundaries():
+    sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+
+    myg2p = sources["MYG2P2026"]
+    assert "54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225" in myg2p["scope"]
+    assert "five tab-separated fields" in myg2p["scope"]
+    assert "0b2735f9a6f7fe28ae94c4baaf323d1db3015c3b" in myg2p["scope"]
+    assert "IPA" in myg2p["scope"]
+    assert "CC BY-NC-SA 4.0" in myg2p["scope"]
+    assert "not an independently adjudicated project gold" in myg2p["scope"]
+
+    openslr = sources["OPENSLR80"]
+    assert "CC BY-SA 4.0" in openslr["scope"]
+    assert "orthographic transcripts" in openslr["scope"]
+    assert "No IPA labels" in openslr["scope"]
+
+    assert claims["CLM-MYG2P-001"]["source_id"] == "MYG2P2026"
+    assert claims["CLM-MYG2P-001"]["status"] == "DOCUMENTARY"
+    assert claims["CLM-OPENSLR80-001"]["source_id"] == "OPENSLR80"
+    assert claims["CLM-OPENSLR80-001"]["status"] == "DOCUMENTARY"

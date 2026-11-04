@@ -1017,3 +1017,23 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Test and handoff changes were present at head `75577df557671c5c0c275e2c65ca20582aeb2a01` when the following hosted checks completed: Tests [41847155216](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41847155216) **SUCCESS**.
 - The successful checks include the language-specific IPA-corpus fixture regression, repository data validation, language-specific Python test suite, web build/reproducibility checks and Chromium browser checks where configured.
 - Exact job steps were inspected; every reported step completed with `success`. These are engineering/structural checks, not a linguistic accuracy benchmark. No local tests were run in this connector session.
+
+
+## Burmese external source research continuation — 2026-11-04
+
+- Created `research/burmese-open-pronunciation-evidence-20261104` from current main `11c4d4d73bc478c9d07ce7bfe3a3477327790445`.
+- Pinned and reviewed upstream myG2P at `54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225`; confirmed Version 2.0's five-field file includes an IPA field and is explicitly CC BY-NC-SA 4.0. Registered source `MYG2P2026` and documentary claim `CLM-MYG2P-001`.
+- Registered OpenSLR SLR80 (`OPENSLR80`) as a CC BY-SA 4.0 audio/transcript source. The provider documents manually quality-checked volunteer Burmese sentence recordings, anonymized file IDs and orthographic transcripts; the visible female subset is 541 KB index + 948 MB WAV archive. No IPA or sufficiently detailed dialect profile is supplied.
+- Added source-provenance regression tests to `tests/test_source_rule_evidence.py`, and updated the external corpus triage and linguistic completion register.
+- No dictionary/audio data copied. The existing myG2P probe remains test-only; the new source audit does not authorize production use, commercial redistribution, or treating myG2P outputs as project gold.
+- Independent adjudicated Burmese IPA gold remains 0; accuracy remains null. Hosted CI pending; no local test execution was available in this connector session.
+
+
+## Final Burmese external-source PR verification — 2026-11-04
+
+- Current PR #116 head at verification: `7e77d271274aef3c1b9eb6404689562d6f02ad03`.
+- Repository tests: [41850851191](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41850851191) **SUCCESS**.
+- Optional Epitran raw-output / pinned comparator workflow: [41850850898](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41850850898) **SUCCESS**, including both raw-output and CRF-baseline jobs. This is diagnostic reproducibility only; it does not validate IPA accuracy or create gold.
+- The tests verify the pinned myG2P artifact blob SHA, five-field IPA-bearing format, CC BY-NC-SA 4.0 status, OpenSLR CC BY-SA 4.0 source record and documentary claim linkage.
+- All source data remain external; no new runtime integration or production permission was added. Independent adjudicated Burmese IPA gold remains 0; empirical accuracy remains null.
+- No local tests were run; exact hosted jobs and step conclusions were inspected.

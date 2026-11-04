@@ -89,3 +89,34 @@ The dataset-card declaration and upstream content policy are now registered as t
 - `MYWIKTIONARYPOLICY2024`: the Myanmar Wiktionary local policy, last edited 2024-12-06, states CC BY-SA 3.0 Unported and GFDL.
 
 These are documentary facts from different sources, not a legal resolution. The extracted dataset's rights remain `CONFLICT/UNKNOWN`; no rows were imported. The sparse IPA values have no per-entry dialect/convention, audio, detailed source locator, annotator or adjudication metadata. Full MLCTS coverage is not IPA coverage. Do not use the 113 values as gold or train on the extracted dataset until the publisher/rightsholder clarifies the rights and the items pass profile/provenance review.
+
+
+## Additional Burmese pronunciation and audio source verification — 2026-11-04
+
+### myG2P Version 2.0 — pinned IPA-bearing dictionary
+
+**Disposition: highest-value external lexical comparator found; restricted to non-commercial/share-alike terms; NOT project gold.**
+
+- Upstream repository: https://github.com/ye-kyaw-thu/myG2P
+- Pinned inspected revision: `54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225` (2026-09-02).
+- Version 2.0 dictionary file: `ver2/myg2p.ver2.0.txt` (2,329,808 bytes; Git blob SHA `0b2735f9a6f7fe28ae94c4baaf323d1db3015c3b` at the pinned revision).
+- README documents five tab-separated fields: Word-ID, orthography, syllable-broken word, pronunciation respelling and IPA. It says the dictionary is based mainly on Myanmar Language Commission dictionary words and includes context-dependent pronunciations and foreign-word extensions.
+- The README explicitly declares **CC BY-NC-SA 4.0** and asks users to cite the ICCA 2015 / COLING 2016 papers. It lists contributors and acknowledges named researchers who checked G2P mappings.
+- This strengthens provenance and artifact pinning compared with the earlier generic myG2P reference. It does not provide a project-compatible dialect/IPA convention for every row, a per-entry audio locator, two independent IPA annotations plus separate adjudication, or permission for commercial use.
+- The existing project runtime probe is a diagnostic comparator only. Stable engine output or source dictionary IPA must not be counted as project gold or used to claim model accuracy.
+
+**Acceptance before any wider use:** retain the pinned commit and exact file SHA-256; confirm whether project testing/research purposes fit the non-commercial grant; document attribution/share-alike obligations; audit all five columns and IPA conventions; map a stratified subset to primary locators and dialect profile; obtain independent specialist double annotation and adjudication. Do not use the corpus in a commercial or unrestricted redistribution path without separate permission.
+
+### OpenSLR SLR80 — Burmese speech audio and orthographic transcripts
+
+- Provider record: https://www.openslr.org/80/
+- The provider lists **CC BY-SA 4.0** and describes manually quality-checked volunteer recordings of Burmese sentences with anonymized file IDs and orthographic transcripts; it cautions that errors may remain.
+- The currently visible female subset lists `line_index_female.tsv` (541 KB) and `my_mm_female.zip` (948 MB). The listing does not establish a full dialect/age profile for these files and supplies no IPA labels.
+- This is a possible audio source for a carefully scoped human annotation pilot, not a pronunciation dictionary or gold set. The text is sentence-level and the visible subset is female-only; do not infer that it covers all Burmese speakers or all Yangon/standard varieties.
+- CC BY-SA 4.0 attribution and share-alike conditions apply to the licensed dataset; assess publication of derived annotations before sharing. Preserve provider file IDs and timestamps; do not attempt to identify speakers or mirror files beyond the provider's terms.
+
+### Evidence decision
+
+The new records `MYG2P2026` and `OPENSLR80` are now registered in `data/burmese/sources.csv`; documentary claims are separately registered in `data/burmese/source_claims.csv`. No third-party dictionary or audio was copied. The only approved use status remains the previously documented test-only diagnostic use; this source audit does not grant any new production, redistribution or commercial permission.
+
+Independent expert-adjudicated Burmese IPA gold remains **0**; empirical accuracy remains **null**.
