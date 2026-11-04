@@ -420,3 +420,10 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | BURMESE-OPENSLR80-AUDIO-001 | PARTIAL (audio source registered; pilot not performed) | OpenSLR SLR80 provider record lists CC BY-SA 4.0; manually quality-checked Burmese volunteer sentence audio and orthographic transcripts; visible female subset includes 541 KB index and 948 MB WAV archive. Registered as `OPENSLR80`. | No IPA labels; dialect/profile not sufficiently established. Any pilot requires specialist screening, exact provider locators, blind double IPA annotation and independent adjudication; assess share-alike before publishing derived labels. |
 
 **Evidence boundary:** source records and provenance tests are complete; no external dictionary or audio was imported. Independent adjudicated Burmese IPA gold remains 0; accuracy remains null.
+
+
+## IPA gold release-gate profile consistency — 2026-11-04
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| IPA-GOLD-RELEASE-PROFILE-001 | DONE_VERIFIED (engineering guard) | Shared `scripts/ipa_gold_corpus.py` now rejects adjudicated corpora that mix target-profile identity (`id`, `variety`, `region`, `register`) or IPA kinds. New regression tests cover both failures. Hosted CI runs are recorded in the continuation handoff. | Does not prove profile approval, annotator qualifications, blindness, linguistic contrast coverage, or IPA accuracy. A specialist-reviewed language-specific coverage report remains required before benchmark readiness. |
