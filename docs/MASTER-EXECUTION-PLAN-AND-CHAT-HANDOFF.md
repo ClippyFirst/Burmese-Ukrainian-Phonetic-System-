@@ -1,3 +1,15 @@
+## Exact mainline checkpoint after methodology-gate adoption — 2026-11-04
+
+- Verified `main` head: `ef82296a0906bf0c041d60a8cf6f193a602e9950`. The two methodology/completion-gate PRs for this repository are merged; there are no open PRs at this checkpoint. No implementation, linguistic registry, source record, benchmark label, or generated artifact was changed by those PRs.
+- Exact-head CI status at checkpoint: Burmese tests run 41877091198 and Pages deployment run 41877090949 are QUEUED. These runs have not completed; do not record them as successful. Earlier green PR runs are not substitutes for this exact mainline head.
+- GitHub branch metadata reports `main` as unprotected (no required status checks). This is a repository governance risk, not changed here; configuring branch protection or rulesets requires an owner decision and is outside this checkpoint.
+- Independent expert-adjudicated IPA gold remains 0; `data/benchmark/gold.tsv` remains header-only; empirical accuracy remains null. MYA-GOLD-001 remains BLOCKED (independent adjudicated gold=0; gold.tsv header-only; target profile is already confirmed as contemporary Standard Burmese, Yangon reference variety, careful citation-form speech (`my-yangon-careful-citation-v1`); the versioned IPA convention sheet, two independent annotators, third adjudicator, curator, private blind intake and rights-cleared 30 lexeme groups with speaker/audio metadata remain required). MYA-PHON-001, MYA-IPA-001 and MYA-ROM-001 remain PARTIAL; MYA-UI-001 remains TODO. Myanmar Wiktionary rights remain CONFLICT/UNKNOWN; MLCTS and myG2P remain orthographic/diagnostic evidence, not IPA gold.
+- Methodology upstream refresh: Unlazy remains at `16671491f6679ad9378f52604d3bc2415b4120c7`; Matt Pocock skills at `4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`; Ponytail at `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`. Superpowers main has advanced to `22f0b463e7a5e579904dd6211a520321035526f7` (v7.0.2), one commit beyond the project's pinned v7.0.1 snapshot. Its delta is primarily harness/platform integration and skill-helper changes; no runtime dependency or unreviewed copy was imported. Keep the existing pinned reference reproducible unless a project-specific adoption is justified.
+- Environment boundary: this checkpoint used GitHub's hosted repository/Actions APIs; no local checkout or local test execution was available. Do not claim local pytest/npm/Playwright results.
+- Next actionable work: Continue primary-source verification of MLCTS and the versioned IPA convention, while organizing a licensed audio-backed human pilot; do not treat MLCTS or sparse Wiktionary IPA as gold.
+
+---
+
 ## External source review — Burmese Wiktionary IPA (2026-11-04)
 
 - Reviewed the Hugging Face dataset card, its JSONL file metadata, and the upstream Wiktionary copyright policy.
