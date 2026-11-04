@@ -1,10 +1,10 @@
-## Post-merge verification checkpoint — 2026-11-04
+## Corrected exact-main checkpoint — 2026-11-04
 
-- Verified current `main` head: `872e60ccd25291b884eb6930652605bf5c8d8361`. The documentation-only checkpoint PR has been merged: #121; its squash merge is this exact `main` head. A compare against `main` returned identical (0 ahead / 0 behind).
-- Exact PR-head CI completed successfully before merge: tests run 41879510379 (repository test workflow; built-site Playwright log reports 54/54 tests passed).
-- This was a documentation-only change to the canonical handoff. No runtime code, linguistic rule, IPA label, corpus row, license grant, source artifact or generated output changed. PR-head checks are recorded as such; no separate post-merge push workflow result was surfaced by the available Actions query.
-- Linguistic acceptance gates are unchanged: independent expert-adjudicated IPA gold remains 0, `data/benchmark/gold.tsv` remains header-only, and empirical accuracy remains null. The target profile is confirmed; expert convention approval, independent annotators/adjudicator, curator, blind intake and rights-cleared source items remain outstanding.
-
+- Verified current `main` head: `58c509080eb5ae6d22c2d5277904d2688b9d246e`. This is the squash-merge commit for documentation-only PR #122; the preceding checkpoint PR #121 merged as `872e60ccd25291b884eb6930652605bf5c8d8361` and is an ancestor, not the current branch head.
+- The preceding PR #121 passed its exact PR-head CI before merge: 41879510379. Those results belong to that preceding PR, not to PR #122.
+- Follow-up PR #122 changed only `docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md` (9 additions, 0 deletions). Its exact head was `60a92b8a54bb2a2955e7eb7ad5502f8e749d504f`. No combined status entries or PR-triggered workflow runs were surfaced for this PR head; therefore its CI is **NOT VERIFIED**, not passed. The diff was manually inspected before merge. No post-merge main workflow result was surfaced for `58c509080eb5ae6d22c2d5277904d2688b9d246e` either.
+- No runtime code, linguistic rule, IPA label, corpus row, license grant, source artifact or generated output changed in these documentation-only merges.
+- Linguistic acceptance gates remain unchanged: independent expert-adjudicated IPA gold is 0, `data/benchmark/gold.tsv` remains header-only, and empirical accuracy remains null. Profile confirmation does not substitute for expert convention approval, independent annotators/adjudicator, curator, blind intake or rights-cleared source items.
 ---
 
 ## Exact mainline checkpoint after methodology-gate adoption — 2026-11-04
