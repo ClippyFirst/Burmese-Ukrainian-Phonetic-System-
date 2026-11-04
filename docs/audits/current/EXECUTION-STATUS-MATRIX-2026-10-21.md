@@ -386,3 +386,12 @@ Additional current controls:
 | MYA-GOLD-AGREEMENT-001 | TODO | Cucchiarini (1996), DOI [10.3109/02699209608985167](https://doi.org/10.3109/02699209608985167); Oller & Ramsdell (2006), DOI [10.1044/1092-4388(2006/100)]. | Pilot reports exact normalized agreement plus alignment-aware feature-weighted agreement, separate tone/duration/phonation/vowel/coda/boundary diagnostics, unresolved alternatives and adjudication rate. Raw percentage agreement supplementary only. |
 
 No lexicon rows, IPA labels, or model predictions were imported. Gold remains 0; accuracy remains null. The detailed source audit is also recorded in the current top-level handoff and linguistic completion register.
+
+
+## Engineering test-harness status — 2026-11-04
+
+| Layer / acceptance gate | Implemented coverage | Tested coverage | Independently validated coverage | Status | Next acceptance criterion |
+|---|---|---|---|---|---|
+| IPA corpus test-fixture language identity | Fixture uses Myanmar-script sample, `test-burmese` profile and neutral variety label; shared script-range constants are explicit in the test module | Regression asserts all fixture characters are in the Myanmar Unicode block and profile metadata matches the repository language; exact-main tests [41847895975](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41847895975) SUCCESS | Not applicable; this is test-data integrity, not phonological validation | DONE_VERIFIED | Preserve language-specific fixtures when adding shared corpus tests; do not infer phonological coverage from this check |
+
+This engineering correction does not change the language-layer statuses above. Independent Burmese IPA gold remains 0; accuracy remains null.
