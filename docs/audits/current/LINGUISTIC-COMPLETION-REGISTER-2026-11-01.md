@@ -382,3 +382,10 @@ The export and benchmark now preserve and validate the complete frozen split ide
 - These are leads only: no one has been contacted or recruited; no IPA convention has been approved; no rights have been granted; no IPA labels were generated.
 - The 30-item pilot remains BLOCKED until the acceptance conditions in the playbook are met. Candidate lexicon entries, phonetic respellings, model outputs, orthographic transcripts and source descriptions are not gold IPA.
 - The next external action is to contact a qualified prospective reviewer and request nominations for two independent annotators plus a separate adjudicator; separately complete item-level rights review and blind-intake dry run.
+
+
+## Burmese Wiktionary rights-source separation — 2026-11-04
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-WIKTIONARY-RIGHTS-001 | DONE_VERIFIED (source attribution separation); rights decision remains BLOCKED | PR #111 merged at `8c323ff0d1236c5c6d36b2c2be0eac4d493163ab`; dataset-card CC BY 4.0 declaration and Myanmar Wiktionary local CC BY-SA 3.0 Unported/GFDL policy are separate source records and documentary claims. Main tests [41798078257](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41798078257), optional Epitran [41798080052](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41798080052), and Pages [41798078321](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41798078321) SUCCESS. | Provenance is correctly separated. Dataset rights remain CONFLICT/UNKNOWN until publisher/rightsholder clarification. No IPA labels, dataset imports or accuracy claims. |

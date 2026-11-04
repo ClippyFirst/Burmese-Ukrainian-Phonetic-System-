@@ -79,3 +79,13 @@ Cross-engine check: Epitran 1.35.3 returned 6/6 raw outputs; Goruut returned 7/8
 - Hlaing & Mikami (2013; published online 2014), [Automatic syllable segmentation of Myanmar texts using finite state transducer](https://doi.org/10.4038/ICTER.V6I2.7150): 11,732 orthographic words and 99.93% word-syllabification accuracy from a rule-based FST; the table reports 245/253 consonant-stacking words correct (96.83%); the text also discusses a free-standing-vowel error. This is orthographic segmentation, not G2P/IPA accuracy.
 
 No rows/models imported. These resources are structural or external G2P comparators only; independent expert IPA gold remains 0 and accuracy null.
+
+
+## Burmese Wiktionary license provenance — verified source separation (2026-11-04)
+
+The dataset-card declaration and upstream content policy are now registered as two distinct sources in `data/burmese/sources.csv`, with separate claims in `data/burmese/source_claims.csv` (PR #111, merged at `8c323ff0d1236c5c6d36b2c2be0eac4d493163ab`):
+
+- `MYWIKTIONARY2026`: the cleaned dataset card declares CC BY 4.0 and reports 22,191 word-POS rows, 20,759 unique headwords and 113 IPA values (0.51%).
+- `MYWIKTIONARYPOLICY2024`: the Myanmar Wiktionary local policy, last edited 2024-12-06, states CC BY-SA 3.0 Unported and GFDL.
+
+These are documentary facts from different sources, not a legal resolution. The extracted dataset's rights remain `CONFLICT/UNKNOWN`; no rows were imported. The sparse IPA values have no per-entry dialect/convention, audio, detailed source locator, annotator or adjudication metadata. Full MLCTS coverage is not IPA coverage. Do not use the 113 values as gold or train on the extracted dataset until the publisher/rightsholder clarifies the rights and the items pass profile/provenance review.
