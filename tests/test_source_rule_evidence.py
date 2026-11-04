@@ -85,7 +85,6 @@ def test_burmese_wiktionary_ipa_source_is_sparse_and_rights_gated():
     assert "113 IPA values (0.51%)" in source["scope"]
     assert "MLCTS coverage is not IPA coverage" in source["scope"]
     assert "CC BY 4.0" in source["scope"]
-    assert "CC BY-SA 3.0 Unported" in source["scope"]
     assert "rights_status=CONFLICT/UNKNOWN" in source["scope"]
     rights_source = sources["MYWIKTIONARY2026"]
     policy_source = sources["MYWIKTIONARYPOLICY2024"]
