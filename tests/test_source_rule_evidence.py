@@ -77,3 +77,18 @@ def test_misplaced_virama_guard_is_grounded_as_orthographic_not_phonetic_evidenc
     assert rule["status"] == "established"
     assert rule["test_reference"] == "tests/test_malformed_ipa_withholding.py"
     assert "not a pronunciation rule" in rule["scope"]
+
+def test_burmese_wiktionary_ipa_source_is_sparse_and_rights_gated():
+    sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    source = sources["MYWIKTIONARY2026"]
+    assert "113 IPA values (0.51%)" in source["scope"]
+    assert "MLCTS coverage is not IPA coverage" in source["scope"]
+    assert "CC BY 4.0" in source["scope"]
+    assert "CC BY-SA 3.0 Unported" in source["scope"]
+    assert "rights_status=CONFLICT/UNKNOWN" in source["scope"]
+    rights_claim = claims["CLM-WIKT-LICENSE-001"]
+    assert rights_claim["source_id"] == "MYWIKTIONARY2026"
+    assert rights_claim["status"] == "UNCERTAIN"
+    assert "CC BY 4.0" in rights_claim["claim"]
+    assert "CC BY-SA 3.0 Unported" in rights_claim["claim"]
