@@ -1,3 +1,12 @@
+## Post-merge verification checkpoint — 2026-11-04
+
+- Verified current `main` head: `872e60ccd25291b884eb6930652605bf5c8d8361`. The documentation-only checkpoint PR has been merged: #121; its squash merge is this exact `main` head. A compare against `main` returned identical (0 ahead / 0 behind).
+- Exact PR-head CI completed successfully before merge: tests run 41879510379 (repository test workflow; built-site Playwright log reports 54/54 tests passed).
+- This was a documentation-only change to the canonical handoff. No runtime code, linguistic rule, IPA label, corpus row, license grant, source artifact or generated output changed. PR-head checks are recorded as such; no separate post-merge push workflow result was surfaced by the available Actions query.
+- Linguistic acceptance gates are unchanged: independent expert-adjudicated IPA gold remains 0, `data/benchmark/gold.tsv` remains header-only, and empirical accuracy remains null. The target profile is confirmed; expert convention approval, independent annotators/adjudicator, curator, blind intake and rights-cleared source items remain outstanding.
+
+---
+
 ## Exact mainline checkpoint after methodology-gate adoption — 2026-11-04
 
 - Verified `main` head: `ef82296a0906bf0c041d60a8cf6f193a602e9950`. The two methodology/completion-gate PRs for this repository are merged; there are no open PRs at this checkpoint. No implementation, linguistic registry, source record, benchmark label, or generated artifact was changed by those PRs.
