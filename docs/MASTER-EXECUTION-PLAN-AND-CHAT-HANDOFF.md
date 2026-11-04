@@ -1,3 +1,11 @@
+## External source review — Burmese Wiktionary IPA (2026-11-04)
+
+- Reviewed the Hugging Face dataset card, its JSONL file metadata, and the upstream Wiktionary copyright policy.
+- Dataset card reports 22,191 word–POS rows, 20,759 unique headwords, and only 113 IPA values (0.51%); MLCTS has full coverage but is not IPA.
+- The card declares CC BY 4.0 while identifying Myanmar Wiktionary as the source. Upstream Wiktionary states entry text is dual-licensed CC BY-SA 4.0 and GFDL 1.1-or-later. This is a potential license compatibility/relicensing issue; rights stay CONFLICT/UNKNOWN pending clarification.
+- The dataset provides no per-entry dialect/convention, audio, annotator/adjudication, or detailed source locator in the card. Treat as a sparse discovery lead, not independent gold. No rows imported.
+- Evidence: https://huggingface.co/datasets/its-autumn/burmese-wiktionary; https://en.wiktionary.org/wiki/Wiktionary:Copyrights.
+
 ## Post-merge reconciliation — Burmese G2P diagnostic provenance (2026-11-03)
 
 - PR [#106](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/106) is merged into main as **76426383038ee18a4cf5f2136379b25c08a40d7e**; this is the current mainline checkpoint for this change.

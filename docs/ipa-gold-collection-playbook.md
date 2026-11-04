@@ -148,3 +148,14 @@ These are prospective leads only. No person has been contacted, consented, recru
 5. Prepare 30 candidate lexeme groups only after source locator and item-level rights review; complete a private blind-intake dry run.
 
 Status remains BLOCKED for pilot execution: candidate researchers and sources have been identified, but no recruitment, rights clearance for derived thesis data, expert-approved convention, or adjudicated IPA labels exist.
+
+
+## Burmese Wiktionary cleaned lexicon — source and rights review (2026-11-04)
+
+**Resource:** https://huggingface.co/datasets/its-autumn/burmese-wiktionary. The dataset card describes a 2026-08-01 Myanmar Wiktionary dump, 22,191 word–POS records, 20,759 unique headwords, and 113 non-null IPA fields (0.51% coverage); MLCTS is present for all records. The data file is `burmese_wiktionary_complete.jsonl` (6.58 MB; displayed file revision `64714a0`); the README/card revision displayed is `691f8d5`.
+
+**Linguistic classification:** sparse candidate lexical reference only, not independent IPA gold. The 113 IPA strings are copied from the upstream Wiktionary snapshot; the dataset card does not supply per-entry audio, annotator identities, independent review/adjudication, source dictionary locators, target dialect, or a versioned IPA convention. Do not treat the 22,191 MLCTS rows as IPA or as pronunciation-based gold. Do not import the 113 IPA values into `records.jsonl`/`gold.tsv` without item-level source and profile review.
+
+**Rights warning:** the Hugging Face dataset metadata declares CC BY 4.0, but the dataset card says the content is extracted from Myanmar Wiktionary. Wiktionary's published copyright policy states that entry text is dual-licensed under CC BY-SA 4.0 and GFDL 1.1-or-later. The displayed CC BY 4.0 declaration therefore needs clarification from the dataset publisher/rightsholder; do not assume it can relicense upstream material under CC BY alone. This is a potential license incompatibility, not a legal determination. Record `rights_status=CONFLICT/UNKNOWN` until resolved. Primary policy: https://en.wiktionary.org/wiki/Wiktionary:Copyrights.
+
+**Disposition:** keep as a discovery lead only. No data was downloaded into this repository and no IPA label was copied. If rights are clarified, sample and audit the 113 IPA entries for dialect, source, IPA conventions, variants, and overlap before any use.

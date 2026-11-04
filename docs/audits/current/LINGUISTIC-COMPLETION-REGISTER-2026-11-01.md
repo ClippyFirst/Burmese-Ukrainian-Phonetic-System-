@@ -1,3 +1,9 @@
+## Burmese Wiktionary IPA source review — 2026-11-04
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-WIKTIONARY-IPA-001 | PARTIAL (discovery lead; rights conflict unresolved) | Dataset card: 22,191 records, 20,759 headwords, 113 IPA values (0.51%), snapshot 2026-08-01, CC BY 4.0 declaration. Upstream Wiktionary copyright policy: CC BY-SA 4.0/GFDL 1.1-or-later. No per-entry dialect/convention, audio, annotator/adjudication or detailed locators in the card. | No import into gold. Clarify rights with publisher/rightsholder; then item-level profile/source/IPA audit and independent specialist review. MLCTS is not IPA. |
+
 ## Post-merge provenance checkpoint — 2026-11-03
 
 | ID | Status | Evidence | Acceptance boundary |
