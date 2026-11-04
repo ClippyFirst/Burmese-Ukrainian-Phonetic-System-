@@ -427,3 +427,10 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | IPA-GOLD-RELEASE-PROFILE-001 | DONE_VERIFIED (engineering guard) | Shared `scripts/ipa_gold_corpus.py` now rejects adjudicated corpora that mix target-profile identity (`id`, `variety`, `region`, `register`) or IPA kinds. New regression tests cover both failures. PR #117 merged as `085ce5a2da4a07dfbf606a9892c78a4d3bbb9d91`; exact PR-head CI [41870132273](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41870132273) SUCCESS; post-merge CI [41870579420](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41870579420) SUCCESS; Pages [41870579398](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41870579398) SUCCESS. | Does not prove profile approval, annotator qualifications, blindness, linguistic contrast coverage, or IPA accuracy. A specialist-reviewed language-specific coverage report remains required before benchmark readiness. |
+
+
+## Expert recruitment lead revalidation — 2026-11-04
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-IPA-GOLD-RECRUITMENT-LEADS-001 | PARTIAL | New specialist leads: Chiara Repetti-Ludlow's 2023 Burmese sonorant acoustic study and 2021 Burmese tone/sonority paper; Yuttaporn Naksuk and Tanintorn Limpasiri's comparative phonology review across eight Burmese dialects; University of Yangon referral lead. These do not establish native Yangon annotator qualification, availability or recruitment. | No candidate has been contacted, consented, recruited or approved. Close only after two independent qualified target-variety annotators, separate adjudicator, non-annotating curator, conflict checks, secure blind intake and written role/terms confirmation are documented. |
