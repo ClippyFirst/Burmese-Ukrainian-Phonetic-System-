@@ -37,7 +37,16 @@
 - **Test-first / CI evidence:** the first run exposed an incorrectly escaped test fixture (not a parser defect); the fixture was corrected to contain actual control code points. Exact final PR-head `1c61bd1ec91a5275e2dc88a845a8c1740fa8d657`: Python tests, Node tests, generated web build, and built-site browser tests all passed in [push workflow 41713878227](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41713878227) and [PR workflow 41713891844](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41713891844).
 - **Scope boundary:** source segmentation/API parity only. No phonological rules, IPA labels, gold examples, or accuracy claims were added. The broad `is_myanmar` Unicode block recognizer remains unchanged so unsupported Myanmar extensions are not misclassified as ordinary foreign-script passthrough.
 
-# Master execution plan and chat handoff — Burmese → Ukrainian
+# Master execution plan and chat handoff
+
+## Burmese Wiktionary source-provenance checkpoint — 2026-11-04
+
+- PR #111 merged as `8c323ff0d1236c5c6d36b2c2be0eac4d493163ab`. The dataset card's CC BY 4.0 declaration and the upstream Myanmar Wiktionary local policy's CC BY-SA 3.0 Unported/GFDL statement are now represented by separate source records and separate documentary claims.
+- **BURMESE-WIKTIONARY-RIGHTS-001 — DONE_VERIFIED** for source attribution separation only. Main tests [41798078257](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41798078257), optional Epitran [41798080052](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41798080052), and Pages [41798078321](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41798078321) all SUCCESS.
+- **Rights remain BLOCKED / CONFLICT-UNKNOWN.** The two declarations come from different authorities and have not been legally reconciled. The 2026 snapshot has only 113 IPA values (0.51%) and lacks per-entry profile, audio, IPA convention, annotator/adjudication and detailed locator data. Do not import it into gold or treat MLCTS as IPA.
+- Acceptance: obtain written rights clarification from the dataset publisher/rightsholder, then audit individual IPA entries for source locator, dialect/profile and convention; independent specialist review is still required. Gold remains 0; accuracy remains null.
+
+ — Burmese → Ukrainian
 
 ## Continuation update — strict JSON constants (2026-11-03)
 
