@@ -1027,3 +1027,13 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Added source-provenance regression tests to `tests/test_source_rule_evidence.py`, and updated the external corpus triage and linguistic completion register.
 - No dictionary/audio data copied. The existing myG2P probe remains test-only; the new source audit does not authorize production use, commercial redistribution, or treating myG2P outputs as project gold.
 - Independent adjudicated Burmese IPA gold remains 0; accuracy remains null. Hosted CI pending; no local test execution was available in this connector session.
+
+
+## Final Burmese external-source PR verification — 2026-11-04
+
+- Current PR #116 head at verification: `7e77d271274aef3c1b9eb6404689562d6f02ad03`.
+- Repository tests: [41850851191](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41850851191) **SUCCESS**.
+- Optional Epitran raw-output / pinned comparator workflow: [41850850898](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41850850898) **SUCCESS**, including both raw-output and CRF-baseline jobs. This is diagnostic reproducibility only; it does not validate IPA accuracy or create gold.
+- The tests verify the pinned myG2P artifact blob SHA, five-field IPA-bearing format, CC BY-NC-SA 4.0 status, OpenSLR CC BY-SA 4.0 source record and documentary claim linkage.
+- All source data remain external; no new runtime integration or production permission was added. Independent adjudicated Burmese IPA gold remains 0; empirical accuracy remains null.
+- No local tests were run; exact hosted jobs and step conclusions were inspected.
