@@ -1,9 +1,3 @@
-## Methodology source refresh — 2026-11-04
-
-- Rechecked the four upstream methodology repositories. Unlazy remains at `16671491f6679ad9378f52604d3bc2415b4120c7`; mattpocock/skills remains at `4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`; Ponytail remains at `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`.
-- Superpowers advanced from v7.0.1 to v7.0.2 at `22f0b463e7a5e579904dd6211a520321035526f7`. Reviewed the one-commit release delta. Adopted only the directly relevant process improvements: full-suite verification at GREEN and intent-first design with fewer, outcome-changing questions. Did not import harness plugins, helper scripts, SDD runtime, or platform integrations.
-- The upstream brainstorming skill also requires explicit design approval before implementation in its default path; that approval ceremony is not adopted when a user has already explicitly authorized autonomous execution. Project-specific linguistic, provenance, rights and fail-closed rules remain controlling.
-
 # Agent instructions — Burmese → Ukrainian research system
 
 This file is the project-specific entry point for coding agents. It complements, rather than replaces, the canonical project documents.
@@ -95,6 +89,11 @@ The adopted engineering references were checked against current upstream revisio
 These references guide the method; project-specific linguistic, provenance, privacy, rights, and fail-closed requirements remain authoritative.
 
 
+
+## Methodology source refresh — 2026-11-04
+
+- Rechecked all four upstream references. Unlazy remains at `16671491f6679ad9378f52604d3bc2415b4120c7`; mattpocock/skills at `4ae2317ddb22b046e26455e4f9c9b3aaaf62212d`; Ponytail at `96608e078b2d5ea607c5c3b8b5a54d1c1fba6846`.
+- Superpowers v7.0.2 was reviewed against v7.0.1. Adopted full-suite verification at GREEN and intent-first design with fewer, outcome-changing questions. Did not import harness plugins, helper scripts or the SDD runtime. The default explicit design-approval ceremony is not imposed when a user has already authorized autonomous one-pass execution.
 
 ## Whole-message adversarial benchmark requirements
 
