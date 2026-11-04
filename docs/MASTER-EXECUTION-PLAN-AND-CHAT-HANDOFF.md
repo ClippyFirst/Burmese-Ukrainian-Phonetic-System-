@@ -7,13 +7,13 @@
 
 ---
 
-## Corrected exact-main checkpoint — 2026-11-04
+## Post-merge handoff audit — 2026-11-04
 
-- Verified current `main` head: `58c509080eb5ae6d22c2d5277904d2688b9d246e`. This is the squash-merge commit for documentation-only PR #122; the preceding checkpoint PR #121 merged as `872e60ccd25291b884eb6930652605bf5c8d8361` and is an ancestor, not the current branch head.
-- The preceding PR #121 passed its exact PR-head CI before merge: 41879510379. Those results belong to that preceding PR, not to PR #122.
-- Follow-up PR #122 changed only `docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md` (9 additions, 0 deletions). Its exact head was `60a92b8a54bb2a2955e7eb7ad5502f8e749d504f`. No combined status entries or PR-triggered workflow runs were surfaced for this PR head; therefore its CI is **NOT VERIFIED**, not passed. The diff was manually inspected before merge. No post-merge main workflow result was surfaced for `58c509080eb5ae6d22c2d5277904d2688b9d246e` either.
-- No runtime code, linguistic rule, IPA label, corpus row, license grant, source artifact or generated output changed in these documentation-only merges.
-- Linguistic acceptance gates remain unchanged: independent expert-adjudicated IPA gold is 0, `data/benchmark/gold.tsv` remains header-only, and empirical accuracy remains null. Profile confirmation does not substitute for expert convention approval, independent annotators/adjudicator, curator, blind intake or rights-cleared source items.
+- The base `main` SHA for this follow-up branch was `58c509080eb5ae6d22c2d5277904d2688b9d246e`, the squash-merge commit for documentation-only PR #122. This is an immutable branch-base fact, not a claim that it remains the live `main` head after this follow-up is merged.
+- Previous checkpoint PR #122 had exact head `60a92b8a54bb2a2955e7eb7ad5502f8e749d504f`. No combined status entries or PR-triggered workflow runs were surfaced for that PR head; its CI is **NOT VERIFIED**. Its one-file, nine-addition documentation diff was manually inspected before merge.
+- This PR (#123) corrects the inaccurate prior handoff claim that the preceding PR's merge SHA was still the current `main` head. The actual post-merge head is the merge commit recorded in GitHub's PR metadata and is reported in the session completion summary; this handoff intentionally records immutable branch-base history rather than a self-referential live-head SHA.
+- No linguistic labels, corpus rows, source rights or generated pronunciation data were changed by the preceding documentation-only checkpoint PR. The engineering-gate terminology correction is recorded separately above.
+- Independent expert-adjudicated IPA gold remains 0; `data/benchmark/gold.tsv` remains header-only; empirical accuracy remains null. The profile confirmation does not substitute for expert convention approval, independent annotators/adjudicator, curator, blind intake or rights-cleared source items.
 ---
 
 ## Exact mainline checkpoint after methodology-gate adoption — 2026-11-04
