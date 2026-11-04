@@ -995,7 +995,7 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Preserved evidence boundary: the Wiktionary snapshot reports 22,191 word–POS rows, 20,759 headwords and only 113 IPA values (0.51%); MLCTS coverage is not IPA coverage. The dataset card's CC BY 4.0 conflicts with the upstream Myanmar Wiktionary policy's CC BY-SA 3.0 Unported/GFDL terms. Rights remain **CONFLICT/UNKNOWN**; no rows or IPA labels were imported.
 - Task ledger: source claim separation, provenance and regression coverage **DONE_VERIFIED**; independent adjudicated Burmese IPA gold **BLOCKED** (0 records; gold export header-only; accuracy null); specialist approval of IPA/tone/register convention, two independent annotators, separate adjudicator, item-level rights and blind intake **BLOCKED**; full vowel/coda/checked-syllable/tone/phonation/contextual allophony and MLCTS crosswalk remain **PARTIAL**; manual keyboard/screen-reader/mobile QA **TODO**.
 - Do not treat MLCTS, Epitran, Goruut, Wiktionary's sparse IPA, or model output as project gold. No phonology or Ukrainian mapping rules changed in the latest source-evidence merges.
-- This checkpoint is documentation-only; local tests were not run in this connector session. Hosted CI evidence above is tied to the exact PR head, not a claim of fresh local verification.
+- The initial checkpoint commit was documentation-only; a subsequent test-only change now uses Burmese script and a neutral test profile in the IPA-corpus fixtures. Hosted CI results for the final head are recorded separately; local tests were not run in this connector session. Hosted CI evidence above is tied to the exact PR head, not a claim of fresh local verification.
 
 
 ## Hosted verification update — 2026-11-04
@@ -1003,3 +1003,10 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Draft PR #115 exact head `3c7e54150186406dda3bf2033202f9baac84ef55`: Tests run [41844585137](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41844585137) **SUCCESS**.
 - The completed job reports success for independent IPA gold corpus structure validation, editable Python package installation and pytest, Node dependency installation, site build, generated-web-data reproducibility, npm tests, Chromium installation and browser tests against the built site.
 - This verifies the docs-only PR head and the repository's current CI contract. It does not resolve the Burmese Wiktionary rights conflict, establish phonological accuracy, or create missing IPA gold; the evidence and expert-review blockers above remain unchanged.
+
+
+## Test-fixture correction — 2026-11-04
+
+- Review found that the shared IPA-corpus validator test file used Lao orthography and a Lao-specific profile description even in the Khmer and Burmese repositories. This did not affect production validation, but made the fixtures misleading and weakened language-specific test coverage.
+- The test fixtures now use the repository's script (Lao / Khmer / Myanmar), neutral `test-<language>` profile identifiers and `Test fixture (<language>)` variety labels. A regression test asserts the fixture characters fall within the corresponding Unicode block and that profile metadata matches the repository language.
+- This is a test-harness correction only. It does not validate language phonology, IPA correctness, or script-specific parser behavior; the production validator still intentionally validates corpus structure rather than imposing a single script restriction on all orthographic records.
