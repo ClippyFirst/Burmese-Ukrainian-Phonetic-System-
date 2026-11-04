@@ -395,3 +395,10 @@ No lexicon rows, IPA labels, or model predictions were imported. Gold remains 0;
 | IPA corpus test-fixture language identity | Fixture uses Myanmar-script sample, `test-burmese` profile and neutral variety label; shared script-range constants are explicit in the test module | Regression asserts all fixture characters are in the Myanmar Unicode block and profile metadata matches the repository language; exact-main tests [41847895975](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41847895975) SUCCESS | Not applicable; this is test-data integrity, not phonological validation | DONE_VERIFIED | Preserve language-specific fixtures when adding shared corpus tests; do not infer phonological coverage from this check |
 
 This engineering correction does not change the language-layer statuses above. Independent Burmese IPA gold remains 0; accuracy remains null.
+
+
+## IPA gold release-gate corpus identity — 2026-11-04
+
+| Task | Status | Evidence | Remaining acceptance |
+|---|---|---|---|
+| BURMESE-IPA-GOLD-PROFILE-GATE-001 | DONE_VERIFIED (engineering guard) | Shared validator rejects mixed adjudicated target profiles (ID/variety/region/register) and mixed IPA kinds; regression tests added to `tests/test_ipa_gold_corpus.py`. | Human approval of Standard Yangon profile/convention, blind double annotation, independent adjudicator, rights-cleared source set, and specialist-reviewed onset × medial × vowel × coda × prosodic coverage remain outstanding. This guard does not create gold or prove accuracy. |
