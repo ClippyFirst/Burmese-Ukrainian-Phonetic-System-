@@ -412,3 +412,9 @@ This engineering correction does not change the language-layer statuses above. I
 | BUR-CRF-RECHECK-2026-11-11 | PARTIAL | CI: 100/100 predictions, 84 source-concordant; independent gold 0, accuracy null; possible training overlap and pre-segmented input. | Build rights-cleared independent gold and confirm no train/test overlap before accuracy scoring. |
 | BUR-EPITRAN-RECHECK-2026-11-11 | DONE_VERIFIED | Epitran 1.35.3 produced six raw outputs on six structural-only probes; zero runtime errors; no scoring. | Independent gold required for any accuracy claim; structural smoke is not linguistic validation. |
 | BUR-OPENSLR80-AUDIO-RESOURCE-001 | PARTIAL | SLR80 is CC BY-SA 4.0 audio plus word-segmented orthographic transcript; no IPA labels. | Recruit qualified annotators and create rights-compliant, independently adjudicated IPA labels before using it in a G2P benchmark. |
+
+## Hybrid engine expansion — 2026-11-11
+
+| Task | Status | Evidence | Remaining acceptance criterion |
+|---|---|---|---|
+| MYA-HYBRID-IPA-ENGINE-001 | PARTIAL | Hybrid ensemble and executable Google WFST / myG2P v2 IPA backend adapters added; regression coverage includes conflict, single-source withholding, echoed-input validation and exact dictionary lookup. | Confirm corrected exact-head CI; conduct blind adjudicated Yangon-profile IPA evaluation and analyze tone/phonation/coda coverage. |
