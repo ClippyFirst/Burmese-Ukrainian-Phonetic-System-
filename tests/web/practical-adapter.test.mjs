@@ -7,13 +7,14 @@ test("browser adapter covers Ukrainian h/g/x distinctions", () => {
   for (const segment of ["h", "ɦ", "ɡ", "g", "x"]) {
     assert.ok(PRACTICAL[segment], "missing practical table row for " + segment);
   }
-  assert.equal(renderUkrainian("hɦɡgx").text, "ггґґх");
+  assert.equal(renderUkrainian("h ɦ ɡ g x").text, "г г ґ ґ х");
 });
 
 test("browser adapter renders tied affricates as Ukrainian ц, дз, ч, дж", () => {
   const result = renderUkrainian("t͡sd͡zt͡ʃd͡ʒtɕdʑt͡ɕd͡ʑ");
   assert.equal(result.text, "цдзчджчджчдж");
   assert.equal(result.status, "PROPOSED");
+  assert.equal(renderUkrainian("t s d z").text, "т с д з");
 });
 
 test("browser adapter does not collapse an untied consonant sequence into an affricate", () => {
@@ -27,6 +28,8 @@ test("browser adapter uses Ukrainian yotated vowels after syllable-initial j", (
   assert.equal(renderUkrainian("ji").text, "ї");
   assert.equal(renderUkrainian("jo").text, "йо");
   assert.equal(renderUkrainian("ju").text, "ю");
+  assert.equal(renderUkrainian("a.ja").text, "ая");
+  assert.equal(renderUkrainian("ja je ji jo ju").text, "я є ї йо ю");
 });
 
 test("browser adapter keeps tone and length in prosody trace, not practical spelling", () => {
