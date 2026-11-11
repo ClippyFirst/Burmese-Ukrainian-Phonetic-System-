@@ -34,3 +34,22 @@ def test_command_backend_preserves_raw_candidate_and_provenance(monkeypatch):
     candidate = make_command_backend(["goruut"], engine_id="goruut", revision="PINNED")("မြန်မာ")
     assert candidate["ipa"] == "mjəmà"
     assert candidate["provenance"]["revision"] == "PINNED"
+
+def test_epitran_backend_requests_tone_output(monkeypatch):
+    import sys
+    from types import SimpleNamespace
+    from burmese_ukrainian.hybrid import make_epitran_backend
+    seen = {}
+    class FakeEpitran:
+        def transliterate(self, text):
+            return "mjəmà"
+    def factory(code, *, tones):
+        seen["code"] = code
+        seen["tones"] = tones
+        return FakeEpitran()
+    monkeypatch.setitem(sys.modules, "epitran", SimpleNamespace(Epitran=factory))
+    import importlib.metadata
+    monkeypatch.setattr(importlib.metadata, "version", lambda _: "1.35.3")
+    result = make_epitran_backend()("မြန်မာ")
+    assert seen == {"code": "mya-Mymr", "tones": True}
+    assert result["provenance"]["tones_requested"] is True
