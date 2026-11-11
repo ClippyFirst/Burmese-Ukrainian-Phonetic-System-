@@ -57,3 +57,8 @@ A minimal onset-only fallback is now implemented in the Python rule engine and b
 Status: PARTIAL, not DONE_VERIFIED. This reuses the existing initial-consonant IPA map; it is not a full Myanmar grapheme-position inventory. A dedicated source registry with exact per-entry evidence and Yangon-profile scope remains required. Browser tests currently assert source-level wiring, not functional Python/JavaScript parity fixtures.
 
 Implementation commits: fe2329dc74b677bbb44a605d9c5ba10f083d58c4 (Python engine), 6936f01d3ff320574b8802c7af348d687e63ce17 (Python regression), 5b83f5d3674b9e6d2f4114047bd67be5a5440719 (browser), 36b6ebf5a1d5a03b0c4d7a95aae2d842046e4152 (browser regression). No exact-head workflow run was returned for this branch at the last check; tests are not recorded as passed.
+
+
+## Scope correction — 2026-11-11
+
+The onset-only preview is deliberately restricted to an isolated bare consonant token whose onset position is established by token boundaries. It does not run on syllables containing a vowel sign, coda/asat, medial, kinzi, conjunct, prosodic mark or other contextual structure. Canonical IPA/Ukrainian fields remain fail-closed; the browser shows the preview only in per-syllable analysis details, not in the main canonical output. This preserves existing contextual parser behavior.
