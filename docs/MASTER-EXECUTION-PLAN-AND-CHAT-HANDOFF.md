@@ -1160,7 +1160,6 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 ### Remaining blockers
 
 - Create rights-cleared, independent Standard Yangon IPA gold with specialist tone/phonation review; the six Google FST probes are structural-only and cannot measure accuracy.
-- Create rights-cleared, independent Standard Yangon IPA gold with specialist tone/phonation review.
 - Confirm myG2P CC BY-NC-SA 4.0 terms before any commercial use/redistribution.
 - Use OpenSLR SLR80 only as audio/transcript annotation source after expert IPA annotation; its transcript is not IPA.
 - Pin remaining Google WORKSPACE dependencies to make the build hermetic; the current CI compatibility shim pins Abseil but not every upstream archive.
