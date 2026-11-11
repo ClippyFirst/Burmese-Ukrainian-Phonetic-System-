@@ -491,3 +491,10 @@ Latest tone-aware hybrid code verification: [43078675807](https://github.com/Cli
 | Task | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BUR-MEDIAL-STACK-KINZI-WITHHOLD-001 | DONE_VERIFIED (fail-closed behavior) | Regression test checks medial `ကြွေ`, stacked consonant `က္ကာ` and kinzi `င်္ဂါ`. RED [43082483864](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082483864) confirmed medial omission; fix `20ef6ca711093b8422c7b4d3bdce0dcd5023d3de`; exact-head CI [43082565716](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082565716) SUCCESS: 186 tests + 72 subtests and 54 browser tests. | The adapter withholds IPA for medials, conjuncts and kinzi until their Yangon-profile phonetic realizations are established. This is not a gold score or a new rule. |
+
+
+## Final Burmese branch verification — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BUR-FINAL-PR-HEAD-001 | DONE_VERIFIED (repository/CI snapshot) | PR #129 head `0b6368cab8871271c6c0a1684d926c5ec0bc3826`, open draft, 52 ahead / 0 behind current main, no reviews/comments. Required CI [43083942317](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43083942317) SUCCESS (187 tests + 72 subtests, build, generated-data, npm, 54 Playwright); optional diagnostics [43083942349](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43083942349) SUCCESS. | Not merged/published. Accuracy remains unmeasured (gold=0). Candidate providers remain diagnostic only; no output promotion. |

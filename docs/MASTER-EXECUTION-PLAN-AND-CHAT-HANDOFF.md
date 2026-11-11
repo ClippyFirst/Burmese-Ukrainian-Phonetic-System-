@@ -1202,3 +1202,12 @@ Latest tone-aware hybrid code verification: [43078675807](https://github.com/Cli
 
 
 Latest test-bearing head: `7471d4b10b0f2a4806fae8c2e0f317b29dd70803`. The additional regression asserts parser status `established` for `ကြွေ`, `က္ကာ`, and `င်္ဂါ`, then asserts `RuleBasedBurmeseEngine` returns `PARTIAL` with `ipa=None` for each. Exact-head CI [43082982253](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082982253) passed 187 Python tests + 72 subtests and 54 Playwright tests.
+
+
+## Final Burmese PR snapshot — 2026-11-11
+
+- Current branch head at handoff `0b6368cab8871271c6c0a1684d926c5ec0bc3826`; PR #129 remains OPEN/DRAFT, based on current main `fab39881259df94be93634088a75667a13059cfc`, 52 commits ahead / 0 behind, no reviews or comments, not merged.
+- Exact-head required CI [43083942317](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43083942317) SUCCESS: 187 Python tests + 72 subtests, package build, generated-data freshness, npm tests and 54 Playwright tests.
+- Exact-head optional diagnostics [43083942349](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43083942349) SUCCESS: Epitran raw output, CRF baseline and Google WFST raw-output jobs.
+- Provider priorities remain diagnostic order only: myG2P 10, Google WFST 20, Epitran 40, CRF 60, Goruut 90. Internal rule engine remains final authority.
+- Conservative IPA withholding now prevents medials, conjuncts and kinzi being silently omitted; CLI command backend now appends a real newline. No new phonological rules or gold labels were introduced. Independent Yangon-profile IPA gold remains 0; accuracy remains null.
