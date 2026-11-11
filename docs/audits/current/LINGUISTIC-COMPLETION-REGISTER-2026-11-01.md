@@ -446,3 +446,17 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BURMESE-DETERMINISTIC-RULE-ENGINE-001 | DONE_VERIFIED (engineering); linguistic coverage PARTIAL | Final main head `9bece0a50a367f3f58336d2aba7016ac4af86156`; exact-head tests [43019216137](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43019216137) and Pages + smoke [43019216297](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43019216297) SUCCESS. | Deterministic implementation and publication verified. Independent expert-adjudicated Yangon IPA gold remains necessary for broader correctness/accuracy claims. |
+
+
+## 2026-11-11 — Ukrainian practical transcription continuation
+
+| Work item | Status | Evidence / acceptance |
+|---|---|---|
+| Python IPA → Ukrainian adapter integrated after deterministic Burmese IPA | DONE_VERIFIED | Previous code revision \`530cefbfc874b777650bd7e7ccdb5888534ab348\`; 180 Python tests + 66 subtests |
+| Canonical CSV and generated browser adapter | DONE_VERIFIED | Generated-data freshness, build and Node tests passed on previous code revision |
+| Target distinctions /h, ɦ/ → г, /ɡ/ → ґ, /x/ → х; affricates ц/дз/ч/дж | DONE_VERIFIED | Explicit project policy; official 2026 standard generally uses г for foreign [g], so ґ is a contrast-preserving project choice |
+| Browser fail-closed behavior for kinzi, medials and conjuncts | PARTIAL | Implemented; final Playwright run is queued and unverified |
+| Accuracy of proposed Ukrainian correspondences | PARTIAL | No independent adjudicated IPA/Ukrainian gold set |
+| Final browser CI | BLOCKED | Run 43095578672 queued with zero jobs started |
+| Independent text-only IPA gold set | BLOCKED | Requires sourced and adjudicated Yangon-profile IPA labels and held-out evaluation |
+| Audio | DEFERRED | Outside current task scope |
