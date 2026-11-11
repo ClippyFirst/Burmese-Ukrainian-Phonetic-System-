@@ -70,3 +70,14 @@ def test_google_wfst_adapter_checks_echoed_input(tmp_path, monkeypatch):
     result = backend("ကော်")
     assert result["ipa"] == "kʰaʊ"
     assert result["provenance"]["revision"] == "a90601024f07ab7e96c911243324e0adeb16da96"
+
+
+def test_backends_receive_normalized_burmese_text():
+    import unicodedata
+    from burmese_ukrainian.unicode import normalize_burmese
+
+    received = []
+    source = unicodedata.normalize("NFD", "မြန်မာ")
+    engine = HybridBurmeseEngine({"backend-a": lambda value: received.append(value) or "mjəmà"}, include_internal=False)
+    engine.analyze(source)
+    assert received == [normalize_burmese(source)]
