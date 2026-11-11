@@ -445,3 +445,10 @@ Latest tone-aware hybrid code verification: [43078675807](https://github.com/Cli
 | Task | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BUR-HYBRID-PROVIDER-PRIORITY-001 | DONE_VERIFIED (deterministic ordering only) | PR #129 exact head `a82bfc36f70162e338770a750997ae506d31c53c`; test `test_hybrid_provider_priority_order_is_deterministic_and_diagnostic_only`; required CI [43080511259](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43080511259) SUCCESS (185 tests + 72 subtests; build, generated-data, npm and 54 Playwright checks); optional [43080510989](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43080510989) SUCCESS. | Priority controls execution/display order only. It does not rank accuracy, promote candidates, or alter final IPA. Independent gold and profile/convention validation remain required. |
+
+
+## Burmese CLI adapter input framing — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BUR-CLI-NEWLINE-001 | DONE_VERIFIED (adapter contract) | Test-first RED [43081924723](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43081924723) demonstrated literal backslash+n on stdin; fix commit `fea872b176fabaddf4f0c5ff4121dcf722590ef7`; exact-head CI [43082016024](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082016024) SUCCESS (185 tests + 72 subtests, build, generated-data, npm and 54 Playwright checks). | Adapter now sends a real newline. Live Goruut binary execution remains blocked by missing upstream `weights9.bin.zlib`; this is not a phonetic accuracy result. |

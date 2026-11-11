@@ -1182,3 +1182,11 @@ Latest tone-aware hybrid code verification: [43078675807](https://github.com/Cli
 - Exact-head required CI [43080511259](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43080511259) SUCCESS: 185 Python tests + 72 subtests, npm build, generated-data freshness, npm tests and 54 built-site Playwright tests.
 - Exact-head optional diagnostics [43080510989](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43080510989) SUCCESS: CRF raw-output, pinned Google WFST build/symbol checks/structural smoke, and Epitran raw-output jobs all completed.
 - Internal `RuleBasedBurmeseEngine` remains the only final-output authority; candidate engines are diagnostic only. Independent Yangon-profile adjudicated IPA gold remains 0; accuracy remains null. No phonological rule or gold label was added by the priority change.
+
+
+## Burmese CLI adapter newline regression — 2026-11-11
+
+- Found that `make_command_backend` passed the two literal characters backslash+n to subprocess stdin instead of a line terminator. Google WFST's separate adapter already used a real newline; the defect affected the generic command adapter used for Goruut/other CLI candidates.
+- Test-first RED commit `05f83f351f210392a2834881f2fe4d6e033af494`; exact-head run [43081924723](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43081924723) failed specifically because captured stdin was `မြန်မာ\\n` rather than `မြန်မာ\n` (1 failed, 184 passed, 72 subtests passed).
+- Fix commit `fea872b176fabaddf4f0c5ff4121dcf722590ef7` changes the adapter to append a real newline. Exact-head CI [43082016024](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082016024) SUCCESS: 185 Python tests + 72 subtests, npm build, generated-data freshness, npm tests and 54 built-site Playwright tests.
+- This verifies the adapter's subprocess input contract. It does not establish live Goruut end-to-end output on the pinned snapshot, whose Burmese `weights9.bin.zlib` asset remains absent upstream; no phonological output or accuracy claim changed.

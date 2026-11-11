@@ -477,3 +477,10 @@ Latest tone-aware hybrid code verification: [43078675807](https://github.com/Cli
 | Task | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BUR-HYBRID-PROVIDER-PRIORITY-001 | DONE_VERIFIED (engineering ordering only) | Provider order is myG2P 10 → Google WFST 20 → Epitran 40 → CRF 60 → Goruut 90; unknown providers 50. Exact-head CI [43080511259](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43080511259) SUCCESS (185 Python tests + 72 subtests; npm build, generated-data freshness, npm tests, 54 Playwright tests); optional candidate jobs [43080510989](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43080510989) SUCCESS. | Order is diagnostic, not an accuracy ranking or promotion rule. RuleBasedBurmeseEngine remains final authority; gold=0, accuracy=null. |
+
+
+## Burmese CLI adapter input-framing fix — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BUR-CLI-NEWLINE-001 | DONE_VERIFIED (unit/CI contract); live Goruut E2E BLOCKED | Regression test captures subprocess stdin. RED [43081924723](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43081924723): 1 failed as expected. Fix `fea872b176fabaddf4f0c5ff4121dcf722590ef7`; exact-head CI [43082016024](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082016024) SUCCESS: 185 Python tests + 72 subtests and 54 browser tests. | Generic CLI adapter now appends an actual newline rather than literal `\\n`. Live Goruut smoke still depends on upstream publication/documentation of `weights9.bin.zlib`; no IPA accuracy is implied. |
