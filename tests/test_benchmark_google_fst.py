@@ -20,7 +20,7 @@ def test_google_fst_report_is_raw_output_only_without_accuracy():
         grammar_sha256="a" * 64,
         phoneme_symbols_sha256="b" * 64,
         fst_sha256="c" * 64,
-        bazel_version="4.2.3",
+        bazel_version="7.4.1",
         corpus_sha256="d" * 64,
     )
 
@@ -66,7 +66,7 @@ def test_google_fst_refuses_non_structural_or_labelled_probe_rows():
     try:
         build_report(
             rows,
-            ["kè"],
+            [{"raw_engine_line": "ကေ\\tkè", "raw_output_ipa": "kè"}],
             engine_source_commit="a90601024f07ab7e96c911243324e0adeb16da96",
             grammar_sha256="a" * 64,
             phoneme_symbols_sha256="b" * 64,
