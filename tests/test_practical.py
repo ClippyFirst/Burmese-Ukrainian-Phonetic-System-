@@ -87,3 +87,7 @@ def test_rule_engine_returns_ukrainian_practical_rendering_after_ipa():
     assert result["ipa"] == "ka"
     assert result["ukrainian"] == "ка"
     assert result["ukrainian_status"] == "proposed"
+    multi = RuleBasedBurmeseEngine().analyze("ကာကာ")
+    assert multi["ipa"] == "ka ka"
+    assert multi["ukrainian"] == "кака"
+    assert multi["ukrainian_syllables"] == ["ка", "ка"]
