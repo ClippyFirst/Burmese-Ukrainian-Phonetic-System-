@@ -424,3 +424,17 @@ This engineering correction does not change the language-layer statuses above. I
 - Aspiration is marked with a project apostrophe; /ʔ/ is omitted from ordinary practical spelling but remains in IPA/trace. Tone and length are retained analytically, not converted to Ukrainian stress or vowel doubling.
 - Unknown IPA withholds the complete Ukrainian string. Burmese parser structures not yet supported by phonological rules (medials, conjuncts, kinzi) are withheld in both Python and browser paths.
 - PR #133 is the active practical-system PR; PR #132 was superseded after its browser test exposed fail-open handling. The exact-head test run [43095497303](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43095497303) is queued. No independent adjudicated lexical IPA gold set exists; empirical accuracy remains unmeasured.
+
+
+## 2026-11-11 — Ukrainian practical adapter task update
+
+| Task | Status | Evidence / acceptance |
+|---|---|---|
+| Add Python whole-IPA → Ukrainian adapter and integrate after deterministic IPA | DONE_VERIFIED | \`src/burmese_ukrainian/practical.py\`, \`rule_engine.py\`; previous Python suite 180 + 66 subtests |
+| Generate browser mapping from canonical practical CSV/rule data | DONE_VERIFIED | \`src/web/ukrainian-adapter.js\`; previous build, generated-data freshness and Node tests passed |
+| Map /h, ɦ/ → г, /ɡ/ → ґ (project choice), /x/ → х, affricates → ц/дз/ч/дж | DONE_VERIFIED | Canonical practical table and tests; /ɡ/ → ґ is not claimed as universal orthographic norm |
+| Preserve tone/length in IPA trace; join syllable-level Ukrainian output into one word | DONE_VERIFIED | Python engine output and regression tests |
+| Browser fail-closed behavior for kinzi/medials/conjuncts | PARTIAL | Implemented; final Playwright run 43095578672 queued with no jobs |
+| Final browser/Playwright acceptance | BLOCKED | Acceptance: current PR head completes all Chromium tests successfully |
+| Independent empirical IPA/Ukrainian accuracy evaluation | BLOCKED | No independent text gold set yet; requires source provenance, dialect scope and adjudication |
+| Audio validation | DEFERRED | Outside user-requested text-only scope |
