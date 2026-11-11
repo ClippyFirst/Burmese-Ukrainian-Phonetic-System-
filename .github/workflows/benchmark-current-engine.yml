@@ -5,6 +5,8 @@ on:
       - "benchmark/**"
     paths:
       - ".github/workflows/benchmark-current-engine.yml"
+      - "src/burmese_ukrainian/rule_engine.py"
+      - "tests/test_ipa_status_contract.py"
   workflow_dispatch:
 permissions:
   contents: read
