@@ -38,12 +38,14 @@ Its main limitation for Ukrainian is that it is optimized for Russian phonology 
 | /p/ | п | п |
 | /pʰ/ | пх | п' |
 | /sʰ/ | сх | с' |
+| /b, d/ | б, д | б, д |
 | /bʰ, dʰ/ | бх, дх | б', д' |
 | /ɡ/ (ASCII alias /g/) | г | ґ* |
 | /h, ɦ/ | х (Russian /h/) | г |
 | /x/ | х | х |
 | /z/ | з | з |
 | /ɲ/ | нь | нь |
+| /n, m/ | н, м | н, м |
 | /ŋ, ɴ/ | нг | нг |
 | /w, ʋ/ | у/в | в |
 | /j/ | й | context-sensitive й / я / є / ї / ю / йо |
@@ -105,7 +107,7 @@ At the beginning of a syllable, /j/ plus a following vowel is adapted using Ukra
 | /ju/ | ю |
 | /jɯ/ | йи (analysis-dependent approximation) |
 
-Medial/coda /j/ is rendered as й. The adapter resets syllable-initial handling at spaces and explicit syllable dots. The Burmese engine currently separates its syllable IPA values with spaces; this is a syllable-delimited diagnostic rendering, not a claim that lexical word boundaries have been recovered.
+Medial/coda /j/ is rendered as й. The adapter resets syllable-initial handling at spaces and explicit syllable dots. The Burmese engine keeps syllable boundaries as spaces in the IPA field and exposes per-syllable Ukrainian values in ukrainian_syllables. The practical ukrainian field concatenates the syllable spellings into one orthographic word. The current parser does not infer lexical word boundaries; multiword input without an explicit segmentation is withheld.
 
 ## 5. Vowels
 
