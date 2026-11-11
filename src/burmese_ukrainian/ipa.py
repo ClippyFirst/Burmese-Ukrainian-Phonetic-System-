@@ -22,6 +22,12 @@ def _ipa(s):
     if s.get("status") != "established":
         return None
 
+    # Medials, stacked consonants and kinzi are parsed structurally but do
+    # not yet have profile-adjudicated IPA realizations in this adapter.
+    # Withhold the whole syllable rather than silently omitting these segments.
+    if s.get("medials") or s.get("conjunct") or s.get("kinzi"):
+        return None
+
     # Coda/asat and prosodic marks are parsed structurally but do not yet have
     # an evidence-backed surface-IPA realization in this adapter. Withhold the
     # whole syllable rather than silently dropping contrastive material.

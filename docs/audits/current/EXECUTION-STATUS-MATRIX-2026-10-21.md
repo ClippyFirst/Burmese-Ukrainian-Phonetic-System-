@@ -414,3 +414,48 @@ This engineering correction does not change the language-layer statuses above. I
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | MYA-DETERMINISTIC-RULE-ENGINE-001 | DONE_VERIFIED (engineering); linguistic coverage PARTIAL | Final main head `9bece0a50a367f3f58336d2aba7016ac4af86156`; tests [43019216137](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43019216137) and Pages + smoke [43019216297](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43019216297) SUCCESS. | Deterministic runtime published; independent expert-adjudicated Yangon IPA gold remains outstanding. |
+
+
+## External G2P and hybrid candidate integration — 2026-11-11
+
+| Task | Status | Evidence | Remaining acceptance criterion |
+|---|---|---|---|
+| BUR-GOOGLE-WFST-CANDIDATE-001 | PARTIAL | Pinned grammar built; 6/6 structural-only probes produced outputs; no gold. | Independent Yangon-profile gold, tone/phonation review, full dependency pins. |
+| BUR-EPITRAN-CANDIDATE-001 | PARTIAL | Epitran 1.35.3 produced 6/6 raw outputs; no gold. | Profile-matched independent gold required before scoring or promotion. |
+| BUR-MYG2P-LEXICON-CANDIDATE-001 | PARTIAL | 24,009 unique entries and exact IPA-column adapter; possible train/test overlap in previous concordance experiment. | Rights review, overlap audit and independent gold. |
+| BUR-HYBRID-CANDIDATE-ENGINE-001 | PARTIAL | Candidate-only HybridBurmeseEngine integrated; deterministic rule output remains authoritative; provenance and abstention preserved. | Exact-head CI; independent gold; tone/phonation/coda evaluation; hermetic WFST build. |
+
+
+### Verification checkpoint — MYA-HYBRID-CANDIDATE-ENGINE-001
+
+Engineering implementation DONE_VERIFIED on code-bearing head 17c855307be36a0735f0cd8967b988fe62053d8a. Exact-head tests [43077670284](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670284) SUCCESS: 183 Python tests + 72 subtests, build, generated-data check, npm tests and 54 Playwright tests. Google WFST candidate rerun [43077670322](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670322) remained in progress at checkpoint; prior pinned build/smoke [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514) succeeded. Linguistic promotion remains PARTIAL until independent Yangon-profile IPA gold and feature adjudication exist.
+
+
+Google WFST exact-head rerun [43077670322](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670322) SUCCESS: pinned grammar build, IPA symbol-table checks and 6/6 structural-only raw outputs. Accuracy/PER/CER remain null (independent gold 0).
+
+
+Epitran hybrid adapter refinement: the optional Burmese adapter now explicitly requests tones=True by default and records the requested setting in candidate provenance. Regression test added; exact-head pytest passed in [43078675807](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43078675807). This does not retroactively change the earlier Epitran raw-output benchmark (which used the original smoke harness), nor establish tonal accuracy.
+
+
+Latest tone-aware hybrid code verification: [43078675807](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43078675807) SUCCESS — 184 Python tests + 72 subtests, npm build, generated-data drift check, npm tests and 54 built-site Playwright tests. The final branch commit 90ec9cba295cca29c1e05b0d71d35c98f653a8ef changes documentation only. Latest optional WFST rerun 43078675829 still building at final checkpoint; prior full run 43077670322 succeeded with 6/6 raw structural probes.
+
+
+## Hybrid provider priority — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BUR-HYBRID-PROVIDER-PRIORITY-001 | DONE_VERIFIED (deterministic ordering only) | PR #129 exact head `a82bfc36f70162e338770a750997ae506d31c53c`; test `test_hybrid_provider_priority_order_is_deterministic_and_diagnostic_only`; required CI [43080511259](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43080511259) SUCCESS (185 tests + 72 subtests; build, generated-data, npm and 54 Playwright checks); optional [43080510989](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43080510989) SUCCESS. | Priority controls execution/display order only. It does not rank accuracy, promote candidates, or alter final IPA. Independent gold and profile/convention validation remain required. |
+
+
+## Burmese CLI adapter input framing — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BUR-CLI-NEWLINE-001 | DONE_VERIFIED (adapter contract) | Test-first RED [43081924723](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43081924723) demonstrated literal backslash+n on stdin; fix commit `fea872b176fabaddf4f0c5ff4121dcf722590ef7`; exact-head CI [43082016024](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082016024) SUCCESS (185 tests + 72 subtests, build, generated-data, npm and 54 Playwright checks). | Adapter now sends a real newline. Live Goruut binary execution remains blocked by missing upstream `weights9.bin.zlib`; this is not a phonetic accuracy result. |
+
+
+## Burmese unimplemented segmental structures — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BUR-MEDIAL-STACK-KINZI-WITHHOLD-001 | DONE_VERIFIED (conservative abstention) | Test-first RED [43082483864](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082483864) showed `ကြွေ` incorrectly emitted as `ke`; fix `20ef6ca711093b8422c7b4d3bdce0dcd5023d3de`; exact-head CI [43082565716](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082565716) SUCCESS (186 tests + 72 subtests, build, generated-data, npm and 54 Playwright checks). | Any syllable containing unimplemented medials, conjuncts or kinzi is withheld from IPA. No new phonetic rule is inferred; coverage returns only after profile-matched expert evidence and regression tests. |

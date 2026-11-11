@@ -183,7 +183,7 @@ A richer Burmese pronunciation resource was identified and is now wired into an 
 - `scripts/prepare_myg2p_probe.py` parses the pinned TSV, records malformed/missing/duplicate rows, and deterministically selects 100 unique IPA-labelled headwords evenly across file order. It retains source line locators, word IDs, syllabification, pronunciation and the original IPA string. It does not label any row GOLD_VERIFIED.
 - The optional runtime workflow runs both pinned Goruut and Epitran 1.35.3 against exactly the same 100 words, three repetitions for Goruut, and compares raw output with myG2P source labels. Goruut source concordance is eligible only when the response is stable, source coverage is complete, and no dictionary-randomization counters are present. Epitran is compared separately. All scores remain accuracy=null and independent_gold_count=0.
 
-This is a stronger Burmese source-attested diagnostic than the 8-word structural smoke set, but it is still not independent gold. Exact-head workflow evidence is pending.
+This is a stronger Burmese source-attested diagnostic than the 8-word structural smoke set, but it is still not independent gold. Exact-head workflow [41409594362](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41409594362) passed; the score remains source-attested only.
 
 
 ### Burmese source-coverage repeat-run evidence
@@ -238,3 +238,46 @@ The benchmark rejects a prediction TSV with a header but no data rows. Without t
 ### Identifier input validation
 
 Gold IDs and prediction IDs, as well as prediction engine names, must contain at least one non-whitespace character. Whitespace-only values are rejected before scoring so they cannot create blank-looking keys or engine entries. The check does not rewrite non-empty identifiers; matching remains exact and provenance-preserving. Regression coverage exercises whitespace-only gold IDs, prediction IDs and engine names.
+
+## External Burmese engine and benchmark recheck — 2026-11-11
+
+### Existing CRF and Epitran diagnostics
+
+The current optional workflow reran the already registered comparators:
+
+- **myG2P v2 / Burmese-G2P CRFsuite:** [run 42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514), artifact [13844937996](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514/artifacts/13844937996). 100 syllable-segmented inputs, 100 predictions, 84 source-concordant strings. Gold count 0; accuracy `null`; status `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`. Source dictionary commit `54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225`, model commit `de0f06056cf334b8cdd5a1efd1226f01c8162b77`, model SHA-256 `f66571b7632eed2e94878278702654ce0a4b25fcab18720af60d3cfe00b011ce`. The input already contains syllable boundaries; this is not end-to-end segmentation or independent accuracy. The source dictionary is CC BY-NC-SA 4.0.
+- **Epitran 1.35.3:** same run, artifact [13845172867](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514/artifacts/13845172867). Six structural-only inputs produced six raw outputs with zero runtime errors. Gold count 0; exact-match accuracy `null`. Observed raw outputs were `ke`, `kaʊʔ`, `t͡ɕi`, `səwɛ`, `məjaɴ`, `ju`; these are execution traces, not scored pronunciations.
+
+### Google Burmese WFST
+
+A new optional job checks out Google Language Resources at `a90601024f07ab7e96c911243324e0adeb16da96`, builds `//my:g2p`, checks the upstream IPA symbol-table invariants and runs the six structural-only repository probes through the generated binary. The report is designed to preserve raw output and build provenance while forcing `accuracy: null` and `independent_gold_count: 0`.
+
+Build compatibility was investigated rather than silently ignored:
+- Bazel 4.2.3 on the current Ubuntu runner first failed because the upstream unpinned Abseil `master` now loads `@rules_cc`, which the old workspace did not declare.
+- Pinning Abseil to `45fdade6c0415ec5af3f9312e6311a4ccc682a7b` removed that drift, but Bazel 4.2.3 then lacked `native.package_relative_label` required by a current transitive rule.
+- Bazel 7.4.1 passed analysis, but the old OpenFst C++ source failed to compile with GCC 15 on Ubuntu 26.04 (`std::unique_ptr` and `VectorHashBiTable` incompatibilities).
+- The current workflow therefore pins Ubuntu 22.04/GCC 11, Bazel 7.4.1, Java 17 and the Abseil compatibility commit. The latest run [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514) completed successfully after pinning Ubuntu 22.04/GCC 11 and invoking the compiled Thrax binary directly with its FST and IPA symbol table.
+
+Even if the build succeeds, six structural-only probes can prove build/execution only. They cannot produce PER, CER or an accuracy estimate.
+
+### Published Burmese G2P benchmark
+
+The 2016 paper [Comparison of Grapheme-to-Phoneme Conversion Methods on a Myanmar Pronunciation Dictionary](https://aclanthology.org/W16-3702/) used 25,300 MLC dictionary entries: 25,000 training words, three open test sets of 100 words each and a 100-word closed test drawn from training. Open-set PER: WFST 14.7 / 11.4 / 15.7; CRF 15.7 on open3; PBSMT 16.1 / 13.1 / 22.0. The authors also manually reviewed voiced/unvoiced, tone, consonant and vowel errors; PER is computed at phoneme level after syllable alignment. Their phone notation is romanized, not IPA; dataset reuse rights are not established by the paper citation. These figures are historical published baselines, not current ClippyFirst results.
+
+The 2020 Google paper's Burmese TTS MOS result (3.63±0.10) evaluates a TTS pipeline, not the standalone G2P grammar. OpenSLR SLR80 contains audio and orthographic transcripts but no IPA. Neither result may be reported as G2P accuracy.
+
+
+### Google FST final result — 2026-11-11
+
+Run [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514) completed successfully on Ubuntu 22.04/GCC 11, Bazel 7.4.1 and Java 17. The pinned Google grammar built, the upstream IPA symbol-table tests passed, and all six structural-only probes produced non-empty output with zero runtime errors. The report stores the original tab-delimited engine line and the extracted IPA phone sequence separately:
+
+| Myanmar probe | Raw IPA phone sequence |
+|---|---|
+| ကေ | `k è` |
+| ကော် | `k ɔ̀` |
+| ကြည် | `tɕ ì` |
+| စွယ် | `s w ɛ̀` |
+| မြန် | `m j àɴ` |
+| ယူ | `j ù` |
+
+Independent gold: 0. Accuracy: `null`. These six inputs are structural-only, so this verifies compilation, symbol-table consistency and runtime output—not Standard Yangon pronunciation accuracy, tone accuracy or Ukrainian adaptation.

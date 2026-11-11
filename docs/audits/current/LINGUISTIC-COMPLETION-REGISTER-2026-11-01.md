@@ -446,3 +446,55 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BURMESE-DETERMINISTIC-RULE-ENGINE-001 | DONE_VERIFIED (engineering); linguistic coverage PARTIAL | Final main head `9bece0a50a367f3f58336d2aba7016ac4af86156`; exact-head tests [43019216137](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43019216137) and Pages + smoke [43019216297](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43019216297) SUCCESS. | Deterministic implementation and publication verified. Independent expert-adjudicated Yangon IPA gold remains necessary for broader correctness/accuracy claims. |
+
+
+## External G2P and hybrid candidate integration — 2026-11-11
+
+| Task | Status | Evidence | Remaining acceptance criterion |
+|---|---|---|---|
+| BUR-GOOGLE-WFST-CANDIDATE-001 | PARTIAL | Pinned Thrax/OpenFst grammar built; 6/6 structural-only probes emitted outputs; independent gold 0. | Independent Yangon-profile IPA gold, tone/phonation adjudication and full transitive dependency pins. |
+| BUR-EPITRAN-CANDIDATE-001 | PARTIAL | Epitran 1.35.3 returned 6/6 raw outputs on structural-only probes; independent gold 0. | Compare against independent gold and validate the Burmese IPA profile before promotion. |
+| BUR-MYG2P-LEXICON-CANDIDATE-001 | PARTIAL | 24,009 unique dictionary entries; exact IPA-column adapter added. Prior source-concordance results are not independent accuracy and may overlap training data. | Rights review, no-overlap proof, dialect/convention mapping, and independent Yangon-profile gold. |
+| BUR-HYBRID-CANDIDATE-ENGINE-001 | PARTIAL | HybridBurmeseEngine exports deterministic rules as final-output authority and exposes Google WFST, myG2P, Epitran and CLI candidates with provenance. Regression tests added. | Exact-head CI and independent adjudicated gold before external candidate promotion. |
+
+
+### Verification checkpoint — MYA-HYBRID-CANDIDATE-ENGINE-001
+
+Engineering implementation is DONE_VERIFIED on code-bearing head 17c855307be36a0735f0cd8967b988fe62053d8a: tests [43077670284](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670284) SUCCESS (183 Python tests + 72 subtests, npm build, generated-data drift, npm tests and 54 Playwright tests). The optional WFST comparator rerun [43077670322](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670322) still has its Google build job running; previous WFST smoke [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514) succeeded. Linguistic promotion remains PARTIAL; independent Yangon-profile IPA gold is absent.
+
+
+Google WFST rerun [43077670322](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670322) completed SUCCESS: pinned grammar built, symbol-table checks passed and 6/6 structural-only inputs produced non-empty output. Accuracy remains null because independent gold is 0.
+
+
+Epitran hybrid adapter refinement: the optional Burmese adapter now explicitly requests tones=True by default and records the requested setting in candidate provenance. Regression test added; exact-head pytest passed in [43078675807](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43078675807). This does not retroactively change the earlier Epitran raw-output benchmark (which used the original smoke harness), nor establish tonal accuracy.
+
+
+Latest tone-aware hybrid code verification: [43078675807](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43078675807) SUCCESS — 184 Python tests + 72 subtests, npm build, generated-data drift check, npm tests and 54 built-site Playwright tests. The final branch commit 90ec9cba295cca29c1e05b0d71d35c98f653a8ef changes documentation only. Latest optional WFST rerun 43078675829 still building at final checkpoint; prior full run 43077670322 succeeded with 6/6 raw structural probes.
+
+
+## Hybrid provider-priority verification — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BUR-HYBRID-PROVIDER-PRIORITY-001 | DONE_VERIFIED (engineering ordering only) | Provider order is myG2P 10 → Google WFST 20 → Epitran 40 → CRF 60 → Goruut 90; unknown providers 50. Exact-head CI [43080511259](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43080511259) SUCCESS (185 Python tests + 72 subtests; npm build, generated-data freshness, npm tests, 54 Playwright tests); optional candidate jobs [43080510989](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43080510989) SUCCESS. | Order is diagnostic, not an accuracy ranking or promotion rule. RuleBasedBurmeseEngine remains final authority; gold=0, accuracy=null. |
+
+
+## Burmese CLI adapter input-framing fix — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BUR-CLI-NEWLINE-001 | DONE_VERIFIED (unit/CI contract); live Goruut E2E BLOCKED | Regression test captures subprocess stdin. RED [43081924723](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43081924723): 1 failed as expected. Fix `fea872b176fabaddf4f0c5ff4121dcf722590ef7`; exact-head CI [43082016024](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082016024) SUCCESS: 185 Python tests + 72 subtests and 54 browser tests. | Generic CLI adapter now appends an actual newline rather than literal `\\n`. Live Goruut smoke still depends on upstream publication/documentation of `weights9.bin.zlib`; no IPA accuracy is implied. |
+
+
+## Burmese unsupported medial/stack/kinzi IPA withholding — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BUR-MEDIAL-STACK-KINZI-WITHHOLD-001 | DONE_VERIFIED (fail-closed behavior) | Regression test checks medial `ကြွေ`, stacked consonant `က္ကာ` and kinzi `င်္ဂါ`. RED [43082483864](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082483864) confirmed medial omission; fix `20ef6ca711093b8422c7b4d3bdce0dcd5023d3de`; exact-head CI [43082565716](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082565716) SUCCESS: 186 tests + 72 subtests and 54 browser tests. | The adapter withholds IPA for medials, conjuncts and kinzi until their Yangon-profile phonetic realizations are established. This is not a gold score or a new rule. |
+
+
+## Final Burmese branch verification — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BUR-FINAL-PR-HEAD-001 | DONE_VERIFIED (repository/CI snapshot) | PR #129 head `0b6368cab8871271c6c0a1684d926c5ec0bc3826`, open draft, 52 ahead / 0 behind current main, no reviews/comments. Required CI [43083942317](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43083942317) SUCCESS (187 tests + 72 subtests, build, generated-data, npm, 54 Playwright); optional diagnostics [43083942349](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43083942349) SUCCESS. | Not merged/published. Accuracy remains unmeasured (gold=0). Candidate providers remain diagnostic only; no output promotion. |

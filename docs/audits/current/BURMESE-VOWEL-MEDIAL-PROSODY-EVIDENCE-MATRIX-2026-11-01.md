@@ -116,3 +116,25 @@ The paper states that the authors' in-house Burmese speech corpora and segmentat
 
 
 **Extraction limit:** Green's 50-rhyme table is present in the source PDF, but the available text extraction corrupts several IPA symbols and tone marks. This pass records the table count and the source's explicit phonotactic restrictions, but does not reconstruct all 50 entries from corrupted OCR. A page-image/manual linguistic transcription is required before turning the table into machine-readable rows.
+
+
+## Primary-source reconciliation for deterministic Burmese phonology — 2026-11-11
+
+### Kyaw Thu et al. (2016), WSSANLP
+
+The paper evaluates S-AROW, CRF, JSM, PBSMT, RNN, SVM and WFST on a manually tagged Myanmar pronunciation dictionary. Its experiment uses 25,300 MLC dictionary words: 25,000 training words and three open test sets of 100 words each; it also reports a 100-word closed test sampled from training data. CRF and WFST obtain the lowest PER on the three open sets (WFST: 14.7, 11.4 and 15.7; CRF ties 15.7 on open3), while the authors report PBSMT as best overall in manual evaluation. Voiced/unvoiced changes are the largest manual error category; the paper notes context- and POS-conditioned pronunciations. These are historical benchmark results under the paper's own dictionary, syllable segmentation and phonetic convention—not transferable accuracy estimates for this repository. In particular, the closed-test results are not held-out evidence.
+
+### Oo et al. (2020), LREC
+
+The paper describes a Thrax/OpenFst G2P grammar whose input is Myanmar Unicode and whose output is IPA; it reports 195 states and 2,966 arcs. Its stages include orthographic normalization (medial reordering, spelling variants, vowel normalization, kinzi unstacking), core grapheme-to-phoneme rewrites, coda/nucleus-position transformations, phonological transformations and lexical/special-marker exceptions. Its phonological model describes four tone categories and an asymmetrical vowel inventory conditioned by open vs. nasalized/glottally closed syllables; tone cues include pitch, phonation and vowel quality. This is a published system analysis, not a universal or independently adjudicated project convention. Preserve its source-specific inventory separately from Green's and Duan & Zhu's competing analyses.
+
+### Hlaing & Mikami (2014), Myanmar orthographic syllabification
+
+The FST paper reports 99.93% orthographic syllabification accuracy on 11,732 words / 32,283 syllables, with errors concentrated in nine stacked words and free-standing vowel/consonant-stack combinations. This supports an FST structural-analysis comparator only. It is not G2P accuracy, IPA evidence or a pronunciation benchmark.
+
+**Implementation consequence:** no tone, coda, vowel, medial or allophonic rule is promoted solely from these papers. They sharpen the required test dimensions and support retaining Google WFST as a diagnostic candidate; source-profile matching and independent Yangon IPA adjudication remain outstanding.
+
+
+## Runtime abstention guard — 2026-11-11
+
+The evidence matrix's unresolved medial and stacked-consonant rows now have an explicit runtime safeguard: `src/burmese_ukrainian/ipa.py` returns no IPA whenever parsed `medials`, `conjunct` or `kinzi` fields are present. The parser continues to expose those structures for inspection; the IPA adapter no longer silently drops them. Regression probes: `ကြွေ`, `က္ကာ`, `င်္ဂါ`. Exact-head CI [43082565716](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082565716) passed 186 Python tests + 72 subtests and 54 Playwright tests. This is abstention, not a phonological analysis.

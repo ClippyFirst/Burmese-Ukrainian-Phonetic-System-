@@ -60,7 +60,7 @@ The comparator must be tested for: Unicode normalization; syllable segmentation;
 
 ## Evidence limitations
 
-The WSSANLP 2016 abstract establishes the methods and broad ranking but does not provide enough details here to reproduce its exact numeric results. The LREC 2020 abstract establishes the existence and scope of grammars/corpus but not full modern profile coverage. Epitran/Goruut declarations are not independent linguistic evaluations. No new runtime benchmark was executed in this documentation-only audit.
+The full WSSANLP 2016 paper provides numeric open-set PER in Figure 2 (WFST 14.7/11.4/15.7; CRF 15.7 on open3; PBSMT 16.1/13.1/22.0), but the original split artifacts are not available here, so those scores cannot be independently reproduced from this repository. The LREC 2020 paper describes the Google FST grammar but does not publish standalone G2P PER/CER or prove full modern profile coverage. Epitran/Goruut declarations are not independent linguistic evaluations. The 2026-11-02 audit itself did not execute a new runtime benchmark; the 2026-11-11 follow-up below adds the reproducible CI runs.
 
 ## Hosted raw-output diagnostics on the audit branch — 2026-11-02
 
@@ -95,3 +95,41 @@ At this checkpoint the exact-head CI jobs are queued, not passed: [tests 4141499
 ## CRF raw-output artifact inspection — 2026-11-02
 
 The pinned Burmese CRF probe completed successfully in [workflow 41417982199](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41417982199). Downloaded artifact `burmese-crf-raw-output` (SHA-256 `0119281f9bd3d946a36dad1299f530b629599cfd26146ce190ea34f7c707ddd6`) was inspected: 100 inputs, 100 predictions, 84 exact source-concordant strings, zero skipped rows, model SHA-256 `f66571b7632eed2e94878278702654ce0a4b25fcab18720af60d3cfe00b011ce`. The report explicitly records `gold_count=0`, `accuracy=null`, `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`. The 84/100 figure is source concordance only, not an accuracy estimate, because model training membership is unknown and source-attested myG2P entries are not independent adjudicated gold. The probe uses pre-supplied syllable segmentation and therefore does not measure end-to-end Burmese segmentation or sentence handling. The upstream myG2P source declares CC BY-NC-SA 4.0; this diagnostic artifact is not a basis for redistributing source data or model output as a production lexicon.
+
+## Follow-up engine and benchmark research — 2026-11-11
+
+### New engine: Google Burmese Thrax/OpenFst WFST
+
+Primary sources: [pinned Google language-resources source](https://github.com/google/language-resources/tree/a90601024f07ab7e96c911243324e0adeb16da96/my) and [Oo et al., LREC 2020](https://aclanthology.org/2020.lrec-1.777/).
+
+- The grammar is `my/burmese.grm`, built with `bazel build -c opt my:g2p`.
+- The paper says the compiled WFST accepts Unicode Myanmar block characters and emits phonemes represented in IPA. It reports 195 states, 2,966 arcs and an 88-symbol phoneme inventory (34 consonants + 54 vowels).
+- Rules include medial-marker reordering, variant spelling unification, vowel normalization, unstacking complex consonants, syllable-position rewrites, phonological transformations and pronunciation exceptions.
+- The upstream repository declares Apache-2.0. Its current WORKSPACE has dependency drift; CI pins the source commit and a compatible Abseil commit. Build reproducibility is still limited by other upstream dependency references that are not all content-address pinned.
+- The paper does not publish a standalone PER/CER score for this G2P grammar. Its TTS MOS 3.63±0.10 is a pipeline result, not a G2P benchmark.
+
+### Additional benchmark sources
+
+**WSSANLP 2016 Myanmar G2P comparison** ([paper](https://aclanthology.org/W16-3702/)):
+- 25,300 MLC dictionary entries; 25,000 training words; three 100-word open test sets; one 100-word closed test sampled from training.
+- Seven methodological families: S-AROW, CRF, JSM/Sequitur, PBSMT/Moses, recurrent neural G2P (reported as RNN and RNNA variants), SVM/KyTea and WFST/Phonetisaurus. The paper plots both RNN variants separately. PER is computed at phoneme level after syllable alignment.
+- Open-set PER: WFST 14.7 (open1), 11.4 (open2), 15.7 (open3); CRF 15.7 on open3; PBSMT 16.1, 13.1, 22.0. Closed-test zero scores for some systems are not representative of open performance.
+- Manual error analysis covers voicing, tone, consonants and vowels. The paper notes context/POS-sensitive pronunciations and within-word voicing changes.
+- The paper's phoneme strings are romanized conventions, not project IPA; the source dictionary's redistribution rights remain unresolved.
+
+**OpenSLR SLR80** ([resource](https://www.openslr.org/80/)):
+- CC BY-SA 4.0; 2,528 utterances, 20 female native speakers, 9,941 unique words and 22,443 words in total.
+- Contains word-segmented orthographic transcripts and audio, but no IPA labels. It can support future expert audio review; it is not a direct G2P gold benchmark.
+
+### Re-execution of existing comparators — 2026-11-11
+
+- **myG2P v2 / CRFsuite:** 100/100 predictions; 84 source-concordant strings; zero independent gold; `accuracy: null`; `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`. Input is already syllable-segmented, so this does not measure segmentation. Model SHA-256 `f66571b7632eed2e94878278702654ce0a4b25fcab18720af60d3cfe00b011ce`. Source data license CC BY-NC-SA 4.0; do not treat output as commercial data.
+- **Epitran 1.35.3:** six structural-only probes, six raw outputs, zero runtime errors; no gold and no score. Raw outputs: `ke`, `kaʊʔ`, `t͡ɕi`, `səwɛ`, `məjaɴ`, `ju`.
+- **Google WFST:** optional build/smoke job added; its latest CI run is [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514). Earlier attempts exposed three distinct upstream compatibility issues: Abseil's unpinned current master, Bazel <7 lacking `native.package_relative_label`, and OpenFst compilation against GCC 15. The final job pins Ubuntu 22.04/GCC 11 and Bazel 7.4.1; its successful build and six-probe result are recorded below.
+
+No external output has been promoted to gold. The 2016 paper's PER and the 2020 Google paper's TTS MOS are different tasks and must not be compared as one benchmark.
+
+
+### Google FST execution result
+
+The pinned CI run [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514) completed the Bazel build, upstream IPA symbol-table tests and six structural-only probes. All six produced IPA phone sequences: `k è`, `k ɔ̀`, `tɕ ì`, `s w ɛ̀`, `m j àɴ`, `j ù`. The Thrax CLI echoes the Myanmar input followed by a tab; the harness now retains that raw line separately from the parsed IPA field. Gold count remains zero and accuracy is null.
