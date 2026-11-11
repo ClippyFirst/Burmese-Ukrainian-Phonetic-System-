@@ -446,3 +446,41 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BURMESE-DETERMINISTIC-RULE-ENGINE-001 | DONE_VERIFIED (engineering); linguistic coverage PARTIAL | Final main head `9bece0a50a367f3f58336d2aba7016ac4af86156`; exact-head tests [43019216137](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43019216137) and Pages + smoke [43019216297](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43019216297) SUCCESS. | Deterministic implementation and publication verified. Independent expert-adjudicated Yangon IPA gold remains necessary for broader correctness/accuracy claims. |
+
+
+## 2026-11-11 — Ukrainian practical transcription continuation
+
+| Work item | Status | Evidence / acceptance |
+|---|---|---|
+| Python IPA → Ukrainian adapter integrated after deterministic Burmese IPA | DONE_VERIFIED | Previous code revision \`530cefbfc874b777650bd7e7ccdb5888534ab348\`; 180 Python tests + 66 subtests |
+| Canonical CSV and generated browser adapter | DONE_VERIFIED | Generated-data freshness, build and Node tests passed on previous code revision |
+| Target distinctions /h, ɦ/ → г, /ɡ/ → ґ, /x/ → х; /w/ → в, contextual /j/ yotation, affricates ц/дз/ч/дж | DONE_VERIFIED | Explicit project policy; official 2026 standard generally uses г for foreign [g], so ґ is a contrast-preserving project choice |
+| Browser fail-closed behavior for kinzi, medials and conjuncts | PARTIAL | Implemented; final Playwright run is queued and unverified |
+| Accuracy of proposed Ukrainian correspondences | PARTIAL | No independent adjudicated IPA/Ukrainian gold set |
+| Final browser CI | BLOCKED | Run 43095578672 queued with zero jobs started |
+| Independent text-only IPA gold set | BLOCKED | Requires sourced and adjudicated Yangon-profile IPA labels and held-out evaluation |
+| Audio | DEFERRED | Outside current task scope |
+
+
+## Provisional onset IPA fallback — 2026-11-11
+
+| Work item | Status | Evidence / acceptance |
+|---|---|---|
+| Python onset-only preview for unresolved Burmese syllables | PARTIAL | Separate provisional IPA/Ukrainian fields and trace; canonical ipa/ukrainian withheld; unresolved rime marked ?. Regression added. Commit 6936f01d3ff320574b8802c7af348d687e63ce17 |
+| Browser onset-only preview | PARTIAL | Reuses Yangon onset IPA and IPA adapter; displays provisional IPA and ?. Commit 5b83f5d3674b9e6d2f4114047bd67be5a5440719 |
+| Browser regression | PARTIAL | Source-contract assertions added; no executed cross-runtime parity fixture yet. Commit 36b6ebf5a1d5a03b0c4d7a95aae2d842046e4152 |
+| Dedicated Yangon grapheme-position evidence registry | TODO | Register primary-source locator, profile, exact onset position, rule ID, scope and reviewer status for every fallback entry |
+| Exact-head CI and Chromium verification | BLOCKED pending run | No workflow run was returned for final head 36b6ebf5a1d5a03b0c4d7a95aae2d842046e4152 |
+| Vowel/coda/asat/medial/kinzi/conjunct fallback | TODO | Do not extend without source-backed positional rules; no such guesses were added |
+
+
+## Verification result — provisional onset preview, 2026-11-11
+
+| Work item | Status | Evidence |
+|---|---|---|
+| Python fallback implementation and regression | DONE_VERIFIED (engineering behavior) | Code/test head aac1d6834b4c29e04f01477af1583a2be9eba485; workflow 43101914347 PASS: 182 tests + 66 subtests |
+| Browser fallback detail and canonical fail-closed behavior | DONE_VERIFIED (engineering behavior) | Workflow 43101914347 PASS; Playwright 54/54; production build, generated-data freshness and Node tests PASS |
+| Optional Epitran raw-output comparator | DONE_VERIFIED (workflow) | Run 43101914423 PASS; not an independent IPA accuracy benchmark |
+| Dedicated Yangon grapheme-position evidence registry | TODO | Existing onset inventory is reused; exact per-entry primary-source locators, scope and adjudication remain required |
+| Functional Python/browser parity fixture | TODO | Browser tests cover behavior, but no shared structured cross-runtime fixture yet |
+| Full Myanmar grapheme fallback | DEFERRED / evidence-limited | Only isolated bare consonants receive onset-only preview; vowel/rime/coda/asat/medial/kinzi/conjunct/tone structures remain fail-closed |

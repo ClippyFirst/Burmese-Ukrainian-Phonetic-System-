@@ -34,14 +34,17 @@ The comparison shows several systematic target-language differences:
 | /ŋ/ | нг | нг |
 | /w/ | у | в |
 | /h/ | х | г |
-| /ɡ/ | г | ґ |
+| /ɡ/ (ASCII alias /g/) | г | ґ* |
+| /ɦ/ | — | г |
 | /x/ | х | х |
-| /r/ | й/r-dependent | р |
+| /t͡s, d͡z/ | ц, дз | ц, дз |
+| /t͡ʃ, d͡ʒ/ | ч, дж | ч, дж |
+| /ɹ/ | й/r-dependent | р* |
 | tone | not encoded | not encoded |
 
 Aspiration is preserved with an apostrophe in the Ukrainian practical layer; /ʔ/ does not trigger it. The distinctions /h/ → г, /ɡ/ → ґ and /x/ → х are project-wide target conventions, not claims that foreign /h/ is identical to Ukrainian /ɦ/.
 
-The shared target conventions are documented in the canonical [foreign IPA → Ukrainian adaptation policy](https://github.com/ClippyFirst/Ukrainian-Phonetic-Inventory/blob/main/docs/foreign-target-adaptation.md). This repository's executable Burmese correspondences and regression tests implement the aspiration apostrophe, /h/ → г, /ɡ/ → ґ and /x/ → х distinctions without changing Burmese IPA.
+The shared target conventions are documented in the canonical [foreign IPA → Ukrainian adaptation policy](https://github.com/ClippyFirst/Ukrainian-Phonetic-Inventory/blob/main/docs/foreign-target-adaptation.md). This repository's executable practical adapter maps whole IPA sequences after the deterministic Burmese IPA engine, including aspiration, /h/ → г, /ɡ/ (ASCII /g/) → ґ, /x/ → х and Ukrainian affricate sequences. The /ɡ/ → ґ choice is project-specific: the 2026 Ukrainian standard generally adapts foreign [g] with г and allows ґ as an imitation choice in personal names.
 
 ## Serbian and Bulgarian comparators
 
@@ -68,12 +71,9 @@ git diff --exit-code -- src/web/generated/data.js
 ```
 
 Structural Burmese parsing is available directly through the Python package.
-The Ukrainian target adapter intentionally requires a local checkout of the
-canonical ClippyFirst/Ukrainian-Phonetic-Inventory repository; the Burmese
-repository does not vendor or duplicate that inventory.
+The generic ipa_to_ukrainian() adapter intentionally requires a local checkout of the canonical ClippyFirst/Ukrainian-Phonetic-Inventory repository; the Burmese repository does not vendor or duplicate that generic inventory. Without it, that generic adapter returns inventory_unavailable.
 
-Without the external inventory, the adapter returns
-`inventory_unavailable` rather than falling back to a hidden Ukrainian map.
+For the language-specific practical system, use transcribe_ipa(). It uses the repository's provenance-bearing data/burmese/ukrainian_practical.csv and data/burmese/practical_rules.csv tables. RuleBasedBurmeseEngine.analyze() now exposes the post-IPA result in ukrainian, ukrainian_status, ukrainian_segments and ukrainian_prosody. Unknown IPA segments withhold the complete practical string.
 
 ## Current implementation
 
@@ -95,6 +95,8 @@ Implemented:
 - Burmese→Ukrainian practical correspondence registry.
 - Machine-readable practical rule registry and provenance claims.
 - Executable Ukrainian practical target layer.
+- Whole-IPA sequence adapter with longest-match affricates, contextual /j/ yotation, and tone/length trace.
+- Ukrainian practical rendering integrated after IPA in the deterministic engine.
 - Comparative Russian-vs-Ukrainian documentation.
 - Serbian/Bulgarian comparator audit.
 - Practical-layer regression tests.

@@ -1143,3 +1143,94 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Exact-head tests [43019216137](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43019216137) and Pages deployment + asset smoke [43019216297](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43019216297) both SUCCESS; Python tests, npm build, generated-data drift check, npm tests and built-browser Playwright passed.
 - Live service: https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/. MLCTS remains a separate orthographic mode; no external G2P/model participates in phonetic runtime.
 - Remaining linguistic acceptance: independent adjudicated Yangon IPA gold and broader tone/phonation/coda coverage; no blanket accuracy claim.
+
+
+## 2026-11-11 continuation — Ukrainian practical transcription
+
+### Repository state
+- Starting default-branch SHA: \`fab39881259df94be93634088a75667a13059cfc\`.
+- Current final verification branch: \`feat/burmese-ukrainian-practical-adapter-verified-final-2026-11-11\`.
+- Browser fail-closed implementation code SHA: `e9bd12819ed692d7be2607356008217de9430dca`. Subsequent commits update only handoff/matrix/register documentation; the live PR head is authoritative for the latest documentation commit.
+- Draft PR [#133](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/133), open, not merged.
+- Earlier drafts #129, #130, #131 and #132 are superseded/closed as appropriate; their branches are retained.
+- Main was not modified; no site deployment or publication occurred.
+
+### Implemented
+- Added \`src/burmese_ukrainian/practical.py\` as the Python whole-IPA → Ukrainian adapter. \`RuleBasedBurmeseEngine\` invokes it after IPA derivation and concatenates per-syllable Ukrainian spellings into a word while preserving IPA syllable boundaries and per-syllable trace.
+- Added \`src/web/ukrainian-adapter.js\` for browser rendering, backed by generated data from \`data/burmese/ukrainian_practical.csv\` and \`data/burmese/practical_rules.csv\`.
+- Added fail-closed handling for unknown IPA, and browser-side withholding of IPA/Ukrainian output for medials, conjuncts and kinzi until those structures have fully supported phonetic rules. Structural parsing remains available.
+- Target conventions: /h, ɦ/ → г; /ɡ/ (ASCII /g/) → ґ as a contrast-preserving project choice; /x/ → х; /w/ → в; /t͡s, d͡z, t͡ʃ, d͡ʒ/ → ц, дз, ч, дж; /tɕ, dʑ/ → ч, дж as approximations; aspiration is represented with a project apostrophe; syllable-initial /j/ uses Ukrainian yotated spellings where transparent.
+- Tone and length remain in IPA/prosody trace and are not converted into Ukrainian stress or vowel doubling.
+- Restored the complete pre-existing source registry before adding/pinning the official Ukrainian Orthography 2026 source; no pre-existing source IDs were intentionally discarded.
+- Russian practical transcription remains a comparator only. The Russian /h/ → х and aspiration conventions are not copied.
+- Text-only work; no audio corpus was used.
+
+### Verification evidence and limits
+- Previous code revision \`530cefbfc874b777650bd7e7ccdb5888534ab348\`, workflow [43094695944](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43094695944): Python tests (180 tests + 66 subtests), package build, generated-data freshness and Node tests passed. The Playwright browser step failed on two assertions: stale page copy and a kinzi-bearing syllable receiving a practical rendering.
+- Both browser issues were corrected on the current branch: page copy now reflects the target policy, and the browser parser withholds unsupported kinzi/medial/conjunct structures consistently with Python. Regression coverage was added.
+- Final branch workflow [43095578672](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43095578672) is still \`queued\` with zero jobs started. Therefore the final browser/Playwright correction is implemented but not yet CI-verified; do not report the final browser suite as passed.
+- No independent adjudicated Burmese IPA/Ukrainian gold set exists. Passing code tests do not establish phonetic accuracy.
+
+### Task ledger
+| Work item | Status | Evidence / acceptance |
+|---|---|---|
+| Python IPA → Ukrainian adapter and deterministic engine integration | DONE_VERIFIED | Previous revision Python suite: 180 tests + 66 subtests; engine retains IPA boundary and syllable trace |
+| Canonical CSV correspondence/rule data and generated browser data | DONE_VERIFIED | Previous revision generated-data freshness, package build and Node tests passed; source registry preserved |
+| Browser adapter with longest-match affricates and contextual /j/ | PARTIAL | Implemented; final Playwright run is queued and has not started |
+| Browser fail-closed handling for kinzi, medials and conjuncts | PARTIAL | Code and regression assertion added; final browser acceptance remains pending |
+| Empirical validity of Ukrainian target correspondences | PARTIAL | Explicit proposed mapping policy; independent adjudicated target gold is absent |
+| Final browser CI | BLOCKED | GitHub Actions run 43095578672 remains queued with no jobs; acceptance: complete green browser suite on current PR head |
+| Independent text-only Burmese IPA/Ukrainian gold set | BLOCKED | Requires sourced IPA labels with dialect/profile provenance and independent adjudication; acceptance: held-out set, annotation/adjudication record, PER/CER, coverage and abstention report |
+| Audio validation | DEFERRED | Explicitly outside current text-only task |
+
+### Next genuine blockers
+1. Wait for GitHub Actions to start and complete run 43095578672; fix any remaining failures and rerun.
+2. Build an independent text-only Yangon Burmese IPA/Ukrainian adjudication set before making accuracy claims.
+
+
+## Verification refresh — 2026-11-11
+
+- PR #133 is the authoritative continuation branch and remains open/draft and unmerged. Consult its live head for the latest documentation revision. Main remains unchanged at `fab39881259df94be93634088a75667a13059cfc`.
+- The executable browser adapter and fail-closed parser code are unchanged after code SHA `e9bd12819ed692d7be2607356008217de9430dca`; later commits update README, matrix, completion register and handoff only.
+- Latest exact-head workflow at this handoff snapshot [43095883419](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43095883419) was queued with no jobs started; later documentation-only commits triggered another exact-head run. Consult PR #133 for the current run. Do not report the final Playwright suite as verified until this run completes successfully.
+- The text-only task does not require audio. A separate text IPA/Ukrainian adjudication set remains blocked by missing independently sourced and adjudicated labels; this blocks empirical accuracy claims, not the deterministic target adapter implementation.
+- Audio annotation is DEFERRED by scope. No source IPA labels, gold corpus rows or accuracy scores were invented or added.
+
+
+## Provisional grapheme IPA fallback — continuation 2026-11-11
+
+- Added `docs/provisional-grapheme-ipa-fallback.md` defining the Lao-style `PROVISIONAL` grapheme → IPA → existing Ukrainian adapter contract, visible `?` uncertainty, Python/browser parity and benchmark separation.
+- This is a design/acceptance document only, not an implementation claim. Current Burmese parser/practical adapter still withholds unsupported constructions. Implementation is BLOCKED pending a source-backed, Yangon-profile positional grapheme-to-IPA inventory; onset hints must not be reused as coda/vowel/medial/kinzi readings.
+
+
+## Provisional onset fallback implementation — 2026-11-11
+
+- Python and browser now expose a separate PROVISIONAL onset-only IPA preview for unresolved syllables where the existing Yangon onset inventory has an IPA value.
+- The existing IPA → Ukrainian adapter renders the hint; ? marks the unresolved rime/structure. Canonical ipa/ukrainian remain withheld.
+- No vowel, coda/asat realization, medial, kinzi, conjunct, tone or phonation is inferred.
+- Python regression and browser source-contract regression were added.
+- Status: PARTIAL. Dedicated Yangon-profile source registry, executed browser parity fixtures, exact-head CI and Chromium verification remain outstanding.
+- Exact head at this update: 36b6ebf5a1d5a03b0c4d7a95aae2d842046e4152. No workflow run was returned for this branch; no tests are recorded as passed.
+
+
+## Final continuation snapshot — 2026-11-11 23:00 +02:00
+
+- Current PR #133 head: ebc826673868cafec41043411673fa3e618ae866. Draft, open, unmerged. Main baseline remains fab39881259df94be93634088a75667a13059cfc.
+- Implemented Python and browser onset-only PROVISIONAL fallback. It uses the existing Yangon onset IPA inventory → existing IPA adapter → Ukrainian text plus ?. Canonical fields remain withheld.
+- Exact-head test workflow 43100176432 was queued at the latest check; no job had started. Do not claim test success.
+- Local test execution was unavailable: public GitHub clone attempt failed because the execution environment could not resolve github.com. No tests are claimed passed on the new fallback.
+- Remaining: execute Python/Node/Chromium tests on the exact head; add functional shared Python/browser fixtures; register each provisional onset with exact primary-source locator and Yangon-profile scope; expand only where positional evidence is explicit. Independent text-only Yangon adjudicated gold remains BLOCKED; audio remains DEFERRED.
+
+
+## Fallback scope clarification — 2026-11-11
+
+The browser onset-only preview is now limited to isolated bare consonant tokens. Contextual structures (vowels, codas/asat, medials, kinzi, conjuncts and prosodic marks) remain on their existing fail-closed path. The preview appears only in per-syllable details; canonical main output is unchanged. Earlier browser regression run 43100176432 failed because the first integration leaked onset-only previews into contextual syllables; the scope fix and a new verification run are in progress.
+
+
+## Verified implementation result — 2026-11-11
+
+- Code/test head aac1d6834b4c29e04f01477af1583a2be9eba485.
+- Workflow 43101914347 PASS: 182 Python tests, 66 subtests, npm install, build, generated-data freshness, Node tests and Chromium Playwright 54/54.
+- Optional Epitran raw-output comparator 43101914423 PASS; it is not an independent IPA accuracy gold set.
+- Browser keeps canonical IPA/Ukrainian output fail-closed and shows a separate onset-only preview only for isolated bare consonants. Contextual structures remain withheld.
+- Linguistic feature remains PARTIAL: dedicated Yangon-profile positional evidence registry and functional shared Python/browser parity fixture remain TODO. Independent adjudicated gold remains BLOCKED; audio DEFERRED.

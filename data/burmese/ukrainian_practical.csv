@@ -5,11 +5,11 @@ consonant,dʑ,onset,дж,дж,"Palatalized /g/ + medial is realized as a voiced 
 consonant,ʃ,onset,ш,ш,"Standard Burmese ha-to combinations such as ရှ/ယှ are /ʃ/",proposed,UA_ORTH_2026
 consonant,k,onset,к,к,"Direct target for unaspirated /k/",proposed,UA_ORTH_2026
 consonant,kʰ,onset,кх,к',"Preserve aspiration explicitly with apostrophe; do not copy Russian кх",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
-consonant,ɡ,onset,г,ґ,"Foreign hard /ɡ/ uses Ukrainian ґ",proposed,UA_ORTH_2026
+consonant,ɡ,onset,г,ґ,"Foreign hard /ɡ/ uses Ukrainian ґ as the project’s contrast-preserving choice",proposed,UA_ORTH_2026
 consonant,t,onset,т,т,"Direct target for unaspirated /t/",proposed,UA_ORTH_2026
-consonant,tʰ,onset,тх,т',"Preserve aspiration explicitly with apostrophe; do not copy Russian тх",proposed,UA_ORTH_2026
+consonant,tʰ,onset,тх,т',"Preserve aspiration explicitly with apostrophe; do not copy Russian тх",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
 consonant,p,onset,п,п,"Direct target for unaspirated /p/",proposed,UA_ORTH_2026
-consonant,pʰ,onset,пх,п',"Preserve aspiration explicitly with apostrophe; do not copy Russian пх",proposed,UA_ORTH_2026
+consonant,pʰ,onset,пх,п',"Preserve aspiration explicitly with apostrophe; do not copy Russian пх",proposed,RU_EPSHTEIN_1959;UA_ORTH_2026
 consonant,s,onset,с,с,"Direct target for unaspirated /s/",proposed,UA_ORTH_2026
 consonant,sʰ,onset,сх,с',"Preserve the supplied aspiration diacritic explicitly with apostrophe",proposed,UA_ORTH_2026
 consonant,ŋ,onset_or_coda,нг,нг,"Expose the velar nasal rather than collapsing it to н; final form may be context-sensitive",proposed,RU_EPSHTEIN_1959
@@ -33,8 +33,31 @@ vowel,e,nucleus,е,е,"Direct target",proposed,UA_ORTH_2026
 tone,all,prosody,not encoded,not encoded,"Tone/register/phonation stay in metadata and IPA modes; never convert automatically to Ukrainian stress",proposed,DUAN2025;GREEN2002;TUN2011
 vowel,ɪ,nucleus,и,и,"Map short lax Burmese /ɪ/ to Ukrainian и as a target-language candidate; keep the distinction visible in IPA",analysis_dependent,UA_ORTH_2026
 vowel,ʊ,nucleus,у,у,"Map short /ʊ/ to Ukrainian у as a practical candidate; retain the IPA distinction upstream",analysis_dependent,UA_ORTH_2026
-vowel,eɪ,diphthong,ей,ей,"Provisional Ukrainian rendering of the Burmese checked diphthong; requires corpus and native-speaker validation",analysis_dependent,UA_ORTH_2026
-vowel,oʊ,diphthong,оу,оу,"Provisional Ukrainian rendering of the Burmese closed /oʊ/ rime; requires corpus and native-speaker validation",analysis_dependent,UA_ORTH_2026
-vowel,aɪ,diphthong,ай,ай,"Provisional Ukrainian rendering of the Burmese /aɪ/ rime; requires corpus and native-speaker validation",analysis_dependent,UA_ORTH_2026
-vowel,aʊ,diphthong,ау,ау,"Provisional Ukrainian rendering of the Burmese /aʊ/ rime; requires corpus and native-speaker validation",analysis_dependent,UA_ORTH_2026
-consonant,θ~ð,onset,т,т,"No dedicated Ukrainian dental fricative; т is conservative",analysis_dependent,RU_EPSHTEIN_1959
+vowel,eɪ,diphthong,ей,ей,"Provisional rendering of the Burmese checked diphthong; requires corpus and native-speaker validation",analysis_dependent,UA_ORTH_2026
+vowel,oʊ,diphthong,оу,оу,"Provisional rendering of the Burmese closed /oʊ/ rime; requires corpus and native-speaker validation",analysis_dependent,UA_ORTH_2026
+vowel,aɪ,diphthong,ай,ай,"Provisional rendering of the Burmese /aɪ/ rime; requires corpus and native-speaker validation",analysis_dependent,UA_ORTH_2026
+vowel,aʊ,diphthong,ау,ау,"Provisional rendering of the Burmese /aʊ/ rime; requires corpus and native-speaker validation",analysis_dependent,UA_ORTH_2026
+consonant,θ~ð,onset,т,т,"No dedicated Ukrainian dental fricative; t is a conservative unresolved comparator candidate",analysis_dependent,RU_EPSHTEIN_1959
+consonant,g,onset,г,ґ,"ASCII IPA alias for /ɡ/; preserve the hard-stop distinction in the project mapping",proposed,UA_ORTH_2026
+consonant,ɦ,onset,г,г,"Map voiced glottal fricative /ɦ/ to Ukrainian г; retain source IPA separately",proposed,UA_ORTH_2026
+consonant,z,onset,з,з,"Direct Ukrainian practical target for voiced alveolar fricative /z/",proposed,UA_ORTH_2026
+consonant,ɲ,onset,нь,нь,"Palatal nasal is rendered with Ukrainian soft-sign sequence",proposed,UA_ORTH_2026
+consonant,ɹ,onset,р,р,"Burmese engine's current approximant /ɹ/ is rendered as Ukrainian р; this is a practical approximation",proposed,UA_ORTH_2026
+consonant,j,onset,й,й,"Consonantal /j/; syllable-initial /j/ plus a following vowel is handled by contextual Ukrainian yotation",proposed,UA_ORTH_2026
+consonant,l,onset,л,л,"Direct Ukrainian practical target for /l/",proposed,UA_ORTH_2026
+consonant,dʰ,onset,дх,д',"Preserve the aspirated stop with the project's apostrophe marker, not a separate /x/",proposed,UA_ORTH_2026
+consonant,bʰ,onset,бх,б',"Preserve the aspirated stop with the project's apostrophe marker, not a separate /x/",proposed,UA_ORTH_2026
+consonant,θ,onset,т,т,"Project target follows the Ukrainian conventional [θ] → т adaptation; IPA remains /θ/",analysis_dependent,UA_ORTH_2026
+consonant,ð,onset,з,з,"Project target follows the Ukrainian conventional [ð] → з adaptation; IPA remains /ð/",analysis_dependent,UA_ORTH_2026
+consonant,ʋ,onset_or_coda,в,в,"Use Ukrainian в for consonantal labiodental approximant /ʋ/",proposed,UA_ORTH_2026
+consonant,t͡s,onset,ц,ц,"Explicit affricate /t͡s/ maps to Ukrainian ц; plain /t/ + /s/ remains two segments",proposed,UA_ORTH_2026
+consonant,d͡z,onset,дз,дз,"Explicit affricate /d͡z/ maps to Ukrainian дз; plain /d/ + /z/ remains two segments",proposed,UA_ORTH_2026
+consonant,t͡ʃ,onset,ч,ч,"Explicit affricate /t͡ʃ/ maps to Ukrainian ч",proposed,UA_ORTH_2026
+consonant,d͡ʒ,onset,дж,дж,"Explicit affricate /d͡ʒ/ maps to Ukrainian дж",proposed,UA_ORTH_2026
+consonant,t͡ɕ,onset,ч,ч,"Alveolo-palatal affricate /t͡ɕ/ uses Ukrainian ч as a practical approximation",proposed,UA_ORTH_2026
+consonant,d͡ʑ,onset,дж,дж,"Voiced alveolo-palatal affricate /d͡ʑ/ uses Ukrainian дж as a practical approximation",proposed,UA_ORTH_2026
+consonant,ʒ,onset,ж,ж,"Voiced postalveolar fricative /ʒ/ maps to Ukrainian ж",proposed,UA_ORTH_2026
+consonant,b,onset,б,б,"Direct Ukrainian target for unaspirated /b/",proposed,UA_ORTH_2026
+consonant,d,onset,д,д,"Direct Ukrainian target for unaspirated /d/",proposed,UA_ORTH_2026
+consonant,n,onset,н,н,"Direct Ukrainian target for /n/",proposed,UA_ORTH_2026
+consonant,m,onset,м,м,"Direct Ukrainian target for /m/",proposed,UA_ORTH_2026

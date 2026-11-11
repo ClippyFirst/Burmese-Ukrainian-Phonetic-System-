@@ -1,4 +1,5 @@
-import { ONSETS, SIGNS, MEDIALS, PRACTICAL, RULES, ROMANIZATION_SUPPORTED, ROMANIZATION_BASES } from "./generated/data.js";
+import { ONSETS, SIGNS, MEDIALS, ROMANIZATION_SUPPORTED, ROMANIZATION_BASES } from "./generated/data.js";
+import { renderUkrainian } from "./ukrainian-adapter.js";
 
 const source=document.querySelector("#source"), results=document.querySelector("#results"), empty=document.querySelector("#empty");
 const issues=document.querySelector("#issues"), issueText=document.querySelector("#issue-text"), count=document.querySelector("#count");
@@ -20,11 +21,10 @@ function setOutputMode(mode){
 const KINZI="င်္", VIRAMA="္", ASAT="်";
 const NASAL_CODAS=new Set(["င","န","မ","ည"]);
 const CHECKED_CODAS=new Set(["က","ခ","ဂ","ဃ","စ","ဆ","ဇ","ဈ","တ","ထ","ဒ","ဓ","ပ","ဖ","ဗ","ဘ"]);
-const IPA_UNIT_RE=/t͡?ɕʰ|t͡?ɕ|d͡?ʑ|eɪ|oʊ|aɪ|aʊ|[ktpsdb]ʰ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|ɴ|ŋ|ɲ|ɯ|ɛ|ɪ|ɔ|ə|ʊ|θ|ð|[a-zɡʔː]/g;
 const MEDIAL_CHARS=new Set(Object.keys(MEDIALS)), VOWEL_CHARS=new Set(Object.keys(SIGNS)), BASE=new Set(Object.keys(ONSETS));
 const ROMANIZATION_SUPPORTED_CHARS=new Set(ROMANIZATION_SUPPORTED), ROMANIZATION_BASE_CHARS=new Set(ROMANIZATION_BASES);
 const PHONETIC_INPUT_CHARS=new Set([...BASE,...VOWEL_CHARS,...MEDIAL_CHARS,ASAT,VIRAMA,"့","း"]);
-const STATUS_RANK={ESTABLISHED:0,WELL_SUPPORTED:1,PROPOSED:2,ANALYSIS_DEPENDENT:3,NOT_ESTABLISHED:4,UNSUPPORTED:5,UNCERTAIN:6};
+const STATUS_RANK={ESTABLISHED:0,WELL_SUPPORTED:1,PROPOSED:2,ANALYSIS_DEPENDENT:3,PROVISIONAL:4,NOT_ESTABLISHED:5,UNSUPPORTED:6,UNCERTAIN:7};
 function aggregateStatus(statuses,emptyStatus="NOT_ESTABLISHED"){
   if(!statuses.length)return emptyStatus;
   return statuses.reduce((worst,status)=>(STATUS_RANK[status]??4)>(STATUS_RANK[worst]??0)?status:worst,"ESTABLISHED");
@@ -148,7 +148,28 @@ function parseCluster(raw,withholdBareInherent=false){
   // Keep repeated diagnostics deterministic and readable.
   sy.notes=[...new Set(sy.notes)];
   const isolatedBare=withholdBareInherent&&!sy.vowels.length&&!sy.coda&&!sy.asat&&!sy.medials.length&&!sy.conjunct.length&&!sy.kinzi&&!sy.prosodyMarks.length;
-  sy.ipa=isolatedBare?null:deriveIpa(sy);if(!sy.ipa&&sy.status==="ESTABLISHED")sy.status="NOT_ESTABLISHED";sy.uk=renderUkrainian(sy.ipa);return sy;
+  // Match the Python rule engine: medials, conjuncts and kinzi are parsed
+  // structurally but remain outside the validated IPA rule inventory.
+  const unsupportedStructure=sy.kinzi||sy.kinziCoda||sy.medials.length>0||sy.conjunct.length>0;
+  sy.ipa=isolatedBare||unsupportedStructure?null:deriveIpa(sy);
+  if(!sy.ipa&&sy.status==="ESTABLISHED")sy.status="NOT_ESTABLISHED";
+  sy.uk=sy.status==="ESTABLISHED"&&sy.ipa?renderUkrainian(sy.ipa):{text:"",status:"NOT_ESTABLISHED",parts:[],prosody:[],unsupported:sy.raw};
+  // Separate onset-only preview: never derive Ukrainian directly from Myanmar
+  // graphemes and never guess the vowel, coda, medial, kinzi or tone.
+  if(!sy.ipa&&withholdBareInherent&&sy.onset&&ONSETS[sy.onset]?.ipa){
+    const hint=ONSETS[sy.onset].ipa;
+    const adapted=renderUkrainian(hint);
+    if(adapted.text){
+      sy.provisionalIpa=hint;
+      sy.provisionalUk=adapted.text+"?";
+      sy.provisionalStatus="PROVISIONAL";
+      sy.provisionalRuleId="BURMESE-PREVIEW-ONSET-IPA-V1";
+      sy.provisionalPosition="onset";
+      sy.provisionalUnresolved=Array.from(raw).slice(1);
+      sy.provisionalUnresolvedFeatures=["inherent_vowel"];
+    }
+  }
+  return sy;
 }
 
 function deriveIpa(sy){
@@ -247,42 +268,6 @@ function deriveIpa(sy){
   return parts.join("");
 }
 
-function candidateFor(segment){
-  const direct=PRACTICAL[segment]||PRACTICAL[segment==="θ"?"θ~ð":segment]||PRACTICAL[segment==="ɴ"?"ŋ":segment];
-  if(!direct)return{text:"",status:"NOT_ESTABLISHED",reason:"Немає точного правила для цього IPA-сегмента."};
-  const row=direct[0];
-  const candidate=segment==="j"?"й":(row.ukrainian_candidate==="∅"?"":row.ukrainian_candidate);
-  return{text:candidate,status:(row.status||"UNKNOWN").toUpperCase(),reason:row.policy,ruleIds:(RULES[segment]||RULES["/"+segment+"/"]||[]).map(x=>x.rule_id)};
-}
-
-function renderUkrainian(ipaText){
-  if(!ipaText)return{text:"",status:"NOT_ESTABLISHED",parts:[]};
-  const units=ipaText.match(IPA_UNIT_RE)||[];
-  if(units.join("")!==ipaText)return{text:"",status:"NOT_ESTABLISHED",parts:[]};
-  const parts=[];let status="ESTABLISHED";
-  for(let i=0;i<units.length;i++){
-    const u=units[i];
-    // At the beginning of a syllable, Ukrainian vowel letters can encode
-    // the /j/ glide plus the following vowel. Never expose the data-layer
-    // alternatives ("й/я/є/ю/йо") literally in the user-facing result.
-    if(i===0&&u==="j"&&units.length>1){
-      const v=units[i+1],long=units[i+2]==="ː";
-      const glideVowels={a:"я",e:"є",ɛ:"є",i:"ї",u:"ю",ʊ:"ю",o:"йо",ɔ:"йо",oʊ:"йоу"};
-      if(glideVowels[v]){
-        const candidates=[candidateFor(v)];
-        if(long)candidates.push({status:"ANALYSIS_DEPENDENT"});
-        const combined={text:glideVowels[v],status:aggregateStatus(candidates.map(x=>x.status)),reason:"Contextual Ukrainian rendering of initial /j/ plus vowel.",ruleIds:[]};
-        parts.push(combined);i+=long?2:1;
-        if((STATUS_RANK[combined.status]??4)>(STATUS_RANK[status]??0))status=combined.status;
-        continue;
-      }
-    }
-    const candidate=candidateFor(u);parts.push(candidate);
-    if((STATUS_RANK[candidate.status]??4)>(STATUS_RANK[status]??0))status=candidate.status;
-  }
-  return{text:parts.map(x=>x.text).join(""),status,parts};
-}
-
 function isStandaloneBareConsonant(segments,index){
   const current=segments[index];
   if(current.nonMyanmar)return false;
@@ -314,12 +299,13 @@ function render(){
   r.segments.forEach((s,index)=>{const row=document.createElement("div");row.className="syllable";
     if(s.nonMyanmar){row.textContent=s.raw+" · збережено без змін";syllables.append(row);return;}
     const head=document.createElement("strong");head.textContent=String(index+1).padStart(2,"0")+"  "+s.raw;
-    const detail=document.createElement("span");const shownStatus=s.uk?.status&&s.uk.status!=="ESTABLISHED"?s.status+" / передача: "+s.uk.status:s.status;detail.textContent=(s.ipa||"IPA не встановлено")+" → "+(s.uk?.text||"—")+" · "+shownStatus;row.append(head,detail);
+    const detail=document.createElement("span");const shownStatus=s.provisionalStatus|| (s.uk?.status&&s.uk.status!=="ESTABLISHED"?s.status+" / передача: "+s.uk.status:s.status);detail.textContent=(s.ipa||"IPA не встановлено")+" → "+(s.uk?.text||"—")+" · "+shownStatus;row.append(head,detail);
+    if(s.provisionalIpa){const preview=document.createElement("small");preview.textContent="Попередня підказка: "+s.provisionalIpa+" → "+s.provisionalUk+" [PROVISIONAL]";row.append(preview);}
     if(s.notes.length){const note=document.createElement("small");note.textContent=s.notes.join(" ");row.append(note);}syllables.append(row);
   });
   const problems=r.segments.filter(s=>!s.nonMyanmar&&(!s.ipa||s.status==="UNCERTAIN"||s.status==="NOT_ESTABLISHED"||s.status==="ANALYSIS_DEPENDENT"||s.uk?.status==="PROPOSED"||s.uk?.status==="ANALYSIS_DEPENDENT"));
   const preserved=r.segments.some(s=>s.nonMyanmar&&s.raw.trim()!=="");issues.hidden=problems.length===0&&!preserved;
-  const hasProsody=r.segments.some(s=>!s.nonMyanmar&&s.prosodyMarks?.length);
+  const hasProsody=r.segments.some(s=>!s.nonMyanmar&&(s.prosodyMarks?.length||s.uk?.prosody?.length));
   issueText.textContent=[problems.length?"Для "+problems.length+" сегмент"+(problems.length===1?"а":"ів")+" результат містить запропоновану або неповністю встановлену відповідність; сервіс не подає її як доведену.":"",preserved?"Латинський текст, цифри, пробіли та пунктуацію збережено без змін; аналізуються лише сегменти Myanmar.":"",hasProsody?"Просодичні знаки збережено в аналітичному шарі; вони не перетворюються автоматично на український наголос.":""].filter(Boolean).join(" ");
   live.textContent="Конвертацію завершено. Статус: "+r.status;
 }
