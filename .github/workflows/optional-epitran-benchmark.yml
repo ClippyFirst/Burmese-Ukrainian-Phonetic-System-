@@ -139,6 +139,30 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
+      - name: Pin legacy Abseil to a Bazel 4-compatible commit
+        working-directory: language-resources
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          workspace = Path("WORKSPACE")
+          content = workspace.read_text(encoding="utf-8")
+          old = '''http_archive(
+              name = "com_google_absl",
+              strip_prefix = "abseil-cpp-master",
+              urls = ["https://github.com/abseil/abseil-cpp/archive/master.zip"],
+          )
+          '''
+          new = '''git_repository(
+              name = "com_google_absl",
+              commit = "45fdade6c0415ec5af3f9312e6311a4ccc682a7b",
+              remote = "https://github.com/abseil/abseil-cpp.git",
+          )
+          '''
+          if old not in content:
+              raise SystemExit("Expected unpinned Abseil WORKSPACE block was not found")
+          workspace.write_text(content.replace(old, new), encoding="utf-8")
+          PY
       - name: Build the pinned Google Burmese Thrax/OpenFst G2P
         working-directory: language-resources
         run: bazel build -c opt //my:g2p
