@@ -1150,7 +1150,7 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 ### Repository state
 - Starting default-branch SHA: \`fab39881259df94be93634088a75667a13059cfc\`.
 - Current final verification branch: \`feat/burmese-ukrainian-practical-adapter-verified-final-2026-11-11\`.
-- Current PR head: \`e9bd12819ed692d7be2607356008217de9430dca\`.
+- Browser fail-closed implementation code SHA: `e9bd12819ed692d7be2607356008217de9430dca`. Subsequent commits update only handoff/matrix/register documentation; the live PR head is authoritative for the latest documentation commit.
 - Draft PR [#133](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/133), open, not merged.
 - Earlier drafts #129, #130, #131 and #132 are superseded/closed as appropriate; their branches are retained.
 - Main was not modified; no site deployment or publication occurred.
