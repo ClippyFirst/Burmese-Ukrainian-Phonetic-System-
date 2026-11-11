@@ -5,6 +5,8 @@ on:
   push:
     paths:
       - "scripts/benchmark_g2p.py"
+      - "scripts/benchmark_google_fst.py"
+      - "tests/test_benchmark_google_fst.py"
       - "data/burmese/phonology_corpus.csv"
       - "data/burmese/sources.csv"
       - ".github/workflows/optional-epitran-benchmark.yml"
@@ -115,3 +117,53 @@ jobs:
           path: artifacts/
           if-no-files-found: warn
           retention-days: 30
+
+  google-fst-raw-output:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      USE_BAZEL_VERSION: "4.2.3"
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: google/language-resources
+          ref: a90601024f07ab7e96c911243324e0adeb16da96
+          path: language-resources
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "11"
+      - uses: bazelbuild/setup-bazelisk@v3
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Build the pinned Google Burmese Thrax/OpenFst G2P
+        working-directory: language-resources
+        run: bazel build -c opt //my:g2p
+      - name: Check upstream IPA symbol-table invariants
+        working-directory: language-resources
+        run: |
+          bazel test -c opt \
+            //my:ipa_phonemes_are_uniquely_decodable \
+            //my:phoneme_syms_is_current \
+            //my:phoneme_tsv_is_current
+      - name: Run raw-output smoke against structural-only probes
+        run: |
+          mkdir -p artifacts
+          python scripts/benchmark_google_fst.py \
+            --binary language-resources/bazel-bin/my/g2p \
+            --grammar language-resources/my/burmese.grm \
+            --phoneme-symbols language-resources/bazel-bin/my/ipa_phoneme.syms \
+            --fst language-resources/bazel-bin/my/G2P.fst \
+            --bazel-version "$(cd language-resources && bazel --version)" \
+            --output artifacts/burmese-google-fst-raw-output.json
+      - name: Upload raw outputs and provenance
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: burmese-google-fst-raw-output
+          path: artifacts/burmese-google-fst-raw-output.json*
+          if-no-files-found: warn
+          retention-days: 90
