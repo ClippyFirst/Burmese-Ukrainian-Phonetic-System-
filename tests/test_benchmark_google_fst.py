@@ -31,6 +31,7 @@ def test_google_fst_report_is_raw_output_only_without_accuracy():
     assert report["records"][0]["orthography"] == "ကေ"
     assert report["records"][0]["raw_output"] == "kè"
     assert report["provenance"]["engine_source_commit"] == "a90601024f07ab7e96c911243324e0adeb16da96"
+    assert report["provenance"]["abseil_source_commit"] == "45fdade6c0415ec5af3f9312e6311a4ccc682a7b"
 
 
 def test_google_fst_output_parser_requires_one_output_per_input():
