@@ -49,13 +49,30 @@ def read_probe_rows(path: Path) -> list[dict[str, str]]:
     return rows
 
 
-def parse_outputs(stdout: str, expected_count: int) -> list[str]:
-    outputs = [line.rstrip("\r") for line in stdout.splitlines()]
-    if len(outputs) != expected_count:
+def parse_outputs(
+    stdout: str,
+    expected_rows: list[dict[str, str]],
+) -> list[dict[str, str]]:
+    """Split Thrax's echoed input and IPA output, checking row alignment."""
+    lines = [line.rstrip("\r") for line in stdout.splitlines()]
+    if len(lines) != len(expected_rows):
         raise ValueError(
-            f"expected {expected_count} output lines, received {len(outputs)}"
+            f"expected {len(expected_rows)} output lines, received {len(lines)}"
         )
-    return outputs
+    parsed: list[dict[str, str]] = []
+    for row, line in zip(expected_rows, lines, strict=True):
+        if "\\t" not in line:
+            raise ValueError("expected tab-separated echoed input and IPA output")
+        echoed_input, raw_output_ipa = line.split("\\t", 1)
+        if echoed_input != row["orthography"]:
+            raise ValueError(
+                f"echoed input does not match expected input for {row.get('case_id', 'row')}"
+            )
+        parsed.append({
+            "raw_engine_line": line,
+            "raw_output_ipa": raw_output_ipa,
+        })
+    return parsed
 
 
 def build_command(binary: Path, fst: Path, phoneme_symbols: Path) -> list[str]:
@@ -88,7 +105,7 @@ def run_engine(
         capture_output=True,
         check=True,
     )
-    return parse_outputs(result.stdout, len(rows)), result.stderr
+    return parse_outputs(result.stdout, rows), result.stderr
 
 
 def build_report(
@@ -119,11 +136,18 @@ def build_report(
 
     records = []
     for row, output in zip(rows, outputs, strict=True):
+        raw_engine_line = output.get("raw_engine_line", "")
+        raw_output_ipa = output.get("raw_output_ipa", "")
+        if not raw_engine_line or not raw_output_ipa:
+            raise ValueError("each output must include the raw engine line and IPA field")
+        if raw_engine_line.split("\\t", 1)[0] != row["orthography"]:
+            raise ValueError("echoed input does not match expected input")
         records.append({
             "case_id": row["case_id"],
             "orthography": row["orthography"],
-            "raw_output": output,
-            "output_nonempty": bool(output.strip()),
+            "raw_engine_line": raw_engine_line,
+            "raw_output_ipa": raw_output_ipa,
+            "output_nonempty": bool(raw_output_ipa.strip()),
             "evidence_status": "STRUCTURAL_ONLY",
             "score_status": "NOT_SCORED_NO_INDEPENDENT_GOLD",
         })
