@@ -25,3 +25,12 @@ def test_myg2p_exact_ipa_column_and_ambiguity(tmp_path):
 def test_transport_normalization_preserves_tone_and_length():
     assert normalize_ipa_transport("[kʰaʊ]") == "kʰaʊ"
     assert normalize_ipa_transport("ka") != normalize_ipa_transport("kaː")
+
+def test_command_backend_preserves_raw_candidate_and_provenance(monkeypatch):
+    import subprocess
+    from types import SimpleNamespace
+    from burmese_ukrainian.hybrid import make_command_backend
+    monkeypatch.setattr(subprocess, "run", lambda *args, **kwargs: SimpleNamespace(stdout="mjəmà\\n", stderr=""))
+    candidate = make_command_backend(["goruut"], engine_id="goruut", revision="PINNED")("မြန်မာ")
+    assert candidate["ipa"] == "mjəmà"
+    assert candidate["provenance"]["revision"] == "PINNED"
