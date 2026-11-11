@@ -212,3 +212,8 @@ The production build contains both the service and methodology pages and the Mya
 ## Independent IPA gold corpus
 
 The project uses a provenance-backed, double-annotated IPA gold workflow. See [the corpus protocol](docs/ipa-gold-corpus.md) and [the language-specific phonology research workpack](docs/audits/current/PHONOLOGY-RESEARCH-WORKPACK-2026-11-01.md). The corpus is currently empty by design; no phonetic accuracy claim is available until expert adjudication is complete.
+
+
+## Evidence-gated hybrid IPA candidates
+
+The Python API exports HybridBurmeseEngine. It runs the deterministic rule engine and can collect Google WFST, myG2P v2 IPA dictionary, and optional Epitran candidates. Candidates retain provenance and are not voted into the published IPA result. MLCTS remains a separate orthographic mode. See [hybrid engine contract and benchmark decision](docs/hybrid-engines.md).
