@@ -119,7 +119,7 @@ jobs:
           retention-days: 30
 
   google-fst-raw-output:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 25
     env:
       USE_BAZEL_VERSION: "7.4.1"
