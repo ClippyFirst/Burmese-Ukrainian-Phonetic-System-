@@ -530,3 +530,7 @@ The rights registry does not itself grant permission. Each real source still nee
 ## Current continuation pointer — 2026-11-03
 
 The canonical current handoff is [docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md](../../MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md); the current evidence register is [LINGUISTIC-COMPLETION-REGISTER-2026-11-01.md](LINGUISTIC-COMPLETION-REGISTER-2026-11-01.md), and the execution ledger is [EXECUTION-STATUS-MATRIX-2026-10-21.md](EXECUTION-STATUS-MATRIX-2026-10-21.md). New source-level corrections: Hlaing & Mikami's 99.93% is orthographic syllabification, not G2P/IPA; Mooney & Repetti-Ludlow present a one-speaker competing tone/vowel analysis; SLR80 is a 20-female-speaker Yangon orthographic speech corpus with CC BY-SA 4.0 data, not IPA gold. Independent expert gold remains 0 and accuracy null. See the current handoff for detailed source, license and acceptance notes.
+
+
+## 2026-11-11 continuation pointer
+The canonical Ukrainian practical transcription implementation and current task ledger are recorded in \`docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md\` under “2026-11-11 continuation — Ukrainian practical transcription”. The execution matrix and linguistic completion register were updated in this same branch. Current draft PR: [#133](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/133).
