@@ -23,7 +23,11 @@ class RuleBasedBurmeseEngine:
         unresolved = [
             item.get("raw", "")
             for item in syllables
-            if not item.get("ipa") or item.get("phonetic_status") != "conservative_partial"
+            if (
+                not item.get("ipa")
+                or "?" in str(item.get("ipa") or "")
+                or item.get("phonetic_status") != "conservative_partial"
+            )
         ]
         complete = bool(syllables) and not unresolved
         ipa = " ".join(item["ipa"] for item in syllables) if complete else None
