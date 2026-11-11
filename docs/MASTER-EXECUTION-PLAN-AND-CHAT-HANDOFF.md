@@ -1164,3 +1164,6 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 
 
 - Final exact-head optional comparator rerun [43077670322](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670322) SUCCESS: Google Thrax/OpenFst built (151 + 19 Bazel actions), passed symbol-table checks and emitted 6/6 non-empty IPA strings on structural-only probes; independent gold 0, accuracy null. CRF and Epitran raw-output jobs also SUCCESS.
+
+
+- Goruut Burmese diagnostic (pinned upstream snapshot b224bde): 98/100 outputs; 0/100 exact and 17/100 notation-normalized matches; 43 complete, 55 partial, 2 unknown; 69 unphonemized fragments; 2 failures. The snapshot lacks weights9.bin.zlib. It is a weak comparator in this probe and must not be used as a fallback.
