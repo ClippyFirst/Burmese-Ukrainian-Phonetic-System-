@@ -53,3 +53,17 @@ def test_epitran_backend_requests_tone_output(monkeypatch):
     result = make_epitran_backend()("မြန်မာ")
     assert seen == {"code": "mya-Mymr", "tones": True}
     assert result["provenance"]["tones_requested"] is True
+
+def test_provider_priority_orders_candidates_without_promoting_them():
+    calls = []
+    engine = HybridBurmeseEngine({
+        "goruut": lambda _: calls.append("goruut") or "mjəmà",
+        "epitran": lambda _: calls.append("epitran") or "mjəmà",
+        "google-wfst": lambda _: calls.append("google-wfst") or "mjəmà",
+        "myg2p-ipa": lambda _: calls.append("myg2p-ipa") or "mjəmà",
+    })
+    result = engine.analyze("မြန်မာ")
+    assert calls == ["myg2p-ipa", "google-wfst", "epitran", "goruut"]
+    assert [x["provider"] for x in result["external_candidates"]] == calls
+    assert [x["priority"] for x in result["external_candidates"]] == [10, 20, 40, 90]
+    assert all(x["promotion"].startswith("WITHHELD") for x in result["external_candidates"])
