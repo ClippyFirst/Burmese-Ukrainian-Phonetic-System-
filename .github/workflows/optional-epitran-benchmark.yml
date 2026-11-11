@@ -177,7 +177,7 @@ jobs:
         run: |
           mkdir -p artifacts
           python scripts/benchmark_google_fst.py \
-            --binary language-resources/bazel-bin/my/g2p \
+            --binary language-resources/bazel-bin/utils/thrax_g2p \
             --grammar language-resources/my/burmese.grm \
             --phoneme-symbols language-resources/bazel-bin/my/ipa_phoneme.syms \
             --fst language-resources/bazel-bin/my/G2P.fst \
