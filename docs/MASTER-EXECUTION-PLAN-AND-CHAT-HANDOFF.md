@@ -1149,21 +1149,21 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Bazel 4.2.3 + Ubuntu 26.04 first hit unpinned Abseil/current `@rules_cc` incompatibility.
 - Pinning Abseil to `45fdade6c0415ec5af3f9312e6311a4ccc682a7b` then exposed Bazel 4.2.3's lack of `native.package_relative_label`.
 - Bazel 7.4.1 passed analysis but old OpenFst failed to compile with GCC 15 on Ubuntu 26.04.
-- The latest workflow pins Ubuntu 22.04/GCC 11, Bazel 7.4.1, Java 17 and the Abseil compatibility commit. [Latest run](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514) is pending final inspection at this handoff revision.
+- The latest workflow pins Ubuntu 22.04/GCC 11, Bazel 7.4.1, Java 17 and the Abseil compatibility commit. [Latest run](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514) completed successfully: the pinned grammar built, upstream IPA symbol-table tests passed, and six structural-only probes emitted non-empty IPA sequences with zero runtime errors.
 
 ### Verification
 
 - Full repository tests, Python validation, npm build, generated-data drift check, npm tests and Playwright browser tests: [42999264452](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264452) — SUCCESS.
-- Existing comparator workflow [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514): CRF and Epitran jobs SUCCESS; new Google FST job at that run failed on the Ubuntu 26.04/GCC 15 compatibility issue.
+- Comparator workflow [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514): CRF, Epitran and Google FST jobs all SUCCESS; Google FST produced 6/6 raw outputs, with gold 0 and accuracy null.
 - Published benchmark research: WSSANLP 2016 open PER and Google LREC 2020 FST architecture are recorded in the external engine and source registries.
 
 ### Remaining blockers
 
-- Complete the latest Google FST build/smoke; even if successful, its six structural-only probes cannot measure accuracy.
+- Create rights-cleared, independent Standard Yangon IPA gold with specialist tone/phonation review; the six Google FST probes are structural-only and cannot measure accuracy.
 - Create rights-cleared, independent Standard Yangon IPA gold with specialist tone/phonation review.
 - Confirm myG2P CC BY-NC-SA 4.0 terms before any commercial use/redistribution.
 - Use OpenSLR SLR80 only as audio/transcript annotation source after expert IPA annotation; its transcript is not IPA.
-- Pin remaining Google WORKSPACE dependencies to make the build hermetic.
+- Pin remaining Google WORKSPACE dependencies to make the build hermetic; the current CI compatibility shim pins Abseil but not every upstream archive.
 
 ### Current disposition
 
