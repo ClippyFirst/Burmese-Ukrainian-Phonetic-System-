@@ -1175,3 +1175,9 @@ The Google WFST is a registered optional candidate; it is not a production depen
 - Closed, unmerged PR #125 was inspected. Its fixture/handoff changes are already represented on current `main` (verified in `tests/test_ipa_gold_corpus.py`); nothing needed porting.
 - The branch list contained only current `main` and this dedicated working branch.
 - Merged PRs #106 and #111 were reviewed; the reproducible CRF diagnostic and separate Wiktionary licensing records were preserved.
+
+### Pull request opened
+
+- Draft PR #126: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/126
+- Head at PR creation: `2ea19289781c7fcebfdb92a8239541f439002cc3`; base `main` at `0f814af3510c71d1b3dec5569209546179318a40`.
+- The PR is intentionally draft: independent Yangon-profile IPA gold and full transitive dependency pinning remain unresolved. Do not merge as a claim of production accuracy.
