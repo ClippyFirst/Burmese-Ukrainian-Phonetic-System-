@@ -59,6 +59,6 @@ test("browser engine exposes onset-only provisional IPA for unresolved Burmese u
   assert.ok(browserEngineSource.includes("sy.provisionalIpa=hint"));
   assert.ok(browserEngineSource.includes('sy.provisionalUk=adapted.text+"?"'));
   assert.ok(browserEngineSource.includes('sy.provisionalStatus="PROVISIONAL"'));
-  assert.ok(browserEngineSource.includes("s.provisionalIpa||\"?\""));
+  assert.ok(browserEngineSource.includes('s.ipa||"?"'));
   assert.ok(browserEngineSource.includes('if(s.provisionalIpa){const preview=document.createElement("small")'));
 });
