@@ -1195,7 +1195,7 @@ The Google WFST is a registered optional candidate; it is not a production depen
 
 ## Hybrid engine final checkpoint — 2026-11-11
 
-- Branch `research/burmese-hybrid-engine-2026-11-11`; code-bearing head `0e6637d71f239f49c4e18fc0cc4a5c8ca2c49514` (later documentation/register commits follow); stacked draft PR [#127](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/127) targets the research branch for PR #126. PR #127 is open and mergeable; PR #126 is its prerequisite.
+- Branch `research/burmese-hybrid-engine-2026-11-11`; code-bearing head `3343c521a284741aeafa2907740aa7aa9ad4d1db` (later documentation/register commits follow); stacked draft PR [#127](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/127) targets the research branch for PR #126. PR #127 is open and mergeable; PR #126 is its prerequisite.
 - Added concrete Google Thrax/OpenFst adapter with echoed-input verification and exact-lookup myG2P v2.0 dictionary adapter using the fifth IPA field, cached per adapter instance. MLCTS is excluded from IPA voting.
-- Exact-head CI [43011696686](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43011696686) SUCCESS: 179 tests + 72 subtests, npm build, generated-data drift check, npm tests and built-browser Playwright.
+- Exact-head CI [43012411936](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43012411936) SUCCESS: 179 tests + 72 subtests, npm build, generated-data drift check, npm tests and built-browser Playwright.
 - Status: `PARTIAL` as a research hybrid. Backend integration is implemented, but no independent expert-adjudicated Yangon IPA gold evaluation or hybrid accuracy score has been run. Google grammar retains the documented transitive dependency pinning caveat.
