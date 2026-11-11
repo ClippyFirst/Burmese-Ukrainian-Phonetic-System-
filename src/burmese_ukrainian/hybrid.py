@@ -133,13 +133,17 @@ def make_myg2p_dictionary_backend(dictionary_path: str) -> Provider:
 
     path = Path(dictionary_path)
 
+    dictionary: dict[str, list[str]] | None = None
+
     def run(text: str) -> dict[str, Any]:
-        matches: list[str] = []
-        with path.open(encoding="utf-8", newline="") as stream:
-            for row in csv.reader(stream, delimiter="\t"):
-                if len(row) >= 5 and row[1] == text and row[4].strip():
-                    matches.append(row[4].strip())
-        unique = sorted(set(matches))
+        nonlocal dictionary
+        if dictionary is None:
+            dictionary = {}
+            with path.open(encoding="utf-8", newline="") as stream:
+                for row in csv.reader(stream, delimiter="\t"):
+                    if len(row) >= 5 and row[1] and row[4].strip():
+                        dictionary.setdefault(row[1], []).append(row[4].strip())
+        unique = sorted(set(dictionary.get(text, [])))
         if len(unique) == 1:
             return {"ipa": unique[0], "status": "candidate",
                     "provenance": {"engine": "myG2P v2.0 dictionary", "dictionary_path": str(path),
