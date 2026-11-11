@@ -1195,3 +1195,9 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Latest exact-head workflow at this handoff snapshot [43095883419](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43095883419) was queued with no jobs started; later documentation-only commits triggered another exact-head run. Consult PR #133 for the current run. Do not report the final Playwright suite as verified until this run completes successfully.
 - The text-only task does not require audio. A separate text IPA/Ukrainian adjudication set remains blocked by missing independently sourced and adjudicated labels; this blocks empirical accuracy claims, not the deterministic target adapter implementation.
 - Audio annotation is DEFERRED by scope. No source IPA labels, gold corpus rows or accuracy scores were invented or added.
+
+
+## Provisional grapheme IPA fallback — continuation 2026-11-11
+
+- Added `docs/provisional-grapheme-ipa-fallback.md` defining the Lao-style `PROVISIONAL` grapheme → IPA → existing Ukrainian adapter contract, visible `?` uncertainty, Python/browser parity and benchmark separation.
+- This is a design/acceptance document only, not an implementation claim. Current Burmese parser/practical adapter still withholds unsupported constructions. Implementation is BLOCKED pending a source-backed, Yangon-profile positional grapheme-to-IPA inventory; onset hints must not be reused as coda/vowel/medial/kinzi readings.
