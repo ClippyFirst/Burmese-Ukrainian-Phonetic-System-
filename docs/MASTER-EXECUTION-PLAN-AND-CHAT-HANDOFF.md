@@ -1167,3 +1167,6 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 
 
 - Goruut Burmese diagnostic (pinned upstream snapshot b224bde): 98/100 outputs; 0/100 exact and 17/100 notation-normalized matches; 43 complete, 55 partial, 2 unknown; 69 unphonemized fragments; 2 failures. The snapshot lacks weights9.bin.zlib. It is a weak comparator in this probe and must not be used as a fallback.
+
+
+Epitran hybrid adapter refinement: the optional Burmese adapter now explicitly requests tones=True by default and records the requested setting in candidate provenance. Regression test added; exact-head pytest passed in [43078675807](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43078675807). This does not retroactively change the earlier Epitran raw-output benchmark (which used the original smoke harness), nor establish tonal accuracy.
