@@ -456,3 +456,15 @@ This engineering correction does not change the language-layer statuses above. I
 | Python/browser parity | TODO | Add shared fixture with exact matching status, IPA hint, Ukrainian rendering and trace |
 | Exact-head CI / Chromium | BLOCKED | No workflow run returned for head 36b6ebf5a1d5a03b0c4d7a95aae2d842046e4152 |
 | Complete Yangon positional fallback registry | TODO | Evidence-gated; onset-only partial coverage is not a full grapheme fallback |
+
+
+### Verification result — provisional onset preview, 2026-11-11
+
+| Task | Status | Evidence / blocker |
+|---|---|---|
+| Python onset-only preview for isolated bare consonants | DONE_VERIFIED (engineering behavior) | Head aac1d6834b4c29e04f01477af1583a2be9eba485; 182 tests + 66 subtests passed |
+| Browser preview in analysis details; canonical output unchanged | DONE_VERIFIED (engineering behavior) | Playwright 54/54; same workflow 43101914347 |
+| Build, generated data and Node tests | DONE_VERIFIED | Workflow 43101914347 all pass |
+| Optional Epitran raw-output comparator | DONE_VERIFIED (comparator only) | Workflow 43101914423 pass; not accuracy evidence |
+| Functional Python/browser shared fixture | TODO | Still needs matching structured fallback output and trace across runtimes |
+| Full positional Myanmar fallback inventory | BLOCKED by evidence | Requires exact Yangon-profile positional IPA sources for vowels, codas/asat, medials, kinzi, conjuncts and tone |
