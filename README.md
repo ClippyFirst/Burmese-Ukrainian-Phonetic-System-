@@ -212,3 +212,7 @@ The production build contains both the service and methodology pages and the Mya
 ## Independent IPA gold corpus
 
 The project uses a provenance-backed, double-annotated IPA gold workflow. See [the corpus protocol](docs/ipa-gold-corpus.md) and [the language-specific phonology research workpack](docs/audits/current/PHONOLOGY-RESEARCH-WORKPACK-2026-11-01.md). The corpus is currently empty by design; no phonetic accuracy claim is available until expert adjudication is complete.
+
+## Гібридний IPA-рушій
+
+Дослідницький ансамбль `burmese_ukrainian.HybridBurmeseEngine` поєднує внутрішній консервативний аналіз, Google WFST та словникові/інші IPA backend-и. MLCTS не бере участі в IPA-голосуванні. Сирі кандидати й provenance зберігаються; `ipa` видається лише за збігу двох незалежно названих backend-ів. Див. [контракт, склад і межі гібридного рушія](docs/hybrid-engines.md). Консенсус не є експертним gold.
