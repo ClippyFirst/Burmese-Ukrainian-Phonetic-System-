@@ -15,7 +15,7 @@ def test_google_fst_report_is_raw_output_only_without_accuracy():
     ]
     report = build_report(
         rows,
-        ["kè", "kɔ́"],
+        [{"raw_engine_line": "ကေ\\tkè", "raw_output_ipa": "kè"}, {"raw_engine_line": "ကော်\\tkɔ́", "raw_output_ipa": "kɔ́"}],
         engine_source_commit="a90601024f07ab7e96c911243324e0adeb16da96",
         grammar_sha256="a" * 64,
         phoneme_symbols_sha256="b" * 64,
@@ -30,19 +30,33 @@ def test_google_fst_report_is_raw_output_only_without_accuracy():
     assert report["accuracy"] is None
     assert report["score_status"] == "RAW_OUTPUT_SMOKE_NOT_ACCURACY"
     assert report["records"][0]["orthography"] == "ကေ"
-    assert report["records"][0]["raw_output"] == "kè"
+    assert report["records"][0]["raw_output_ipa"] == "kè"
     assert report["provenance"]["engine_source_commit"] == "a90601024f07ab7e96c911243324e0adeb16da96"
     assert report["provenance"]["abseil_source_commit"] == "45fdade6c0415ec5af3f9312e6311a4ccc682a7b"
 
 
-def test_google_fst_output_parser_requires_one_output_per_input():
-    assert parse_outputs("kè\nkɔ́\n", 2) == ["kè", "kɔ́"]
+def test_google_fst_output_parser_splits_echoed_input_from_ipa_and_checks_alignment():
+    rows = [
+        {"orthography": "ကေ"},
+        {"orthography": "ကော်"},
+    ]
+    parsed = parse_outputs("ကေ\\tk è\\nကော်\\tk ɔ̀\\n", rows)
+    assert [row["raw_output_ipa"] for row in parsed] == ["k è", "k ɔ̀"]
+    assert [row["raw_engine_line"] for row in parsed] == ["ကေ\\tk è", "ကော်\\tk ɔ̀"]
+
     try:
-        parse_outputs("kè\n", 2)
+        parse_outputs("ကေ\\tk è\\n", rows)
     except ValueError as error:
         assert "expected 2 output lines" in str(error)
     else:
         raise AssertionError("expected an output-count error")
+
+    try:
+        parse_outputs("ကော်\\tk è\\nကေ\\tk ɔ̀\\n", rows)
+    except ValueError as error:
+        assert "echoed input does not match" in str(error)
+    else:
+        raise AssertionError("expected an input-alignment error")
 
 
 def test_google_fst_refuses_non_structural_or_labelled_probe_rows():
