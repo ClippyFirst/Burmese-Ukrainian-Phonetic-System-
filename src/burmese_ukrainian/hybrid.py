@@ -107,7 +107,7 @@ def make_myg2p_dictionary_backend(dictionary_path: str) -> Provider:
                 "provenance": {"engine": "myG2P v2.0", "ambiguous_values": values}}
     return run
 
-def make_epitran_backend() -> Provider:
+def make_epitran_backend(*, tones: bool = True) -> Provider:
     """Optional Epitran comparator for mya-Mymr; output remains unvalidated."""
     def run(text: str) -> dict[str, Any]:
         try:
@@ -115,10 +115,10 @@ def make_epitran_backend() -> Provider:
             from importlib.metadata import version
         except ImportError as exc:
             raise RuntimeError("Install optional Epitran to use this comparator") from exc
-        ipa = epitran.Epitran("mya-Mymr").transliterate(text)
+        ipa = epitran.Epitran("mya-Mymr", tones=tones).transliterate(text)
         return {"ipa": ipa, "status": "candidate" if ipa else "unsupported",
                 "provenance": {"engine": "Epitran", "version": version("epitran"),
-                               "profile_match": "NOT_ESTABLISHED"}}
+                               "profile_match": "NOT_ESTABLISHED", "tones_requested": tones}}
     return run
 
 def make_command_backend(command: list[str], *, engine_id: str, revision: str) -> Provider:
