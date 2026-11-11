@@ -1,0 +1,129 @@
+name: Current Burmese rule engine benchmark
+on:
+  push:
+    branches:
+      - "benchmark/**"
+    paths:
+      - ".github/workflows/benchmark-current-engine.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: ye-kyaw-thu/myG2P
+          ref: 54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225
+          path: myg2p
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install repository engine
+        run: python -m pip install -e .
+      - name: Run current deterministic Burmese engine on full myG2P v2 dictionary
+        run: |
+          mkdir -p artifacts/current-engine
+          python - <<'PY'
+          import hashlib, json, os
+          from collections import Counter
+          from pathlib import Path
+          from burmese_ukrainian.rule_engine import RuleBasedBurmeseEngine
+
+          source = Path("myg2p/ver2/myg2p.ver2.0.txt")
+          digest = hashlib.sha256(source.read_bytes()).hexdigest()
+          entries, seen = [], set()
+          stats = Counter()
+          for line_number, raw in enumerate(source.read_text(encoding="utf-8").splitlines(), 1):
+              stats["physical_lines"] += 1
+              if not raw.strip():
+                  continue
+              fields = raw.split("\t", 4)
+              if len(fields) != 5:
+                  stats["malformed_rows"] += 1
+                  continue
+              word_id, orth, syllable_broken, pronunciation, ipa = (v.strip() for v in fields)
+              if orth.casefold() == "word" or word_id.casefold() in {"word-id", "word_id"}:
+                  continue
+              if not orth or not ipa or ipa.casefold() in {"null", "none", "-"}:
+                  stats["missing_ipa_rows"] += 1
+                  continue
+              if orth in seen:
+                  stats["duplicate_headwords_skipped"] += 1
+                  continue
+              seen.add(orth)
+              entries.append((line_number, word_id, orth, syllable_broken, pronunciation, ipa))
+          stats["unique_ipa_entries"] = len(entries)
+          if not entries:
+              raise SystemExit("No unique myG2P IPA entries parsed")
+          def edit_distance(a, b):
+              prev = list(range(len(b) + 1))
+              for i, ca in enumerate(a, 1):
+                  cur = [i]
+                  for j, cb in enumerate(b, 1):
+                      cur.append(min(cur[-1] + 1, prev[j] + 1, prev[j-1] + (ca != cb)))
+                  prev = cur
+              return prev[-1]
+
+          engine = RuleBasedBurmeseEngine()
+          records, statuses = [], Counter()
+          covered = exact = 0
+          total_edits = total_ref_chars = 0
+          for line_no, word_id, orth, syllable_broken, pronunciation, reference in entries:
+              try:
+                  result = engine.analyze(orth)
+                  predicted = result.get("ipa")
+                  status = result.get("status", "UNKNOWN")
+                  error = None
+              except Exception as exc:
+                  predicted, status = None, "ERROR"
+                  error = f"{type(exc).__name__}: {exc}"
+              statuses[status] += 1
+              if isinstance(predicted, str) and predicted:
+                  covered += 1
+                  exact += int(predicted == reference)
+                  total_edits += edit_distance(predicted, reference)
+                  total_ref_chars += len(reference)
+              records.append({
+                  "source_line": line_no, "word_id": word_id,
+                  "orthography": orth, "syllable_broken_word": syllable_broken,
+                  "source_pronunciation": pronunciation,
+                  "source_reported_ipa": reference, "engine_ipa": predicted,
+                  "engine_status": status, "error": error,
+                  "comparison": "SOURCE_ATTESTED_CONCORDANCE_NOT_GOLD"
+              })
+          report = {
+              "schema_version": 1, "engine": engine.engine_id, "profile": engine.profile,
+              "repository_commit": os.environ.get("GITHUB_SHA"),
+              "source_repository": "https://github.com/ye-kyaw-thu/myG2P",
+              "source_commit": "54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225",
+              "source_path": str(source), "source_sha256": digest,
+              "source_license_as_declared_upstream": "CC BY-NC-SA 4.0",
+              "source_evidence_status": "SOURCE_ATTESTED_NOT_INDEPENDENT_GOLD",
+              "accuracy_claim": None,
+              "input_count": len(entries), "ipa_coverage_count": covered,
+              "ipa_coverage_rate": covered / len(entries),
+              "strict_exact_matches": exact,
+              "strict_exact_match_rate_over_all": exact / len(entries),
+              "strict_exact_match_rate_over_covered": exact / covered if covered else None,
+              "codepoint_cer": total_edits / total_ref_chars if total_ref_chars else None,
+              "codepoint_cer_note": "Unicode codepoint CER only; not phoneme error rate.",
+              "status_counts": dict(statuses), "parse_stats": dict(stats),
+              "interpretation": "Concordance against myG2P source-reported IPA only. The dataset is not independently adjudicated against the project's Yangon profile; do not interpret as accuracy.",
+              "records": records
+          }
+          out = Path("artifacts/current-engine/burmese-current-engine.json")
+          out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          summary = {k:v for k,v in report.items() if k not in ("records","interpretation","source_path")}
+          print(json.dumps(summary, ensure_ascii=False, indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: burmese-current-engine-benchmark
+          path: artifacts/current-engine/
+          if-no-files-found: error
+          retention-days: 90
