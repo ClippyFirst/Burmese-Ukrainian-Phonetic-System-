@@ -1190,8 +1190,8 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 
 ## Verification refresh — 2026-11-11
 
-- Latest branch head at this refresh: `59fc6d2668117e78ee3bfa5e3d0c549b1e3bde2b`; PR #133 remains open/draft and unmerged. Main remains unchanged at `fab39881259df94be93634088a75667a13059cfc`.
+- PR #133 is the authoritative continuation branch and remains open/draft and unmerged. Consult its live head for the latest documentation revision. Main remains unchanged at `fab39881259df94be93634088a75667a13059cfc`.
 - The executable browser adapter and fail-closed parser code are unchanged after code SHA `e9bd12819ed692d7be2607356008217de9430dca`; later commits update README, matrix, completion register and handoff only.
-- Latest exact-head workflow [43095883419](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43095883419) is queued with no jobs started. Do not report the final Playwright suite as verified until this run completes successfully.
+- Latest exact-head workflow at this handoff snapshot [43095883419](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43095883419) was queued with no jobs started; later documentation-only commits triggered another exact-head run. Consult PR #133 for the current run. Do not report the final Playwright suite as verified until this run completes successfully.
 - The text-only task does not require audio. A separate text IPA/Ukrainian adjudication set remains blocked by missing independently sourced and adjudicated labels; this blocks empirical accuracy claims, not the deterministic target adapter implementation.
 - Audio annotation is DEFERRED by scope. No source IPA labels, gold corpus rows or accuracy scores were invented or added.
