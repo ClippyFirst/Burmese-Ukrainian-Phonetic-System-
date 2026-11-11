@@ -94,7 +94,7 @@ def test_rule_engine_returns_ukrainian_practical_rendering_after_ipa():
 
 
 def test_unresolved_burmese_unit_exposes_onset_only_provisional_ipa():
-    result = RuleBasedBurmeseEngine().analyze("ကာ်")
+    result = RuleBasedBurmeseEngine().analyze("က")
     assert result["ipa"] is None
     assert result["ukrainian"] is None
     assert result["provisional_ipa"] == "k"
