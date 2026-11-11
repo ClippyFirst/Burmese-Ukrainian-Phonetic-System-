@@ -1173,3 +1173,12 @@ Epitran hybrid adapter refinement: the optional Burmese adapter now explicitly r
 
 
 Latest tone-aware hybrid code verification: [43078675807](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43078675807) SUCCESS — 184 Python tests + 72 subtests, npm build, generated-data drift check, npm tests and 54 built-site Playwright tests. The final branch commit 90ec9cba295cca29c1e05b0d71d35c98f653a8ef changes documentation only. Latest optional WFST rerun 43078675829 still building at final checkpoint; prior full run 43077670322 succeeded with 6/6 raw structural probes.
+
+
+## Hybrid provider-priority verification — 2026-11-11
+
+- PR #129 branch `research/burmese-hybrid-benchmarks-reconciled-2026-11-11`, exact code/test head `a82bfc36f70162e338770a750997ae506d31c53c`; branch comparison against current main `fab39881259df94be93634088a75667a13059cfc`: 40 commits ahead, 0 behind. PR remains open and unmerged.
+- Deterministic diagnostic execution/display order: myG2P IPA dictionary (10), Google Burmese Thrax/OpenFst WFST (20), Epitran with tones requested (40), CRF (60), Goruut (90); unknown providers default to 50. Lower values run/display first. This is not a measured accuracy ranking, confidence score, voting rule, or promotion permission.
+- Exact-head required CI [43080511259](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43080511259) SUCCESS: 185 Python tests + 72 subtests, npm build, generated-data freshness, npm tests and 54 built-site Playwright tests.
+- Exact-head optional diagnostics [43080510989](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43080510989) SUCCESS: CRF raw-output, pinned Google WFST build/symbol checks/structural smoke, and Epitran raw-output jobs all completed.
+- Internal `RuleBasedBurmeseEngine` remains the only final-output authority; candidate engines are diagnostic only. Independent Yangon-profile adjudicated IPA gold remains 0; accuracy remains null. No phonological rule or gold label was added by the priority change.
