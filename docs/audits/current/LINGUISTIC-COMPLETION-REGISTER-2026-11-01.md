@@ -460,3 +460,15 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | Final browser CI | BLOCKED | Run 43095578672 queued with zero jobs started |
 | Independent text-only IPA gold set | BLOCKED | Requires sourced and adjudicated Yangon-profile IPA labels and held-out evaluation |
 | Audio | DEFERRED | Outside current task scope |
+
+
+## Provisional onset IPA fallback — 2026-11-11
+
+| Work item | Status | Evidence / acceptance |
+|---|---|---|
+| Python onset-only preview for unresolved Burmese syllables | PARTIAL | Separate provisional IPA/Ukrainian fields and trace; canonical ipa/ukrainian withheld; unresolved rime marked ?. Regression added. Commit 6936f01d3ff320574b8802c7af348d687e63ce17 |
+| Browser onset-only preview | PARTIAL | Reuses Yangon onset IPA and IPA adapter; displays provisional IPA and ?. Commit 5b83f5d3674b9e6d2f4114047bd67be5a5440719 |
+| Browser regression | PARTIAL | Source-contract assertions added; no executed cross-runtime parity fixture yet. Commit 36b6ebf5a1d5a03b0c4d7a95aae2d842046e4152 |
+| Dedicated Yangon grapheme-position evidence registry | TODO | Register primary-source locator, profile, exact onset position, rule ID, scope and reviewer status for every fallback entry |
+| Exact-head CI and Chromium verification | BLOCKED pending run | No workflow run was returned for final head 36b6ebf5a1d5a03b0c4d7a95aae2d842046e4152 |
+| Vowel/coda/asat/medial/kinzi/conjunct fallback | TODO | Do not extend without source-backed positional rules; no such guesses were added |
