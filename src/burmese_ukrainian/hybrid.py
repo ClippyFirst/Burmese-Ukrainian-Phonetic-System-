@@ -111,11 +111,11 @@ def make_google_wfst_backend(binary: str, fst: str, phoneme_symbols: str) -> Pro
         for path in (binary, fst, phoneme_symbols):
             if not Path(path).is_file():
                 raise FileNotFoundError(path)
-        completed = subprocess.run(command, input=text + "\\n", text=True, capture_output=True, check=True)
+        completed = subprocess.run(command, input=text + "\n", text=True, capture_output=True, check=True)
         lines = completed.stdout.splitlines()
-        if len(lines) != 1 or "\\t" not in lines[0]:
+        if len(lines) != 1 or "\t" not in lines[0]:
             raise ValueError("Google WFST must return exactly one echoed-input/IPA TSV line")
-        echoed, ipa = lines[0].split("\\t", 1)
+        echoed, ipa = lines[0].split("\t", 1)
         if echoed != text:
             raise ValueError("Google WFST echoed input does not match the requested text")
         return {"ipa": ipa, "status": "candidate" if ipa.strip() else "unsupported",
@@ -136,7 +136,7 @@ def make_myg2p_dictionary_backend(dictionary_path: str) -> Provider:
     def run(text: str) -> dict[str, Any]:
         matches: list[str] = []
         with path.open(encoding="utf-8", newline="") as stream:
-            for row in csv.reader(stream, delimiter="\\t"):
+            for row in csv.reader(stream, delimiter="\t"):
                 if len(row) >= 5 and row[1] == text and row[4].strip():
                     matches.append(row[4].strip())
         unique = sorted(set(matches))
