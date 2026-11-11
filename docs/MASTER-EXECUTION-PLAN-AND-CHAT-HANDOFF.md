@@ -1181,3 +1181,12 @@ The Google WFST is a registered optional candidate; it is not a production depen
 - Draft PR #126: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/126
 - Head at PR creation: `2ea19289781c7fcebfdb92a8239541f439002cc3`; base `main` at `0f814af3510c71d1b3dec5569209546179318a40`.
 - The PR is intentionally draft: independent Yangon-profile IPA gold and full transitive dependency pinning remain unresolved. Do not merge as a claim of production accuracy.
+
+
+## Evidence-gated hybrid candidate integration — 2026-11-11
+
+- Added src/burmese_ukrainian/hybrid.py and exported HybridBurmeseEngine, create_hybrid_engine, make_google_wfst_backend, make_myg2p_dictionary_backend and make_epitran_backend.
+- The hybrid wraps RuleBasedBurmeseEngine as the sole current final-IPA authority; Google WFST, myG2P and Epitran outputs are provenance-bearing candidates only. No voting or promotion occurs without independent Yangon-profile adjudicated gold.
+- Added regression tests for candidate preservation, partial-output rejection, backend failure isolation, exact fifth-column IPA lookup and tone/length-preserving transport normalization.
+- Benchmark decision and evidence are in docs/hybrid-engines.md. Google WFST and Epitran have 6/6 successful structural smoke outputs but no score; myG2P has 24,009 unique dictionary entries and source-concordance diagnostics remain confounded by possible train/test overlap. Independent gold 0.
+- Status PARTIAL: adapters are integrated into the research hybrid API; they are not enabled in the published runtime. Acceptance requires independent Yangon-profile IPA gold, no training overlap, tone/phonation/coda evaluation and hermetic WFST dependency pinning.
