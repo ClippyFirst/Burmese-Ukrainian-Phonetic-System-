@@ -122,7 +122,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
-      USE_BAZEL_VERSION: "4.2.3"
+      USE_BAZEL_VERSION: "7.4.1"
     steps:
       - uses: actions/checkout@v7
       - uses: actions/checkout@v7
@@ -134,12 +134,12 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "11"
+          java-version: "17"
       - uses: bazelbuild/setup-bazelisk@v3
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
-      - name: Pin legacy Abseil to a Bazel 4-compatible commit
+      - name: Pin legacy Abseil dependency for reproducible build
         working-directory: language-resources
         run: |
           python - <<'PY'
