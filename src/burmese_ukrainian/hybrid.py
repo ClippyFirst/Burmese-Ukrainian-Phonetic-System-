@@ -100,5 +100,55 @@ class HybridBurmeseEngine:
         }
 
 
+def make_google_wfst_backend(binary: str, fst: str, phoneme_symbols: str) -> Provider:
+    """Wrap the compiled Google Thrax binary; validate its echoed input."""
+    import subprocess
+    from pathlib import Path
+
+    def run(text: str) -> dict[str, Any]:
+        command = [str(Path(binary).resolve()), f"--fst={Path(fst).resolve()}",
+                   f"--phoneme_syms={Path(phoneme_symbols).resolve()}"]
+        for path in (binary, fst, phoneme_symbols):
+            if not Path(path).is_file():
+                raise FileNotFoundError(path)
+        completed = subprocess.run(command, input=text + "\\n", text=True, capture_output=True, check=True)
+        lines = completed.stdout.splitlines()
+        if len(lines) != 1 or "\\t" not in lines[0]:
+            raise ValueError("Google WFST must return exactly one echoed-input/IPA TSV line")
+        echoed, ipa = lines[0].split("\\t", 1)
+        if echoed != text:
+            raise ValueError("Google WFST echoed input does not match the requested text")
+        return {"ipa": ipa, "status": "candidate" if ipa.strip() else "unsupported",
+                "provenance": {"engine": "google/language-resources Burmese Thrax/OpenFst",
+                               "revision": "a90601024f07ab7e96c911243324e0adeb16da96",
+                               "binary": str(Path(binary).resolve()), "fst": str(Path(fst).resolve()),
+                               "phoneme_symbols": str(Path(phoneme_symbols).resolve())}}
+    return run
+
+
+def make_myg2p_dictionary_backend(dictionary_path: str) -> Provider:
+    """Exact-match adapter for myG2P v2's fifth (IPA) TSV field, never MLCTS."""
+    import csv
+    from pathlib import Path
+
+    path = Path(dictionary_path)
+
+    def run(text: str) -> dict[str, Any]:
+        matches: list[str] = []
+        with path.open(encoding="utf-8", newline="") as stream:
+            for row in csv.reader(stream, delimiter="\\t"):
+                if len(row) >= 5 and row[1] == text and row[4].strip():
+                    matches.append(row[4].strip())
+        unique = sorted(set(matches))
+        if len(unique) == 1:
+            return {"ipa": unique[0], "status": "candidate",
+                    "provenance": {"engine": "myG2P v2.0 dictionary", "dictionary_path": str(path),
+                                   "lookup": "exact_orthography", "ipa_column": 5}}
+        return {"ipa": "", "status": "analysis_dependent" if len(unique) > 1 else "unsupported",
+                "provenance": {"engine": "myG2P v2.0 dictionary", "dictionary_path": str(path),
+                               "lookup": "exact_orthography", "ambiguous_values": unique}}
+    return run
+
+
 def create_hybrid_engine(providers: dict[str, Provider] | None = None, include_internal: bool = True) -> HybridBurmeseEngine:
     return HybridBurmeseEngine(providers, include_internal=include_internal)
