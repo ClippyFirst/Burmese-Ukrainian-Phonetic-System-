@@ -414,3 +414,13 @@ This engineering correction does not change the language-layer statuses above. I
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | MYA-DETERMINISTIC-RULE-ENGINE-001 | DONE_VERIFIED (engineering); linguistic coverage PARTIAL | Final main head `9bece0a50a367f3f58336d2aba7016ac4af86156`; tests [43019216137](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43019216137) and Pages + smoke [43019216297](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43019216297) SUCCESS. | Deterministic runtime published; independent expert-adjudicated Yangon IPA gold remains outstanding. |
+
+
+## External G2P and hybrid candidate integration — 2026-11-11
+
+| Task | Status | Evidence | Remaining acceptance criterion |
+|---|---|---|---|
+| BUR-GOOGLE-WFST-CANDIDATE-001 | PARTIAL | Pinned grammar built; 6/6 structural-only probes produced outputs; no gold. | Independent Yangon-profile gold, tone/phonation review, full dependency pins. |
+| BUR-EPITRAN-CANDIDATE-001 | PARTIAL | Epitran 1.35.3 produced 6/6 raw outputs; no gold. | Profile-matched independent gold required before scoring or promotion. |
+| BUR-MYG2P-LEXICON-CANDIDATE-001 | PARTIAL | 24,009 unique entries and exact IPA-column adapter; possible train/test overlap in previous concordance experiment. | Rights review, overlap audit and independent gold. |
+| BUR-HYBRID-CANDIDATE-ENGINE-001 | PARTIAL | Candidate-only HybridBurmeseEngine integrated; deterministic rule output remains authoritative; provenance and abstention preserved. | Exact-head CI; independent gold; tone/phonation/coda evaluation; hermetic WFST build. |
