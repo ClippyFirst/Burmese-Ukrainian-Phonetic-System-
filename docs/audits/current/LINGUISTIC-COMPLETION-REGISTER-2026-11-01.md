@@ -434,3 +434,9 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BURMESE-IPA-GOLD-RECRUITMENT-LEADS-001 | PARTIAL | New specialist leads: Chiara Repetti-Ludlow's 2023 Burmese sonorant acoustic study and 2021 Burmese tone/sonority paper; Yuttaporn Naksuk and Tanintorn Limpasiri's comparative phonology review across eight Burmese dialects; University of Yangon referral lead. These do not establish native Yangon annotator qualification, availability or recruitment. | No candidate has been contacted, consented, recruited or approved. Close only after two independent qualified target-variety annotators, separate adjudicator, non-annotating curator, conflict checks, secure blind intake and written role/terms confirmation are documented. |
+
+## Deterministic rule engine — 2026-11-11
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-DETERMINISTIC-RULE-ENGINE-001 | PARTIAL | PR [#128](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/128) adds RuleBasedBurmeseEngine over repository parsing/IPA rules, removes external backend voting from the public engine API, and keeps a compatibility alias. Website/methodology copy identifies deterministic local processing. Exact-head tests [43017338991](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43017338991) SUCCESS. | Merge only after latest exact-head CI; verify Pages deployment. Independent adjudicated Yangon IPA gold is still required before correctness/accuracy claims. |
