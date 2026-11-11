@@ -121,5 +121,16 @@ def make_epitran_backend() -> Provider:
                                "profile_match": "NOT_ESTABLISHED"}}
     return run
 
+def make_command_backend(command: list[str], *, engine_id: str, revision: str) -> Provider:
+    """Adapter for pinned Goruut or other command-line G2P candidates."""
+    import subprocess
+    def run(text: str) -> dict[str, Any]:
+        completed = subprocess.run(command, input=text + "\\n", text=True, capture_output=True, check=True)
+        ipa = completed.stdout.strip()
+        return {"ipa": ipa, "status": "candidate" if ipa else "unsupported",
+                "provenance": {"engine": engine_id, "revision": revision, "stderr": completed.stderr}}
+    return run
+
+
 def create_hybrid_engine(providers: dict[str, Provider] | None = None) -> HybridBurmeseEngine:
     return HybridBurmeseEngine(providers=providers)
