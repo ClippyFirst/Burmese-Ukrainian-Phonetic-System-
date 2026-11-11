@@ -470,3 +470,10 @@ Epitran hybrid adapter refinement: the optional Burmese adapter now explicitly r
 
 
 Latest tone-aware hybrid code verification: [43078675807](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43078675807) SUCCESS — 184 Python tests + 72 subtests, npm build, generated-data drift check, npm tests and 54 built-site Playwright tests. The final branch commit 90ec9cba295cca29c1e05b0d71d35c98f653a8ef changes documentation only. Latest optional WFST rerun 43078675829 still building at final checkpoint; prior full run 43077670322 succeeded with 6/6 raw structural probes.
+
+
+## Hybrid provider-priority verification — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BUR-HYBRID-PROVIDER-PRIORITY-001 | DONE_VERIFIED (engineering ordering only) | Provider order is myG2P 10 → Google WFST 20 → Epitran 40 → CRF 60 → Goruut 90; unknown providers 50. Exact-head CI [43080511259](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43080511259) SUCCESS (185 Python tests + 72 subtests; npm build, generated-data freshness, npm tests, 54 Playwright tests); optional candidate jobs [43080510989](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43080510989) SUCCESS. | Order is diagnostic, not an accuracy ranking or promotion rule. RuleBasedBurmeseEngine remains final authority; gold=0, accuracy=null. |
