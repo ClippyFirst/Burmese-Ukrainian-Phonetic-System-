@@ -1211,3 +1211,12 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Python regression and browser source-contract regression were added.
 - Status: PARTIAL. Dedicated Yangon-profile source registry, executed browser parity fixtures, exact-head CI and Chromium verification remain outstanding.
 - Exact head at this update: 36b6ebf5a1d5a03b0c4d7a95aae2d842046e4152. No workflow run was returned for this branch; no tests are recorded as passed.
+
+
+## Final continuation snapshot — 2026-11-11 23:00 +02:00
+
+- Current PR #133 head: ebc826673868cafec41043411673fa3e618ae866. Draft, open, unmerged. Main baseline remains fab39881259df94be93634088a75667a13059cfc.
+- Implemented Python and browser onset-only PROVISIONAL fallback. It uses the existing Yangon onset IPA inventory → existing IPA adapter → Ukrainian text plus ?. Canonical fields remain withheld.
+- Exact-head test workflow 43100176432 was queued at the latest check; no job had started. Do not claim test success.
+- Local test execution was unavailable: public GitHub clone attempt failed because the execution environment could not resolve github.com. No tests are claimed passed on the new fallback.
+- Remaining: execute Python/Node/Chromium tests on the exact head; add functional shared Python/browser fixtures; register each provisional onset with exact primary-source locator and Yangon-profile scope; expand only where positional evidence is explicit. Independent text-only Yangon adjudicated gold remains BLOCKED; audio remains DEFERRED.
