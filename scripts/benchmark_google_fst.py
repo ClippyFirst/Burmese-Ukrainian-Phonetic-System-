@@ -61,9 +61,9 @@ def parse_outputs(
         )
     parsed: list[dict[str, str]] = []
     for row, line in zip(expected_rows, lines, strict=True):
-        if "\\t" not in line:
+        if "\t" not in line:
             raise ValueError("expected tab-separated echoed input and IPA output")
-        echoed_input, raw_output_ipa = line.split("\\t", 1)
+        echoed_input, raw_output_ipa = line.split("\t", 1)
         if echoed_input != row["orthography"]:
             raise ValueError(
                 f"echoed input does not match expected input for {row.get('case_id', 'row')}"
@@ -89,7 +89,7 @@ def run_engine(
     fst: Path,
     phoneme_symbols: Path,
     rows: list[dict[str, str]],
-) -> tuple[list[str], str]:
+) -> tuple[list[dict[str, str]], str]:
     for path, label in (
         (binary, "Thrax G2P binary"),
         (fst, "compiled G2P FST"),
@@ -110,7 +110,7 @@ def run_engine(
 
 def build_report(
     rows: list[dict[str, str]],
-    outputs: list[str],
+    outputs: list[dict[str, str]],
     *,
     engine_source_commit: str,
     grammar_sha256: str,
@@ -140,7 +140,7 @@ def build_report(
         raw_output_ipa = output.get("raw_output_ipa", "")
         if not raw_engine_line or not raw_output_ipa:
             raise ValueError("each output must include the raw engine line and IPA field")
-        if raw_engine_line.split("\\t", 1)[0] != row["orthography"]:
+        if raw_engine_line.split("\t", 1)[0] != row["orthography"]:
             raise ValueError("echoed input does not match expected input")
         records.append({
             "case_id": row["case_id"],
