@@ -467,3 +467,6 @@ Google WFST rerun [43077670322](https://github.com/ClippyFirst/Burmese-Ukrainian
 
 
 Epitran hybrid adapter refinement: the optional Burmese adapter now explicitly requests tones=True by default and records the requested setting in candidate provenance. Regression test added; exact-head pytest passed in [43078675807](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43078675807). This does not retroactively change the earlier Epitran raw-output benchmark (which used the original smoke harness), nor establish tonal accuracy.
+
+
+Latest tone-aware hybrid code verification: [43078675807](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43078675807) SUCCESS — 184 Python tests + 72 subtests, npm build, generated-data drift check, npm tests and 54 built-site Playwright tests. The final branch commit 90ec9cba295cca29c1e05b0d71d35c98f653a8ef changes documentation only. Latest optional WFST rerun 43078675829 still building at final checkpoint; prior full run 43077670322 succeeded with 6/6 raw structural probes.
