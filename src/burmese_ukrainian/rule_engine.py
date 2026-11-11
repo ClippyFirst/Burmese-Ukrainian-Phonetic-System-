@@ -22,6 +22,8 @@ def _provisional_preview(syllables: list[dict[str, Any]]) -> dict[str, Any] | No
                 "ipa": item["ipa"],
                 "ukrainian": rendered.get("text") or "?",
                 "status": "SUPPORTED_PATH",
+                "position": "syllable",
+                "rule_id": None,
                 "unresolved_graphemes": [],
             })
             continue
@@ -36,15 +38,18 @@ def _provisional_preview(syllables: list[dict[str, Any]]) -> dict[str, Any] | No
             "ipa": hint,
             "ukrainian": known + ("?" if unresolved or not known else ""),
             "status": "PROVISIONAL" if hint and known else "UNKNOWN",
+            "position": "onset" if hint else None,
+            "rule_id": "BURMESE-PREVIEW-ONSET-IPA-V1" if hint and known else None,
             "unresolved_graphemes": unresolved or ([] if hint and known else list(raw)),
             "warnings": ["ONSET_POSITION_KNOWN_RIME_UNRESOLVED"],
             "evidence": ["U18", "W16-3702"],
         })
-    if not any(item.get("ipa") for item in previews):
+    if not previews:
         return None
+    has_hint = any(item.get("ipa") for item in previews)
     return {
-        "status": "PROVISIONAL",
-        "ipa_preview": " ".join(item["ipa"] or "?" for item in previews),
+        "status": "PROVISIONAL" if has_hint else "UNKNOWN",
+        "ipa_preview": " ".join(item["ipa"] or "?" for item in previews) if has_hint else None,
         "ukrainian_preview": " ".join(item["ukrainian"] for item in previews),
         "syllables": previews,
         "warnings": ["LOW_CONFIDENCE", "TONE_NOT_INFERRED"],
