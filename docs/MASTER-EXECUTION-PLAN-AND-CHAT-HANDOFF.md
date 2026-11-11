@@ -1201,3 +1201,13 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 
 - Added `docs/provisional-grapheme-ipa-fallback.md` defining the Lao-style `PROVISIONAL` grapheme → IPA → existing Ukrainian adapter contract, visible `?` uncertainty, Python/browser parity and benchmark separation.
 - This is a design/acceptance document only, not an implementation claim. Current Burmese parser/practical adapter still withholds unsupported constructions. Implementation is BLOCKED pending a source-backed, Yangon-profile positional grapheme-to-IPA inventory; onset hints must not be reused as coda/vowel/medial/kinzi readings.
+
+
+## Provisional onset fallback implementation — 2026-11-11
+
+- Python and browser now expose a separate PROVISIONAL onset-only IPA preview for unresolved syllables where the existing Yangon onset inventory has an IPA value.
+- The existing IPA → Ukrainian adapter renders the hint; ? marks the unresolved rime/structure. Canonical ipa/ukrainian remain withheld.
+- No vowel, coda/asat realization, medial, kinzi, conjunct, tone or phonation is inferred.
+- Python regression and browser source-contract regression were added.
+- Status: PARTIAL. Dedicated Yangon-profile source registry, executed browser parity fixtures, exact-head CI and Chromium verification remain outstanding.
+- Exact head at this update: 36b6ebf5a1d5a03b0c4d7a95aae2d842046e4152. No workflow run was returned for this branch; no tests are recorded as passed.
