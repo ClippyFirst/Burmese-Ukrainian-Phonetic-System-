@@ -156,7 +156,7 @@ function parseCluster(raw,withholdBareInherent=false){
   sy.uk=sy.status==="ESTABLISHED"&&sy.ipa?renderUkrainian(sy.ipa):{text:"",status:"NOT_ESTABLISHED",parts:[],prosody:[],unsupported:sy.raw};
   // Separate onset-only preview: never derive Ukrainian directly from Myanmar
   // graphemes and never guess the vowel, coda, medial, kinzi or tone.
-  if(!sy.ipa&&isolatedBare&&sy.onset&&ONSETS[sy.onset]?.ipa){
+  if(!sy.ipa&&withholdBareInherent&&sy.onset&&ONSETS[sy.onset]?.ipa){
     const hint=ONSETS[sy.onset].ipa;
     const adapted=renderUkrainian(hint);
     if(adapted.text){
