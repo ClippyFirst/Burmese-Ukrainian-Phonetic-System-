@@ -30,7 +30,7 @@ def test_command_backend_preserves_raw_candidate_and_provenance(monkeypatch):
     import subprocess
     from types import SimpleNamespace
     from burmese_ukrainian.hybrid import make_command_backend
-    monkeypatch.setattr(subprocess, "run", lambda *args, **kwargs: SimpleNamespace(stdout="mjəmà\\n", stderr=""))
+    monkeypatch.setattr(subprocess, "run", lambda *args, **kwargs: SimpleNamespace(stdout="mjəmà\n", stderr=""))
     candidate = make_command_backend(["goruut"], engine_id="goruut", revision="PINNED")("မြန်မာ")
     assert candidate["ipa"] == "mjəmà"
     assert candidate["provenance"]["revision"] == "PINNED"
