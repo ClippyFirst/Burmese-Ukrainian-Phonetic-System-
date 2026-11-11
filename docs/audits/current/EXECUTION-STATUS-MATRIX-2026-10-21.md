@@ -434,7 +434,14 @@ This engineering correction does not change the language-layer statuses above. I
 | Generate browser mapping from canonical practical CSV/rule data | DONE_VERIFIED | \`src/web/ukrainian-adapter.js\`; previous build, generated-data freshness and Node tests passed |
 | Map /h, ɦ/ → г, /ɡ/ → ґ (project choice), /x/ → х, /w/ → в, syllable-initial /j/ yotation, affricates → ц/дз/ч/дж | DONE_VERIFIED | Canonical practical table and tests; /ɡ/ → ґ is not claimed as universal orthographic norm |
 | Preserve tone/length in IPA trace; join syllable-level Ukrainian output into one word | DONE_VERIFIED | Python engine output and regression tests |
-| Browser fail-closed behavior for kinzi/medials/conjuncts | PARTIAL | Implemented; final Playwright run 43095578672 queued with no jobs |
+| Browser fail-closed behavior for kinzi/medials/conjuncts | PARTIAL | Implemented; final Playwright run 43095883419 queued with no jobs |
 | Final browser/Playwright acceptance | BLOCKED | Acceptance: current PR head completes all Chromium tests successfully |
 | Independent empirical IPA/Ukrainian accuracy evaluation | BLOCKED | No independent text gold set yet; requires source provenance, dialect scope and adjudication |
 | Audio validation | DEFERRED | Outside user-requested text-only scope |
+
+
+### Exact-head verification refresh — 2026-11-11
+
+- Latest PR #133 handoff head: `59fc6d2668117e78ee3bfa5e3d0c549b1e3bde2b`; the practical adapter code remains at `e9bd12819ed692d7be2607356008217de9430dca` and subsequent changes are documentation-only.
+- Exact-head workflow [43095883419](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43095883419) is queued with no jobs started. Final browser/Playwright verification is therefore still PARTIAL/BLOCKED pending the run.
+- No audio is required for this task. The remaining accuracy blocker is an independently sourced, text-only Yangon IPA/Ukrainian adjudication set; without it, accuracy remains unmeasured.
