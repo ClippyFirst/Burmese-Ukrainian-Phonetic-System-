@@ -434,3 +434,13 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BURMESE-IPA-GOLD-RECRUITMENT-LEADS-001 | PARTIAL | New specialist leads: Chiara Repetti-Ludlow's 2023 Burmese sonorant acoustic study and 2021 Burmese tone/sonority paper; Yuttaporn Naksuk and Tanintorn Limpasiri's comparative phonology review across eight Burmese dialects; University of Yangon referral lead. These do not establish native Yangon annotator qualification, availability or recruitment. | No candidate has been contacted, consented, recruited or approved. Close only after two independent qualified target-variety annotators, separate adjudicator, non-annotating curator, conflict checks, secure blind intake and written role/terms confirmation are documented. |
+
+# External G2P and benchmark research — 2026-11-11
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BUR-GOOGLE-WFST-ENGINE-001 | PARTIAL | Google Language Resources Thrax/OpenFst grammar registered at pinned commit; optional Bazel build and six structural-only probes added. CI build compatibility was iterated across Bazel/GCC versions; latest run [42997699151](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42997699151) is the current verification target. | A successful build/smoke only verifies execution. Independent Standard Yangon IPA gold, tone/phonation adjudication, and fully pinned transitive build dependencies are still required. |
+| BUR-G2P-2016-PUBLISHED-BENCHMARK-001 | DONE_VERIFIED | WSSANLP 2016 paper inspected: 25,300 MLC words; WFST open PER 14.7/11.4/15.7, CRF 15.7 on open3, PBSMT 16.1/13.1/22.0; manual tone/voicing/consonant/vowel analysis. | Published phones are romanized rather than project IPA; source dictionary rights are not established; not a current engine score. |
+| BUR-CRF-RECHECK-2026-11-11 | PARTIAL | 100 predictions, 84 source-concordant; zero independent gold; accuracy null; possible training overlap; syllable boundaries are supplied. | Independent gold and disjoint training/test evidence required; do not report 84% as accuracy. |
+| BUR-EPITRAN-RECHECK-2026-11-11 | DONE_VERIFIED (SMOKE ONLY) | Epitran 1.35.3: 6/6 raw outputs, zero runtime errors, no independent gold. | Keep raw outputs as smoke evidence only; do not score until gold exists. |
+| BUR-OPENSLR80-AUDIO-RESOURCE-001 | PARTIAL | CC BY-SA 4.0 audio and orthographic transcripts, 2,528 utterances, 20 female native speakers; no IPA. | Expert IPA annotation and rights-aware artifact handling needed before use as a G2P benchmark. |
