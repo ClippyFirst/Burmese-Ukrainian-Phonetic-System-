@@ -1181,3 +1181,12 @@ The Google WFST is a registered optional candidate; it is not a production depen
 - Draft PR #126: https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/126
 - Head at PR creation: `2ea19289781c7fcebfdb92a8239541f439002cc3`; base `main` at `0f814af3510c71d1b3dec5569209546179318a40`.
 - The PR is intentionally draft: independent Yangon-profile IPA gold and full transitive dependency pinning remain unresolved. Do not merge as a claim of production accuracy.
+
+## Гібридний IPA-рушій — continuation 2026-11-11
+
+- Додано `src/burmese_ukrainian/hybrid.py`: ансамбль структурного парсера, внутрішнього консервативного IPA та підключених зовнішніх IPA backend-ів; експортовано `HybridBurmeseEngine` і `create_hybrid_engine`.
+- Додано `tests/test_hybrid_engine.py`: exact IPA consensus, single-backend non-promotion, conflicting outputs, exclusion of partial `?` output, preservation of distinctive diacritics.
+- Додано `docs/hybrid-engines.md` і посилання з README.
+- MLCTS/романізація не є IPA backend-ом і не голосує. Наявний Google WFST і myG2P IPA можуть бути підключені як окремі backend-функції; core не завантажує їх автоматично і не додає сторонніх runtime-залежностей.
+- Перевірка в цій сесії: код записаний у GitHub; локального checkout/pytest тут немає. CI exact-head ще очікується; не вважати тести пройденими до завершення workflow.
+- Branch: `research/burmese-hybrid-engine-2026-11-11`, створена від попереднього research PR #126 head `bf3da3d2d3424ffe2ea36e75a3e84a26f3d88f73`; зміни призначені як stacked follow-up до гілки PR #126.
