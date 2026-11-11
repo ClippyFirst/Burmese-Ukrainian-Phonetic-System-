@@ -9,7 +9,7 @@ from __future__ import annotations
 from collections import defaultdict
 from typing import Any, Callable, Iterable
 
-from .parser import parse_burmese
+from .parser import parse_burmese, normalize_burmese
 from .ipa import to_ipa
 
 Provider = Callable[[str], str | dict[str, Any]]
@@ -77,9 +77,10 @@ class HybridBurmeseEngine:
             })
             if item is not None:
                 candidates.append(item)
+        backend_text = normalize_burmese(text)
         for provider_id, provider in self.providers.items():
             try:
-                item = _candidate(provider_id, provider(text))
+                item = _candidate(provider_id, provider(backend_text))
                 if item is not None:
                     candidates.append(item)
                 else:
