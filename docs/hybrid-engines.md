@@ -6,8 +6,8 @@
 
 - Внутрішній структурний парсер — Myanmar grapheme clusters, кінзі, підрядкові приголосні, медіалі, голосні та маркери.
 - Внутрішній `to_ipa()` — обмежений правиловий кандидат; часткові результати з `?` не потрапляють до голосування.
-- `google-wfst` — Google Thrax/OpenFst Burmese→IPA.
-- `myg2p-ipa` — окреме IPA-поле версії 2.0 словника myG2P; не MLCTS і не вимовна романізація.
+- `make_google_wfst_backend()` — готовий адаптер з перевіркою echoed input для зібраного Thrax/FST/symbol-table.
+- `make_myg2p_dictionary_backend()` — exact-match адаптер п'ятого IPA-поля myG2P v2.0; не MLCTS і не вимовна романізація.
 - `burmese-g2p-crf` / Epitran можуть бути додані як окремі backend-и, якщо їхній вихід справді IPA і відповідає профілю.
 
 ## Контракт backend-а
