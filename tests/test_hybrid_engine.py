@@ -51,7 +51,8 @@ def test_myg2p_adapter_reads_only_the_ipa_column_and_rejects_ambiguity(tmp_path)
     assert result["provenance"]["ipa_column"] == 5
 
     dictionary.write_text(dictionary.read_text(encoding="utf-8") + "2\tမြန်မာ\tမြန်-မာ\tmyanma\tmjəmɑ̀\n", encoding="utf-8")
-    ambiguous = backend("မြန်မာ")
+    backend_after_update = make_myg2p_dictionary_backend(str(dictionary))
+    ambiguous = backend_after_update("မြန်မာ")
     assert ambiguous["status"] == "analysis_dependent"
     assert ambiguous["ipa"] == ""
 
