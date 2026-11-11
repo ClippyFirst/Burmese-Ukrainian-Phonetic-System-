@@ -1220,3 +1220,8 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Exact-head test workflow 43100176432 was queued at the latest check; no job had started. Do not claim test success.
 - Local test execution was unavailable: public GitHub clone attempt failed because the execution environment could not resolve github.com. No tests are claimed passed on the new fallback.
 - Remaining: execute Python/Node/Chromium tests on the exact head; add functional shared Python/browser fixtures; register each provisional onset with exact primary-source locator and Yangon-profile scope; expand only where positional evidence is explicit. Independent text-only Yangon adjudicated gold remains BLOCKED; audio remains DEFERRED.
+
+
+## Fallback scope clarification — 2026-11-11
+
+The browser onset-only preview is now limited to isolated bare consonant tokens. Contextual structures (vowels, codas/asat, medials, kinzi, conjuncts and prosodic marks) remain on their existing fail-closed path. The preview appears only in per-syllable details; canonical main output is unchanged. Earlier browser regression run 43100176432 failed because the first integration leaked onset-only previews into contextual syllables; the scope fix and a new verification run are in progress.
