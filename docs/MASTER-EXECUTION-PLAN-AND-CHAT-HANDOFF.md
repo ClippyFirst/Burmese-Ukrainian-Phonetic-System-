@@ -61,7 +61,7 @@
 - **Test-first evidence:** regression test added first; expected RED on [41725146714](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41725146714). An implementation run [41725276827](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41725276827) caught a literal-backslash newline in the sidecar; corrected and rerun.
 - **Exact implementation-head verification:** Python/Node/build/browser tests [41725456860](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41725456860) SUCCESS (162 Python tests + 64 subtests; 54 browser tests); optional Epitran [41725456964](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41725456964) SUCCESS; optional Goruut [41725457027](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41725457027) SUCCESS.
 - **Research boundary:** this is provenance/integrity work only. It does not make orthographic or source-attested outputs gold. Independent adjudicated Burmese IPA gold remains 0; empirical accuracy remains null.
-- **PR:** [#106](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/106), branch head 8a3fd150a247144320c880756f187a256a890e2f; pending review/merge at this checkpoint.
+- **PR:** [#106](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/106) was merged on 2026-11-03 as `76426383038ee18a4cf5f2136379b25c08a40d7e`; PR #111 was merged on 2026-11-04 as `8c323ff0d1236c5c6d36b2c2be0eac4d493163ab`. This supersedes the pending-review note at the earlier checkpoint.
 
 ## Continuation update — Python/browser mixed-script segmentation parity (2026-11-03)
 
