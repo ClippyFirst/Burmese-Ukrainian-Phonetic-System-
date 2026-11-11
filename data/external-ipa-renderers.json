@@ -89,7 +89,7 @@
       "license": "Upstream project reports an open-source license; verify the exact pinned release, bundled mapping/data licenses, and notices before reuse or redistribution.",
       "verified_in_repo": false,
       "enabled_by_default": false,
-      "latest_run_id": 40134067758,
+      "latest_run_id": 42998737734,
       "execution_status": "SMOKE_VERIFIED_NOT_ACCURACY",
       "smoke_evidence": {
         "id": "epitran",
@@ -110,7 +110,7 @@
         "preprocessor_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "postprocessor_sha256": "0eac185c50b19b7c2682d1395afad97a7662a5ff22e2344195eb0d3ffcbed7af"
       },
-      "latest_run_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40134067758",
+      "latest_run_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42998737734",
       "latest_artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/40134067758/artifacts/12576415800",
       "latest_artifact_zip_sha256": "6ff7fd5d70f386d76eefb37d50d2718d9de3f4e410749cf94848af9afeab788c",
       "latest_smoke_summary": {
@@ -119,6 +119,19 @@
         "runtime_errors": 0,
         "independent_gold_count": 0,
         "accuracy": null
+      },
+      "last_run_summary": {
+        "input_count": 6,
+        "successful_outputs": 6,
+        "runtime_errors": 0,
+        "independent_gold_count": 0,
+        "accuracy": null,
+        "corpus_sha256": "2caad1d85c1c8e4590ccf460d6af448ff161d67097137691a84d7a0a88798091",
+        "mapping_sha256": "de8660a0cdccb4192993d423342ad775a59ade19b8081829eb70da18f291dfe4",
+        "report_sha256": "a6147cba356be811ccb0a7707eded7bb8528c5dc6d679ba4908733b723e0f89a",
+        "artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42998737734/artifacts/13845296575",
+        "artifact_zip_sha256": "f3d59f2f25e1008f17d3b95e45f2083289fb993bdb97beaea04cc7fd88876411",
+        "source_status": "SMOKE_VERIFIED_NOT_ACCURACY"
       }
     },
     {
@@ -295,6 +308,45 @@
       "postprocessor_sha256": "0eac185c50b19b7c2682d1395afad97a7662a5ff22e2344195eb0d3ffcbed7af",
       "source_status": "SMOKE_VERIFIED_NOT_ACCURACY",
       "notes": "Six raw outputs; all remain STRUCTURAL_ONLY and NOT_SCORED_NO_VERIFIED_GOLD. This is a reproducible smoke run, not an accuracy result."
+    },
+    {
+      "engine": "kyaw-yethu/burmese-G2P CRFsuite ver2",
+      "version": "de0f06056cf334b8cdd5a1efd1226f01c8162b77",
+      "run_id": 42998737734,
+      "run_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42998737734",
+      "artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42998737734/artifacts/13844593419",
+      "artifact_zip_sha256": "6b5ff7ce25cae7bf7365dba2dcfb45022aa3cfdc9b1a1385986df2209a45503b",
+      "report_sha256": "f9a028d07bf2bd1bfc4d570829dc025771ba7e39dbd8ed174c70527baa35ab0a",
+      "source_summary_sha256": "ce5cc11ffcef460f94740a8e5bd786cb5e78a619ddb8ed45d041352aa509bc6f",
+      "source_summary_output_sha256": "e9026cd2cfbe29664a7422e9bc009f8d9bd737711035ec0538f4aa8bc86714b6",
+      "input_count": 100,
+      "predictions_returned": 100,
+      "source_concordant_rows": 84,
+      "independent_gold_count": 0,
+      "accuracy": null,
+      "scoring_status": "NOT_SCORED_POSSIBLE_TRAINING_OVERLAP",
+      "model_sha256": "f66571b7632eed2e94878278702654ce0a4b25fcab18720af60d3cfe00b011ce",
+      "data_source_commit": "54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225",
+      "license": "CC BY-NC-SA 4.0",
+      "interpretation": "Source-attested concordance only; possible training overlap; the input already contains syllable boundaries, so this is not end-to-end G2P or accuracy."
+    },
+    {
+      "engine": "Epitran",
+      "version": "1.35.3",
+      "run_id": 42998737734,
+      "run_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42998737734",
+      "artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42998737734/artifacts/13845296575",
+      "artifact_zip_sha256": "f3d59f2f25e1008f17d3b95e45f2083289fb993bdb97beaea04cc7fd88876411",
+      "report_sha256": "a6147cba356be811ccb0a7707eded7bb8528c5dc6d679ba4908733b723e0f89a",
+      "corpus_sha256": "2caad1d85c1c8e4590ccf460d6af448ff161d67097137691a84d7a0a88798091",
+      "mapping_sha256": "de8660a0cdccb4192993d423342ad775a59ade19b8081829eb70da18f291dfe4",
+      "input_count": 6,
+      "successful_outputs": 6,
+      "runtime_errors": 0,
+      "independent_gold_count": 0,
+      "accuracy": null,
+      "source_status": "SMOKE_VERIFIED_NOT_ACCURACY",
+      "interpretation": "Six structural-only inputs yielded six raw outputs; no independently adjudicated IPA labels, no scoring."
     }
   ],
   "upstream_evidence": [
