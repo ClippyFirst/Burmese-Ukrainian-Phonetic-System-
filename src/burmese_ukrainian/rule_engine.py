@@ -58,6 +58,6 @@ class RuleBasedBurmeseEngine:
 HybridBurmeseEngine = RuleBasedBurmeseEngine
 
 
-def create_hybrid_engine(*_args: Any, **_kwargs: Any) -> RuleBasedBurmeseEngine:
+def create_hybrid_engine() -> RuleBasedBurmeseEngine:
     """Compatibility factory returning the deterministic rule engine only."""
     return RuleBasedBurmeseEngine()
