@@ -1136,3 +1136,10 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - PR [#128](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/128) merged to main as `cd3a1503e79d32b09a6d2d5206340a37cfd3283b` from branch release/deterministic-rule-engine-2026-11-11. Exact main tests [43018103155](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43018103155) and Pages deployment + post-deploy asset smoke [43018103391](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43018103391) both SUCCESS: pytest, npm build, generated-data check, npm test and built-browser Playwright all passed.
 - Published service: https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/
 - Engineering task DONE_VERIFIED; linguistic coverage remains PARTIAL/PROPOSED. Determinism is verified; unsupported coda, tone/phonation and other incomplete rules still require expert-adjudicated Yangon gold.
+
+## Final deterministic-engine verification — 2026-11-11
+
+- Post-merge hardening on main head `9bece0a50a367f3f58336d2aba7016ac4af86156`: legacy factory rejects external provider injection; the trace field is explicitly a processing-stage list, not an invented evidence-rule ID.
+- Exact-head tests [43019216137](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43019216137) and Pages deployment + asset smoke [43019216297](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43019216297) both SUCCESS; Python tests, npm build, generated-data drift check, npm tests and built-browser Playwright passed.
+- Live service: https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/. MLCTS remains a separate orthographic mode; no external G2P/model participates in phonetic runtime.
+- Remaining linguistic acceptance: independent adjudicated Yangon IPA gold and broader tone/phonation/coda coverage; no blanket accuracy claim.
