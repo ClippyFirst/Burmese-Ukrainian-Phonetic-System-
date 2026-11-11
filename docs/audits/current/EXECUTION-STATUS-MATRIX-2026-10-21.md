@@ -432,7 +432,7 @@ This engineering correction does not change the language-layer statuses above. I
 |---|---|---|
 | Add Python whole-IPA → Ukrainian adapter and integrate after deterministic IPA | DONE_VERIFIED | \`src/burmese_ukrainian/practical.py\`, \`rule_engine.py\`; previous Python suite 180 + 66 subtests |
 | Generate browser mapping from canonical practical CSV/rule data | DONE_VERIFIED | \`src/web/ukrainian-adapter.js\`; previous build, generated-data freshness and Node tests passed |
-| Map /h, ɦ/ → г, /ɡ/ → ґ (project choice), /x/ → х, affricates → ц/дз/ч/дж | DONE_VERIFIED | Canonical practical table and tests; /ɡ/ → ґ is not claimed as universal orthographic norm |
+| Map /h, ɦ/ → г, /ɡ/ → ґ (project choice), /x/ → х, /w/ → в, syllable-initial /j/ yotation, affricates → ц/дз/ч/дж | DONE_VERIFIED | Canonical practical table and tests; /ɡ/ → ґ is not claimed as universal orthographic norm |
 | Preserve tone/length in IPA trace; join syllable-level Ukrainian output into one word | DONE_VERIFIED | Python engine output and regression tests |
 | Browser fail-closed behavior for kinzi/medials/conjuncts | PARTIAL | Implemented; final Playwright run 43095578672 queued with no jobs |
 | Final browser/Playwright acceptance | BLOCKED | Acceptance: current PR head completes all Chromium tests successfully |
