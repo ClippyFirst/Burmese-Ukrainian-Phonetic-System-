@@ -55,6 +55,7 @@ def test_full_ipa_sequence_adapter_handles_ukrainian_target_conventions():
 def test_sequence_adapter_keeps_affricates_distinct_from_consonant_sequences():
     assert transcribe_ipa("t s")["text"] == "т с"
     assert transcribe_ipa("d z")["text"] == "д з"
+    assert transcribe_ipa("b d n m")["text"] == "б д н м"
 
 
 def test_sequence_adapter_omits_prosodic_marks_but_preserves_them_in_trace():
