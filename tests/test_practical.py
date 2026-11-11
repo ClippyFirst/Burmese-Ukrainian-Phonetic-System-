@@ -1,4 +1,5 @@
-from burmese_ukrainian.practical import practical_from_ipa, rank_ukrainian_candidates
+from burmese_ukrainian.practical import practical_from_ipa, rank_ukrainian_candidates, transcribe_ipa
+from burmese_ukrainian.rule_engine import RuleBasedBurmeseEngine
 
 
 def test_aspiration_is_marked_with_apostrophe():
@@ -41,3 +42,35 @@ def test_dental_fricative_candidate_remains_analysis_dependent():
     assert result["status"] == "analysis_dependent"
     assert result["candidates"][0]["text"] == "т"
     assert "RU_EPSHTEIN_1959" in result["candidates"][0]["evidence"]
+
+
+def test_full_ipa_sequence_adapter_handles_ukrainian_target_conventions():
+    result = transcribe_ipa("h ɡ g x t͡s d͡z t͡ʃ d͡ʒ tɕ dʑ")
+    assert result["text"] == "г ґ ґ х ц дз ч дж ч дж"
+    assert result["status"] == "proposed"
+
+
+def test_sequence_adapter_keeps_affricates_distinct_from_consonant_sequences():
+    result = transcribe_ipa("t s")
+    assert result["text"] == "т с"
+
+
+def test_sequence_adapter_omits_prosodic_marks_but_preserves_them_in_trace():
+    result = transcribe_ipa("kʰàː")
+    assert result["text"] == "к'а"
+    assert any(item["kind"] == "tone" for item in result["prosody"])
+    assert any(item["kind"] == "length" for item in result["prosody"])
+
+
+def test_sequence_adapter_fails_closed_on_unknown_ipa():
+    result = transcribe_ipa("kʰɤ")
+    assert result["text"] is None
+    assert result["status"] == "not_established"
+    assert result["unsupported"] == "ɤ"
+
+
+def test_rule_engine_returns_ukrainian_practical_rendering_after_ipa():
+    result = RuleBasedBurmeseEngine().analyze("ကာ")
+    assert result["ipa"] == "ka"
+    assert result["ukrainian"] == "ка"
+    assert result["ukrainian_status"] == "proposed"
