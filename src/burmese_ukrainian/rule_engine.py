@@ -39,7 +39,7 @@ class RuleBasedBurmeseEngine:
                 "NOT_ESTABLISHED" if not syllables else "PARTIAL"
             ),
             "syllables": syllables,
-            "rule_ids": [
+            "processing_steps": [
                 "MYANMAR_UNICODE_NORMALIZATION",
                 "BURMESE_ORTHOGRAPHIC_PARSER",
                 "BURMESE_ONSET_MEDIAL_RIME_RULES",
