@@ -1127,3 +1127,11 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Also retained the existing Superpowers, Matt Pocock and Ponytail methodology references. Their use is constrained by project-specific IPA, source-rights, privacy and fail-closed requirements.
 - Documentation PR: #119. Exact-head CI evidence: 41876124400 (Tests SUCCESS). The PR has been merged to main; post-merge workflow/deployment checks are still being observed where applicable.
 - This is an engineering-process improvement only. It does not resolve the external blockers: expert recruitment and approved IPA conventions, independent adjudicated gold, item-level redistribution rights, and controlled blind annotation intake. No people were contacted and no IPA labels or corpus data were added.
+
+## Deterministic rule-engine replacement — 2026-11-11
+
+- Replaced provider consensus with RuleBasedBurmeseEngine in src/burmese_ukrainian/rule_engine.py; legacy HybridBurmeseEngine is a compatibility alias only. No model voting, provider injection, network calls, Google WFST or myG2P in the active phonetic runtime.
+- Runtime path: Myanmar NFC normalization → structural parsing → repository onset/medial/rime rules → IPA only for supported syllables; incomplete output is explicitly PARTIAL. MLCTS stays isolated in its orthographic mode.
+- Website copy and methodology page now state the deterministic local rule path and link to docs/DETERMINISTIC-RULE-ENGINE.md.
+- PR [#128](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/128), branch release/deterministic-rule-engine-2026-11-11. Exact-head workflow [43017338991](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43017338991) SUCCESS: pytest, npm build, generated-data check, npm test and built-browser Playwright.
+- Linguistic status remains PARTIAL/PROPOSED; independent adjudicated Yangon IPA gold is still required. Production publication follows merge and Pages verification.
