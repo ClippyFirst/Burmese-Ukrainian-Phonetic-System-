@@ -2,13 +2,14 @@
 from .parser import parse_burmese, normalize_burmese, segment_graphemes, segment_syllables
 from .ipa import to_ipa
 from .ukrainian import ipa_to_ukrainian
-from .practical import practical_from_ipa, rank_ukrainian_candidates
+from .practical import practical_from_ipa, rank_ukrainian_candidates, transcribe_ipa
 from .explain import explain
 from .rule_engine import RuleBasedBurmeseEngine, HybridBurmeseEngine, create_hybrid_engine
 
 __all__ = [
     "parse_burmese", "normalize_burmese", "segment_graphemes",
     "segment_syllables", "to_ipa", "ipa_to_ukrainian",
-    "practical_from_ipa", "rank_ukrainian_candidates", "explain",
-    "RuleBasedBurmeseEngine", "HybridBurmeseEngine", "create_hybrid_engine",
+    "practical_from_ipa", "rank_ukrainian_candidates", "transcribe_ipa",
+    "explain", "RuleBasedBurmeseEngine", "HybridBurmeseEngine",
+    "create_hybrid_engine",
 ]
