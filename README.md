@@ -35,14 +35,12 @@ The comparison shows several systematic target-language differences:
 | /w/ | у | в |
 | /h/ | х | г |
 | /ɡ/ (ASCII alias /g/) | г | ґ* |
-| /h, ɦ/ | х | г |
+| /ɦ/ | — | г |
 | /x/ | х | х |
 | /t͡s, d͡z/ | ц, дз | ц, дз |
 | /t͡ʃ, d͡ʒ/ | ч, дж | ч, дж |
 | /x/ | х | х |
 | /ɹ/ | й/r-dependent | р* |
-| /t͡s/ /d͡z/ | ц / дз | ц / дз |
-| /t͡ʃ/ /d͡ʒ/ | ч / дж | ч / дж |
 | tone | not encoded | not encoded |
 
 Aspiration is preserved with an apostrophe in the Ukrainian practical layer; /ʔ/ does not trigger it. The distinctions /h/ → г, /ɡ/ → ґ and /x/ → х are project-wide target conventions, not claims that foreign /h/ is identical to Ukrainian /ɦ/.
