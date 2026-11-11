@@ -45,3 +45,13 @@ def test_contiguous_myanmar_bare_clusters_keep_existing_contextual_path():
     assert len(result["syllables"]) == 2
     assert all(s["ipa"] is not None for s in result["syllables"])
     assert all(s["phonetic_status"] == "conservative_partial" for s in result["syllables"])
+
+
+def test_engine_does_not_promote_inherent_vowel_placeholders_to_ipa():
+    from burmese_ukrainian.rule_engine import RuleBasedBurmeseEngine
+
+    result = RuleBasedBurmeseEngine().analyze("ကမ")
+
+    assert result["ipa"] is None
+    assert result["ipa_with_placeholders"] == "k? m?"
+    assert result["status"] == "PARTIAL"
