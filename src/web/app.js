@@ -13,7 +13,7 @@ function setOutputMode(mode){
   modeRomanization.classList.toggle("is-active",mode==="romanization");
   modeRomanization.setAttribute("aria-pressed",String(mode==="romanization"));
   outputMethodNote.textContent=mode==="phonetic"
-    ?"Фонетичний режим: Burmese phonology → IPA → українська практична адаптація."
+    ?"Фонетичний режим: детерміновані бірманські правила → IPA → українська практична адаптація. Без голосування зовнішніх рушіїв."
     :"Романізаційний режим: Burmese orthography → MLCTS → окрема українська матриця. Український результат PARTIAL; фонетичний результат не використовується як fallback.";
 }
 

@@ -212,3 +212,9 @@ The production build contains both the service and methodology pages and the Mya
 ## Independent IPA gold corpus
 
 The project uses a provenance-backed, double-annotated IPA gold workflow. See [the corpus protocol](docs/ipa-gold-corpus.md) and [the language-specific phonology research workpack](docs/audits/current/PHONOLOGY-RESEARCH-WORKPACK-2026-11-01.md). The corpus is currently empty by design; no phonetic accuracy claim is available until expert adjudication is complete.
+
+## Deterministic rule engine
+
+The phonetic website and Python API use fixed, local repository rules for Myanmar normalization, grapheme/syllable parsing and conservative IPA derivation. No neural inference, Google WFST, myG2P, network call or candidate voting participates in phonetic output. Unsupported syllables remain withheld. MLCTS remains a separate orthographic mode. See [the deterministic engine contract](docs/DETERMINISTIC-RULE-ENGINE.md).
+
+Python entry point: `from burmese_ukrainian import RuleBasedBurmeseEngine`. Deterministic execution does not make every PROPOSED pronunciation independently verified.

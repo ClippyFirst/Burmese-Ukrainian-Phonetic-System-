@@ -402,3 +402,9 @@ This engineering correction does not change the language-layer statuses above. I
 | Task | Status | Evidence | Remaining acceptance |
 |---|---|---|---|
 | BURMESE-IPA-GOLD-PROFILE-GATE-001 | DONE_VERIFIED (engineering guard) | PR #117 merged as `085ce5a2da4a07dfbf606a9892c78a4d3bbb9d91`; exact-head tests [41870132273](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41870132273), post-merge tests [41870579420](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41870579420), and Pages [41870579398](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41870579398) SUCCESS. Shared validator rejects mixed adjudicated target profiles and mixed IPA kinds; positive regression confirms speaker/audio IDs may vary. | Human approval of Standard Yangon profile/convention, blind double annotation, independent adjudicator, rights-cleared source set, and specialist-reviewed onset × medial × vowel × coda × prosodic coverage remain outstanding. This guard does not create gold or prove accuracy. |
+
+## Deterministic rule engine — 2026-11-11
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| MYA-DETERMINISTIC-RULE-ENGINE-001 | PARTIAL | PR [#128](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/128): fixed local rules, conservative IPA derivation, no external candidate voting, separate MLCTS mode. | Exact-head CI and post-merge Pages smoke pass; expert-adjudicated Yangon IPA gold remains outstanding. |
