@@ -1149,12 +1149,12 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Bazel 4.2.3 + Ubuntu 26.04 first hit unpinned Abseil/current `@rules_cc` incompatibility.
 - Pinning Abseil to `45fdade6c0415ec5af3f9312e6311a4ccc682a7b` then exposed Bazel 4.2.3's lack of `native.package_relative_label`.
 - Bazel 7.4.1 passed analysis but old OpenFst failed to compile with GCC 15 on Ubuntu 26.04.
-- The latest workflow pins Ubuntu 22.04/GCC 11, Bazel 7.4.1, Java 17 and the Abseil compatibility commit. [Latest run](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42998737734) is pending final inspection at this handoff revision.
+- The latest workflow pins Ubuntu 22.04/GCC 11, Bazel 7.4.1, Java 17 and the Abseil compatibility commit. [Latest run](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514) is pending final inspection at this handoff revision.
 
 ### Verification
 
-- Full repository tests, Python validation, npm build, generated-data drift check, npm tests and Playwright browser tests: [42997508695](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42997508695) — SUCCESS.
-- Existing comparator workflow [42998737734](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42998737734): CRF and Epitran jobs SUCCESS; new Google FST job at that run failed on the Ubuntu 26.04/GCC 15 compatibility issue.
+- Full repository tests, Python validation, npm build, generated-data drift check, npm tests and Playwright browser tests: [42999264452](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264452) — SUCCESS.
+- Existing comparator workflow [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514): CRF and Epitran jobs SUCCESS; new Google FST job at that run failed on the Ubuntu 26.04/GCC 15 compatibility issue.
 - Published benchmark research: WSSANLP 2016 open PER and Google LREC 2020 FST architecture are recorded in the external engine and source registries.
 
 ### Remaining blockers
