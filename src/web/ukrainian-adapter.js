@@ -1,6 +1,6 @@
 import { PRACTICAL, RULES } from "./generated/data.js";
 
-const IPA_UNIT_RE = /(?:t͡s|d͡z|t͡ʃ|d͡ʒ|t͡?ɕʰ|t͡?ɕ|d͡?ʑ|eɪ|oʊ|aɪ|aʊ|[ktpsdb]ʰ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|ʒ|ɴ|ŋ|ɲ|ɹ|ɦ|ʋ|ɯ|ɛ|ɪ|ɔ|ə|ʊ|θ|ð|[a-zɡʔːˑ]|[\u0300-\u0305\u030c\u0324\u0330\u0331])/gu;
+const IPA_UNIT_RE = /(?:t͡s|d͡z|t͡ʃ|d͡ʒ|t͡?ɕʰ|t͡?ɕ|d͡?ʑ|eɪ|oʊ|aɪ|aʊ|[ktpsdb]ʰ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|ʒ|ɴ|ŋ|ɲ|ɹ|ɦ|ʋ|ɯ|ɛ|ɪ|ɔ|ə|ʊ|θ|ð|[a-zɡʔːˑˈˌ]|[\u0300-\u0305\u030c\u0324\u0330\u0331])/gu;
 const STATUS_RANK = {
   ESTABLISHED: 0,
   WELL_SUPPORTED: 1,
@@ -57,15 +57,22 @@ export function renderUkrainian(ipaText) {
     source = source.slice(1, -1);
   }
   const normalized = source.normalize("NFD");
-  const units = normalized.match(IPA_UNIT_RE) || [];
-  if (units.join("") !== normalized) {
-    return {
-      text: "",
-      status: "NOT_ESTABLISHED",
-      parts: [],
-      prosody: [],
-      unsupported: normalized.slice(units.join("").length),
-    };
+  const units = [];
+  let cursor = 0;
+  IPA_UNIT_RE.lastIndex = 0;
+  while (cursor < normalized.length) {
+    const match = IPA_UNIT_RE.exec(normalized);
+    if (!match || match.index !== cursor) {
+      return {
+        text: "",
+        status: "NOT_ESTABLISHED",
+        parts: [],
+        prosody: [],
+        unsupported: normalized.slice(cursor),
+      };
+    }
+    units.push(match[0]);
+    cursor = IPA_UNIT_RE.lastIndex;
   }
 
   const parts = [];
@@ -75,9 +82,9 @@ export function renderUkrainian(ipaText) {
   for (let index = 0; index < units.length; index += 1) {
     const unit = units[index];
 
-    if (unit === "ː" || unit === "ˑ" || TONE_MARKS.has(unit) || OTHER_DIACRITICS.has(unit)) {
+    if (unit === "ː" || unit === "ˑ" || unit === "ˈ" || unit === "ˌ" || TONE_MARKS.has(unit) || OTHER_DIACRITICS.has(unit)) {
       prosody.push({
-        kind: unit === "ː" || unit === "ˑ" ? "length" : TONE_MARKS.has(unit) ? "tone" : "phonation_or_other_diacritic",
+        kind: unit === "ː" || unit === "ˑ" ? "length" : unit === "ˈ" || unit === "ˌ" ? "stress" : TONE_MARKS.has(unit) ? "tone" : "phonation_or_other_diacritic",
         mark: unit,
       });
       continue;
