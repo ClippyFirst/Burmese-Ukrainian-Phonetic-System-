@@ -20,6 +20,7 @@ from pathlib import Path
 from typing import Any
 
 ENGINE_SOURCE_COMMIT = "a90601024f07ab7e96c911243324e0adeb16da96"
+ABSEIL_SOURCE_COMMIT = "45fdade6c0415ec5af3f9312e6311a4ccc682a7b"
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CORPUS = ROOT / "data" / "burmese" / "phonology_corpus.csv"
 
@@ -130,6 +131,7 @@ def build_report(
         "score_status": "RAW_OUTPUT_SMOKE_NOT_ACCURACY",
         "provenance": {
             "engine_source_commit": engine_source_commit,
+            "abseil_source_commit": ABSEIL_SOURCE_COMMIT,
             "grammar_sha256": grammar_sha256,
             "phoneme_symbols_sha256": phoneme_symbols_sha256,
             "fst_sha256": fst_sha256,
