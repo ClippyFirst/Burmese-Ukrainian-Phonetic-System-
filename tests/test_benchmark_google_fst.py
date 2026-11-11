@@ -5,7 +5,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MODULE = runpy.run_path(str(ROOT / "scripts" / "benchmark_google_fst.py"))
 build_report = MODULE["build_report"]
 parse_outputs = MODULE["parse_outputs"]
-binary_path_for_execution = MODULE["binary_path_for_execution"]
+build_command = MODULE["build_command"]
 
 
 def test_google_fst_report_is_raw_output_only_without_accuracy():
@@ -66,13 +66,15 @@ def test_google_fst_refuses_non_structural_or_labelled_probe_rows():
         raise AssertionError("expected structural-only gate failure")
 
 
-def test_binary_execution_path_preserves_bazel_runfiles_symlink(tmp_path):
-    target = tmp_path / "source" / "g2p.sh"
-    target.parent.mkdir()
-    target.write_text("#!/bin/sh\\n", encoding="utf-8")
-    link = tmp_path / "bazel-bin" / "my" / "g2p"
-    link.parent.mkdir(parents=True)
-    link.symlink_to(target)
+def test_command_invokes_thrax_binary_with_pinned_fst_and_symbol_table(tmp_path):
+    binary = tmp_path / "bazel-bin" / "utils" / "thrax_g2p"
+    fst = tmp_path / "bazel-bin" / "my" / "G2P.fst"
+    symbols = tmp_path / "bazel-bin" / "my" / "ipa_phoneme.syms"
 
-    assert binary_path_for_execution(link) == str(link.absolute())
-    assert binary_path_for_execution(link) != str(link.resolve())
+    command = build_command(binary, fst, symbols)
+
+    assert command == [
+        str(binary.resolve()),
+        f"--fst={fst.resolve()}",
+        f"--phoneme_syms={symbols.resolve()}",
+    ]
