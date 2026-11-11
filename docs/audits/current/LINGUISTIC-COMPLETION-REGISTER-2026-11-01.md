@@ -454,7 +454,7 @@ The export and benchmark now preserve and validate the complete frozen split ide
 |---|---|---|
 | Python IPA → Ukrainian adapter integrated after deterministic Burmese IPA | DONE_VERIFIED | Previous code revision \`530cefbfc874b777650bd7e7ccdb5888534ab348\`; 180 Python tests + 66 subtests |
 | Canonical CSV and generated browser adapter | DONE_VERIFIED | Generated-data freshness, build and Node tests passed on previous code revision |
-| Target distinctions /h, ɦ/ → г, /ɡ/ → ґ, /x/ → х; affricates ц/дз/ч/дж | DONE_VERIFIED | Explicit project policy; official 2026 standard generally uses г for foreign [g], so ґ is a contrast-preserving project choice |
+| Target distinctions /h, ɦ/ → г, /ɡ/ → ґ, /x/ → х; /w/ → в, contextual /j/ yotation, affricates ц/дз/ч/дж | DONE_VERIFIED | Explicit project policy; official 2026 standard generally uses г for foreign [g], so ґ is a contrast-preserving project choice |
 | Browser fail-closed behavior for kinzi, medials and conjuncts | PARTIAL | Implemented; final Playwright run is queued and unverified |
 | Accuracy of proposed Ukrainian correspondences | PARTIAL | No independent adjudicated IPA/Ukrainian gold set |
 | Final browser CI | BLOCKED | Run 43095578672 queued with zero jobs started |
