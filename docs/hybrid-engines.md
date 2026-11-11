@@ -1,6 +1,6 @@
 # Кандидатний гібридний IPA-шар Burmese
 
-HybridBurmeseEngine запускає чинний RuleBasedBurmeseEngine і збирає зовнішні IPA-кандидати. Google WFST та myG2P підключаються окремо; Epitran — додатковий comparator; Goruut/інші CLI-сумісні рушії — через make_command_backend. MLCTS не є IPA.
+HybridBurmeseEngine запускає чинний RuleBasedBurmeseEngine і збирає зовнішні IPA-кандидати. Google WFST та myG2P підключаються окремо; Epitran — додатковий comparator із tones=True за замовчуванням; Goruut/інші CLI-сумісні рушії — через make_command_backend. MLCTS не є IPA.
 
 ## Підключення
 
