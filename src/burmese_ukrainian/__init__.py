@@ -3,7 +3,8 @@ from .parser import parse_burmese, normalize_burmese, segment_graphemes, segment
 from .ipa import to_ipa
 from .ukrainian import ipa_to_ukrainian
 from .practical import practical_from_ipa, rank_ukrainian_candidates
-from .explain import explain\nfrom .hybrid import HybridBurmeseEngine, create_hybrid_engine
+from .explain import explain
+from .hybrid import HybridBurmeseEngine, create_hybrid_engine
 
 __all__ = [
     "parse_burmese", "normalize_burmese", "segment_graphemes",
