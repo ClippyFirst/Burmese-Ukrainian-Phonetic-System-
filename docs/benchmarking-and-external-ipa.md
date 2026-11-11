@@ -256,7 +256,7 @@ Build compatibility was investigated rather than silently ignored:
 - Bazel 4.2.3 on the current Ubuntu runner first failed because the upstream unpinned Abseil `master` now loads `@rules_cc`, which the old workspace did not declare.
 - Pinning Abseil to `45fdade6c0415ec5af3f9312e6311a4ccc682a7b` removed that drift, but Bazel 4.2.3 then lacked `native.package_relative_label` required by a current transitive rule.
 - Bazel 7.4.1 passed analysis, but the old OpenFst C++ source failed to compile with GCC 15 on Ubuntu 26.04 (`std::unique_ptr` and `VectorHashBiTable` incompatibilities).
-- The current workflow therefore pins Ubuntu 22.04/GCC 11, Bazel 7.4.1, Java 17 and the Abseil compatibility commit. The latest run is [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514); record its final build/smoke result only after the job completes.
+- The current workflow therefore pins Ubuntu 22.04/GCC 11, Bazel 7.4.1, Java 17 and the Abseil compatibility commit. The latest run [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514) completed successfully after pinning Ubuntu 22.04/GCC 11 and invoking the compiled Thrax binary directly with its FST and IPA symbol table.
 
 Even if the build succeeds, six structural-only probes can prove build/execution only. They cannot produce PER, CER or an accuracy estimate.
 
