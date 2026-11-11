@@ -19,7 +19,9 @@ def test_burmese_i_uses_ukrainian_i():
 
 def test_h_g_and_x_are_distinguished():
     assert practical_from_ipa("h")["candidates"][0]["text"] == "г"
+    assert practical_from_ipa("ɦ")["candidates"][0]["text"] == "г"
     assert practical_from_ipa("ɡ")["candidates"][0]["text"] == "ґ"
+    assert practical_from_ipa("g")["candidates"][0]["text"] == "ґ"
     assert practical_from_ipa("x")["candidates"][0]["text"] == "х"
 
 
@@ -45,14 +47,14 @@ def test_dental_fricative_candidate_remains_analysis_dependent():
 
 
 def test_full_ipa_sequence_adapter_handles_ukrainian_target_conventions():
-    result = transcribe_ipa("h ɡ g x t͡s d͡z t͡ʃ d͡ʒ tɕ dʑ")
-    assert result["text"] == "г ґ ґ х ц дз ч дж ч дж"
+    result = transcribe_ipa("h ɦ ɡ g x t͡s d͡z t͡ʃ d͡ʒ tɕ dʑ t͡ɕ d͡ʑ")
+    assert result["text"] == "г г ґ ґ х ц дз ч дж ч дж ч дж"
     assert result["status"] == "proposed"
 
 
 def test_sequence_adapter_keeps_affricates_distinct_from_consonant_sequences():
-    result = transcribe_ipa("t s")
-    assert result["text"] == "т с"
+    assert transcribe_ipa("t s")["text"] == "т с"
+    assert transcribe_ipa("d z")["text"] == "д з"
 
 
 def test_sequence_adapter_omits_prosodic_marks_but_preserves_them_in_trace():
@@ -60,6 +62,16 @@ def test_sequence_adapter_omits_prosodic_marks_but_preserves_them_in_trace():
     assert result["text"] == "к'а"
     assert any(item["kind"] == "tone" for item in result["prosody"])
     assert any(item["kind"] == "length" for item in result["prosody"])
+
+
+def test_sequence_adapter_uses_yotated_ukrainian_vowels_after_syllable_initial_j():
+    assert transcribe_ipa("ja je ji jo ju")["text"] == "я є ї йо ю"
+    assert transcribe_ipa("a.ja")["text"] == "а я"
+
+
+def test_sequence_adapter_handles_engine_inventory_and_zero_glottal_stop():
+    assert transcribe_ipa("bʰ dʰ z ɲ ɹ j l θ ð")["text"] == "б' д' з нь р й л т з"
+    assert transcribe_ipa("ʔa")["text"] == "а"
 
 
 def test_sequence_adapter_fails_closed_on_unknown_ipa():
