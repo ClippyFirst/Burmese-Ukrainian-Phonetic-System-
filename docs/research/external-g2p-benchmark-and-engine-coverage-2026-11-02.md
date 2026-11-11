@@ -112,7 +112,7 @@ Primary sources: [pinned Google language-resources source](https://github.com/go
 
 **WSSANLP 2016 Myanmar G2P comparison** ([paper](https://aclanthology.org/W16-3702/)):
 - 25,300 MLC dictionary entries; 25,000 training words; three 100-word open test sets; one 100-word closed test sampled from training.
-- Seven approaches: S-AROW, CRF, JSM/Sequitur, PBSMT/Moses, RNN, RNNA, SVM/KyTea and WFST/Phonetisaurus.
+- Seven methodological families: S-AROW, CRF, JSM/Sequitur, PBSMT/Moses, recurrent neural G2P (reported as RNN and RNNA variants), SVM/KyTea and WFST/Phonetisaurus. The paper plots both RNN variants separately. PER is computed at phoneme level after syllable alignment.
 - Open-set PER: WFST 14.7 (open1), 11.4 (open2), 15.7 (open3); CRF 15.7 on open3; PBSMT 16.1, 13.1, 22.0. Closed-test zero scores for some systems are not representative of open performance.
 - Manual error analysis covers voicing, tone, consonants and vowels. The paper notes context/POS-sensitive pronunciations and within-word voicing changes.
 - The paper's phoneme strings are romanized conventions, not project IPA; the source dictionary's redistribution rights remain unresolved.
