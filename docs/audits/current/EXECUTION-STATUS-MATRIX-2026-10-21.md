@@ -442,6 +442,6 @@ This engineering correction does not change the language-layer statuses above. I
 
 ### Exact-head verification refresh — 2026-11-11
 
-- Latest PR #133 handoff head: `59fc6d2668117e78ee3bfa5e3d0c549b1e3bde2b`; the practical adapter code remains at `e9bd12819ed692d7be2607356008217de9430dca` and subsequent changes are documentation-only.
+- PR #133 is the authoritative continuation branch; its live head is recorded in GitHub PR metadata. The practical adapter code remains at `e9bd12819ed692d7be2607356008217de9430dca`; subsequent commits are documentation-only.
 - Exact-head workflow [43095883419](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43095883419) is queued with no jobs started. Final browser/Playwright verification is therefore still PARTIAL/BLOCKED pending the run.
 - No audio is required for this task. The remaining accuracy blocker is an independently sourced, text-only Yangon IPA/Ukrainian adjudication set; without it, accuracy remains unmeasured.
