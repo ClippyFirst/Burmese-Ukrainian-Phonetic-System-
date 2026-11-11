@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
+import { readFileSync } from "node:fs";
 import { PRACTICAL } from "../../src/web/generated/data.js";
 import { renderUkrainian } from "../../src/web/ukrainian-adapter.js";
+const browserEngineSource = readFileSync(new URL("../../src/web/app.js", import.meta.url), "utf8");
 
 test("browser adapter covers Ukrainian h/g/x distinctions", () => {
   for (const segment of ["h", "ɦ", "ɡ", "g", "x"]) {
@@ -44,4 +46,10 @@ test("browser adapter omits glottal stop and withholds unknown IPA", () => {
   const unknown = renderUkrainian("kʰɤ");
   assert.equal(unknown.status, "NOT_ESTABLISHED");
   assert.equal(unknown.text, "");
+});
+
+
+test("browser engine withholds IPA and Ukrainian output for unvalidated structures", () => {
+  assert.ok(browserEngineSource.includes("const unsupportedStructure=sy.kinzi||sy.kinziCoda||sy.medials.length>0||sy.conjunct.length>0"));
+  assert.ok(browserEngineSource.includes('sy.uk=sy.status==="ESTABLISHED"&&sy.ipa?renderUkrainian(sy.ipa)'));
 });
