@@ -92,3 +92,20 @@ These resources are relevant to the UI's display of the source writing system; t
 - [Padauk](https://software.sil.org/padauk/) — Useful for Myanmar-script text shaping and coverage; not an IPA transcription engine. License: SIL Open Font License; verify current release metadata.
 - [Busra](https://software.sil.org/busra/) — Khmer-script display font only; not an IPA transcription engine. License: SIL Open Font License; verify current release metadata.
 - [Mondulkiri](https://software.sil.org/mondulkiri/) — Khmer-script display font only; not an IPA transcription engine. License: SIL Open Font License; verify current release metadata.
+
+## Additional Burmese G2P and benchmark resources — 2026-11-11
+
+### Google Language Resources Burmese WFST
+
+- Upstream grammar: [google/language-resources/my/burmese.grm](https://github.com/google/language-resources/tree/a90601024f07ab7e96c911243324e0adeb16da96/my), pinned to commit `a90601024f07ab7e96c911243324e0adeb16da96`.
+- It is a Thrax grammar compiled to a weighted OpenFst transducer. The 2020 LREC paper explicitly states that the input tape accepts Unicode Myanmar characters and the output tape emits phonemes represented in IPA.
+- The paper reports 195 states, 2,966 arcs and an 88-symbol inventory (34 consonants + 54 vowels), with tone/phonation variants. Processing includes medial reordering, spelling-variant unification, vowel normalization, complex-stack handling, syllable-position rewrites, phonological changes and exceptions.
+- The Google repository declares Apache-2.0. Its legacy WORKSPACE contains unpinned upstream dependencies; the optional CI workflow pins the language-resources commit and a compatibility Abseil commit, but this is not yet a fully hermetic dependency lock.
+- It is an optional external comparator, not enabled in the product runtime.
+
+### Benchmark references (not interchangeable)
+
+- [WSSANLP 2016 Myanmar G2P comparison](https://aclanthology.org/W16-3702/) evaluates seven methods on 25,300 MLC dictionary words (25,000 train, three 100-word open test sets, plus a 100-word closed test). The paper reports PER for WFST of 14.7%, 11.4% and 15.7% on open1–open3; CRF reaches 15.7% on open3; PBSMT reports 16.1%, 13.1% and 22.0%. Phone labels are romanized notation, not the project's IPA convention. The paper's closed-test zero scores are not open-test performance.
+- [OpenSLR SLR80](https://www.openslr.org/80/) is a CC BY-SA 4.0 Burmese audio/transcript corpus: 2,528 utterances from 20 female native speakers, 9,941 unique words and 22,443 total words. It contains orthographic word-segmented transcripts, not IPA labels; it is a future audio-review/annotation resource, not a G2P gold set.
+
+The 2016 PER table and the 2020 Google FST description are research evidence, not performance claims for the current ClippyFirst implementation. Rights and annotation boundaries remain explicit.
