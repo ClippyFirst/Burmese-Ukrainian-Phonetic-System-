@@ -101,3 +101,12 @@ def test_unresolved_burmese_unit_exposes_onset_only_provisional_ipa():
     assert result["provisional_ukrainian"] == "к?"
     assert result["fallback_status"] == "PROVISIONAL"
     assert result["fallback_trace"][0]["unresolved_graphemes"]
+
+
+def test_unregistered_myanmar_grapheme_remains_visible_as_unknown():
+    result = RuleBasedBurmeseEngine().analyze("ꩠ")
+    assert result["ipa"] is None
+    assert result["provisional_ipa"] is None
+    assert result["provisional_ukrainian"] == "?"
+    assert result["fallback_status"] == "UNKNOWN"
+    assert result["fallback_trace"][0]["source"] == "ꩠ"
