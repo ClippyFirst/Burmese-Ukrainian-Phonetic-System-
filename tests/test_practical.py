@@ -66,7 +66,7 @@ def test_sequence_adapter_omits_prosodic_marks_but_preserves_them_in_trace():
 
 def test_sequence_adapter_uses_yotated_ukrainian_vowels_after_syllable_initial_j():
     assert transcribe_ipa("ja je ji jo ju")["text"] == "я є ї йо ю"
-    assert transcribe_ipa("a.ja")["text"] == "а я"
+    assert transcribe_ipa("a.ja")["text"] == "ая"
 
 
 def test_sequence_adapter_handles_engine_inventory_and_zero_glottal_stop():
