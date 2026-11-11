@@ -57,3 +57,7 @@ consonant,d͡ʒ,onset,дж,дж,"Explicit affricate /d͡ʒ/ maps to Ukrainian д
 consonant,t͡ɕ,onset,ч,ч,"Alveolo-palatal affricate /t͡ɕ/ uses Ukrainian ч as a practical approximation",proposed,UA_ORTH_2026
 consonant,d͡ʑ,onset,дж,дж,"Voiced alveolo-palatal affricate /d͡ʑ/ uses Ukrainian дж as a practical approximation",proposed,UA_ORTH_2026
 consonant,ʒ,onset,ж,ж,"Voiced postalveolar fricative /ʒ/ maps to Ukrainian ж",proposed,UA_ORTH_2026
+consonant,b,onset,б,б,"Direct Ukrainian target for unaspirated /b/",proposed,UA_ORTH_2026
+consonant,d,onset,д,д,"Direct Ukrainian target for unaspirated /d/",proposed,UA_ORTH_2026
+consonant,n,onset,н,н,"Direct Ukrainian target for /n/",proposed,UA_ORTH_2026
+consonant,m,onset,м,м,"Direct Ukrainian target for /m/",proposed,UA_ORTH_2026
