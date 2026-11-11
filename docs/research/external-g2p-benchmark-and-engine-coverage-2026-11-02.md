@@ -125,6 +125,11 @@ Primary sources: [pinned Google language-resources source](https://github.com/go
 
 - **myG2P v2 / CRFsuite:** 100/100 predictions; 84 source-concordant strings; zero independent gold; `accuracy: null`; `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`. Input is already syllable-segmented, so this does not measure segmentation. Model SHA-256 `f66571b7632eed2e94878278702654ce0a4b25fcab18720af60d3cfe00b011ce`. Source data license CC BY-NC-SA 4.0; do not treat output as commercial data.
 - **Epitran 1.35.3:** six structural-only probes, six raw outputs, zero runtime errors; no gold and no score. Raw outputs: `ke`, `kaʊʔ`, `t͡ɕi`, `səwɛ`, `məjaɴ`, `ju`.
-- **Google WFST:** optional build/smoke job added; its latest CI run is [42998737734](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42998737734). Earlier attempts exposed three distinct upstream compatibility issues: Abseil's unpinned current master, Bazel <7 lacking `native.package_relative_label`, and OpenFst compilation against GCC 15. The current job pins Ubuntu 22.04/GCC 11 and Bazel 7.4.1; update this section with its final result after completion.
+- **Google WFST:** optional build/smoke job added; its latest CI run is [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514). Earlier attempts exposed three distinct upstream compatibility issues: Abseil's unpinned current master, Bazel <7 lacking `native.package_relative_label`, and OpenFst compilation against GCC 15. The current job pins Ubuntu 22.04/GCC 11 and Bazel 7.4.1; update this section with its final result after completion.
 
 No external output has been promoted to gold. The 2016 paper's PER and the 2020 Google paper's TTS MOS are different tasks and must not be compared as one benchmark.
+
+
+### Google FST execution result
+
+The pinned CI run [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514) completed the Bazel build, upstream IPA symbol-table tests and six structural-only probes. All six produced IPA phone sequences: `k è`, `k ɔ̀`, `tɕ ì`, `s w ɛ̀`, `m j àɴ`, `j ù`. The Thrax CLI echoes the Myanmar input followed by a tab; the harness now retains that raw line separately from the parsed IPA field. Gold count remains zero and accuracy is null.
