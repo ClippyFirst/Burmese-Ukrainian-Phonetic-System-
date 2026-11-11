@@ -156,7 +156,7 @@ function parseCluster(raw,withholdBareInherent=false){
   sy.uk=sy.status==="ESTABLISHED"&&sy.ipa?renderUkrainian(sy.ipa):{text:"",status:"NOT_ESTABLISHED",parts:[],prosody:[],unsupported:sy.raw};
   // Separate onset-only preview: never derive Ukrainian directly from Myanmar
   // graphemes and never guess the vowel, coda, medial, kinzi or tone.
-  if(!sy.ipa&&sy.onset&&ONSETS[sy.onset]?.ipa){
+  if(!sy.ipa&&isolatedBare&&sy.onset&&ONSETS[sy.onset]?.ipa){
     const hint=ONSETS[sy.onset].ipa;
     const adapted=renderUkrainian(hint);
     if(adapted.text){
@@ -280,9 +280,9 @@ function isStandaloneBareConsonant(segments,index){
 function convert(text){
   const normalized=normalize(text),segments=segment(normalized);
   const parsed=segments.map((s,index)=>s.nonMyanmar?s:parseCluster(s.raw,isStandaloneBareConsonant(segments,index))),myanmar=parsed.filter(s=>!s.nonMyanmar);
-  const ipaText=parsed.map(s=>s.nonMyanmar?s.raw:(s.ipa||s.provisionalIpa||"?")).join(""),ukText=parsed.map(s=>s.nonMyanmar?s.raw:(s.ipa&&s.uk&&(STATUS_RANK[s.uk.status]??5)<STATUS_RANK.NOT_ESTABLISHED?s.uk.text:s.provisionalUk||"⟦"+s.raw+"⟧")).join("");
-  const ipaStatus=aggregateStatus(myanmar.map(s=>s.ipa?s.status:(s.provisionalIpa?"PROVISIONAL":s.status==="UNSUPPORTED"?"UNSUPPORTED":"NOT_ESTABLISHED")),myanmar.length?"ESTABLISHED":"UNSUPPORTED");
-  const ukStatus=aggregateStatus(myanmar.map(s=>s.ipa?(s.uk?.status||"NOT_ESTABLISHED"):s.provisionalUk?"PROVISIONAL":"NOT_ESTABLISHED"),myanmar.length?"ESTABLISHED":"UNSUPPORTED");
+  const ipaText=parsed.map(s=>s.nonMyanmar?s.raw:(s.ipa||"?")).join(""),ukText=parsed.map(s=>s.nonMyanmar?s.raw:(s.uk&&(STATUS_RANK[s.uk.status]??4)<STATUS_RANK.NOT_ESTABLISHED?s.uk.text:"⟦"+s.raw+"⟧")).join("");
+  const ipaStatus=aggregateStatus(myanmar.map(s=>s.ipa?s.status:(s.status==="UNSUPPORTED"?"UNSUPPORTED":"NOT_ESTABLISHED")),myanmar.length?"ESTABLISHED":"UNSUPPORTED");
+  const ukStatus=aggregateStatus(myanmar.map(s=>s.uk?.status||"NOT_ESTABLISHED"),myanmar.length?"ESTABLISHED":"UNSUPPORTED");
   const status=aggregateStatus([ipaStatus,ukStatus],myanmar.length?"ESTABLISHED":"UNSUPPORTED");
   return{input:text,normalized,ipa:ipaText,uk:ukText,status,ipaStatus,ukStatus,segments:parsed};
 }
@@ -298,7 +298,8 @@ function render(){
   r.segments.forEach((s,index)=>{const row=document.createElement("div");row.className="syllable";
     if(s.nonMyanmar){row.textContent=s.raw+" · збережено без змін";syllables.append(row);return;}
     const head=document.createElement("strong");head.textContent=String(index+1).padStart(2,"0")+"  "+s.raw;
-    const detail=document.createElement("span");const shownStatus=s.provisionalStatus|| (s.uk?.status&&s.uk.status!=="ESTABLISHED"?s.status+" / передача: "+s.uk.status:s.status);detail.textContent=(s.ipa||s.provisionalIpa||"IPA не встановлено")+" → "+(s.uk?.text||s.provisionalUk||"—")+" · "+shownStatus;row.append(head,detail);
+    const detail=document.createElement("span");const shownStatus=s.provisionalStatus|| (s.uk?.status&&s.uk.status!=="ESTABLISHED"?s.status+" / передача: "+s.uk.status:s.status);detail.textContent=(s.ipa||"IPA не встановлено")+" → "+(s.uk?.text||"—")+" · "+shownStatus;row.append(head,detail);
+    if(s.provisionalIpa){const preview=document.createElement("small");preview.textContent="Попередня підказка: "+s.provisionalIpa+" → "+s.provisionalUk+" [PROVISIONAL]";row.append(preview);}
     if(s.notes.length){const note=document.createElement("small");note.textContent=s.notes.join(" ");row.append(note);}syllables.append(row);
   });
   const problems=r.segments.filter(s=>!s.nonMyanmar&&(!s.ipa||s.status==="UNCERTAIN"||s.status==="NOT_ESTABLISHED"||s.status==="ANALYSIS_DEPENDENT"||s.uk?.status==="PROPOSED"||s.uk?.status==="ANALYSIS_DEPENDENT"));
