@@ -163,6 +163,8 @@ function parseCluster(raw,withholdBareInherent=false){
       sy.provisionalIpa=hint;
       sy.provisionalUk=adapted.text+"?";
       sy.provisionalStatus="PROVISIONAL";
+      sy.provisionalRuleId="BURMESE-PREVIEW-ONSET-IPA-V1";
+      sy.provisionalPosition="onset";
       sy.provisionalUnresolved=Array.from(raw).slice(1);
     }
   }
