@@ -53,3 +53,12 @@ test("browser engine withholds IPA and Ukrainian output for unvalidated structur
   assert.ok(browserEngineSource.includes("const unsupportedStructure=sy.kinzi||sy.kinziCoda||sy.medials.length>0||sy.conjunct.length>0"));
   assert.ok(browserEngineSource.includes('sy.uk=sy.status==="ESTABLISHED"&&sy.ipa?renderUkrainian(sy.ipa)'));
 });
+
+
+test("browser engine exposes onset-only provisional IPA for unresolved Burmese units", () => {
+  assert.ok(browserEngineSource.includes("sy.provisionalIpa=hint"));
+  assert.ok(browserEngineSource.includes('sy.provisionalUk=adapted.text+"?"'));
+  assert.ok(browserEngineSource.includes('sy.provisionalStatus="PROVISIONAL"'));
+  assert.ok(browserEngineSource.includes("s.provisionalIpa||\"?\""));
+  assert.ok(browserEngineSource.includes("s.provisionalUk||"));
+});
