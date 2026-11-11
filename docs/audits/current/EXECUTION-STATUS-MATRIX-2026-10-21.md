@@ -429,3 +429,6 @@ This engineering correction does not change the language-layer statuses above. I
 ### Verification checkpoint — MYA-HYBRID-CANDIDATE-ENGINE-001
 
 Engineering implementation DONE_VERIFIED on code-bearing head 17c855307be36a0735f0cd8967b988fe62053d8a. Exact-head tests [43077670284](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670284) SUCCESS: 183 Python tests + 72 subtests, build, generated-data check, npm tests and 54 Playwright tests. Google WFST candidate rerun [43077670322](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670322) remained in progress at checkpoint; prior pinned build/smoke [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514) succeeded. Linguistic promotion remains PARTIAL until independent Yangon-profile IPA gold and feature adjudication exist.
+
+
+Google WFST exact-head rerun [43077670322](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670322) SUCCESS: pinned grammar build, IPA symbol-table checks and 6/6 structural-only raw outputs. Accuracy/PER/CER remain null (independent gold 0).
