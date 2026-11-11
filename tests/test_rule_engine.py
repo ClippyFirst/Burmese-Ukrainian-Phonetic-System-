@@ -24,3 +24,11 @@ def test_legacy_hybrid_name_is_rule_engine_not_ensemble():
     result = HybridBurmeseEngine().analyze("ကာ")
     assert result["engine"] == "burmese-deterministic-rules-v1"
     assert result["external_backends_used"] == []
+
+
+def test_legacy_factory_rejects_external_backend_injection():
+    import pytest
+    from burmese_ukrainian import create_hybrid_engine
+
+    with pytest.raises(TypeError):
+        create_hybrid_engine({"external-model": lambda _: "ka"})
