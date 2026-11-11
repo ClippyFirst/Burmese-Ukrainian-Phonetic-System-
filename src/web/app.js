@@ -148,7 +148,13 @@ function parseCluster(raw,withholdBareInherent=false){
   // Keep repeated diagnostics deterministic and readable.
   sy.notes=[...new Set(sy.notes)];
   const isolatedBare=withholdBareInherent&&!sy.vowels.length&&!sy.coda&&!sy.asat&&!sy.medials.length&&!sy.conjunct.length&&!sy.kinzi&&!sy.prosodyMarks.length;
-  sy.ipa=isolatedBare?null:deriveIpa(sy);if(!sy.ipa&&sy.status==="ESTABLISHED")sy.status="NOT_ESTABLISHED";sy.uk=renderUkrainian(sy.ipa);return sy;
+  // Match the Python rule engine: medials, conjuncts and kinzi are parsed
+  // structurally but remain outside the validated IPA rule inventory.
+  const unsupportedStructure=sy.kinzi||sy.kinziCoda||sy.medials.length>0||sy.conjunct.length>0;
+  sy.ipa=isolatedBare||unsupportedStructure?null:deriveIpa(sy);
+  if(!sy.ipa&&sy.status==="ESTABLISHED")sy.status="NOT_ESTABLISHED";
+  sy.uk=sy.status==="ESTABLISHED"&&sy.ipa?renderUkrainian(sy.ipa):{text:"",status:"NOT_ESTABLISHED",parts:[],prosody:[],unsupported:sy.raw};
+  return sy;
 }
 
 function deriveIpa(sy){
