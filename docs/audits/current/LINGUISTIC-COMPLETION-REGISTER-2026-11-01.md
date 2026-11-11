@@ -444,3 +444,9 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | BUR-CRF-RECHECK-2026-11-11 | PARTIAL | 100 predictions, 84 source-concordant; zero independent gold; accuracy null; possible training overlap; syllable boundaries are supplied. | Independent gold and disjoint training/test evidence required; do not report 84% as accuracy. |
 | BUR-EPITRAN-RECHECK-2026-11-11 | DONE_VERIFIED | Epitran 1.35.3: 6/6 raw outputs, zero runtime errors, no independent gold. | Keep raw outputs as smoke evidence only; do not score until gold exists. |
 | BUR-OPENSLR80-AUDIO-RESOURCE-001 | PARTIAL | CC BY-SA 4.0 audio and orthographic transcripts, 2,528 utterances, 20 female native speakers; no IPA. | Expert IPA annotation and rights-aware artifact handling needed before use as a G2P benchmark. |
+
+## Hybrid engine engineering — 2026-11-11
+
+| Task | Status | Evidence | Remaining acceptance criterion |
+|---|---|---|---|
+| MYA-HYBRID-IPA-ENGINE-001 | PARTIAL | `src/burmese_ukrainian/hybrid.py` adds the ensemble, `make_google_wfst_backend()` (echo validation) and cached exact-lookup `make_myg2p_dictionary_backend()` (fifth IPA TSV field); package exports, tests and [engine contract](../../hybrid-engines.md). First adapter test exposed snapshot-cache semantics; test corrected to instantiate a new adapter after source-file mutation. | Exact-head CI after test correction; run Google WFST + myG2P on independent Yangon-profile adjudicated IPA gold; audit shared lexicon/training provenance, tone/phonation, coda and syllable alignment before any accuracy claim. Consensus is not gold. |
