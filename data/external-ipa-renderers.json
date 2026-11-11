@@ -40,7 +40,7 @@
       "url": "https://github.com/ye-kyaw-thu/myG2P",
       "kind": "dictionary / G2P research resource",
       "status": "candidate",
-      "output": "Inspect structured pronunciation/IPA fields, lexicon version, coverage and provenance",
+      "output": "Version 2.0 dictionary has a separate IPA field in addition to syllable segmentation and pronunciation respelling; version 1 uses respelling conventions. Pinned dictionary commit and license are recorded in the source registry. The dictionary is CC BY-NC-SA 4.0 and is not approved for commercial redistribution/use without a separate rights decision.",
       "license": "Verify exact version and dictionary license",
       "verified_in_repo": false,
       "enabled_by_default": false
@@ -197,6 +197,39 @@
       "license": "SIL Open Font License; verify current release metadata",
       "verified_in_repo": false,
       "enabled_by_default": false
+    },
+    {
+      "id": "google-language-resources-burmese-fst",
+      "name": "Google Language Resources Burmese Thrax/OpenFst G2P",
+      "url": "https://github.com/google/language-resources/tree/a90601024f07ab7e96c911243324e0adeb16da96/my",
+      "kind": "Burmese finite-state grapheme-to-IPA engine",
+      "status": "candidate",
+      "output": "Pinned source commit a90601024f07ab7e96c911243324e0adeb16da96; my/burmese.grm compiles to a weighted OpenFst G2P transducer. The LREC 2020 paper says the output tape is IPA and the grammar composes orthographic, syllable-position, phonological and exception rewrites; 88 phone symbols include tone/phonation variants. Optional workflow now builds and smoke-tests it; no independent project gold exists.",
+      "license": "Google Language Resources repository declares Apache-2.0; the workflow pins the repository commit. Its WORKSPACE still references some upstream dependencies without content-addressed pins.",
+      "verified_in_repo": false,
+      "enabled_by_default": false
+    },
+    {
+      "id": "w16-3702-myanmar-g2p-benchmark",
+      "name": "WSSANLP 2016 Myanmar G2P comparison",
+      "url": "https://aclanthology.org/W16-3702/",
+      "kind": "peer-reviewed G2P benchmark resource",
+      "status": "benchmark-resource",
+      "output": "25,300-entry MLC pronunciation dictionary: 25,000 train words, three separate 100-word open test sets and a 100-word closed test. Seven methods compared; paper reports PER and manual voicing/tone/consonant/vowel error review. Phone notation is romanized, not project IPA.",
+      "license": "Paper citation only; dataset redistribution rights and exact benchmark data artifacts are not established by the paper citation.",
+      "verified_in_repo": false,
+      "enabled_by_default": false
+    },
+    {
+      "id": "openslr-80-burmese-speech-corpus",
+      "name": "OpenSLR SLR80 Burmese speech corpus",
+      "url": "https://www.openslr.org/80/",
+      "kind": "audio/transcript resource for downstream phonetic validation (not G2P gold)",
+      "status": "benchmark-resource",
+      "output": "2,528 utterances from 20 female native speakers; 9,941 unique words and 22,443 total words. Includes word-segmented orthographic transcripts and audio, but no IPA labels. Useful for future expert audio review, not direct IPA benchmark scoring.",
+      "license": "CC BY-SA 4.0 as listed by OpenSLR; preserve attribution and share-alike obligations; review dataset terms before redistributing derived artifacts.",
+      "verified_in_repo": false,
+      "enabled_by_default": false
     }
   ],
   "benchmark_protocol": {
@@ -214,7 +247,7 @@
     "external_engines_enabled_by_default": false,
     "notes": "Registry membership does not establish language support, IPA output semantics, reproducibility, accuracy, or license compatibility. Preserve raw output and record exact versions and model/data licenses."
   },
-  "last_reviewed": "2026-10-25",
+  "last_reviewed": "2026-11-11",
   "observed_experiments": [
     {
       "engine": "Epitran",
@@ -285,6 +318,27 @@
       "fact": "Existing audit reports the pronunciation dictionary as CC BY-NC-SA 4.0.",
       "status": "LICENSE_CONSTRAINED_REFERENCE",
       "caveat": "Not a default dependency; non-commercial restriction needs separate permission for commercial use."
+    },
+    {
+      "engine": "Google Language Resources Burmese Thrax/OpenFst G2P",
+      "url": "https://github.com/google/language-resources/tree/a90601024f07ab7e96c911243324e0adeb16da96/my",
+      "fact": "The pinned my/burmese.grm builds a weighted finite-state transducer with Myanmar graphemes on input and IPA symbols on output; upstream LREC 2020 paper describes 195 states, 2,966 arcs and a 88-symbol phoneme inventory including tone/phonation variants.",
+      "status": "PINNED_OPTIONAL_BUILD_AND_SMOKE_ADDED",
+      "caveat": "Smoke corpus is structural-only and cannot measure accuracy. The Google repository's WORKSPACE has some non-content-address-pinned dependencies; Bazel build must be verified in CI."
+    },
+    {
+      "engine": "WSSANLP 2016 Myanmar G2P comparison",
+      "url": "https://aclanthology.org/W16-3702/",
+      "fact": "The paper compares seven methods on 25,300 dictionary words and three 100-word open test sets; open-test PER for WFST is 14.7%, 11.4%, 15.7%; CRF reaches 15.7% on open3; PBSMT reports 16.1%, 13.1%, 22.0%.",
+      "status": "PUBLISHED_BENCHMARK_REFERENCE",
+      "caveat": "The paper's phone notation is romanized rather than project IPA; data redistribution rights are not established; the results are not scores for the current ClippyFirst engines."
+    },
+    {
+      "engine": "OpenSLR SLR80 Burmese speech corpus",
+      "url": "https://www.openslr.org/80/",
+      "fact": "OpenSLR lists CC BY-SA 4.0 and describes Burmese audio with word-segmented orthographic transcripts; the 2020 paper reports 2,528 utterances from 20 female native speakers and 9,941 unique words.",
+      "status": "AUDIO_VALIDATION_RESOURCE_NOT_G2P_GOLD",
+      "caveat": "No IPA labels; requires expert transcription/annotation before it can contribute to an IPA accuracy benchmark."
     }
   ],
   "scope_note": "Historical filename: this registry catalogs both external G2P/IPA comparison systems and display fonts. Fonts are rendering assets, not pronunciation engines.",
