@@ -407,4 +407,4 @@ This engineering correction does not change the language-layer statuses above. I
 
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
-| MYA-DETERMINISTIC-RULE-ENGINE-001 | PARTIAL | PR [#128](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/128): fixed local rules, conservative IPA derivation, no external candidate voting, separate MLCTS mode. | Exact-head CI and post-merge Pages smoke pass; expert-adjudicated Yangon IPA gold remains outstanding. |
+| MYA-DETERMINISTIC-RULE-ENGINE-001 | DONE_VERIFIED (engineering); linguistic coverage PARTIAL | PR #128 merged as `cd3a1503e79d32b09a6d2d5206340a37cfd3283b`; main tests [43018103155](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43018103155) and Pages smoke [43018103391](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43018103391) SUCCESS; live site published. | Deterministic engine published. Expert-adjudicated Yangon IPA gold still required for phonetic correctness/accuracy claims. |
