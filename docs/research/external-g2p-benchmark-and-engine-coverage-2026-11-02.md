@@ -60,7 +60,7 @@ The comparator must be tested for: Unicode normalization; syllable segmentation;
 
 ## Evidence limitations
 
-The WSSANLP 2016 abstract establishes the methods and broad ranking but does not provide enough details here to reproduce its exact numeric results. The LREC 2020 abstract establishes the existence and scope of grammars/corpus but not full modern profile coverage. Epitran/Goruut declarations are not independent linguistic evaluations. No new runtime benchmark was executed in this documentation-only audit.
+The full WSSANLP 2016 paper provides numeric open-set PER in Figure 2 (WFST 14.7/11.4/15.7; CRF 15.7 on open3; PBSMT 16.1/13.1/22.0), but the original split artifacts are not available here, so those scores cannot be independently reproduced from this repository. The LREC 2020 paper describes the Google FST grammar but does not publish standalone G2P PER/CER or prove full modern profile coverage. Epitran/Goruut declarations are not independent linguistic evaluations. The 2026-11-02 audit itself did not execute a new runtime benchmark; the 2026-11-11 follow-up below adds the reproducible CI runs.
 
 ## Hosted raw-output diagnostics on the audit branch — 2026-11-02
 
