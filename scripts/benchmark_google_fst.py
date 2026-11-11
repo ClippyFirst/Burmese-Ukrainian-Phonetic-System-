@@ -58,12 +58,17 @@ def parse_outputs(stdout: str, expected_count: int) -> list[str]:
     return outputs
 
 
+def binary_path_for_execution(binary: Path) -> str:
+    """Return an absolute path without resolving Bazel output symlinks."""
+    return str(binary.absolute())
+
+
 def run_engine(binary: Path, rows: list[dict[str, str]]) -> tuple[list[str], str]:
     if not binary.is_file():
         raise FileNotFoundError(f"Google G2P binary not found: {binary}")
     input_text = "\n".join(row["orthography"] for row in rows) + "\n"
     result = subprocess.run(
-        [str(binary.resolve())],
+        [binary_path_for_execution(binary)],
         input=input_text,
         text=True,
         capture_output=True,
