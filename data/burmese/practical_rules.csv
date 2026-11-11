@@ -44,3 +44,7 @@ UA-BUR-AFF-DZH,ua_target,d͡ʒ,дж,PROPOSED,UA_ORTH_2026,"Explicit affricate /d
 UA-BUR-AFF-TC,ua_target,t͡ɕ,ч,PROPOSED,UA_ORTH_2026,"Alveolo-palatal affricate /t͡ɕ/ approximated with ч."
 UA-BUR-AFF-DJ,ua_target,d͡ʑ,дж,PROPOSED,UA_ORTH_2026,"Voiced alveolo-palatal affricate /d͡ʑ/ approximated with дж."
 UA-BUR-ZH,ua_target,ʒ,ж,PROPOSED,UA_ORTH_2026,"Direct target for /ʒ/."
+UA-BUR-B,ua_target,b,б,PROPOSED,UA_ORTH_2026,"Direct target for unaspirated /b/."
+UA-BUR-D,ua_target,d,д,PROPOSED,UA_ORTH_2026,"Direct target for unaspirated /d/."
+UA-BUR-N,ua_target,n,н,PROPOSED,UA_ORTH_2026,"Direct target for /n/."
+UA-BUR-M,ua_target,m,м,PROPOSED,UA_ORTH_2026,"Direct target for /m/."
