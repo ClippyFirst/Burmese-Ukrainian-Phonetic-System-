@@ -424,3 +424,8 @@ This engineering correction does not change the language-layer statuses above. I
 | BUR-EPITRAN-CANDIDATE-001 | PARTIAL | Epitran 1.35.3 produced 6/6 raw outputs; no gold. | Profile-matched independent gold required before scoring or promotion. |
 | BUR-MYG2P-LEXICON-CANDIDATE-001 | PARTIAL | 24,009 unique entries and exact IPA-column adapter; possible train/test overlap in previous concordance experiment. | Rights review, overlap audit and independent gold. |
 | BUR-HYBRID-CANDIDATE-ENGINE-001 | PARTIAL | Candidate-only HybridBurmeseEngine integrated; deterministic rule output remains authoritative; provenance and abstention preserved. | Exact-head CI; independent gold; tone/phonation/coda evaluation; hermetic WFST build. |
+
+
+### Verification checkpoint — MYA-HYBRID-CANDIDATE-ENGINE-001
+
+Engineering implementation DONE_VERIFIED on code-bearing head 17c855307be36a0735f0cd8967b988fe62053d8a. Exact-head tests [43077670284](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670284) SUCCESS: 183 Python tests + 72 subtests, build, generated-data check, npm tests and 54 Playwright tests. Google WFST candidate rerun [43077670322](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670322) remained in progress at checkpoint; prior pinned build/smoke [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514) succeeded. Linguistic promotion remains PARTIAL until independent Yangon-profile IPA gold and feature adjudication exist.
