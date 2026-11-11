@@ -262,7 +262,7 @@ Even if the build succeeds, six structural-only probes can prove build/execution
 
 ### Published Burmese G2P benchmark
 
-The 2016 paper [Comparison of Grapheme-to-Phoneme Conversion Methods on a Myanmar Pronunciation Dictionary](https://aclanthology.org/W16-3702/) used 25,300 MLC dictionary entries: 25,000 training words, three open test sets of 100 words each and a 100-word closed test drawn from training. Open-set PER: WFST 14.7 / 11.4 / 15.7; CRF 15.7 on open3; PBSMT 16.1 / 13.1 / 22.0. The authors also manually reviewed voiced/unvoiced, tone, consonant and vowel errors. Their phone notation is romanized, not IPA; dataset reuse rights are not established by the paper citation. These figures are historical published baselines, not current ClippyFirst results.
+The 2016 paper [Comparison of Grapheme-to-Phoneme Conversion Methods on a Myanmar Pronunciation Dictionary](https://aclanthology.org/W16-3702/) used 25,300 MLC dictionary entries: 25,000 training words, three open test sets of 100 words each and a 100-word closed test drawn from training. Open-set PER: WFST 14.7 / 11.4 / 15.7; CRF 15.7 on open3; PBSMT 16.1 / 13.1 / 22.0. The authors also manually reviewed voiced/unvoiced, tone, consonant and vowel errors; PER is computed at phoneme level after syllable alignment. Their phone notation is romanized, not IPA; dataset reuse rights are not established by the paper citation. These figures are historical published baselines, not current ClippyFirst results.
 
 The 2020 Google paper's Burmese TTS MOS result (3.63±0.10) evaluates a TTS pipeline, not the standalone G2P grammar. OpenSLR SLR80 contains audio and orthographic transcripts but no IPA. Neither result may be reported as G2P accuracy.
 
