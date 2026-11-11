@@ -444,3 +444,10 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | BUR-CRF-RECHECK-2026-11-11 | PARTIAL | 100 predictions, 84 source-concordant; zero independent gold; accuracy null; possible training overlap; syllable boundaries are supplied. | Independent gold and disjoint training/test evidence required; do not report 84% as accuracy. |
 | BUR-EPITRAN-RECHECK-2026-11-11 | DONE_VERIFIED | Epitran 1.35.3: 6/6 raw outputs, zero runtime errors, no independent gold. | Keep raw outputs as smoke evidence only; do not score until gold exists. |
 | BUR-OPENSLR80-AUDIO-RESOURCE-001 | PARTIAL | CC BY-SA 4.0 audio and orthographic transcripts, 2,528 utterances, 20 female native speakers; no IPA. | Expert IPA annotation and rights-aware artifact handling needed before use as a G2P benchmark. |
+
+
+## Hybrid candidate integration — 2026-11-11
+
+| Task | Status | Evidence | Remaining acceptance criterion |
+|---|---|---|---|
+| MYA-HYBRID-CANDIDATE-ENGINE-001 | PARTIAL | Added HybridBurmeseEngine wrapper, Google WFST, myG2P v2 exact IPA-column lookup and optional Epitran adapters; exports, tests and docs. Deterministic internal rules remain final-output authority; external outputs are candidates only. | Exact-head CI must pass; independent Yangon-profile IPA gold, train/test disjointness, tone/phonation/coda evaluation, myG2P rights review and hermetic WFST dependency pins are required before any external candidate can be promoted. |
