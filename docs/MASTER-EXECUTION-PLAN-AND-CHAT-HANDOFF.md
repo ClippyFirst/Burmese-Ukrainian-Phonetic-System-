@@ -1152,3 +1152,12 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - myG2P v2 has 24,009 unique lexical entries after duplicate filtering. The previous internal-engine comparison produced 635 full IPA outputs and zero strict matches; this is a convention/profile mismatch diagnostic, not proof of myG2P accuracy. CRF returned 100/100 predictions and 84 source-concordant rows, but possible training overlap and supplied syllable boundaries prevent accuracy claims.
 - HybridBurmeseEngine runs RuleBasedBurmeseEngine as final-output authority and records Google WFST, myG2P, Epitran and CLI-wrapped candidates with provenance; no voting/promotion. MLCTS remains outside IPA processing.
 - Acceptance remains PARTIAL until independent Yangon-profile IPA gold, training/test disjointness, tone/phonation/coda adjudication, myG2P rights review and hermetic WFST dependency pinning. No default-branch output changed.
+
+
+### Exact-head engineering verification
+
+- PR #129 head 17c855307be36a0735f0cd8967b988fe62053d8a.
+- Tests workflow [43077670284](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670284) SUCCESS: 183 Python tests + 72 subtests, npm build, generated-data drift check, npm tests and 54 built-site Playwright tests.
+- Optional comparator workflow [43077670322](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670322): CRF and Epitran jobs SUCCESS; Google WFST job still running at the last check. Prior WFST build/smoke [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514) succeeded with 6/6 structural-only outputs.
+- Initial red CI exposed stale alias-contract tests and a test fixture containing a literal backslash-n; both were corrected and the exact-head test rerun passed.
+- Engineering integration is DONE_VERIFIED. Linguistic selection/production promotion remains PARTIAL pending independent gold and profile adjudication.
