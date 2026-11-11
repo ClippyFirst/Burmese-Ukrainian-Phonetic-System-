@@ -1187,6 +1187,7 @@ The Google WFST is a registered optional candidate; it is not a production depen
 - Додано `src/burmese_ukrainian/hybrid.py`: ансамбль структурного парсера, внутрішнього консервативного IPA та підключених зовнішніх IPA backend-ів; експортовано `HybridBurmeseEngine` і `create_hybrid_engine`.
 - Додано `tests/test_hybrid_engine.py`: exact IPA consensus, single-backend non-promotion, conflicting outputs, exclusion of partial `?` output, preservation of distinctive diacritics.
 - Додано `docs/hybrid-engines.md` і посилання з README.
-- MLCTS/романізація не є IPA backend-ом і не голосує. Наявний Google WFST і myG2P IPA можуть бути підключені як окремі backend-функції; core не завантажує їх автоматично і не додає сторонніх runtime-залежностей.
-- Перевірка в цій сесії: код записаний у GitHub; локального checkout/pytest тут немає. CI exact-head ще очікується; не вважати тести пройденими до завершення workflow.
+- Додано конкретні backend-и: `make_google_wfst_backend()` для скомпільованого Google Thrax/FST/symbol table з перевіркою echoed input і `make_myg2p_dictionary_backend()` для точного пошуку в п'ятому IPA-полі myG2P v2.0; словник кешується на екземпляр backend-а. Обидва експортуються з пакета. MLCTS/романізація не є IPA backend-ом і не голосує.
+- Перше exact-head CI виконання виявило помилку в тестовому припущенні щодо кешованого словника: після зміни TSV файл залишається незмінним у вже створеному backend-і. Тест виправлено: новий backend створюється після зміни snapshot-файлу. Повторний exact-head CI очікується; невдалий запуск не приховано.
+- Реальний прогін Google WFST + myG2P ансамблю на незалежно adjudicated Yangon IPA gold ще не виконано; фонетична точність не заявляється.
 - Branch: `research/burmese-hybrid-engine-2026-11-11`, створена від попереднього research PR #126 head `bf3da3d2d3424ffe2ea36e75a3e84a26f3d88f73`; зміни призначені як stacked follow-up до гілки PR #126.
