@@ -452,3 +452,10 @@ Latest tone-aware hybrid code verification: [43078675807](https://github.com/Cli
 | Task | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BUR-CLI-NEWLINE-001 | DONE_VERIFIED (adapter contract) | Test-first RED [43081924723](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43081924723) demonstrated literal backslash+n on stdin; fix commit `fea872b176fabaddf4f0c5ff4121dcf722590ef7`; exact-head CI [43082016024](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082016024) SUCCESS (185 tests + 72 subtests, build, generated-data, npm and 54 Playwright checks). | Adapter now sends a real newline. Live Goruut binary execution remains blocked by missing upstream `weights9.bin.zlib`; this is not a phonetic accuracy result. |
+
+
+## Burmese unimplemented segmental structures — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BUR-MEDIAL-STACK-KINZI-WITHHOLD-001 | DONE_VERIFIED (conservative abstention) | Test-first RED [43082483864](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082483864) showed `ကြွေ` incorrectly emitted as `ke`; fix `20ef6ca711093b8422c7b4d3bdce0dcd5023d3de`; exact-head CI [43082565716](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082565716) SUCCESS (186 tests + 72 subtests, build, generated-data, npm and 54 Playwright checks). | Any syllable containing unimplemented medials, conjuncts or kinzi is withheld from IPA. No new phonetic rule is inferred; coverage returns only after profile-matched expert evidence and regression tests. |

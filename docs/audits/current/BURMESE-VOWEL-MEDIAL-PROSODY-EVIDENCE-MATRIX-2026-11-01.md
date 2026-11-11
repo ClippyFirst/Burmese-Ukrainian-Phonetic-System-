@@ -133,3 +133,8 @@ The paper describes a Thrax/OpenFst G2P grammar whose input is Myanmar Unicode a
 The FST paper reports 99.93% orthographic syllabification accuracy on 11,732 words / 32,283 syllables, with errors concentrated in nine stacked words and free-standing vowel/consonant-stack combinations. This supports an FST structural-analysis comparator only. It is not G2P accuracy, IPA evidence or a pronunciation benchmark.
 
 **Implementation consequence:** no tone, coda, vowel, medial or allophonic rule is promoted solely from these papers. They sharpen the required test dimensions and support retaining Google WFST as a diagnostic candidate; source-profile matching and independent Yangon IPA adjudication remain outstanding.
+
+
+## Runtime abstention guard — 2026-11-11
+
+The evidence matrix's unresolved medial and stacked-consonant rows now have an explicit runtime safeguard: `src/burmese_ukrainian/ipa.py` returns no IPA whenever parsed `medials`, `conjunct` or `kinzi` fields are present. The parser continues to expose those structures for inspection; the IPA adapter no longer silently drops them. Regression probes: `ကြွေ`, `က္ကာ`, `င်္ဂါ`. Exact-head CI [43082565716](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082565716) passed 186 Python tests + 72 subtests and 54 Playwright tests. This is abstention, not a phonological analysis.

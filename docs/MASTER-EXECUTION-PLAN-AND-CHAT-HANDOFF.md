@@ -1190,3 +1190,12 @@ Latest tone-aware hybrid code verification: [43078675807](https://github.com/Cli
 - Test-first RED commit `05f83f351f210392a2834881f2fe4d6e033af494`; exact-head run [43081924723](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43081924723) failed specifically because captured stdin was `မြန်မာ\\n` rather than `မြန်မာ\n` (1 failed, 184 passed, 72 subtests passed).
 - Fix commit `fea872b176fabaddf4f0c5ff4121dcf722590ef7` changes the adapter to append a real newline. Exact-head CI [43082016024](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082016024) SUCCESS: 185 Python tests + 72 subtests, npm build, generated-data freshness, npm tests and 54 built-site Playwright tests.
 - This verifies the adapter's subprocess input contract. It does not establish live Goruut end-to-end output on the pinned snapshot, whose Burmese `weights9.bin.zlib` asset remains absent upstream; no phonological output or accuracy claim changed.
+
+
+## Burmese unsupported-medial/stack/kinzi withholding — 2026-11-11
+
+- Code inspection found that the structural parser retained medials, conjuncts and kinzi, but the IPA adapter previously mapped only the base onset and vowel and could silently omit these parsed elements. For example, `ကြွေ` was emitted as `ke` despite parsed `medial_ra` and `medial_wa`.
+- Test-first RED commit `9df83488e9ddd3a414e9491555f5fa2380cc4144`; exact-head CI [43082483864](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082483864) failed on the expected guard (1 failed, 185 passed, 72 subtests passed), confirming the silent omission.
+- Fix commit `20ef6ca711093b8422c7b4d3bdce0dcd5023d3de` makes `to_ipa` withhold any syllable containing unimplemented medials, stacked consonants or kinzi, just as it already withholds unresolved coda/asat, prosodic marks and anusvara.
+- Exact-head CI [43082565716](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082565716) SUCCESS: 186 Python tests + 72 subtests, npm build, generated-data freshness, npm tests and 54 built-site Playwright tests.
+- This is a conservative abstention fix, not a new pronunciation rule or gold label. It intentionally reduces apparent coverage for those structures until profile-matched IPA rules are independently adjudicated.

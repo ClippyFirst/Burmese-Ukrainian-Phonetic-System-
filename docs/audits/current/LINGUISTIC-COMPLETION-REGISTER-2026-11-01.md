@@ -484,3 +484,10 @@ Latest tone-aware hybrid code verification: [43078675807](https://github.com/Cli
 | Task | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BUR-CLI-NEWLINE-001 | DONE_VERIFIED (unit/CI contract); live Goruut E2E BLOCKED | Regression test captures subprocess stdin. RED [43081924723](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43081924723): 1 failed as expected. Fix `fea872b176fabaddf4f0c5ff4121dcf722590ef7`; exact-head CI [43082016024](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082016024) SUCCESS: 185 Python tests + 72 subtests and 54 browser tests. | Generic CLI adapter now appends an actual newline rather than literal `\\n`. Live Goruut smoke still depends on upstream publication/documentation of `weights9.bin.zlib`; no IPA accuracy is implied. |
+
+
+## Burmese unsupported medial/stack/kinzi IPA withholding — 2026-11-11
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BUR-MEDIAL-STACK-KINZI-WITHHOLD-001 | DONE_VERIFIED (fail-closed behavior) | Regression test checks medial `ကြွေ`, stacked consonant `က္ကာ` and kinzi `င်္ဂါ`. RED [43082483864](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082483864) confirmed medial omission; fix `20ef6ca711093b8422c7b4d3bdce0dcd5023d3de`; exact-head CI [43082565716](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43082565716) SUCCESS: 186 tests + 72 subtests and 54 browser tests. | The adapter withholds IPA for medials, conjuncts and kinzi until their Yangon-profile phonetic realizations are established. This is not a gold score or a new rule. |

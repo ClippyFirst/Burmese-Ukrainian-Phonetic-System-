@@ -34,3 +34,8 @@ result = engine.analyze("မြန်မာ")
 ```
 
 Це дослідницький comparator, а не production fallback. Просування кандидата потребує незалежного gold для Standard Yangon та перевірки тону, фонації, довготи, код і сегментації. Див. docs/hybrid-engines.md.
+
+
+## Conservative handling of unimplemented Burmese structures
+
+The IPA adapter must not emit an onset-plus-vowel string while silently discarding parsed phonological material. It therefore withholds the entire syllable whenever the structural parse contains medials, stacked consonants or kinzi. Coda/asat, prosodic marks and anusvara are also withheld until their surface realization is supported. These are intentional abstentions, not parser failures. Do not restore IPA output for these structures until the selected Yangon profile, IPA convention and relevant segmental/rime interactions are independently adjudicated and covered by positive/negative tests.
