@@ -35,6 +35,10 @@ The comparison shows several systematic target-language differences:
 | /w/ | у | в |
 | /h/ | х | г |
 | /ɡ/ (ASCII alias /g/) | г | ґ* |
+| /h, ɦ/ | х | г |
+| /x/ | х | х |
+| /t͡s, d͡z/ | ц, дз | ц, дз |
+| /t͡ʃ, d͡ʒ/ | ч, дж | ч, дж |
 | /x/ | х | х |
 | /ɹ/ | й/r-dependent | р* |
 | /t͡s/ /d͡z/ | ц / дз | ц / дз |
