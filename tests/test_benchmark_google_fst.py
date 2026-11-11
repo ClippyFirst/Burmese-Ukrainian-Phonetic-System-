@@ -1,4 +1,10 @@
-from scripts.benchmark_google_fst import build_report, parse_outputs
+import runpy
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+MODULE = runpy.run_path(str(ROOT / "scripts" / "benchmark_google_fst.py"))
+build_report = MODULE["build_report"]
+parse_outputs = MODULE["parse_outputs"]
 
 
 def test_google_fst_report_is_raw_output_only_without_accuracy():
