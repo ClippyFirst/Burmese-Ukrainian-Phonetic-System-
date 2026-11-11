@@ -1,6 +1,6 @@
 import { PRACTICAL, RULES } from "./generated/data.js";
 
-const IPA_UNIT_RE = /(?:t͡s|d͡z|t͡ʃ|d͡ʒ|t͡?ɕʰ|t͡?ɕ|d͡?ʑ|eɪ|oʊ|aɪ|aʊ|[ktpsdb]ʰ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|ʒ|ɴ|ŋ|ɲ|ɹ|ɦ|ʋ|ɯ|ɛ|ɪ|ɔ|ə|ʊ|θ|ð|[a-zɡʔːˑˈˌ]|[\u0300-\u0305\u030c\u0324\u0330\u0331])/gu;
+const IPA_UNIT_RE = /(?:\s+|[.·]|t͡s|d͡z|t͡ʃ|d͡ʒ|t͡?ɕʰ|t͡?ɕ|d͡?ʑ|eɪ|oʊ|aɪ|aʊ|[ktpsdb]ʰ|m̥|n̥|ŋ̊|ɲ̥|l̥|ʍ|ʃ|ʒ|ɴ|ŋ|ɲ|ɹ|ɦ|ʋ|ɯ|ɛ|ɪ|ɔ|ə|ʊ|θ|ð|[a-zɡʔːˑˈˌ]|[\u0300-\u0305\u030c\u0324\u0330\u0331])/gu;
 const STATUS_RANK = {
   ESTABLISHED: 0,
   WELL_SUPPORTED: 1,
@@ -83,7 +83,7 @@ export function renderUkrainian(ipaText) {
   for (let index = 0; index < units.length; index += 1) {
     const unit = units[index];
 
-    if (/^\\s+$/u.test(unit)) {
+    if (/^\s+$/u.test(unit)) {
       parts.push({ text: unit, status: "ESTABLISHED", reason: "Word boundary.", ruleIds: [] });
       syllableStart = true;
       continue;
