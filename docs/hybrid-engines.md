@@ -20,8 +20,13 @@ def my_backend(text: str) -> dict:
 Підключення:
 
 ```python
-from burmese_ukrainian import create_hybrid_engine
-engine = create_hybrid_engine({"google-wfst": google_backend, "myg2p-ipa": dictionary_backend})
+from burmese_ukrainian import (
+    create_hybrid_engine, make_google_wfst_backend, make_myg2p_dictionary_backend,
+)
+engine = create_hybrid_engine({
+    "google-wfst": make_google_wfst_backend("bazel-bin/utils/thrax_g2p", "bazel-bin/my/G2P.fst", "bazel-bin/my/ipa_phoneme.syms"),
+    "myg2p-ipa": make_myg2p_dictionary_backend("myg2p.ver2.0.txt"),
+})
 result = engine.analyze("မြန်မာ")
 ```
 
