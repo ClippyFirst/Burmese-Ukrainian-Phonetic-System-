@@ -1127,3 +1127,44 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Also retained the existing Superpowers, Matt Pocock and Ponytail methodology references. Their use is constrained by project-specific IPA, source-rights, privacy and fail-closed requirements.
 - Documentation PR: #119. Exact-head CI evidence: 41876124400 (Tests SUCCESS). The PR has been merged to main; post-merge workflow/deployment checks are still being observed where applicable.
 - This is an engineering-process improvement only. It does not resolve the external blockers: expert recruitment and approved IPA conventions, independent adjudicated gold, item-level redistribution rights, and controlled blind annotation intake. No people were contacted and no IPA labels or corpus data were added.
+
+## External Burmese G2P and benchmark expansion — 2026-11-11
+
+### Branch and base
+
+- Base branch: `main`, starting commit `0f814af3510c71d1b3dec5569209546179318a40`.
+- Working branch: `research/burmese-engine-benchmark-expansion-2026-11-11`.
+- No existing branch or PR was merged, rewritten or deleted.
+
+### Work completed
+
+- Registered Google Language Resources Burmese Thrax/OpenFst WFST as an optional external G2P candidate; pinned source commit `a90601024f07ab7e96c911243324e0adeb16da96`.
+- Added a standard-library raw-output runner, unit tests and an optional CI job that builds `//my:g2p`, checks upstream IPA symbol-table invariants and runs six structural-only probes.
+- Added WSSANLP 2016 PER benchmark evidence and OpenSLR SLR80 audio/transcript resource to the source and external-engine registries.
+- Re-ran the existing myG2P/CRF and Epitran diagnostics. CRF: 100 predictions, 84 source-concordant, gold 0, accuracy null, possible training overlap. Epitran 1.35.3: 6/6 raw outputs, 0 runtime errors, no gold/score.
+- Kept myG2P CC BY-NC-SA 4.0 and SLR80 CC BY-SA 4.0 rights constraints explicit. No external corpus data are copied into the repository.
+
+### Build investigation
+
+- Bazel 4.2.3 + Ubuntu 26.04 first hit unpinned Abseil/current `@rules_cc` incompatibility.
+- Pinning Abseil to `45fdade6c0415ec5af3f9312e6311a4ccc682a7b` then exposed Bazel 4.2.3's lack of `native.package_relative_label`.
+- Bazel 7.4.1 passed analysis but old OpenFst failed to compile with GCC 15 on Ubuntu 26.04.
+- The latest workflow pins Ubuntu 22.04/GCC 11, Bazel 7.4.1, Java 17 and the Abseil compatibility commit. [Latest run](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42997699151) is pending final inspection at this handoff revision.
+
+### Verification
+
+- Full repository tests, Python validation, npm build, generated-data drift check, npm tests and Playwright browser tests: [42997508695](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42997508695) — SUCCESS.
+- Existing comparator workflow [42997196581](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42997196581): CRF and Epitran jobs SUCCESS; new Google FST job at that run failed on the Ubuntu 26.04/GCC 15 compatibility issue.
+- Published benchmark research: WSSANLP 2016 open PER and Google LREC 2020 FST architecture are recorded in the external engine and source registries.
+
+### Remaining blockers
+
+- Complete the latest Google FST build/smoke; even if successful, its six structural-only probes cannot measure accuracy.
+- Create rights-cleared, independent Standard Yangon IPA gold with specialist tone/phonation review.
+- Confirm myG2P CC BY-NC-SA 4.0 terms before any commercial use/redistribution.
+- Use OpenSLR SLR80 only as audio/transcript annotation source after expert IPA annotation; its transcript is not IPA.
+- Pin remaining Google WORKSPACE dependencies to make the build hermetic.
+
+### Current disposition
+
+The Google WFST is a registered optional candidate; it is not a production dependency. Burmese accuracy remains unmeasured because independent adjudicated IPA gold is still absent.
