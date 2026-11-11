@@ -166,6 +166,7 @@ function parseCluster(raw,withholdBareInherent=false){
       sy.provisionalRuleId="BURMESE-PREVIEW-ONSET-IPA-V1";
       sy.provisionalPosition="onset";
       sy.provisionalUnresolved=Array.from(raw).slice(1);
+      sy.provisionalUnresolvedFeatures=["inherent_vowel"];
     }
   }
   return sy;
