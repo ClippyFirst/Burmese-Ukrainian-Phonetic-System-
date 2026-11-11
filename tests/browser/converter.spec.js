@@ -12,11 +12,11 @@ test("non-Myanmar material is preserved in output",async({page})=>{await page.go
 test("scientific page is reachable",async({page})=>{await page.goto("/system.html");await expect(page.locator("h1")).toContainText("українське читання");});
 test("evidence status is not overstated",async({page})=>{await page.goto("/");await page.locator("#source").fill("ကာ");await expect(page.locator("#ipa")).toContainText("ka");await expect(page.locator("#uk-status")).toContainText("PROPOSED");await expect(page.locator("#issues")).toBeVisible();});
 test("pure non-Myanmar input is not presented as a successful Burmese analysis",async({page})=>{await page.goto("/");await page.locator("#source").fill("ABC 123");await expect(page.locator("#uk")).toHaveText("ABC 123");await expect(page.locator("#uk-status")).toContainText("UNSUPPORTED");});
-test("kinzi-containing syllable is withheld rather than guessed",async({page})=>{await page.goto("/");await page.locator("#source").fill("င်္ကာ");await expect(page.locator("#ipa")).toHaveText("?");await expect(page.locator("#uk")).toContainText("⟦");await expect(page.locator("#uk-status")).toContainText("NOT_ESTABLISHED");
-test("unsupported palatal medial is withheld instead of guessed",async({page})=>{await page.goto("/");await page.locator("#source").fill("ကျား");await expect(page.locator("#ipa")).toHaveText("?");await expect(page.locator("#uk")).toHaveText("⟦ကျား⟧");await expect(page.locator("#uk-status")).toContainText("NOT_ESTABLISHED");
-test("closed ော rime with an unsupported medial remains withheld",async({page})=>{await page.goto("/");await page.locator("#source").fill("ကျောင်း");await expect(page.locator("#ipa")).toHaveText("?");await expect(page.locator("#uk")).toHaveText("⟦ကျောင်း⟧");
+test("kinzi-containing syllable is withheld rather than guessed",async({page})=>{await page.goto("/");await page.locator("#source").fill("င်္ကာ");await expect(page.locator("#ipa")).toHaveText("?");await expect(page.locator("#uk")).toContainText("⟦");await expect(page.locator("#uk-status")).toContainText("NOT_ESTABLISHED");});
+test("unsupported palatal medial is withheld instead of guessed",async({page})=>{await page.goto("/");await page.locator("#source").fill("ကျား");await expect(page.locator("#ipa")).toHaveText("?");await expect(page.locator("#uk")).toHaveText("⟦ကျား⟧");await expect(page.locator("#uk-status")).toContainText("NOT_ESTABLISHED");});
+test("closed ော rime with an unsupported medial remains withheld",async({page})=>{await page.goto("/");await page.locator("#source").fill("ကျောင်း");await expect(page.locator("#ipa")).toHaveText("?");await expect(page.locator("#uk")).toHaveText("⟦ကျောင်း⟧");});
 test("kinzi belongs to the preceding linguistic syllable",async({page})=>{await page.goto("/");await page.locator("#source").fill("မင်္ဂလာ");await expect(page.locator("#syllables")).toContainText("မင်္");await expect(page.locator("#syllables")).toContainText("ဂ");});
-test("ha-to with unsupported medial context is not guessed",async({page})=>{await page.goto("/");await page.locator("#source").fill("ရှ");await expect(page.locator("#ipa")).toHaveText("?");await expect(page.locator("#uk")).toHaveText("⟦ရှ⟧");
+test("ha-to with unsupported medial context is not guessed",async({page})=>{await page.goto("/");await page.locator("#source").fill("ရှ");await expect(page.locator("#ipa")).toHaveText("?");await expect(page.locator("#uk")).toHaveText("⟦ရှ⟧");});
 
 test("nasal closed i remains short ɪ, not an overgeneralized eɪ",async({page})=>{
   await page.goto("/");
@@ -36,7 +36,7 @@ test("closed u with a nasal coda becomes oʊɴ",async({page})=>{
   await expect(page.locator("#ipa")).toContainText("koʊɴ");
 });
 
-test("medial wa rimes remain withheld until contextual rules are verified",async({page})=>{await page.goto("/");await page.locator("#source").fill("ကွက် ကွန်");await expect(page.locator("#ipa")).toHaveText("? ?");await expect(page.locator("#uk")).toContainText("⟦ကွက်⟧");await expect(page.locator("#uk")).toContainText("⟦ကွန်⟧");
+test("medial wa rimes remain withheld until contextual rules are verified",async({page})=>{await page.goto("/");await page.locator("#source").fill("ကွက် ကွန်");await expect(page.locator("#ipa")).toHaveText("? ?");await expect(page.locator("#uk")).toContainText("⟦ကွက်⟧");await expect(page.locator("#uk")).toContainText("⟦ကွန်⟧");});
 
 test("i+u closed rime becomes aɪ with a glottal coda",async({page})=>{
   await page.goto("/");
@@ -44,7 +44,7 @@ test("i+u closed rime becomes aɪ with a glottal coda",async({page})=>{
   await expect(page.locator("#ipa")).toContainText("kaɪʔ");
 });
 
-test("medial wa with a sonorant coda remains withheld",async({page})=>{await page.goto("/");await page.locator("#source").fill("ဆွမ်း");await expect(page.locator("#ipa")).toHaveText("?");await expect(page.locator("#uk")).toHaveText("⟦ဆွမ်း⟧");
+test("medial wa with a sonorant coda remains withheld",async({page})=>{await page.goto("/");await page.locator("#source").fill("ဆွမ်း");await expect(page.locator("#ipa")).toHaveText("?");await expect(page.locator("#uk")).toHaveText("⟦ဆွမ်း⟧");});
 
 test("Myanmar Extended-B characters are recognized as Myanmar script, then explicitly marked unsupported",async({page})=>{
   await page.goto("/");
@@ -76,11 +76,11 @@ test("theta IPA is tokenized through its explicitly marked candidate rule",async
   await expect(page.locator("#uk-status")).toContainText("ANALYSIS_DEPENDENT");
 });
 
-test("kinzi-coda structure is retained while unsupported IPA is withheld",async({page})=>{await page.goto("/");await page.locator("#source").fill("မင်္ဂလာ");await expect(page.locator("#ipa")).toContainText("?");await expect(page.locator("#syllables")).toContainText("မင်္");await expect(page.locator("#uk-status")).toContainText("NOT_ESTABLISHED");
+test("kinzi-coda structure is retained while unsupported IPA is withheld",async({page})=>{await page.goto("/");await page.locator("#source").fill("မင်္ဂလာ");await expect(page.locator("#ipa")).toContainText("?");await expect(page.locator("#syllables")).toContainText("မင်္");await expect(page.locator("#uk-status")).toContainText("NOT_ESTABLISHED");});
 
-test("Burmese punctuation remains preserved around withheld words",async({page})=>{await page.goto("/");await page.locator("#source").fill("ကျောင်း၊ ကျောင်း။");await expect(page.locator("#ipa")).toContainText("?");await expect(page.locator("#uk")).toContainText("၊");await expect(page.locator("#uk")).toContainText("။");await expect(page.locator("#syllables")).not.toContainText("Нерозібраний знак ၊");await expect(page.locator("#syllables")).not.toContainText("Нерозібраний знак ။");
+test("Burmese punctuation remains preserved around withheld words",async({page})=>{await page.goto("/");await page.locator("#source").fill("ကျောင်း၊ ကျောင်း။");await expect(page.locator("#ipa")).toContainText("?");await expect(page.locator("#uk")).toContainText("၊");await expect(page.locator("#uk")).toContainText("။");await expect(page.locator("#syllables")).not.toContainText("Нерозібраний знак ၊");await expect(page.locator("#syllables")).not.toContainText("Нерозібраний знак ။");});
 
-test("unsupported medial/rime combinations do not leak debug IPA symbols",async({page})=>{await page.goto("/");await page.locator("#source").fill("ကျောင်း စိတ် ပိုက် ကိုက်");await expect(page.locator("#uk")).toContainText("⟦ကျောင်း⟧");await expect(page.locator("#uk")).not.toContainText("∅");
+test("unsupported medial/rime combinations do not leak debug IPA symbols",async({page})=>{await page.goto("/");await page.locator("#source").fill("ကျောင်း စိတ် ပိုက် ကိုက်");await expect(page.locator("#uk")).toContainText("⟦ကျောင်း⟧");await expect(page.locator("#uk")).not.toContainText("∅");});
 
 test("non-Myanmar runs are grouped instead of displayed one character at a time",async({page})=>{
   await page.goto("/");
@@ -126,9 +126,9 @@ test("the conventional ော် rime does not become an unsupported checked cod
   await expect(page.locator("#ipa")).not.toContainText("?");
 });
 
-test("the ည် rime after an unsupported ya/ra medial remains withheld",async({page})=>{await page.goto("/");await page.locator("#source").fill("ကြည်");await expect(page.locator("#ipa")).toHaveText("?");await expect(page.locator("#uk")).toHaveText("⟦ကြည်⟧");
+test("the ည် rime after an unsupported ya/ra medial remains withheld",async({page})=>{await page.goto("/");await page.locator("#source").fill("ကြည်");await expect(page.locator("#ipa")).toHaveText("?");await expect(page.locator("#uk")).toHaveText("⟦ကြည်⟧");});
 
-test("the medial-wa plus yat rime remains withheld until verified",async({page})=>{await page.goto("/");await page.locator("#source").fill("စွယ်");await expect(page.locator("#ipa")).toHaveText("?");await expect(page.locator("#uk")).toHaveText("⟦စွယ်⟧");
+test("the medial-wa plus yat rime remains withheld until verified",async({page})=>{await page.goto("/");await page.locator("#source").fill("စွယ်");await expect(page.locator("#ipa")).toHaveText("?");await expect(page.locator("#uk")).toHaveText("⟦စွယ်⟧");});
 
 
 test("phonological and Ukrainian-candidate evidence statuses are reported independently",async({page})=>{
@@ -146,7 +146,7 @@ test("prosodic markers are summarized once instead of repeated in every segment 
 });
 
 
-test("the medial ra in မြန် remains withheld rather than being dropped",async({page})=>{await page.goto("/");await page.locator("#source").fill("မြန်");await expect(page.locator("#ipa")).toHaveText("?");await expect(page.locator("#uk")).toHaveText("⟦မြန်⟧");
+test("the medial ra in မြန် remains withheld rather than being dropped",async({page})=>{await page.goto("/");await page.locator("#source").fill("မြန်");await expect(page.locator("#ipa")).toHaveText("?");await expect(page.locator("#uk")).toHaveText("⟦မြန်⟧");});
 
 test("initial Burmese /juː/ is rendered contextually, not as literal candidate alternatives",async({page})=>{
   await page.goto("/");
