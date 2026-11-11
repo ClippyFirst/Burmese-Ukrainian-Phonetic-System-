@@ -1143,3 +1143,12 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Exact-head tests [43019216137](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43019216137) and Pages deployment + asset smoke [43019216297](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43019216297) both SUCCESS; Python tests, npm build, generated-data drift check, npm tests and built-browser Playwright passed.
 - Live service: https://clippyfirst.github.io/Burmese-Ukrainian-Phonetic-System-/. MLCTS remains a separate orthographic mode; no external G2P/model participates in phonetic runtime.
 - Remaining linguistic acceptance: independent adjudicated Yangon IPA gold and broader tone/phonation/coda coverage; no blanket accuracy claim.
+
+
+## External G2P benchmark and hybrid integration — 2026-11-11
+
+- Benchmark research and hybrid API were ported to a branch based on current main, preserving the merged deterministic rule engine.
+- Google Burmese Thrax/OpenFst WFST built and emitted non-empty outputs for 6/6 structural-only probes; Epitran 1.35.3 also emitted 6/6 raw outputs. Neither probe set has IPA labels, so accuracy is null.
+- myG2P v2 has 24,009 unique lexical entries after duplicate filtering. The previous internal-engine comparison produced 635 full IPA outputs and zero strict matches; this is a convention/profile mismatch diagnostic, not proof of myG2P accuracy. CRF returned 100/100 predictions and 84 source-concordant rows, but possible training overlap and supplied syllable boundaries prevent accuracy claims.
+- HybridBurmeseEngine runs RuleBasedBurmeseEngine as final-output authority and records Google WFST, myG2P, Epitran and CLI-wrapped candidates with provenance; no voting/promotion. MLCTS remains outside IPA processing.
+- Acceptance remains PARTIAL until independent Yangon-profile IPA gold, training/test disjointness, tone/phonation/coda adjudication, myG2P rights review and hermetic WFST dependency pinning. No default-branch output changed.
