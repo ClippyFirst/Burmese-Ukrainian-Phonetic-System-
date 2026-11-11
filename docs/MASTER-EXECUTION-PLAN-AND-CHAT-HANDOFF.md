@@ -1168,3 +1168,10 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 ### Current disposition
 
 The Google WFST is a registered optional candidate; it is not a production dependency. Burmese accuracy remains unmeasured because independent adjudicated IPA gold is still absent.
+
+### PR and branch reconciliation
+
+- No open PRs were present at final inspection.
+- Closed, unmerged PR #125 was inspected. Its fixture/handoff changes are already represented on current `main` (verified in `tests/test_ipa_gold_corpus.py`); nothing needed porting.
+- The branch list contained only current `main` and this dedicated working branch.
+- Merged PRs #106 and #111 were reviewed; the reproducible CRF diagnostic and separate Wiktionary licensing records were preserved.
