@@ -48,15 +48,27 @@ def test_unresolved_anusvara_is_not_silently_deleted_from_ipa():
 
 def test_unimplemented_medials_conjuncts_and_kinzi_are_not_silently_dropped():
     medial = to_ipa("ကြွေ")
+    assert medial["syllables"][0]["status"] == "established"
     assert [item["id"] for item in medial["syllables"][0]["medials"]] == [
         "medial_ra", "medial_wa"
     ]
     assert medial["syllables"][0]["ipa"] is None
 
     conjunct = to_ipa("က္ကာ")
+    assert conjunct["syllables"][0]["status"] == "established"
     assert conjunct["syllables"][0]["conjunct"]
     assert conjunct["syllables"][0]["ipa"] is None
 
     kinzi = to_ipa("င်္ဂါ")
+    assert kinzi["syllables"][0]["status"] == "established"
     assert kinzi["syllables"][0]["kinzi"] is not None
     assert kinzi["syllables"][0]["ipa"] is None
+
+def test_public_burmese_engine_marks_unimplemented_structures_partial():
+    from burmese_ukrainian.rule_engine import RuleBasedBurmeseEngine
+
+    engine = RuleBasedBurmeseEngine()
+    for source in ("ကြွေ", "က္ကာ", "င်္ဂါ"):
+        result = engine.analyze(source)
+        assert result["ipa"] is None
+        assert result["status"] == "PARTIAL"
