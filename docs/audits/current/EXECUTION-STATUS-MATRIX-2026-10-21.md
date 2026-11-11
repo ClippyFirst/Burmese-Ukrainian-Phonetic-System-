@@ -417,4 +417,4 @@ This engineering correction does not change the language-layer statuses above. I
 
 | Task | Status | Evidence | Remaining acceptance criterion |
 |---|---|---|---|
-| MYA-HYBRID-IPA-ENGINE-001 | PARTIAL | Hybrid ensemble and executable Google WFST / myG2P v2 IPA backend adapters added; regression coverage includes conflict, single-source withholding, echoed-input validation and exact dictionary lookup. | Confirm corrected exact-head CI; conduct blind adjudicated Yangon-profile IPA evaluation and analyze tone/phonation/coda coverage. |
+| MYA-HYBRID-IPA-ENGINE-001 | PARTIAL | Hybrid ensemble and executable Google WFST / myG2P v2 IPA backend adapters added; regression coverage includes conflict, single-source withholding, echoed-input validation and exact dictionary lookup. | Exact-head CI [43011696686](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43011696686) SUCCESS, including Python tests, npm build/tests, generated-data drift check and built-browser Playwright. Conduct blind adjudicated Yangon-profile IPA evaluation and analyze tone/phonation/coda coverage. |
