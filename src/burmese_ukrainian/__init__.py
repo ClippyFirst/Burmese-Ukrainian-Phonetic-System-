@@ -4,7 +4,7 @@ from .ipa import to_ipa
 from .ukrainian import ipa_to_ukrainian
 from .practical import practical_from_ipa, rank_ukrainian_candidates
 from .explain import explain
-from .hybrid import HybridBurmeseEngine, create_hybrid_engine
+from .hybrid import (HybridBurmeseEngine, create_hybrid_engine, make_google_wfst_backend, make_myg2p_dictionary_backend)
 
 __all__ = [
     "parse_burmese", "normalize_burmese", "segment_graphemes",
