@@ -461,3 +461,6 @@ The export and benchmark now preserve and validate the complete frozen split ide
 ### Verification checkpoint — MYA-HYBRID-CANDIDATE-ENGINE-001
 
 Engineering implementation is DONE_VERIFIED on code-bearing head 17c855307be36a0735f0cd8967b988fe62053d8a: tests [43077670284](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670284) SUCCESS (183 Python tests + 72 subtests, npm build, generated-data drift, npm tests and 54 Playwright tests). The optional WFST comparator rerun [43077670322](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670322) still has its Google build job running; previous WFST smoke [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514) succeeded. Linguistic promotion remains PARTIAL; independent Yangon-profile IPA gold is absent.
+
+
+Google WFST rerun [43077670322](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670322) completed SUCCESS: pinned grammar built, symbol-table checks passed and 6/6 structural-only inputs produced non-empty output. Accuracy remains null because independent gold is 0.
