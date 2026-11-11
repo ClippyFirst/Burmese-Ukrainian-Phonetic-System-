@@ -1153,7 +1153,7 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 
 ### Verification
 
-- Full repository tests, Python validation, npm build, generated-data drift check, npm tests and Playwright browser tests: [42999264452](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264452) — SUCCESS.
+- Full repository tests, Python validation, npm build, generated-data drift check, npm tests and Playwright browser tests: [43000193431](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43000193431) — SUCCESS.
 - Comparator workflow [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514): CRF, Epitran and Google FST jobs all SUCCESS; Google FST produced 6/6 raw outputs, with gold 0 and accuracy null.
 - Published benchmark research: WSSANLP 2016 open PER and Google LREC 2020 FST architecture are recorded in the external engine and source registries.
 
