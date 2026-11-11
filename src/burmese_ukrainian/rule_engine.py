@@ -1,4 +1,4 @@
-"""Deterministic, rule-based Burmese → IPA research engine.
+"""Deterministic, rule-based Burmese → IPA → Ukrainian research engine.
 
 The engine delegates only to the repository's versioned parsing and phonology
 rules. It never calls Google WFST, myG2P, a neural model, a remote service, or a
@@ -27,14 +27,23 @@ class RuleBasedBurmeseEngine:
             if not item.get("ipa") or item.get("phonetic_status") != "conservative_partial"
         ]
         complete = bool(syllables) and not unresolved
-        ipa = " ".join(item["ipa"] for item in syllables) if complete else None
-        practical = transcribe_ipa(ipa) if ipa else {
-            "text": None,
-            "status": "not_established" if syllables else "insufficient_input",
-            "segments": [],
-            "prosody": [],
-            "unsupported": None,
-        }
+        ipa_parts = [item["ipa"] for item in syllables] if complete else []
+        ipa = " ".join(ipa_parts) if complete else None
+
+        practical_parts = [transcribe_ipa(part) for part in ipa_parts] if complete else []
+        practical_complete = bool(practical_parts) and all(
+            part.get("text") is not None for part in practical_parts
+        )
+        practical_statuses = {part.get("status") for part in practical_parts}
+        practical_status = (
+            "not_established" if not practical_complete else
+            "analysis_dependent" if "analysis_dependent" in practical_statuses else
+            "proposed"
+        )
+        practical_text = (
+            "".join(part["text"] for part in practical_parts)
+            if practical_complete else None
+        )
         return {
             "input": text,
             "normalized": result.get("normalized", text),
@@ -42,10 +51,15 @@ class RuleBasedBurmeseEngine:
             "engine": self.engine_id,
             "deterministic": True,
             "ipa": ipa,
-            "ukrainian": practical["text"],
-            "ukrainian_status": practical["status"],
-            "ukrainian_segments": practical["segments"],
-            "ukrainian_prosody": practical["prosody"],
+            "ukrainian": practical_text,
+            "ukrainian_status": practical_status,
+            "ukrainian_syllables": [part.get("text") for part in practical_parts] if practical_complete else [],
+            "ukrainian_segments": [
+                segment for part in practical_parts for segment in part.get("segments", [])
+            ],
+            "ukrainian_prosody": [
+                mark for part in practical_parts for mark in part.get("prosody", [])
+            ],
             "ipa_with_placeholders": result.get("ipa"),
             "status": "PROPOSED" if complete else (
                 "NOT_ESTABLISHED" if not syllables else "PARTIAL"
