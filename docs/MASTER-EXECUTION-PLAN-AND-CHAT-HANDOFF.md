@@ -1225,3 +1225,12 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 ## Fallback scope clarification — 2026-11-11
 
 The browser onset-only preview is now limited to isolated bare consonant tokens. Contextual structures (vowels, codas/asat, medials, kinzi, conjuncts and prosodic marks) remain on their existing fail-closed path. The preview appears only in per-syllable details; canonical main output is unchanged. Earlier browser regression run 43100176432 failed because the first integration leaked onset-only previews into contextual syllables; the scope fix and a new verification run are in progress.
+
+
+## Verified implementation result — 2026-11-11
+
+- Code/test head aac1d6834b4c29e04f01477af1583a2be9eba485.
+- Workflow 43101914347 PASS: 182 Python tests, 66 subtests, npm install, build, generated-data freshness, Node tests and Chromium Playwright 54/54.
+- Optional Epitran raw-output comparator 43101914423 PASS; it is not an independent IPA accuracy gold set.
+- Browser keeps canonical IPA/Ukrainian output fail-closed and shows a separate onset-only preview only for isolated bare consonants. Contextual structures remain withheld.
+- Linguistic feature remains PARTIAL: dedicated Yangon-profile positional evidence registry and functional shared Python/browser parity fixture remain TODO. Independent adjudicated gold remains BLOCKED; audio DEFERRED.
