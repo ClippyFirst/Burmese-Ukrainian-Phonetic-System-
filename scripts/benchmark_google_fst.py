@@ -58,17 +58,31 @@ def parse_outputs(stdout: str, expected_count: int) -> list[str]:
     return outputs
 
 
-def binary_path_for_execution(binary: Path) -> str:
-    """Return an absolute path without resolving Bazel output symlinks."""
-    return str(binary.absolute())
+def build_command(binary: Path, fst: Path, phoneme_symbols: Path) -> list[str]:
+    """Invoke the compiled Thrax binary directly, bypassing the runfiles shell wrapper."""
+    return [
+        str(binary.resolve()),
+        f"--fst={fst.resolve()}",
+        f"--phoneme_syms={phoneme_symbols.resolve()}",
+    ]
 
 
-def run_engine(binary: Path, rows: list[dict[str, str]]) -> tuple[list[str], str]:
-    if not binary.is_file():
-        raise FileNotFoundError(f"Google G2P binary not found: {binary}")
+def run_engine(
+    binary: Path,
+    fst: Path,
+    phoneme_symbols: Path,
+    rows: list[dict[str, str]],
+) -> tuple[list[str], str]:
+    for path, label in (
+        (binary, "Thrax G2P binary"),
+        (fst, "compiled G2P FST"),
+        (phoneme_symbols, "generated IPA symbol table"),
+    ):
+        if not path.is_file():
+            raise FileNotFoundError(f"{label} not found: {path}")
     input_text = "\n".join(row["orthography"] for row in rows) + "\n"
     result = subprocess.run(
-        [binary_path_for_execution(binary)],
+        build_command(binary, fst, phoneme_symbols),
         input=input_text,
         text=True,
         capture_output=True,
@@ -184,7 +198,7 @@ def main() -> int:
     args = parser.parse_args()
 
     rows = read_probe_rows(args.corpus)
-    outputs, stderr = run_engine(args.binary, rows)
+    outputs, stderr = run_engine(args.binary, args.fst, args.phoneme_symbols, rows)
     report = build_report(
         rows,
         outputs,
