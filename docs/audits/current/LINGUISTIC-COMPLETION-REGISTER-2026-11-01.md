@@ -464,3 +464,6 @@ Engineering implementation is DONE_VERIFIED on code-bearing head 17c855307be36a0
 
 
 Google WFST rerun [43077670322](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670322) completed SUCCESS: pinned grammar built, symbol-table checks passed and 6/6 structural-only inputs produced non-empty output. Accuracy remains null because independent gold is 0.
+
+
+Epitran hybrid adapter refinement: the optional Burmese adapter now explicitly requests tones=True by default and records the requested setting in candidate provenance. Regression test added; exact-head pytest passed in [43078675807](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43078675807). This does not retroactively change the earlier Epitran raw-output benchmark (which used the original smoke harness), nor establish tonal accuracy.
