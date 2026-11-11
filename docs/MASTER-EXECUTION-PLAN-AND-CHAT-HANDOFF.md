@@ -1161,3 +1161,6 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Optional comparator workflow [43077670322](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670322): CRF and Epitran jobs SUCCESS; Google WFST job still running at the last check. Prior WFST build/smoke [42999264514](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/42999264514) succeeded with 6/6 structural-only outputs.
 - Initial red CI exposed stale alias-contract tests and a test fixture containing a literal backslash-n; both were corrected and the exact-head test rerun passed.
 - Engineering integration is DONE_VERIFIED. Linguistic selection/production promotion remains PARTIAL pending independent gold and profile adjudication.
+
+
+- Final exact-head optional comparator rerun [43077670322](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43077670322) SUCCESS: Google Thrax/OpenFst built (151 + 19 Bazel actions), passed symbol-table checks and emitted 6/6 non-empty IPA strings on structural-only probes; independent gold 0, accuracy null. CRF and Epitran raw-output jobs also SUCCESS.
