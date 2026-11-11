@@ -28,21 +28,24 @@ def _provisional_preview(syllables: list[dict[str, Any]]) -> dict[str, Any] | No
             })
             continue
         onset = item.get("onset", {}).get("character")
-        hint = ONSET_IPA.get(onset)
+        raw = item.get("raw", "")
+        # Do not strip context from a recognized syllable containing rime,
+        # coda, medial, kinzi or conjunct structure. The onset-only preview is
+        # limited to an isolated bare consonant token.
+        hint = ONSET_IPA.get(onset) if len(raw) == 1 and raw == onset else None
         mapped = transcribe_ipa(hint) if hint else {"text": None}
         known = mapped.get("text") if mapped.get("text") is not None else ""
-        raw = item.get("raw", "")
-        unresolved = [ch for ch in raw if ch != onset]
+        unresolved = [ch for ch in raw if ch != onset] if hint else list(raw)
         previews.append({
             "source": raw,
             "ipa": hint,
-            "ukrainian": known + ("?" if unresolved or not known else ""),
+            "ukrainian": known + ("?" if hint and known else "?"),
             "status": "PROVISIONAL" if hint and known else "UNKNOWN",
-            "position": "onset" if hint else None,
+            "position": "onset" if hint and known else None,
             "rule_id": "BURMESE-PREVIEW-ONSET-IPA-V1" if hint and known else None,
-            "unresolved_graphemes": unresolved or ([] if hint and known else list(raw)),
-            "warnings": ["ONSET_POSITION_KNOWN_RIME_UNRESOLVED"],
-            "evidence": ["U18", "W16-3702"],
+            "unresolved_graphemes": unresolved,
+            "warnings": ["ISOLATED_ONSET_ONLY"] if hint and known else ["NO_REGISTERED_POSITIONAL_IPA_HINT"],
+            "evidence": ["U18", "W16-3702"] if hint and known else [],
         })
     if not previews:
         return None
