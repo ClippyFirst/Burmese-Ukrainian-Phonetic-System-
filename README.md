@@ -218,3 +218,8 @@ The project uses a provenance-backed, double-annotated IPA gold workflow. See [t
 The phonetic website and Python API use fixed, local repository rules for Myanmar normalization, grapheme/syllable parsing and conservative IPA derivation. No neural inference, Google WFST, myG2P, network call or candidate voting participates in phonetic output. Unsupported syllables remain withheld. MLCTS remains a separate orthographic mode. See [the deterministic engine contract](docs/DETERMINISTIC-RULE-ENGINE.md).
 
 Python entry point: `from burmese_ukrainian import RuleBasedBurmeseEngine`. Deterministic execution does not make every PROPOSED pronunciation independently verified.
+
+
+## Evidence-gated hybrid IPA candidates
+
+The Python API exports HybridBurmeseEngine. It runs the deterministic rule engine and can collect Google WFST, myG2P v2 IPA dictionary, Epitran and command-wrapped Goruut candidates. External outputs retain provenance and are never voted into the published IPA result. MLCTS remains a separate orthographic mode. See [hybrid engine contract and benchmark decision](docs/hybrid-engines.md).
