@@ -573,3 +573,14 @@ The canonical Ukrainian practical transcription implementation and current task 
 - Mainline test run [43221871111](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43221871111) and Pages deployment [43221870932](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43221870932) both SUCCESS on the merge commit.
 - Exact feature-head tests [43221074232](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43221074232) passed: 187 Python tests + 66 subtests, 54 Node tests, build, generated-data freshness and built-site Playwright.
 - `MYA-ROM-UA-TARGET-001` is DONE_VERIFIED. `MYA-ROM-UA-001` remains TODO (runtime MLCTS-to-Ukrainian adapter); `MYA-ROM-MATRIX-001` remains PARTIAL because the 94 rimes are vendor-derived and the complete source orthographic inventory/primary MLC verification is outstanding. No IPA or pronunciation claim is implied.
+
+
+## MLCTS romanization → Ukrainian runtime adapter — 2026-11-12
+
+- Started from `main` `91efc36c33fae9d78b663aa35acd91ea801a9998`; implementation branch `feat/romanization-to-ukrainian-runtime-2026-11-12`; PR [#141](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/141).
+- Added `src/web/romanization-ukrainian.js` and wired the romanization result into the existing “За романізацією” panel. Each Myanmar cluster is romanized with Mya2Rom's `mlcts` profile, then rendered using longest-match onset + supported medials + exact rime. This path does not call `renderUkrainian` or any IPA adapter.
+- `:` is retained as `ː`, `.` as `·`, and apostrophe as `ʼ`. Non-Myanmar text, spaces, numerals and punctuation are preserved. Unsupported MLCTS strings are bracketed instead of guessed.
+- Regression coverage checks every 94 inventoried rime, all onset rows with a test rime, medial handling, notation markers, unsupported forms and mixed text; browser coverage checks the visible mode and output.
+- **Evidence boundary:** 94 rimes are vendor-derived from Mya2Rom and remain `EVIDENCE_LIMITED`; full source orthographic inventory and all medial/kinzi/asat forms are not claimed complete. `MYA-ROM-UA-001` is PARTIAL; `MYA-ROM-MATRIX-001` remains PARTIAL. No pronunciation/IPA claim is implied.
+- Latest exact-head workflow evidence will be added when CI completes.
+
