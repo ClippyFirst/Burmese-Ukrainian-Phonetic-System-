@@ -282,3 +282,10 @@ This review changes the research register: a lexical IPA lead for မြန် h
 ## IPA gold schema boundary: nasalization — 2026-11-13
 
 The existing typed IPA schema has a literal IPA value and kind, plus optional syllable boundaries, tone, vowel length and phonation. It has no dedicated structured nasalization field. A literal IPA value can still preserve a combining tilde or other nasalization notation, so this does not prevent faithful transcription. However, downstream analytics cannot query nasalization as a typed feature without reading the IPA string. No schema change was made in this research pass: the phonemic /N/ vs surface nasalization convention must first be adjudicated by a Burmese specialist. Track an optional nasalization field as a deferred schema decision, not as an implicit parser feature.
+
+
+### 5.5 UCSY-SC1: a larger but rights-gated audio lead
+
+Mon, Pa Pa and Thu (2019) describe UCSY-SC1: 42 h 39 min of 16 kHz mono speech, 307 speakers, 25 h 20 min of web news and 17 h 19 min of recorded daily conversation. The paper reports 33 basic consonants, 12 vowels and four medial signs, and includes a discussion of nasalized vowels. This is potentially a much richer speaker-diverse source for future acoustic annotation than a single-speaker study.
+
+However, the paper is an ASR-corpus description, not an IPA corpus: its WER results measure ASR, not G2P or pronunciation transcription. The paper article is licensed CC BY-SA 4.0, but the inspected sources do not establish a separate license or public download permission for the underlying corpus audio. Do not infer that the article's license automatically licenses the corpus. Treat UCSY-SC1 as a rights-gated annotation lead only; obtain corpus access and explicit data-use permission before collecting derived IPA labels or redistributing audio.

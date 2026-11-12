@@ -575,3 +575,6 @@ The project remains PARTIAL PROTOTYPE; empirical accuracy remains null.
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | MYA-IPA-NASALIZATION-SCHEMA-001 | DEFERRED | The typed IPA schema preserves literal IPA, kind, boundaries, tone, length and phonation but has no dedicated nasalization property. Literal IPA can preserve the diacritic. | Decide after expert-approved phonemic /N/ vs surface nasalization convention; only then consider a backward-compatible optional schema field. No schema change in this research pass. |
+
+
+| MYA-UCSY-SC1-AUDIO-001 | BLOCKED / RIGHTS-GATED | Mon et al. (2019) describe 42 h 39 min / 307 speakers and 4 medials; article CC BY-SA 4.0, but no separate corpus audio license or public download permission verified. | Obtain corpus access and explicit audio/data reuse permission; then create speaker-disjoint, independently adjudicated IPA annotations. |

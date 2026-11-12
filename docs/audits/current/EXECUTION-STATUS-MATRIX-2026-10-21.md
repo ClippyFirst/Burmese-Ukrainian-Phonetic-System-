@@ -599,3 +599,8 @@ Detailed evidence: docs/research/BURMESE-MEDIALS-AND-G2P-EVIDENCE-REVIEW-2026-11
 - Added Green-based phonotactic rows for placeless /N/ and nasal-rhyme tone restrictions. These are analysis-dependent source records, not active runtime rules.
 - Clarified that the proposed Ukrainian /ɴ/ → нг rule applies only when the selected IPA convention explicitly emits /ɴ/; it must not be used automatically for abstract /N/ or nasalized-vowel realizations.
 - The IPA gold schema preserves literal IPA, kind, syllable boundaries, tone, vowel length and phonation, but has no typed nasalization property. Literal IPA remains sufficient for transcription; a structured field is deferred until expert convention approval.
+
+
+### UCSY-SC1 corpus lead — 2026-11-13
+
+UCSY-SC1 is a 42 h 39 min, 307-speaker ASR corpus with news and recorded conversation; it reports four medials and nasalized vowels. It is a promising future annotation source, but the article's CC BY-SA 4.0 license does not establish a separate license for the underlying audio corpus. Classify as BLOCKED / RIGHTS-GATED until access and explicit data-use permission are obtained.

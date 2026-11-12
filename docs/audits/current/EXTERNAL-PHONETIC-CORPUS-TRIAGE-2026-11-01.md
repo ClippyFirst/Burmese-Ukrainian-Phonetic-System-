@@ -128,3 +128,11 @@ Independent expert-adjudicated Burmese IPA gold remains **0**; empirical accurac
 - Epitran 1.35.3 returns məjaɴ for the same probe; zero gold and null accuracy. The disagreement is useful for prioritizing expert annotation, not for selecting a winner.
 - CRFsuite v2 returns 84/100 source-concordant outputs on a 100-row sample of myG2P v2.0, with overlapping medial subsets YA 10/14, RA 17/20, WA 13/15, HA 7/8. The sample has no gold and the target မြန် is absent; possible train/test overlap remains.
 - The only directly reusable public audio corpus reviewed here is SLR80 (CC BY-SA 4.0), with orthographic transcripts but no IPA labels. myG2P remains CC BY-NC-SA 4.0 and is not commercially cleared. No candidate is an independent gold corpus.
+
+
+### UCSY-SC1 (Mon, Pa Pa & Thu 2019): rights-gated audio lead
+
+- The paper describes 42 h 39 min of 16 kHz mono speech from 307 speakers: 25 h 20 min web news and 17 h 19 min recorded conversation; 31,114 utterances and 11,696 unique words are reported.
+- It states 33 basic consonants, 12 vowels and four medials, and describes nasalized vowels. This is useful as a published inventory and acoustic-corpus lead.
+- The paper reports ASR WER, not IPA/G2P accuracy. Its article is CC BY-SA 4.0, but no separate license or public download permission for the underlying audio corpus was established. Treat it as **rights-gated**, not as currently reusable gold/audio data.
+- If access and rights are secured, prioritize speaker-disjoint annotation of medial YA/RA/WA/HA, coda types, tone/register and nasalization. Keep web-news and recorded-conversation domains separate.
