@@ -46,7 +46,7 @@ test("all onset rows combine with an attested simple rime without losing digraph
 test("MLCTS medials, length and checked-syllable markers are preserved",()=>{
   assert.equal(renderMlctsSyllable("kya").text,"кйа");
   assert.equal(renderMlctsSyllable("kra").text,"крa".replace("a","а"));
-  assert.equal(renderMlctsSyllable("kui:").text,"к'уйː");
+  assert.equal(renderMlctsSyllable("kui:").text,"куйː");
   assert.equal(renderMlctsSyllable("aung.").text,"аунг·");
   assert.equal(renderMlctsSyllable("ip'").text,"іпʼ");
 });
