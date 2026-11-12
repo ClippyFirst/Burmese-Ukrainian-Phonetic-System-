@@ -76,7 +76,7 @@
 | MYA-GOLD-001 | BLOCKED | No independent expert-adjudicated lexical IPA gold exists; `data/benchmark/gold.tsv` contains only its header. | At least two independent qualified Burmese phonetic annotators, adjudication, dialect/speaker metadata, audio/source locators and frozen held-out split. |
 | MYA-PHON-001 | PARTIAL | Full vowel-combination derivation, coda/checked-syllable realization, tone/register/phonation inference and contextual allophony remain incomplete. | Source-located, expert-reviewed rule matrix with minimal pairs, explicit dialect scope and fail-closed unresolved cases. |
 | MYA-IPA-001 | PARTIAL | Phonological vs phonetic IPA conventions and analysis of tone/register/phonation require specialist adjudication. | Versioned IPA convention, syllable/segment alignment, tone/phonation fields and adjudicated alternatives. |
-| MYA-ROM-001 | PARTIAL | The Ukrainian target column is now populated for all 35 onset rows and 94 vendor-derived rime rows; the MLCTS source inventory is still not fully verified against primary MLC material and no runtime syllable adapter exists. | Primary MLC source verification, full source orthographic inventory, separate source-aware runtime adapter and ambiguity handling. |
+| MYA-ROM-001 | PARTIAL | All 35 onset and 94 vendor-derived rime target rows have Ukrainian project candidates; PR #141 integrates a separate MLCTS-to-Ukrainian runtime adapter for supported syllable structures. The source rime inventory remains vendor-evidence-limited. | Verify the MLCTS inventory against primary MLC material; expand legal medial/devoicing, kinzi, asat and independent-vowel structures; retain explicit withholding for unsupported forms. |
 | MYA-G2P-001 | DONE_VERIFIED (diagnostic harness only) | Goruut has 55/100 partial-coverage outputs; myG2P is CC BY-NC-SA 4.0 and temporary test-only. | No production promotion or source-data import without independent gold and explicit rights clearance. |
 | MYA-UI-001 | TODO | Manual visual, keyboard, assistive-technology and mobile QA is not established by CI. | Recorded test matrix and deployed-site results. |
 | MYA-REL-001 | PARTIAL | Production readiness blocked by gold, phonological coverage and external asset licensing. | All release gates met; owner makes any project-license decision; no restricted data/model bundled. |
@@ -507,7 +507,7 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | MYA-ROM-UA-TARGET-001 | DONE_VERIFIED | Branch `feat/burmese-romanization-ukrainian-matrix-completion-2026-11-12`; exact-head test run [43221074232](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43221074232) SUCCESS: 187 Python tests + 66 subtests, 54 Node tests, build, generated-data freshness and built-site Playwright all passed. All 35 onset and 94 vendor-rime rows have target candidates. | Table coverage verified; project orthographic rendering only, not IPA or primary-source verification of vendor rimes. Runtime adapter and full source inventory remain open. |
-| MYA-ROM-UA-001 | TODO | No runtime MLCTS → Ukrainian syllable adapter integrated. | Separate adapter consumes MLCTS, retains source/Latin/UA trace and uncertainty, and never falls back to IPA. |
+| MYA-ROM-UA-001 | PARTIAL | PR #141 integrates a separate MLCTS → Ukrainian runtime adapter and UI; exact-head and mainline tests pass. | Expand source-verified structures and preserve unsupported/ambiguous sequences without IPA fallback. |
 
 
 ## Burmese Ukrainian target matrix — post-merge evidence — 2026-11-12
@@ -539,3 +539,15 @@ Latest final exact-head verification after adding explicit withholding for Myanm
 - Mainline tests [43227806284](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43227806284) and Pages deployment [43227806266](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43227806266) both SUCCESS.
 - Mainline test evidence: 187 Python tests + 66 subtests, 19 Node tests, 55 Playwright browser tests, production build and generated-data freshness all passed.
 - Acceptance remains PARTIAL: current Mya2Rom-derived rime inventory is EVIDENCE_LIMITED, and unrepresented legal syllable structures remain visibly unsupported rather than guessed.
+
+
+## MLCTS runtime mainline reconciliation — 2026-11-12
+
+| ID | Status | Current evidence | Acceptance boundary |
+|---|---|---|---|
+| MYA-ROM-UA-TARGET-001 | DONE_VERIFIED | 35 onset + 94 vendor-derived rime target rows populated; PR #138 merged; current-main tests [43228612973](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43228612973) and Pages [43228612998](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43228612998) SUCCESS. | Completeness of inventoried table only; vendor-rime source provenance remains EVIDENCE_LIMITED. |
+| MYA-ROM-UA-001 | PARTIAL | PR #141 merged as `3fa33864b774c716da5bf6c9778a963148fb9974`; separate runtime adapter/UI executes supported onset, medial and rime mappings; unknown material remains visibly unsupported. | Full source-verified MLCTS inventory and all legal Burmese syllable structures. |
+| MYA-ROM-MATRIX-001 | PARTIAL | Runtime supports the existing 94 rime rows with supported onset and y/r/w medial sequences. | Primary MLC source verification; legal medial/devoicing/kinzi/asat/independent-vowel combinations; numerals and punctuation source handling. |
+| MYA-ROM-LIC-001 | PARTIAL | Mya2Rom attribution and CC-BY-SA-4.0 notice retained. | Component-by-component audit of vendored code, table data and upstream-derived sources/rights. |
+
+No MLCTS output was promoted to IPA or pronunciation evidence. Independent expert-adjudicated IPA gold remains 0 and empirical accuracy remains null.
