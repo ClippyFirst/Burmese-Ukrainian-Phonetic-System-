@@ -1245,3 +1245,18 @@ UCSY-SC1 is a 42 h 39 min, 307-speaker ASR corpus with news and recorded convers
 ### Romanization/G2P boundary — 2026-11-13
 
 The browser romanization adapter explicitly requests Mya2Rom MLCTS, which the upstream README defines as orthographic. MLCTS2 is a more phonetic romanization but not standardized IPA. The Latin→Ukrainian crosswalk remains a separate orthographic mode and must not be used as a G2P/IPA oracle.
+
+
+## Final exact-head verification — 2026-11-13
+
+- Starting default-branch commit: dc90463bdd734867308f03cb627eb8941efc19d6.
+- Latest code/data-bearing research head: fef242e4d4cc978823e4133f65abe48224355c13.
+- Dedicated branch: research/burmese-medials-g2p-evidence-2026-11-13; draft PR #147 is open and not merged.
+- Required exact-head CI 43328423650 SUCCESS: 201 Python tests + 66 subtests; independent IPA gold schema validation; npm build; generated web-data freshness; 20 Node tests; 58 Chromium/Playwright tests. The new Node regression asserts that the romanization adapter explicitly requests MLCTS, not MLCTS2 or IPA.
+- Optional raw comparator/CRF workflow 43328423664 SUCCESS. These artifacts remain non-gold; no accuracy is reported.
+- Intermediate CI failures were fixed and rerun: 43324492175 exposed Python coda segmentation and matrix CSV issues; 43326933757 exposed a temporary practical_rules.csv path-mapping overwrite during documentation work. The table was restored from main, the conditional /ɴ/ note reapplied, and final exact-head CI passed.
+- Structural coda parsing is verified: မြန် is one syllable; မြန်မာ is two; ကတ် retains final consonant + ASAT. Browser/Python tests pass.
+- No runtime medial IPA rule was enabled. Independent expert-adjudicated IPA gold for the medial/coda cells remains 0; empirical accuracy remains null.
+- PR #129 remains open/draft and untouched as a code branch (53 commits ahead / 17 behind current main, non-mergeable); its source-backed research findings were reconciled here, but its broad hybrid-engine code was not ported.
+- UCSY-SC1 is a rights-gated audio lead: publisher page lists CC BY-SA 4.0, PDF footer says “All rights reserved”, and the corpus audio has no separately verified license.
+- Release assessment: PARTIAL PROTOTYPE, not linguistically release-ready. The research dossier is ready for specialist review and data-rights resolution.
