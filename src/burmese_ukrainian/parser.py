@@ -141,6 +141,24 @@ def _parse_cluster(cluster: str) -> Syllable:
             "reason": "no_dependent_vowel_sign",
         }
 
+    # A final consonant is written as a base consonant followed by ASAT.
+    # When it follows the syllable onset/medials/vowels, keep it inside this
+    # orthographic syllable as a coda rather than leaving it unparsed.
+    if (
+        i + 1 < len(cluster)
+        and cluster[i] in BASE_CONSONANTS
+        and cluster[i + 1] == "\\u103a"
+    ):
+        final = cluster[i]
+        sy.coda = {
+            "character": final,
+            "codepoint": f"U+{ord(final):04X}",
+            "marker": "asat",
+            "asat_codepoint": "U+103A",
+            "orthographic_function": "final_consonant",
+        }
+        i += 2
+
     while i < len(cluster) and cluster[i] in SPECIAL:
         role = SPECIAL[cluster[i]]
         # Virama is only licensed in the immediately parsed conjunct sequence

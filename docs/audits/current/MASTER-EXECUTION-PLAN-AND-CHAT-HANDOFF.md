@@ -636,3 +636,12 @@ Latest final exact-head verification after adding explicit withholding for Myanm
 - Tin Htay Hlaing (2014) provides the exact seven two-/three-medial codepoint combinations and an orthographic FST benchmark (11,732 words / 32,283 syllables; initial 99.93% word accuracy). It is structural, not G2P; the thesis has a codepoint/label typo in its final RA+WA+HA row, now explicitly documented.
 - Tone evidence remains disputed: Green/LREC use four categories; Duan & Zhu (2025) propose eight split across modal and lower/breathy registers. Full Duan & Zhu empirical tables were not extracted; no tone model was changed.
 - Runtime remains unchanged. Python/browser parity, profile-matched expert audio adjudication, tone/rime convention and independent gold remain acceptance blockers. The lexical and WFST candidates stay WITHHELD.
+
+
+## Python/browser asat-coda segmentation parity — 2026-11-13
+
+- First exact-head CI run 43324492175 exposed five failures: two new IPA tests correctly uncovered Python splitting မြန် into မြ + န် (and မြန်မာ into three records); three failures were evidence-matrix CSV alignment/assertion defects.
+- Root cause: browser segmenter already treats a base consonant followed by U+103A as a final/coda; Python segmenter did not. Python parser also lacked explicit C+ASAT coda parsing.
+- Fixed Python segmentation and coda parsing to match browser behavior; added parser and Playwright regressions for မြန်, မြန်မာ and ကတ်. Corrected the CSV row alignment and combination-row assertion.
+- IPA remains withheld. This is a structural parity fix, not a phonological mapping.
+- CI rerun pending on updated PR #147 head.

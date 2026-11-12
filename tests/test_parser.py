@@ -114,3 +114,35 @@ def test_unmodelled_myanmar_extension_letter_never_receives_synthetic_ipa():
     assert result["syllables"][0]["ipa"] is None
     assert result["syllables"][0]["phonetic_status"] == "analysis_dependent"
     assert result["syllables"][0]["raw"] == chr(0xAA60)
+
+
+def test_asat_marked_final_consonant_is_attached_to_preceding_syllable():
+    from burmese_ukrainian import parse_burmese
+
+    parsed = parse_burmese("မြန်")
+    assert parsed["graphemes"] == ["မြန်"]
+    assert len(parsed["syllables"]) == 1
+    syllable = parsed["syllables"][0]
+    assert syllable["medials"][0]["id"] == "medial_ra"
+    assert syllable["coda"]["character"] == "န"
+    assert syllable["coda"]["codepoint"] == "U+1014"
+    assert syllable["coda"]["asat_codepoint"] == "U+103A"
+    assert syllable["analysis"]["status"] == "established"
+
+
+def test_asat_marked_coda_does_not_become_a_new_syllable_in_compound():
+    from burmese_ukrainian import parse_burmese
+
+    parsed = parse_burmese("မြန်မာ")
+    assert parsed["graphemes"] == ["မြန်", "မာ"]
+    assert len(parsed["syllables"]) == 2
+    assert parsed["syllables"][0]["coda"]["character"] == "န"
+    assert parsed["syllables"][1]["onset"]["character"] == "မ"
+
+
+def test_regular_checked_syllable_final_is_structurally_attached():
+    from burmese_ukrainian import parse_burmese
+
+    parsed = parse_burmese("ကတ်")
+    assert parsed["graphemes"] == ["ကတ်"]
+    assert parsed["syllables"][0]["coda"]["character"] == "တ"

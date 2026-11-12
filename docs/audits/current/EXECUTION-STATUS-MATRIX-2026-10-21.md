@@ -569,3 +569,11 @@ The previous handoff statement that no word-level pronunciation lead was found f
 | Open PR #129 | LEFT OPEN / NOT MERGED | Draft hybrid-engine research PR is 53 commits ahead and 17 behind current main, divergent and non-mergeable. Its source-backed Google FST and raw-output evidence were reused in this research report; the broad hybrid implementation was not ported or merged. |
 
 Detailed evidence: docs/research/BURMESE-MEDIALS-AND-G2P-EVIDENCE-REVIEW-2026-11-13.md. New rows: data/burmese/medial_evidence_matrix.csv. Traceability tests: tests/test_medial_evidence_matrix.py.
+
+
+### Cross-runtime coda segmentation correction — 2026-11-13
+
+- Python previously split an asat-marked final consonant as a new syllable onset. For မြန်, it produced two structural records (မြ + န်), while the browser correctly kept မြန် as one syllable.
+- Python segmentation now treats a base consonant followed by U+103A as a coda within the preceding syllable, and the parser records the final consonant and ASAT codepoint explicitly.
+- Regression coverage: မြန် is one orthographic syllable; မြန်မာ is two; ကတ် retains final တ+ASAT. Browser tests lock the same visible syllable boundaries.
+- Phonetic status is unchanged: medial/coda syllables remain withheld from IPA until source-backed phonological rules and parity fixtures are accepted.

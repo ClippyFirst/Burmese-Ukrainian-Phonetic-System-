@@ -184,12 +184,12 @@ The paper describes an open-source Thrax WFST pronunciation grammar, burmese.grm
 Inspected: src/burmese_ukrainian/ipa.py, parser.py, unicode.py, model.py; src/web/app.js and romanization-ukrainian.js; data/burmese/ipa_onsets.csv, ipa_vowels.csv, phonological_rules.csv, sources.csv and source_claims.csv.
 
 Findings:
-1. Python parser preserves four medial signs as structural metadata, but Python _ipa returns None when a coda exists and has no active medial derivation.
+1. Python parser preserves four medial signs as structural metadata. CI exposed a cross-runtime segmentation gap: browser segmentation already treats a base consonant + ASAT as the preceding syllable's coda, while Python previously split it as a new onset and left the prior medial syllable incomplete. The Python parser now applies the same coda boundary and records the final consonant plus ASAT structurally. Python _ipa still returns None for medial/coda structures; the pronunciation remains withheld.
 2. Browser parseCluster stores medials, codas and vowels. Its unsupportedStructure guard withholds all medials, kinzi and conjuncts. A contextual deriveIpa function exists behind that guard and contains candidate behavior; it is dormant.
 3. Browser candidate logic is not a shared Python/browser rule implementation. Do not enable it by changing one guard.
 4. The current phonological rule registry has no dedicated medial evidence table. New medial_evidence_matrix.csv is an evidence registry only; runtime generation does not consume it.
 5. MLCTS romanization is separate. MLCTS mran can be segmented as m + r + an by the current crosswalk and rendered as a proposed orthographic Ukrainian form. That is not IPA and must not be mistaken for pronunciation /mjàɴ/.
-6. A full orthographic parse does not mean phonology is established; a lexical IPA citation does not mean a rule is validated across the language.
+6. A full orthographic parse does not mean phonology is established; a lexical IPA citation does not mean a rule is validated across the language. The exact word မြန် is now one parsed orthographic syllable in both browser and Python; its IPA remains withheld.
 
 ## 7. Recommended implementation architecture
 
