@@ -75,3 +75,42 @@ def test_python_parser_preserves_multiline_mixed_script_adversarial_input():
     assert by_raw["ကာ"]["analysis"]["status"] == "established"
     assert by_raw["𑛐"]["analysis"]["status"] == "unsupported_or_malformed"
     assert by_raw["ဂီ"]["analysis"]["status"] == "established"
+
+
+def test_every_assigned_myanmar_letter_and_mark_is_losslessly_accounted_for():
+    import unicodedata
+
+    ranges = (
+        (0x1000, 0x109F),
+        (0xA9E0, 0xA9FF),
+        (0xAA60, 0xAA7F),
+        (0x116D0, 0x116FF),
+    )
+    tested = 0
+    for start, end in ranges:
+        for codepoint in range(start, end + 1):
+            char = chr(codepoint)
+            if unicodedata.category(char)[0] not in {"L", "M"}:
+                continue
+            result = parse_burmese(char)
+            assert "".join(item["raw"] for item in result["syllables"]) == char, (
+                f"source lost for U+{codepoint:04X}"
+            )
+            assert len(result["syllables"]) == 1
+            syllable = result["syllables"][0]
+            assert syllable["codepoints"] == [f"U+{codepoint:04X}"]
+            if syllable["analysis"]["status"] != "established":
+                assert syllable["onset"] == {}
+            tested += 1
+    assert tested > 0
+
+
+def test_unmodelled_myanmar_extension_letter_never_receives_synthetic_ipa():
+    from burmese_ukrainian.ipa import to_ipa
+
+    # Khamti U+AA60 is in a Myanmar block but outside the selected Burmese
+    # phonological inventory; block membership must not create a sound value.
+    result = to_ipa("\\uAA60")
+    assert result["syllables"][0]["ipa"] is None
+    assert result["syllables"][0]["phonetic_status"] == "analysis_dependent"
+    assert result["syllables"][0]["raw"] == "\\uAA60"
