@@ -528,3 +528,6 @@ The export and benchmark now preserve and validate the complete frozen split ide
 
 All target renderings remain `PROPOSED`; vendor-derived source rime provenance remains `EVIDENCE_LIMITED`. This is orthographic MLCTS rendering, not IPA or pronunciation transcription.
 
+
+
+Latest final exact-head verification after adding explicit withholding for Myanmar code points outside the romanization support inventory: [tests 43227199213](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43227199213) SUCCESS on `4a2cb24ae9af2bc5e4d9341de65d0a55e07b6e09`: 187 Python tests + 66 subtests, 19 Node tests, 55 Playwright browser tests, production build and generated-data freshness. Unsupported Myanmar code points are now explicitly bracketed in the Ukrainian romanization output.
