@@ -32,3 +32,13 @@ def test_legacy_factory_rejects_external_backend_injection():
 
     with pytest.raises(TypeError):
         create_hybrid_engine({"external-model": lambda _: "ka"})
+
+
+def test_provisional_onset_registry_includes_the_registered_nya_letter():
+    # data/burmese/ipa_onsets.csv registers U+1009 as analysis-dependent /ɲ/.
+    # It is a provisional onset hint only; an isolated bare consonant still
+    # does not become canonical IPA or a complete word transcription.
+    result = RuleBasedBurmeseEngine().analyze("ဉ")
+    assert result["ipa"] is None
+    assert result["status"] == "PARTIAL"
+    assert result["provisional_ipa"] == "ɲ"
