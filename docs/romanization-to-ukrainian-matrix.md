@@ -105,7 +105,7 @@ This is a project orthographic crosswalk, not an adjudicated Ukrainian name stan
 |---|---|---|
 | MYA-ROM-STD-001 | DONE_VERIFIED (source review) | MLCTS selected as orthographic profile; MLCTS2 retained only as comparator |
 | MYA-ROM-PROFILE-001 | DONE_VERIFIED | Browser calls MLCTS; result card labels MLCTS; test-first exact sample proves MLCTS mrui. vs MLCTS2 mjou.; exact-head workflow 41229019002 passed |
-| MYA-ROM-UA-TARGET-001 | PARTIAL (CI pending) | All 35 onset rows and 94 inventoried rime rows have non-empty Ukrainian target candidates; deterministic mapping and source-evidence status are asserted. Promote after exact-head CI. The rime source inventory remains vendor-derived. |
+| MYA-ROM-UA-TARGET-001 | DONE_VERIFIED | All 35 onset rows and 94 inventoried rime rows have non-empty Ukrainian target candidates; deterministic mapping and source-evidence status are asserted. Promote after exact-head CI. The rime source inventory remains vendor-derived. |
 | MYA-ROM-UA-001 | TODO | Independent MLCTS-syllable → Ukrainian runtime adapter; execute the crosswalk without IPA fallback |
 | MYA-ROM-MATRIX-ONSET-001 | DONE_VERIFIED | 35 MLCTS onset rows in data/burmese/romanization_ukrainian.csv; exact source inventory and provenance/status checks passed in workflow 41229245383 |
 | MYA-ROM-MATRIX-001 | PARTIAL | Onset and vendor rime target tables are populated; complete source-verified medial, kinzi, asat, independent-vowel, numeral, punctuation and legal-syllable coverage remains open |\n| MYA-ROM-OUTPUT-INTEGRITY-001 | DONE_VERIFIED | Basic Myanmar digits/punctuation and mixed text pass through; unsupported code points and orphan signs remain visible; exact-head CI 41243831142/41243825927 passed |
