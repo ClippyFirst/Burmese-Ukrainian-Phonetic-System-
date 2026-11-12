@@ -158,3 +158,6 @@ The romanization panel now invokes `src/web/romanization-ukrainian.js` for each 
 
 
 Exact PR-head [tests 43226578745](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43226578745) and push tests [43226566617](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43226566617) passed on code head `890ae6edf98f1480efcdf2d693690bdd61369a16`: 187 Python tests + 66 subtests, 18 Node tests, 55 Playwright browser tests, production build and generated-data freshness.
+
+
+Latest final exact-head verification after adding explicit withholding for Myanmar code points outside the romanization support inventory: [tests 43227199213](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43227199213) SUCCESS on `4a2cb24ae9af2bc5e4d9341de65d0a55e07b6e09`: 187 Python tests + 66 subtests, 19 Node tests, 55 Playwright browser tests, production build and generated-data freshness. Unsupported Myanmar code points are now explicitly bracketed in the Ukrainian romanization output.
