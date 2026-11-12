@@ -129,7 +129,7 @@ export function renderMlctsSyllable(input) {
   return { text: null, status: "UNSUPPORTED", evidence: "EVIDENCE_LIMITED", mlcts };
 }
 
-export function renderMlctsText(text, romanizer, segmenter) {
+export function renderMlctsText(text, romanizer, segmenter, isSupported = () => true) {
   let output = "", unsupported = 0, mapped = 0;
   const normalized = String(text ?? "").normalize("NFC");
   let buffer = "", isMyanmar = null;
@@ -139,6 +139,7 @@ export function renderMlctsText(text, romanizer, segmenter) {
     else {
       for (const unit of segmenter(buffer)) {
         if (unit.nonMyanmar) { output += unit.raw; continue; }
+        if (![...unit.raw].every(isSupported)) { output += "⟦" + unit.raw + "⟧"; unsupported += 1; continue; }
         const mlcts = romanizer(unit.raw, "mlcts", false, true);
         const result = renderMlctsSyllable(mlcts);
         if (result.text === null) { output += "⟦" + (mlcts || unit.raw) + "⟧"; unsupported += 1; }
