@@ -515,3 +515,19 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | MYA-ROM-UA-TARGET-001 | DONE_VERIFIED | Merged PR [#138](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/138), merge `1d7045d9695d571017633a2e294b718a13ee5bce`; mainline tests [43221871111](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43221871111) and Pages [43221870932](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43221870932) SUCCESS. | 35 onset + 94 vendor-rime target rows are covered. Vendor-source evidence remains EVIDENCE_LIMITED; runtime adapter and complete source inventory remain open. |
+
+
+## Burmese MLCTS Ukrainian runtime adapter — 2026-11-12
+
+| ID | Status | Evidence | Remaining acceptance |
+|---|---|---|---|
+| MYA-ROM-UA-TARGET-001 | DONE_VERIFIED | All 35 onset + 94 vendor-rime target rows populated; merged PR #138; matrix CI passed. | None for existing inventory rows. |
+| MYA-ROM-UA-001 | PARTIAL | PR #141 adds `src/web/romanization-ukrainian.js`, syllable-level longest-match onset/medial/rime mapping, separate UI output, and tests for all 94 rime rows and all onset rows. Exact-head tests [43226578745](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43226578745) and push [43226566617](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43226566617) SUCCESS: 187 Python tests + 66 subtests, 18 Node tests, 55 Playwright tests, build and generated-data freshness. | Expand source inventory and support/adjudicate remaining medial/devoicing/kinzi/asat/independent-vowel combinations; preserve unknown sequences as explicit unsupported rather than guessing. |
+| MYA-ROM-MATRIX-001 | PARTIAL | Runtime adapter covers current 94 vendor-derived rime keys plus supported onset and `y/r/w` medial sequences. | Verify complete orthographic inventory against original MLC source; include all legal Burmese sequences, numerals and punctuation. |
+| MYA-ROM-LIC-001 | PARTIAL | Mya2Rom 0.4.4 attribution and CC-BY-SA-4.0 notice retained. | Audit each vendored table/data component and upstream licensing/provenance. |
+
+All target renderings remain `PROPOSED`; vendor-derived source rime provenance remains `EVIDENCE_LIMITED`. This is orthographic MLCTS rendering, not IPA or pronunciation transcription.
+
+
+
+Latest final exact-head verification after adding explicit withholding for Myanmar code points outside the romanization support inventory: [tests 43227199213](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43227199213) SUCCESS on `4a2cb24ae9af2bc5e4d9341de65d0a55e07b6e09`: 187 Python tests + 66 subtests, 19 Node tests, 55 Playwright browser tests, production build and generated-data freshness. Unsupported Myanmar code points are now explicitly bracketed in the Ukrainian romanization output.

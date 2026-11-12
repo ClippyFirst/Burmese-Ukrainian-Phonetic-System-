@@ -1,6 +1,6 @@
 # Burmese romanization → Ukrainian orthographic matrix
 
-**Status:** PARTIAL — the Ukrainian target crosswalk is now populated for all 35 MLCTS onset rows and all 94 vendor-derived rime rows. The MLCTS romanization source inventory remains vendor-evidence-limited, and no runtime syllable adapter is integrated yet.
+**Status:** PARTIAL — the Ukrainian target crosswalk is populated and a runtime adapter now handles supported onset/medial/rime combinations. The MLCTS romanization source inventory remains vendor-evidence-limited; unsupported orthographic structures are withheld.
 **Primary variety:** contemporary Standard Burmese; Yangon-oriented phonetics only where the evidence supports it.
 
 ## Standard selection
@@ -141,3 +141,23 @@ The Ukrainian candidate is a **letter-level orthographic rendering of the MLCTS 
 - Every candidate row has `ukrainian_status=PROPOSED`. The additional `romanization_evidence_status=EVIDENCE_LIMITED` on vendor-derived tables prevents a proposed Ukrainian rendering from being mistaken for proof that the underlying MLCTS row is an official MLC form.
 
 This crosswalk is intentionally a project convention and may be non-reversible. It makes all inventoried Latin strings readable in Ukrainian while preserving the source spelling and its notation markers; it does not establish phonological equivalence or expert approval.
+
+
+## Runtime MLCTS → Ukrainian adapter — 2026-11-12
+
+The romanization panel now invokes `src/web/romanization-ukrainian.js` for each source cluster after the existing Mya2Rom `mlcts` profile has rendered it. The adapter parses a longest-match onset, supported medial sequence (`y/r/w`) and exact rime key from the existing CSV crosswalks. It preserves the `:` length marker, `.` checked-syllable marker, apostrophe notation, non-Myanmar runs and punctuation. Unsupported MLCTS forms remain visible as `⟦…⟧`; there is no IPA fallback.
+
+**Acceptance status: PARTIAL.** Exact coverage tests now exercise all 94 vendor rime rows and all onset rows combined with a supported rime. The runtime does not claim all legal Burmese syllable structures: unrepresented devoicing/medial combinations and any MLCTS output absent from the inventory remain withheld. Source-rime provenance is still `EVIDENCE_LIMITED` because the 94-row inventory is Mya2Rom-derived, not independently verified against the original MLC publication.
+
+- Runtime module: `src/web/romanization-ukrainian.js`
+- Runtime tests: `tests/web/romanization-ukrainian.test.mjs` plus the browser test in `tests/browser/converter.spec.js`.
+- Exact PR-head [tests 43226578745](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43226578745) and push tests [43226566617](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43226566617) passed on code head `890ae6edf98f1480efcdf2d693690bdd61369a16`: 187 Python tests + 66 subtests, 18 Node tests, 55 Playwright browser tests, production build and generated-data freshness.
+
+`MYA-ROM-UA-001` is PARTIAL: the runtime adapter executes the inventoried onset/rime crosswalk for supported syllables; complete MLC-primary inventory and all orthographic medial/kinzi/asat structures remain open. `MYA-ROM-MATRIX-001` remains PARTIAL.
+
+
+
+Exact PR-head [tests 43226578745](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43226578745) and push tests [43226566617](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43226566617) passed on code head `890ae6edf98f1480efcdf2d693690bdd61369a16`: 187 Python tests + 66 subtests, 18 Node tests, 55 Playwright browser tests, production build and generated-data freshness.
+
+
+Latest final exact-head verification after adding explicit withholding for Myanmar code points outside the romanization support inventory: [tests 43227199213](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43227199213) SUCCESS on `4a2cb24ae9af2bc5e4d9341de65d0a55e07b6e09`: 187 Python tests + 66 subtests, 19 Node tests, 55 Playwright browser tests, production build and generated-data freshness. Unsupported Myanmar code points are now explicitly bracketed in the Ukrainian romanization output.

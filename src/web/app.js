@@ -1,10 +1,12 @@
 import { ONSETS, SIGNS, MEDIALS, ROMANIZATION_SUPPORTED, ROMANIZATION_BASES } from "./generated/data.js";
 import { renderUkrainian } from "./ukrainian-adapter.js";
+import { renderMlctsText } from "./romanization-ukrainian.js";
 
 const source=document.querySelector("#source"), results=document.querySelector("#results"), empty=document.querySelector("#empty");
 const issues=document.querySelector("#issues"), issueText=document.querySelector("#issue-text"), count=document.querySelector("#count");
 const uk=document.querySelector("#uk"), ipa=document.querySelector("#ipa"), romanization=document.querySelector("#romanization"), syllables=document.querySelector("#syllables");
 const ukStatus=document.querySelector("#uk-status"), ipaStatus=document.querySelector("#ipa-status"), live=document.querySelector("#live");
+const uaRomanization=document.querySelector("#ua-romanization-result"), uaRomanizationStatus=document.querySelector("#ua-romanization-status");
 const modePhonetic=document.querySelector("#mode-phonetic"), modeRomanization=document.querySelector("#mode-romanization"), outputMethodNote=document.querySelector("#output-method-note");
 
 function setOutputMode(mode){
@@ -15,7 +17,7 @@ function setOutputMode(mode){
   modeRomanization.setAttribute("aria-pressed",String(mode==="romanization"));
   outputMethodNote.textContent=mode==="phonetic"
     ?"Фонетичний режим: детерміновані бірманські правила → IPA → українська практична адаптація. Без голосування зовнішніх рушіїв."
-    :"Романізаційний режим: Burmese orthography → MLCTS → окрема українська матриця. Український результат PARTIAL; фонетичний результат не використовується як fallback.";
+     :"Романізаційний режим: Burmese orthography → MLCTS → окрема українська матриця. Нерозпізнані MLCTS-послідовності залишаються видимими; фонетичний результат не використовується як fallback.";
 }
 
 const KINZI="င်္", VIRAMA="္", ASAT="်";
@@ -293,6 +295,17 @@ function render(){
   if(!text){empty.hidden=false;results.hidden=true;issues.hidden=true;return;}
   const r=convert(text);empty.hidden=true;results.hidden=false;uk.textContent=r.uk||"—";ipa.textContent=r.ipa||"—";
   romanization.textContent=typeof window.mya2rom==="function" ? romanizeTextPreservingNonMyanmar(text,window.mya2rom) : "Романізатор не завантажився; результат не сформовано.";
+  const uaRomanized=typeof window.mya2rom==="function"
+    ? renderMlctsText(text,window.mya2rom,segment,char=>ROMANIZATION_SUPPORTED_CHARS.has(char))
+    : {text:"⟦MLCTS НЕ ДОСТУПНИЙ⟧",status:"UNSUPPORTED",mapped:0,unsupported:1};
+  uaRomanization.textContent=uaRomanized.text||"—";
+  uaRomanizationStatus.textContent=uaRomanized.status==="PROPOSED"
+    ? "PROPOSED · усі розпізнані склади зіставлено за MLCTS; джерельний інвентар рим походить із Mya2Rom і має статус EVIDENCE_LIMITED."
+    : uaRomanized.status==="PARTIAL"
+      ? "PARTIAL · зіставлено "+uaRomanized.mapped+" склад(и/ів); непідтримані MLCTS-послідовності позначено ⟦…⟧ і не вгадано. Джерельний інвентар рим має статус EVIDENCE_LIMITED."
+      : uaRomanized.status==="UNSUPPORTED"
+        ? "UNSUPPORTED · для цього вводу не знайдено достатніх MLCTS відповідників; оригінальні послідовності залишено видимими."
+        : "PASSTHROUGH · аналізованих бірманських складів немає; сторонній текст збережено.";
   ukStatus.textContent="Загальний статус: "+r.status+" · IPA: "+r.ipaStatus+" · українська передача: "+r.ukStatus;
   ipaStatus.textContent=r.segments.some(x=>!x.nonMyanmar&&!x.ipa)?"Частину фонетичної структури не встановлено для цього вводу.":"Структурно розпізнані сегменти.";
   syllables.replaceChildren();
