@@ -534,3 +534,12 @@ The canonical current handoff is [docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md
 
 ## 2026-11-11 continuation pointer
 The canonical Ukrainian practical transcription implementation and current task ledger are recorded in \`docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md\` under “2026-11-11 continuation — Ukrainian practical transcription”. The execution matrix and linguistic completion register were updated in this same branch. Current draft PR: [#133](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/133).
+
+
+## Complete Myanmar grapheme-accounting sweep — 2026-11-12
+
+- PR [#134](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/134) merged as `374e1a883ffc2aea5c729377e5aabf22778cbffd`.
+- Added an exhaustive runtime sweep over every assigned Unicode letter and combining mark (general categories L/M) in Myanmar U+1000–109F, Extended-A U+A9E0–A9FF, Extended-B U+AA60–AA7F, and Extended-C U+116D0–116FF. Each tested code point must survive parsing with its exact U+ identifier.
+- Added a negative control for Khamti U+AA60: it is recognized as Myanmar-block text but remains outside the selected Burmese/Yangon phonological inventory and receives no synthetic IPA.
+- Exact PR-head verification: tests [43184645239](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43184645239) SUCCESS on branch head `7bf3ea3ad3e9ed471a6d077b7c5574d264688eaf`.
+- **Status:** structural/input accounting for the tested Unicode L/M set is DONE_VERIFIED. It is not 100% Burmese phonological coverage, 100% IPA coverage, or pronunciation accuracy. The shared Myanmar script also encodes languages outside Burmese; those must remain outside the Yangon profile unless separately supported. Medial × vowel × coda × tone/register evidence and independent adjudicated gold remain PARTIAL/BLOCKED. Post-merge main tests/deployment were still running at this documentation checkpoint; no post-merge result is claimed.
