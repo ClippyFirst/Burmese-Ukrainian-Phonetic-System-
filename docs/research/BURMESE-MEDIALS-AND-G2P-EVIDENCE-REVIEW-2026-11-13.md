@@ -206,16 +206,16 @@ Adversarial slices: each medial separately; all MLC multi-medial combinations; Y
 - [WIKT_EN_COMPOUND] English Wiktionary entry ပြည်ထောင်စုမြန်မာနိုင်ငံတော်, compound IPA contains /mjàɴmà/.
 - [WIKT_MY_MRAN] Myanmar Wiktionary entry မြန်, MLCTS /mjan/ and cited 2003 Myanmar spelling dictionary.
 - [WIKT_MY_MRANMA] Myanmar Wiktionary entry မြန်မာ့, variants /mjàɴma̰/ and /mjəma̰/.
-- [THU2016] Ye Kyaw Thu et al., “Comparison of Grapheme-to-Phoneme Conversion Methods on a Myanmar Pronunciation Dictionary,” WSSANLP 2016, 11–22.
-- [MYG2P2021] Honey Htun et al., “Grapheme-to-IPA Phoneme Conversion for Burmese (myG2P Version 2.0),” JIIST 5 (April 2021), 7–17; CC BY-NC-SA 4.0.
-- [OO2020] Yin May Oo et al., “Burmese Speech Corpus, Finite-State Text Normalization and Pronunciation Grammars with an Application to Text-to-Speech,” LREC 2020, 6328–6339.
-- [SLR80] OpenSLR resource SLR80, Burmese crowdsourced speech data, CC BY-SA 4.0.
+- [W16-3702] Ye Kyaw Thu et al., “Comparison of Grapheme-to-Phoneme Conversion Methods on a Myanmar Pronunciation Dictionary,” WSSANLP 2016, 11–22.
+- [MYG2P2026] Honey Htun et al., “Grapheme-to-IPA Phoneme Conversion for Burmese (myG2P Version 2.0),” JIIST 5 (April 2021), 7–17; CC BY-NC-SA 4.0.
+- [LREC2020_BURMESE] Yin May Oo et al., “Burmese Speech Corpus, Finite-State Text Normalization and Pronunciation Grammars with an Application to Text-to-Speech,” LREC 2020, 6328–6339.
+- [OPENSLR80] OpenSLR resource SLR80, Burmese crowdsourced speech data, CC BY-SA 4.0.
 - [HLAING2019] Aye Mya Hlaing & Win Pa Pa, “Sequence-to-Sequence Models for Grapheme to Phoneme Conversion on Large Myanmar Pronunciation Dictionary,” O-COCOSDA 2019, DOI 10.1109/O-COCOSDA46868.2019.9041225.
 - [HLAING2018] C. Hlaing & Aye Thida, “Phoneme Concatenation Method for Myanmar Speech Synthesis System,” DOI 10.5815/ijitcs.2018.12.02.
 - [YANSON2015] R. Yanson, “Predictability of Phonological Changes in Burmese,” Archiv orientální 83(1), 95–115 (2015), DOI 10.47979/aror.j.83.1.95-115.
 - [NISHI1998] Y. Nishi, “The Development of Voicing Rules in Standard Burmese” (1998).
-- [MOO2021] K. Mooney & C. Repetti-Ludlow, “Sonority and syllable structure: The case of Burmese tone,” DOI 10.3765/PLSA.V6I1.4900.
-- [REP2023] C. Repetti-Ludlow, “Acoustic correlates of Burmese voiced and voiceless sonorants,” DOI 10.1515/phon-2022-0026.
+- [MOONEY2021] K. Mooney & C. Repetti-Ludlow, “Sonority and syllable structure: The case of Burmese tone,” DOI 10.3765/PLSA.V6I1.4900.
+- [REPETTI2023_BURMESE] C. Repetti-Ludlow, “Acoustic correlates of Burmese voiced and voiceless sonorants,” DOI 10.1515/phon-2022-0026.
 
 ## 11. Final research disposition
 
