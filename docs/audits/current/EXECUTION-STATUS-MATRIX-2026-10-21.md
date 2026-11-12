@@ -182,7 +182,7 @@ These are owner-approved Ukrainian target-policy decisions, not external linguis
 | Select orthographic Burmese romanization profile | DONE_VERIFIED (source review) | MLCTS is explicitly described by Mya2Rom upstream as an orthographic transcription system created by the Myanmar Language Commission; modified MLCTS / MLCTS2 is more phonetic. |
 | Align browser romanization mode with selected MLCTS profile | TODO | Change mya2rom(..., "mlcts2") to "mlcts", update UI label and exact-output browser regression; run full exact-head CI and Pages checks. |
 | Build MLCTS → Ukrainian syllable crosswalk | PARTIAL | Onset + 94 vendor-rime target rows are populated and tested on the task branch; complete source-verified Myanmar structures and a runtime syllable adapter remain open. Do not reuse IPA mapper. |
-| Ukrainian target matrix coverage | PARTIAL (CI pending) | 35 onset rows + 94 vendor-derived rime rows have explicit candidates; source inventory status remains EVIDENCE_LIMITED and exact-head CI is pending. |
+| Ukrainian target matrix coverage | DONE_VERIFIED | Exact-head test run [43221074232](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43221074232) passed: 187 Python tests + 66 subtests, 54 Node tests, build, generated-data freshness and built-site Playwright. 35 onset + 94 vendor-rime target rows are populated; source inventory remains EVIDENCE_LIMITED. |
 | Complete MLCTS correspondence inventory | PARTIAL | Cover consonants, medials, vowels, codas, independent vowels, kinzi, asat, numerals and punctuation with source locators and explicit unsupported states. |
 | Audit Mya2Rom provenance and redistribution | PARTIAL | Preserve CC-BY-SA-4.0 notices; verify each copied code/data component and upstream-derived table source. |
 
@@ -490,5 +490,5 @@ This engineering correction does not change the language-layer statuses above. I
 ## MLCTS → Ukrainian target matrix — 2026-11-12
 
 - Branch `feat/burmese-romanization-ukrainian-matrix-completion-2026-11-12` adds explicit Ukrainian target candidates to all 35 onset rows and all 94 vendor-derived rime rows.
-- `MYA-ROM-UA-TARGET-001` is PARTIAL pending exact-head CI; the target mapping is a project orthographic convention. `MYA-ROM-UA-001` remains TODO because no runtime syllable adapter consumes the MLCTS string yet.
+- `MYA-ROM-UA-TARGET-001` is DONE_VERIFIED on exact-head test run [43221074232](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43221074232); the target mapping is a project orthographic convention. `MYA-ROM-UA-001` remains TODO because no runtime syllable adapter consumes the MLCTS string yet.
 - `MYA-ROM-MATRIX-001` remains PARTIAL: the 94-rime source inventory is Mya2Rom-derived and not individually verified against the original MLC publication; medials, kinzi, asat, independent vowels, numerals, punctuation and legal syllable coverage are still incomplete.
