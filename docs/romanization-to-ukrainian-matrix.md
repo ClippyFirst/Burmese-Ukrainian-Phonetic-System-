@@ -151,7 +151,10 @@ The romanization panel now invokes `src/web/romanization-ukrainian.js` for each 
 
 - Runtime module: `src/web/romanization-ukrainian.js`
 - Runtime tests: `tests/web/romanization-ukrainian.test.mjs` plus the browser test in `tests/browser/converter.spec.js`.
-- Latest exact-head test evidence will be recorded after the current workflow completes.
+- Exact PR-head [tests 43226578745](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43226578745) and push tests [43226566617](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43226566617) passed on code head `890ae6edf98f1480efcdf2d693690bdd61369a16`: 187 Python tests + 66 subtests, 18 Node tests, 55 Playwright browser tests, production build and generated-data freshness.
 
 `MYA-ROM-UA-001` is PARTIAL: the runtime adapter executes the inventoried onset/rime crosswalk for supported syllables; complete MLC-primary inventory and all orthographic medial/kinzi/asat structures remain open. `MYA-ROM-MATRIX-001` remains PARTIAL.
 
+
+
+Exact PR-head [tests 43226578745](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43226578745) and push tests [43226566617](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43226566617) passed on code head `890ae6edf98f1480efcdf2d693690bdd61369a16`: 187 Python tests + 66 subtests, 18 Node tests, 55 Playwright browser tests, production build and generated-data freshness.
