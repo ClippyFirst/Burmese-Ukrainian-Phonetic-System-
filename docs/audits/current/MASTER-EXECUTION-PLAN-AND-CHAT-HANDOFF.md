@@ -582,5 +582,8 @@ The canonical Ukrainian practical transcription implementation and current task 
 - `:` is retained as `ː`, `.` as `·`, and apostrophe as `ʼ`. Non-Myanmar text, spaces, numerals and punctuation are preserved. Unsupported MLCTS strings are bracketed instead of guessed.
 - Regression coverage checks every 94 inventoried rime, all onset rows with a test rime, medial handling, notation markers, unsupported forms and mixed text; browser coverage checks the visible mode and output.
 - **Evidence boundary:** 94 rimes are vendor-derived from Mya2Rom and remain `EVIDENCE_LIMITED`; full source orthographic inventory and all medial/kinzi/asat forms are not claimed complete. `MYA-ROM-UA-001` is PARTIAL; `MYA-ROM-MATRIX-001` remains PARTIAL. No pronunciation/IPA claim is implied.
-- Latest exact-head workflow evidence will be added when CI completes.
+- Exact-head [tests 43226578745](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43226578745) and push [43226566617](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43226566617) SUCCESS on code head `890ae6edf98f1480efcdf2d693690bdd61369a16`: 187 Python tests + 66 subtests, 18 Node tests, 55 Playwright tests, build and generated-data freshness.
 
+
+
+Exact-head [tests 43226578745](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43226578745) and push [43226566617](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43226566617) SUCCESS on code head `890ae6edf98f1480efcdf2d693690bdd61369a16`: 187 Python tests + 66 subtests, 18 Node tests, 55 Playwright tests, build and generated-data freshness.
