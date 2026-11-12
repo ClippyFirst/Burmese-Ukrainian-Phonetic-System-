@@ -365,3 +365,13 @@ test("browser preserves a multiline mixed-script message around unsupported Myan
   await expect(page.locator("#uk")).toContainText("😀 العربية");
   await expect(page.locator("#uk-status")).toContainText("UNSUPPORTED");
 });
+
+test("MLCTS mode renders the separate Ukrainian syllable crosswalk",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကာ ABC");
+  await page.locator("#mode-romanization").click();
+  await expect(page.locator("#romanization")).not.toHaveText("");
+  await expect(page.locator("#ua-romanization-result")).toHaveText("каː ABC");
+  await expect(page.locator("#ua-romanization-status")).toContainText("PROPOSED");
+  await expect(page.locator("#ipa")).toBeHidden();
+});
