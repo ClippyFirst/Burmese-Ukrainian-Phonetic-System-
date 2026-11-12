@@ -1234,3 +1234,13 @@ The browser onset-only preview is now limited to isolated bare consonant tokens.
 - Optional Epitran raw-output comparator 43101914423 PASS; it is not an independent IPA accuracy gold set.
 - Browser keeps canonical IPA/Ukrainian output fail-closed and shows a separate onset-only preview only for isolated bare consonants. Contextual structures remain withheld.
 - Linguistic feature remains PARTIAL: dedicated Yangon-profile positional evidence registry and functional shared Python/browser parity fixture remain TODO. Independent adjudicated gold remains BLOCKED; audio DEFERRED.
+
+
+## MLCTS romanization mainline reconciliation — 2026-11-12
+
+- Current `main`: `718dc4b2c1424651b32bc63b0202f5d08a067bc7`.
+- Preserved merged sequence: matrix completion PR #138 (`1d7045d9695d571017633a2e294b718a13ee5bce`); matrix synchronization PR #140 (`91efc36c33fae9d78b663aa35acd91ea801a9998`); runtime adapter PR #141 (`3fa33864b774c716da5bf6c9778a963148fb9974`); post-merge evidence PR #142 (current mainline checkpoint).
+- Current-head tests [43228612973](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43228612973) and Pages [43228612998](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43228612998): SUCCESS.
+- Current ledger: target matrix DONE_VERIFIED (35 onset + 94 vendor-rime rows); MLCTS → Ukrainian runtime PARTIAL (adapter integrated for supported onset/rime/medial structures); complete source orthographic matrix PARTIAL (MLC primary source unavailable; unsupported structures withheld); component-level vendor licensing/provenance audit PARTIAL.
+- Open draft research PR #129 remains untouched. It is a separate G2P/provider diagnostic integration, not a dependency of the orthographic MLCTS adapter.
+- No local checkout was available in this connector-only session; verification cited here is hosted GitHub Actions on exact current `main`. No local pytest/npm/Playwright execution is claimed.
