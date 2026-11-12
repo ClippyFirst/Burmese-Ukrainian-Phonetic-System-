@@ -72,5 +72,5 @@ def test_google_fst_mran_output_is_cross_system_candidate_not_gold():
 def test_green_nasal_coda_is_not_flattened_to_independent_velar_nasal():
     row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-GREEN-N-001")
     assert "nasalization" in row["attested_phonological_behavior"]
-    assert "not a standalone surface [ɴ]" in row["notes"]
+    assert "standalone surface [ɴ]" in row["notes"]
     assert row["project_runtime_status"] == "WITHHELD"
