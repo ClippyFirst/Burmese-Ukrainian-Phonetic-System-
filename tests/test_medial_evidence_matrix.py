@@ -46,3 +46,31 @@ def test_lexical_mran_candidate_does_not_promote_runtime_or_general_rule():
     assert row["project_runtime_status"] == "WITHHELD"
     rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "MRAN_LEXICAL_IPA_CANDIDATE")
     assert rule["status"] == "not_established"
+
+
+def test_all_seven_mlc_medial_combinations_are_recorded_as_orthographic_only():
+    matrix = rows("medial_evidence_matrix.csv")
+    combos = {row["evidence_id"]: row for row in matrix if row["evidence_id"].startswith("MED-COMBO-")}
+    assert set(combos) == {f"MED-COMBO-{i:02d}" for i in range(1, 8)}
+    for row in combos.values():
+        assert row["evidence_level"] == "orthographic_only"
+        assert row["project_runtime_status"] == "WITHHELD"
+        assert "HLAING2014" in row["source_ids"].split(";")
+        assert "not phonological composition" in row["notes"]
+
+
+def test_google_fst_mran_output_is_cross_system_candidate_not_gold():
+    row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-GOOGLE-MRAN-001")
+    assert row["attested_phonological_behavior"] == "m j àɴ"
+    assert row["evidence_level"] == "cross_system_candidate_not_gold"
+    assert row["project_runtime_status"] == "WITHHELD"
+    assert "43084508359" in row["source_locator"]
+    rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "GOOGLE_FST_MRAN_RAW_CANDIDATE")
+    assert rule["status"] == "not_established"
+
+
+def test_green_nasal_coda_is_not_flattened_to_independent_velar_nasal():
+    row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-GREEN-N-001")
+    assert "nasalization" in row["attested_phonological_behavior"]
+    assert "not a standalone surface [ɴ]" in row["notes"]
+    assert row["project_runtime_status"] == "WITHHELD"

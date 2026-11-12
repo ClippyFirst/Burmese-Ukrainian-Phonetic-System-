@@ -39,6 +39,24 @@ The standard describes these as modified forms of ya, ra, wa and ha, and says th
 
 The 2004 national contribution to ISO/IEC 10646 (WG2 N2827) states that the 1986 Myanmar Language Commission orthography listed eleven medial forms: four basic forms, five two-medial combinations and two three-medial combinations. It says the consonant and medial are not pronounced separately once combined and the inherent vowel of the initial consonant is elided. This is useful for orthographic inventory and historical MLC attribution. It is an encoding proposal, not a modern Yangon acoustic study; the proposal's font-dependent glyphs must not be copied as Unicode data without normalization.
 
+
+## 2.1 Orthographic syllabification research: Hlaing (2014)
+
+Tin Htay Hlaing's 2014 doctoral dissertation explicitly separates phonetic and orthographic syllable structures. In its phonetic view it gives C[M]V[CK]D (or V[CK]D), where M is a medial consonant and D tone; in its orthographic view it represents a syllable as consonant, medial signs, dependent vowels, final/asat and tone-mark groups. This supports the project's pipeline boundary: a structurally valid orthographic syllable is not itself a phonetic transcription.
+
+The dissertation lists four basic medial signs and seven combined medial forms (eleven normalized forms total). The seven added codepoint sequences are:
+- U+103B + U+103D (YA + WA);
+- U+103C + U+103D (RA + WA);
+- U+103B + U+103E (YA + HA);
+- U+103C + U+103E (RA + HA);
+- U+103D + U+103E (WA + HA);
+- U+103B + U+103D + U+103E (YA + WA + HA);
+- U+103C + U+103D + U+103E (RA + WA + HA).
+
+**Source-quality note:** in the final row of the thesis's Table 5 / Table 24, the codepoint sequence is U+103C + U+103D + U+103E, but the descriptive text repeats “YA + WA + HA.” The codepoints unambiguously indicate RA + WA + HA; the discrepancy is recorded rather than silently copied. The 2004 WG2 N2827 proposal independently supports the total of eleven MLC forms.
+
+The dissertation's orthographic FST experiment covers 11,732 words and 32,283 syllables: 11,092 standard words and 640 irregular words. Its initial result is 99.93% word-level syllabification, with eight errors among stacked-consonant words (245/253 correct); the author says a later experiment improved all tested words. This is a structural segmentation result, not G2P or IPA accuracy. It is useful as a parser/normalization benchmark lead, but the thesis does not grant a data-reuse license.
+
 ## 3. Medial-by-medial evidence
 
 ### 3.1 U+103B ျ and U+103C ြ
@@ -102,6 +120,28 @@ For မြန်, the browser parser recognizes base မ, medial RA ြ, and nas
 
 Do not simply remove the browser guard: Python/browser parity, rime/coda analysis, tone policy and independent annotation are acceptance requirements.
 
+
+### 4.4 Green's syllable/rime model and a second G2P attestation
+
+Green's October 2002 analysis gives Burmese syllable shape C(G)V((V)C): an onset consonant optionally followed by a glide; a rhyme with a monophthong, monophthong plus coda, or diphthong plus coda. It explicitly gives /mjè:/ ‘earth’ and /mjɛʔ/ ‘eye’ as CGV and CGVC examples. This is independent descriptive evidence that /mj/ is a possible onset cluster in the analysis, but it does not by itself identify which Unicode medial sign created the glide in a particular word.
+
+Green's coda analysis is important for interpreting the final part of /mjàɴ/: only placeless /ʔ/ and placeless nasal /N/ are allowed as codas. /N/ is described as realized through nasalization of the preceding vowel, with approximate coronal articulation after monophthongs and approximate velar articulation after diphthongs. It should therefore not automatically be treated as an independent phonetic [ɴ] segment. The transcription convention and the distinction between phonemic /N/ and its surface realization must be preserved.
+
+Green describes four tones in major syllables, but only three tones in nasal rhymes; checked tone is excluded from nasal rhymes. Tone realization is multi-cue and context-sensitive: pitch is not the only cue, and vowel quality, final consonantism, duration and phonation can contribute. This makes a flat one-character tone rule unsafe.
+
+The pinned Google Language Resources Burmese Thrax/OpenFst grammar provides a second computational candidate:
+- orthographic preprocessing maps U+103B to -y, U+103C to -r, U+103D to -w and U+103E to -h;
+- preprocessing reorders -h before the other medials;
+- the grammar's g2p_medial maps -y and -r to /j/ and -w to /w/; weights make some medial analyses less preferred where -y can instead belong to a special onset or -w can belong to the nucleus;
+- g2p_initial contains onset-specific exceptions, including velar-palatalized outcomes and -h-conditioned voiceless/merged onsets;
+- g2p_nucleus handles rime-specific -w vowel behavior and coda/tone combinations.
+
+The pinned source is Google Language Resources commit a90601024f07ab7e96c911243324e0adeb16da96. Both the repository LICENSE and the grammar header declare Apache-2.0. This corrects the earlier uncertainty: the paper itself does not specify a license, but the actual pinned grammar/code does. The upstream WORKSPACE is not fully hermetic; the existing research PR pins compatible build dependencies and reports a successful build/smoke run.
+
+On the six-row structural-only probe, the exact PR-head Google WFST run 43084508359 returned six raw outputs. The fifth probe is မြန် (struct-005), and its output is “m j àɴ”. The artifact is burmese-google-fst-raw-output, SHA-256 c43dc9afc74c49189330c1e704e12b352c9e9d02b58072d5a37a8d7b1a03ebba. The run had zero independent gold labels and reports raw-output smoke only. This output aligns with Wiktionary /mjàɴ/ and Green's /mj/ onset plus nasal-rhyme analysis. It is useful cross-system corroboration, not an independent pronunciation judgment: the probe had no expected IPA and the Google grammar's phonological convention is source-specific.
+
+The Google grammar's phone inventory includes tone/phonation-marked vowel symbols and voiceless sonorants. Its /àɴ/ is a single symbol-table unit, not proof that the surface contains a standalone velar nasal [ɴ]. Do not flatten this into a generic “m + ya + velar nasal” rule.
+
 ## 5. G2P and speech resources
 
 ### 5.1 Thu et al. (2016): MLC dictionary experiments
@@ -134,8 +174,10 @@ The paper describes an open-source Thrax WFST pronunciation grammar, burmese.grm
 - Hlaing (2018) describes a phoneme-concatenation TTS inventory of 157 phoneme/half-sound units. The abstract is not sufficient to map the four Unicode medial signs to those units.
 - Yanson (2015) argues that modern Burmese sound changes may not be reflected in standard dictionary/textbook pronunciations. Full text was not available in this review.
 - Nishi (1998) describes two standard Burmese voicing-sandhi patterns with exceptions. It reinforces context dependence; the available abstract is not enough to implement the full rule.
-- Mooney & Repetti-Ludlow (2021) analyze Burmese tone and vowel alternations using acoustic data from one Yangon speaker. Their analysis is syllable-structure/sonority-based, not a medial grapheme mapping.
+- Mooney & Repetti-Ludlow (2021) analyze Burmese tone and vowel alternations using two acoustic experiments with one female native Yangon consultant. Duration/voice quality distinguish four tones in isolation; in sentential contexts duration largely neutralizes and pitch remains robust. The paper argues that vowel alternations are coda/sonority-conditioned rather than tone-driven; this is one-speaker evidence, not a complete dialect norm.
+- Duan & Zhu (2025) propose a competing double-register, eight-tone analysis: four modal-voiced tones and four lower/breathy-voiced tones, involving pitch, register and length. Publisher metadata and abstract were inspected; the full 44-page article's empirical tables were not retrieved in this review. Keep it as a competing published analysis, not consensus or an implemented tone inventory.
 - Repetti-Ludlow (2023) provides acoustic evidence on voiced and voiceless sonorants; it is relevant to phonetic effects associated with medial HA, but not a complete spelling-to-pronunciation lexicon.
+- Hlaing (2014) provides an orthographic syllabification FST and a codepoint-level medial combination inventory. Its 99.93% figure is word-level orthographic syllabification, not G2P or IPA accuracy.
 
 ## 6. Current repository implementation audit
 
@@ -199,14 +241,18 @@ Adversarial slices: each medial separately; all MLC multi-medial combinations; Y
 - [U18] Unicode Standard 18.0.0, Chapter 16, §16.3.1, Table 16-4.
 - [UTN11] Unicode Technical Note #11, Representing Myanmar in Unicode.
 - [WG2N2827] Myanmar Unicode and NLP Research Center, Proposal of 4 Myanmar Semivowels, L2/04-273 / WG2 N2827 (21 June 2004).
+- [HLAING2014] Tin Htay Hlaing, Syllabification, Normalization and Lexicographic Ordering of Myanmar Texts using Formal Approaches, Doctor of Engineering dissertation, Nagaoka University of Technology (2014), especially §§3.3–3.7, Tables 5/8, pp. 26–47.
 - [ISHIDA2026] Richard Ishida, Myanmar (Burmese) Orthography Notes, updated 28 April 2026.
 - [WATKINS2001] J. Watkins, “Burmese,” Journal of the International Phonetic Association 31(2), 291–295 (2001), DOI 10.1017/S0025100301002122.
+- [GREEN2002] Antony Dubach Green, “Word, Foot, and Syllable Structure in Burmese,” October 2002 working paper, revised from 1995; §§1.1–1.2, 2.1–2.4.
+- [GREEN2005] Antony Dubach Green, “Word, Foot, and Syllable Structure in Burmese,” in Studies in Burmese Linguistics (2005), pp. 1–25; online edition CC BY-SA 4.0.
 - [LUCE1981] G. H. Luce, A Comparative Word-List of Old Burmese, Chinese and Tibetan (1981), p. 53, “-AN Finals (26. Quick; Swiftly).”
 - [WIKT_EN_MRAN] English Wiktionary entry မြန်, IPA /mjàɴ/.
 - [WIKT_EN_COMPOUND] English Wiktionary entry ပြည်ထောင်စုမြန်မာနိုင်ငံတော်, compound IPA contains /mjàɴmà/.
 - [WIKT_MY_MRAN] Myanmar Wiktionary entry မြန်, MLCTS /mjan/ and cited 2003 Myanmar spelling dictionary.
 - [WIKT_MY_MRANMA] Myanmar Wiktionary entry မြန်မာ့, variants /mjàɴma̰/ and /mjəma̰/.
 - [W16-3702] Ye Kyaw Thu et al., “Comparison of Grapheme-to-Phoneme Conversion Methods on a Myanmar Pronunciation Dictionary,” WSSANLP 2016, 11–22.
+- [GOOGLE_MY_G2P_FST] Google Language Resources, my/burmese.grm, grapheme.syms and phoneme.syms, pinned commit a90601024f07ab7e96c911243324e0adeb16da96; Apache-2.0; raw-output CI run 43084508359.
 - [MYG2P2026] Honey Htun et al., “Grapheme-to-IPA Phoneme Conversion for Burmese (myG2P Version 2.0),” JIIST 5 (April 2021), 7–17; CC BY-NC-SA 4.0.
 - [LREC2020_BURMESE] Yin May Oo et al., “Burmese Speech Corpus, Finite-State Text Normalization and Pronunciation Grammars with an Application to Text-to-Speech,” LREC 2020, 6328–6339.
 - [OPENSLR80] OpenSLR resource SLR80, Burmese crowdsourced speech data, CC BY-SA 4.0.

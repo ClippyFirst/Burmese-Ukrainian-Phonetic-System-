@@ -625,3 +625,14 @@ Latest final exact-head verification after adding explicit withholding for Myanm
 - New tests lock the lexical candidate's current withheld status and validate source/claim/rule traceability. These are evidence-governance tests, not pronunciation-accuracy tests.
 - Remaining acceptance: independent Yangon expert/audio adjudication; phonemic-vs-phonetic IPA contract; complete onset × medial × rime × tone/register matrix; license clearance; Python/browser shared fixtures.
 - Project remains PARTIAL PROTOTYPE, not linguistically release-ready.
+
+
+## Burmese medials: cross-source G2P and syllable-structure reconciliation — 2026-11-13
+
+- Expanded the research using the existing draft PR #129 rather than duplicating or merging its broad hybrid-engine work. PR #129 remains open, draft, divergent (53 commits ahead / 17 behind current main) and non-mergeable; its external hybrid implementation was not ported.
+- Verified the exact Google Language Resources commit a90601024f07ab7e96c911243324e0adeb16da96. Both root LICENSE and my/burmese.grm header declare Apache-2.0. The grammar maps -y/-r to /j/, -w to /w/, reorders -h before other medials and contains onset/rime-conditioned exceptions. This corrects the earlier “license pending” status; LREC 2020 paper license and in-house speech corpus rights remain separate.
+- Exact PR-head Google WFST run 43084508359 built and returned six structural-only outputs. The fifth input, မြန် (struct-005), returned “m j àɴ”. Artifact SHA-256 c43dc9afc74c49189330c1e704e12b352c9e9d02b58072d5a37a8d7b1a03ebba. No expected IPA or independent gold existed; output is computational corroboration only.
+- Green (2002) supplies a phonological cross-check: C(G)V((V)C), examples /mjè:/ and /mjɛʔ/, placeless /N/ coda realized through preceding-vowel nasalization, and three tones (low/high/creaky) in nasal rhymes. This means the terminal N in /mjàɴ/ should not automatically be rendered as an independent surface [ɴ].
+- Tin Htay Hlaing (2014) provides the exact seven two-/three-medial codepoint combinations and an orthographic FST benchmark (11,732 words / 32,283 syllables; initial 99.93% word accuracy). It is structural, not G2P; the thesis has a codepoint/label typo in its final RA+WA+HA row, now explicitly documented.
+- Tone evidence remains disputed: Green/LREC use four categories; Duan & Zhu (2025) propose eight split across modal and lower/breathy registers. Full Duan & Zhu empirical tables were not extracted; no tone model was changed.
+- Runtime remains unchanged. Python/browser parity, profile-matched expert audio adjudication, tone/rime convention and independent gold remain acceptance blockers. The lexical and WFST candidates stay WITHHELD.

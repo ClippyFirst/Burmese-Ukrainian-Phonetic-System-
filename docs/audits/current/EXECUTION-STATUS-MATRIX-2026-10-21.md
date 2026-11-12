@@ -554,3 +554,18 @@ The initial regression run [43318664262](https://github.com/ClippyFirst/Burmese-
 Detailed review: docs/research/BURMESE-MEDIALS-AND-G2P-EVIDENCE-REVIEW-2026-11-13.md. Evidence registry: data/burmese/medial_evidence_matrix.csv. Automated traceability: tests/test_medial_evidence_matrix.py.
 
 The previous handoff statement that no word-level pronunciation lead was found for မြန် is superseded: a lexical IPA candidate is now documented. Runtime abstention remains unchanged until the candidate is independently validated and the phonemic-vs-phonetic output contract is fixed.
+
+
+## Burmese medial/G2P research reconciliation — 2026-11-13 (expanded)
+
+| Work item | Status | Evidence / acceptance |
+|---|---|---|
+| Eleven MLC medial forms | DONE_VERIFIED as orthographic inventory | Hlaing (2014) Table 5 lists four basic signs plus seven codepoint combinations; WG2 N2827 independently states eleven total. The thesis has a duplicated description typo on the final RA+WA+HA row; codepoints are authoritative. |
+| YA/RA and glide onset | PARTIAL / ANALYSIS_DEPENDENT | Green (2002) gives /mj/ onset examples; Ishida 2026 and pinned Google Thrax describe /j/ behavior with onset-specific exceptions. No complete expert-adjudicated grapheme × onset matrix. |
+| Nasal coda in မြန် | PARTIAL / CROSS-SOURCE CANDIDATE | Wiktionary /mjàɴ/, Google WFST raw output m j àɴ, and Green's /mj/ plus placeless /N/ model converge. Still no independent Yangon audio/adjudication; Green treats /N/ as vowel nasalization, not necessarily [ɴ]. |
+| Google Thrax source/license | DONE_VERIFIED | Pinned grammar and repository LICENSE both Apache-2.0 at a90601024f07ab7e96c911243324e0adeb16da96. Run 43084508359 build/raw-output smoke succeeded, zero gold; optional comparator only. |
+| Hlaing orthographic FST | DONE_VERIFIED as published structural baseline | 11,732 words / 32,283 syllables; initial 99.93% word-level syllabification; not G2P or IPA accuracy. |
+| Burmese tone inventory | PARTIAL / COMPETING ANALYSES | Green and LREC 2020 describe four categories; Duan & Zhu (2025) propose eight tones across modal/lower registers; full empirical tables not independently reviewed here. |
+| Open PR #129 | LEFT OPEN / NOT MERGED | Draft hybrid-engine research PR is 53 commits ahead and 17 behind current main, divergent and non-mergeable. Its source-backed Google FST and raw-output evidence were reused in this research report; the broad hybrid implementation was not ported or merged. |
+
+Detailed evidence: docs/research/BURMESE-MEDIALS-AND-G2P-EVIDENCE-REVIEW-2026-11-13.md. New rows: data/burmese/medial_evidence_matrix.csv. Traceability tests: tests/test_medial_evidence_matrix.py.
