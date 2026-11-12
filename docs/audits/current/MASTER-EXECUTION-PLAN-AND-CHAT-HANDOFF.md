@@ -553,3 +553,15 @@ The canonical Ukrainian practical transcription implementation and current task 
 - Exact PR-head workflow [43185426033](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43185426033) SUCCESS: Python, package/build, generated-data freshness, Node and built-site Chromium checks all passed on `387c535228618a4912b78ca16c6f74bda41a1cef`.
 - **Remaining parity discrepancy:** the canonical CSV currently records `ရ → r`, while the Python candidate map uses `ɹ`. Both are analysis-dependent; Unicode encoding evidence alone cannot adjudicate the phonetic value. Do not silently choose one. Record as PARTIAL pending Yangon-profile phonological evidence and an explicit shared Python/browser policy.
 - This change closes one missing provisional hint only. It does not establish word-level pronunciation, complete onset phonology, or independent IPA accuracy. Independent adjudicated Yangon-profile gold remains 0. Post-merge main tests/deployment are being observed separately.
+
+
+
+## MLCTS Latin → Ukrainian target matrix completion — 2026-11-12
+
+- Base `main` at start: `47b7502ccfe26888ce788b6d2247e361b890a37b`; task branch: `feat/burmese-romanization-ukrainian-matrix-completion-2026-11-12`.
+- Completed target candidates for all 35 onset rows in `data/burmese/romanization_ukrainian.csv`, including previously blank `g/gh/c/hc/j/jh/dh/bh` and an explicit `∅` token for the zero-onset carrier.
+- Completed target candidates for all 94 vendor-derived rime keys in `data/burmese/romanization_rimes_inventory.csv`. Longest-match units `ng/ny/ai/au/ui` are preserved; `:` becomes `ː`, `.` becomes `·`, and apostrophe becomes `ʼ`.
+- Both Burmese crosswalk CSVs now separate `ukrainian_status=PROPOSED` (the project target rendering) from `romanization_evidence_status=EVIDENCE_LIMITED` (the vendor-derived MLCTS source inventory). This prevents a full target column from being misread as primary-source verification of the underlying MLCTS rows.
+- Expanded Python and browser tests to verify all 35 onset rows and all 94 rime renderings, including digraphs and notation markers. Updated `docs/romanization-to-ukrainian-matrix.md` and this handoff.
+- New task `MYA-ROM-UA-TARGET-001` is implemented on this branch; exact-head CI is pending. The runtime adapter `MYA-ROM-UA-001` remains TODO. Full MLC primary-source verification, complete medial/kinzi/asat/numeral/punctuation inventory and syllable-level source-aware rendering remain open. No IPA, tone, phonation or lexical pronunciation claim changed.
+- No local checkout/runtime was available through this connector session. Do not mark the target-matrix gate DONE_VERIFIED until exact-head Python, Node, build and browser checks pass.
