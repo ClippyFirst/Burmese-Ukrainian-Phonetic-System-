@@ -108,3 +108,8 @@ Green's 50-rhyme table is identified, but the available PDF text extraction corr
 - Google Thrax pinned commit a90601024f07ab7e96c911243324e0adeb16da96 is Apache-2.0. Its grammar maps -r/-y to /j/, -w to /w/, reorders -h and contains onset/rime-specific rules.
 - Cross-engine target disagreement: Google raw output m j àɴ; Epitran 1.35.3 raw output məjaɴ for မြန်. Zero gold; both are diagnostics only. CRF 84/100 source-concordant on myG2P-derived sample, zero gold, possible train/test overlap.
 - Acceptance still requires a versioned phonemic-vs-phonetic convention, independent Yangon audio/IPA adjudication, full onset × medial × rime × tone coverage and shared Python/browser phonological fixtures.
+
+
+### Nasal coda and typed IPA representation
+
+Green (2002) treats /N/ as a placeless nasal coda whose realization includes preceding-vowel nasalization and approximate place articulation. Keep the abstract coda and its surface phonetic realization separate. The current IPA gold schema preserves nasalization in the literal value but has no typed nasalization field; decide whether to extend it only after the convention sheet is adjudicated.

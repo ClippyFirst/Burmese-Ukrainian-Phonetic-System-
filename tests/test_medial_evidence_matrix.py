@@ -93,3 +93,15 @@ def test_crf_medial_counts_are_diagnostic_not_accuracy():
     assert row["evidence_level"] == "sample_concordance_not_accuracy"
     assert row["project_runtime_status"] == "WITHHELD"
     assert "gold_count=0" in row["source_locator"]
+
+
+def test_nasal_coda_and_nasal_rhyme_tone_are_registered_separately():
+    with (DATA / "phonotactics.csv").open(encoding="utf-8", newline="") as handle:
+        rules = {row["rule_id"]: row for row in csv.DictReader(handle)}
+    nasal = rules["NASAL_CODA_N"]
+    tone = rules["NASAL_RHYME_TONE"]
+    assert nasal["source_id"] == tone["source_id"] == "GREEN2002"
+    assert nasal["status"] == tone["status"] == "analysis_dependent"
+    assert "nasalization" in nasal["notes"]
+    assert "not equate automatically" in nasal["notes"]
+    assert "checked tone excluded" in tone["notes"]

@@ -76,3 +76,8 @@ See docs/references.md, data/burmese/sources.csv, data/burmese/source_claims.csv
 - **External models:** Google Thrax /m j àɴ/ and Epitran /məjaɴ/ disagree on မြန်; both have zero gold. CRF source concordance is not empirical accuracy.
 - **Tone:** four-tone and eight-tone/register analyses remain separate. No tone rule is enabled.
 - **Release boundary:** independent adjudicated IPA gold remains zero; word-level accuracy remains unmeasured.
+
+
+### Typed IPA metadata gap — 2026-11-13
+
+The IPA gold schema can preserve nasalization in its literal IPA value, but has no separate typed nasalization property. This is not a current transcription blocker if the literal string is preserved; it is a downstream-query limitation. Defer schema expansion until the phonemic /N/ vs surface nasalization convention is expert-approved.

@@ -592,3 +592,10 @@ Detailed evidence: docs/research/BURMESE-MEDIALS-AND-G2P-EVIDENCE-REVIEW-2026-11
 - Required workflow [43325991671](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43325991671) SUCCESS: independent IPA gold schema validation, Python tests, npm build, generated web-data freshness, Node tests, Chromium/Playwright built-site tests.
 - Optional raw-output workflow [43325991496](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43325991496) SUCCESS: Epitran and CRFsuite diagnostics; artifacts are recorded with SHA-256 in the source registry.
 - Exact final CI is engineering/provenance verification only. Gold remains zero and accuracy null.
+
+
+### Nasal-coda evidence and IPA schema boundary — 2026-11-13
+
+- Added Green-based phonotactic rows for placeless /N/ and nasal-rhyme tone restrictions. These are analysis-dependent source records, not active runtime rules.
+- Clarified that the proposed Ukrainian /ɴ/ → нг rule applies only when the selected IPA convention explicitly emits /ɴ/; it must not be used automatically for abstract /N/ or nasalized-vowel realizations.
+- The IPA gold schema preserves literal IPA, kind, syllable boundaries, tone, vowel length and phonation, but has no typed nasalization property. Literal IPA remains sufficient for transcription; a structured field is deferred until expert convention approval.

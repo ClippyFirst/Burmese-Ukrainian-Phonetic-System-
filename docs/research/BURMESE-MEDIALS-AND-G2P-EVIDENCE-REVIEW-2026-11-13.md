@@ -277,3 +277,8 @@ This review changes the research register: a lexical IPA lead for မြန် h
 **Project classification:** PARTIAL PROTOTYPE.  
 **Research readiness:** improved, with inspectable evidence and explicit gaps.  
 **Linguistic release readiness:** not established.
+
+
+## IPA gold schema boundary: nasalization — 2026-11-13
+
+The existing typed IPA schema has a literal IPA value and kind, plus optional syllable boundaries, tone, vowel length and phonation. It has no dedicated structured nasalization field. A literal IPA value can still preserve a combining tilde or other nasalization notation, so this does not prevent faithful transcription. However, downstream analytics cannot query nasalization as a typed feature without reading the IPA string. No schema change was made in this research pass: the phonemic /N/ vs surface nasalization convention must first be adjudicated by a Burmese specialist. Track an optional nasalization field as a deferred schema decision, not as an implicit parser feature.

@@ -125,3 +125,8 @@ explicit uncertainty rather than invented IPA or orthography.
 An orthographic medial sign is not an IPA segment by name: U+103C MEDIAL RA is commonly described as /j/ in relevant contexts, with onset-specific alternatives; U+103D can participate in glide or rime behavior; U+103E can alter aspiration/phonation or fuse with an onset. The orthographic parser must preserve the sign and codepoint sequence, while the phonological layer resolves the context.
 
 The output contract must distinguish phonemic/broad IPA from narrow surface phonetics. Green's abstract placeless nasal /N/ may be realized through preceding-vowel nasalization and approximate place articulation; it must not be silently rewritten as an independent [ɴ]. The Ukrainian rule for IPA /ɴ/ applies only if the selected source analysis explicitly yields that segment. Preserve nasalization, coda identity, tone/register and uncertainty until the target policy explicitly handles them.
+
+
+## Typed nasalization and abstract coda
+
+If a source analysis posits a placeless nasal /N/ and describes a surface nasalized vowel, preserve both levels rather than substituting an independent /ɴ/ without evidence. The current IPA gold schema can store nasalization in the literal IPA value but has no separate typed nasalization property. This is a documented analytics limitation; a schema change is deferred until the expert convention sheet selects the transcription level and representation.

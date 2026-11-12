@@ -660,3 +660,10 @@ Latest final exact-head verification after adding explicit withholding for Myanm
 - Python coda segmentation parity fix and all regression tests passed. Browser/Node/build/generated-data checks passed.
 - Exact Epitran artifact SHA-256 cb9cbb1c08047b2082f21f3c29d01d8054eaf37fc462abf55a3336ad265d7c1f; CRF artifact SHA-256 d0df5c6527a757ee3c8be5259578ec08abdd3b219bf317d3de7364a47bdb6125.
 - No runtime medial IPA rules enabled; gold 0, accuracy null; project remains PARTIAL PROTOTYPE.
+
+
+## Nasal coda and IPA schema boundary — 2026-11-13
+
+- Added source-backed phonotactic records for Green's placeless /N/ coda and nasal-rhyme tone restrictions.
+- The Ukrainian target rule /ɴ/ → нг is explicitly conditional on the selected IPA analysis producing /ɴ/; it does not automatically apply to abstract /N/ or nasalized vowels.
+- The IPA gold schema preserves nasalization in the literal IPA value but has no dedicated typed nasalization field. No schema change was made; consider an optional field only after the expert-approved convention sheet.

@@ -1281,3 +1281,10 @@ The browser onset-only preview is now limited to isolated bare consonant tokens.
 ## Burmese medial/nasal-coda target note — 2026-11-13
 
 The proposed /ɴ/ → нг target rule is conditional on an IPA analysis that explicitly emits /ɴ/. Green's abstract placeless /N/ and nasalized-vowel realizations must not be routed through this rule without an explicit phonetic conversion decision.
+
+
+## Nasal coda and IPA schema boundary — 2026-11-13
+
+- Added source-backed phonotactic records for Green's placeless /N/ coda and nasal-rhyme tone restrictions.
+- The Ukrainian target rule /ɴ/ → нг is explicitly conditional on the selected IPA analysis producing /ɴ/; it does not automatically apply to abstract /N/ or nasalized vowels.
+- The IPA gold schema preserves nasalization in the literal IPA value but has no dedicated typed nasalization field. No schema change was made; consider an optional field only after the expert-approved convention sheet.
