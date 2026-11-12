@@ -96,6 +96,16 @@ test("မြန်မာ separates into syllable-like clusters without false uns
   await expect(page.locator("#syllables")).not.toContainText("UNSUPPORTED");
 });
 
+test("whitespace separators are preserved but do not shift Burmese syllable numbering",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("ကာ မြန်မာ");
+  const numbered=await page.locator("#syllables .syllable strong").allTextContents();
+  expect(numbered).toEqual(["01  ကာ","02  မြန်","03  မာ"]);
+  await expect(page.locator("#syllables")).toContainText("пробіл/перенесення рядка збережено без змін");
+  await expect(page.locator("#ipa")).toHaveText("ka ?ma");
+  await expect(page.locator("#uk")).toHaveText("ка ⟦မြန်⟧ма");
+});
+
 test("provisional Ukrainian mappings are visible in segment-level evidence status",async({page})=>{
   await page.goto("/");
   await page.locator("#source").fill("ကာ");
