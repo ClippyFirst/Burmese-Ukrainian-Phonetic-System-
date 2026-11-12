@@ -106,9 +106,10 @@ This is a project orthographic crosswalk, not an adjudicated Ukrainian name stan
 | MYA-ROM-STD-001 | DONE_VERIFIED (source review) | MLCTS selected as orthographic profile; MLCTS2 retained only as comparator |
 | MYA-ROM-PROFILE-001 | DONE_VERIFIED | Browser calls MLCTS; result card labels MLCTS; test-first exact sample proves MLCTS mrui. vs MLCTS2 mjou.; exact-head workflow 41229019002 passed |
 | MYA-ROM-UA-TARGET-001 | DONE_VERIFIED | All 35 onset rows and 94 inventoried rime rows have non-empty Ukrainian target candidates; deterministic mapping and source-evidence status are asserted. Promote after exact-head CI. The rime source inventory remains vendor-derived. |
-| MYA-ROM-UA-001 | TODO | Independent MLCTS-syllable → Ukrainian runtime adapter; execute the crosswalk without IPA fallback |
+| MYA-ROM-UA-001 | PARTIAL | Separate MLCTS-syllable → Ukrainian runtime adapter is integrated for inventoried onset/rime combinations and supported y/r/w medials; unknown forms remain visibly unsupported. |
 | MYA-ROM-MATRIX-ONSET-001 | DONE_VERIFIED | 35 MLCTS onset rows in data/burmese/romanization_ukrainian.csv; exact source inventory and provenance/status checks passed in workflow 41229245383 |
-| MYA-ROM-MATRIX-001 | PARTIAL | Onset and vendor rime target tables are populated; complete source-verified medial, kinzi, asat, independent-vowel, numeral, punctuation and legal-syllable coverage remains open |\n| MYA-ROM-OUTPUT-INTEGRITY-001 | DONE_VERIFIED | Basic Myanmar digits/punctuation and mixed text pass through; unsupported code points and orphan signs remain visible; exact-head CI 41243831142/41243825927 passed |
+| MYA-ROM-MATRIX-001 | PARTIAL | Onset and vendor rime target tables are populated; complete source-verified medial, kinzi, asat, independent-vowel, numeral, punctuation and legal-syllable coverage remains open |
+| MYA-ROM-OUTPUT-INTEGRITY-001 | DONE_VERIFIED | Basic Myanmar digits/punctuation and mixed text pass through; unsupported code points and orphan signs remain visible; exact-head CI 41243831142/41243825927 passed |
 | MYA-ROM-LIC-001 | PARTIAL | Audit all vendored source components and preserve CC-BY-SA-4.0 attribution |
 | MYA-IPA-001 | PARTIAL | Contextual vowel/coda/tone/phonation IPA coverage and independent lexical gold remain incomplete |
 
@@ -169,3 +170,14 @@ Latest final exact-head verification after adding explicit withholding for Myanm
 - Mainline tests [43227806284](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43227806284) and Pages deployment [43227806266](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43227806266) both SUCCESS.
 - Mainline test evidence: 187 Python tests + 66 subtests, 19 Node tests, 55 Playwright browser tests, production build and generated-data freshness all passed.
 - Acceptance remains PARTIAL: current Mya2Rom-derived rime inventory is EVIDENCE_LIMITED, and unrepresented legal syllable structures remain visibly unsupported rather than guessed.
+
+
+## Mainline ledger reconciliation — 2026-11-12
+
+- Verified current `main`: `718dc4b2c1424651b32bc63b0202f5d08a067bc7`.
+- `MYA-ROM-UA-TARGET-001`: DONE_VERIFIED — 35 onset rows and 94 vendor-derived rime rows have explicit Ukrainian project candidates; PR #138 merged and table synchronization PR #140 is merged.
+- `MYA-ROM-UA-001`: PARTIAL — PR #141 integrates `src/web/romanization-ukrainian.js` into the separate MLCTS mode. Longest-match onset/rime parsing and supported y/r/w medials are covered; unsupported structures and code points remain visible as unsupported. No IPA fallback is used.
+- Exact mainline verification on current head: tests [43228612973](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43228612973) and Pages deployment [43228612998](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43228612998) both SUCCESS. The test workflow covers 187 Python tests + 66 subtests, 19 Node tests, 55 Playwright browser tests, production build and generated-data freshness, as recorded by the merged runtime verification.
+- `MYA-ROM-MATRIX-001`: PARTIAL — the 94 rime keys remain Mya2Rom-derived and EVIDENCE_LIMITED, not independently checked against the original MLC publication. Legal medial/devoicing, kinzi, asat, independent-vowel and other orthographic combinations remain incomplete.
+- `MYA-ROM-LIC-001`: PARTIAL — vendor attribution and CC-BY-SA-4.0 notice remain preserved; component-level provenance and data rights need audit.
+- Historical TODO entries above describe earlier checkpoints; this section records current mainline state. Ukrainian mappings remain PROPOSED orthographic conventions, not IPA or expert-approved standardization.
