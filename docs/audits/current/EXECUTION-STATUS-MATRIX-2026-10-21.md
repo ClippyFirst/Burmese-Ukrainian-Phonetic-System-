@@ -468,3 +468,11 @@ This engineering correction does not change the language-layer statuses above. I
 | Optional Epitran raw-output comparator | DONE_VERIFIED (comparator only) | Workflow 43101914423 pass; not accuracy evidence |
 | Functional Python/browser shared fixture | TODO | Still needs matching structured fallback output and trace across runtimes |
 | Full positional Myanmar fallback inventory | BLOCKED by evidence | Requires exact Yangon-profile positional IPA sources for vowels, codas/asat, medials, kinzi, conjuncts and tone |
+
+
+### Complete Myanmar grapheme accounting — 2026-11-12
+
+| Layer / acceptance gate | Implemented coverage | Tested coverage | Independently validated coverage | Status | Next acceptance criterion |
+|---|---|---|---|---|---|
+| Unicode L/M input accounting across Myanmar blocks | Parser preserves each assigned letter/combining mark in U+1000–109F, U+A9E0–A9FF, U+AA60–AA7F, U+116D0–116FF; exact U+ code points retained in records | Exhaustive Python sweep added in PR #134; exact-head test workflow [43184645239](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43184645239) PASS | Not phonological evidence; no pronunciation gold inferred | DONE_VERIFIED (structural accounting only) | Keep unsupported Myanmar-language extensions explicit; build source-backed Yangon positional IPA inventory before expanding phonology |
+| Complete Yangon-profile pronunciation/IPA for all letters and contexts | Only narrow onset/rime rules plus isolated bare-consonant provisional preview; context-dependent medials, vowels, codas, kinzi, conjuncts and tone remain unresolved | Existing parser/withholding tests plus the new exhaustive source-accounting sweep | Independent adjudicated Yangon-profile gold remains 0 | PARTIAL / BLOCKED | Require source-located onset × medial × vowel × coda × prosody evidence, shared Python/browser fixtures, independent annotation/adjudication and held-out accuracy evaluation |
