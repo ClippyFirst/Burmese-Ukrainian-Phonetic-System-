@@ -1288,3 +1288,8 @@ The proposed /ɴ/ → нг target rule is conditional on an IPA analysis that ex
 - Added source-backed phonotactic records for Green's placeless /N/ coda and nasal-rhyme tone restrictions.
 - The Ukrainian target rule /ɴ/ → нг is explicitly conditional on the selected IPA analysis producing /ɴ/; it does not automatically apply to abstract /N/ or nasalized vowels.
 - The IPA gold schema preserves nasalization in the literal IPA value but has no dedicated typed nasalization field. No schema change was made; consider an optional field only after the expert-approved convention sheet.
+
+
+## UCSY-SC1 rights note — 2026-11-13
+
+The paper documents a potentially useful 42 h 39 min / 307-speaker audio corpus, but it is not IPA gold. The publisher author-details page lists CC BY-SA 4.0 while the PDF footer says “All rights reserved”; the underlying corpus audio has no separately verified license or public download permission. Keep this source BLOCKED / RIGHTS-GATED until both article and corpus terms are confirmed.

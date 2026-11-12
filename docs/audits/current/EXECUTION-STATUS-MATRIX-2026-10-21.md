@@ -603,4 +603,4 @@ Detailed evidence: docs/research/BURMESE-MEDIALS-AND-G2P-EVIDENCE-REVIEW-2026-11
 
 ### UCSY-SC1 corpus lead — 2026-11-13
 
-UCSY-SC1 is a 42 h 39 min, 307-speaker ASR corpus with news and recorded conversation; it reports four medials and nasalized vowels. It is a promising future annotation source, but the article's CC BY-SA 4.0 license does not establish a separate license for the underlying audio corpus. Classify as BLOCKED / RIGHTS-GATED until access and explicit data-use permission are obtained.
+UCSY-SC1 is a 42 h 39 min, 307-speaker ASR corpus with news and recorded conversation; it reports four medials and nasalized vowels. The publisher author-details page lists CC BY-SA 4.0, but the PDF footer says “All rights reserved”; article-level rights and the separate corpus audio license both need confirmation. Classify as BLOCKED / RIGHTS-GATED until access and explicit data-use permission are obtained.

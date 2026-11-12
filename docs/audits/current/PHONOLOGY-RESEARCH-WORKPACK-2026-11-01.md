@@ -117,4 +117,4 @@ Green (2002) treats /N/ as a placeless nasal coda whose realization includes pre
 
 ### UCSY-SC1 audio resource
 
-Mon et al. (2019) describe a 42 h 39 min, 307-speaker corpus with web-news and recorded-conversation domains, 16 kHz mono audio, and 31,114 utterances. It reports four medial signs and nasalized vowels. This is a promising annotation lead, but it is an ASR corpus, not IPA gold. The article's CC BY-SA 4.0 license does not by itself establish the underlying corpus audio's reuse terms; obtain explicit corpus permission before using it.
+Mon et al. (2019) describe a 42 h 39 min, 307-speaker corpus with web-news and recorded-conversation domains, 16 kHz mono audio, and 31,114 utterances. It reports four medial signs and nasalized vowels. This is a promising annotation lead, but it is an ASR corpus, not IPA gold. The publisher author-details page lists CC BY-SA 4.0, but the PDF footer says “All rights reserved”; confirm article-level rights. This does not establish the underlying corpus audio's reuse terms; obtain explicit corpus permission before using it.
