@@ -484,3 +484,11 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | Dedicated Yangon grapheme-position evidence registry | TODO | Existing onset inventory is reused; exact per-entry primary-source locators, scope and adjudication remain required |
 | Functional Python/browser parity fixture | TODO | Browser tests cover behavior, but no shared structured cross-runtime fixture yet |
 | Full Myanmar grapheme fallback | DEFERRED / evidence-limited | Only isolated bare consonants receive onset-only preview; vowel/rime/coda/asat/medial/kinzi/conjunct/tone structures remain fail-closed |
+
+
+## Unicode grapheme accounting sweep — 2026-11-12
+
+| Work item | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-UNICODE-ACCOUNTING-001 | DONE_VERIFIED (structural/input accounting) | PR #134 merged as `374e1a883ffc2aea5c729377e5aabf22778cbffd`; exact-head tests [43184645239](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43184645239) SUCCESS. Exhaustive sweep covers assigned Unicode L/M code points in all four Myanmar blocks. | Lossless source and code-point trace only; no IPA value is inferred for out-of-profile characters. |
+| BURMESE-PHONOLOGY-100-001 | PARTIAL / BLOCKED by evidence | Existing parser/IPA engine withholds unsupported structures; no independent Yangon-profile adjudicated gold. | Requires source-located positional evidence for each supported context, shared Python/browser fixtures, independent adjudication and held-out evaluation. |
