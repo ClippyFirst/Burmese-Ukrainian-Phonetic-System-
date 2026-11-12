@@ -492,3 +492,11 @@ The export and benchmark now preserve and validate the complete frozen split ide
 |---|---|---|---|
 | BURMESE-UNICODE-ACCOUNTING-001 | DONE_VERIFIED (structural/input accounting) | PR #134 merged as `374e1a883ffc2aea5c729377e5aabf22778cbffd`; exact-head tests [43184645239](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43184645239) SUCCESS. Exhaustive sweep covers assigned Unicode L/M code points in all four Myanmar blocks. | Lossless source and code-point trace only; no IPA value is inferred for out-of-profile characters. |
 | BURMESE-PHONOLOGY-100-001 | PARTIAL / BLOCKED by evidence | Existing parser/IPA engine withholds unsupported structures; no independent Yangon-profile adjudicated gold. | Requires source-located positional evidence for each supported context, shared Python/browser fixtures, independent adjudication and held-out evaluation. |
+
+
+## Burmese provisional onset registry reconciliation — 2026-11-12
+
+| Work item | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-ONSET-HINT-REGISTRY-001 | DONE_VERIFIED (candidate registry parity) | PR #136 merged as `9931acf8c4b8b9a16d210e44eca47f1319f04be2`; exact-head workflow [43185426033](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43185426033) SUCCESS. Python provisional table now includes the existing CSV/browser candidate for U+1009 `ဉ` /ɲ/. | Provisional onset preview only. Canonical IPA remains withheld for isolated bare consonants; no gold label or accuracy claim added. |
+| BURMESE-ONSET-IPA-PARITY-001 | PARTIAL / EVIDENCE-LIMITED | Existing `ရ` candidate differs: CSV/browser `r`, Python `ɹ`; both analysis-dependent. | Requires source-located Yangon-profile evidence and explicit broad/narrow IPA convention before choosing or synchronizing a value. |

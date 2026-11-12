@@ -543,3 +543,13 @@ The canonical Ukrainian practical transcription implementation and current task 
 - Added a negative control for Khamti U+AA60: it is recognized as Myanmar-block text but remains outside the selected Burmese/Yangon phonological inventory and receives no synthetic IPA.
 - Exact PR-head verification: tests [43184645239](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43184645239) SUCCESS on branch head `7bf3ea3ad3e9ed471a6d077b7c5574d264688eaf`.
 - **Status:** structural/input accounting for the tested Unicode L/M set is DONE_VERIFIED. It is not 100% Burmese phonological coverage, 100% IPA coverage, or pronunciation accuracy. The shared Myanmar script also encodes languages outside Burmese; those must remain outside the Yangon profile unless separately supported. Medial × vowel × coda × tone/register evidence and independent adjudicated gold remain PARTIAL/BLOCKED. Post-merge main tests/deployment were still running at this documentation checkpoint; no post-merge result is claimed.
+
+
+## Burmese provisional onset registry reconciliation — 2026-11-12
+
+- PR [#136](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/136) merged as `9931acf8c4b8b9a16d210e44eca47f1319f04be2`.
+- The Python provisional onset map had omitted U+1009 `ဉ`, although the canonical `data/burmese/ipa_onsets.csv` already registered it as an analysis-dependent /ɲ/ candidate and the generated browser inventory already exposed it.
+- Added `ဉ → ɲ` to the Python onset-hint table and regression coverage for the separate provisional preview. Canonical IPA remains withheld for an isolated bare consonant.
+- Exact PR-head workflow [43185426033](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43185426033) SUCCESS: Python, package/build, generated-data freshness, Node and built-site Chromium checks all passed on `387c535228618a4912b78ca16c6f74bda41a1cef`.
+- **Remaining parity discrepancy:** the canonical CSV currently records `ရ → r`, while the Python candidate map uses `ɹ`. Both are analysis-dependent; Unicode encoding evidence alone cannot adjudicate the phonetic value. Do not silently choose one. Record as PARTIAL pending Yangon-profile phonological evidence and an explicit shared Python/browser policy.
+- This change closes one missing provisional hint only. It does not establish word-level pronunciation, complete onset phonology, or independent IPA accuracy. Independent adjudicated Yangon-profile gold remains 0. Post-merge main tests/deployment are being observed separately.
