@@ -62,8 +62,16 @@ def segment_graphemes(text: str) -> list[str]:
         start = i
         i += 1
         while i < len(s) and _is_myanmar_text(s[i]):
+            # A base consonant followed by ASAT is a final of the current syllable,
+            # not the onset of a new syllable. Keep Python aligned with the browser.
+            is_coda_base = (
+                i + 1 < len(s)
+                and s[i] in BASE_CONSONANTS
+                and s[i + 1] == "\u103a"
+            )
             if (
                 s[i] in BASE_CONSONANTS
+                and not is_coda_base
                 and s[i - 1] != "\u1039"
                 and s[i - 3 : i] != KINZI
             ):
@@ -147,7 +155,7 @@ def _parse_cluster(cluster: str) -> Syllable:
     if (
         i + 1 < len(cluster)
         and cluster[i] in BASE_CONSONANTS
-        and cluster[i + 1] == "\\u103a"
+        and cluster[i + 1] == "\u103a"
     ):
         final = cluster[i]
         sy.coda = {

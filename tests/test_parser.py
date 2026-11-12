@@ -146,3 +146,29 @@ def test_regular_checked_syllable_final_is_structurally_attached():
     parsed = parse_burmese("ကတ်")
     assert parsed["graphemes"] == ["ကတ်"]
     assert parsed["syllables"][0]["coda"]["character"] == "တ"
+
+
+def test_asat_marked_final_consonant_is_attached_to_preceding_syllable():
+    parsed = parse_burmese("မြန်")
+    assert parsed["graphemes"] == ["မြန်"]
+    assert len(parsed["syllables"]) == 1
+    syllable = parsed["syllables"][0]
+    assert syllable["medials"][0]["id"] == "medial_ra"
+    assert syllable["coda"]["character"] == "န"
+    assert syllable["coda"]["codepoint"] == "U+1014"
+    assert syllable["coda"]["asat_codepoint"] == "U+103A"
+    assert syllable["analysis"]["status"] == "established"
+
+
+def test_asat_marked_coda_does_not_become_a_new_syllable_in_compound():
+    parsed = parse_burmese("မြန်မာ")
+    assert parsed["graphemes"] == ["မြန်", "မာ"]
+    assert len(parsed["syllables"]) == 2
+    assert parsed["syllables"][0]["coda"]["character"] == "န"
+    assert parsed["syllables"][1]["onset"]["character"] == "မ"
+
+
+def test_regular_checked_syllable_final_is_structurally_attached():
+    parsed = parse_burmese("ကတ်")
+    assert parsed["graphemes"] == ["ကတ်"]
+    assert parsed["syllables"][0]["coda"]["character"] == "တ"
