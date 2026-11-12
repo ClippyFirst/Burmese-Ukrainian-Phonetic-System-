@@ -337,7 +337,7 @@ This current-head reconciliation supersedes older status cells above where they 
 | Vowel combinations and coda realization | PARTIAL | Full vowel derivation, checked-syllable and contextual coda realization are not implemented. |
 | Tone/register/phonation | TODO | Specialist adjudication of competing analyses and scoped implementation are required; do not infer or collapse them. |
 | IPA → Ukrainian | PARTIAL | Canonical external inventory boundary exists; target policies remain proposal-level and need expert review. |
-| MLCTS → Ukrainian | TODO | Separate source-aware orthographic adapter is not implemented; verify MLCTS rules against primary MLC sources. |
+| MLCTS → Ukrainian | PARTIAL | Separate source-aware orthographic adapter is integrated for supported onset/rime combinations and y/r/w medials; unsupported forms are visibly withheld. | Verify the full legal orthographic inventory against primary MLC sources and expand kinzi/asat/devoicing/independent-vowel coverage. |
 | Goruut/myG2P/Epitran harness | DONE_VERIFIED (diagnostic only) | Parser, comparison and runtime artifacts verified; 55/100 Goruut outputs partial; myG2P remains temporary test-only under CC BY-NC-SA 4.0. No accuracy or production claim. |
 | Python/browser phonological parity | TODO | Existing source-preservation parity does not establish phonological result parity; add shared expert-backed phonology fixtures. |
 | Manual UI/accessibility QA | TODO | Deployed visual, keyboard, screen-reader and mobile QA not evidenced by CI. |
@@ -519,3 +519,8 @@ Latest final exact-head verification after adding explicit withholding for Myanm
 - Mainline tests [43227806284](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43227806284) and Pages deployment [43227806266](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43227806266) both SUCCESS.
 - Mainline test evidence: 187 Python tests + 66 subtests, 19 Node tests, 55 Playwright browser tests, production build and generated-data freshness all passed.
 - Acceptance remains PARTIAL: current Mya2Rom-derived rime inventory is EVIDENCE_LIMITED, and unrepresented legal syllable structures remain visibly unsupported rather than guessed.
+
+
+## MLCTS → Ukrainian mainline status refresh — 2026-11-12
+
+The earlier TODO row is superseded by the integrated runtime in PR #141. Current `main` is `718dc4b2c1424651b32bc63b0202f5d08a067bc7`; exact-main tests [43228612973](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43228612973) and Pages [43228612998](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43228612998) passed. Status is PARTIAL, not DONE: 35 onset and 94 vendor-rime targets are mapped, but the rime inventory is vendor-derived/EVIDENCE_LIMITED and legal structures outside the supported adapter inventory remain withheld. This is orthographic rendering, not IPA validation.
