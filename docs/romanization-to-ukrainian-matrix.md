@@ -1,6 +1,6 @@
 # Burmese romanization → Ukrainian orthographic matrix
 
-**Status:** PARTIAL — the orthographic MLCTS profile is now active and the full onset inventory has a machine-readable research crosswalk. The MLCTS → Ukrainian vowel/rime/syllable adapter and complete inventory are not yet implemented.
+**Status:** PARTIAL — the Ukrainian target crosswalk is now populated for all 35 MLCTS onset rows and all 94 vendor-derived rime rows. The MLCTS romanization source inventory remains vendor-evidence-limited, and no runtime syllable adapter is integrated yet.
 **Primary variety:** contemporary Standard Burmese; Yangon-oriented phonetics only where the evidence supports it.
 
 ## Standard selection
@@ -36,26 +36,26 @@ The repository vendors Mya2Rom 0.4.4 and its CC-BY-SA-4.0 notice. Preserve the u
 
 ## Consonant-unit crosswalk (MLCTS romanization; Ukrainian is a project proposal)
 
-The canonical onset registry is [data/burmese/romanization_ukrainian.csv](../data/burmese/romanization_ukrainian.csv). It contains all 35 consonant/onset entries in the vendored MLCTS column, including distinct source graphemes that share a Latin form. It stores source locator, proposed Ukrainian candidate and uncertainty status for every row. The table below is a compact overview; the CSV is authoritative.
+The canonical onset registry is [data/burmese/romanization_ukrainian.csv](../data/burmese/romanization_ukrainian.csv). It contains all 35 consonant/onset entries in the vendored MLCTS column, including distinct source graphemes that share a Latin form. It stores source locator, Ukrainian project candidate, target status and separate source-evidence status for every row. The table below is a compact overview; the CSV is authoritative.
 
 | Burmese source onset | MLCTS form | Ukrainian candidate | Status / note |
 |---|---|---|---|
 | က | k | к | PROPOSED |
 | ခ | hk | к' | PROPOSED; aspirated orthographic onset |
-| ဂ / ဃ | g / gh | — | EVIDENCE_LIMITED; no target value promoted |
+| ဂ / ဃ | g / gh | ґ / ґ' | PROPOSED; orthographic target convention |
 | င | ng | нг | PROPOSED |
 | စ | c | — | EVIDENCE_LIMITED; do not infer a target value from c alone |
-| ဆ | hc | — | EVIDENCE_LIMITED; keep distinct from စ |
-| ဇ / ဈ | j / jh | — | EVIDENCE_LIMITED; exact target cluster requires review |
+| ဆ | hc | ц' | PROPOSED; aspiration marker retained |
+| ဇ / ဈ | j / jh | дж / дж' | PROPOSED; jh keeps the project aspiration marker |
 | ဉ / ည | ny | нь | PROPOSED |
 | ဋ / တ | t | т | PROPOSED; source letters remain distinct in the source layer |
 | ဌ / ထ | ht | т' | PROPOSED |
 | ဍ / ဒ | d | д | PROPOSED |
-| ဎ / ဓ | dh | — | EVIDENCE_LIMITED; preserve orthographic contrast pending review |
+| ဎ / ဓ | dh | д' | PROPOSED; MLCTS digraph retained distinctly from d |
 | ဏ / န | n | н | PROPOSED |
 | ပ | p | п | PROPOSED |
 | ဖ | hp | п' | PROPOSED |
-| ဗ / ဘ | b / bh | б / — | ANALYSIS_DEPENDENT; bh awaits review |
+| ဗ / ဘ | b / bh | б / б' | PROPOSED; target marker preserves the MLCTS contrast |
 | မ | m | м | PROPOSED |
 | ယ | y | й | PROPOSED |
 | ရ | r | р | PROPOSED; orthographic form differs from ယ |
@@ -63,11 +63,11 @@ The canonical onset registry is [data/burmese/romanization_ukrainian.csv](../dat
 | ဝ | w | в | PROPOSED |
 | သ / ဿ | s | с | PROPOSED; preserve separate source graphemes |
 | ဟ | h | г | PROPOSED under the project Ukrainian target policy |
-| အ | (zero onset in MLCTS) | — | EVIDENCE_LIMITED; retain the syllable-carrier role, do not delete it |
+| အ | (zero onset in MLCTS) | ∅ | PROPOSED; explicit zero-onset token; retain source carrier and render the rime |
 
 ## Syllable/rhyme matrix contract
 
-The onset CSV does not imply that the rhyme inventory is complete. The vowel examples below are candidates only; length, coda and checked-syllable markers must be represented as structured MLCTS units before a Ukrainian syllable can be generated.
+The 94-row rime inventory now carries a Ukrainian rendering for each observed MLCTS string. It is still a vendor-derived inventory, not a primary-source-verified complete MLC syllable inventory; contextual source segmentation and a runtime syllable adapter remain separate tasks.
 
 MLCTS includes orthographic conventions for dependent vowels, codas, virama/asat, medials, kinzi, independent vowels and punctuation. The upstream table is sequence-sensitive; the full source form must be parsed before rendering the MLCTS syllable. Do not treat each Latin character as an independent Ukrainian segment.
 
@@ -83,10 +83,12 @@ MLCTS includes orthographic conventions for dependent vowels, codas, virama/asat
 | ng (coda) | нг | PROPOSED; syllable-final role must be preserved |
 | n (coda) | н | PROPOSED |
 | m (coda) | м | PROPOSED |
-| : / . length/checked markers | no direct letter by default | ANALYSIS_DEPENDENT; do not discard without recording the convention |
-| MLCTS alternative or unresolved sequence | no guessed output | EVIDENCE_LIMITED |
+| : (length notation) | ː | PROPOSED; retained as a length marker, not converted to a vowel letter |
+| . (checked-syllable marker) | · | PROPOSED; retained as a distinct middle-dot marker |
+| ' (when present) | ʼ | PROPOSED; apostrophe marker retained |
+| c / k / p (coda spellings) | ц / к / п | PROPOSED; literal MLCTS-to-Ukrainian rendering, not a coda IPA claim |
 
-This is a research crosswalk, not an adjudicated Ukrainian name standard. A table row may be promoted only after checking the upstream MLCTS definition, source orthographic context, Ukrainian target policy and a regression fixture.
+This is a project orthographic crosswalk, not an adjudicated Ukrainian name standard or a pronunciation model. Source romanization provenance and Ukrainian target mapping are separate evidence dimensions.
 
 ## Implementation contract
 
@@ -103,9 +105,10 @@ This is a research crosswalk, not an adjudicated Ukrainian name standard. A tabl
 |---|---|---|
 | MYA-ROM-STD-001 | DONE_VERIFIED (source review) | MLCTS selected as orthographic profile; MLCTS2 retained only as comparator |
 | MYA-ROM-PROFILE-001 | DONE_VERIFIED | Browser calls MLCTS; result card labels MLCTS; test-first exact sample proves MLCTS mrui. vs MLCTS2 mjou.; exact-head workflow 41229019002 passed |
-| MYA-ROM-UA-001 | TODO | Independent MLCTS-syllable → Ukrainian adapter |
+| MYA-ROM-UA-TARGET-001 | DONE_VERIFIED | All 35 onset rows and 94 inventoried rime rows have non-empty Ukrainian target candidates; deterministic mapping and source-evidence status are asserted. Promote after exact-head CI. The rime source inventory remains vendor-derived. |
+| MYA-ROM-UA-001 | TODO | Independent MLCTS-syllable → Ukrainian runtime adapter; execute the crosswalk without IPA fallback |
 | MYA-ROM-MATRIX-ONSET-001 | DONE_VERIFIED | 35 MLCTS onset rows in data/burmese/romanization_ukrainian.csv; exact source inventory and provenance/status checks passed in workflow 41229245383 |
-| MYA-ROM-MATRIX-001 | PARTIAL | Medial, vowel, coda, independent vowel, kinzi, asat, numeral and punctuation inventory still required |\n| MYA-ROM-OUTPUT-INTEGRITY-001 | DONE_VERIFIED | Basic Myanmar digits/punctuation and mixed text pass through; unsupported code points and orphan signs remain visible; exact-head CI 41243831142/41243825927 passed |
+| MYA-ROM-MATRIX-001 | PARTIAL | Onset and vendor rime target tables are populated; complete source-verified medial, kinzi, asat, independent-vowel, numeral, punctuation and legal-syllable coverage remains open |\n| MYA-ROM-OUTPUT-INTEGRITY-001 | DONE_VERIFIED | Basic Myanmar digits/punctuation and mixed text pass through; unsupported code points and orphan signs remain visible; exact-head CI 41243831142/41243825927 passed |
 | MYA-ROM-LIC-001 | PARTIAL | Audit all vendored source components and preserve CC-BY-SA-4.0 attribution |
 | MYA-IPA-001 | PARTIAL | Contextual vowel/coda/tone/phonation IPA coverage and independent lexical gold remain incomplete |
 
@@ -124,4 +127,17 @@ Primary/reference sources:
 
 ## Machine-readable MLCTS rime inventory
 
-[data/burmese/romanization_rimes_inventory.csv](../data/burmese/romanization_rimes_inventory.csv) records the 94 rime keys present in the vendored Mya2Rom 0.4.4 `vowels` object and the exact second-column MLCTS form. This is explicitly a vendor-derived inventory, not a claim that every row was checked against an original Myanmar Language Commission publication. The Ukrainian candidate is intentionally blank and the status is `EVIDENCE_LIMITED` for every row until the MLCTS source form, syllable context and Ukrainian target value are independently adjudicated. Do not promote these rows to output mappings merely because the upstream library returns a Latin string.
+[data/burmese/romanization_rimes_inventory.csv](../data/burmese/romanization_rimes_inventory.csv) records the 94 rime keys present in the vendored Mya2Rom 0.4.4 `vowels` object and the exact second-column MLCTS form. Every row now has a deterministic Ukrainian target rendering. `ukrainian_status=PROPOSED` refers only to the project’s letter-level target convention; `romanization_evidence_status=EVIDENCE_LIMITED` explicitly preserves the fact that these source keys are vendor-derived and are not individually verified against the original MLC publication.
+
+## Ukrainian target convention for Latin MLCTS input — 2026-11-12
+
+The Ukrainian candidate is a **letter-level orthographic rendering of the MLCTS Latin string**. It is not IPA, does not predict pronunciation, and does not use the phonetic IPA → Ukrainian adapter. The original MLCTS string and Burmese source unit must remain available in metadata.
+
+- Onset digraphs are longest-match units: `hk → к'`, `gh → ґ'`, `hc → ц'`, `jh → дж'`, `ht → т'`, `dh → д'`, `hp → п'`, `bh → б'`. Plain `k/g/c/j/t/d/p/b` map to `к/ґ/ц/дж/т/д/п/б`; `ng → нг`, `ny → нь`.
+- Remaining Latin letters use the explicit project table: `a → а`, `e → е`, `i → і`, `o → о`, `u → у`, `m → м`, `n → н`, `r → р`, `l → л`, `s → с`, `w → в`, `y → й`, `h → г`.
+- Rime digraphs are longest-match: `ng → нг`, `ny → нь`, `ai → ай`, `au → ау`, `ui → уй`. Coda letters are rendered by the same literal letter table; this is not an IPA coda classification.
+- MLCTS `:` is retained as `ː` and `.` as `·`; an apostrophe is rendered as Ukrainian modifier apostrophe `ʼ`. These markers are preserved rather than silently discarded or reinterpreted.
+- The zero-onset carrier is represented by the explicit data token `∅`; it is not a deletion of the Burmese source character or the syllable nucleus.
+- Every candidate row has `ukrainian_status=PROPOSED`. The additional `romanization_evidence_status=EVIDENCE_LIMITED` on vendor-derived tables prevents a proposed Ukrainian rendering from being mistaken for proof that the underlying MLCTS row is an official MLC form.
+
+This crosswalk is intentionally a project convention and may be non-reversible. It makes all inventoried Latin strings readable in Ukrainian while preserving the source spelling and its notation markers; it does not establish phonological equivalence or expert approval.
