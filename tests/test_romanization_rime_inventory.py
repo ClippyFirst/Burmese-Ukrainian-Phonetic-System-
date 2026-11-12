@@ -19,7 +19,7 @@ def test_vendor_mlcts_rime_inventory_is_explicit_and_provenanced():
     assert all(row["romanization_evidence_status"] == "EVIDENCE_LIMITED" for row in rows)
     assert all(row["source_url"] == SOURCE for row in rows)
     assert all("romanisations.js" in row["source_locator"] for row in rows)
-    assert all("not represented as a directly inspected" in row["note"] for row in rows)
+    assert all("vendored Mya2Rom inventory" in row["note"] for row in rows)
 
 
 
