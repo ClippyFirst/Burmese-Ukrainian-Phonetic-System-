@@ -44,7 +44,7 @@ The canonical onset registry is [data/burmese/romanization_ukrainian.csv](../dat
 | ခ | hk | к' | PROPOSED; aspirated orthographic onset |
 | ဂ / ဃ | g / gh | ґ / ґ' | PROPOSED; orthographic target convention |
 | င | ng | нг | PROPOSED |
-| စ | c | — | EVIDENCE_LIMITED; do not infer a target value from c alone |
+| စ | c | ц | PROPOSED; literal MLCTS letter rendering, not an IPA assertion |
 | ဆ | hc | ц' | PROPOSED; aspiration marker retained |
 | ဇ / ဈ | j / jh | дж / дж' | PROPOSED; jh keeps the project aspiration marker |
 | ဉ / ည | ny | нь | PROPOSED |
