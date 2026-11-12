@@ -309,9 +309,17 @@ function render(){
   ukStatus.textContent="Загальний статус: "+r.status+" · IPA: "+r.ipaStatus+" · українська передача: "+r.ukStatus;
   ipaStatus.textContent=r.segments.some(x=>!x.nonMyanmar&&!x.ipa)?"Частину фонетичної структури не встановлено для цього вводу.":"Структурно розпізнані сегменти.";
   syllables.replaceChildren();
-  r.segments.forEach((s,index)=>{const row=document.createElement("div");row.className="syllable";
-    if(s.nonMyanmar){row.textContent=s.raw+" · збережено без змін";syllables.append(row);return;}
-    const head=document.createElement("strong");head.textContent=String(index+1).padStart(2,"0")+"  "+s.raw;
+  let syllableNumber=0;
+  r.segments.forEach(s=>{const row=document.createElement("div");row.className="syllable";
+    if(s.nonMyanmar){
+      // Preserve separators for source reconstruction, but never count them as
+      // linguistic syllables. Make whitespace-only runs explicit in the UI.
+      const whitespaceOnly=s.raw.length>0&&/^\\s+$/u.test(s.raw);
+      row.textContent=s.raw+(whitespaceOnly?" · пробіл/перенесення рядка збережено без змін":" · збережено без змін");
+      syllables.append(row);return;
+    }
+    syllableNumber+=1;
+    const head=document.createElement("strong");head.textContent=String(syllableNumber).padStart(2,"0")+"  "+s.raw;
     const detail=document.createElement("span");const shownStatus=s.provisionalStatus|| (s.uk?.status&&s.uk.status!=="ESTABLISHED"?s.status+" / передача: "+s.uk.status:s.status);detail.textContent=(s.ipa||"IPA не встановлено")+" → "+(s.uk?.text||"—")+" · "+shownStatus;row.append(head,detail);
     if(s.provisionalIpa){const preview=document.createElement("small");preview.textContent="Попередня підказка: "+s.provisionalIpa+" → "+s.provisionalUk+" [PROVISIONAL]";row.append(preview);}
     if(s.notes.length){const note=document.createElement("small");note.textContent=s.notes.join(" ");row.append(note);}syllables.append(row);
