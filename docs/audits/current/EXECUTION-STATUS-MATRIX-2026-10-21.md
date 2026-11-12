@@ -534,3 +534,23 @@ The earlier TODO row is superseded by the integrated runtime in PR #141. Current
 | Yangon IPA coverage for medial-ra/rime in `မြန်` | PARTIAL | Still intentionally withheld: the current positional IPA rule inventory does not establish this combination. No grapheme-only guess was introduced. Acceptance: source-backed positional analysis and independent expert adjudication for the selected Yangon profile, followed by shared Python/browser fixtures. |
 
 The initial regression run [43318664262](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43318664262) exposed an incorrectly escaped whitespace-detection regex; this was corrected before merge. The successful run above is on the final merged code head. Mainline Pages deployment [43319186954](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43319186954) was triggered after merge; deployment status is tracked separately and must not be inferred from the test result.
+
+
+## Burmese medial and G2P evidence review — 2026-11-13
+
+| Work item | Status | Evidence / acceptance |
+|---|---|---|
+| Four medial signs as orthographic slots | DONE_VERIFIED as source registry | Unicode 18 Table 16-4 plus WG2 N2827; establishes orthographic identities/order, not IPA values. |
+| YA/RA medial phonology | PARTIAL / ANALYSIS_DEPENDENT | Ishida 2026 describes /j/ default and velar-conditioned palatalization; Watkins 2001 describes secondary articulation in phonological /j,w/ clusters. Full onset × rime × prosody inventory and independent Yangon adjudication remain absent. |
+| WA medial | PARTIAL / CONTEXT_DEPENDENT | /w/ glide and /ʊ/ vowel/rime alternatives documented; no complete environment table. |
+| HA medial | PARTIAL / CONTEXT_DEPENDENT | Aspiration/devoicing and selected /ʃ/ fusion documented; no full onset-class inventory. |
+| Multiple medials | PARTIAL | MLC 1986 orthographic inventory of eleven forms reported in WG2 N2827; no complete modern native/loan distribution or IPA gold. |
+| Lexical IPA for မြန် | CANDIDATE / NOT GOLD | English Wiktionary lists /mjàɴ/ and a compound contains /mjàɴmà/. This supersedes “no lexical lead found” but does not approve a general rule or runtime output. |
+| Shared runtime implementation | TODO | Browser has dormant candidate derivation behind an all-medials guard; Python adapter independently withholds medials/codas. Require shared fixtures and parity before enabling. |
+| myG2P dictionary reuse | BLOCKED pending permission for commercial integration | CC BY-NC-SA 4.0; Myanmar README says commercial use is not granted without maintainer permission. |
+| Oo et al. Thrax grammar reuse | BLOCKED pending license verification | Paper describes public GitHub grammar but does not specify its license. |
+| Independent Yangon IPA gold | BLOCKED / NOT ESTABLISHED | No controlled speaker recordings, independent annotation or adjudication for target medial combinations. |
+
+Detailed review: docs/research/BURMESE-MEDIALS-AND-G2P-EVIDENCE-REVIEW-2026-11-13.md. Evidence registry: data/burmese/medial_evidence_matrix.csv. Automated traceability: tests/test_medial_evidence_matrix.py.
+
+The previous handoff statement that no word-level pronunciation lead was found for မြန် is superseded: a lexical IPA candidate is now documented. Runtime abstention remains unchanged until the candidate is independently validated and the phonemic-vs-phonetic output contract is fixed.

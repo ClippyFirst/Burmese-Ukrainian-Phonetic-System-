@@ -612,3 +612,16 @@ Latest final exact-head verification after adding explicit withholding for Myanm
 - Linguistic status is unchanged: `မြန်` contains the medial-ra/rime combination that the current Yangon IPA rule inventory does not establish. Canonical IPA remains `?`, Ukrainian practical output retains `⟦မြန်⟧`. This is intentional abstention, not a parser crash. Do not map it by orthographic guess; acceptance requires a source-backed positional rule and independent adjudication.
 - At this documentation update, Pages deployment run [43319186954](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43319186954) is still in progress; verify its final status before claiming the website has deployed this fix.
 - Current merged main SHA: `85dab8bdd08576c1cd112552f68092182bd9a8fa`. No local test execution is claimed; verification is hosted GitHub Actions.
+
+
+## Burmese medial and G2P evidence research — 2026-11-13
+
+- Base main: dc90463bdd734867308f03cb627eb8941efc19d6; branch: research/burmese-medials-g2p-evidence-2026-11-13.
+- Completed three Undermind deep searches: Yangon medial realization; Burmese pronunciation lexicons/corpus provenance; Burmese syllable structure/G2P benchmark methodology. Full text extracted for Watkins (2001), Thu et al. (2016), Oo et al. (2020) and Mooney & Repetti-Ludlow (2021). Additional metadata reviewed for Yanson (2015), Nishi (1998), Hlaing (2018/2019/2020), Repetti-Ludlow (2023), UCSY-SC1 (2019) and related work.
+- Added a source-linked medial evidence matrix and a research report. Unicode 18 / WG2 N2827 are orthographic sources; Ishida 2026 is a descriptive orthography/phonology source; Watkins is one-speaker phonetic evidence; Wiktionary /mjàɴ/ is a lexical lead only.
+- Important correction: English Wiktionary lists မြန် /mjàɴ/ and a longer compound contains /mjàɴmà/. This supersedes the earlier statement “no word-level attestation found.” It does not provide independently adjudicated Yangon audio, so no runtime mapping was enabled.
+- Implementation audit: Python _ipa withholds any coda and has no medial rule path. Browser parseCluster blocks every medial via unsupportedStructure; a contextual deriveIpa function exists behind this guard and is dormant. Do not remove the guard without shared cross-runtime evidence fixtures.
+- Resource/licensing: myG2P 2.0 is CC BY-NC-SA 4.0 and its Myanmar README excludes commercial use absent permission; the 2016 MLC source dictionary's rights are separate. SLR80 audio/transcripts are CC BY-SA 4.0 and not IPA-labelled. Oo et al.'s Thrax grammar URL is identified, but its license remains unverified.
+- New tests lock the lexical candidate's current withheld status and validate source/claim/rule traceability. These are evidence-governance tests, not pronunciation-accuracy tests.
+- Remaining acceptance: independent Yangon expert/audio adjudication; phonemic-vs-phonetic IPA contract; complete onset × medial × rime × tone/register matrix; license clearance; Python/browser shared fixtures.
+- Project remains PARTIAL PROTOTYPE, not linguistically release-ready.
