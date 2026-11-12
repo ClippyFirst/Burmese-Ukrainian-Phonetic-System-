@@ -110,7 +110,7 @@ def test_unmodelled_myanmar_extension_letter_never_receives_synthetic_ipa():
 
     # Khamti U+AA60 is in a Myanmar block but outside the selected Burmese
     # phonological inventory; block membership must not create a sound value.
-    result = to_ipa("\\uAA60")
+    result = to_ipa(chr(0xAA60))
     assert result["syllables"][0]["ipa"] is None
     assert result["syllables"][0]["phonetic_status"] == "analysis_dependent"
-    assert result["syllables"][0]["raw"] == "\\uAA60"
+    assert result["syllables"][0]["raw"] == chr(0xAA60)
