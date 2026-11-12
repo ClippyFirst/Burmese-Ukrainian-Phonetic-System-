@@ -314,7 +314,7 @@ function render(){
     if(s.nonMyanmar){
       // Preserve separators for source reconstruction, but never count them as
       // linguistic syllables. Make whitespace-only runs explicit in the UI.
-      const whitespaceOnly=s.raw.length>0&&/^\\s+$/u.test(s.raw);
+      const whitespaceOnly=s.raw.length>0&&/^\s+$/u.test(s.raw);
       row.textContent=s.raw+(whitespaceOnly?" · пробіл/перенесення рядка збережено без змін":" · збережено без змін");
       syllables.append(row);return;
     }
