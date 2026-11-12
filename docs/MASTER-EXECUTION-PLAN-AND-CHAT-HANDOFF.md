@@ -1254,3 +1254,14 @@ The browser onset-only preview is now limited to isolated bare consonant tokens.
 - Mya2Rom README limitations include stacked letters, asat, voicing sandhi, alternate pronunciations and Pali/Sanskrit-derived words. The vendored software is CC BY-SA 4.0 and remains attributed in `vendor/mya2rom/NOTICE.md`.
 - No runtime or crosswalk data changed. `MYA-ROM-MATRIX-001` remains PARTIAL; 94 rime keys remain vendor-derived and EVIDENCE_LIMITED pending primary MLC `mlcts` source recovery and row-by-row verification. MLCTS2 is a distinct profile and not a drop-in replacement.
 - Evidence: https://github.com/myanmaropenwordnet/mya2rom; https://shachi.org/resources/3949; bibliographic review of the 1993 dictionary: https://doi.org/10.1093/ijl/9.1.52.
+
+
+## Post-merge closeout — Burmese MLCTS source-profile reconciliation — 2026-11-12
+
+- PR [#144](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/144) merged as `690266b72979df2758e89992e635b2e39ad95196`.
+- Added `MLC1993DICT_BIB` and `MYA2ROM044` to `data/burmese/sources.csv`; documented that the project runtime explicitly requests `mlcts` (orthographic), while Mya2Rom documents `mlcts2` as a more phonetic modification used by the MLC Myanmar-English Dictionary and SEAlang.
+- The MLC 1993 dictionary is bibliographically located; accessible metadata records copyright in the source material. Original primary tables and reuse permission remain unavailable. No table data was copied.
+- Exact PR-head tests [43276549749](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43276549749): **SUCCESS**. Optional diagnostic [43276549453](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43276549453): **SUCCESS** (raw-output comparators only, not gold accuracy).
+- Mainline tests [43276744574](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43276744574): **SUCCESS**; Pages deployment and deployed-site/runtime smoke [43276744563](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43276744563): **SUCCESS**; optional diagnostic [43276745850](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43276745850): **SUCCESS**.
+- No code or matrix rows changed. `MYA-ROM-MATRIX-001` remains PARTIAL because 94 rime keys are vendor-derived and not checked against the original MLC `mlcts` orthographic specification; Ukrainian candidates remain PROPOSED.
+- Current mainline at this checkpoint: `690266b72979df2758e89992e635b2e39ad95196`. Verification is from hosted GitHub Actions; no local checkout/test execution is claimed.
