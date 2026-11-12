@@ -672,3 +672,18 @@ Latest final exact-head verification after adding explicit withholding for Myanm
 ## UCSY-SC1 rights note — 2026-11-13
 
 The paper documents a potentially useful 42 h 39 min / 307-speaker audio corpus, but it is not IPA gold. The publisher author-details page lists CC BY-SA 4.0 while the PDF footer says “All rights reserved”; the underlying corpus audio has no separately verified license or public download permission. Keep this source BLOCKED / RIGHTS-GATED until both article and corpus terms are confirmed.
+
+
+## Final one-pass verification — 2026-11-13
+
+- Base/default-branch starting commit: dc90463bdd734867308f03cb627eb8941efc19d6.
+- Latest code/data-bearing research head: 826601139fd73a5152b6b37a5ed3574f3fca18a5.
+- Dedicated branch: research/burmese-medials-g2p-evidence-2026-11-13.
+- Draft PR: #147. It is intentionally not merged while independent linguistic adjudication remains absent.
+- Required exact-head CI 43327571175 SUCCESS: 201 Python tests + 66 subtests; independent IPA gold schema validation; npm build; generated web-data freshness; 19 Node tests; 58 Chromium/Playwright tests.
+- Optional raw comparator/CRF workflow 43327570809 SUCCESS. Outputs remain non-gold and accuracy remains null.
+- Intermediate CI failures were fixed and rerun: 43324492175 exposed Python coda segmentation and matrix CSV issues; 43326933757 exposed a temporary practical_rules.csv path-mapping overwrite during documentation work. The table was restored from main, the conditional /ɴ/ note reapplied, and the final required CI passed.
+- No runtime medial IPA rule was enabled. The structural coda fix is verified; phonological coverage remains PARTIAL.
+- Independent expert-adjudicated IPA gold for the medial/coda cells: 0. Empirical accuracy: null.
+- PR #129 remains open/draft and untouched as a code branch (53 commits ahead / 17 behind current main, non-mergeable); its source-backed research findings were reconciled into this branch, but its broad hybrid-engine code was not ported.
+- Release assessment: PARTIAL PROTOTYPE, not linguistically release-ready. Research dossier is ready for specialist review and data-rights resolution.
