@@ -598,3 +598,17 @@ Latest final exact-head verification after adding explicit withholding for Myanm
 - Mainline tests [43227806284](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43227806284) and Pages deployment [43227806266](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43227806266) both SUCCESS.
 - Mainline test evidence: 187 Python tests + 66 subtests, 19 Node tests, 55 Playwright browser tests, production build and generated-data freshness all passed.
 - Acceptance remains PARTIAL: current Mya2Rom-derived rime inventory is EVIDENCE_LIMITED, and unrepresented legal syllable structures remain visibly unsupported rather than guessed.
+
+
+
+
+## Browser issue reported for the example `ကာ မြန်မာ` — 2026-11-13
+
+- Reproduced the presentation defect in `src/web/app.js`: whitespace was represented as a preserved non-Myanmar segment and its array index was reused as the displayed syllable number. Thus the visible Myanmar syllables were numbered 01, 03, 04 rather than 01, 02, 03; the whitespace-only row appeared almost blank.
+- PR [#146](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/146) changes numbering to count Myanmar syllable rows only. Whitespace remains in the structural list for exact source reconstruction and is explicitly labelled as a preserved separator. A browser regression covers the exact input and asserts unchanged IPA/target output.
+- PR #146 merged as `85dab8bdd08576c1cd112552f68092182bd9a8fa`; branch `fix/whitespace-segment-numbering-2026-11-13`.
+- Exact merged-head CI [43318947338](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43318947338) SUCCESS: 187 Python tests + 66 subtests, 19 Node tests, 56 Chromium Playwright tests, build, generated-data freshness and independent IPA-gold corpus structure validation.
+- One earlier run [43318664262](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43318664262) failed only the new browser assertion because the whitespace-detection regex was over-escaped; the regex was corrected, then the exact final head passed. Do not count the earlier failed run as a final-state failure.
+- Linguistic status is unchanged: `မြန်` contains the medial-ra/rime combination that the current Yangon IPA rule inventory does not establish. Canonical IPA remains `?`, Ukrainian practical output retains `⟦မြန်⟧`. This is intentional abstention, not a parser crash. Do not map it by orthographic guess; acceptance requires a source-backed positional rule and independent adjudication.
+- At this documentation update, Pages deployment run [43319186954](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43319186954) is still in progress; verify its final status before claiming the website has deployed this fix.
+- Current merged main SHA: `85dab8bdd08576c1cd112552f68092182bd9a8fa`. No local test execution is claimed; verification is hosted GitHub Actions.
