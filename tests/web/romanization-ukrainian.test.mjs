@@ -62,3 +62,12 @@ test("text adapter preserves punctuation and non-Myanmar text",()=>{
   assert.equal(result.status,"PROPOSED");
   assert.equal(result.mapped,1);
 });
+
+test("Myanmar code points outside the romanization inventory remain visible and unsupported",()=>{
+  const result=renderMlctsText("ကꩠ",()=>"ka",()=>[
+    {raw:"က",nonMyanmar:false},{raw:"ꩠ",nonMyanmar:false},
+  ],char=>char==="က");
+  assert.equal(result.text,"ка⟦ꩠ⟧");
+  assert.equal(result.status,"PARTIAL");
+  assert.equal(result.unsupported,1);
+});
