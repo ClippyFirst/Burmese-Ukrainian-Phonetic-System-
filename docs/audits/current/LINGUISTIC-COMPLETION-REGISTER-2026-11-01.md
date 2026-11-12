@@ -570,4 +570,8 @@ No MLCTS output was promoted to IPA or pronunciation evidence. Independent exper
 The project remains PARTIAL PROTOTYPE; empirical accuracy remains null.
 
 
+## IPA nasalization metadata boundary — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
 | MYA-IPA-NASALIZATION-SCHEMA-001 | DEFERRED | The typed IPA schema preserves literal IPA, kind, boundaries, tone, length and phonation but has no dedicated nasalization property. Literal IPA can preserve the diacritic. | Decide after expert-approved phonemic /N/ vs surface nasalization convention; only then consider a backward-compatible optional schema field. No schema change in this research pass. |
