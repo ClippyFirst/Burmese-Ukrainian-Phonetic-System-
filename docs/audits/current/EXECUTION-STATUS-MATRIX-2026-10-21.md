@@ -524,3 +524,13 @@ Latest final exact-head verification after adding explicit withholding for Myanm
 ## MLCTS → Ukrainian mainline status refresh — 2026-11-12
 
 The earlier TODO row is superseded by the integrated runtime in PR #141. Current `main` is `718dc4b2c1424651b32bc63b0202f5d08a067bc7`; exact-main tests [43228612973](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43228612973) and Pages [43228612998](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43228612998) passed. Status is PARTIAL, not DONE: 35 onset and 94 vendor-rime targets are mapped, but the rime inventory is vendor-derived/EVIDENCE_LIMITED and legal structures outside the supported adapter inventory remain withheld. This is orthographic rendering, not IPA validation.
+
+
+## Browser structural-analysis numbering correction — 2026-11-13
+
+| Work item | Status | Evidence / acceptance |
+|---|---|---|
+| Whitespace excluded from Myanmar syllable numbering while preserved in source reconstruction | DONE_VERIFIED | PR [#146](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/146), merged as `85dab8bdd08576c1cd112552f68092182bd9a8fa`. Regression for `ကာ မြန်မာ` asserts contiguous Myanmar syllable numbers `01`, `02`, `03`, retained separator, and unchanged fail-closed phonetic output. Exact merged-head test run [43318947338](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43318947338): 187 Python tests + 66 subtests, 19 Node tests, 56 Chromium Playwright tests, build and generated-data freshness all SUCCESS. |
+| Yangon IPA coverage for medial-ra/rime in `မြန်` | PARTIAL | Still intentionally withheld: the current positional IPA rule inventory does not establish this combination. No grapheme-only guess was introduced. Acceptance: source-backed positional analysis and independent expert adjudication for the selected Yangon profile, followed by shared Python/browser fixtures. |
+
+The initial regression run [43318664262](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43318664262) exposed an incorrectly escaped whitespace-detection regex; this was corrected before merge. The successful run above is on the final merged code head. Mainline Pages deployment [43319186954](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43319186954) was triggered after merge; deployment status is tracked separately and must not be inferred from the test result.
