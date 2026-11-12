@@ -508,3 +508,10 @@ The export and benchmark now preserve and validate the complete frozen split ide
 |---|---|---|---|
 | MYA-ROM-UA-TARGET-001 | DONE_VERIFIED | Branch `feat/burmese-romanization-ukrainian-matrix-completion-2026-11-12`; exact-head test run [43221074232](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43221074232) SUCCESS: 187 Python tests + 66 subtests, 54 Node tests, build, generated-data freshness and built-site Playwright all passed. All 35 onset and 94 vendor-rime rows have target candidates. | Table coverage verified; project orthographic rendering only, not IPA or primary-source verification of vendor rimes. Runtime adapter and full source inventory remain open. |
 | MYA-ROM-UA-001 | TODO | No runtime MLCTS → Ukrainian syllable adapter integrated. | Separate adapter consumes MLCTS, retains source/Latin/UA trace and uncertainty, and never falls back to IPA. |
+
+
+## Burmese Ukrainian target matrix — post-merge evidence — 2026-11-12
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| MYA-ROM-UA-TARGET-001 | DONE_VERIFIED | Merged PR [#138](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/138), merge `1d7045d9695d571017633a2e294b718a13ee5bce`; mainline tests [43221871111](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43221871111) and Pages [43221870932](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43221870932) SUCCESS. | 35 onset + 94 vendor-rime target rows are covered. Vendor-source evidence remains EVIDENCE_LIMITED; runtime adapter and complete source inventory remain open. |

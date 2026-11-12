@@ -565,3 +565,11 @@ The canonical Ukrainian practical transcription implementation and current task 
 - Expanded Python and browser tests to verify all 35 onset rows and all 94 rime renderings, including digraphs and notation markers. Updated `docs/romanization-to-ukrainian-matrix.md` and this handoff.
 - `MYA-ROM-UA-TARGET-001` is DONE_VERIFIED on exact-head test run [43221074232](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43221074232): 187 Python tests + 66 subtests, 54 Node tests, build, generated-data freshness and built-site Playwright all passed. The runtime adapter `MYA-ROM-UA-001` remains TODO. Full MLC primary-source verification, complete medial/kinzi/asat/numeral/punctuation inventory and syllable-level source-aware rendering remain open. No IPA, tone, phonation or lexical pronunciation claim changed.
 - No local checkout/runtime was available through this connector session. The target-matrix gate is verified at code/data commit `8babb8c319929b96130058c100979c33856369ab`; the follow-up handoff/status documentation commits do not change code or matrix data.
+
+
+## Post-merge mainline verification — MLCTS Ukrainian target matrix — 2026-11-12
+
+- PR #138 merged into `main` as `1d7045d9695d571017633a2e294b718a13ee5bce`.
+- Mainline test run [43221871111](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43221871111) and Pages deployment [43221870932](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43221870932) both SUCCESS on the merge commit.
+- Exact feature-head tests [43221074232](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43221074232) passed: 187 Python tests + 66 subtests, 54 Node tests, build, generated-data freshness and built-site Playwright.
+- `MYA-ROM-UA-TARGET-001` is DONE_VERIFIED. `MYA-ROM-UA-001` remains TODO (runtime MLCTS-to-Ukrainian adapter); `MYA-ROM-MATRIX-001` remains PARTIAL because the 94 rimes are vendor-derived and the complete source orthographic inventory/primary MLC verification is outstanding. No IPA or pronunciation claim is implied.
