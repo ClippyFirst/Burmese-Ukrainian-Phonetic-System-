@@ -1244,3 +1244,13 @@ The browser onset-only preview is now limited to isolated bare consonant tokens.
 - Current ledger: target matrix DONE_VERIFIED (35 onset + 94 vendor-rime rows); MLCTS → Ukrainian runtime PARTIAL (adapter integrated for supported onset/rime/medial structures); complete source orthographic matrix PARTIAL (MLC primary source unavailable; unsupported structures withheld); component-level vendor licensing/provenance audit PARTIAL.
 - Open draft research PR #129 remains untouched. It is a separate G2P/provider diagnostic integration, not a dependency of the orthographic MLCTS adapter.
 - No local checkout was available in this connector-only session; verification cited here is hosted GitHub Actions on exact current `main`. No local pytest/npm/Playwright execution is claimed.
+
+
+## Burmese MLCTS source-profile reconciliation — 2026-11-12
+
+- Audited the vendored Mya2Rom README and registered `MYA2ROM044` plus the bibliographic/rights locator `MLC1993DICT_BIB` in `data/burmese/sources.csv`.
+- Important correction: Mya2Rom documents `mlcts` as the MLC-created orthographic transcription system, while `mlcts2` is a more phonetic modification used by the MLC for its Myanmar-English Dictionary and by SEAlang. The current project explicitly calls the `mlcts` profile; it must not be described as using the dictionary's `mlcts2` output.
+- The 1993 MLC *Myanmar-English Dictionary* is bibliographically located, but accessible SHACHI metadata states the source content is copyright 1993 MLC / 1996 Dunwoody Press. The actual primary tables and reuse permission have not been obtained. No table content was copied.
+- Mya2Rom README limitations include stacked letters, asat, voicing sandhi, alternate pronunciations and Pali/Sanskrit-derived words. The vendored software is CC BY-SA 4.0 and remains attributed in `vendor/mya2rom/NOTICE.md`.
+- No runtime or crosswalk data changed. `MYA-ROM-MATRIX-001` remains PARTIAL; 94 rime keys remain vendor-derived and EVIDENCE_LIMITED pending primary MLC `mlcts` source recovery and row-by-row verification. MLCTS2 is a distinct profile and not a drop-in replacement.
+- Evidence: https://github.com/myanmaropenwordnet/mya2rom; https://shachi.org/resources/3949; bibliographic review of the 1993 dictionary: https://doi.org/10.1093/ijl/9.1.52.
