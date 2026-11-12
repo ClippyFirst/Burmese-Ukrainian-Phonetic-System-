@@ -84,7 +84,7 @@ def test_external_engine_candidates_for_mran_remain_non_gold_and_withheld():
     assert google["attested_phonological_behavior"] == "m j àɴ"
     assert epitran["project_runtime_status"] == google["project_runtime_status"] == "WITHHELD"
     assert epitran["evidence_level"] == "engine_disagreement_not_gold"
-    assert "43325263623" in epitran["source_locator"]
+    assert "43325991496" in epitran["source_locator"]
 
 
 def test_crf_medial_counts_are_diagnostic_not_accuracy():

@@ -100,3 +100,18 @@ python scripts/benchmark_g2p.py --engine epitran --output epitran-benchmark.json
 
 The JSON report records raw output, package version, corpus SHA-256 and—when the installed package exposes the file—mapping-table SHA-256. It only scores rows whose evidence status is `GOLD_VERIFIED`, with a non-empty expected IPA, source ID and a non-pending source locator. With the current structural-only seed corpus, the eligible gold count is zero and accuracy remains `null`; this is intentional. The runner has not yet been executed against an installed Epitran environment, so no engine output or accuracy result is claimed in this audit.
 
+
+## Burmese medial/G2P source and licensing update — 2026-11-13
+
+### Google Thrax/OpenFst
+
+- The exact pinned source commit a90601024f07ab7e96c911243324e0adeb16da96 has Apache-2.0 in both repository LICENSE and my/burmese.grm header. This corrects the earlier “license not identified” note for the paper: the paper does not specify the code license, but the actual pinned code does.
+- The grammar is a candidate external comparator, not a default runtime dependency. Its upstream WORKSPACE is not fully hermetic; the PR #129 branch contains a pinned build path. The raw structural probe returned m j àɴ for မြန်, but had no expected IPA/gold.
+- This code license does not extend to LREC in-house speech data, MLC dictionary data, myG2P, or other corpora.
+
+### Epitran and CRFsuite diagnostics
+
+- Epitran 1.35.3 raw output for မြန် is məjaɴ, compared with Google m j àɴ and Wiktionary /mjàɴ/. The exact artifact has zero gold and null accuracy; treat this as unresolved model disagreement.
+- CRFsuite v2 sample: 100 evenly spaced myG2P v2.0 rows, 84 source-concordant, 0 gold, null accuracy, possible training overlap. Medial counts overlap: YA 10/14, RA 17/20, WA 13/15, HA 7/8. The target word မြန် was not selected.
+- The CRF model's source data inherits the myG2P CC BY-NC-SA 4.0 restriction. Do not integrate its data/model artifacts commercially without separate permission.
+- Current exact artifacts: optional run 43325991496; Epitran SHA-256 cb9cbb1c08047b2082f21f3c29d01d8054eaf37fc462abf55a3336ad265d7c1f; CRF SHA-256 d0df5c6527a757ee3c8be5259578ec08abdd3b219bf317d3de7364a47bdb6125.

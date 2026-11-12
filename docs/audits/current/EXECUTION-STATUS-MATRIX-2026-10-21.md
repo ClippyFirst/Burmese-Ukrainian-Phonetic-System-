@@ -584,3 +584,11 @@ Detailed evidence: docs/research/BURMESE-MEDIALS-AND-G2P-EVIDENCE-REVIEW-2026-11
 - Epitran 1.35.3 returned məjaɴ for the structural-only probe မြန်, while Google Thrax returned m j àɴ. Both runs had zero gold and null accuracy; the disagreement is unresolved.
 - CRFsuite v2 returned 84/100 source-concordant predictions on a 100-row sample of myG2P v2.0. Medial-bearing sample counts: YA 10/14, RA 17/20, WA 13/15, HA 7/8 (overlapping categories). The exact word မြန် was not in the sample; training overlap is possible and the input syllable boundaries were supplied.
 - These outputs are diagnostic only, not gold, not accuracy, and not approved runtime rules. The myG2P source dataset remains CC BY-NC-SA 4.0.
+
+
+## Final exact-head verification — 2026-11-13
+
+- Research branch head before this documentation reconciliation: 5eff1f3d052e775026ffff0fa0b3edd00512224d.
+- Required workflow [43325991671](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43325991671) SUCCESS: independent IPA gold schema validation, Python tests, npm build, generated web-data freshness, Node tests, Chromium/Playwright built-site tests.
+- Optional raw-output workflow [43325991496](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43325991496) SUCCESS: Epitran and CRFsuite diagnostics; artifacts are recorded with SHA-256 in the source registry.
+- Exact final CI is engineering/provenance verification only. Gold remains zero and accuracy null.

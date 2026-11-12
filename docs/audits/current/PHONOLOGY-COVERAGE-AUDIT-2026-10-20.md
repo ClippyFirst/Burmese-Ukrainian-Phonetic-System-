@@ -66,3 +66,13 @@ These are unknown measurements, not 0% accuracy. The shared Unicode JSON fixture
 ## Sources
 
 See docs/references.md, data/burmese/sources.csv, data/burmese/source_claims.csv, and data/burmese/tone_analyses.csv.
+
+
+## Evidence update — 2026-11-13
+
+- **Segmentation:** Python now recognizes a base consonant + U+103A ASAT as a final/coda in the preceding syllable, matching the browser parser. Tests cover မြန် (one syllable), မြန်မာ (two) and ကတ်. Overall segmentation remains partial because there is no independent annotated boundary corpus.
+- **Medials:** the orthographic inventory is now source-verified as four basic signs plus seven combinations. Phonetic behavior remains partial/context-dependent; the existence of a combination is not an IPA rule.
+- **Coda:** Green's placeless /N/ analysis requires nasalization/approximate place realization, not an unconditional independent [ɴ]. The Ukrainian /ɴ/ target rule remains conditional on the selected IPA representation.
+- **External models:** Google Thrax /m j àɴ/ and Epitran /məjaɴ/ disagree on မြန်; both have zero gold. CRF source concordance is not empirical accuracy.
+- **Tone:** four-tone and eight-tone/register analyses remain separate. No tone rule is enabled.
+- **Release boundary:** independent adjudicated IPA gold remains zero; word-level accuracy remains unmeasured.

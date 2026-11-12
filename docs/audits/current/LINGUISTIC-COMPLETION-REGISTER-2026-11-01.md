@@ -551,3 +551,20 @@ Latest final exact-head verification after adding explicit withholding for Myanm
 | MYA-ROM-LIC-001 | PARTIAL | Mya2Rom attribution and CC-BY-SA-4.0 notice retained. | Component-by-component audit of vendored code, table data and upstream-derived sources/rights. |
 
 No MLCTS output was promoted to IPA or pronunciation evidence. Independent expert-adjudicated IPA gold remains 0 and empirical accuracy remains null.
+
+
+## Burmese medials, G2P and coda-parsing update — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| MYA-MEDIAL-INVENTORY-001 | DONE_VERIFIED (orthographic inventory) | Unicode 18, WG2 N2827 and Hlaing (2014) support four basic signs plus seven two-/three-medial codepoint combinations. The thesis has a duplicated prose label in the final RA+WA+HA row; codepoints are unambiguous. | This does not assign IPA values to all combinations. |
+| MYA-MEDIAL-PHONOLOGY-001 | PARTIAL / CONTEXT_DEPENDENT | Ishida 2026 and pinned Google Thrax: YA/RA typically /j/ with onset-specific exceptions; WA /w/ vs rime /ʊ/; HA aspiration/devoicing and fused outcomes. Watkins (2001) and Green (2002) support secondary articulation /mj/ analysis. | Complete onset × medial × rime × coda × tone matrix and independent Yangon adjudication. |
+| MYA-MRAN-IPA-001 | PARTIAL / CROSS-SOURCE CANDIDATE | Wiktionary /mjàɴ/; Green /mj/ plus placeless nasal /N/; Google WFST raw output m j àɴ. Epitran 1.35.3 instead returns məjaɴ. Both external outputs have zero gold and null accuracy. | Independent audio/IPA adjudication; settle phonemic /N/ vs surface nasalization and schwa disagreement. |
+| MYA-ASAT-CODA-001 | DONE_VERIFIED (structural parser parity) | Python now attaches base consonant + U+103A as coda within preceding syllable, matching browser. Regression cases: မြန်, မြန်မာ, ကတ်. Exact-head tests [43325991671](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43325991671) SUCCESS. | Broader segmentation remains partial pending independent annotated boundary corpus. |
+| MYA-GOOGLE-FST-001 | DONE_VERIFIED (source/license and raw diagnostic) | Pinned grammar commit a90601024f07ab7e96c911243324e0adeb16da96 and root LICENSE declare Apache-2.0; raw probe run 43084508359 returned m j àɴ for မြန်, no gold. | Optional comparator only; do not replace deterministic engine or treat output as gold. |
+| MYA-CRF-DIAG-001 | PARTIAL / DIAGNOSTIC ONLY | Exact branch run [43325991496](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43325991496): 84/100 source-concordant; YA 10/14, RA 17/20, WA 13/15, HA 7/8; zero gold and accuracy null; exact မြန် absent. | Train/test overlap unknown; labels are from myG2P CC BY-NC-SA 4.0. |
+| MYA-TONE-001 | PARTIAL / COMPETING ANALYSES | Green and LREC 2020 use four-tone descriptions; Duan & Zhu (2025) propose eight tones across modal/lower-breathy registers. | Full empirical review, profile scope and expert-approved convention. |
+| MYA-IPA-GOLD-001 | BLOCKED | No independent expert-adjudicated Burmese IPA gold for these medial/coda cells. | Two independent qualified annotators, third adjudicator, lawful audio, versioned convention and frozen held-out splits. |
+| MYA-PR129-RECONCILIATION-001 | LEFT OPEN / NOT MERGED | Draft PR #129 is 53 commits ahead / 17 behind current main and non-mergeable; its research findings were reused, broad hybrid implementation left untouched. | Rebase/reconcile only as a separate, reviewed integration task. |
+
+The project remains PARTIAL PROTOTYPE; empirical accuracy remains null.

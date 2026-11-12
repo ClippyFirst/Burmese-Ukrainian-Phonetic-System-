@@ -1276,3 +1276,8 @@ The browser onset-only preview is now limited to isolated bare consonant tokens.
 - Exact final-head tests [43318947338](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43318947338) SUCCESS: 187 Python tests + 66 subtests, 19 Node tests, 56 Chromium Playwright tests, build and generated-data freshness.
 - The IPA/ukrainian abstention for `မြန်` remains unchanged and deliberate: positional medial-ra/rime evidence is not established in the selected Yangon profile. The service must not infer an IPA form merely to avoid a placeholder.
 - Pages deployment [43319186954](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43319186954) was triggered after merge and must be checked before confirming the live site has updated. No local test execution is claimed.
+
+
+## Burmese medial/nasal-coda target note — 2026-11-13
+
+The proposed /ɴ/ → нг target rule is conditional on an IPA analysis that explicitly emits /ɴ/. Green's abstract placeless /N/ and nasalized-vowel realizations must not be routed through this rule without an explicit phonetic conversion decision.

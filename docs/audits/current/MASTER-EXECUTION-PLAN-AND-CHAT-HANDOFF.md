@@ -652,3 +652,11 @@ Latest final exact-head verification after adding explicit withholding for Myanm
 - Epitran 1.35.3 raw output for မြန် is məjaɴ; pinned Google Thrax raw output is m j àɴ; Wiktionary lists /mjàɴ/. Both engines were run on structural-only probes with zero gold and null accuracy. No winner is selected.
 - Pinned CRFsuite v2 was run on 100 evenly spaced myG2P v2.0 source rows: 84/100 source-concordant; YA 10/14, RA 17/20, WA 13/15, HA 7/8 (overlapping). The exact target မြန် is absent; possible training overlap; syllable boundaries supplied; zero gold and null accuracy.
 - Artifacts are recorded in sources.csv and medial_evidence_matrix.csv with SHA-256 hashes. They are diagnostics only and do not authorize runtime mappings.
+
+
+## Exact-head research and parser verification — 2026-11-13
+
+- Latest code-bearing head 5eff1f3d052e775026ffff0fa0b3edd00512224d; required CI [43325991671](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43325991671) SUCCESS; optional Epitran/CRF run [43325991496](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43325991496) SUCCESS.
+- Python coda segmentation parity fix and all regression tests passed. Browser/Node/build/generated-data checks passed.
+- Exact Epitran artifact SHA-256 cb9cbb1c08047b2082f21f3c29d01d8054eaf37fc462abf55a3336ad265d7c1f; CRF artifact SHA-256 d0df5c6527a757ee3c8be5259578ec08abdd3b219bf317d3de7364a47bdb6125.
+- No runtime medial IPA rules enabled; gold 0, accuracy null; project remains PARTIAL PROTOTYPE.

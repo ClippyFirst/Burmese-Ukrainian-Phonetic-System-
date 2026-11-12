@@ -98,3 +98,13 @@ Rights correction: LREC 2020 explicitly states that its in-house speech and segm
 
 
 Green's 50-rhyme table is identified, but the available PDF text extraction corrupts several symbols/tones; the full 50-row inventory is deliberately not transcribed from OCR. Only the readable structural restrictions are recorded until a manual page-image extraction is available.
+
+
+## New source-backed findings — 2026-11-13
+
+- Hlaing (2014) separates phonetic from orthographic syllable structure and lists all eleven medial forms. The final RA+WA+HA row has a prose label typo; the codepoint sequence is U+103C+U+103D+U+103E.
+- Ishida (2026): U+103B/U+103C normally /j/ with velar-conditioned palatalization; U+103D /w/ or /ʊ/; U+103E aspiration/devoicing and selected /ʃ/ fusion. Watkins (2001) warns that /j,w/ may surface as secondary articulation.
+- Green (2002): /mj/ onset examples, placeless /N/ coda realized through preceding-vowel nasalization, and only three tone categories in nasal rhymes. Do not map /N/ automatically to a surface [ɴ].
+- Google Thrax pinned commit a90601024f07ab7e96c911243324e0adeb16da96 is Apache-2.0. Its grammar maps -r/-y to /j/, -w to /w/, reorders -h and contains onset/rime-specific rules.
+- Cross-engine target disagreement: Google raw output m j àɴ; Epitran 1.35.3 raw output məjaɴ for မြန်. Zero gold; both are diagnostics only. CRF 84/100 source-concordant on myG2P-derived sample, zero gold, possible train/test overlap.
+- Acceptance still requires a versioned phonemic-vs-phonetic convention, independent Yangon audio/IPA adjudication, full onset × medial × rime × tone coverage and shared Python/browser phonological fixtures.

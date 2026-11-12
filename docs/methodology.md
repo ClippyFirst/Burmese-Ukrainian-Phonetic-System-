@@ -118,3 +118,10 @@ metadata. They are not automatically converted into Ukrainian lexical stress.
 
 The implementation is intentionally conservative. Incomplete evidence produces
 explicit uncertainty rather than invented IPA or orthography.
+
+
+## Burmese transcription level: medial signs and nasal coda
+
+An orthographic medial sign is not an IPA segment by name: U+103C MEDIAL RA is commonly described as /j/ in relevant contexts, with onset-specific alternatives; U+103D can participate in glide or rime behavior; U+103E can alter aspiration/phonation or fuse with an onset. The orthographic parser must preserve the sign and codepoint sequence, while the phonological layer resolves the context.
+
+The output contract must distinguish phonemic/broad IPA from narrow surface phonetics. Green's abstract placeless nasal /N/ may be realized through preceding-vowel nasalization and approximate place articulation; it must not be silently rewritten as an independent [ɴ]. The Ukrainian rule for IPA /ɴ/ applies only if the selected source analysis explicitly yields that segment. Preserve nasalization, coda identity, tone/register and uncertainty until the target policy explicitly handles them.

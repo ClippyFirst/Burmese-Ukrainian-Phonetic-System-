@@ -120,3 +120,11 @@ These are documentary facts from different sources, not a legal resolution. The 
 The new records `MYG2P2026` and `OPENSLR80` are now registered in `data/burmese/sources.csv`; documentary claims are separately registered in `data/burmese/source_claims.csv`. No third-party dictionary or audio was copied. The only approved use status remains the previously documented test-only diagnostic use; this source audit does not grant any new production, redistribution or commercial permission.
 
 Independent expert-adjudicated Burmese IPA gold remains **0**; empirical accuracy remains **null**.
+
+
+## Additional G2P/phonology diagnostics — 2026-11-13
+
+- Google Thrax grammar at pinned commit a90601024f07ab7e96c911243324e0adeb16da96 is Apache-2.0; its output for မြန် is m j àɴ, but the structural probe has no gold.
+- Epitran 1.35.3 returns məjaɴ for the same probe; zero gold and null accuracy. The disagreement is useful for prioritizing expert annotation, not for selecting a winner.
+- CRFsuite v2 returns 84/100 source-concordant outputs on a 100-row sample of myG2P v2.0, with overlapping medial subsets YA 10/14, RA 17/20, WA 13/15, HA 7/8. The sample has no gold and the target မြန် is absent; possible train/test overlap remains.
+- The only directly reusable public audio corpus reviewed here is SLR80 (CC BY-SA 4.0), with orthographic transcripts but no IPA labels. myG2P remains CC BY-NC-SA 4.0 and is not commercially cleared. No candidate is an independent gold corpus.
