@@ -54,7 +54,19 @@ test("the 94-row MLCTS rime inventory exactly mirrors the vendored Mya2Rom MLCTS
     const row = actual.get(sourceUnit);
     assert.ok(row, `missing vendor rime key: ${sourceUnit}`);
     assert.equal(row.mlcts, mlcts, `MLCTS value drift for ${sourceUnit}`);
-    assert.equal(row.ukrainian_candidate, "", "unadjudicated targets must remain blank");
-    assert.equal(row.ukrainian_status, "EVIDENCE_LIMITED");
+    assert.ok(row.ukrainian_candidate, "every vendor MLCTS rime must have a Ukrainian orthographic candidate");
+    assert.equal(row.ukrainian_status, "PROPOSED");
+    assert.equal(row.romanization_evidence_status, "EVIDENCE_LIMITED");
   }
+});
+
+
+test("Ukrainian MLCTS rime crosswalk maps digraphs and preserves notation markers", () => {
+  const inventory = parseCsv(readFileSync(csvPath, "utf8"));
+  const byMlcts = new Map(inventory.map((row) => [row.mlcts, row.ukrainian_candidate]));
+  assert.equal(byMlcts.get("ai"), "ай");
+  assert.equal(byMlcts.get("au"), "ау");
+  assert.equal(byMlcts.get("uing:"), "уйнгː");
+  assert.equal(byMlcts.get("aung."), "аунг·");
+  assert.equal(byMlcts.get("ip'"), "іпʼ");
 });
