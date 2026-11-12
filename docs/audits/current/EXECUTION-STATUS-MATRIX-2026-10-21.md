@@ -577,3 +577,10 @@ Detailed evidence: docs/research/BURMESE-MEDIALS-AND-G2P-EVIDENCE-REVIEW-2026-11
 - Python segmentation now treats a base consonant followed by U+103A as a coda within the preceding syllable, and the parser records the final consonant and ASAT codepoint explicitly.
 - Regression coverage: မြန် is one orthographic syllable; မြန်မာ is two; ကတ် retains final တ+ASAT. Browser tests lock the same visible syllable boundaries.
 - Phonetic status is unchanged: medial/coda syllables remain withheld from IPA until source-backed phonological rules and parity fixtures are accepted.
+
+
+### External raw-engine diagnostics — 2026-11-13
+
+- Epitran 1.35.3 returned məjaɴ for the structural-only probe မြန်, while Google Thrax returned m j àɴ. Both runs had zero gold and null accuracy; the disagreement is unresolved.
+- CRFsuite v2 returned 84/100 source-concordant predictions on a 100-row sample of myG2P v2.0. Medial-bearing sample counts: YA 10/14, RA 17/20, WA 13/15, HA 7/8 (overlapping categories). The exact word မြန် was not in the sample; training overlap is possible and the input syllable boundaries were supplied.
+- These outputs are diagnostic only, not gold, not accuracy, and not approved runtime rules. The myG2P source dataset remains CC BY-NC-SA 4.0.

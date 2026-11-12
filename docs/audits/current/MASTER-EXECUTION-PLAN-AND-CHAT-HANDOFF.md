@@ -645,3 +645,10 @@ Latest final exact-head verification after adding explicit withholding for Myanm
 - Fixed Python segmentation and coda parsing to match browser behavior; added parser and Playwright regressions for မြန်, မြန်မာ and ကတ်. Corrected the CSV row alignment and combination-row assertion.
 - IPA remains withheld. This is a structural parity fix, not a phonological mapping.
 - CI rerun pending on updated PR #147 head.
+
+
+## External comparator disagreement and CRF sample — 2026-11-13
+
+- Epitran 1.35.3 raw output for မြန် is məjaɴ; pinned Google Thrax raw output is m j àɴ; Wiktionary lists /mjàɴ/. Both engines were run on structural-only probes with zero gold and null accuracy. No winner is selected.
+- Pinned CRFsuite v2 was run on 100 evenly spaced myG2P v2.0 source rows: 84/100 source-concordant; YA 10/14, RA 17/20, WA 13/15, HA 7/8 (overlapping). The exact target မြန် is absent; possible training overlap; syllable boundaries supplied; zero gold and null accuracy.
+- Artifacts are recorded in sources.csv and medial_evidence_matrix.csv with SHA-256 hashes. They are diagnostics only and do not authorize runtime mappings.

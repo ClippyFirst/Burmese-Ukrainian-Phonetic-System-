@@ -74,3 +74,22 @@ def test_green_nasal_coda_is_not_flattened_to_independent_velar_nasal():
     assert "nasalization" in row["attested_phonological_behavior"]
     assert "standalone surface [ɴ]" in row["notes"]
     assert row["project_runtime_status"] == "WITHHELD"
+
+
+def test_external_engine_candidates_for_mran_remain_non_gold_and_withheld():
+    matrix = rows("medial_evidence_matrix.csv")
+    epitran = next(row for row in matrix if row["evidence_id"] == "MED-EPITRAN-MRAN-001")
+    google = next(row for row in matrix if row["evidence_id"] == "MED-GOOGLE-MRAN-001")
+    assert epitran["attested_phonological_behavior"] == "məjaɴ"
+    assert google["attested_phonological_behavior"] == "m j àɴ"
+    assert epitran["project_runtime_status"] == google["project_runtime_status"] == "WITHHELD"
+    assert epitran["evidence_level"] == "engine_disagreement_not_gold"
+    assert "43325263623" in epitran["source_locator"]
+
+
+def test_crf_medial_counts_are_diagnostic_not_accuracy():
+    row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-CRF-MEDIAL-SAMPLE-001")
+    assert row["attested_phonological_behavior"] == "YA 10/14; RA 17/20; WA 13/15; HA 7/8; overall 84/100"
+    assert row["evidence_level"] == "sample_concordance_not_accuracy"
+    assert row["project_runtime_status"] == "WITHHELD"
+    assert "gold_count=0" in row["source_locator"]
