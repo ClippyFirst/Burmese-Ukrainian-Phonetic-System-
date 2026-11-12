@@ -1265,3 +1265,14 @@ The browser onset-only preview is now limited to isolated bare consonant tokens.
 - Mainline tests [43276744574](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43276744574): **SUCCESS**; Pages deployment and deployed-site/runtime smoke [43276744563](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43276744563): **SUCCESS**; optional diagnostic [43276745850](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43276745850): **SUCCESS**.
 - No code or matrix rows changed. `MYA-ROM-MATRIX-001` remains PARTIAL because 94 rime keys are vendor-derived and not checked against the original MLC `mlcts` orthographic specification; Ukrainian candidates remain PROPOSED.
 - Current mainline at this checkpoint: `690266b72979df2758e89992e635b2e39ad95196`. Verification is from hosted GitHub Actions; no local checkout/test execution is claimed.
+
+
+
+
+## Burmese web example correction — 2026-11-13
+
+- User-reported input: `ကာ မြန်မာ`. Root cause of the visible numbering gap was UI indexing: preserved whitespace segments were counted as syllables. The blank-looking separator row also lacked a descriptive label.
+- PR [#146](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/146) merged as `85dab8bdd08576c1cd112552f68092182bd9a8fa`. Myanmar syllables now receive contiguous numbering; whitespace remains preserved and is labelled without being counted.
+- Exact final-head tests [43318947338](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43318947338) SUCCESS: 187 Python tests + 66 subtests, 19 Node tests, 56 Chromium Playwright tests, build and generated-data freshness.
+- The IPA/ukrainian abstention for `မြန်` remains unchanged and deliberate: positional medial-ra/rime evidence is not established in the selected Yangon profile. The service must not infer an IPA form merely to avoid a placeholder.
+- Pages deployment [43319186954](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43319186954) was triggered after merge and must be checked before confirming the live site has updated. No local test execution is claimed.
