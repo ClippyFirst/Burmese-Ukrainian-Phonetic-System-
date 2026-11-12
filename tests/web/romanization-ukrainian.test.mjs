@@ -71,3 +71,11 @@ test("Myanmar code points outside the romanization inventory remain visible and 
   assert.equal(result.status,"PARTIAL");
   assert.equal(result.unsupported,1);
 });
+
+
+test("romanization text adapter explicitly requests orthographic MLCTS mode",()=>{
+  let receivedArgs=null;
+  const result=renderMlctsText("က",(...args)=>{receivedArgs=args;return "ka";},raw=>[{raw,nonMyanmar:false}]);
+  assert.equal(receivedArgs[1],"mlcts");
+  assert.equal(result.text,"က" ? "ка" : "");
+});

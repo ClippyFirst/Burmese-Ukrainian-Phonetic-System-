@@ -687,3 +687,10 @@ The paper documents a potentially useful 42 h 39 min / 307-speaker audio corpus,
 - Independent expert-adjudicated IPA gold for the medial/coda cells: 0. Empirical accuracy: null.
 - PR #129 remains open/draft and untouched as a code branch (53 commits ahead / 17 behind current main, non-mergeable); its source-backed research findings were reconciled into this branch, but its broad hybrid-engine code was not ported.
 - Release assessment: PARTIAL PROTOTYPE, not linguistically release-ready. Research dossier is ready for specialist review and data-rights resolution.
+
+
+## Mya2Rom mode contract — 2026-11-13
+
+- Mya2Rom 0.4.4 exposes ipa, mlcts, mlcts2, simple and simple2; MLCTS is orthographic, MLCTS2 is more phonetic romanization but not standardized IPA.
+- The project browser adapter explicitly calls mya2rom(unit.raw, "mlcts", ...). A regression test now locks this mode.
+- Keep Latin→Ukrainian transliteration separate from source phonology → IPA → Ukrainian adaptation. The upstream README documents stacking, ASAT, schwa, voicing-sandhi and alternate-pronunciation limitations; its IPA convention uses /N/ instead of nasalized vowels.

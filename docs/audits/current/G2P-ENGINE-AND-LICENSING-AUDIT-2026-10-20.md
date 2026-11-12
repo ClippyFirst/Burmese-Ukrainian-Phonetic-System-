@@ -115,3 +115,8 @@ The JSON report records raw output, package version, corpus SHA-256 and—when t
 - CRFsuite v2 sample: 100 evenly spaced myG2P v2.0 rows, 84 source-concordant, 0 gold, null accuracy, possible training overlap. Medial counts overlap: YA 10/14, RA 17/20, WA 13/15, HA 7/8. The target word မြန် was not selected.
 - The CRF model's source data inherits the myG2P CC BY-NC-SA 4.0 restriction. Do not integrate its data/model artifacts commercially without separate permission.
 - Current exact artifacts: optional run 43325991496; Epitran SHA-256 cb9cbb1c08047b2082f21f3c29d01d8054eaf37fc462abf55a3336ad265d7c1f; CRF SHA-256 d0df5c6527a757ee3c8be5259578ec08abdd3b219bf317d3de7364a47bdb6125.
+
+
+## Mya2Rom mode separation — 2026-11-13
+
+Mya2Rom 0.4.4 exposes distinct ipa, mlcts, mlcts2, simple and simple2 modes. MLCTS is orthographic; MLCTS2 is a more phonetic romanization used by the MLC Myanmar-English Dictionary and SEALang, not standardized IPA. The project's runtime explicitly requests mlcts. Do not treat the Latin→Ukrainian crosswalk as pronunciation-based G2P. Mya2Rom's own IPA convention uses /N/ rather than nasalized vowels and documents limitations with stacking, ASAT, schwa, voicing sandhi, alternate pronunciations and Pali/Sanskrit forms. Source license: CC BY-SA 4.0.

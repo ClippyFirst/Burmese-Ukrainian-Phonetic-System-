@@ -118,3 +118,8 @@ Green (2002) treats /N/ as a placeless nasal coda whose realization includes pre
 ### UCSY-SC1 audio resource
 
 Mon et al. (2019) describe a 42 h 39 min, 307-speaker corpus with web-news and recorded-conversation domains, 16 kHz mono audio, and 31,114 utterances. It reports four medial signs and nasalized vowels. This is a promising annotation lead, but it is an ASR corpus, not IPA gold. The publisher author-details page lists CC BY-SA 4.0, but the PDF footer says “All rights reserved”; confirm article-level rights. This does not establish the underlying corpus audio's reuse terms; obtain explicit corpus permission before using it.
+
+
+### Romanization vs IPA engine boundary
+
+Mya2Rom 0.4.4 exposes separate ipa, mlcts, mlcts2, simple and simple2 modes. The project runtime uses mlcts, the MLC orthographic transcription; mlcts2 is a more phonetic romanization, still not standardized IPA. Keep this orthographic Latin→Ukrainian path separate from source phonology → IPA → Ukrainian adaptation. The README's /N/ convention and documented limitations are not independent pronunciation gold.
