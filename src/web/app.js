@@ -296,7 +296,7 @@ function render(){
   const r=convert(text);empty.hidden=true;results.hidden=false;uk.textContent=r.uk||"—";ipa.textContent=r.ipa||"—";
   romanization.textContent=typeof window.mya2rom==="function" ? romanizeTextPreservingNonMyanmar(text,window.mya2rom) : "Романізатор не завантажився; результат не сформовано.";
   const uaRomanized=typeof window.mya2rom==="function"
-    ? renderMlctsText(text,window.mya2rom,segment)
+    ? renderMlctsText(text,window.mya2rom,segment,char=>ROMANIZATION_SUPPORTED_CHARS.has(char))
     : {text:"⟦MLCTS НЕ ДОСТУПНИЙ⟧",status:"UNSUPPORTED",mapped:0,unsupported:1};
   uaRomanization.textContent=uaRomanized.text||"—";
   uaRomanizationStatus.textContent=uaRomanized.status==="PROPOSED"
