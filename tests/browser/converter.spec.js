@@ -262,7 +262,7 @@ test("romanization and phonetic outputs are separate selectable modes",async({pa
   await expect(page.locator("#mode-romanization")).toHaveAttribute("aria-pressed","true");
   await expect(page.locator("#romanization-panel")).toBeVisible();
   await expect(page.locator("#ua-romanization-panel")).toBeVisible();
-  await expect(page.locator("#ua-romanization-status")).toContainText("PARTIAL");
+  await expect(page.locator("#ua-romanization-status")).toContainText("PROPOSED");
   await expect(page.locator("#ipa-panel")).toBeHidden();
   await expect(page.locator("#ua-panel")).toBeHidden();
   await page.locator("#mode-phonetic").click();
