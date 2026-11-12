@@ -182,3 +182,10 @@ Blind annotation cannot be guaranteed in a public Git repository. Two submission
 ## 2026-11-01 closeout
 
 The independent IPA gold-corpus implementation and Burmese evidence matrix are in [PR #84](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/84). PR CI passed 121 Python tests + 31 subtests, four generated-data/web tests, 54 built-browser tests, production build and generated-data drift checks; optional Epitran diagnostic passed. The LREC 2020 speech/segmentation corpora are not public domain and were not imported. Independent gold remains 0. Main was not changed. Legacy PR #53 remains untouched.
+
+
+## MLCTS romanization implementation audit — mainline 2026-11-12
+
+The orthographic route is integrated for the inventoried source data: Burmese source clusters → MLCTS romanization → separate Ukrainian orthographic adapter. The 35-row onset and 94-row vendor-derived rime tables have Ukrainian candidates. PR #141 integrated the runtime and PR #142 records its mainline verification. Current `main` is `718dc4b2c1424651b32bc63b0202f5d08a067bc7`; tests [43228612973](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43228612973) and Pages [43228612998](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43228612998) passed.
+
+Acceptance remains PARTIAL: the 94-row rime inventory is derived from vendored Mya2Rom and has not been independently verified against the original Myanmar Language Commission publication. Unsupported legal structures remain visibly withheld rather than guessed. Vendor attribution and CC-BY-SA-4.0 notice remain in place; component-level provenance/licensing review remains open. MLCTS is orthographic, not IPA. Draft G2P PR #129 remains open and untouched. Independent expert-adjudicated IPA gold remains 0; accuracy remains null.
