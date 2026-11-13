@@ -1511,3 +1511,11 @@ Registry totals: **70 nonblank source records / 123 claims**. The crosswalk test
 | BURMESE-MLC-CONCISE-DICTIONARY-ACCESS-009 | PARTIAL — PRIMARY WORK IDENTIFIED, CONTENT NOT INSPECTED | Allott 1985 reports five parts published 1978-1980 and says the work gives pronunciations; Okell 1982 bibliography identifies a five-volume Rangoon edition from Mranmācā Aphwai. | Locate an authorized physical or digital copy. Inspect title pages, pronunciation key and entries. Do not assume its pronunciation notation is MLCTS or MLCTS2. |
 
 Registry totals: **72 nonblank sources / 125 claims**; source IDs and claim IDs unique, all claim source references resolve, and CSV widths validate.
+
+## Complete Mya2Rom vendor-system inventory — 2026-11-13
+
+- Added `data/burmese/romanization_rimes_vendor_systems.csv`, a 94-row companion inventory that records the exact vendor IPA, MLCTS, modified MLCTS/MLCTS2, Simple and Simple2 values for every non-empty rime key. It is separate from the Ukrainian candidate inventory and does not change runtime behaviour.
+- All 94 source keys are present in the vendored Mya2Rom table. The only key whose array has four values rather than five is `ေါင်း`: its Simple2 value is not provided by the upstream array. This missing value is recorded as missing, not guessed.
+- Added regression coverage that parses the vendored JS array and compares all 94 rows/columns, while preserving the evidence boundary that these are vendor mappings, not a primary MLC table or independent IPA gold.
+- Registry remains **72 nonblank sources / 125 claims**; no new source claim was needed because this artifact is a deterministic extraction of already registered Mya2Rom v0.4.4.
+- Exact-head CI for this latest added full crosswalk test is pending.
