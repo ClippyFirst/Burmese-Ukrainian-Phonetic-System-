@@ -295,5 +295,11 @@ def test_sealang_ipa_interface_is_not_mistaken_for_an_inspected_ipa_gold_field()
     assert "internal storage format" in interface["claim"]
     assert representation["source_id"] == source["source_id"]
     assert representation["status"] == "UNCERTAIN"
-    assert "different layers" in representation["claim"]
-    assert "Do not label the entire dictionary IPA gold" in representation["claim"]
+    assert "does not specify whether IPA is stored" in representation["claim"]
+    assert "interface support alone does not establish an IPA gold corpus" in representation["claim"]
+
+    mlcts2 = claims["CLM-MYA2ROM-SEALANG-MLCTS2-001"]
+    assert mlcts2["source_id"] == "MYA2ROM044"
+    assert mlcts2["status"] == "DOCUMENTARY"
+    assert "MLCTS2" in mlcts2["claim"]
+    assert "not be treated as standardized IPA" in mlcts2["claim"]
