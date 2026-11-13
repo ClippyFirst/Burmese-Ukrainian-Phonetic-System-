@@ -422,7 +422,7 @@ The Myanglish raw CSV is 2-column (myanmar,myanglish), while its README metadata
 
 The myX orthography corpus is a work-in-progress text correction dataset, not an IPA corpus. Manual inspection found a target_words mismatch in hcara_phonetic.csv and multi-substitution examples in phet_bet_phonetic.csv. The resource is quarantined for row-level quality review and deduplication, not blocked by permission.
 
-The 8.8 MB John Okell corpus is now reachable through the Zenodo direct text endpoint (HTTP 200, text/plain; charset=utf-8) and was inspected through text-only extraction. Targeted inspection confirms valid UTF-8, modern Myanmar Unicode, Burmese/English mixed content, more than 23 numbered sections/articles, speaker labels, dates, dialogue/speech transcripts and prose; localized legacy glyph/encoding corruption affects some foreign technical terms. Zenodo supplies MD5 f020d7bbcf9857631094a8861143d18f, but exact raw bytes were not retained and SHA-256 was not computed. No rows were imported, no IPA schema/labels were identified, and the corpus is not IPA gold. This moves the task from BLOCKED_TOOL_ACCESS to PARTIAL / CONTENT ACCESS VERIFIED; HASH_AND_QUALITY_AUDIT_PENDING. SEAlang entry/corpus schema remains unresolved. No audio was used or accessed. Independent expert-adjudicated IPA gold remains 0 and empirical IPA accuracy remains null.
+The 8.8 MB John Okell corpus is now reachable through the Zenodo direct text endpoint (HTTP 200, text/plain; charset=utf-8) and was inspected through text-only extraction. Targeted inspection confirms valid UTF-8, modern Myanmar Unicode, Burmese/English mixed content, more than 23 numbered sections/articles, speaker labels, dates, dialogue/speech transcripts and prose; localized legacy glyph/encoding corruption affects some foreign technical terms. Zenodo supplies MD5 f020d7bbcf9857631094a8861143d18f, but exact raw bytes were not retained and SHA-256 was not computed. No rows were imported, no IPA schema/labels were identified, and the corpus is not IPA gold. This moves the task from BLOCKED_TOOL_ACCESS to PARTIAL / CONTENT AND BYTE INTEGRITY VERIFIED; TEXT QUALITY AUDIT PENDING. SEAlang entry/corpus schema remains unresolved. No audio was used or accessed. Independent expert-adjudicated IPA gold remains 0 and empirical IPA accuracy remains null.
 
 
 ## 17. Okell (1995): explicit WB/SB separation and regional medial inventories
@@ -460,14 +460,14 @@ The full grammar was not retrieved in this execution, so no phonological claims 
 
 ## 19. Okell's A Corpus of Modern Burmese: text access and first-pass content audit
 
-The Zenodo record for John Okell's *A Corpus of Modern Burmese* (DOI 10.5281/zenodo.1202324) lists an 8.8 MB \`allfiles.txt\` file compiled in the 1990s and converted to Unicode. The direct file endpoint returned HTTP 200 with content type \`text/plain; charset=utf-8\` during a text-only Firecrawl extraction on 2026-11-13. The provider's published MD5 is \`f020d7bbcf9857631094a8861143d18f\`. The exact raw bytes were not retained in the repository/runtime and SHA-256 was not computed.
+The Zenodo record for John Okell's *A Corpus of Modern Burmese* (DOI 10.5281/zenodo.1202324) lists an 8.8 MB `allfiles.txt` file compiled in the 1990s and converted to Unicode. The direct file endpoint returned HTTP 200 with content type `text/plain; charset=utf-8` during a text-only Firecrawl extraction on 2026-11-13. The retrieved UTF-8 byte sequence is 8,809,265 bytes; its MD5 exactly matches Zenodo's provider checksum `f020d7bbcf9857631094a8861143d18f`, and its computed SHA-256 is `6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c`. It has 19,566 lines and 19,565 CRLF delimiters, 67 numbered heading lines, an initial BOM, one NUL, non-NFC text, zero U+FFFD and 73 unique Myanmar code points. The byte-identical external file was not committed to the repository.
 
 ### 19.1 Observed content and structure
 
 Targeted inspection of the extracted text reports:
-- valid UTF-8 and modern Myanmar Unicode;
+- valid UTF-8 and modern Myanmar Unicode; 19,566 lines with 19,565 CRLF delimiters, an initial BOM, one NUL, non-NFC text, zero U+FFFD characters and 73 unique Myanmar code points;
 - Burmese and English content;
-- more than 23 numbered sections/articles, with dates, headings and speaker labels;
+- 67 numbered heading lines across multiple embedded texts, with dates, headings and speaker labels;
 - both dialogue/speech transcripts and prose/articles/tables;
 - localized legacy encoding/glyph corruption in some foreign technical terms and computer terminology.
 
@@ -481,6 +481,6 @@ The Zenodo Rights/License field remains blank while the European Language Grid c
 
 ### 19.3 Acceptance gate
 
-Status: **PARTIAL / CONTENT ACCESS VERIFIED; HASH_AND_QUALITY_AUDIT_PENDING**.
+Status: **PARTIAL / CONTENT AND BYTE INTEGRITY VERIFIED; TEXT QUALITY AUDIT PENDING**.
 
 Before importing corpus rows, retain a byte-identical pinned artifact, calculate SHA-256, count documents and lines, audit Unicode normalization and malformed codepoints, profile repeated/template passages, identify section-level provenance where possible, and record corruption without silently rewriting source text. Any extracted lexical examples must retain document/section locators and must remain text evidence rather than IPA gold.

@@ -1567,3 +1567,12 @@ This entry supersedes earlier handoff statements that Okell's 8.8 MB corpus was 
 Targeted inspection confirms valid UTF-8 and modern Myanmar Unicode, Burmese/English mixed content, more than 23 numbered sections/articles, dates, speaker labels, dialogue/speech transcripts and prose. Some foreign technical terms show localized legacy glyph/encoding corruption. The corpus is therefore **PARTIAL / CONTENT ACCESS VERIFIED; HASH_AND_QUALITY_AUDIT_PENDING**, not BLOCKED_TOOL_ACCESS. No rows were imported, no IPA annotation was identified, no pronunciation labels were created, and no audio was used. The corpus is a text-only lexical/context discovery source, not IPA gold.
 
 The Zenodo Rights/License field remains blank while ELG lists CC BY 4.0. Project-owner authorization for text-only research and internal ingestion remains recorded separately from public license metadata. Acceptance requires byte-identical pinned bytes, SHA-256, document-boundary/duplicate/Unicode/corruption profiling and source-located text extraction.
+
+
+## Okell corpus byte-integrity completion — 2026-11-13
+
+The complete text-only Zenodo response was extracted as UTF-8, including its initial BOM and CRLF endings. Retrieved byte length: 8,809,265. Its MD5 exactly matches Zenodo's published provider checksum \`f020d7bbcf9857631094a8861143d18f\`; SHA-256: \`6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c\`.
+
+Profile: 19,566 lines / 19,565 CRLF delimiters; 67 numbered heading lines across embedded texts; valid UTF-8; one leading BOM; one NUL; not NFC-normalized; zero U+FFFD; 73 unique Myanmar code points. The corpus contains mixed Burmese/English, dated and speaker-labelled dialogue/speech text, prose and tables, with localized legacy glyph/encoding corruption in some foreign technical terms. These are content/byte observations, not IPA labels. No rows imported; no audio accessed; no IPA gold created.
+
+Status advances to **PARTIAL / CONTENT AND BYTE INTEGRITY VERIFIED; TEXT QUALITY AUDIT PENDING**. Next acceptance: preserve the exact source externally, document document-level provenance and duplicate rates, inspect NUL/NFC/corrupted technical terms without modifying the source copy, and extract only source-located text examples into separate research records.
