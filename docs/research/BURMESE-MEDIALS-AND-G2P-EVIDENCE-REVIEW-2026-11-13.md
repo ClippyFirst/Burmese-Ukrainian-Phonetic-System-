@@ -582,3 +582,15 @@ Nishi leaves several exceptions unexplained and tentatively discusses analogy, b
 Added four claims: example provenance, separation of atonicization from voicing, dialect-specific pattern distribution, and unresolved exceptions. Updated the source scope and corrected all seven sandhi records to distinguish Okell (1969) example provenance from Okell (1995) transcription convention.
 
 No runtime rule was promoted. The existing analysis-dependent status remains. Independent adjudicated IPA gold remains zero and accuracy remains null.
+
+## 23. Nishi (1997): full-text check of written-medial periodization
+
+The complete PDF of *The Orthographic Standardization of Burmese: Linguistic and Sociolinguistic Speculations* (BNME 22(4), pp.975–999; DOI 10.15021/00004135) was inspected.
+
+- Nishi distinguishes OWB, MWB, EModWB and ModWB orthographic standards.
+- He states that OWB medial -l- was replaced by -r- and -v- according to initial-consonant class around the end of the fourteenth century.
+- He identifies insertion of medial -y- between written velar k-/kh- and written -i(C)/-i as a key EModWB reform reflecting a phonemic change between MWB and EModWB.
+- He explicitly distinguishes written-standard periods from phonological periods and frames each Written Burmese system as a High variety (H) against corresponding Spoken Burmese as Low variety (L); reading and spoken forms can differ.
+- Scope limitation: the article's stated focus is rhyme writing systems, with initials discussed only when necessary. It is not a complete medial inventory and supplies no direct mapping to modern Unicode medial code points or modern Yangon pronunciation.
+
+This confirms the existing Nishi 1997 historical-medial matrix row as orthographic/historical evidence only. Added CLM-NISHI97-SCOPE-001 to make the article's coverage limitation explicit. No runtime rule is promoted.
