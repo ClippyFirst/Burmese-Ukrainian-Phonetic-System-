@@ -2070,3 +2070,10 @@ The first CI attempt after registering the MOW orthographic coverage claim (work
 - Current PR #147 head: `50a29bb880256fbd0c977bc9dc1f45bb4ad49d2d`; required CI run **43503144848 SUCCESS**: **242 Python tests + 66 subtests**, **20 Node tests**, **58 Playwright tests**, IPA corpus structure validator executed, production build and generated-data freshness passed. The IPA validator reports `NOT_READY_NO_ADJUDICATED_GOLD`; `npm install` still reports **1 high severity vulnerability**. Optional raw-output/CRF diagnostic run **43503144697 SUCCESS**, not an accuracy score.
 - Branch comparison: **455 commits ahead of main / 0 behind**. PR #147 remains **OPEN / DRAFT / mergeable**, unmerged. No merge, release, main-branch write, or external-setting change.
 - Registry remains **78 sources / 131 claims** with unique IDs and valid source references as recorded by the existing registry tests. Project status remains **PARTIAL PROTOTYPE / NOT RELEASE-READY**.
+
+## MOW v0.1.3 lexical orthographic coverage — verified implementation reconciliation (2026-11-13)
+
+- Existing generator `scripts/analyze_mow_orthographic_rime_coverage.py` and generated outputs were inspected and preserved. Exact Unicode suffix matching yields 508 source-unit/lemma pairs over 50 collision source-unit variants; output records explicitly label every match `ORTHOGRAPHIC_SUFFIX_MATCH_ONLY`.
+- Coverage: 11/25 MLCTS collision groups have both source units found in MOW, 13/25 have one, and 1/25 has neither. This measures only MOW's lexical coverage; no pronunciation, phonological rime, syllable segmentation, or equivalence is inferred. The 1,476 lemma rows / 1,041 unique forms / 1,198 synsets are small-resource counts, not a census of Burmese.
+- Exact-head CI on PR #147 head `50a29bb880256fbd0c977bc9dc1f45bb4ad49d2d`, run **43503144848**, passed: 242 Python + 66 subtests, 20 Node, 58 Playwright, production build, generated-data freshness. IPA gold gate remains `NOT_READY_NO_ADJUDICATED_GOLD`; one high-severity npm vulnerability remains.
+- PR #147 remains open/draft/mergeable; branch is 455 ahead / 0 behind. No linguistic candidate or runtime behavior promoted.
