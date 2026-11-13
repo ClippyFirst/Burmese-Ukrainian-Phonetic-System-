@@ -127,6 +127,8 @@ def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     assert all(value in rows["a:"]["observed_mlcts"] for value in ["hka:","ka:"])
     assert rows["au"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
     assert all(value in rows["au"]["observed_mlcts"] for value in ["pau","krau"])
+    assert rows["am:"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
+    assert "lam:" in rows["am:"]["observed_mlcts"] and "/láɴ/" in rows["am:"]["observed_ipa"]
     assert rows["um:"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "hna.lum:" in rows["um:"]["observed_mlcts"] and "/n̥əlóʊɴ/" in rows["um:"]["observed_ipa"]
     assert rows["un"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
@@ -157,4 +159,4 @@ def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     assert rows["ui"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "only" in rows["ui"]["acceptance_boundary"].lower()
     assert rows["any"]["evidence_status"] == "SECONDARY_SOURCE_CONFLICT"
-    assert all("no runtime" in rows[key]["acceptance_boundary"].lower() for key in ("auk", "aung", "aung:", "aung.", "any", "any:", "any.", "ui", "um:", "un", "au:", "im", "im."))
+    assert all("no runtime" in rows[key]["acceptance_boundary"].lower() for key in ("auk", "aung", "aung:", "aung.", "any", "any:", "any.", "ui", "um:", "un", "au:", "im", "im.", "am:"))
