@@ -1342,3 +1342,24 @@ Exact tested head: d2800ce458ea3c08c3fecb9e61ad170502837343. PR #147 remains Dra
 - Optional diagnostics run 43390071177: SUCCESS; CRF 100 predictions / 84 source-concordant / 0 gold / null accuracy / possible training overlap; Epitran raw-output artifact only.
 - Registry integrity: 55 sources, 62 claims, 29 medial rows, 22 phonological rules; no CSV width, duplicate-ID or traceability issues.
 - Text-only scope remains enforced; no audio, no corpus imports, no runtime rules promoted. Release status: PARTIAL PROTOTYPE.
+
+### Nishi full-text and text-only corpus continuation — 2026-11-13
+
+| Work item | Status | Evidence / acceptance boundary |
+|---|---|---|
+| Nishi (1998) Old Burmese historical medial analysis | DONE_VERIFIED (source evidence) | Full text inspected; source NISHI1998_OLDBURMESE; four claims/rules and 13 new medial/dialect rows; all historical rows WITHHELD from runtime. |
+| Nishi (1998) voicing examples | DONE_VERIFIED (source phonemic, not IPA) | Seven examples in data/burmese/sandhi_evidence.csv; source transcription convention explicit; ipa_value empty; regression tests. |
+| Myanglish corpus | PARTIAL / SCHEMA UNCERTAIN | Raw CSV has 2 columns, metadata/viewer expose third official_standard feature; informal romanization only, not IPA. |
+| myX orthography corpus | PARTIAL / QUARANTINED_FOR_QUALITY_REVIEW | Sample target_words misalignment, multiple simultaneous substitutions and templated duplicates; permission confirmed, quality review required. |
+| John Okell text corpus | BLOCKED / TOOL ACCESS | Research/ingestion permission confirmed by project owner; 8.8 MB file not retrievable in this execution environment. |
+| SEAlang text and dictionary | BLOCKED / TOOL ACCESS + SCHEMA | Permission confirmed; direct entry/corpus retrieval unavailable; dictionary IPA vs MLCTS2 representation unresolved. |
+| Hill (2019) chapter 2 | BLOCKED / TOOL ACCESS | Permission confirmed; only publisher excerpt for introduction/Tibetan chapter accessible, not Burmese chapter. |
+| Text-only authorization | DONE_VERIFIED (project owner confirmation) | Research-use and project-ingestion permission confirmed for textual resources; no audio in scope. |
+
+### Exact code/data-head verification — 2026-11-13
+
+- Tested head: 4835a0abc3e7e4a18c9d0bda35f554031912d570.
+- GitHub Actions run 43393402710: SUCCESS — 217 Python tests + 66 subtests; independent IPA-gold structure validation; npm build; generated-data freshness; 20 Node tests; 58 Playwright/Chromium tests.
+- Earlier runs 43393310910 and 43393302505 failed only on a case-sensitive assertion expecting lower-case “historical merger only”; corrected to match the stored capitalized scope. Exact corrected-head run above passed.
+- Registry integrity: 55 sources, 71 claims, 42 medial evidence rows, 28 phonological rules, 7 source-phonemic sandhi examples. Manual CSV parser verified row widths and all source/claim/rule/matrix links; no duplicate IDs or broken traceability.
+- Independent expert-adjudicated IPA gold remains 0; empirical IPA accuracy remains null. No runtime medial/voicing rule promoted. Classification remains PARTIAL PROTOTYPE.
