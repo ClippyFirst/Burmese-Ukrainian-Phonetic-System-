@@ -1440,4 +1440,10 @@ Current ledger: 63 sources / 115 claims; 25 collision groups; 21 unadjudicated, 
 | BURMESE-ALA-LC-SYSTEM-SEPARATION-001 | DONE_VERIFIED | LOC's 2011 Burmese Romanization Table is explicitly a Library of Congress ALA-LC table and is recorded separately from MLCTS. | Keep ALA-LC correspondences out of MLCTS adjudication; use only for system comparison where explicitly labelled. |
 | BURMESE-MLC-PRIMARY-TRANSCRIPTION-001 | BLOCKED / PRIMARY SOURCE | No direct MLC 1980 transcription table or word-level MLC dictionary entries were recovered in this pass. | Inspect primary MLC table and representative entries for all collision groups; distinguish MLCTS from MLCTS2 before adjudication. |
 
-Registry now contains **65 sources / 117 claims**. No MLCTS/vendor correction, runtime mapping, IPA gold annotation or Ukrainian candidate promotion was made. No audio used.
+Registry now contains **66 nonblank source records / 117 claims**. No MLCTS/vendor correction, runtime mapping, IPA gold annotation or Ukrainian candidate promotion was made. No audio used.
+
+## Registry count reconciliation — 2026-11-13
+
+A fresh parse of the current CSV registries, counting only nonblank source rows and requiring unique IDs, finds **66 source records and 117 claim records**. The previous continuation note's 65-source count was one too low; the current source registry contains 66 nonblank IDs. Three pre-existing blank separator lines in `sources.csv` are ignored for this count. All 117 claim IDs are unique and every claim's `source_id` resolves to a registered source. The two new provenance records and claims are included in these totals.
+
+A regression test now protects the distinction between the Htun secondary provenance trail and the LOC ALA-LC table. Test/CI status for the final code-bearing commit is pending verification; no local checkout was available in this connector session.
