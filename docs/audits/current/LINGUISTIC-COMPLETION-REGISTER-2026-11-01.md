@@ -1619,3 +1619,11 @@ Exact code/test head **c76fab9e4e4a910170a26dd8ed89a95790c7973d**: CI runs 43499
 - Added **UNICODE_N2827_MYANMAR_SEMIVOWELS_2004** and claim **CLM-UNICODE-N2827-MLC-MEDIALS-001**. This 2004 national contribution from the Myanmar Unicode and NLP Research Center to ISO/IEC JTC1/SC2/WG2 states that the MLC published *Myanmar Orthography* in October 1986 and that the Ministry of Education prescribed it as the national standard. It describes four basic medial signs and combinations totalling eleven symbols, and explains that medials change pronunciation and are structurally distinct from stacked consonants.
 - This is useful documentary evidence for the structural-analysis stage of the pipeline, but it is not the MLC book itself and contains no MLCTS/IPA rime transcription table. The original 1986 orthography book remains uninspected.
 - Added a regression assertion that protects the structural-only evidence boundary. Registry totals: **76 sources / 129 claims**; IDs unique, CSV widths valid, all claim source references resolve. Exact-head CI pending.
+
+## MLC 1986 orthography book access — 2026-11-13
+
+| ID | Status | Evidence | Acceptance criterion |
+|---|---|---|---|
+| BURMESE-MLC-1986-ORTHOGRAPHY-ACCESS-015 | BLOCKED — CATALOG PAGE / PDF NOT RETRIEVED | National Library of Myanmar E-Resources record 189 lists the MLC 1986 second edition, 292 pages, with a PDF option; this aligns with Unicode WG2 N2827's reference to the October 1986 national orthography standard. The bibliographic page returned 502; no book content was inspected. | Retrieve the listed PDF or an authorized scan. Inspect title page, foreword, structural orthography sections and any pronunciation/transcription tables. Confirm whether this is the exact work cited by N2827; do not infer MLCTS/IPA from the catalog metadata. |
+
+Registry totals after registering the catalog lead: **77 sources / 130 claims**, unique IDs and all claim source references valid. CI on test-bearing head `a824fe13c3671b5f02d37c3dc9127ffc460ac1a8` pending.
