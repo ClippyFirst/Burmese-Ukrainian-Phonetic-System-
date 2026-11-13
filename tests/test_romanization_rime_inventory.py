@@ -97,3 +97,37 @@ def test_auk_myit_special_mapping_is_not_misread_as_an_ordinary_rime():
     assert "not an ordinary independent rime" in row["context"]
     assert "do not interpret it as an independent vowel or coda" in row["note"]
 
+
+LEXICAL_AUDIT_PATH = ROOT / "data/burmese/romanization_rime_collision_lexical_audit.csv"
+
+
+def test_lexical_collision_audit_keeps_secondary_evidence_separate_from_primary_adjudication():
+    collision_path = ROOT / "data/burmese/romanization_rime_collisions.csv"
+    with collision_path.open(encoding="utf-8-sig", newline="") as stream:
+        collisions = {row["mlcts"]: row for row in csv.DictReader(stream)}
+    with LEXICAL_AUDIT_PATH.open(encoding="utf-8-sig", newline="") as stream:
+        audit = list(csv.DictReader(stream))
+
+    assert len(audit) == len(collisions) == 25
+    assert {row["mlcts"] for row in audit} == set(collisions)
+    for row in audit:
+        assert row["source_units"] == collisions[row["mlcts"]]["source_units"]
+        assert row["acceptance_boundary"]
+        assert row["evidence_status"] in {
+            "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE",
+            "SECONDARY_TABLE_PARALLEL_MATCH",
+            "SECONDARY_TABLE_CONTRADICTION",
+            "SPECIAL_NONRIME_CONTEXT_DEPENDENT",
+        }
+
+    by_mlcts = {row["mlcts"]: row for row in audit}
+    assert by_mlcts["am"]["evidence_status"] == "SECONDARY_TABLE_PARALLEL_MATCH"
+    assert by_mlcts["am"]["observed_ipa"] == "/kàɴ/"
+    assert by_mlcts["am"]["observed_mlcts"] == "kam"
+    assert by_mlcts["any"]["evidence_status"] == "SECONDARY_TABLE_CONTRADICTION"
+    assert "kañ" in by_mlcts["any"]["observed_mlcts"]
+    assert "kany" in by_mlcts["any"]["observed_mlcts"]
+    assert by_mlcts["u."]["evidence_status"] == "SPECIAL_NONRIME_CONTEXT_DEPENDENT"
+    assert sum(row["evidence_status"] == "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE" for row in audit) == 22
+    assert not any("PRIMARY_CONFIRMED" in row["evidence_status"] for row in audit)
+
