@@ -372,3 +372,24 @@ Implementation consequence: these are contextual phonological rules, not graphem
 
 Cambridge University Press confirms Nathan W. Hill's *The Historical Phonology of Tibetan, Burmese, and Chinese*, chapter 2 "Burmese", pp.46-83 (DOI 10.1017/9781316550939.003). The book's stated method is comparative sound-law analysis. The official publisher page exposes only a short §44 preview; the full chapter requires access. Therefore this source is registered as a high-value follow-up target, but no claim about Burmese medials is attributed to Hill here. Acceptance: obtain authorized full-text access, inspect the chapter's treatment of Old Burmese medial clusters and written-to-spoken developments, and record exact page/section locators before adding claims or matrix rows.
 
+## 13. Green (2005): explicit spoken-vs-written transcription boundary
+
+The online edition of *Studies in Burmese Linguistics* (ed. Justin Watkins, 2005) is explicitly licensed CC BY-SA 4.0 with permission of Pacific Linguistics. Antony Dubach Green's chapter “Word, foot and syllable structure in Burmese” (pp.1-26) is especially useful because its conventions distinguish two layers:
+
+- Spoken Burmese is transcribed broadly according to IPA conventions, without excessive phonetic detail.
+- Written Burmese orthographic forms are transliterated separately using ALA-LC. The volume gives the medial transliteration order y, r, l, v, h and notes that its tone diacritics differ from John Okell's system (front matter pp.xi-xv).
+
+Green's modern spoken phonology describes major syllables as permitting simple C or complex CG onsets, while minor syllables permit only simple C onsets (pp.4-5). Examples include /pjaʔ/, /phjaʔ/, /kwɛ/, /khwɛ/, /mjouʔ/ and /nwe/. In reducing compounds, a complex onset may simplify by deleting its second consonant (pp.19-20). This is phonological evidence for the existence and prosodic conditioning of CG onsets, not a direct Unicode medial mapping.
+
+Green states that /N/ is a placeless nasal excluded from onset position; only /ʔ/ and /N/ are permitted codas. /N/ is realized as nasalization on the preceding vowel, with approximate coronal articulation after monophthongs and approximate velar articulation after diphthongs (p.5, citing Bennett & Lehman 1994). This provides a clear source-specific relation between abstract /N/ and surface nasalization, but the project's broad/narrow IPA convention must still be selected before emitting a particular surface form.
+
+## 14. SEAlang dictionary and text corpora: valuable text leads, reuse not cleared
+
+SHACHI metadata identifies three linked SEAlang Burmese resources:
+
+1. **SEAlang Burmese Dictionary** — about 35,000 entries, including spoken and literary styles, based on MLC 1986 orthography, with examples and/or etymologies in many entries. Its source is the MLC Myanmar-English Dictionary (1993), republished by Dunwoody Press in 1996 and used by SEAlang with permission. The metadata says the interface supports IPA search/display, while Mya2Rom documentation identifies MLCTS2 as the more phonetic transcription used by the MLC dictionary and SEAlang. The exact entry-level representation remains unresolved; do not treat its visible transcription as IPA until directly inspected. Underlying dictionary content is copyrighted; no bulk reuse permission is inferred.
+2. **SEAlang Burmese Text Corpus** — monolingual Burmese Internet texts sampled for research/education. SHACHI lists 612,692 collocates and 3,172,485 contexts served; these are service metrics, not verified corpus row/token counts. No explicit reuse license is stated.
+3. **SEAlang Burmese Bitext Corpus** — translated words, phrases and sentences aligned sentence-by-sentence where possible; metadata lists 1,234,822 pairs served (not verified total corpus size) and attributes the source to SAY Project Burmese resources at NMSU CRL. No explicit reuse license is stated.
+
+The SEAlang dictionary page timed out/returned gateway errors during this review, so no entry-level transcription was inspected. These resources are registered as text-only candidates for lexical/context research, not IPA gold. No rows were downloaded or imported. Obtain rights clarification and inspect the actual text/field schema before any extraction.
+
