@@ -1867,3 +1867,10 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - Added `CLM-WIKTIONARY-ANY-DOT-WORD-LEVEL-EXAMPLES-001`; updated lexical audit, MLCTS2 status parity and regression tests.
 - Distribution: 18 unadjudicated / 2 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 137 claims.
 - Status remains secondary lexical evidence only; no primary MLC adjudication, IPA gold, runtime or Ukrainian mapping promotion. Exact-head CI pending.
+
+## Additional lexical examples for `aung` — 2026-11-13
+
+- Wiktionary text entries list `ပေါင်` (`paung`, `/pàʊɴ/`) with ending ေါင် and `တောင်` (`taung`, `/tàʊɴ/`) with ending ောင်. Their onsets differ but the secondary IPA rime sequence `/àʊɴ/` matches. Only `တောင်` is a MOW suffix candidate.
+- Added `CLM-WIKTIONARY-AUNG-WORD-LEVEL-EXAMPLES-001`; lexical audit and MLCTS2 crosswalk statuses synchronized; regression coverage expanded.
+- Current distribution: 17 unadjudicated / 3 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 138 claims.
+- Secondary evidence only; not a controlled minimal pair or primary MLC adjudication. No IPA gold, runtime or Ukrainian output promotion. CI pending.
