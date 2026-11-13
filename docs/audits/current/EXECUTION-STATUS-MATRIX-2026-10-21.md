@@ -1569,3 +1569,17 @@ Added claims: CLM-MYA2ROM-RIME-EXACT-MATCH-001, CLM-MYA2ROM-MLCTS-COLLISIONS-001
 - Final registry totals: **61 sources, 112 claims**, 30 phonological rules, 45 medial evidence rows, 7 sandhi evidence rows, 9 Okell orthographic-profile rows; 94 vendor rime keys, 25 MLCTS collision groups. All Ukrainian rime candidates remain PROPOSED / EVIDENCE_LIMITED. No runtime phonological rule changed in this continuation.
 - Earlier CI attempt failed only because the newly qualified auk-myit note no longer contained the existing vendor-provenance phrase expected by a test. The note was corrected without removing the linguistic caveat; exact-head CI above passed afterward.
 - Repository remains a **PARTIAL PROTOTYPE**: primary MLC rime source, Okell §§17–20, Nishi 1976/1977 full text, independent modern Yangon IPA gold (0), tone model reconciliation and /N/ surface analysis remain open.
+
+
+## MLCTS collision lexical cross-check — 2026-11-13
+
+| Task | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| 25-group collision evidence ledger | PARTIAL | Added data/burmese/romanization_rime_collision_lexical_audit.csv with one row per existing collision group. All 25 source-unit pairs are preserved. | This is a triage ledger, not a primary-source adjudication. |
+| am / မ်;ံ comparison | PARTIAL — SECONDARY TABLE MATCH | Wiktionary's comparative rhyme table gives ကမ် and ကံ the same /kàɴ/ and MLCTS kam in the က-onset examples. | Do not generalize to all words or claim MLC dictionary headword attestation. |
+| any / ဉ်;ည် comparison | BLOCKED — SOURCE CONFLICT | Wiktionary's table distinguishes ကဉ် (kañ‘; /kɪ̀ɴ/) and ကည် (kany; /kì/, /kè/, /kɛ̀/), while Mya2Rom maps both isolated keys to any. | Primary MLC table/entry verification is required before correcting vendor data. |
+| Other 22 collision groups | TODO — LEXICAL EVIDENCE | No direct primary-source lexeme pairs checked. | Record MLC dictionary headword, exact page/entry locator, source spelling, IPA/MLCTS fields and contextual analysis for representative examples in each group. |
+| Special u. / ့;ု group | PARTIAL — CONTEXT-DEPENDENT | ့ is an auk-myit-induced vendor fallback, not an ordinary independent rime. | Exclude it from ordinary lexical equivalence decisions; analyze its syllabic context separately. |
+
+Registry integrity on this continuation: 62 source records, 114 claim records; 25 collision groups; 25 lexical-audit rows. CSV parsing confirms consistent widths, unique source/claim IDs, and no broken claim-to-source references. New Python regression coverage is committed; exact-head CI run 43491503349 was still in progress at the time of this matrix update. No local test execution is claimed. No runtime or Ukrainian candidate changes; no audio used.
+
