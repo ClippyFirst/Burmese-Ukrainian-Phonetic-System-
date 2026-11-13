@@ -1541,3 +1541,20 @@ Okell (1969) Reference Grammar and Nishi (1976) Medials in Burmese are registere
 Myanglish raw CSV vs metadata remains 2-column/3-feature uncertain; myX orthography remains quarantined for target-word misalignment, multiple substitutions and template duplication. Gold=0, accuracy=null, no runtime medial or voicing rules promoted.
 
 PR #147 remains OPEN / DRAFT / mergeable, 0 commits behind main and 28 files changed; the current ahead count is tracked on the PR. No reviews submitted. PR #129 untouched. Repository remains PARTIAL PROTOTYPE, not linguistically release-ready.
+
+
+## Final text-only handoff — 2026-11-13
+
+Exact tested code/data head cda73ccb7fa80a0404fed5a65588ebd690253f94 passed main CI 43397172081: 220 Python tests + 66 subtests; IPA-gold structure validation; npm build; generated-data freshness; 20 Node tests; 58 Playwright/Chromium tests. Optional diagnostics 43397181331 passed: CRF 100 predictions / 84 source-concordant / zero gold / null accuracy / NOT_SCORED_POSSIBLE_TRAINING_OVERLAP; Epitran 1.35.3 raw-output artifact only.
+
+Final registries: 59 sources, 81 claims, 45 medial rows, 30 phonological rules, 7 source-phonemic sandhi examples. Manual CSV integrity and traceability validation passed.
+
+Okell (1995) *Three Burmese Dialects* and Nishi (1998) *Old Burmese* full texts are inspected. Okell documents Arakanese WB r/y preservation and Intha/Tavoyan medial /l/ inventories absent from SB; Nishi documents historical -h/-l/-r/-y distinctions and cross-dialect cluster reflexes. All are historical/regional evidence, not current Yangon mappings; runtime remains withheld.
+
+SEAlang 2008 project description confirms that the Burmese dictionary interface accepts IPA phonetic queries and displays IPA transliterations. This is interface-level evidence only. Mya2Rom separately documents MLCTS2 use by MLC Dictionary/SEAlang; internal entry/export representation remains unresolved. No dictionary or corpus entries were retrieved.
+
+Nishi (1976) *Medials in Burmese* and Okell (1969) *A Reference Grammar of Colloquial Burmese* are registered primary-source targets, but their full texts were not retrieved. Hill (2019) chapter 2, Okell's 8.8 MB text corpus and SEAlang corpus bytes likewise remain tool-access/schema gates. Project owner confirms permissions; no audio used.
+
+Myanglish raw CSV vs metadata remains 2-column/3-feature uncertain; myX orthography remains quarantined for target-word misalignment, multi-substitution examples and template duplication. Gold=0, accuracy=null, no runtime medial or voicing rules promoted.
+
+PR #147 remains OPEN / DRAFT / mergeable, 0 commits behind main, 28 files changed; current ahead count is tracked on the PR. PR #129 untouched. Repository remains PARTIAL PROTOTYPE, not linguistically release-ready.
