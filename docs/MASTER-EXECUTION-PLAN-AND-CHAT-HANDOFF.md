@@ -1600,7 +1600,7 @@ These counts are not tokenized and do not represent pronunciation or syllable di
 - Starting default-branch commit: `dc90463bdd734867308f03cb627eb8941efc19d6`; `main` remains unchanged.
 - Final dedicated branch: `research/burmese-medials-g2p-evidence-2026-11-13`.
 - Latest verified code/data head: `601cf85a5c740627848f9eff1fa1f0911cf03796`; subsequent commits are handoff/audit documentation only. The exact final branch SHA is recorded in PR #147 and the final execution report.
-- PR #147: OPEN / DRAFT / mergeable; 195 commits ahead, 0 behind `main`; 29 files changed. No merge or release performed.
+- PR #147: OPEN / DRAFT / mergeable; ahead of `main` (0 behind; exact ahead count is maintained by PR #147); 29 files changed. No merge or release performed.
 - PR #129: OPEN / DRAFT, untouched; 53 commits ahead and 17 behind `main`, diverged and non-mergeable. Its broad hybrid-engine code was not ported; no branch was deleted or rewritten.
 
 ### Work completed in this continuation

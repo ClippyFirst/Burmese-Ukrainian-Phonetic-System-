@@ -1280,7 +1280,7 @@ Created `data/burmese/okell_text_corpus_orthographic_profile.csv` with four raw 
 ## Final exact-head continuation — 2026-11-13
 
 - Branch head: `601cf85a5c740627848f9eff1fa1f0911cf03796`; base main: `dc90463bdd734867308f03cb627eb8941efc19d6`; main unchanged.
-- PR #147: OPEN / DRAFT / mergeable, 195 ahead / 0 behind, 29 files. PR #129: OPEN / DRAFT, untouched, 53 ahead / 17 behind, diverged/non-mergeable.
+- PR #147: OPEN / DRAFT / mergeable, ahead / 0 behind (exact ahead count is maintained by PR #147), 29 files. PR #129: OPEN / DRAFT, untouched, 53 ahead / 17 behind, diverged/non-mergeable.
 - Registry totals: 59 sources, 83 claims, 45 medial rows, 30 rules, 7 sandhi examples, 9 Okell orthographic profile rows.
 - Okell corpus: 8,809,265 bytes; Zenodo MD5 matched; SHA-256 6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c; 21 BOM markers, one NUL, non-NFC, 67 numbered headings, repeated line/paragraph counts profiled. Remaining text-quality/provenance work is PARTIAL.
 - Exact-head CI runs 43449980180 and 43449989336 SUCCESS: 222 Python + 66 subtests, 20 Node, 58 Playwright; build and generated freshness pass. IPA gold validator correctly reports zero adjudicated gold. Optional run 43449989348 SUCCESS; CRF remains unscored with zero gold and null accuracy; Epitran is raw-output-only.

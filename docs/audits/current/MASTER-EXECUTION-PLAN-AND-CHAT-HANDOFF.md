@@ -716,7 +716,7 @@ The paper documents a potentially useful 42 h 39 min / 307-speaker audio corpus,
 - Starting default-branch commit: `dc90463bdd734867308f03cb627eb8941efc19d6`; `main` remains unchanged.
 - Final dedicated branch: `research/burmese-medials-g2p-evidence-2026-11-13`.
 - Latest verified code/data head: `601cf85a5c740627848f9eff1fa1f0911cf03796`; the final handoff-only commit follows it and is recorded in PR #147.
-- PR #147: OPEN / DRAFT / mergeable; 195 commits ahead, 0 behind `main`; 29 files changed. No merge or release performed.
+- PR #147: OPEN / DRAFT / mergeable; ahead of `main` (0 behind; exact ahead count is maintained by PR #147); 29 files changed. No merge or release performed.
 - PR #129: OPEN / DRAFT, untouched; 53 commits ahead and 17 behind `main`, diverged and non-mergeable. Its broad hybrid-engine code was not ported; no branch was deleted or rewritten.
 
 ### Work completed in this continuation
