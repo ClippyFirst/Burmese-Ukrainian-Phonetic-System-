@@ -160,6 +160,7 @@ def test_mlcts_source_provenance_does_not_conflate_secondary_sources_or_ala_lc()
     assert claims["CLM-MLC-DICT-1996-NDL-HOLDING-001"]["source_id"] == "NDL_MLC1996_DICT_CATALOG"
     assert claims["CLM-MLC-DICT-PRON-GUIDE-001"]["source_id"] == "BURMA_DEBATE_1996_MLC_DICT_NOTICE"
     assert claims["CLM-MOW-MLCTS2-VARIANTS-001"]["source_id"] == "MOW_2017_MLCTS_VARIANTS"
+    assert claims["CLM-MYA2ROM-COLUMN3-NAMING-001"]["source_id"] == "MYA2ROM044"
     assert "Wikipedia" in claims["CLM-MLCTS-SECONDARY-PROVENANCE-001"]["claim"]
     assert "not the Myanmar Language Commission" in claims["CLM-ALA-LC-NOT-MLCTS-001"]["claim"]
     assert "does not expose their entry text" in claims["CLM-MLC-DICT-BIB-UNICODE-001"]["claim"]
@@ -167,6 +168,7 @@ def test_mlcts_source_provenance_does_not_conflate_secondary_sources_or_ala_lc()
     assert "not an online scan" in claims["CLM-MLC-DICT-1996-NDL-HOLDING-001"]["claim"]
     assert "does not identify the system" in claims["CLM-MLC-DICT-PRON-GUIDE-001"]["claim"]
     assert "MLCTS 2" in claims["CLM-MOW-MLCTS2-VARIANTS-001"]["claim"]
+    assert "nomenclature discrepancy" in claims["CLM-MYA2ROM-COLUMN3-NAMING-001"]["claim"]
 
 MLCTS2_CROSSWALK_PATH = ROOT / "data/burmese/romanization_rime_mlcts2_crosswalk.csv"
 
