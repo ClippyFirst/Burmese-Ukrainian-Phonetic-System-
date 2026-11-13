@@ -144,10 +144,13 @@ def test_mlcts_source_provenance_does_not_conflate_secondary_sources_or_ala_lc()
 
     assert "OHNMAR_HTUN_2013" in sources
     assert "ALA_LC_BURMESE_2011" in sources
+    assert "UNICODE_REFERENCE_LISTS_2022" in sources
     assert sources["OHNMAR_HTUN_2013"]["type"] == "doctoral_dissertation"
     assert "not a primary MLCTS specification" in sources["OHNMAR_HTUN_2013"]["scope"]
     assert "ALA-LC" in sources["ALA_LC_BURMESE_2011"]["scope"]
     assert claims["CLM-MLCTS-SECONDARY-PROVENANCE-001"]["source_id"] == "OHNMAR_HTUN_2013"
     assert claims["CLM-ALA-LC-NOT-MLCTS-001"]["source_id"] == "ALA_LC_BURMESE_2011"
+    assert claims["CLM-MLC-DICT-BIB-UNICODE-001"]["source_id"] == "UNICODE_REFERENCE_LISTS_2022"
     assert "Wikipedia" in claims["CLM-MLCTS-SECONDARY-PROVENANCE-001"]["claim"]
     assert "not the Myanmar Language Commission" in claims["CLM-ALA-LC-NOT-MLCTS-001"]["claim"]
+    assert "does not expose their entry text" in claims["CLM-MLC-DICT-BIB-UNICODE-001"]["claim"]
