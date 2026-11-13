@@ -1576,3 +1576,12 @@ The complete text-only Zenodo response was extracted as UTF-8, including its ini
 Profile: 19,566 lines / 19,565 CRLF delimiters; 67 numbered heading lines across embedded texts; valid UTF-8; one leading BOM; one NUL; not NFC-normalized; zero U+FFFD; 73 unique Myanmar code points. The corpus contains mixed Burmese/English, dated and speaker-labelled dialogue/speech text, prose and tables, with localized legacy glyph/encoding corruption in some foreign technical terms. These are content/byte observations, not IPA labels. No rows imported; no audio accessed; no IPA gold created.
 
 Status advances to **PARTIAL / CONTENT AND BYTE INTEGRITY VERIFIED; TEXT QUALITY AUDIT PENDING**. Next acceptance: preserve the exact source externally, document document-level provenance and duplicate rates, inspect NUL/NFC/corrupted technical terms without modifying the source copy, and extract only source-located text examples into separate research records.
+
+
+## Okell corpus first-pass duplicate and boundary profile — 2026-11-13
+
+The exact text has 21 U+FEFF markers: one at byte-stream start and 20 embedded at apparent title/content transitions. These are boundary candidates, not proof of 21 original files or a one-to-one document map. The single NUL is in line 9,300 and sits inside a visibly corrupted passage. The text is not NFC-normalized; do not normalize the archival source in place.
+
+Line profile: 19,566 lines; 18,060 nonblank lines; 17,052 distinct nonblank line values; 295 repeated nonblank line forms and 1,008 excess occurrences. There are 1,061 nonblank paragraph blocks and 23 repeated paragraph forms. Frequent repetitions include recurring poem/title lines, section headers and divider motifs; the most repeated line is a title/author-style header. These are not evidence of duplicate whole documents, so no automatic deduplication was applied.
+
+This advances structural understanding but not full quality clearance. Remaining work: map embedded BOM/title boundaries to source documents, inspect the NUL and legacy glyph corruption, identify provenance for each segment, and determine which repeated passages are genuine text reuse versus corpus duplication. Keep exact original bytes unchanged.

@@ -1259,3 +1259,14 @@ Exact-head CI 43393402710 on 4835a0abc3e7e4a18c9d0bda35f554031912d570: 217 Pytho
 | Corpus as pronunciation gold | DEFERRED / NOT GOLD | No IPA annotation schema or independent IPA labels identified; no G2P scoring. |
 
 Acceptance: retain byte-identical pinned text, compute SHA-256, inspect document boundaries/duplicates/Unicode/corruption and record section locators before importing any lexical examples. No audio.
+
+
+## Okell corpus structural-quality follow-up — 2026-11-13
+
+| Work item | Status | Evidence / acceptance boundary |
+|---|---|---|
+| Exact retrieved-byte integrity | DONE_VERIFIED | Zenodo MD5 matched; SHA-256 6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c; 8,809,265 bytes; UTF-8 valid; 19,566 lines. |
+| Unicode/structure profile | PARTIAL | 21 BOM markers, one NUL at line 9,300, non-NFC text, 0 U+FFFD, 67 numbered heading lines, 73 unique Myanmar code points. |
+| Duplicate/provenance audit | TODO | 295 repeated nonblank line forms / 1,008 excess occurrences and 23 repeated paragraph forms; determine source-level duplication vs recurring titles, headers and dividers. Map embedded boundaries and segment provenance. |
+
+Do not normalize or deduplicate the archival source automatically. No audio.

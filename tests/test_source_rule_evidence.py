@@ -314,7 +314,10 @@ def test_okell_text_corpus_access_and_quality_boundary_is_explicit():
     assert "f020d7bbcf9857631094a8861143d18f" in source["scope"]
     assert "computed SHA-256 6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c" in source["scope"]
     assert "8,809,265" in source["scope"]
-    assert "1 NUL" in source["scope"]
+    assert "1 NUL in line 9,300" in source["scope"]
+    assert "21 BOM markers" in source["scope"]
+    assert "295 repeated nonblank line forms" in source["scope"]
+    assert "1,008 excess occurrences" in source["scope"]
     assert "non-NFC" in source["scope"]
     assert "localized legacy encoding/glyph corruption" in source["scope"]
     assert claim["source_id"] == "OKELL_TEXT_2018"

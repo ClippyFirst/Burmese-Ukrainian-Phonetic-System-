@@ -1421,3 +1421,14 @@ Exact tested head: d2800ce458ea3c08c3fecb9e61ad170502837343. PR #147 remains Dra
 | Okell corpus as IPA/G2P gold | DEFERRED / NOT GOLD | No IPA annotation schema or independently adjudicated IPA values identified. Do not import as IPA gold or score predictions against it. |
 
 No corpus rows were imported and no audio was accessed or used. This correction supersedes prior BLOCKED_TOOL_ACCESS classification; SEAlang entry/schema access remains separately unresolved.
+
+
+### Okell corpus structure and duplicate-line profile — 2026-11-13
+
+| Work item | Status | Evidence / acceptance boundary |
+|---|---|---|
+| Byte/Unicode integrity | DONE_VERIFIED (retrieved-byte profile) | Zenodo MD5 matched; SHA-256 6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c; 8,809,265 bytes; valid UTF-8; 19,566 lines; 21 BOM markers; one NUL; non-NFC; zero U+FFFD. |
+| Structural/duplicate profile | PARTIAL | 67 numbered heading lines; 295 repeated nonblank line forms / 1,008 excess occurrences; 23 repeated paragraph forms. Repeated poem/title/header/divider lines mean these are not duplicate-document counts. |
+| Provenance and text quality | TODO | Map embedded BOM/title boundaries to original documents; inspect line 9,300 NUL and localized glyph corruption; classify duplicate passages and source provenance before any extraction. |
+
+No deduplication or normalization was applied to the source copy; no audio or IPA gold was used.
