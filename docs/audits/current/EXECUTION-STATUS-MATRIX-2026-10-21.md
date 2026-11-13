@@ -1924,7 +1924,7 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 
 ## Final exact-head verification — 2026-11-13
 
-- SHA `62bea5a26012cb1ace4ce11579e17f4a780c3e1e`; required CI **43516197628 SUCCESS** and duplicate exact-SHA run **435161... SUCCESS**: 251 Python + 66 subtests, 20 Node, 58 Playwright; production build, generated-data freshness and Chromium install passed.
+- SHA `62bea5a26012cb1ace4ce11579e17f4a780c3e1e`; required CI **43516197628 SUCCESS** and duplicate exact-SHA run **43516203122 SUCCESS**: 251 Python + 66 subtests, 20 Node, 58 Playwright; production build, generated-data freshness and Chromium install passed.
 - Optional Epitran raw-output diagnostic **43516203133 SUCCESS**; not an accuracy score. IPA-gold validator remains `NOT_READY_NO_ADJUDICATED_GOLD`, with 0 independent gold entries. One high-severity npm vulnerability remains.
 - Collision audit: 25 groups = 6 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 7 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 149 claims.
 - Engineering/test consistency verified. Secondary Wiktionary evidence does not adjudicate primary MLC policy and does not authorize runtime or Ukrainian mapping changes.
