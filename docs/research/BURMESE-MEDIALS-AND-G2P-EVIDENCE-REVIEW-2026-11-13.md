@@ -397,7 +397,7 @@ The SEAlang dictionary page timed out/returned gateway errors during this review
 
 ## 15. Nishi (1998): full Old Burmese text inspected; historical medials and dialect reflexes
 
-The full text of Nishi's “Old Burmese: Toward the History of Burmese” (BNME 23(3), pp.659-684; DOI 10.15021/00004119) is now inspected and registered as a separate source, distinct from Nishi's 1998 voicing-sandhi article.
+The full text of Nishi's “Old Burmese: Toward the History of Burmese” (BNME 23(3), pp.659-692; DOI 10.15021/00004119) is now inspected and registered as a separate source, distinct from Nishi's 1998 voicing-sandhi article.
 
 Key findings, with historical scope preserved:
 
