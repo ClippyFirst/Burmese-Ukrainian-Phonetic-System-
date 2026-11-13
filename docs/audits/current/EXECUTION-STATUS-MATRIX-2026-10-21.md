@@ -1295,3 +1295,6 @@ No corpus rows or pronunciation labels were imported. No runtime G2P rule was en
 - The paper reports substantial variation and exceptions and warns that Standard Burmese is not a well-defined variety. Regional dialects differ in rule presence.
 - Both rules remain analysis-dependent and are not enabled globally. Acceptance requires a selected runtime profile, lexical/context coverage, written-source cross-checks and tests for optionality/exceptions. No audio evidence is part of the acceptance path.
 
+
+
+- **Hill (2019) chapter 2** — BLOCKED / ACCESS. Cambridge confirms the Burmese historical-phonology chapter (pp.46-83), but only a short §44 preview was accessible. No medial-specific claim has been made. Acceptance: authorized full text, exact page locators and source-specific reconciliation before adding evidence.
