@@ -643,3 +643,14 @@ The MOW orthographic candidates were looked up in existing Wiktionary text entri
 The `any` examples show why a shared MLCTS rime string must not be interpreted as proof of homophony. The `any:` examples supply word-level secondary evidence for distinct source-unit outcomes; the `နည်း` page also lists two pronunciations for different senses under the same spelling/MLCTS form. For `ui`, only `ို` has MOW-listed examples; `ို်` remains unattested in this small wordnet, so no paired comparison is possible.
 
 The entries are secondary and may reflect the conventions of Wiktionary contributors; they do not adjudicate the original MLC specification. MOW matching remains exact Unicode suffix matching, not syllabification. No phonological rule, IPA gold item, or Ukrainian output has been promoted.
+
+## 28. Additional secondary lexical evidence for `any.` collision
+
+Text-only Wiktionary entries now provide one lexical example for each source-unit side of `any.`:
+
+| Lemma | Source-unit ending | Wiktionary MLCTS | Wiktionary IPA |
+|---|---|---|---|
+| `စဉ့်` | ဉ့် | `cany.` | `/sɪ̰ɴ/` |
+| `ကြည့်` | ည့် | `krany.` | `/t͡ɕḭ/` |
+
+The first word is not in the MOW suffix-match list; the second is. These are independent Wiktionary word entries, not a controlled minimal pair, not an MLC primary table, and not evidence that every lexical instance of the two finals has the same contrast. They justify changing the lexical audit from no word-level evidence to `SECONDARY_SOURCE_DISTINCTION` only. The MLCTS2 crosswalk status is kept in parity with the lexical audit. No runtime rule, IPA gold row or Ukrainian candidate is promoted. The source claim is `CLM-WIKTIONARY-ANY-DOT-WORD-LEVEL-EXAMPLES-001` under the existing `MYWIKTIONARY2026` source record.
