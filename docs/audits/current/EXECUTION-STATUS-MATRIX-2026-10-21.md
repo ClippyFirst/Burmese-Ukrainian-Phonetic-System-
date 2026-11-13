@@ -1702,3 +1702,11 @@ Code/test commit **c35a7ae0255725aa85cf5f836c64b4ed1fa5b731** completed required
 - Latest required CI is green on code/test commit `c35a7ae0255725aa85cf5f836c64b4ed1fa5b731` (run 43498396994). Optional raw-output diagnostic passed; optional CRF-baseline job is still in progress and is not an acceptance benchmark.
 - Current source registries: **72 sources / 125 claims**, all IDs unique, CSV widths valid and all claim-to-source references resolve.
 - Release readiness remains **PARTIAL PROTOTYPE / NOT RELEASE-READY**: primary MLC source text, independent IPA gold, tone/prosody model validation and npm high-severity dependency finding remain unresolved.
+
+## MOW lexical word-form coverage for collision endings — 2026-11-13
+
+- Retrieved the official MOW 0.1.3 release TSV from `myanmaropenwordnet/mow`; upstream blob SHA `0c97fc4e98b3827dae0bc667858993037496ca58`. The release header and repository README state CC BY 4.0. It contains 1,476 `mya:lemma` rows and 1,041 distinct Burmese lemma strings.
+- Added `data/burmese/romanization_rime_mow_lemma_coverage.csv` (50 source-unit rows) and `data/burmese/romanization_rime_mow_lemma_hits.csv` (508 exact source-unit/lemma pairs). The matching operation is strictly Unicode string `endsWith(source_unit)`; it does not syllabify, identify lexical rimes, or provide pronunciations.
+- The 508 pairs cover 442 distinct lemma strings and 547 synsets; 35/50 source-unit variants occur at least once. Both variants of 11/25 collision groups occur in MOW (`a`, `a:`, `am`, `am:`, `am.`, `any`, `any:`, `au`, `auk`, `aung:`, `u.`); only one side occurs for 13/25 groups; neither side occurs for `um.` in this small resource.
+- These are lexical orthographic search leads only. They do not adjudicate the MLCTS collision, prove that two spellings are homophonous, or establish source-language phonology. Absence from this limited wordnet is not evidence that a form does not exist. The 21 collision groups remain unadjudicated; the prior two secondary equivalence groups, one secondary conflict and one special non-rime remain unchanged.
+- Added regression tests for the coverage tables, per-unit counts, collision-group coverage and CC BY/evidence boundaries. Registry totals: **73 nonblank sources / 126 claims**; unique IDs and claim references validated. CI for the latest test-bearing commit is pending.
