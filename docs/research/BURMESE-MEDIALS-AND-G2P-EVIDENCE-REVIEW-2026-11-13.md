@@ -296,3 +296,24 @@ However, the paper is an ASR-corpus description, not an IPA corpus: its WER resu
 The pinned Mya2Rom 0.4.4 README exposes five explicit modes: ipa, mlcts, mlcts2, simple and simple2. It defines MLCTS as the MLC's orthographic transcription; MLCTS2 is a more phonetic variant used by the MLC Myanmar-English Dictionary and SEAlang, but it remains a romanization, not a standardized IPA output. The README's own IPA flavour uses /N/ instead of writing nasalized vowels, which is a transcription convention, not proof that the surface contains a standalone [ɴ].
 
 The project browser runtime explicitly calls mya2rom(unit.raw, "mlcts", ...). Therefore the current Latin → Ukrainian mode is orthographic transliteration, not pronunciation-based transcription. It must not be used as an IPA oracle or silently merged with the IPA-first G2P path. Mya2Rom is CC BY-SA 4.0; its README also documents limitations with stacked letters, ASAT, schwa, voicing sandhi, alternate pronunciations and Pali/Sanskrit-derived words. The vendor-derived 94-rime inventory is therefore useful for coverage but not an independently validated MLC-primary or pronunciation corpus.
+
+## 8. Text-only corpus leads and evidence limits
+
+The continuation research uses written sources only. No audio corpus, recording, speech sample, or audio-derived annotation is part of the active research scope.
+
+### 8.1 Myanglish parallel text (DatarrX, 2026)
+
+The myX-myanmar-to-myanglish-corpus dataset card reports 2,121 Burmese Unicode-to-Myanglish pairs. Its own documentation warns that Myanglish has no standardized orthography and that the current data is predominantly based on one native author's personal typing/phonetic style. The dataset viewer exposes three fields (myanmar, myanglish, official_standard), whereas the README's schema section describes only two; this must be reconciled against the raw CSV before any use. The card declares CC BY-SA 4.0. The dataset is a possible written romanization diagnostic, not IPA, not a universal romanization norm and not independent G2P gold. No rows were imported.
+
+### 8.2 Orthographic error correction text (DatarrX, 2026)
+
+The myX-myanmar-orthography-corpus dataset viewer reports 4,800 rows. Its documented fields are noisy sentence, corrected sentence, error category and target words. Files with phonetic in their names classify phonetic spelling confusions; the inspected phet_bet_phonetic.csv contains no IPA or phonetic transcription column. Medial pairs such as ကျ/ကြ are listed as future expansion, not as current evidence. This can become an orthographic-normalization test source after manual row review, but it does not validate medial-to-IPA rules. The card declares CC BY-SA 4.0. No rows were imported.
+
+### 8.3 John Okell's A Corpus of Modern Burmese (1990s compilation; Zenodo 2018)
+
+Zenodo describes an 8.8 MB Unicode text file compiled by John Okell in the 1990s. The European Language Grid catalogue lists CC BY 4.0, but the Zenodo record's Rights/License field is blank. This discrepancy is recorded as rights CONFLICT/UNKNOWN; the corpus is not copied or ingested pending a direct rights statement. It is a text corpus, not an IPA-labelled resource.
+
+### 8.4 Evidence boundary
+
+These resources may support written orthographic coverage, lexical context, and romanization comparison. They cannot be promoted to IPA gold merely because the Latin target is described as phonetic. Preserve separate typed layers for source spelling, orthographic MLCTS, informal romanization, IPA, and Ukrainian adaptation. Independent expert-adjudicated IPA gold remains 0 and empirical accuracy remains null.
+
