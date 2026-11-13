@@ -1363,3 +1363,14 @@ Exact tested head: d2800ce458ea3c08c3fecb9e61ad170502837343. PR #147 remains Dra
 - Earlier runs 43393310910 and 43393302505 failed only on a case-sensitive assertion expecting lower-case “historical merger only”; corrected to match the stored capitalized scope. Exact corrected-head run above passed.
 - Registry integrity: 55 sources, 71 claims, 42 medial evidence rows, 28 phonological rules, 7 source-phonemic sandhi examples. Manual CSV parser verified row widths and all source/claim/rule/matrix links; no duplicate IDs or broken traceability.
 - Independent expert-adjudicated IPA gold remains 0; empirical IPA accuracy remains null. No runtime medial/voicing rule promoted. Classification remains PARTIAL PROTOTYPE.
+
+### Final exact-head verification — 2026-11-13 (supersedes earlier snapshots)
+
+- Final tested head: c03706474cf67b480c449790c9592e5fe0e53fd4.
+- Main CI run 43394274053: SUCCESS — 217 Python tests + 66 subtests; independent IPA-gold schema validation; npm build; generated-data freshness; 20 Node tests; 58 Playwright/Chromium tests.
+- Optional diagnostics run 43394274111: SUCCESS — CRF 100 predictions / 84 source-concordant / gold_count 0 / accuracy null / NOT_SCORED_POSSIBLE_TRAINING_OVERLAP; Epitran raw-output artifact only.
+- Final registry counts: 56 sources, 71 claims, 42 medial evidence rows, 28 phonological rules, 7 source-phonemic sandhi examples. Manual CSV integrity check found no malformed widths, duplicate IDs or broken source/claim/rule/matrix references.
+- Nishi (1976) Medials in Burmese is registered as a primary-source target, but its full text was not retrieved. Nishi (1998) Old Burmese is a separate full-text source and only a secondary summary of Nishi 1976.
+- Project owner confirms text-only research and project-ingestion permissions. No audio used. External corpus access/schema and quality gates remain.
+- PR #147 OPEN / DRAFT / mergeable, 135 commits ahead, 0 behind, 28 files. PR #129 untouched.
+- Gold remains 0; accuracy remains null; no runtime medial or voicing rule promoted. Repository remains PARTIAL PROTOTYPE.
