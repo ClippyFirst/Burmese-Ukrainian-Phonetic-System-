@@ -1680,3 +1680,16 @@ Code/test head **508816dcddf22272e98647625b657bc79712817e** completed required C
 - Added regression coverage that parses the vendored JS array and compares all 94 rows/columns, while preserving the evidence boundary that these are vendor mappings, not a primary MLC table or independent IPA gold.
 - Registry remains **72 nonblank sources / 125 claims**; no new source claim was needed because this artifact is a deterministic extraction of already registered Mya2Rom v0.4.4.
 - Exact-head CI for this latest added full crosswalk test is pending.
+
+## Full crosswalk exact-head CI result — 2026-11-13
+
+Code/test commit **c35a7ae0255725aa85cf5f836c64b4ed1fa5b731** completed required CI successfully:
+- Workflow **43498396994**: SUCCESS.
+- Python: **233 passed + 66 subtests passed** (includes full 94-key and 25-collision crosswalk checks).
+- Node: **20 passed, 0 failed**.
+- Playwright: **58 passed**; Chromium installation passed.
+- Production build: PASS.
+- Generated web-data freshness: PASS.
+- IPA-gold structural validator executed, but gold remains **NOT_READY_NO_ADJUDICATED_GOLD** (0 independent adjudicated records); successful execution is not evidence that a gold set exists.
+- `npm install` still reports **1 high-severity vulnerability**. No dependency force-upgrade was made.
+- Latest branch changes after the tested code commit are documentation-only.
