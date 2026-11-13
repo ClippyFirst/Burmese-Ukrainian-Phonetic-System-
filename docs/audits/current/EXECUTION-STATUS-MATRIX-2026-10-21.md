@@ -1956,3 +1956,10 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - Audit and crosswalk set to `SECONDARY_ONE_SIDE_ONLY`; claim registered; regression tests updated.
 - Distribution: 3 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 9 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 152 claims.
 - No primary MLC or runtime promotion. Exact-head CI pending.
+
+## Exact-head verification — `au.` lexical continuation — 2026-11-14
+
+- Verified SHA `ffd08d7ae8e227ee19a86859de00b7d52f456ecf`; CI **43519887514 SUCCESS**: 251 Python + 66 subtests, 20 Node, 58 Playwright; build, generated-data freshness and Chromium install passed.
+- Optional Epitran diagnostic **43519895542 SUCCESS**; IPA gold `NOT_READY_NO_ADJUDICATED_GOLD`, 0 independent gold entries. One high-severity npm vulnerability remains.
+- Ledger: 3 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 9 secondary one-side-only / 1 special non-rime; 80 sources / 152 claims.
+- Secondary evidence only; no runtime or Ukrainian output changes.
