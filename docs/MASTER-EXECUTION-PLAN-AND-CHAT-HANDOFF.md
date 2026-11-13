@@ -1368,3 +1368,51 @@ The source, three claims, two analysis-dependent rule records and a provenance t
 
 Cambridge University Press confirms Nathan W. Hill, *The Historical Phonology of Tibetan, Burmese, and Chinese*, chapter 2 "Burmese", pp.46-83, DOI 10.1017/9781316550939.003. Only a short publisher preview was accessible; no medial-specific claim is made from it. The source and bibliographic/access claim are registered. Next research gate: obtain authorized full-text access, inspect Old Burmese medial clusters and written-to-spoken developments, and add only source-located claims. Do not infer content from the title or preview.
 
+## Verified continuation checkpoint — 2026-11-13
+
+### Repository state
+- Default branch: main, starting base SHA dc90463bdd734867308f03cb627eb8941efc19d6.
+- Existing research branch at start of this continuation: research/burmese-medials-g2p-evidence-2026-11-13, starting head 5e49b2d13506d32606050b10a43972d998cd6539.
+- Verified code/data head before this checkpoint: 4145126ec65b834df96fc7ed57749a719daa27c2.
+- PR #147 remains OPEN / DRAFT and mergeable; at the last comparison it was 66 commits ahead, 0 behind, with 25 changed files. It has not been merged.
+- PR #129 remains untouched; its broad hybrid implementation was not ported or merged.
+
+### Verification on exact head 4145126ec65b834df96fc7ed57749a719daa27c2
+Main CI run 43389272448: SUCCESS.
+- Independent IPA gold structure validation: SUCCESS.
+- Python: 206 passed, 66 subtests passed.
+- npm build: SUCCESS.
+- Generated web data freshness check: SUCCESS.
+- Node tests: 20 passed, 0 failed.
+- Playwright/Chromium browser tests: 58 passed.
+Optional diagnostic workflow 43389279081: SUCCESS.
+- CRF diagnostic: 100 inputs, 100 predictions, 84 source-concordant; gold_count=0, accuracy=null, scoring status NOT_SCORED_POSSIBLE_TRAINING_OVERLAP. This is not an accuracy result.
+- Epitran 1.35.3 raw-output artifact generated; no gold comparison or accuracy claim.
+Manual registry integrity check: 51 source rows, 55 claim rows, 28 medial-evidence rows, 19 phonological-rule rows; all CSV row widths valid, IDs unique, all claim→source and rule→claim→source links resolve. No registry integrity issues found.
+
+### Commands executed by the verified GitHub Actions workflow
+- pip install -e ".[test]"
+- pytest
+- npm install
+- npm run build
+- generated web data freshness validation
+- npm test (generate:web plus Node test suite)
+- npx playwright install --with-deps chromium
+- npm run test:browser:built
+- independent IPA gold corpus structure validation
+
+No local repository checkout or local shell test run was performed in this session; verification above is from the exact-head GitHub Actions run. Earlier intermediate CI failures caught a medial-matrix CSV field alignment issue and test assertion wording/case mismatches; those were corrected before the successful exact-head run.
+
+### Scope and release boundary
+- Text-only research is the active user-directed scope. Legacy SLR80/UCSY-SC1 entries are historical metadata only and are DEFERRED / OUT OF SCOPE. No audio was acquired, inspected, processed, annotated or used.
+- No new corpus rows were imported; no runtime medial mapping or contextual voicing rule was enabled.
+- Independent text-adjudicated IPA gold remains 0; empirical accuracy remains null. The project remains a PARTIAL PROTOTYPE, not release-ready.
+
+### Remaining evidence/access gates
+1. Obtain authorized full text of Nishi (1976), “Medials in Burmese”, and Hill (2019), chapter 2; add claims only with exact locators.
+2. Reconcile historical Written Burmese/Rangoon analyses with modern Yangon orthography and phonology; keep source profiles separate until then.
+3. Obtain direct rights clarification for John Okell's text corpus (Zenodo Rights/License blank vs ELG CC BY 4.0).
+4. Pin and inspect exact Myanglish/orthography dataset revisions, reconcile schema, manually review text rows and CC BY-SA 4.0 obligations before any import.
+5. Build independent expert-reviewed text IPA fixtures from written dictionaries/grammars with one approved broad/narrow convention and source locators. No audio is part of this acceptance path.
+6. Resolve the competing tone/register analyses and the abstract /N/ vs surface nasalization representation before enabling affected IPA rules.
+7. Continue primary-source verification for the 94 MLCTS rime entries; current vendor-derived coverage is not fully primary-source adjudicated.
