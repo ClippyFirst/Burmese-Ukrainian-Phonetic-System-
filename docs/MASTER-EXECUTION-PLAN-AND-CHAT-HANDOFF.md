@@ -2183,3 +2183,10 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - Added claim `CLM-WIKTIONARY-AUNG-DOT-ONE-SIDE-EXAMPLE-001`; updated lexical audit, MLCTS2 status parity and tests.
 - Current collision distribution: **11 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 2 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 144 claims**.
 - One-sided secondary attestation only; no collision adjudication or runtime/IPA gold/Ukrainian output promotion. Exact-head CI pending.
+
+## One-sided lexical examples for `um:` and `un` — 2026-11-13
+
+- Added MOW-listed `နှလုံး` (`hna.lum:`, `/n̥əlóʊɴ/`) for the `ုံး` side of `um:` and `ကုန်` (`kun`, `/kòʊɴ/`) for the `ုန်` side of `un`. Opposite sides remain unobserved.
+- Added claims `CLM-WIKTIONARY-UM-COLON-ONE-SIDE-EXAMPLE-001` and `CLM-WIKTIONARY-UN-ONE-SIDE-EXAMPLE-001`; updated audit/crosswalk parity and regression tests.
+- Current collision distribution: **9 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 4 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 146 claims**.
+- One-sided secondary evidence only; no collision adjudication, IPA gold, runtime or Ukrainian output promotion. Exact-head CI pending.
