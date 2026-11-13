@@ -323,7 +323,7 @@ def test_mow_dataset_source_claim_preserves_cc_by_and_orthographic_scope():
         claims = {row["claim_id"]: row for row in csv.DictReader(stream)}
 
     assert "MOW_2017_0_1_3_DATASET" in sources
-    assert "CC BY 4.0" in sources["MOW_2017_0_1_3_DATASET"]["scope_or_note"]
+    assert "CC BY 4.0" in sources["MOW_2017_0_1_3_DATASET"]["scope"]
     assert claims["CLM-MOW-ORTHOGRAPHIC-RIME-COVERAGE-001"]["source_id"] == "MOW_2017_0_1_3_DATASET"
     assert "suffix matching does not perform Burmese syllabification" in claims[
         "CLM-MOW-ORTHOGRAPHIC-RIME-COVERAGE-001"
