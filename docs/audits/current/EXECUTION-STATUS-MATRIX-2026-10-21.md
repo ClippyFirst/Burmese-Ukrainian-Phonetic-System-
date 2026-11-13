@@ -1902,3 +1902,9 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - Added three source claims and updated lexical audit, MLCTS2 parity and regression tests. MOW coverage data unchanged.
 - Current distribution: 12 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 143 claims.
 - Secondary evidence only; not minimal pairs or primary MLC adjudication. No IPA gold, runtime or Ukrainian output promotion. CI pending.
+
+## One-sided lexical evidence for `aung.` — 2026-11-13
+
+- Added MOW-listed Wiktionary lemma `စောင့်` (`caung.`, `/sa̰ʊɴ/`) for ောင့်. No example for ေါင့် was located. Added claim `CLM-WIKTIONARY-AUNG-DOT-ONE-SIDE-EXAMPLE-001`; synchronized lexical audit and MLCTS2 status, and expanded tests.
+- Current distribution: 11 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 2 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 144 claims.
+- This is secondary evidence for one side only, not a collision adjudication or primary MLC specification. No IPA gold, runtime or Ukrainian output promotion. CI pending.
