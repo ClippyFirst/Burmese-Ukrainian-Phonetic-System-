@@ -1298,3 +1298,18 @@ No corpus rows or pronunciation labels were imported. No runtime G2P rule was en
 
 
 - **Hill (2019) chapter 2** — BLOCKED / ACCESS. Cambridge confirms the Burmese historical-phonology chapter (pp.46-83), but only a short §44 preview was accessible. No medial-specific claim has been made. Acceptance: authorized full text, exact page locators and source-specific reconciliation before adding evidence.
+
+### Exact-head verification checkpoint — 2026-11-13
+
+| Check | Status | Evidence |
+|---|---|---|
+| Independent IPA gold structure validation | DONE_VERIFIED | CI run 43389272448, exact tested head 4145126ec65b834df96fc7ed57749a719daa27c2 |
+| Python tests | DONE_VERIFIED | 206 passed + 66 subtests passed |
+| npm build and generated-data freshness | DONE_VERIFIED | Both successful in run 43389272448 |
+| Node tests | DONE_VERIFIED | 20 passed, 0 failed |
+| Playwright/Chromium browser tests | DONE_VERIFIED | 58 passed |
+| Optional Epitran/CRF diagnostics | DONE_VERIFIED (diagnostic only) | Run 43389279081; CRF 100/100 outputs, 84 source-concordant, 0 gold, accuracy null, possible training overlap; Epitran raw artifact only |
+| Source registry integrity | DONE_VERIFIED | 51 sources, 55 claims, 28 medial rows, 19 phonological rules; no CSV width, duplicate-ID or traceability errors |
+| Text-only scope | DONE_VERIFIED (documentation) | Handoff, corpus triage, completion register and source registry mark legacy non-text corpus records as excluded/deferred; no audio work |
+
+The successful CI applies to exact head 4145126ec65b834df96fc7ed57749a719daa27c2. This checkpoint is documentation-only; any subsequent commit requires its own exact-head verification. Release status remains PARTIAL PROTOTYPE because independent text-adjudicated IPA gold is 0 and empirical accuracy is null.
