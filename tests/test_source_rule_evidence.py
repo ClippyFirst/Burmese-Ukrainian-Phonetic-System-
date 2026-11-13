@@ -189,3 +189,35 @@ def test_sealang_resources_are_text_candidates_not_ipa_gold():
     assert claims["CLM-SEALANG-DICT-TRANS-001"]["status"] == "UNCERTAIN"
     assert "do not assume the displayed transcription is IPA" in claims["CLM-SEALANG-DICT-TRANS-001"]["claim"]
 
+def test_nishi_1998_source_notation_is_not_project_ipa():
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    source_claim = claims["CLM-NISHI-1998-TRANSCRIPTION-001"]
+    historical = claims["CLM-NISHI-1998-HISTORICAL-STAGES-001"]
+    assert source_claim["source_id"] == "NISHI1998_VOICING_RULES"
+    assert source_claim["status"] == "DOCUMENTARY"
+    assert "not project IPA gold" in source_claim["claim"]
+    assert historical["source_id"] == "NISHI1998_VOICING_RULES"
+    assert historical["status"] == "ANALYSIS_DEPENDENT"
+    assert "not a universal synchronic rule sequence" in historical["claim"]
+
+    rule = next(
+        row for row in _rows(DATA / "phonological_rules.csv")
+        if row["rule_id"] == "NISHI98_HISTORICAL_THREE_RULE_SEQUENCE"
+    )
+    assert rule["claim_id"] == historical["claim_id"]
+    assert rule["status"] == "analysis_dependent"
+    assert "never enabled in runtime" in rule["scope"]
+
+
+def test_myx_corpus_schema_and_quality_limits_are_explicit():
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    schema_claim = claims["CLM-MYX-MYANGLISH-RAW-SCHEMA-001"]
+    quality_claim = claims["CLM-MYX-ORTHO-QUALITY-001"]
+    assert schema_claim["source_id"] == "MYX_MYANGLISH_2026"
+    assert schema_claim["status"] == "UNCERTAIN"
+    assert "two columns" in schema_claim["claim"]
+    assert "third official_standard feature" in schema_claim["claim"]
+    assert quality_claim["source_id"] == "MYX_ORTHO_2026"
+    assert quality_claim["status"] == "DOCUMENTARY"
+    assert "target_words" in quality_claim["claim"]
+    assert "not an IPA corpus" in quality_claim["claim"]
