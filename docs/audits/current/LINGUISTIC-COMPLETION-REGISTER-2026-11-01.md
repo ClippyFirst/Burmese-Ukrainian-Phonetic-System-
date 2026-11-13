@@ -1665,3 +1665,11 @@ Project status remains **PARTIAL PROTOTYPE / NOT RELEASE-READY**: IPA gold is no
 | BURMESE-MOW-ORTHOGRAPHIC-COVERAGE-017 | DONE_VERIFIED — ORTHOGRAPHIC_SUFFIX_ONLY | Generator `scripts/analyze_mow_orthographic_rime_coverage.py`, two committed CSV outputs, reproducibility `--check` test. 508 source-unit/lemma pairs, 50 source-unit rows; 11 collision groups both sides found, 13 one side, 1 neither. Exact-head CI 43503144848 SUCCESS: 242 Python + 66 subtests, 20 Node, 58 Playwright, build and generated-data freshness pass. | Do not treat suffix matches as syllable segmentation, pronunciation, MLCTS correctness or homophony. MOW is not exhaustive; absence is not evidence of nonexistence. Primary MLC lexical and pronunciation evidence is still required. |
 
 Project remains PARTIAL PROTOTYPE / NOT RELEASE-READY. IPA gold is `NOT_READY_NO_ADJUDICATED_GOLD`; one high-severity npm vulnerability remains.
+
+## MLC 1978 spelling-book catalogue lead — 2026-11-13
+
+| ID | Status | Evidence | Acceptance criterion |
+|---|---|---|---|
+| BURMESE-MLC-SPELLING-BOOK-1978-ACCESS-018 | PARTIAL — CATALOGUE LEAD ONLY | National Diet Library of Japan record R100000136-I1970023484907173422 records a Burmese-language MLC orthography/spelling reference published in 1978. Allott (1985, p.145) independently reports that the MLC spelling book was published in 1978, while separately describing the five-part Concise Burmese Dictionary as issued from late 1978 through 1980. New registry records: NDL_MLC_SPELLING_1978_CATALOG / CLM-MLC-SPELLING-BOOK-1978-CATALOG-001. | Obtain title page and contents; verify exact identity of the catalogue title with Allott's spelling book and distinguish it from the Concise Dictionary. Inspect whether any pronunciation or transcription material exists. No MLCTS/IPA inference from catalogue metadata. |
+
+This is a new access route, not newly inspected primary content. Existing Allott/Okell Concise Dictionary records remain separate. Registry totals after update: 82 sources / 132 claims. Exact-head CI pending.
