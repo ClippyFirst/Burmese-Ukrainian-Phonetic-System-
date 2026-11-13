@@ -2122,3 +2122,13 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - Removed three internal blank separator rows from `data/burmese/sources.csv` and added `test_source_registry_has_no_blank_rows_or_duplicate_source_ids`.
 - Current registry is **80 unique nonblank sources / 133 claims**. Exact code commit `62f59f177b15e2df54ace464056df7932058bffb` passed required CI run **43508294905**: 249 Python + 66 subtests, 20 Node, 58 Playwright, build and generated-data freshness. `npm install` still reports one high-severity vulnerability.
 - Prior 82/132 and 83/133 row counts were inflated by three blank CSV lines; this correction changes no source content or claim content.
+
+## Existing-text lexical checks: Wiktionary examples — 2026-11-13
+
+The MOW candidate lemmas were checked against already-registered Wiktionary text entries; no new inaccessible source was needed. Added three documentary claims to `source_claims.csv` and updated the lexical audit:
+
+- `any`: `ဥယျာဉ်` — `u.yyany`, `/ʔṵjɪ̀ɴ/` or `/ʔújɪ̀ɴ/`; `ပြည်` — `prany`, `/pjì/`. Same MLCTS rime ending, different Wiktionary IPA.
+- `any:`: `အကျဉ်း` — `a.kyany:`, `/ʔət͡ɕɪ́ɴ/`; `နည်း` — `nany:`, `/nɛ́/` or `/ní/` depending on sense.
+- `ui`: `ချို` / `ဆို` / `တို` give one-side examples for `ို`; there are no MOW suffix candidates for `ို်`.
+
+These are secondary lexical transcriptions, not primary MLC adjudication. In particular, the `ui` status is one-side-only, not a claim that the two source units are equivalent or distinct. Updated status distribution: 19 unadjudicated, 2 secondary equivalence, 1 conflict, 1 distinction, 1 one-side-only, 1 special non-rime. Added a parity test requiring the MLCTS2 crosswalk's lexical status to equal the lexical audit's status. CI run **43509339740 SUCCESS**: 251 Python + 66 subtests, 20 Node, 58 Playwright, build and generated-data freshness passed. Registry: **80 sources / 136 claims**.
