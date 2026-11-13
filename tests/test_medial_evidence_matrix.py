@@ -203,3 +203,24 @@ def test_nishi_old_burmese_h_notation_is_not_collapsed_into_modern_medial_ha():
     modern_ha = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-HA-001")
     assert modern_ha["unicode"] == "U+103E"
     assert modern_ha["project_runtime_status"] == "WITHHELD"
+
+def test_nishi_old_burmese_cluster_correspondences_preserve_dialect_variation():
+    matrix = rows("medial_evidence_matrix.csv")
+    cluster_rows = [
+        row for row in matrix
+        if row["evidence_id"].startswith("MED-NISHI-OB-")
+        and row["evidence_id"] not in {
+            "MED-NISHI-OWB-H-001",
+            "MED-NISHI-OWB-L-001",
+        }
+    ]
+    assert len(cluster_rows) == 9
+    for row in cluster_rows:
+        assert row["source_ids"] == "NISHI1998_OLDBURMESE"
+        assert row["project_runtime_status"] == "WITHHELD"
+        assert "dialect_historical_correspondence" == row["evidence_level"]
+        assert "historical romanized" in row["unicode"]
+        assert "Source romanization only, not IPA" in row["notes"]
+    assert any("TAV c-" in row["attested_phonological_behavior"] for row in cluster_rows)
+    assert any("INT kl-" in row["attested_phonological_behavior"] for row in cluster_rows)
+    assert any("WB Pr-/Mr-" in row["attested_phonological_behavior"] for row in cluster_rows)
