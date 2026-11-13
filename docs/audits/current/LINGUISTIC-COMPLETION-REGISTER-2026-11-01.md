@@ -1420,3 +1420,13 @@ Evidence source WIKTIONARY_BURMESE_TRANSLITERATION_2026; claims CLM-WIKT-RIME-AM
 
 Current ledger: 63 sources / 115 claims; 25 collision groups; 21 unadjudicated, 2 secondary-equivalence, 1 secondary-conflict, 1 special non-rime. No runtime change; no Ukrainian candidate promotion; no audio.
 
+
+## Exact-head verification — MLCTS lexical audit (2026-11-13)
+
+- Tested code/data snapshot: 46b7da6afd7ecc94e4dcac87c7f759132c74bc6b; research branch remains based on main dc90463bdd734867308f03cb627eb8941efc19d6.
+- CI run 43491799213 SUCCESS: 229 Python tests passed + 66 subtests; 20 Node tests passed; 58 Playwright tests passed; production build, generated-data freshness, dependency install and Chromium install passed. Gold schema validator runs successfully but reports NOT_READY_NO_ADJUDICATED_GOLD (0 adjudicated records).
+- Optional diagnostic run 43491799196 SUCCESS; outputs are not scored against independent gold and must not be represented as accuracy.
+- npm install reports 1 high-severity vulnerability; dependency review remains open.
+- Registry: 63 sources / 115 claims; 25 collision groups; lexical audit partition 21 unadjudicated / 2 secondary-equivalence / 1 secondary-source conflict / 1 special non-rime.
+- No audio, runtime mapping changes or Ukrainian candidate promotions. Repository remains a PARTIAL PROTOTYPE.
+
