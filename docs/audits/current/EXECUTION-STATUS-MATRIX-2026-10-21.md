@@ -1851,3 +1851,12 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - Removed three internal blank lines from `data/burmese/sources.csv`; added a regression test requiring every source row to have a nonblank unique `source_id`.
 - Verified current registry: **80 unique nonblank source rows / 133 claims**. Required CI run **43508294905 SUCCESS** on code commit `62f59f177b15e2df54ace464056df7932058bffb`: 249 Python + 66 subtests, 20 Node, 58 Playwright, production build and generated-data freshness passed.
 - Corrects the earlier 82/132 and 83/133 counts, which included blank separator rows. No source or linguistic claim was removed; only empty lines were deleted.
+
+## Word-level Wiktionary examples for `any`, `any:` and `ui` — 2026-11-13
+
+- Added three documentary claims under the existing Wiktionary snapshot and updated the lexical collision audit plus MLCTS2 crosswalk evidence-state labels.
+- `any`: `ဥယျာဉ်` (`u.yyany`, `/ʔṵjɪ̀ɴ/` or `/ʔújɪ̀ɴ/`) vs `ပြည်` (`prany`, `/pjì/`).
+- `any:`: `အကျဉ်း` (`a.kyany:`, `/ʔət͡ɕɪ́ɴ/`) vs `နည်း` (`nany:`, `/nɛ́/` or `/ní/`, sense-dependent).
+- `ui`: `ချို`, `ဆို`, `တို` provide examples for `ို` only; no `ို်` MOW suffix match exists, so no comparison is possible.
+- Required CI run **43509339740 SUCCESS** on code commit `191501979a2c5d8b7c0db9a00af5600b7266201f`: **251 Python + 66 subtests**, **20 Node**, **58 Playwright**, build and generated-data freshness passed. One high-severity npm vulnerability remains.
+- Updated lexical-audit distribution: 19 unadjudicated / 2 secondary equivalence / 1 secondary conflict / 1 secondary distinction / 1 one-side-only / 1 special non-rime. The new evidence is secondary and lexical; it does not authorize runtime, IPA gold or Ukrainian promotion. Current registry: **80 sources / 136 claims**.
