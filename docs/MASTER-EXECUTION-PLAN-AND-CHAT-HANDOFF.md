@@ -1423,3 +1423,27 @@ Green's chapter “Word, foot and syllable structure in Burmese” in *Studies i
 
 SEAlang's MLC-based dictionary (~35,000 entries), Burmese Text Corpus and Bitext Corpus are registered as text-only candidates. The dictionary's actual transcription field is unresolved (SHACHI metadata advertises IPA search/display, while Mya2Rom says MLCTS2 is used by MLC/SEAlang). The text and bitext corpora have no explicit reuse license; reported “contexts/pairs served” are service counts, not verified corpus sizes. No rows were downloaded or imported. Bulk reuse is blocked pending rights and schema verification.
 
+## Final verified snapshot after text-source expansion — 2026-11-13
+
+- Starting default-branch base: main at dc90463bdd734867308f03cb627eb8941efc19d6. Starting continuation branch head: 5e49b2d13506d32606050b10a43972d998cd6539.
+- Exact tested code/data head: d2800ce458ea3c08c3fecb9e61ad170502837343.
+- PR #147: OPEN / DRAFT, mergeable, 90 commits ahead of main and 0 behind; 25 files changed. Not merged. PR #129 remains untouched.
+- Exact-head main CI run 43390071180: SUCCESS — 209 Python tests + 66 subtests; independent IPA-gold schema validation; npm build; generated-data freshness; 20 Node tests; 58 Playwright/Chromium tests.
+- Exact-head optional diagnostic run 43390071177: SUCCESS. CRF: 100 inputs, 100 predictions, 84 source-concordant, gold_count=0, accuracy=null, NOT_SCORED_POSSIBLE_TRAINING_OVERLAP. Epitran raw-output artifact generated; no gold comparison or accuracy claim.
+- Registry integrity: 55 source rows, 62 claims, 29 medial evidence rows, 22 phonological rules. CSV widths valid, IDs unique, all claim→source and rule→claim→source links resolve. No integrity issues.
+- New text evidence includes Green (2005) broad IPA vs ALA-LC separation, CG onset and /N/ nasalization; Nishi (1997/1998), Matisoff (2003), STEDT (1996); and SEAlang dictionary/text/bitext candidates with unresolved representation/rights gates.
+- No audio was acquired, inspected, processed, annotated or used. Legacy non-text source records are historical metadata only and DEFERRED / OUT OF SCOPE. No corpus rows were imported and no runtime medial or contextual voicing rule was enabled.
+- No local checkout or local shell test run was performed; verification is from the exact-head GitHub Actions runs. Commands executed by CI: pip install -e ".[test]"; pytest; npm install; npm run build; generated web-data freshness validation; npm test; npx playwright install --with-deps chromium; npm run test:browser:built; independent IPA-gold structure validation.
+- Earlier intermediate CI runs caught and corrected evidence-row field alignment and test assertion mismatches. The exact-head run above is successful.
+
+### Final unresolved acceptance gates
+1. Authorized full text for Nishi (1976) “Medials in Burmese” and Hill (2019) chapter 2; no claims until exact page/section evidence is inspected.
+2. Reconcile historical Written Burmese, Rangoon, and modern Yangon profiles; no direct Unicode-medial mapping from historical notation.
+3. Direct rights clarification for John Okell text corpus; Zenodo license field is blank while ELG lists CC BY 4.0.
+4. SEAlang dictionary entry inspection to resolve IPA vs MLCTS2 representation; explicit permission for bulk extraction from dictionary/text/bitext resources.
+5. Pin Myanglish and orthography dataset revisions/hashes; reconcile schema and manually review rows and CC BY-SA 4.0 obligations before import.
+6. Build independent expert-reviewed text IPA fixtures from written dictionaries/grammars with one broad/narrow convention and source locators. Gold remains 0; accuracy remains null.
+7. Resolve tone/register competing analyses and abstract /N/ vs surface nasalization before enabling affected rules.
+8. Verify the 94 MLCTS rime entries against primary written sources; vendor-derived coverage is not fully adjudicated.
+
+Repository classification: **PARTIAL PROTOTYPE**; research handoff is substantially improved, but linguistic release readiness is not established.
