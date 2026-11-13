@@ -2101,3 +2101,14 @@ The first CI attempt after registering the MOW orthographic coverage claim (work
 - The first CI run exposed two overly case/count-specific test expectations. Both were corrected from the actual committed CSV values. Required run **43507606882 SUCCESS** on code commit `de7abaea084515c5ef814575656ede8b83369a6a`: 248 Python + 66 subtests, 20 Node, 58 Playwright, production build and generated-data freshness passed. The optional raw-output/CRF diagnostic workflow also succeeded; it is not an accuracy benchmark. `npm install` still reports one high-severity vulnerability.
 - Existing evidence now gives a useful triage order without new sources: (1) `any`/`any:`/`any.` — both MLCTS2 and R12A distinguish the paired forms; `any` has a secondary-source IPA conflict; (2) `ui` — MLCTS2 distinguishes, R12A only partly covers; (3) `u.` — special/context-dependent, not an ordinary rime; (4) `am`/`um` — secondary equivalence examples, still not primary adjudication. Other groups remain unadjudicated.
 - Do not infer that cross-system agreement proves homophony or MLC policy. No runtime, IPA gold or Ukrainian candidate promotion was made. The next useful coding/research action is to improve text-based lexical comparison around the high-priority `any` and `ui` groups using already registered sources, while keeping source-specific citations and uncertainty.
+
+## Text-only follow-up keys from MOW for priority collision groups — 2026-11-13
+
+Use the existing generated MOW tables rather than waiting for inaccessible primary books. They expose candidate lemmas for text lookup:
+
+- `any`: ဉ် has 6 matches (e.g. `ဥယျာဉ်`, `တိရစ္ဆာန်ဥယျာဉ်`, `ယာဉ်`); ည် has 13 (e.g. `ပြည်`, `မြန်မာပြည်`, `လက်ဖက်ရည်`).
+- `any:`: ဉ်း has 1 (`အကျဉ်း`); ညည်း has 6.
+- `any.`: ဉ့် has 0; ည့် has 5.
+- `ui`: ို် has 0; ို has 15 (e.g. `ချို`, `ငို`, `ဆို`, `တို`, `မှို`).
+
+These counts are exact Unicode suffix matches in MOW v0.1.3, not syllable parses. Treat the listed words as search keys for the already-registered text dictionaries/corpora only. A useful next task is to cross-reference these spellings in the existing text resources and capture each entry's exact transcription field/locator where present. Do not assign IPA based on suffix or MLCTS labels.
