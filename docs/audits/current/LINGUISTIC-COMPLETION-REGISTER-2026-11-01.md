@@ -1550,3 +1550,11 @@ Code/test commit **c35a7ae0255725aa85cf5f836c64b4ed1fa5b731** completed required
 | BURMESE-MLCTS-COLLISION-LEXEME-ADJUDICATION-011 | TODO — PRIMARY DICTIONARY / PHONOLOGICAL EVIDENCE | MOW gives orthographic search leads but no pronunciations. | Use these lemmas to locate candidate entries in MLC primary dictionaries; inspect entry headwords and pronunciation key. Confirm exact lexical pairs and pronunciation independently before changing the 25-group ledger. |
 
 The collision-ledger statuses are unchanged: 21 unadjudicated, 2 secondary equivalence, 1 secondary-source conflict, 1 special non-rime. Registry totals: **73 nonblank sources / 126 claims**.
+
+## Reproducible MOW orthographic coverage audit — 2026-11-13
+
+- Vendored the exact upstream MOW v0.1.3 TSV at `data/burmese/external/mow-0.1.3-mya_20171005165336.tab`; its original header is preserved: `## MOW 0.1.3 / mya / CC BY 4.0`. Source ID **MOW_2017_0_1_3_DATASET** and claim **CLM-MOW-ORTHOGRAPHIC-RIME-COVERAGE-001** were added in the concurrent continuation commits already on this branch.
+- Added deterministic stdlib-only generator `scripts/analyze_mow_orthographic_rime_coverage.py` with `--check` mode, plus generated files `mow_rime_orthographic_matches.csv` (508 exact source-unit/lemma pairs) and `mow_rime_orthographic_coverage.csv` (50 source-unit rows).
+- Recomputed results from the vendored file: 1,476 MOW `mya:lemma` rows, 1,041 distinct lemma forms, 1,198 synsets; 508 suffix-match pairs across 35/50 source-unit variants; 442 distinct matched lemmas and 547 distinct matched synsets. For the 25 collision groups: both variants occur in 11 groups, one side in 13, neither in 1.
+- These are exact Unicode orthographic suffix matches, not Burmese syllabification or pronunciation. They do not confirm homophony, MLCTS equivalence, MLC system correctness, or Ukrainian outputs. The generator/test preserve this limitation. The raw upstream license header and source attribution are retained.
+- Added two tests: source/license header preservation and reproducible output/count/evidence-boundary validation. Exact-head CI pending.
