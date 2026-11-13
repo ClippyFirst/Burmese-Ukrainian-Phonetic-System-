@@ -2206,3 +2206,10 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - npm reports one high-severity vulnerability. No dependency upgrade was made.
 - Final ledger: 25 groups = **6 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 7 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 149 claims**.
 - PR #147 remains OPEN / DRAFT / mergeable; branch is 598 commits ahead and 0 behind `main`. No merge or release performed.
+
+## `am:` one-side lexical evidence — 2026-11-14
+
+- Added Wiktionary attestation `လမ်း` (`lam:`, `/láɴ/`) for the `မ်း` side of the `am:` collision; no MOW lexical example for `ံး` was located.
+- Updated lexical audit, MLCTS2 crosswalk, source claim and regression tests. Status: `SECONDARY_ONE_SIDE_ONLY`, not equivalence.
+- Registry: **80 sources / 150 claims**. Collision ledger: **5 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 8 secondary one-side-only / 1 special non-rime**.
+- Secondary evidence only; no primary MLC, IPA gold, runtime or Ukrainian mapping promotion. Exact-head CI pending.
