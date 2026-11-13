@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -148,6 +149,7 @@ def test_mlcts_source_provenance_does_not_conflate_secondary_sources_or_ala_lc()
     assert "WHO_MLC1993_DICT_CATALOG" in sources
     assert "NDL_MLC1996_DICT_CATALOG" in sources
     assert "BURMA_DEBATE_1996_MLC_DICT_NOTICE" in sources
+    assert "MOW_2017_MLCTS_VARIANTS" in sources
     assert sources["OHNMAR_HTUN_2013"]["type"] == "doctoral_dissertation"
     assert "not a primary MLCTS specification" in sources["OHNMAR_HTUN_2013"]["scope"]
     assert "ALA-LC" in sources["ALA_LC_BURMESE_2011"]["scope"]
@@ -157,9 +159,59 @@ def test_mlcts_source_provenance_does_not_conflate_secondary_sources_or_ala_lc()
     assert claims["CLM-MLC-DICT-1993-PHYSICAL-HOLDING-001"]["source_id"] == "WHO_MLC1993_DICT_CATALOG"
     assert claims["CLM-MLC-DICT-1996-NDL-HOLDING-001"]["source_id"] == "NDL_MLC1996_DICT_CATALOG"
     assert claims["CLM-MLC-DICT-PRON-GUIDE-001"]["source_id"] == "BURMA_DEBATE_1996_MLC_DICT_NOTICE"
+    assert claims["CLM-MOW-MLCTS2-VARIANTS-001"]["source_id"] == "MOW_2017_MLCTS_VARIANTS"
     assert "Wikipedia" in claims["CLM-MLCTS-SECONDARY-PROVENANCE-001"]["claim"]
     assert "not the Myanmar Language Commission" in claims["CLM-ALA-LC-NOT-MLCTS-001"]["claim"]
     assert "does not expose their entry text" in claims["CLM-MLC-DICT-BIB-UNICODE-001"]["claim"]
     assert "not access to the dictionary contents" in claims["CLM-MLC-DICT-1993-PHYSICAL-HOLDING-001"]["claim"]
     assert "not an online scan" in claims["CLM-MLC-DICT-1996-NDL-HOLDING-001"]["claim"]
     assert "does not identify the system" in claims["CLM-MLC-DICT-PRON-GUIDE-001"]["claim"]
+    assert "MLCTS 2" in claims["CLM-MOW-MLCTS2-VARIANTS-001"]["claim"]
+
+MLCTS2_CROSSWALK_PATH = ROOT / "data/burmese/romanization_rime_mlcts2_crosswalk.csv"
+
+
+def test_mlcts2_crosswalk_is_exactly_derived_from_vendored_column_three():
+    collisions_path = ROOT / "data/burmese/romanization_rime_collisions.csv"
+    with collisions_path.open(encoding="utf-8-sig", newline="") as stream:
+        collisions = {row["mlcts"]: row for row in csv.DictReader(stream)}
+    with MLCTS2_CROSSWALK_PATH.open(encoding="utf-8-sig", newline="") as stream:
+        crosswalk = list(csv.DictReader(stream))
+    vendor_text = (ROOT / "vendor/mya2rom/romanisations.js").read_text(encoding="utf-8")
+    vendor = {
+        key: (ipa, mlcts, mlcts2)
+        for key, ipa, mlcts, mlcts2 in re.findall(
+            r'^\\s*"([^"]*)"\\s*:\\s*\\["([^"]*)"\\s*,\\s*"([^"]*)"\\s*,\\s*"([^"]*)"',
+            vendor_text,
+            flags=re.MULTILINE,
+        )
+    }
+
+    assert len(crosswalk) == len(collisions) == 25
+    assert {row["mlcts"] for row in crosswalk} == set(collisions)
+    distinct_groups = set()
+    for row in crosswalk:
+        source_units = row["source_units"].split(";")
+        assert row["source_units"] == collisions[row["mlcts"]]["source_units"]
+        values = [vendor[unit] for unit in source_units]
+        assert row["mlcts2_values"] == ";".join(value[2] for value in values)
+        assert row["ipa_values"] == ";".join(value[0] for value in values)
+        expected_relation = (
+            "SAME_MLCTS2_OUTPUT" if len({value[2] for value in values}) == 1
+            else "DISTINCT_MLCTS2_OUTPUT"
+        )
+        if row["mlcts"] == "u.":
+            expected_relation = "SPECIAL_CONTEXT_FALLBACK"
+        assert row["mlcts2_relation"] == expected_relation
+        assert row["lexical_audit_status"] in {
+            "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE",
+            "SECONDARY_SYSTEM_EQUIVALENCE",
+            "SECONDARY_SOURCE_CONFLICT",
+            "SPECIAL_NONRIME_CONTEXT_DEPENDENT",
+        }
+        assert "not a primary MLC dictionary entry" in row["interpretation_boundary"]
+        if expected_relation == "DISTINCT_MLCTS2_OUTPUT":
+            distinct_groups.add(row["mlcts"])
+
+    assert distinct_groups == {"any", "any:", "any.", "ui"}
+    assert crosswalk and crosswalk[0]["mlcts2_relation"] == "SAME_MLCTS2_OUTPUT"
