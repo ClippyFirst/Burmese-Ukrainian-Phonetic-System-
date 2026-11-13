@@ -654,3 +654,14 @@ Text-only Wiktionary entries now provide one lexical example for each source-uni
 | `ကြည့်` | ည့် | `krany.` | `/t͡ɕḭ/` |
 
 The first word is not in the MOW suffix-match list; the second is. These are independent Wiktionary word entries, not a controlled minimal pair, not an MLC primary table, and not evidence that every lexical instance of the two finals has the same contrast. They justify changing the lexical audit from no word-level evidence to `SECONDARY_SOURCE_DISTINCTION` only. The MLCTS2 crosswalk status is kept in parity with the lexical audit. No runtime rule, IPA gold row or Ukrainian candidate is promoted. The source claim is `CLM-WIKTIONARY-ANY-DOT-WORD-LEVEL-EXAMPLES-001` under the existing `MYWIKTIONARY2026` source record.
+
+## 29. Additional secondary lexical evidence for `aung`
+
+Text-only Wiktionary entries supply one lexical example for each of the two orthographic endings in the `aung` collision group:
+
+| Lemma | Source-unit ending | Wiktionary MLCTS | Wiktionary IPA |
+|---|---|---|---|
+| `ပေါင်` | ေါင် | `paung` | `/pàʊɴ/` |
+| `တောင်` | ောင် | `taung` | `/tàʊɴ/` |
+
+The onsets differ, but the rime sequence `/àʊɴ/` is the same in the two secondary transcriptions. `တောင်` is a MOW suffix candidate; `ပေါင်` is not. This is word-level secondary equivalence evidence, not a controlled minimal pair or a primary MLC specification. The lexical audit is updated to `SECONDARY_SYSTEM_EQUIVALENCE`; MLCTS2 status parity and regression tests are updated. No runtime, IPA gold or Ukrainian output is promoted. Claim: `CLM-WIKTIONARY-AUNG-WORD-LEVEL-EXAMPLES-001`.
