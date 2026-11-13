@@ -398,3 +398,20 @@ def test_unicode_n2827_medial_source_is_limited_to_orthographic_structure():
     assert claim["source_id"] == "UNICODE_N2827_MYANMAR_SEMIVOWELS_2004"
     assert "eleven medial symbols" in claim["claim"]
     assert "no MLCTS or IPA rime table" in claim["claim"]
+
+def test_mlc_1986_orthography_catalog_record_is_only_an_access_lead():
+    with (ROOT / "data/burmese/sources.csv").open(encoding="utf-8-sig", newline="") as stream:
+        sources = {row["source_id"]: row for row in csv.DictReader(stream)}
+    with (ROOT / "data/burmese/source_claims.csv").open(
+        encoding="utf-8-sig", newline=""
+    ) as stream:
+        claims = {row["claim_id"]: row for row in csv.DictReader(stream)}
+
+    source = sources["MLC_1986_ORTHOGRAPHY_NLMNPT_189"]
+    claim = claims["CLM-MLC-1986-ORTHOGRAPHY-CATALOG-001"]
+    assert "292 pages" in source["scope"]
+    assert "PDF option listed" in source["scope"]
+    assert "contents were not inspected" in source["scope"]
+    assert claim["source_id"] == "MLC_1986_ORTHOGRAPHY_NLMNPT_189"
+    assert "no book pages were inspected" in claim["claim"]
+    assert "not the book’s structural rules" in claim["claim"]
