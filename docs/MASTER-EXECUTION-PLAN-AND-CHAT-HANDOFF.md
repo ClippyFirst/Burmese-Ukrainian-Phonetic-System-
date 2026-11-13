@@ -2088,3 +2088,9 @@ The first CI attempt after registering the MOW orthographic coverage claim (work
 
 - CiNii Books NCID BA69415754 gives the 1978 book's physical extent (28, 379 pages, 17 cm) and three Japanese library holdings: Osaka University and two Tokyo University of Foreign Studies locations. Google Books record _V1LAAAAMAAJ lists a 379-page University of Michigan original digitized in 2007, but the visible result is snippet-view metadata, not proof that the entire scan is accessible.
 - Added source CINII_MLC_SPELLING_1978_HOLDINGS and claim CLM-MLC-SPELLING-BOOK-ACCESS-002; test test_mlc_1978_spelling_book_has_concrete_library_and_scan_access_routes. Registry now 83 sources / 133 claims. Next step: obtain/inspect actual pages and establish whether the 1978 spelling book contains any transcription or pronunciation material. No runtime behavior changed.
+
+## Work-with-existing-evidence mode — rime crosswalk integrity (2026-11-13)
+
+- Added `tests/test_rime_crosswalk_consistency.py` to connect the three already-present 25-row tables: `romanization_rime_mlcts2_crosswalk.csv`, `romanization_rime_r12a_secondary_phonology_crosswalk.csv`, and `romanization_rime_collision_lexical_audit.csv`.
+- The regression checks require exact shared MLCTS keys and Myanmar source-unit pairs, preserve two-position output alignment, assert the observed R12A comparison distribution (18 same / 3 distinct / 2 partial / 1 absent / 1 special), and assert the lexical evidence distribution (21 unadjudicated / 2 secondary equivalence / 1 secondary conflict / 1 special).
+- Acceptance boundary: cross-table consistency only. MLCTS2 remains vendor-derived, R12A remains secondary descriptive evidence, and the lexical audit remains mostly unadjudicated. This does not prove phonological equivalence or authorize runtime/Ukrainian promotion. CI is pending for commit `f033ade5572889f4f13a8dedfa209699c095f577`.
