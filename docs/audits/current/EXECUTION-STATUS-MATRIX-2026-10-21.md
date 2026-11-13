@@ -1280,3 +1280,11 @@ No corpus rows or pronunciation labels were imported. No runtime G2P rule was en
 - Acceptance blocker: reconcile the underlying historical notation with modern Unicode spellings and the intended current Yangon profile using further written primary sources; retain the three source profiles separately.
 - STEDT volume copyright is All Rights Reserved; only factual claims and locators are registered, no tables or source data copied.
 
+### Written Burmese periodization and historical medial changes — 2026-11-13
+
+- Registered Nishi (1997), *The Orthographic Standardization of Burmese*, and Matisoff (2003), *Handbook of Proto-Tibeto-Burman*.
+- Nishi distinguishes OWB, MWB, EModWB and ModWB; records the replacement of OWB -l- by MWB -r-/-v- and later insertion of -y- after k-/kh- before written -i. He explicitly separates written H and spoken L phonological systems.
+- Matisoff records WB *-r- > Modern Burmese -y- and warns that Written Burmese does not reliably preserve distinctions among proto-medials *-r-, *-l- and *-y-; orthographic shifts and exceptions are documented.
+- Added two evidence-matrix entries, two evidence-only rules and regression tests. Both entries remain WITHHELD; no current Unicode-to-IPA or runtime rule is inferred.
+- Acceptance criterion: reconcile Nishi's full 1976 "Medials in Burmese" treatment, historical inscriptional spellings, later written standards, and modern standard Yangon phonology using source-specific profiles and specialist review.
+
