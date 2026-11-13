@@ -105,3 +105,30 @@ def test_nasal_coda_and_nasal_rhyme_tone_are_registered_separately():
     assert "nasalization" in nasal["notes"]
     assert "not equate automatically" in nasal["notes"]
     assert "checked tone excluded" in tone["notes"]
+
+def test_stedt_written_burmese_medial_segmentation_remains_source_specific():
+    matrix = rows("medial_evidence_matrix.csv")
+    row = next(row for row in matrix if row["evidence_id"] == "MED-STEDT-WRITTEN-001")
+    assert row["evidence_level"] == "historical_written_analysis"
+    assert row["project_runtime_status"] == "WITHHELD"
+    assert "not a one-to-one Unicode mapping" in row["orthographic_input"]
+    assert "/-w-/ belongs to rhyme" in row["attested_phonological_behavior"]
+    assert "/-y-/ and /-r-/" in row["attested_phonological_behavior"]
+    rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "STEDT_WRITTEN_MEDIAL_SEGMENTATION")
+    assert rule["status"] == "analysis_dependent"
+    assert rule["source_id"] == "STEDT1996_BURMESE"
+    assert rule["claim_id"] == "CLM-STEDT-WRITTEN-MEDIAL-001"
+    assert "no modern Unicode medial mapping" in rule["scope"]
+
+
+def test_stedt_rangoon_medial_distribution_is_not_promoted_to_yangon_runtime():
+    row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-STEDT-RANGOON-001")
+    assert row["evidence_level"] == "historical_dialectal_description"
+    assert row["project_runtime_status"] == "WITHHELD"
+    assert "Burling" in row["attested_phonological_behavior"]
+    assert "Roop" in row["attested_phonological_behavior"]
+    rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "STEDT_RANGOON_MEDIAL_DISTRIBUTION")
+    assert rule["status"] == "analysis_dependent"
+    assert rule["source_id"] == "STEDT1996_BURMESE"
+    assert "not a current standard Yangon runtime rule" in rule["scope"]
+
