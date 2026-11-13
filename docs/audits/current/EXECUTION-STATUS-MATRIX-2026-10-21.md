@@ -1942,3 +1942,10 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - Optional Epitran raw-output diagnostic **43519083746 SUCCESS**; IPA gold `NOT_READY_NO_ADJUDICATED_GOLD`, 0 independent gold entries. One high-severity npm vulnerability remains.
 - Collision ledger: 5 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 8 secondary one-side-only / 1 special non-rime; 80 sources / 150 claims.
 - Secondary evidence only; no primary MLC or runtime/IPA gold/Ukrainian mapping promotion.
+
+## `am.` secondary lexical distinction — 2026-11-14
+
+- Wiktionary entries `စိမ့်` (`cim.`, `/sḛɪɴ/`) and `ကြံ့` (`kram.`, `/t͡ɕa̰ɴ/`) provide one lexical example for each final source unit မ့် and ံ့. MOW scan contains စိမ့် and အိန္ဒိယကြံ့ suffix candidates.
+- Distinct secondary IPA rimes conflict with vendor same-output MLCTS2/IPA. Audit/crosswalk updated to `SECONDARY_SOURCE_DISTINCTION`; claim registered.
+- Distribution: 4 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 8 secondary one-side-only / 1 special non-rime. Registry 80 sources / 151 claims.
+- Not primary MLC adjudication; no runtime or Ukrainian output promotion. Exact-head CI pending.
