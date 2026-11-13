@@ -1222,3 +1222,14 @@ Exact-head CI 43393402710 on 4835a0abc3e7e4a18c9d0bda35f554031912d570: 217 Pytho
 
 
 | MYA-OKELL1969-COLLOQUIAL-GRAMMAR-001 | BLOCKED / TOOL ACCESS | Two-volume reference grammar is bibliographically confirmed; Nishi 1998 cites §§17-20 for voicing sandhi; Okell 1995 identifies it as the Spoken Burmese reference. Project owner confirms permission. | Obtain full text, inspect exact phonology/sandhi sections and register page-located claims before runtime decisions. |
+
+
+## Consolidated verification snapshot — 2026-11-13
+
+- Exact tested head 898e0f7cedd3c5c040c218a52a551cc252c77d4e; CI 43395578254 SUCCESS: 219 Python + 66 subtests, 20 Node, 58 Playwright, IPA schema, build and generated-data freshness.
+- Optional diagnostics 43395586881 SUCCESS; CRF 100 predictions / 84 source-concordant / 0 gold / null accuracy; Epitran raw output only.
+- Final registries: 58 sources, 78 claims, 45 medial rows, 30 rules, 7 source-phonemic sandhi rows. CSV widths, unique IDs and source/claim/rule/matrix links validated.
+- Okell (1995) regional medial profiles and Nishi (1998) historical medial evidence are DONE_VERIFIED as source evidence only; runtime remains withheld.
+- Okell (1969), Nishi (1976), Hill (2019) chapter 2, Okell text corpus and SEAlang records remain retrieval/schema blocked, not permission blocked.
+- Myanglish remains schema-uncertain; myX orthography remains quarantined for quality review. No audio.
+- IPA gold=0; accuracy=null; classification PARTIAL PROTOTYPE.
