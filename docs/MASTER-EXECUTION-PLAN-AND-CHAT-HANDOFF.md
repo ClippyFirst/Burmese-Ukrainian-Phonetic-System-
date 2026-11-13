@@ -2213,3 +2213,11 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - Updated lexical audit, MLCTS2 crosswalk, source claim and regression tests. Status: `SECONDARY_ONE_SIDE_ONLY`, not equivalence.
 - Registry: **80 sources / 150 claims**. Collision ledger: **5 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 8 secondary one-side-only / 1 special non-rime**.
 - Secondary evidence only; no primary MLC, IPA gold, runtime or Ukrainian mapping promotion. Exact-head CI pending.
+
+## Exact-head verification — `am:` lexical evidence — 2026-11-14
+
+- Verified SHA `73bfbd7d82f69bfa0e306d984a40fe2324fc3515`; required CI runs **43519075644 SUCCESS** and **43519083741 SUCCESS**: 251 Python + 66 subtests, 20 Node, 58 Playwright; build, generated-data freshness and Chromium installation passed.
+- Optional Epitran raw-output diagnostic **43519083746 SUCCESS**, not an accuracy benchmark. IPA gold remains `NOT_READY_NO_ADJUDICATED_GOLD` (0 independent gold entries); accuracy is not measurable.
+- `npm install` reports one high-severity vulnerability; no unreviewed dependency upgrade.
+- Ledger: 5 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 8 secondary one-side-only / 1 special non-rime. Registry 80 sources / 150 claims.
+- No primary MLC, IPA gold, runtime or Ukrainian output promotion.
