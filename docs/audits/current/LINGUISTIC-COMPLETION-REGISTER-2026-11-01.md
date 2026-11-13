@@ -1215,3 +1215,7 @@ Exact-head CI 43393402710 on 4835a0abc3e7e4a18c9d0bda35f554031912d570: 217 Pytho
 - Project owner confirms text-only research and project-ingestion permissions. No audio work.
 - Okell/SEAlang/Hill remain tool-access or schema blocked; Myanglish schema is uncertain; myX orthography remains quarantined for quality.
 - Independent IPA gold remains 0; accuracy null; runtime rules withheld. Status PARTIAL PROTOTYPE.
+
+
+| MYA-OKELL1995-DIALECT-MEDIALS-001 | DONE_VERIFIED (SOURCE EVIDENCE ONLY) | Full Okell (1995) text inspected; WB/SB distinction, AR r/y preservation, IT/TV medial /l/, phonemic transcription convention; seven claims, two dialect rules, three matrix rows and regression tests. | All regional rows WITHHELD; do not project onto current Yangon without direct profile-specific evidence. |
+| MYA-STANDARD-YANGON-PROFILE-001 | PARTIAL / EVIDENCE-LIMITED | Okell, Nishi and Green provide useful standard/regional/historical contrasts, but no complete current Yangon source-located written fixture set has been independently adjudicated. | Build a modern Yangon profile from text-only authoritative dictionaries/grammars; keep dialectal and historical correspondences separate. |
