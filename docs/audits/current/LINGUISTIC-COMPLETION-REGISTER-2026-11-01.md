@@ -1642,3 +1642,10 @@ Registry totals after registering the catalog lead: **77 sources / 130 claims**,
 - Required CI on code/test commit `8e8448b70549062636c3f1c539ee1010f93a86cb`, workflow **43501650235**, completed **SUCCESS**: **241 Python + 66 subtests**, **20 Node**, **58 Playwright**; Chromium, production build and generated-data freshness passed. Optional raw-output/CRF diagnostics **43501650409** passed but are not accuracy scores.
 - Registry: **78 sources / 131 claims**, unique IDs, valid CSV widths and all claim source references resolve. One high-severity npm vulnerability remains; IPA gold is still `NOT_READY_NO_ADJUDICATED_GOLD`.
 - Branch comparison at the preceding checkpoint: **440 ahead / 0 behind**. PR #147 remains open, draft, mergeable and unmerged; main unchanged.
+
+## Final checkpoint — 2026-11-13
+
+- Dedicated branch `research/burmese-medials-g2p-evidence-2026-11-13`: **445 commits ahead of main / 0 behind**. PR **#147** is **OPEN / DRAFT / mergeable**, unmerged; 40 changed files. PR #129 remains untouched (divergent/non-mergeable at last review); PR #146 remains merged. Main and release state unchanged.
+- Latest required CI on code/test head `8e8448b70549062636c3f1c539ee1010f93a86cb`, run **43501650235 SUCCESS**: **241 Python + 66 subtests**, **20 Node**, **58 Playwright**, Chromium, production build and generated-data freshness all passed. Optional diagnostics **43501650409 SUCCESS** (raw-output + CRF; not an accuracy score).
+- Source registries: **78 sources / 131 claims**, all IDs unique, valid row widths, all source references resolve.
+- Remaining blockers: obtain and inspect complete MLC orthography/1993 dictionary contents and identify the exact transcription field; adjudicate the 25 collision groups from primary lexical evidence; build independent IPA gold and validate tone/prosody; resolve one high-severity npm vulnerability. Status remains **PARTIAL PROTOTYPE / NOT RELEASE-READY**.
