@@ -317,3 +317,15 @@ Zenodo describes an 8.8 MB Unicode text file compiled by John Okell in the 1990s
 
 These resources may support written orthographic coverage, lexical context, and romanization comparison. They cannot be promoted to IPA gold merely because the Latin target is described as phonetic. Preserve separate typed layers for source spelling, orthographic MLCTS, informal romanization, IPA, and Ukrainian adaptation. Independent expert-adjudicated IPA gold remains 0 and empirical accuracy remains null.
 
+## 9. Historical written-Burmese and Rangoon analyses: a necessary distinction
+
+A further text-only source review located the Burmese entries in Namkung (ed.), *Phonological Inventories of Tibeto-Burman Languages*, STEDT Monograph 3 (1996), pp.61-66. The compendium explicitly distinguishes three source profiles:
+
+- **Burmese (Written)**: the entry cites Benedict 1976, pp.iv-ix, and says that additional phonological information was supplied by James A. Matisoff. Its note states that medial /-w-/ belongs to the syllable rhyme, while /-y-/ and /-r-/ are treated as components of the initial consonant cluster (STEDT pp.61-62; quoted source note points to Benedict p.v).
+- **Rangoon — Burling 1967**: the compendium reports /-y-/ and /-w-/ medials and source-specific distribution constraints. Burling's data were collected or personally checked with speakers, largely students at the University of Rangoon in 1959-60; the inventory is cited to pp.13-15 of Burling (STEDT pp.63-64).
+- **Rangoon — Roop 1972**: the compendium also reports /-y-/ and /-w-/ medials with a different set of onset restrictions; it describes /r/ as a voiced flap or spirant appearing only in borrowings (Roop pp.xi-xiii; STEDT pp.65-66).
+
+These descriptions must not be collapsed into one universal mapping. The Written Burmese entry's phonological segmentation, Burling's mid-20th-century Rangoon inventory, Roop's Rangoon description, and Ishida's modern orthographic-medial analysis are different source profiles and analytical levels. In particular, the Benedict notation /-r-/ is not automatically the same thing as modern Myanmar Unicode U+103C or a contemporary surface [r]. Likewise, a written source's /-w-/ as rhyme component does not by itself settle whether modern U+103D is a glide, a vowel onglide, or a context-dependent orthographic marker.
+
+The STEDT volume states © 1996 Regents of the University of California, All Rights Reserved. Only factual claims and bibliographic pointers are recorded; no inventory tables or lexical data are copied into the repository. No runtime rule is enabled. Both new matrix entries remain WITHHELD pending a direct historical mapping, modern profile reconciliation and expert review.
+
