@@ -1798,3 +1798,18 @@ Added claims: CLM-MYA2ROM-RIME-EXACT-MATCH-001, CLM-MYA2ROM-MLCTS-COLLISIONS-001
 - Final registry totals: **61 sources, 112 claims**, 30 phonological rules, 45 medial evidence rows, 7 sandhi evidence rows, 9 Okell orthographic-profile rows; 94 vendor rime keys, 25 MLCTS collision groups. All Ukrainian rime candidates remain PROPOSED / EVIDENCE_LIMITED. No runtime phonological rule changed in this continuation.
 - Earlier CI attempt failed only because the newly qualified auk-myit note no longer contained the existing vendor-provenance phrase expected by a test. The note was corrected without removing the linguistic caveat; exact-head CI above passed afterward.
 - Repository remains a **PARTIAL PROTOTYPE**: primary MLC rime source, Okell §§17–20, Nishi 1976/1977 full text, independent modern Yangon IPA gold (0), tone model reconciliation and /N/ surface analysis remain open.
+
+
+## Preliminary lexical cross-check of MLCTS collision groups — 2026-11-13
+
+- Added data/burmese/romanization_rime_collision_lexical_audit.csv, a 25-row evidence ledger linked one-to-one to the existing 25 collision groups. It deliberately distinguishes secondary table evidence, unresolved groups, and the special non-rime ့ fallback.
+- Added secondary reference WIKTIONARY_BURMESE_TRANSLITERATION_2026 and claims CLM-WIKT-RIME-AM-001 / CLM-WIKT-RIME-ANY-001.
+- am group (မ်;ံ): Wiktionary's comparative rhyme table gives ကမ် and ကံ the same /kàɴ/ and MLCTS kam in its က-onset examples. This is a secondary table-level parallel, not a verified pair of MLC dictionary headwords and not proof of general spelling interchangeability.
+- any group (ဉ်;ည်): the same table distinguishes ကဉ် (/kɪ̀ɴ/, MLCTS kañ‘) from ကည် (/kì/, /kè/, /kɛ̀/, MLCTS kany), while the Mya2Rom inventory maps both isolated source units to any. This is a concrete secondary-source discrepancy signal. Do not patch the vendor data until the primary MLC transcription specification and representative entries are checked.
+- Special u. group (့;ု): retained as SPECIAL_NONRIME_CONTEXT_DEPENDENT; the ့ key is an auk-myit-induced fallback, not a normal rime, so it must not be adjudicated as a spelling pair.
+- The other 22 groups remain unadjudicated: no primary-source lexeme pairs have been checked. The ledger's acceptance boundary explicitly prevents secondary evidence from changing runtime, Ukrainian candidates, or linguistic release status.
+- SEAlang's public metadata confirms a roughly 35,000-entry dictionary based on the MLC 1993 dictionary and MLC 1986 standard orthography, but the live dictionary page timed out during direct retrieval in this pass. Firecrawl page retrieval could not run because the connected service had exhausted its credits. No dictionary entry content is claimed as inspected.
+- Registry totals after this addition: 62 sources, 114 claims. Existing 94 vendor keys and 25 collision groups are unchanged. All Ukrainian candidates remain PROPOSED / EVIDENCE_LIMITED; no runtime phonological rule changed; no audio was accessed.
+- Verification status: the new regression test checks all 25 rows, status partition (22 unadjudicated, 2 secondary-comparison records, 1 special non-rime), exact source-unit correspondence, and the am/any evidence boundaries. Hosted exact-head CI must be checked after this commit; no local test execution is claimed.
+- Next acceptance gate: retrieve and inspect the MLC 1993 dictionary entries (or a primary MLC system table) for representative headwords across all 25 groups; record exact entry locators, IPA/transcription fields and spelling context; reconcile any conflict between the vendor array and primary MLC material before changing data.
+
