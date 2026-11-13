@@ -1477,3 +1477,19 @@ Registry totals: **68 nonblank source records / 120 claims**. The new regression
 | BURMESE-MLC-DICT-TRANSCRIPTION-FIELD-005 | PARTIAL — PURPOSE CLUE ONLY | A 1996 Burma Debate notice says the MLC dictionary uses a transcription system to help English speakers pronounce entries. | The notice does not name MLCTS or MLCTS2. Inspect the dictionary's own front matter and representative entries before classifying its transcription field. |
 
 Registry totals: **69 nonblank source records / 121 claims**. No transcription system was inferred from the advertisement.
+
+## Final exact-head CI — provenance and registry tests (2026-11-13)
+
+Code/test head **508816dcddf22272e98647625b657bc79712817e** completed required CI successfully:
+- Workflow **43496624771**: SUCCESS.
+- Python: **231 passed + 66 subtests passed**.
+- Node: **20 passed, 0 failed**.
+- Playwright: **58 passed**.
+- Chromium install: PASS.
+- Production build: PASS.
+- Generated web-data freshness: PASS.
+- IPA-gold validator: executed successfully, but reports **0 records / 0 annotations / 0 adjudicated records** and `NOT_READY_NO_ADJUDICATED_GOLD`; this is a data-readiness blocker, not a validator failure.
+- Optional diagnostics workflow **43496624752**: SUCCESS for raw-output and CRF-baseline jobs. These remain diagnostics only, not scored accuracy.
+- `npm install` still reports **1 high-severity vulnerability**; no forced dependency upgrade was made.
+- Source registry integrity rechecked: **69 nonblank sources / 121 claims**, unique IDs, valid CSV row widths and all claim-to-source references resolve.
+- The latest changes after code/test head are documentation-only. Final branch tip will be recorded after this handoff update.
