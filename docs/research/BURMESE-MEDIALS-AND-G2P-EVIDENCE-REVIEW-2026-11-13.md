@@ -711,3 +711,7 @@ Three more collision groups now have word-level Wiktionary evidence on both sour
 | `au` | `ကြော်` | ော် | `krau` | `/t͡ɕɔ̀/` |
 
 In each group, the onsets differ while the secondary IPA rime sequence matches. All six lemmas were present in the pre-existing MOW suffix-match list. These are secondary lexical equivalence examples, not controlled minimal pairs or primary MLC adjudication. The lexical audit and MLCTS2 status parity were updated, with regression tests and source claims `CLM-WIKTIONARY-A-WORD-LEVEL-EXAMPLES-001`, `CLM-WIKTIONARY-A-COLON-WORD-LEVEL-EXAMPLES-001` and `CLM-WIKTIONARY-AU-WORD-LEVEL-EXAMPLES-001`. No runtime, IPA gold or Ukrainian candidate is promoted.
+
+## 33. One-sided secondary lexical attestation for `aung.`
+
+Wiktionary lists `စောင့်` with MLCTS `caung.` and IPA `/sa̰ʊɴ/`. This MOW-listed lemma ends in ောင့်, the second source-unit side of the `aung.` group. No corresponding word-level example for ေါင့် was located. The lexical audit and MLCTS2 crosswalk now record `SECONDARY_ONE_SIDE_ONLY`; claim `CLM-WIKTIONARY-AUNG-DOT-ONE-SIDE-EXAMPLE-001` records the evidence. This does not adjudicate the collision and does not authorize runtime or Ukrainian mapping changes.
