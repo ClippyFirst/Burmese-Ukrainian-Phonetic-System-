@@ -1541,3 +1541,12 @@ Code/test commit **c35a7ae0255725aa85cf5f836c64b4ed1fa5b731** completed required
 - Latest required CI is green on code/test commit `c35a7ae0255725aa85cf5f836c64b4ed1fa5b731` (run 43498396994). Optional raw-output diagnostic passed; optional CRF-baseline job is still in progress and is not an acceptance benchmark.
 - Current source registries: **72 sources / 125 claims**, all IDs unique, CSV widths valid and all claim-to-source references resolve.
 - Release readiness remains **PARTIAL PROTOTYPE / NOT RELEASE-READY**: primary MLC source text, independent IPA gold, tone/prosody model validation and npm high-severity dependency finding remain unresolved.
+
+## MOW orthographic lemma coverage — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-MOW-RIME-LEXICAL-COVERAGE-010 | DONE_VERIFIED — ORTHOGRAPHIC STRING MATCH ONLY | Official MOW v0.1.3 CC BY 4.0 lemma release; 1,476 lemma rows / 1,041 distinct forms. Added 50-unit summary and 508 unit/lemma hits (442 distinct forms, 547 synsets); both sides occur for 11/25 collision groups, one side for 13/25, neither for 1/25. Regression tests validate table consistency and scope. | Exact word-final substring matches only. No syllabification, pronunciation, MLCTS primary adjudication or homophony claim. Do not promote runtime or Ukrainian outputs. |
+| BURMESE-MLCTS-COLLISION-LEXEME-ADJUDICATION-011 | TODO — PRIMARY DICTIONARY / PHONOLOGICAL EVIDENCE | MOW gives orthographic search leads but no pronunciations. | Use these lemmas to locate candidate entries in MLC primary dictionaries; inspect entry headwords and pronunciation key. Confirm exact lexical pairs and pronunciation independently before changing the 25-group ledger. |
+
+The collision-ledger statuses are unchanged: 21 unadjudicated, 2 secondary equivalence, 1 secondary-source conflict, 1 special non-rime. Registry totals: **73 nonblank sources / 126 claims**.
