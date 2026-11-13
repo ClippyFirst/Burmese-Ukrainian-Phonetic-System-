@@ -1190,7 +1190,7 @@ Independent text-adjudicated IPA gold remains 0; empirical accuracy remains null
 | MYA-HILL-2019-CH2-001 | BLOCKED / TOOL ACCESS | Cambridge confirms Hill (2019), chapter 2 Burmese, pp.46-83; accessible publisher excerpt covers the introduction and Tibetan, not the Burmese chapter. Project owner confirms permission. | Obtain full chapter bytes in an accessible environment, inspect medials and written-to-spoken developments, then register exact locators. |
 
 | MYA-GREEN2005-PHONOLOGY-001 | DONE_VERIFIED (SOURCE EVIDENCE ONLY) | Green 2005 broad IPA-style spoken transcription, separate ALA-LC written transliteration, CG onset structure and /N/ nasalization registered with tests. | Select project broad/narrow convention and adjudicate modern written examples; no direct Unicode medial rule yet. |
-| MYA-SEALANG-DICT-001 | BLOCKED / ACCESS + SCHEMA | ~35,000-entry MLC-based dictionary; IPA search/display metadata conflicts with Mya2Rom's MLCTS2 description; direct page inaccessible. Project owner confirms research-use and ingestion permission. | Retrieve entries, resolve actual transcription representation and schema; no IPA gold until inspected. |
+| MYA-SEALANG-DICT-001 | BLOCKED / ACCESS + SCHEMA | ~35,000-entry MLC-based dictionary; IPA query/display is confirmed at interface level by SHACHI and SEAlang 2008; Mya2Rom separately documents MLCTS2 use; internal record representation remains unknown. Project owner confirms permission. | Retrieve actual entries/export schema and reconcile interface IPA with stored MLCTS2; no IPA gold until inspected. |
 | MYA-SEALANG-TEXT-001 | BLOCKED / TOOL ACCESS + SCHEMA | Text and bitext corpora are documented; service counts are not dataset sizes; project owner confirms research-use and ingestion permission, but stable retrieval is unavailable. | Retrieve actual records, inspect query/export schema, pin revision and verify provenance before import. |
 
 
@@ -1233,3 +1233,6 @@ Exact-head CI 43393402710 on 4835a0abc3e7e4a18c9d0bda35f554031912d570: 217 Pytho
 - Okell (1969), Nishi (1976), Hill (2019) chapter 2, Okell text corpus and SEAlang records remain retrieval/schema blocked, not permission blocked.
 - Myanglish remains schema-uncertain; myX orthography remains quarantined for quality review. No audio.
 - IPA gold=0; accuracy=null; classification PARTIAL PROTOTYPE.
+
+
+| MYA-SEALANG-IPA-INTERFACE-001 | DONE_VERIFIED (INTERFACE ONLY) | SHACHI metadata and the 2008 SEAlang project paper confirm IPA phonetic query and IPA transliteration display; actual internal record fields remain undisclosed. | Keep separate from internal storage/MLCTS2 question; inspect actual entry/export schema before gold-corpus use. |
