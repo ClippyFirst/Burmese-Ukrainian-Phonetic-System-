@@ -726,3 +726,15 @@ Two more groups now have a Wiktionary example on one source-unit side only:
 | `un` | `ကုန်` | ုန် | `kun` | `/kòʊɴ/` |
 
 Both lemmas are in the existing MOW suffix-match dataset. The opposite sides (ုမ်း and ုဏ် respectively) remain without lexical examples. The audit and MLCTS2 crosswalk now use `SECONDARY_ONE_SIDE_ONLY`; claims `CLM-WIKTIONARY-UM-COLON-ONE-SIDE-EXAMPLE-001` and `CLM-WIKTIONARY-UN-ONE-SIDE-EXAMPLE-001` are registered. These examples do not adjudicate either collision and do not authorize runtime changes.
+
+## 35. One-sided secondary examples for `au:`, `im` and `im.`
+
+Three further groups now have one-sided Wiktionary lexical attestations, all from MOW-listed candidates:
+
+| MLCTS group | Lemma | Source-unit side | Wiktionary MLCTS | Wiktionary IPA |
+|---|---|---|---|---|
+| `au:` | `ကျော` | ော | `kyau:` | `/t͡ɕɔ́/` |
+| `im` | `အိမ်` | ိမ် | `im` | `/ʔèɪɴ/` |
+| `im.` | `စိမ့်` | ိမ့် | `cim.` | `/sḛɪɴ/` |
+
+The opposite sides (ေါ, ိံ, and ိံ့ respectively) remain without word-level examples. The lexical audit and MLCTS2 crosswalk now record `SECONDARY_ONE_SIDE_ONLY`; the three source claims are registered. These examples are not collision adjudications and do not authorize runtime changes.
