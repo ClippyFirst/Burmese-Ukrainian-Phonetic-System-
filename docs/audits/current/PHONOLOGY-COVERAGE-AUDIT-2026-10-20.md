@@ -124,7 +124,7 @@ Okell (1969), *A Reference Grammar of Colloquial Burmese*, is registered as a hi
 
 ### Consolidated final snapshot — 2026-11-13
 
-Exact tested head 898e0f7cedd3c5c040c218a52a551cc252c77d4e passed CI 43395578254: 219 Python tests + 66 subtests, 20 Node tests, 58 browser tests, IPA schema validation, build and generated-data freshness. Diagnostics 43395586881 passed but has zero gold and no accuracy result.
+Exact tested head 2a96f4121a43f704a8f0d2eb6d81cb343fba47db passed CI 43395906072: 219 Python tests + 66 subtests, 20 Node tests, 58 browser tests, IPA schema validation, build and generated-data freshness. Diagnostics 43395906100 passed but has zero gold and no accuracy result.
 
 The evidence registries now contain 58 sources, 78 claims, 45 medial rows, 30 rules and 7 source-phonemic sandhi cases. Okell (1995) documents dialect-specific AR/IT/TV medial inventories; Nishi (1998) documents historical medial distinctions and dialect reflexes. Neither source licenses direct modern Yangon mappings. Okell (1969) and Nishi (1976) remain unread primary-source targets.
 
