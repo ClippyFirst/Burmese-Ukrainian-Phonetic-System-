@@ -1730,3 +1730,17 @@ Append a correction note: The source CSV contained three internal blank separato
 | BURMESE-SOURCE-REGISTRY-INTEGRITY-021 | DONE_VERIFIED — REGISTRY_STRUCTURE | Removed three internal blank separator rows from `data/burmese/sources.csv`; added `test_source_registry_has_no_blank_rows_or_duplicate_source_ids`. Current registry: **80 nonblank unique source records / 133 claims**. Required CI on code commit `62f59f177b15e2df54ace464056df7932058bffb`, run **43508294905 SUCCESS**: 249 Python + 66 subtests, 20 Node, 58 Playwright; build and generated-data freshness passed. | Structural registry integrity only; does not validate source quality or promote linguistic claims. |
 
 The earlier 82/132 and 83/133 counts in preceding catalogue-lead entries were inflated by blank CSV rows and are superseded by the verified 80/133 count above.
+
+## Wiktionary word-level secondary evidence for collision groups — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-WIKTIONARY-LEXICAL-RIME-EXAMPLES-022 | DONE_VERIFIED — SECONDARY_WORD_LEVEL_EXAMPLES_ONLY | Added three source-linked claims under existing `MYWIKTIONARY2026` and enriched the 25-row lexical audit for `any`, `any:` and `ui`. Required CI run **43509339740 SUCCESS** on code commit `191501979a2c5d8b7c0db9a00af5600b7266201f`: 251 Python + 66 subtests, 20 Node, 58 Playwright; build and generated-data freshness passed. | Wiktionary is secondary evidence. No primary MLC rule, universal equivalence, IPA gold or runtime/Ukrainian mapping is authorized. `ui` remains one-side-only. |
+
+### New word-level examples
+
+- `any`: `ဥယျာဉ်` is listed as MLCTS `u.yyany`, IPA `/ʔṵjɪ̀ɴ/` or `/ʔújɪ̀ɴ/`; `ပြည်` is `prany`, IPA `/pjì/`. The shared MLCTS rime suffix is therefore not evidence of homophony.
+- `any:`: `အကျဉ်း` is `a.kyany:` with `/ʔət͡ɕɪ́ɴ/`; `နည်း` is `nany:` with `/nɛ́/` for one sense and `/ní/` for another. This supplies secondary examples on both source-unit sides and documents sense-dependent pronunciation under one spelling/MLCTS form.
+- `ui`: `ချို` (`hkyui`, `/d͡ʑò/`), `ဆို` (`hcui`, `/sʰò/`) and `တို` (`tui`, `/tò/`) attest the `ို` side only. The paired `ို်` side has no MOW suffix matches, so this is not a comparison.
+
+Updated lexical audit distribution across 25 groups: 19 unadjudicated; 2 secondary-system equivalence; 1 secondary-source conflict (`any`); 1 secondary-source distinction (`any:`); 1 secondary one-side-only (`ui`); 1 special non-rime (`u.`). MLCTS2 crosswalk status is synchronized to the lexical audit and tested. Registry now contains **80 unique sources / 136 unique claims**; no new source record was required.
