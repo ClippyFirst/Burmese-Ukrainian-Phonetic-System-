@@ -88,5 +88,15 @@ The IPA gold schema can preserve nasalization in its literal IPA value, but has 
 - **Historical medial structure:** STEDT (1996), Nishi (1997) and Matisoff (2003) show that Written Burmese periodization, proto-medial reconstruction and modern spoken correspondences must remain separate. Historical WB *-r- > Modern Burmese -y- is documented, but no direct mapping to current Unicode U+103B/U+103C is established.
 - **Written/spoken distinction:** Nishi (1997) explicitly distinguishes written H and spoken L systems and their non-coterminous periods. A written romanization or historical spelling cannot alone establish modern Yangon IPA.
 - **Contextual voicing:** Nishi (1998) describes two Standard Burmese voicing-sandhi patterns, but documents optionality, exceptions and regional differences. Both remain analysis-dependent; no global runtime rule is enabled.
-- **Text corpora:** Myanglish and orthographic correction datasets may support romanization diagnostics or spelling-normalization research after schema and row review; neither supplies IPA gold. Okell text corpus remains rights-blocked pending direct license clarification.
+- **Text corpora:** Myanglish and orthographic correction datasets may support romanization diagnostics or spelling-normalization research after schema and row review; neither supplies IPA gold. Okell text corpus is authorized for research by the project owner; its bytes remain inaccessible in this execution environment.
 - **Measurement:** independent expert-adjudicated text-based IPA gold remains **0**; word-level accuracy remains **null/unmeasured**. No audio is part of the active scope or acceptance criteria.
+
+
+### Nishi full-text evidence and text-corpus status — 2026-11-13
+
+- Nishi (1998), *Old Burmese: Toward the History of Burmese*, is now inspected in full. It distinguishes historical -h as a voiceless/aspirated sonorant marker from actual -r/-l/-y/-w medial clusters; documents OWB -l- and later conditioned reflexes; places the MB -r-/-y- merger in Standard EModWB; and compares cluster reflexes across WB, SB, Arakanese, Tavoyan, Intha and Minor Taungyo.
+- These are historical written/phonological correspondences, not direct modern Unicode mappings. Four historical rules and thirteen new matrix rows are source-linked and tested; every such row remains WITHHELD.
+- Nishi (1998) voicing paper contributes seven source-phonemic sandhi examples. They follow Okell 1995's source transcription convention and are explicitly NOT project IPA; IPA field is empty.
+- Text-use permissions for external resources are confirmed by the project owner. Okell and SEAlang remain blocked only by actual byte/entry retrieval and schema access, not by permission.
+- Myanglish raw CSV vs dataset metadata has an unresolved 2-column/3-feature discrepancy. The myX orthography corpus has sampled target_words misalignment and multi-substitution examples; quarantine pending full row audit and deduplication.
+- Exact-head CI 43393402710: 217 Python tests + 66 subtests, 20 Node tests and 58 browser tests passed; build, generated-data freshness and IPA schema validation passed. Gold remains 0 and accuracy null.
