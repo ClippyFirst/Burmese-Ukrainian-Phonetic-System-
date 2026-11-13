@@ -1645,6 +1645,17 @@ Three additional full texts were inspected through Undermind in text/PDF mode on
 - Oo et al. (2020), LREC pp.6328–6339: text pipeline word segmentation → normalization → Thrax weighted FST graphemes-to-IPA; 34 consonants, 54 vowels; source-specific four-tone analysis and /N/ notation. Yangon recording location but no explicit dialect label. Web-crawled segmentation corpus/models are not public domain; G2P grammar described as open-source but no separate file license stated.
 - Nishi, *The Development of Voicing Rules in Standard Burmese* (1998): PDF retrieval failed; metadata/abstract only. Do not conflate it with Nishi's 1998 Old Burmese paper.
 
-Added source HLAING_MIKAMI2014_FST and eight page-located claims to source_claims.csv; updated the research review and current completion/status registers. Registry counts now 60 sources and 91 claims (other register counts unchanged unless independently revalidated).
+Added source HLAING_MIKAMI2014_FST and eight page-located claims to source_claims.csv; updated the research review and current completion/status registers. Registry counts now 60 sources and 95 claims (other register counts unchanged unless independently revalidated).
 
 Exact code/data branch remains separate from main. No runtime rules promoted; independent expert-adjudicated IPA gold remains zero; accuracy remains null. No audio. No merge or release. Classification remains PARTIAL PROTOTYPE.
+
+
+## Nishi (1998) voicing paper — full text retrieved after prior access failure — 2026-11-13
+
+The full PDF is now available from the National Museum of Ethnology repository (DOI 10.15021/00004129, pp.253–260). This supersedes earlier notes that only metadata/abstract were available.
+
+Key findings: two synchronic Standard Burmese voicing patterns; first pattern explicitly non-obligatory and variable; atonicization is unpredictable and sometimes optional and should not be stated together with voicing; four-stage historical account; dialect-specific distributions across Intha, Taungyo, Danu, Arakanese, Tavoy, Mergui and Yaw; several exceptions remain unexplained. Standard Burmese is a broad, heterogeneous Rangoon–Mandalay label, not a narrow Yangon profile.
+
+Critical provenance correction: Nishi's phonemic notation follows Okell (1995), but footnote 3 states that all examples are quoted from Okell (1969), Reference Grammar §§17–20. The seven sandhi evidence rows now distinguish these layers and retain empty IPA values.
+
+Added four page-located claims and updated the source registry, sandhi evidence, research review, completion register and execution matrix. Registry totals: 60 sources, 95 claims, 30 rules, 45 medial rows, 7 sandhi examples, 9 Okell orthographic-profile rows. No runtime voicing rule promoted; independent adjudicated IPA gold remains zero; accuracy null; no audio used.
