@@ -1874,3 +1874,10 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - Added `CLM-WIKTIONARY-AUNG-WORD-LEVEL-EXAMPLES-001`; lexical audit and MLCTS2 crosswalk statuses synchronized; regression coverage expanded.
 - Current distribution: 17 unadjudicated / 3 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 138 claims.
 - Secondary evidence only; not a controlled minimal pair or primary MLC adjudication. No IPA gold, runtime or Ukrainian output promotion. CI pending.
+
+## Exact-head verification — secondary lexical collision audit — 2026-11-13
+
+- Verified code/data snapshot `eb81bd29e9417ddbd6d541d54fce6d754b0bb8bd`; required CI **43513203135 SUCCESS** (duplicate **43513212043 SUCCESS**): 251 Python + 66 subtests, 20 Node, 58 Playwright; build, generated-data freshness and Chromium install passed.
+- Optional Epitran raw-output diagnostic **43513212088 SUCCESS**, not an accuracy score. IPA-gold validator remains `NOT_READY_NO_ADJUDICATED_GOLD`; independent gold count 0. npm install reports one high-severity vulnerability.
+- Registry 80 sources / 138 claims. Collision evidence distribution: 17 unadjudicated / 3 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime.
+- This verifies code/data/test consistency only. Secondary Wiktionary examples do not adjudicate primary MLC policy and do not enable runtime or Ukrainian mapping changes.
