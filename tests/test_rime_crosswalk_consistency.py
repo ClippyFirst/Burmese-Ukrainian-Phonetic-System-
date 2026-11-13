@@ -55,8 +55,8 @@ def test_mlcts2_crosswalk_keeps_each_vendor_output_aligned_to_its_source_unit():
         assert "not a primary mlc" in row["interpretation_boundary"].lower()
     counts = Counter(row["mlcts2_relation"] for row in rows)
     assert counts == {
-        "SAME_MLCTS2_OUTPUT": 21,
-        "DISTINCT_MLCTS2_OUTPUT": 3,
+        "SAME_MLCTS2_OUTPUT": 20,
+        "DISTINCT_MLCTS2_OUTPUT": 4,
         "SPECIAL_CONTEXT_FALLBACK": 1,
     }
 
