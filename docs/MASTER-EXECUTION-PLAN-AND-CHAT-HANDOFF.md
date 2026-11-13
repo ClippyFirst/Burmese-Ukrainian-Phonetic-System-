@@ -1645,6 +1645,6 @@ Three additional full texts were inspected through Undermind in text/PDF mode on
 - Oo et al. (2020), LREC pp.6328–6339: text pipeline word segmentation → normalization → Thrax weighted FST graphemes-to-IPA; 34 consonants, 54 vowels; source-specific four-tone analysis and /N/ notation. Yangon recording location but no explicit dialect label. Web-crawled segmentation corpus/models are not public domain; G2P grammar described as open-source but no separate file license stated.
 - Nishi, *The Development of Voicing Rules in Standard Burmese* (1998): PDF retrieval failed; metadata/abstract only. Do not conflate it with Nishi's 1998 Old Burmese paper.
 
-Added source HLAING_MIKAMI2014_FST and eight page-located claims to source_claims.csv; updated the research review and current completion/status registers. Registry counts now 60 sources and 90 claims (other register counts unchanged unless independently revalidated).
+Added source HLAING_MIKAMI2014_FST and eight page-located claims to source_claims.csv; updated the research review and current completion/status registers. Registry counts now 60 sources and 91 claims (other register counts unchanged unless independently revalidated).
 
 Exact code/data branch remains separate from main. No runtime rules promoted; independent expert-adjudicated IPA gold remains zero; accuracy remains null. No audio. No merge or release. Classification remains PARTIAL PROTOTYPE.
