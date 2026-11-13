@@ -1657,3 +1657,11 @@ Code/test head **508816dcddf22272e98647625b657bc79712817e** completed required C
 - `npm install` still reports **1 high-severity vulnerability**; no forced dependency upgrade was made.
 - Source registry integrity rechecked: **69 nonblank sources / 121 claims**, unique IDs, valid CSV row widths and all claim-to-source references resolve.
 - The latest changes after code/test head are documentation-only. Final branch tip will be recorded after this handoff update.
+
+## MLCTS vs modified-column collision crosswalk — 2026-11-13
+
+- Added **MOW_2017_MLCTS_VARIANTS** and claim **CLM-MOW-MLCTS2-VARIANTS-001**. MOW's own project page says v0.1.2 added romanized variants searchable via both MLCTS and “MLCTS 2”, explicitly describing the latter as the version used in the MLC Myanmar-English Dictionary; MOW v0.1.3 is a CC BY 4.0 downloadable semantic wordnet. This is corroboration of the distinction and a lexical-resource lead, not an MLC primary specification.
+- Audited the actual Mya2Rom v0.4.4 third array column for all 25 MLCTS collision groups and added `data/burmese/romanization_rime_mlcts2_crosswalk.csv`. Results: **21 groups retain identical third-column output; 4 groups differ**: `any` (ဉ်/ည်: `in/i`), `any:` (ဉ်း/ည်း: `in:/i:`), `any.` (ဉ့်/ည့်: `in./i.`), and `ui` (ို်/ို: `ai'/ou`). The vendor's IPA column also differs for these four pairs. This shows the modified column is more discriminating for these particular source-unit pairs; it does not establish primary MLC lexical correctness or independent IPA gold.
+- Important naming detail: Mya2Rom v0.4.4 README/API calls the third column `mlcts2`; `mya2rom.js` maps that mode to array index 2; the `romanisations.js` header labels the same column **MLCTS-SL** and describes it as the SEAlang/MLC dictionary modification. Added claim **CLM-MYA2ROM-COLUMN3-NAMING-001** to record this internal nomenclature discrepancy; no evidence of two separate columns in this version.
+- Added exact-source regression coverage that derives all 25 crosswalk rows from the vendored array and guards the four distinct groups, special `့` fallback, and non-primary evidence boundary.
+- Registry totals after additions: **70 nonblank source records / 123 claims**. No runtime mapping, IPA gold label or Ukrainian candidate changed. All 94 Ukrainian candidates remain PROPOSED / EVIDENCE_LIMITED.
