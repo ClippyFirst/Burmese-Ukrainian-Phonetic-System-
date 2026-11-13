@@ -2115,4 +2115,4 @@ These counts are exact Unicode suffix matches in MOW v0.1.3, not syllable parses
 
 ## Source registry row-count correction — 2026-11-13
 
-Append a correction note: `sources.csv` had four blank separator lines. Removed them and added `test_source_registry_has_no_blank_rows_or_duplicate_source_ids`; the actual current registry is 80 unique nonblank source records and 133 claims.
+Append a correction note: `sources.csv` had three internal blank separator lines. Removed them and added `test_source_registry_has_no_blank_rows_or_duplicate_source_ids`; the actual current registry is 80 unique nonblank source records and 133 claims.
