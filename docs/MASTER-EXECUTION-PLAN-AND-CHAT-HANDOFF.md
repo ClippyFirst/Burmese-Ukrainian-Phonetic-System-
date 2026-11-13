@@ -1869,3 +1869,11 @@ A regression test now protects the distinction between the Htun secondary proven
 - Registry parse on the current branch: **66 nonblank source records / 118 claim records**; all IDs unique, all row widths conform to their CSV headers, and every claim source reference resolves. Two blank CSV records are ignored by the count.
 - The provenance regression test was added to `tests/test_romanization_rime_inventory.py`. The GitHub connector exposed no workflow runs and no commit status checks for final code/documentation head `caf66d5a6b58522ca33715654c38b075c1d1fc21`; therefore this latest test change is **NOT YET CI-VERIFIED**. Earlier successful CI on prior code/data head `46b7da6afd7ecc94e4dcac87c7f759132c74bc6b` does not cover this added test.
 - No local checkout or local Python test execution was available. Do not claim the new test passed.
+
+## MLC dictionary access routes identified — 2026-11-13
+
+- Registered WHO Myanmar Library catalogue record 487 and National Diet Library record 000003254368 as separate sources.
+- WHO Myanmar lists an available physical 1993 MLC dictionary (635 pages). NDL identifies the 1996 Dunwoody Press reprint (xxiii, 635, iii pages; call no. KL42-A3), with Tokyo Main and Kansai-kan holdings and one cooperating Japanese library.
+- Added claims CLM-MLC-DICT-1993-PHYSICAL-HOLDING-001 and CLM-MLC-DICT-1996-NDL-HOLDING-001. Current registry totals: **68 nonblank source records / 120 claims**.
+- This changes the next-step blocker from an unidentified book to access/inspection of known physical holdings. No page/entry content was obtained; no MLCTS/MLCTS2 field was adjudicated. The primary-source gate remains blocked until the text is consulted.
+- Regression tests assert the catalogue locators and their access-only limits. No runtime mapping or Ukrainian candidate changes; no audio used.
