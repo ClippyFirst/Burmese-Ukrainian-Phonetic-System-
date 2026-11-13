@@ -190,7 +190,7 @@ def test_nishi_old_burmese_medial_history_is_separate_from_modern_unicode_rules(
     shift = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "NISHI_GREAT_SHIFT_CR_CY")
     assert all(rule["status"] == "analysis_dependent" for rule in (h_rule, l_rule, merger, shift))
     assert "not equivalent to modern Unicode U+103E" in h_rule["scope"]
-    assert "never enabled in runtime" not in l_rule["scope"]  # historical scope is already explicit
+    assert "do not map directly to modern Unicode medial signs" in l_rule["scope"]
     assert "historical merger only" in merger["scope"]
     assert "Historical model only" in shift["scope"]
 
