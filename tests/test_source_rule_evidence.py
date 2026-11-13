@@ -281,3 +281,19 @@ def test_okell_1995_dialect_evidence_has_separate_profiles_and_transcription_sco
     assert l_rule["status"] == "dialect_dependent"
     assert "not a modern Yangon" in ar_rule["scope"]
     assert "do not import /l/" in l_rule["scope"]
+
+def test_sealang_ipa_interface_is_not_mistaken_for_an_inspected_ipa_gold_field():
+    sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    source = sources["SEALANG_2008_PROJECT_OVERVIEW"]
+    interface = claims["CLM-SEALANG-DICT-IPA-INTERFACE-001"]
+    representation = claims["CLM-SEALANG-DICT-REPRESENTATION-001"]
+    assert "pp.1-7" in source["scope"]
+    assert interface["source_id"] == source["source_id"]
+    assert interface["status"] == "DOCUMENTARY"
+    assert "interface level" in interface["claim"]
+    assert "internal storage format" in interface["claim"]
+    assert representation["source_id"] == source["source_id"]
+    assert representation["status"] == "UNCERTAIN"
+    assert "different layers" in representation["claim"]
+    assert "Do not label the entire dictionary IPA gold" in representation["claim"]
