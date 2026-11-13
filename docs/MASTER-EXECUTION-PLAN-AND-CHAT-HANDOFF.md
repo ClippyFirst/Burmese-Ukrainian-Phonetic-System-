@@ -1447,3 +1447,11 @@ SEAlang's MLC-based dictionary (~35,000 entries), Burmese Text Corpus and Bitext
 8. Verify the 94 MLCTS rime entries against primary written sources; vendor-derived coverage is not fully adjudicated.
 
 Repository classification: **PARTIAL PROTOTYPE**; research handoff is substantially improved, but linguistic release readiness is not established.
+
+## Final PR-head verification — 2026-11-13
+
+The previous final snapshot recorded 90 commits ahead; the final comparison before this note is 92 commits ahead, 0 behind, 25 changed files. PR #147 is OPEN / DRAFT / mergeable, with no submitted reviews; PR #129 remains OPEN / DRAFT and untouched.
+
+Exact final pre-note head 18b42a7415d3323220d09c0aacf2a17a3c6ff07d passed GitHub Actions run 43390340513: 209 Python tests + 66 subtests; independent IPA-gold structure validation; npm build; generated-data freshness; 20 Node tests; 58 Playwright/Chromium tests. Optional CRF/Epitran diagnostics passed on the same code/data tree at d2800ce458ea3c08c3fecb9e61ad170502837343; the two intervening commits were documentation-only.
+
+The active source registry has 55 sources, 62 claims, 29 medial evidence rows and 22 phonological rules. A manual parser verified every CSV row width, unique source/claim IDs and all claim→source and rule→claim→source links. No source rows or phonetic labels were imported. No audio was used. The active project remains a PARTIAL PROTOTYPE; no release or merge was performed.
