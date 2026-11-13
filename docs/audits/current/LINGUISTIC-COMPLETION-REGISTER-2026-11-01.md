@@ -1469,3 +1469,11 @@ Registry totals: **66 nonblank source records / 118 claims**. A regression test 
 | BURMESE-MLC-DICTIONARY-ACCESS-ROUTE-004 | PARTIAL — PHYSICAL ACCESS LOCATED | WHO Myanmar Library record 487 lists an available 1993 MLC dictionary copy (635 pages); NDL record 000003254368 lists the 1996 Dunwoody reprint at Tokyo Main and Kansai-kan and a cooperating Japanese library. | Catalogue holdings are not text access. Obtain authorized consultation or page-level copies, then record exact entries and MLCTS/MLCTS2 field semantics. |
 
 Registry totals: **68 nonblank source records / 120 claims**. The new regression assertions verify the two catalogue records while explicitly rejecting any inference that the contents have been inspected.
+
+## MLC dictionary transcription-purpose evidence — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-MLC-DICT-TRANSCRIPTION-FIELD-005 | PARTIAL — PURPOSE CLUE ONLY | A 1996 Burma Debate notice says the MLC dictionary uses a transcription system to help English speakers pronounce entries. | The notice does not name MLCTS or MLCTS2. Inspect the dictionary's own front matter and representative entries before classifying its transcription field. |
+
+Registry totals: **69 nonblank source records / 121 claims**. No transcription system was inferred from the advertisement.
