@@ -1254,7 +1254,7 @@ Exact-head CI 43393402710 on 4835a0abc3e7e4a18c9d0bda35f554031912d570: 217 Pytho
 
 | Work item | Status | Evidence / acceptance boundary |
 |---|---|---|
-| Okell *A Corpus of Modern Burmese* text access | PARTIAL / CONTENT AND BYTE INTEGRITY VERIFIED | Zenodo direct endpoint HTTP 200, text/plain UTF-8; 8,809,265 bytes; provider MD5 matched; SHA-256 6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c; 19,566 lines, 67 numbered heading lines, modern Myanmar Unicode, mixed Burmese/English, dialogue/speech transcripts and prose. |
+| Okell *A Corpus of Modern Burmese* text access | PARTIAL / CONTENT AND BYTE INTEGRITY VERIFIED | Zenodo direct endpoint HTTP 200, text/plain UTF-8; 8,809,265 bytes; provider MD5 matched; SHA-256 6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c; 19,565 CRLF-terminated lines (19,566 split segments including the final empty segment), 67 numbered heading lines, modern Myanmar Unicode, mixed Burmese/English, dialogue/speech transcripts and prose. |
 | Corpus byte integrity and quality | TODO / HASH_AND_QUALITY_AUDIT_PENDING | Byte identity verified; exact document count, provenance, duplicates, NUL/NFC handling and localized glyph corruption need reproducible profiling. |
 | Corpus as pronunciation gold | DEFERRED / NOT GOLD | No IPA annotation schema or independent IPA labels identified; no G2P scoring. |
 
@@ -1265,7 +1265,7 @@ Acceptance: retain byte-identical pinned text, compute SHA-256, inspect document
 
 | Work item | Status | Evidence / acceptance boundary |
 |---|---|---|
-| Exact retrieved-byte integrity | DONE_VERIFIED | Zenodo MD5 matched; SHA-256 6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c; 8,809,265 bytes; UTF-8 valid; 19,566 lines. |
+| Exact retrieved-byte integrity | DONE_VERIFIED | Zenodo MD5 matched; SHA-256 6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c; 8,809,265 bytes; UTF-8 valid; 19,565 CRLF-terminated lines (19,566 split segments including the final empty segment). |
 | Unicode/structure profile | PARTIAL | 21 BOM markers, one NUL at line 9,300, non-NFC text, 0 U+FFFD, 67 numbered heading lines, 73 unique Myanmar code points. |
 | Duplicate/provenance audit | TODO | 295 repeated nonblank line forms / 1,008 excess occurrences and 23 repeated paragraph forms; determine source-level duplication vs recurring titles, headers and dividers. Map embedded boundaries and segment provenance. |
 
