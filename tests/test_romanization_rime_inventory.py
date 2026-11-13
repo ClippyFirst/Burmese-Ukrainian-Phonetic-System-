@@ -183,7 +183,7 @@ def test_mlcts2_crosswalk_is_exactly_derived_from_vendored_column_three():
     vendor = {
         key: (ipa, mlcts, mlcts2)
         for key, ipa, mlcts, mlcts2 in re.findall(
-            r'^\\s*"([^"]*)"\\s*:\\s*\\["([^"]*)"\\s*,\\s*"([^"]*)"\\s*,\\s*"([^"]*)"',
+            r'^\s*"([^"]*)"\s*:\s*\["([^"]*)"\s*,\s*"([^"]*)"\s*,\s*"([^"]*)"',
             vendor_text,
             flags=re.MULTILINE,
         )
