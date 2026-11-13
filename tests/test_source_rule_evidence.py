@@ -123,3 +123,35 @@ def test_external_burmese_pronunciation_and_audio_sources_keep_rights_boundaries
     assert claims["CLM-MYG2P-001"]["status"] == "DOCUMENTARY"
     assert claims["CLM-OPENSLR80-001"]["source_id"] == "OPENSLR80"
     assert claims["CLM-OPENSLR80-001"]["status"] == "DOCUMENTARY"
+
+def test_nishi_1998_voicing_sandhi_remains_contextual_and_profile_scoped():
+    sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    rules = {row["rule_id"]: row for row in _rows(DATA / "phonological_rules.csv")}
+
+    source = sources["NISHI1998_VOICING_RULES"]
+    assert "Standard Burmese is not a well-defined variety" in source["scope"]
+    assert "Rangoon-Mandalay" in source["scope"]
+
+    claim = claims["CLM-NISHI-1998-SANDHI-001"]
+    assert claim["source_id"] == "NISHI1998_VOICING_RULES"
+    assert claim["status"] == "DOCUMENTARY"
+    assert "C1aC2" in claim["claim"]
+    assert "non-stop tonal rhyme" in claim["claim"]
+
+    first = rules["NISHI98_ATONIC_C1C2_VOICING"]
+    second = rules["NISHI98_POST_NONSTOP_RHYME_VOICING"]
+    for rule in (first, second):
+        assert rule["source_id"] == "NISHI1998_VOICING_RULES"
+        assert rule["claim_id"] == "CLM-NISHI-1998-SANDHI-001"
+        assert rule["status"] == "analysis_dependent"
+        assert rule["test_reference"] == "tests/test_source_rule_evidence.py"
+        assert "do not enable globally" in rule["scope"] or "not a grapheme-only mapping" in rule["scope"]
+
+    variation = claims["CLM-NISHI-1998-VARIATION-001"]
+    assert "not obligatory" in variation["claim"]
+    assert variation["status"] == "DOCUMENTARY"
+    mlc = claims["CLM-NISHI-1998-MLC-TRANSCRIPTIONS-001"]
+    assert "Myanmar-English Dictionary (1993)" in mlc["claim"]
+    assert mlc["status"] == "DOCUMENTARY"
+
