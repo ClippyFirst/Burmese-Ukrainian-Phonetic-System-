@@ -1410,3 +1410,13 @@ Added claims: CLM-MYA2ROM-RIME-EXACT-MATCH-001, CLM-MYA2ROM-MLCTS-COLLISIONS-001
 
 Evidence source WIKTIONARY_BURMESE_TRANSLITERATION_2026; claims CLM-WIKT-RIME-AM-001 and CLM-WIKT-RIME-ANY-001. Totals: 62 sources / 114 claims. The 94 Ukrainian candidates remain PROPOSED / EVIDENCE_LIMITED; independent adjudicated IPA gold remains 0; accuracy remains null. No audio used.
 
+
+## Secondary-source reconciliation — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-MLCTS-NASAL-FINALS-002 | PARTIAL — SECONDARY SOURCE AGREEMENT | Wikipedia's MLC-system summary lists shared -any, -am and -um mappings for the respective final pairs. Wiktionary's detailed rhyme examples agree for am and um, but differ for any. | This does not replace the original MLC publication or word-level MLC dictionary entries. Keep any conflict unresolved. |
+| BURMESE-MLC-PRIMARY-TRANSCRIPTION-001 | BLOCKED / PRIMARY SOURCE | Original MLC system table and direct SEAlang dictionary entries were not retrieved. | Verify actual MLC table and representative entries, then resolve the any discrepancy and all remaining collision groups. |
+
+Current ledger: 63 sources / 115 claims; 25 collision groups; 21 unadjudicated, 2 secondary-equivalence, 1 secondary-conflict, 1 special non-rime. No runtime change; no Ukrainian candidate promotion; no audio.
+
