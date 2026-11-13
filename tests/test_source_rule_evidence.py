@@ -186,7 +186,7 @@ def test_sealang_resources_are_text_candidates_not_ipa_gold():
     bitext = sources["SEALANG_BURMESE_BITEXT_2006"]
     assert "sentence-aligned where possible" in bitext["scope"]
     assert "public metadata does not state a reuse license" in bitext["scope"]
-    assert claims["CLM-SEALANG-DICT-TRANS-001"]["status"] == "UNCERTAIN"
+    assert claims["CLM-SEALANG-DICT-TRANS-001"]["status"] == "DOCUMENTARY"
     assert "do not assume the displayed transcription is IPA" in claims["CLM-SEALANG-DICT-TRANS-001"]["claim"]
 
 def test_nishi_1998_source_notation_is_not_project_ipa():
