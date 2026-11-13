@@ -179,9 +179,10 @@ This continuation follows the explicit project direction to use **text sources o
 - Dictionary metadata: approximately 35,000 entries, spoken and literary styles, MLC 1986 orthography, examples/etymologies; based on the MLC 1993 Myanmar-English Dictionary (1996 Dunwoody reprint), used by SEAlang with permission.
 - Transcription ambiguity: SHACHI describes IPA search/display, while Mya2Rom documentation says MLCTS2 is used by the MLC dictionary and SEAlang. The SEAlang page could not be inspected because it timed out/returned gateway errors. Do not assume the entry transcription is IPA.
 - Rights: the project owner confirms all necessary permissions for research use and project ingestion. This is a project-specific authorization, distinct from the public metadata and underlying source copyright statements. No rows were extracted in this pass.
-- Burmese Text Corpus: monolingual Internet texts; metadata shows 612,692 collocates and 3,172,485 contexts served, not verified dataset row/token counts. No explicit reuse license; metadata carries a 2007 NICT/Matsubara Lab/Anchor copyright notice.
-- Burmese Bitext Corpus: translated words/phrases/sentences, aligned sentence-by-sentence where possible; 1,234,822 pairs served, not verified total size; source SAY Project Burmese resources (NMSU CRL); no explicit reuse license and same metadata copyright notice.
-- Disposition: candidate for written lexical/context and orthographic coverage research only; **BLOCKED for bulk extraction/import pending direct rights and schema verification**; neither text corpus provides IPA gold.
+- Burmese Text Corpus: monolingual Internet texts; metadata shows 612,692 collocates and 3,172,485 contexts served, not verified dataset row/token counts. Metadata carries a 2007 NICT/Matsubara Lab/Anchor copyright notice.
+- Burmese Bitext Corpus: translated words/phrases/sentences, aligned sentence-by-sentence where possible; 1,234,822 pairs served, not verified total size; source SAY Project Burmese resources (NMSU CRL); metadata carries the same 2007 copyright notice.
+- The project owner confirms permissions for research use and project ingestion of these textual resources. Their actual corpus rows and dictionary entries were not accessed in this pass; stable retrieval and schema inspection are still required.
+- Disposition: authorized candidate for written lexical/context and orthographic coverage research; **BLOCKED_TOOL_ACCESS_AND_SCHEMA** until stable record retrieval and field semantics are inspected; neither text corpus provides IPA gold.
 
 
 
