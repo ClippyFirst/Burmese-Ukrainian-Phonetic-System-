@@ -73,7 +73,7 @@
 
 | ID | Status | Work remaining | Acceptance |
 |---|---|---|---|
-| MYA-GOLD-001 | BLOCKED | No independent expert-adjudicated lexical IPA gold exists; `data/benchmark/gold.tsv` contains only its header. | At least two independent qualified Burmese phonetic annotators, adjudication, dialect/speaker metadata, audio/source locators and frozen held-out split. |
+| MYA-GOLD-001 | BLOCKED | No independent expert-adjudicated lexical IPA gold exists; data/benchmark/gold.tsv contains only its header. | At least two independent text-based Burmese linguists, adjudication, source-located written dictionary/grammar entries, documented dialect/profile and IPA convention, and frozen held-out text fixtures. No audio. |
 | MYA-PHON-001 | PARTIAL | Full vowel-combination derivation, coda/checked-syllable realization, tone/register/phonation inference and contextual allophony remain incomplete. | Source-located, expert-reviewed rule matrix with minimal pairs, explicit dialect scope and fail-closed unresolved cases. |
 | MYA-IPA-001 | PARTIAL | Phonological vs phonetic IPA conventions and analysis of tone/register/phonation require specialist adjudication. | Versioned IPA convention, syllable/segment alignment, tone/phonation fields and adjudicated alternatives. |
 | MYA-ROM-001 | PARTIAL | All 35 onset and 94 vendor-derived rime target rows have Ukrainian project candidates; PR #141 integrates a separate MLCTS-to-Ukrainian runtime adapter for supported syllable structures. The source rime inventory remains vendor-evidence-limited. | Verify the MLCTS inventory against primary MLC material; expand legal medial/devoicing, kinzi, asat and independent-vowel structures; retain explicit withholding for unsupported forms. |
@@ -657,7 +657,7 @@ The project remains PARTIAL PROTOTYPE; empirical accuracy remains null.
 
 | ID | Status | Work remaining | Acceptance |
 |---|---|---|---|
-| MYA-GOLD-001 | BLOCKED | No independent expert-adjudicated lexical IPA gold exists; `data/benchmark/gold.tsv` contains only its header. | At least two independent qualified Burmese phonetic annotators, adjudication, dialect/speaker metadata, audio/source locators and frozen held-out split. |
+| MYA-GOLD-001 | BLOCKED | No independent expert-adjudicated lexical IPA gold exists; data/benchmark/gold.tsv contains only its header. | At least two independent text-based Burmese linguists, adjudication, source-located written dictionary/grammar entries, documented dialect/profile and IPA convention, and frozen held-out text fixtures. No audio. |
 | MYA-PHON-001 | PARTIAL | Full vowel-combination derivation, coda/checked-syllable realization, tone/register/phonation inference and contextual allophony remain incomplete. | Source-located, expert-reviewed rule matrix with minimal pairs, explicit dialect scope and fail-closed unresolved cases. |
 | MYA-IPA-001 | PARTIAL | Phonological vs phonetic IPA conventions and analysis of tone/register/phonation require specialist adjudication. | Versioned IPA convention, syllable/segment alignment, tone/phonation fields and adjudicated alternatives. |
 | MYA-ROM-001 | PARTIAL | All 35 onset and 94 vendor-derived rime target rows have Ukrainian project candidates; PR #141 integrates a separate MLCTS-to-Ukrainian runtime adapter for supported syllable structures. The source rime inventory remains vendor-evidence-limited. | Verify the MLCTS inventory against primary MLC material; expand legal medial/devoicing, kinzi, asat and independent-vowel structures; retain explicit withholding for unsupported forms. |
