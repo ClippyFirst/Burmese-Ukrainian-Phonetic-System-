@@ -1715,3 +1715,10 @@ Manual registry validation on the same snapshot:
 ### Release assessment
 
 Still PARTIAL PROTOTYPE. Code/data validation and current CI pass, but release readiness is not established because independent modern Yangon IPA gold is zero, core phonological decisions remain evidence-limited, and several primary texts/record-level datasets remain unavailable. Next research blockers are Okell (1969) §§17–20 and Nishi (1976/1977) *Medials in Burmese*, followed by expert-adjudicated IPA gold.
+
+
+## Final register reconciliation after verification — 2026-11-13
+
+The completion register and execution matrix were reconciled to the final validated CSV totals after adding the Nishi (1997) scope claim. Final counts are 60 sources and 96 claims (not 97), 30 phonological rules, 45 medial evidence rows, 7 sandhi evidence rows and 9 Okell orthographic-profile rows. CSV validation found no width errors, duplicate source/claim IDs or broken source/claim/rule/medial references.
+
+The last changes after the fully tested code/data snapshot `7158a401968576f882141bb9cac279204a626d63` are documentation-only: completion register, execution matrix and this handoff. No code, runtime rules, generated artifacts or evidence data changed after that snapshot. Main CI run 43455376658 passed all steps; optional raw-output/CRF diagnostic run 43455376657 completed both jobs successfully. The final branch tip is reported in the session handoff/PR #147 head because this note is itself committed after the prior snapshot.
