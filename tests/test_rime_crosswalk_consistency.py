@@ -103,8 +103,8 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
     rows = read_rows("romanization_rime_collision_lexical_audit.csv")
     counts = Counter(row["evidence_status"] for row in rows)
     assert counts == {
-        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 17,
-        "SECONDARY_SYSTEM_EQUIVALENCE": 3,
+        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 16,
+        "SECONDARY_SYSTEM_EQUIVALENCE": 4,
         "SECONDARY_SOURCE_CONFLICT": 1,
         "SECONDARY_ONE_SIDE_ONLY": 1,
         "SECONDARY_SOURCE_DISTINCTION": 2,
@@ -121,6 +121,9 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
 
 def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     rows = {row["mlcts"]: row for row in read_rows("romanization_rime_collision_lexical_audit.csv")}
+    assert rows["aung:"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
+    assert "paung:" in rows["aung:"]["observed_mlcts"] and "kyaung:" in rows["aung:"]["observed_mlcts"]
+    assert "/páʊɴ/" in rows["aung:"]["observed_ipa"] and "/t͡ɕáʊɴ/" in rows["aung:"]["observed_ipa"]
     assert rows["aung"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
     assert "paung" in rows["aung"]["observed_mlcts"] and "taung" in rows["aung"]["observed_mlcts"]
     assert "/pàʊɴ/" in rows["aung"]["observed_ipa"] and "/tàʊɴ/" in rows["aung"]["observed_ipa"]
@@ -132,4 +135,4 @@ def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     assert rows["ui"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "only" in rows["ui"]["acceptance_boundary"].lower()
     assert rows["any"]["evidence_status"] == "SECONDARY_SOURCE_CONFLICT"
-    assert all("no runtime" in rows[key]["acceptance_boundary"].lower() for key in ("aung", "any", "any:", "any.", "ui"))
+    assert all("no runtime" in rows[key]["acceptance_boundary"].lower() for key in ("aung", "aung:", "any", "any:", "any.", "ui"))
