@@ -1828,3 +1828,10 @@ The first CI attempt after registering the MOW orthographic coverage claim (work
 
 - Added `tests/test_rime_crosswalk_consistency.py` for the three existing 25-group rime crosswalks. It checks shared key coverage and Myanmar source-unit alignment, per-source-unit MLCTS2/IPA array alignment, R12A comparison-state counts (18 same, 3 distinct, 2 partial, 1 absent, 1 special), and lexical audit evidence-state counts (21 unadjudicated, 2 secondary equivalence, 1 secondary conflict, 1 special).
 - This is data-integrity verification, not phonological adjudication. It adds no new IPA gold, no primary MLC evidence and no runtime rule. Status: implementation committed; CI pending.
+
+## Rime crosswalk integrity and evidence triage — 2026-11-13
+
+- Added `tests/test_rime_crosswalk_consistency.py` for the three existing 25-row tables. It checks exact MLCTS-key and source-unit alignment, two-value MLCTS2/R12A array alignment, enumerated evidence states and exact distribution counts.
+- Verified required CI run **43507606882 SUCCESS** on code commit `de7abaea084515c5ef814575656ede8b83369a6a`: **248 Python + 66 subtests**, **20 Node**, **58 Playwright**, production build and generated-data freshness all passed. npm install still reports **one high-severity vulnerability**. Optional diagnostic workflow on the same commit completed successfully; raw model output is not an accuracy score.
+- Triage from existing evidence: `any`/`any:`/`any.` are distinguished by both MLCTS2 and R12A; `any` has a secondary-source IPA conflict. `ui` is distinguished by MLCTS2 and only partially covered by R12A. `u.` is special/context-dependent, not an ordinary rime. `am` and `um` have secondary equivalence examples but no primary adjudication. The other groups remain unadjudicated.
+- This is data-integrity and research prioritization only. No primary-source claim, IPA gold entry, phonological rule or Ukrainian output was promoted.
