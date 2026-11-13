@@ -132,3 +132,27 @@ def test_stedt_rangoon_medial_distribution_is_not_promoted_to_yangon_runtime():
     assert rule["source_id"] == "STEDT1996_BURMESE"
     assert "not a current standard Yangon runtime rule" in rule["scope"]
 
+def test_nishi_written_burmese_periods_are_not_collapsed_into_runtime():
+    row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-NISHI-PERIODS-001")
+    assert row["evidence_level"] == "historical_orthographic_analysis"
+    assert row["project_runtime_status"] == "WITHHELD"
+    assert "OWB -> MWB -> EModWB" in row["environment"]
+    assert "not a modern Yangon G2P rule" in row["notes"]
+    rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "NISHI_ORTHOGRAPHIC_PERIODIZATION")
+    assert rule["status"] == "analysis_dependent"
+    assert rule["source_id"] == "NISHI1997_ORTHOGRAPHY"
+    assert rule["claim_id"] == "CLM-NISHI-1997-PERIODS-001"
+
+
+def test_matisoff_historical_r_to_y_is_not_a_unicode_medial_mapping():
+    row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-MATISOFF-RY-001")
+    assert row["evidence_level"] == "historical_comparative_analysis"
+    assert row["project_runtime_status"] == "WITHHELD"
+    assert "WB *-r- > Modern Burmese -y-" in row["attested_phonological_behavior"]
+    assert "no direct modern Unicode mapping" in row["unicode"]
+    assert "do not infer modern U+103B/U+103C" in row["notes"]
+    rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "MATISOFF_MEDIAL_R_TO_Y")
+    assert rule["status"] == "analysis_dependent"
+    assert rule["source_id"] == "MATISOFF2003_HANDBOOK_PTB"
+    assert rule["claim_id"] == "CLM-MATISOFF-2003-RY-001"
+
