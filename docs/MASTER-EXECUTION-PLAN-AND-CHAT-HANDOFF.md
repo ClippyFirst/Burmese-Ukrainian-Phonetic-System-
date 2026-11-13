@@ -1659,3 +1659,7 @@ Key findings: two synchronic Standard Burmese voicing patterns; first pattern ex
 Critical provenance correction: Nishi's phonemic notation follows Okell (1995), but footnote 3 states that all examples are quoted from Okell (1969), Reference Grammar §§17–20. The seven sandhi evidence rows now distinguish these layers and retain empty IPA values.
 
 Added four page-located claims and updated the source registry, sandhi evidence, research review, completion register and execution matrix. Registry totals: 60 sources, 95 claims, 30 rules, 45 medial rows, 7 sandhi examples, 9 Okell orthographic-profile rows. No runtime voicing rule promoted; independent adjudicated IPA gold remains zero; accuracy null; no audio used.
+
+## Nishi (1997) orthographic-standardization paper — full text verified — 2026-11-13
+
+Read the complete *The Orthographic Standardization of Burmese* PDF (BNME 22(4), pp.975–999; DOI 10.15021/00004135). Nishi distinguishes OWB, MWB, EModWB and ModWB; describes OWB -l replaced by -r/-v according to initial class and EModWB -y insertion after velars before written -i. He explicitly distinguishes Written Burmese High and Spoken Burmese Low varieties. The paper focuses on rhyme systems and treats initials only as needed, so it is not a complete medial inventory. Added scope claim CLM-NISHI97-SCOPE-001. No modern Unicode mapping or runtime rule promoted. Total registry: 60 sources, 97 claims.
