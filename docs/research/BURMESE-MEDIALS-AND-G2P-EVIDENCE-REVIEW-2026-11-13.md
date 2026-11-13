@@ -608,3 +608,20 @@ The new catalogue record and claim are bibliographic/documentary only. No book c
 CiNii Books record BA69415754 provides the fuller extent as 28, 379 pages, 17 cm, and lists holdings at Osaka University and Tokyo University of Foreign Studies (two locations). Google Books record _V1LAAAAMAAJ identifies the original as held by the University of Michigan and a 379-page scan digitized in 2007. The surfaced Google Books record exposes snippet-view metadata; it does not establish that the entire scan can be read or downloaded.
 
 These records make the 1978 spelling book a concrete retrieval target. They do not provide inspected primary text. The next step is to request a copy through a holding library or inspect any accessible Google Books pages, then record title-page identity and page-located contents. No pronunciation, MLCTS or IPA field is asserted.
+
+## 26. MOW lexical candidates for text-based follow-up of `any` and `ui`
+
+The existing MOW v0.1.3 orthographic suffix tables provide concrete lookup keys for the two highest-priority crosswalk groups. Counts below are distinct MOW lemma matches, not phonetic tokens:
+
+| Group | Myanmar suffix | Lemma matches | Example MOW lemmas |
+|---|---|---:|---|
+| `any` | ဉ် | 6 | `ဥယျာဉ်`, `တိရစ္ဆာန်ဥယျာဉ်`, `ယာဉ်`, `ယဉ်` |
+| `any` | ည် | 13 | `ပြည်`, `မြန်မာပြည်`, `လက်ဖက်ရည်`, `ရှည်` |
+| `any:` | ဉ်း | 1 | `အကျဉ်း` |
+| `any:` | ညည်း | 6 | `စုစည်း`, `နည်း`, `လက်သည်း`, `အသည်း` |
+| `any.` | ဉ့် | 0 | — |
+| `any.` | ည့် | 5 | `ကြည့်`, `ဖြည့်`, `မွန်းတည့်`, `မှည့်`, `အမည်မှည့်` |
+| `ui` | ို် | 0 | — |
+| `ui` | ို | 15 | `ချို`, `ငို`, `ဆို`, `တို`, `မှို`, `အို` |
+
+All values are copied from the repository's generated MOW suffix-match output. This is an orthographic candidate list for subsequent text lookup. Some words may contain the suffix as part of a larger orthographic structure; no syllable segmentation, rime identity, tone or pronunciation is implied. The group-level `any` conflict remains unresolved; `ui` remains only partly covered in R12A. No IPA or runtime rule is promoted.
