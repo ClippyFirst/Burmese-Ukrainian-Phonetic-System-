@@ -1845,3 +1845,9 @@ The first CI attempt after registering the MOW orthographic coverage claim (work
 ## Source registry row-count correction — 2026-11-13
 
 Append a correction note: `sources.csv` had three internal blank separator lines; earlier row counting included those as empty rows. Removed blank lines and added `test_source_registry_has_no_blank_rows_or_duplicate_source_ids`. Current validated registry: 80 unique nonblank sources / 133 claims.
+
+## Source registry hygiene — 2026-11-13
+
+- Removed three internal blank lines from `data/burmese/sources.csv`; added a regression test requiring every source row to have a nonblank unique `source_id`.
+- Verified current registry: **80 unique nonblank source rows / 133 claims**. Required CI run **43508294905 SUCCESS** on code commit `62f59f177b15e2df54ace464056df7932058bffb`: 249 Python + 66 subtests, 20 Node, 58 Playwright, production build and generated-data freshness passed.
+- Corrects the earlier 82/132 and 83/133 counts, which included blank separator rows. No source or linguistic claim was removed; only empty lines were deleted.
