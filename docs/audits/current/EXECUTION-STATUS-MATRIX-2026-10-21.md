@@ -1731,3 +1731,15 @@ The first CI attempt after registering the MOW orthographic coverage claim (work
 - Source registry revalidated: **73 sources / 126 claims**, unique source IDs and claim IDs, valid claim→source references and expected CSV widths.
 - SEAlang remains a viable authorized derivative access route according to its metadata, and its API is documented as accepting orthography/IPA. However, direct Burmese dictionary/API retrieval returned 502/timeout/400-timeout in this pass; connected page-retrieval credits were exhausted, so **no SEAlang entry text was inspected**. Do not treat interface metadata as entry-level phonetic evidence.
 - Final branch head after this status entry will be docs-only; code/test evidence above applies to exact code/test head `c76fab9e...`. PR #147 remains OPEN / DRAFT / mergeable; branch is 386 commits ahead of main and 0 behind at the time of verification.
+
+## MOW reproducibility and schema-corrected exact-head CI — 2026-11-13
+
+- The MOW-derived claim status was changed from unsupported `DATASET_DERIVED` to schema-supported `ANALYSIS_DEPENDENT`; the scope remains the same orthographic string-match analysis.
+- Required CI on code/test head `c76fab9e4e4a910170a26dd8ed89a95790c7973d`, workflow **43499485256**, completed **SUCCESS**:
+  - Python: **236 passed + 66 subtests passed** (includes MOW generator `--check`, dataset/license guard, crosswalks and schema validation).
+  - Node: **20 passed, 0 failed**.
+  - Playwright: **58 passed**; Chromium install passed.
+  - Production build and generated web-data freshness: PASS.
+  - `npm install`: **1 high-severity vulnerability** remains.
+- Optional diagnostics workflow **43499220654**: both raw-output and CRF-baseline jobs passed. They remain raw diagnostic artifacts, not an accuracy score or evidence for Ukrainian output.
+- The generated MOW pair/coverage files are reproducible from the vendored CC BY 4.0 TSV using the stdlib script; test checks committed artifacts against regenerated output.
