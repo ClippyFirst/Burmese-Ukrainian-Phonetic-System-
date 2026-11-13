@@ -1848,3 +1848,11 @@ Current collision ledger: **5 unadjudicated / 8 secondary equivalence / 1 second
 | BURMESE-RIME-AM-DOT-LEXICAL-025 | PARTIAL — SECONDARY_SOURCE_DISTINCTION | Wiktionary `စိမ့်` (`cim.`, `/sḛɪɴ/`) and `ကြံ့` (`kram.`, `/t͡ɕa̰ɴ/`) represent final မ့် and ံ့; claim `CLM-WIKTIONARY-AM-DOT-LEXICAL-DISTINCTION-001` registered. Audit and crosswalk now flag secondary distinction. | Secondary evidence conflicts with vendor MLCTS2/IPA same-output mapping. Not a minimal pair or primary MLC adjudication; no IPA gold, runtime or Ukrainian mapping promotion. CI pending. |
 
 Current collision ledger: **4 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 8 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 151 claims**.
+
+## `au.` one-side lexical attestation — 2026-11-14
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-RIME-AU-DOT-LEXICAL-025 | PARTIAL — SECONDARY_ONE_SIDE_ONLY | Wiktionary `ဝပ်ရှော့` (`waphrau.`, `/waʔʃɔ̰/`) attests source unit `ော့`; claim `CLM-WIKTIONARY-AU-DOT-ONE-SIDE-EXAMPLE-001` registered. | `ေါ့` remains unobserved; not primary MLC adjudication or collision resolution. No IPA gold, runtime or Ukrainian mapping promotion. CI pending. |
+
+Current ledger: **3 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 9 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 152 claims**.
