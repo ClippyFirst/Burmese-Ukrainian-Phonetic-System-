@@ -157,3 +157,35 @@ def test_nishi_1998_voicing_sandhi_remains_contextual_and_profile_scoped():
     assert "Myanmar-English Dictionary (1993)" in mlc["claim"]
     assert mlc["status"] == "DOCUMENTARY"
 
+def test_green_2005_phonological_rules_preserve_broad_ipa_and_surface_nasalization():
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    rules = {row["rule_id"]: row for row in _rows(DATA / "phonological_rules.csv")}
+    transcription = claims["CLM-GREEN2005-TRANSCRIPTION-001"]
+    assert transcription["source_id"] == "GREEN2005_BURMESE_PHONOLOGY"
+    assert "broad conventions" in transcription["claim"]
+    assert "ALA-LC" in transcription["claim"]
+    nasal = claims["CLM-GREEN2005-ONSET-CODA-001"]
+    assert "nasalization on the preceding vowel" in nasal["claim"]
+    rule = rules["GREEN2005_PLACELESS_NASAL_CODA"]
+    assert rule["status"] == "analysis_dependent"
+    assert rule["source_id"] == "GREEN2005_BURMESE_PHONOLOGY"
+    assert rule["claim_id"] == "CLM-GREEN2005-ONSET-CODA-001"
+    assert "Keep abstract /N/ distinct" in rule["scope"]
+
+
+def test_sealang_resources_are_text_candidates_not_ipa_gold():
+    sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    dictionary = sources["SEALANG_MLC_DICT_2006"]
+    assert "35,000 entries" in dictionary["scope"]
+    assert "entry-level transcription semantics remain unresolved" in dictionary["scope"]
+    assert "no bulk reuse permission inferred" in dictionary["scope"]
+    text = sources["SEALANG_BURMESE_TEXT_2006"]
+    assert "Monolingual corpus" in text["scope"]
+    assert "no explicit reuse license" in text["scope"]
+    bitext = sources["SEALANG_BURMESE_BITEXT_2006"]
+    assert "sentence-aligned where possible" in bitext["scope"]
+    assert "no explicit reuse license" in bitext["scope"]
+    assert claims["CLM-SEALANG-DICT-TRANS-001"]["status"] == "UNCERTAIN"
+    assert "do not assume the displayed transcription is IPA" in claims["CLM-SEALANG-DICT-TRANS-001"]["claim"]
+
