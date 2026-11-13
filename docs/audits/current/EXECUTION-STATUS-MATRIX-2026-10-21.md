@@ -1635,3 +1635,9 @@ A regression test now protects the distinction between the Htun secondary proven
 - New claims: CLM-MLC-DICT-1993-PHYSICAL-HOLDING-001 and CLM-MLC-DICT-1996-NDL-HOLDING-001. Registry totals: **68 nonblank source records / 120 claims**.
 - These are concrete acquisition/consultation leads, not evidence from the book's contents. WHO and NDL catalogue records do not provide the MLCTS table or word-level entries. The MLC-primary-source acceptance gate remains blocked until the physical/authorized text is inspected and the transcription field is distinguished as MLCTS vs MLCTS2.
 - Regression assertions now cover both catalogue records and explicitly preserve their access-only scope. No linguistic mapping or runtime behaviour changed.
+
+## MLC dictionary transcription-purpose evidence — 2026-11-13
+
+- Added **BURMA_DEBATE_1996_MLC_DICT_NOTICE** and claim **CLM-MLC-DICT-PRON-GUIDE-001**. A contemporaneous notice for the Dunwoody Press reprint says the dictionary uses a transcription system as an aid to pronunciation for English speakers and contains nearly 35,000 entries (Burma Debate, Nov/Dec 1996, p.40).
+- This is a useful clue about the dictionary field's purpose, but it does not name the system. It cannot establish MLCTS2, nor can it substitute for inspecting the dictionary's own front matter and entries.
+- Registry totals: **69 nonblank source records / 121 claims**. Regression assertions preserve the ambiguity explicitly. No mapping or runtime change.
