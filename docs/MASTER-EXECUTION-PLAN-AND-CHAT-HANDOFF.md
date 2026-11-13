@@ -2139,3 +2139,10 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - Added claim `CLM-WIKTIONARY-ANY-DOT-WORD-LEVEL-EXAMPLES-001`, updated the 25-group lexical audit and synchronized the MLCTS2 crosswalk status. Added regression assertions for both observed forms and the evidence boundary.
 - Lexical audit now: **18 unadjudicated / 2 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 137 claims**.
 - This is secondary lexical attestation, not a minimal pair or primary MLC adjudication. No runtime, IPA gold or Ukrainian output changed. Exact-head CI is pending.
+
+## Additional Wiktionary lexical examples for `aung` — 2026-11-13
+
+- Added `ပေါင်` (`paung`, `/pàʊɴ/`, source ending ေါင်) and `တောင်` (`taung`, `/tàʊɴ/`, source ending ောင်) from text-only Wiktionary entries. The onset differs; the rime sequence `/àʊɴ/` matches. `တောင်` is a MOW candidate; `ပေါင်` is not.
+- Added claim `CLM-WIKTIONARY-AUNG-WORD-LEVEL-EXAMPLES-001`, updated the lexical audit and MLCTS2 status parity, and expanded regression coverage.
+- Updated 25-group lexical audit distribution: **17 unadjudicated / 3 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 138 claims**.
+- This is secondary lexical evidence, not a minimal pair or primary MLC adjudication. No runtime, IPA gold or Ukrainian output changed. Exact-head CI pending.
