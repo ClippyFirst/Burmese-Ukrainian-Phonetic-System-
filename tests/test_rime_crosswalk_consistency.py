@@ -104,7 +104,7 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
     counts = Counter(row["evidence_status"] for row in rows)
     assert counts == {
         "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 18,
-        "SECONDARY_SYSTEM_EQUIVALENCE": 2,
+        "SECONDARY_SYSTEM_EQUIVALENCE": 3,
         "SECONDARY_SOURCE_CONFLICT": 1,
         "SECONDARY_ONE_SIDE_ONLY": 1,
         "SECONDARY_SOURCE_DISTINCTION": 2,
@@ -121,6 +121,9 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
 
 def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     rows = {row["mlcts"]: row for row in read_rows("romanization_rime_collision_lexical_audit.csv")}
+    assert rows["aung"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
+    assert "paung" in rows["aung"]["observed_mlcts"] and "taung" in rows["aung"]["observed_mlcts"]
+    assert "/pàʊɴ/" in rows["aung"]["observed_ipa"] and "/tàʊɴ/" in rows["aung"]["observed_ipa"]
     assert rows["any."]["evidence_status"] == "SECONDARY_SOURCE_DISTINCTION"
     assert "cany." in rows["any."]["observed_mlcts"] and "krany." in rows["any."]["observed_mlcts"]
     assert "/sɪ̰ɴ/" in rows["any."]["observed_ipa"] and "/t͡ɕḭ/" in rows["any."]["observed_ipa"]
