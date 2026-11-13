@@ -753,3 +753,12 @@ The opposite sides (ေါ, ိံ, and ိံ့ respectively) remain without w
 Wiktionary lists `လမ်း` with MLCTS `lam:` and IPA `/láɴ/`. It ends in `မ်း`, the first source-unit side in the `am:` collision group. The MOW suffix-match scan did not locate a lexical example ending in the other source unit `ံး`. The audit and MLCTS2 crosswalk now classify this as `SECONDARY_ONE_SIDE_ONLY`, not equivalence. Claim: `CLM-WIKTIONARY-AM-COLON-ONE-SIDE-EXAMPLE-001`.
 
 This is a secondary lexical attestation only; it does not adjudicate the collision or authorize primary MLC, IPA gold, runtime or Ukrainian-output changes. The audit distribution is now **5 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 8 secondary one-side-only / 1 special non-rime** (25 groups total). Registry: **80 sources / 150 claims**. Exact-head CI pending.
+
+### Exact-head verification for `am:` lexical attestation — 2026-11-14
+
+- Verified code/data SHA: `73bfbd7d82f69bfa0e306d984a40fe2324fc3515`.
+- Required CI runs **43519075644 SUCCESS** and **43519083741 SUCCESS** on the same SHA. Each completed **251 Python tests + 66 subtests**, **20 Node tests**, **58 Playwright tests**; production build, generated-data freshness and Chromium installation passed.
+- Optional Epitran raw-output diagnostic **43519083746 SUCCESS**; diagnostic only, not an accuracy benchmark.
+- IPA gold validator remains `NOT_READY_NO_ADJUDICATED_GOLD` (0 independently adjudicated entries). `npm install` reports **one high-severity vulnerability**; no dependency upgrade applied.
+- Current ledger: 25 groups = **5 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 8 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 150 claims**.
+- This verifies code/data/test consistency only. No primary MLC rule, IPA gold, runtime behavior or Ukrainian candidate was promoted.
