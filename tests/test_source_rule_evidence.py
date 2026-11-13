@@ -179,7 +179,7 @@ def test_sealang_resources_are_text_candidates_not_ipa_gold():
     dictionary = sources["SEALANG_MLC_DICT_2006"]
     assert "35,000 entries" in dictionary["scope"]
     assert "entry-level transcription semantics remain unresolved" in dictionary["scope"]
-    assert "no bulk reuse permission inferred" in dictionary["scope"]
+    assert "project owner confirms project-specific research and ingestion permission" in dictionary["scope"]
     text = sources["SEALANG_BURMESE_TEXT_2006"]
     assert "Monolingual corpus" in text["scope"]
     assert "no explicit reuse license" in text["scope"]
@@ -227,7 +227,7 @@ def test_nishi_old_burmese_historical_claims_have_source_and_scope():
     claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
     rules = {row["rule_id"]: row for row in _rows(DATA / "phonological_rules.csv")}
     source = sources["NISHI1998_OLDBURMESE"]
-    assert "pp.659-684" in source["scope"]
+    assert "pp.659-692" in source["scope"]
     assert "Old Burmese" in source["title"]
 
     h_claim = claims["CLM-NISHI-OWB-MEDIAL-CLASS-001"]
