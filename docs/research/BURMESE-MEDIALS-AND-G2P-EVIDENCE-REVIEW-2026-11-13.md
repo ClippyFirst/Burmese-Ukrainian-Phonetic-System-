@@ -368,3 +368,7 @@ The source is explicit about the limits of its variety label: “Standard Burmes
 
 Implementation consequence: these are contextual phonological rules, not grapheme-to-phoneme substitutions. The first is variable and exception-rich; the second depends on rhyme type, juncture, morphology/postpositions and profile. Both are registered as analysis-dependent evidence only. No global runtime voicing rule is enabled. The MLC dictionary claim is recorded as Nishi's report, not as a completed independent audit of the 1993 dictionary.
 
+## 12. Hill (2019): high-value historical source target, full text not reviewed
+
+Cambridge University Press confirms Nathan W. Hill's *The Historical Phonology of Tibetan, Burmese, and Chinese*, chapter 2 "Burmese", pp.46-83 (DOI 10.1017/9781316550939.003). The book's stated method is comparative sound-law analysis. The official publisher page exposes only a short §44 preview; the full chapter requires access. Therefore this source is registered as a high-value follow-up target, but no claim about Burmese medials is attributed to Hill here. Acceptance: obtain authorized full-text access, inspect the chapter's treatment of Old Burmese medial clusters and written-to-spoken developments, and record exact page/section locators before adding claims or matrix rows.
+
