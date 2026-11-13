@@ -259,3 +259,72 @@ def test_full_vendor_system_crosswalk_covers_all_94_nonempty_rime_keys():
         if row["simple2_status"] == "NOT_PROVIDED_IN_VENDOR_ARRAY"
     }
     assert missing_simple2 == {"ေါင်း"}
+
+MOW_RIME_COVERAGE_PATH = ROOT / "data/burmese/romanization_rime_mow_lemma_coverage.csv"
+MOW_RIME_HITS_PATH = ROOT / "data/burmese/romanization_rime_mow_lemma_hits.csv"
+
+
+def test_mow_orthographic_lemma_coverage_is_consistent_and_evidence_limited():
+    with (ROOT / "data/burmese/romanization_rime_collisions.csv").open(
+        encoding="utf-8-sig", newline=""
+    ) as stream:
+        collisions = {row["mlcts"]: row for row in csv.DictReader(stream)}
+    with MOW_RIME_COVERAGE_PATH.open(encoding="utf-8-sig", newline="") as stream:
+        summary = list(csv.DictReader(stream))
+    with MOW_RIME_HITS_PATH.open(encoding="utf-8-sig", newline="") as stream:
+        hits = list(csv.DictReader(stream))
+
+    assert len(collisions) == 25
+    assert len(summary) == 50
+    assert len(hits) == 508
+    assert len({(row["source_unit"], row["mow_lemma"]) for row in hits}) == len(hits)
+    assert {row["mlcts_collision_key"] for row in summary} == set(collisions)
+    assert {row["mlcts_collision_key"] for row in hits} <= set(collisions)
+
+    for row in summary:
+        assert row["source_unit"] in collisions[row["mlcts_collision_key"]]["source_units"].split(";")
+        matching = [hit for hit in hits if hit["source_unit"] == row["source_unit"]]
+        assert int(row["distinct_mow_lemma_count"]) == len({hit["mow_lemma"] for hit in matching})
+        assert int(row["distinct_synset_count"]) == len({
+            synset
+            for hit in matching
+            for synset in hit["synset_ids"].split(";")
+            if synset
+        })
+        assert "orthographic lemma final-string match only" in row["evidence_scope"]
+
+    both = {
+        key for key, collision in collisions.items()
+        if all(
+            int(next(row["distinct_mow_lemma_count"] for row in summary if row["source_unit"] == unit)) > 0
+            for unit in collision["source_units"].split(";")
+        )
+    }
+    neither = {
+        key for key, collision in collisions.items()
+        if all(
+            int(next(row["distinct_mow_lemma_count"] for row in summary if row["source_unit"] == unit)) == 0
+            for unit in collision["source_units"].split(";")
+        )
+    }
+    assert len(both) == 11
+    assert len(neither) == 1
+    assert neither == {"um."}
+    assert all("no pronunciation" in row["evidence_scope"] for row in hits)
+    assert all("not primary MLC" not in row["evidence_scope"] for row in hits)
+
+
+def test_mow_dataset_source_claim_preserves_cc_by_and_orthographic_scope():
+    with (ROOT / "data/burmese/sources.csv").open(encoding="utf-8-sig", newline="") as stream:
+        sources = {row["source_id"]: row for row in csv.DictReader(stream)}
+    with (ROOT / "data/burmese/source_claims.csv").open(
+        encoding="utf-8-sig", newline=""
+    ) as stream:
+        claims = {row["claim_id"]: row for row in csv.DictReader(stream)}
+
+    assert "MOW_2017_0_1_3_DATASET" in sources
+    assert "CC BY 4.0" in sources["MOW_2017_0_1_3_DATASET"]["scope_or_note"]
+    assert claims["CLM-MOW-ORTHOGRAPHIC-RIME-COVERAGE-001"]["source_id"] == "MOW_2017_0_1_3_DATASET"
+    assert "suffix matching does not perform Burmese syllabification" in claims[
+        "CLM-MOW-ORTHOGRAPHIC-RIME-COVERAGE-001"
+    ]["claim"]
