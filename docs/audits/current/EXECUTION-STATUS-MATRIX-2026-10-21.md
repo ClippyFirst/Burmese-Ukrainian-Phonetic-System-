@@ -1641,3 +1641,19 @@ A regression test now protects the distinction between the Htun secondary proven
 - Added **BURMA_DEBATE_1996_MLC_DICT_NOTICE** and claim **CLM-MLC-DICT-PRON-GUIDE-001**. A contemporaneous notice for the Dunwoody Press reprint says the dictionary uses a transcription system as an aid to pronunciation for English speakers and contains nearly 35,000 entries (Burma Debate, Nov/Dec 1996, p.40).
 - This is a useful clue about the dictionary field's purpose, but it does not name the system. It cannot establish MLCTS2, nor can it substitute for inspecting the dictionary's own front matter and entries.
 - Registry totals: **69 nonblank source records / 121 claims**. Regression assertions preserve the ambiguity explicitly. No mapping or runtime change.
+
+## Final exact-head CI — provenance and registry tests (2026-11-13)
+
+Code/test head **508816dcddf22272e98647625b657bc79712817e** completed required CI successfully:
+- Workflow **43496624771**: SUCCESS.
+- Python: **231 passed + 66 subtests passed**.
+- Node: **20 passed, 0 failed**.
+- Playwright: **58 passed**.
+- Chromium install: PASS.
+- Production build: PASS.
+- Generated web-data freshness: PASS.
+- IPA-gold validator: executed successfully, but reports **0 records / 0 annotations / 0 adjudicated records** and `NOT_READY_NO_ADJUDICATED_GOLD`; this is a data-readiness blocker, not a validator failure.
+- Optional diagnostics workflow **43496624752**: SUCCESS for raw-output and CRF-baseline jobs. These remain diagnostics only, not scored accuracy.
+- `npm install` still reports **1 high-severity vulnerability**; no forced dependency upgrade was made.
+- Source registry integrity rechecked: **69 nonblank sources / 121 claims**, unique IDs, valid CSV row widths and all claim-to-source references resolve.
+- The latest changes after code/test head are documentation-only. Final branch tip will be recorded after this handoff update.
