@@ -56,10 +56,10 @@ def test_all_94_inventory_keys_match_the_vendored_mya2rom_mlcts_column():
         rows = list(csv.DictReader(stream))
     vendor_path = ROOT / "vendor/mya2rom/romanisations.js"
     vendor_text = vendor_path.read_text(encoding="utf-8")
-    match = re.search(r"var vowels = \\{([\\s\\S]*?)\\n\\}", vendor_text)
+    match = re.search(r"var vowels = \{([\s\S]*?)\n\}", vendor_text)
     assert match is not None
     vendor_rows = {}
-    for key, values_text in re.findall(r'^\\s*"([^"]*)"\\s*:\\s*\\[([^\\]]+)\\]', match.group(1), re.MULTILINE):
+    for key, values_text in re.findall(r'^\s*"([^"]*)"\s*:\s*\[([^\]]+)\]', match.group(1), re.MULTILINE):
         values = re.findall(r'"([^"]*)"', values_text)
         vendor_rows[key] = values
 
