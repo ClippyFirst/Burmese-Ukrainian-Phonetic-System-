@@ -1562,3 +1562,12 @@ The collision-ledger statuses are unchanged: 21 unadjudicated, 2 secondary equiv
 ### Schema-gate correction for MOW dataset-derived claim — 2026-11-13
 
 The first CI attempt after registering the MOW orthographic coverage claim (workflow 43499220650) correctly rejected the locally invented evidence status `DATASET_DERIVED`, because the canonical claim schema does not allow that value. The claim was corrected to the existing schema-supported status `ANALYSIS_DEPENDENT` (commit 5e12f86e21f5576efee44afe84f80759e3799a9e); its scope remains orthographic suffix analysis only. The subsequent exact-head workflow is running with the schema correction, canonicalized test placement and reproducible generator check.
+
+## Final MOW reconciliation and remaining SEAlang access blocker — 2026-11-13
+
+| ID | Status | Evidence | Acceptance criterion |
+|---|---|---|---|
+| BURMESE-MOW-CANONICAL-GENERATOR-013 | DONE_VERIFIED | The repository's canonical Python generator and vendored CC BY 4.0 MOW release produce the committed 508-pair / 50-unit orthographic coverage outputs. The test suite runs generator `--check`; duplicate parallel exports and duplicate test module were removed. | Keep one canonical generator/output path. Treat results only as orthographic suffix search leads. |
+| BURMESE-SEALANG-ENTRY-ACCESS-014 | BLOCKED — SERVICE RETRIEVAL | SHACHI/SEAlang metadata and the 2008 interface description establish an MLC 1993 dictionary derivative, IPA search/display capability and project-level permission; direct Burmese dictionary/API requests timed out or returned 502/400-timeout, and no entry text was retrieved. | Retrieve actual entries for selected MOW lemma leads with headword, dictionary transcription and IPA fields; record exact source locators and adjudicate against the MLC dictionary/primary key. Interface screenshots and metadata alone do not satisfy this. |
+
+Exact code/test head **c76fab9e4e4a910170a26dd8ed89a95790c7973d**: CI runs 43499475187 and 43499485256 SUCCESS — 236 Python + 66 subtests, 20 Node, 58 Playwright; build and generated-data freshness PASS. IPA gold remains NOT_READY_NO_ADJUDICATED_GOLD. npm install still reports one high-severity vulnerability. Registry: 73 sources / 126 claims.
