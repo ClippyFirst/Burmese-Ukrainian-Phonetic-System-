@@ -533,5 +533,52 @@ The paper describes SLR80 as 2,528 utterances from 20 female speakers and states
 - Preserve Hlaing & Mikami as structural-parser evidence only.
 - Preserve Thu et al. as a historical G2P benchmark with explicit train/test leakage caveats and undefined romanized phone notation.
 - Use Oo et al. as an architectural and source-specific four-tone comparator, not as a complete consensus model or a license grant for every associated resource.
+- Nishi's full 1998 voicing paper has now been retrieved and inspected; see §22. Its example provenance is Okell (1969), while its transcription convention follows Okell (1995).
 - Do not activate medials, tone, /N/, coda or voicing rules without profile-matched independent adjudication.
 - Independent project IPA gold remains zero; empirical accuracy remains null.
+
+
+## 22. Nishi (1998): full-text audit of Standard Burmese voicing sandhi
+
+The complete eight-page article, *The Development of Voicing Rules in Standard Burmese*, was retrieved from the National Museum of Ethnology repository and read in text/PDF mode. DOI: 10.15021/00004129; printed pp.253–260. No audio was accessed.
+
+### 22.1 Two synchronic patterns
+
+1. **Atonic C1aC2 pattern.** When an atonic /a/ syllable is followed by C2 and both C1 and C2 are voiceless unaspirated stops, affricates or sibilants with voiced counterparts (/p t t c k s/ in Nishi's notation), both consonants voice. Nishi gives /gaba/, /dagaun/ and /daji/ examples. He explicitly says the rule is generally observed but not obligatory throughout Standard Burmese and has variables/exceptions.
+2. **Post-nonstop tonal-rhyme pattern.** An eligible initial C voices after a non-stop tonal syllable in close juncture, within a word or phrase with postposition(s). The listed class includes unaspirated and aspirated stops/affricates and sibilants with voiced counterparts. Examples include /khayiga/, /yejan/, /takhuzi/ and /ounzi/.
+
+Nishi argues that weakening/atonicization is unpredictable and sometimes optional and should not be stated as part of the voicing sandhi rule itself. The project must therefore represent atonicization and voicing as separate operations/conditions rather than collapsing them into a single grapheme-triggered rewrite.
+
+### 22.2 Transcription and example provenance: an important correction
+
+Nishi explicitly states that his phonemic transcription follows Okell (1995), *Three Burmese Dialects*, except for specified symbol choices, and differs from Okell (1969). However, footnote 3 says that all examples in the paper are quoted from Okell (1969), *A Reference Grammar of Colloquial Burmese*, §§17–20.
+
+Thus:
+- **notation convention:** Okell (1995);
+- **example source:** Okell (1969), §§17–20;
+- **stored slash-delimited outputs:** Nishi's source-specific traditional phonemic forms, not project IPA.
+
+The seven rows in `sandhi_evidence.csv` are retained with this distinction explicitly recorded. No IPA value is inferred.
+
+### 22.3 Historical development and dialect comparison
+
+Nishi proposes four stages: (1) voicing of nonaspirated stops/affricates/sibilants; (2) atonicization of some non-initial syllables; (3) a second voicing rule applying to C1; and (4) later voicing of aspirated stops/affricates. The ordering of the later C1 and aspirated-series rules may differ among subvarieties because atonicization remains optional.
+
+The dialect comparison reports:
+- Intha, Taungyo and Danu: no voicing sandhi at phonemic level;
+- Arakanese, Tavoy and Mergui: first pattern only;
+- Yaw: first and second patterns, but with contexts where the Standard Burmese patterns do not apply.
+
+The paper's Taungyo evidence is specifically Minor Taungyo. It also cautions that regional dialects contain subdialects and internal variation.
+
+Nishi's note 1 defines Standard Burmese broadly as spoken and written forms across an imprecisely bounded Rangoon–Mandalay area, with social and regional subvarieties. It is not a narrow modern Yangon reference profile.
+
+### 22.4 Exceptions and limits
+
+Nishi leaves several exceptions unexplained and tentatively discusses analogy, borrowing and Written Burmese influence. He argues that first-pattern voicing is a result of drift or convergence, not a feature traceable to a single common origin. The article therefore supports historical and dialect-comparative evidence, but not universal automatic voicing.
+
+### 22.5 Registry and implementation consequences
+
+Added four claims: example provenance, separation of atonicization from voicing, dialect-specific pattern distribution, and unresolved exceptions. Updated the source scope and corrected all seven sandhi records to distinguish Okell (1969) example provenance from Okell (1995) transcription convention.
+
+No runtime rule was promoted. The existing analysis-dependent status remains. Independent adjudicated IPA gold remains zero and accuracy remains null.
