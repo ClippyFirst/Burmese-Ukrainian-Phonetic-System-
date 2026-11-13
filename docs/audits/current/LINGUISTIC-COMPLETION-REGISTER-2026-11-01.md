@@ -1672,7 +1672,7 @@ Project remains PARTIAL PROTOTYPE / NOT RELEASE-READY. IPA gold is `NOT_READY_NO
 |---|---|---|---|
 | BURMESE-MLC-SPELLING-BOOK-1978-ACCESS-018 | PARTIAL — CATALOGUE LEAD ONLY | National Diet Library of Japan record R100000136-I1970023484907173422 records a Burmese-language MLC orthography/spelling reference published in 1978. Allott (1985, p.145) independently reports that the MLC spelling book was published in 1978, while separately describing the five-part Concise Burmese Dictionary as issued from late 1978 through 1980. New registry records: NDL_MLC_SPELLING_1978_CATALOG / CLM-MLC-SPELLING-BOOK-1978-CATALOG-001. | Obtain title page and contents; verify exact identity of the catalogue title with Allott's spelling book and distinguish it from the Concise Dictionary. Inspect whether any pronunciation or transcription material exists. No MLCTS/IPA inference from catalogue metadata. |
 
-This is a new access route, not newly inspected primary content. Existing Allott/Okell Concise Dictionary records remain separate. Registry totals after update: 82 sources / 132 claims. Exact-head CI pending.
+This is a new access route, not newly inspected primary content. Existing Allott/Okell Concise Dictionary records remain separate. Registry totals after update: 80 sources / 132 claims (before CiNII record; historical checkpoint). Exact-head CI pending.
 
 ## MLC 1978 spelling-book retrieval routes — 2026-11-13
 
@@ -1680,7 +1680,7 @@ This is a new access route, not newly inspected primary content. Existing Allott
 |---|---|---|---|
 | BURMESE-MLC-SPELLING-BOOK-ACCESS-019 | PARTIAL — RETRIEVAL ROUTES IDENTIFIED | CiNii Books NCID BA69415754 records 28, 379 pages, 17 cm and holdings at three Japanese libraries (Osaka University and Tokyo University of Foreign Studies). Google Books record _V1LAAAAMAAJ identifies a 379-page scan originating from the University of Michigan, digitized 2007, but exposes snippet-view metadata only. Added CINII_MLC_SPELLING_1978_HOLDINGS / CLM-MLC-SPELLING-BOOK-ACCESS-002. | Request a copy from one of the holding libraries or inspect any accessible Google Books pages. Capture title page, contents and relevant spelling/pronunciation sections with page locators. No claim about actual book contents until inspected. |
 
-Registry totals: 83 sources / 133 claims. Exact-head CI pending.
+Registry totals: 80 sources / 133 claims (verified nonblank, unique source IDs). Exact-head CI pending.
 
 ## Crosswalk consistency validation — 2026-11-13
 
@@ -1718,3 +1718,7 @@ This is a targeted readout of the already-generated `mow_rime_orthographic_cover
 Examples exposed by the existing match table include `ဥယျာဉ်`, `တိရစ္ဆာန်ဥယျာဉ်`, `ယာဉ်` for ဉ်; `ပြည်`, `မြန်မာပြည်`, `လက်ဖက်ရည်` for ည်; `အကျဉ်း` for ဉ်း; and `ချို`, `ငို`, `ဆို`, `တို`, `မှို` for ို. These are candidate lemmas for text-based dictionary lookup only. Suffix matching does not establish syllable boundaries, rime identity, tone, pronunciation or homophony.
 
 The MOW table does not currently provide a lexeme-level adjudication for the `any` or `ui` collision. The next practical step is to use these exact lemmas as lookup keys in already-registered textual resources, recording each dictionary's spelling, entry headword, pronunciation/transcription field and page/entry locator where available. Do not populate observed IPA from MOW.
+
+## Source registry row-count correction — 2026-11-13
+
+Append a correction note: The source CSV contained four blank separator lines; two were counted as empty rows by the earlier row-count method. Removed all blank lines and added a regression test for nonblank unique source IDs. The actual registry contains 80 unique source records and 133 claim records. Historical row-count figures above are superseded.
