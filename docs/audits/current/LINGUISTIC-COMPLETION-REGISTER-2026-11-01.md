@@ -1236,3 +1236,15 @@ Exact-head CI 43393402710 on 4835a0abc3e7e4a18c9d0bda35f554031912d570: 217 Pytho
 
 
 | MYA-SEALANG-IPA-INTERFACE-001 | DONE_VERIFIED (INTERFACE ONLY) | SHACHI metadata and the 2008 SEAlang project paper confirm IPA phonetic query and IPA transliteration display; actual internal record fields remain undisclosed. | Keep separate from internal storage/MLCTS2 question; inspect actual entry/export schema before gold-corpus use. |
+
+
+## Final evidence and verification — 2026-11-13
+
+- Exact tested code/data head cda73ccb7fa80a0404fed5a65588ebd690253f94; CI 43397172081 SUCCESS: 220 Python + 66 subtests, 20 Node, 58 Playwright, IPA schema, build and generated-data freshness.
+- Optional diagnostics 43397181331 SUCCESS: CRF 100 predictions, 84 source-concordant, 0 gold, null accuracy; Epitran raw output only.
+- Registries: 59 sources, 81 claims, 45 medial rows, 30 rules, 7 source-phonemic sandhi rows. CSV widths, unique IDs and cross-registry references validated.
+- Okell (1995) and Nishi (1998) full-text evidence is DONE_VERIFIED at source-evidence level only; all historical/regional rules remain withheld.
+- SEAlang IPA query/display is DONE_VERIFIED at interface level; internal entry/export representation remains PARTIAL / SCHEMA UNRESOLVED because Mya2Rom separately documents MLCTS2.
+- Okell (1969), Nishi (1976), Hill (2019) chapter 2, Okell text corpus and SEAlang records remain tool-access/schema blocked, not permission blocked.
+- Myanglish remains schema-uncertain; myX orthography remains quarantined for quality review. No audio.
+- IPA gold=0; accuracy=null; classification PARTIAL PROTOTYPE.
