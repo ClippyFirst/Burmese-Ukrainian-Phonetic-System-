@@ -1383,3 +1383,6 @@ Exact tested head: d2800ce458ea3c08c3fecb9e61ad170502837343. PR #147 remains Dra
 | Okell (1995) WB/SB and regional medial profiles | DONE_VERIFIED (source evidence) | Full text; AR preserves WB r/y, SB merges; IT/TV have medial /l/ absent in SB; three matrix rows, seven claims, two dialect rules and regression tests. |
 | Modern Yangon medial profile | PARTIAL / EVIDENCE-LIMITED | Do not infer from Arakanese, Intha, Tavoyan or historical OWB; requires current Yangon-specific text evidence and independently adjudicated examples. |
 | Okell transcription convention | DONE_VERIFIED (source scope) | Texts are phonemic with limited allophonic approximations; not project IPA gold. No audio accessed. |
+
+
+| Okell (1969) Reference Grammar | BLOCKED / TOOL ACCESS | Bibliographically verified; cited for Standard/Colloquial Burmese phonology and voicing sandhi, but full text unavailable in this execution. Permission confirmed; exact section/page evidence still required. |
