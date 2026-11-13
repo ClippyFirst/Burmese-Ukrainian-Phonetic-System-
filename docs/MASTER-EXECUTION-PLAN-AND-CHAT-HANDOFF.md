@@ -2235,3 +2235,10 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - Audit and MLCTS2 crosswalk updated to `SECONDARY_ONE_SIDE_ONLY`; claim `CLM-WIKTIONARY-AU-DOT-ONE-SIDE-EXAMPLE-001` registered; tests expanded.
 - Distribution: 3 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 9 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 152 claims.
 - One-side secondary evidence only; no runtime or Ukrainian output change. Exact-head CI pending.
+
+## Exact-head verification — `au.` lexical continuation — 2026-11-14
+
+- Verified SHA `ffd08d7ae8e227ee19a86859de00b7d52f456ecf`; required CI **43519887514 SUCCESS**: 251 Python + 66 subtests, 20 Node, 58 Playwright; build, generated-data freshness and Chromium install passed. Duplicate exact-SHA run **43519895530** was still completing.
+- Optional Epitran raw-output diagnostic **43519895542 SUCCESS**, not accuracy benchmark. IPA gold remains `NOT_READY_NO_ADJUDICATED_GOLD`; npm install reports one high-severity vulnerability.
+- Ledger: 3 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 9 secondary one-side-only / 1 special non-rime. Registry 80 sources / 152 claims.
+- No primary MLC, IPA gold, runtime or Ukrainian output promotion.
