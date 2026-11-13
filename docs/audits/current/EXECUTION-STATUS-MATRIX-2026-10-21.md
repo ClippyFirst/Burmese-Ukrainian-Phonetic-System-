@@ -1665,3 +1665,10 @@ Code/test head **508816dcddf22272e98647625b657bc79712817e** completed required C
 - Important naming detail: Mya2Rom v0.4.4 README/API calls the third column `mlcts2`; `mya2rom.js` maps that mode to array index 2; the `romanisations.js` header labels the same column **MLCTS-SL** and describes it as the SEAlang/MLC dictionary modification. Added claim **CLM-MYA2ROM-COLUMN3-NAMING-001** to record this internal nomenclature discrepancy; no evidence of two separate columns in this version.
 - Added exact-source regression coverage that derives all 25 crosswalk rows from the vendored array and guards the four distinct groups, special `့` fallback, and non-primary evidence boundary.
 - Registry totals after additions: **70 nonblank source records / 123 claims**. No runtime mapping, IPA gold label or Ukrainian candidate changed. All 94 Ukrainian candidates remain PROPOSED / EVIDENCE_LIMITED.
+
+## Earlier MLC Concise Burmese Dictionary access lead — 2026-11-13
+
+- Added **ALLOTT1985_BURMA_LANGUAGE_POLICY** and **OKELL1982_BURMESE_DICTIONARY_REVIEW** with claims **CLM-MLC-CONCISE-DICT-1978-80-001** and **CLM-MLC-CONCISE-DICT-BIB-001**.
+- Allott's 1985 chapter (p.145) reports that the MLC Concise Burmese Dictionary was published in five parts from late 1978 through 1980, standardized the official orthography of its entries, and supplied pronunciations. Okell's 1982 bibliography independently lists it as five volumes, Rangoon, Mranmācā Aphwai.
+- This identifies a potentially earlier MLC primary lexicon with pronunciation information. Neither secondary source reproduces the dictionary's pronunciation key, any romanization table, or the relevant lexical entries. It is not yet established that this dictionary uses MLCTS/MLCTS2; inspect the front matter and representative entries before claiming that.
+- Registry totals: **72 nonblank source records / 125 claims**. New regression assertions preserve the secondary-only status.
