@@ -1721,4 +1721,4 @@ The MOW table does not currently provide a lexeme-level adjudication for the `an
 
 ## Source registry row-count correction — 2026-11-13
 
-Append a correction note: The source CSV contained four blank separator lines; two were counted as empty rows by the earlier row-count method. Removed all blank lines and added a regression test for nonblank unique source IDs. The actual registry contains 80 unique source records and 133 claim records. Historical row-count figures above are superseded.
+Append a correction note: The source CSV contained three internal blank separator lines (plus the final newline); the earlier row-count method counted the three blank lines as empty rows. Removed all blank lines and added a regression test for nonblank unique source IDs. The actual registry contains 80 unique source records and 133 claim records. Historical row-count figures above are superseded.
