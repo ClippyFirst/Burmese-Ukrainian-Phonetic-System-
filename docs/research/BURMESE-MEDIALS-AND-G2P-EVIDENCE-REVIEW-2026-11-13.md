@@ -665,3 +665,12 @@ Text-only Wiktionary entries supply one lexical example for each of the two orth
 | `တောင်` | ောင် | `taung` | `/tàʊɴ/` |
 
 The onsets differ, but the rime sequence `/àʊɴ/` is the same in the two secondary transcriptions. `တောင်` is a MOW suffix candidate; `ပေါင်` is not. This is word-level secondary equivalence evidence, not a controlled minimal pair or a primary MLC specification. The lexical audit is updated to `SECONDARY_SYSTEM_EQUIVALENCE`; MLCTS2 status parity and regression tests are updated. No runtime, IPA gold or Ukrainian output is promoted. Claim: `CLM-WIKTIONARY-AUNG-WORD-LEVEL-EXAMPLES-001`.
+
+### Exact-head verification for the `any.` and `aung` lexical-audit extension
+
+- Code/data snapshot: `eb81bd29e9417ddbd6d541d54fce6d754b0bb8bd`.
+- Required CI run **43513203135 SUCCESS** (duplicate exact-SHA run **43513212043 SUCCESS**): **251 Python tests + 66 subtests**, **20 Node tests**, **58 Playwright tests**; production build, generated-web-data freshness and Chromium installation passed.
+- IPA-gold validator reports `NOT_READY_NO_ADJUDICATED_GOLD`; no independent gold entries or accuracy score are claimed. Optional Epitran raw-output diagnostic **43513212088 SUCCESS** is not an accuracy benchmark.
+- `npm install` reports **one high-severity vulnerability**; no dependency upgrade was applied.
+- Current registry: **80 sources / 138 claims**. Lexical audit distribution: **17 unadjudicated / 3 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**.
+- All new lexical evidence remains secondary. No runtime, IPA gold or Ukrainian candidate was promoted.
