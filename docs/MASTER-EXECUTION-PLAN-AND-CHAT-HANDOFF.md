@@ -2083,3 +2083,8 @@ The first CI attempt after registering the MOW orthographic coverage claim (work
 - New source record NDL_MLC_SPELLING_1978_CATALOG records the National Diet Library of Japan catalogue entry for the 1978 MLC Burmese orthography/spelling reference; claim CLM-MLC-SPELLING-BOOK-1978-CATALOG-001 is documentary and explicitly catalogue-only.
 - Allott (1985, p.145) says the MLC spelling book was finally published in 1978 and separately says the Concise Burmese Dictionary appeared in five parts from late 1978 through 1980. This suggests distinct works, but exact title matching remains unverified until title pages are inspected. Do not collapse this record into the Concise Dictionary or infer an MLCTS/IPA field.
 - Added regression test test_mlc_1978_spelling_book_catalog_is_distinguished_from_concise_dictionary. Registry now contains 82 source rows and 132 claim rows; exact-head CI not yet observed. No runtime mapping changed.
+
+## MLC spelling-book access route expansion — 2026-11-13
+
+- CiNii Books NCID BA69415754 gives the 1978 book's physical extent (28, 379 pages, 17 cm) and three Japanese library holdings: Osaka University and two Tokyo University of Foreign Studies locations. Google Books record _V1LAAAAMAAJ lists a 379-page University of Michigan original digitized in 2007, but the visible result is snippet-view metadata, not proof that the entire scan is accessible.
+- Added source CINII_MLC_SPELLING_1978_HOLDINGS and claim CLM-MLC-SPELLING-BOOK-ACCESS-002; test test_mlc_1978_spelling_book_has_concrete_library_and_scan_access_routes. Registry now 83 sources / 133 claims. Next step: obtain/inspect actual pages and establish whether the 1978 spelling book contains any transcription or pronunciation material. No runtime behavior changed.
