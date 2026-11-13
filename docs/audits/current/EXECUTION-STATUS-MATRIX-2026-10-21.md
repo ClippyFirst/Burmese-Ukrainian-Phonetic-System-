@@ -1590,3 +1590,12 @@ Registry integrity on this continuation: 62 source records, 114 claim records; 2
 - Reclassified the am and um groups as SECONDARY_SYSTEM_EQUIVALENCE (supported by both secondary tables), and any as SECONDARY_SOURCE_CONFLICT (Wiktionary detailed table vs Wikipedia's MLC summary vs vendor). No primary MLC adjudication is claimed.
 - Lexical ledger now has 21 unadjudicated, 2 secondary-equivalence, 1 secondary-conflict and 1 special non-rime group. Totals: 63 sources / 115 claims. No runtime or Ukrainian candidate changes. CI on the preceding head was still in progress; final exact-head verification pending.
 
+
+## Exact-head CI result — 2026-11-13
+
+- Code/data head: 46b7da6afd7ecc94e4dcac87c7f759132c74bc6b.
+- Required workflow run 43491799213: SUCCESS. Python 229 passed + 66 subtests passed; Node 20 passed / 0 failed; Playwright 58 passed. Gold validator executed and correctly returned NOT_READY_NO_ADJUDICATED_GOLD. npm install, production build, generated-data freshness, Chromium install and browser suite all passed.
+- npm install still reports 1 high-severity dependency vulnerability; no forced dependency upgrade applied.
+- Optional diagnostics run 43491799196: SUCCESS (raw-output and CRF diagnostic jobs). These are raw diagnostic artifacts only, not an IPA accuracy benchmark; independent adjudicated IPA gold remains 0.
+- Final linguistic status remains PARTIAL PROTOTYPE. No runtime rule or Ukrainian candidate promoted.
+
