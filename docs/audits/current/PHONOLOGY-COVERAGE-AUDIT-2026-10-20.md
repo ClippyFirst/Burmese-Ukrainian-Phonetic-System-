@@ -81,3 +81,12 @@ See docs/references.md, data/burmese/sources.csv, data/burmese/source_claims.csv
 ### Typed IPA metadata gap — 2026-11-13
 
 The IPA gold schema can preserve nasalization in its literal IPA value, but has no separate typed nasalization property. This is not a current transcription blocker if the literal string is preserved; it is a downstream-query limitation. Defer schema expansion until the phonemic /N/ vs surface nasalization convention is expert-approved.
+
+
+## Text-only historical and contextual evidence update — 2026-11-13
+
+- **Historical medial structure:** STEDT (1996), Nishi (1997) and Matisoff (2003) show that Written Burmese periodization, proto-medial reconstruction and modern spoken correspondences must remain separate. Historical WB *-r- > Modern Burmese -y- is documented, but no direct mapping to current Unicode U+103B/U+103C is established.
+- **Written/spoken distinction:** Nishi (1997) explicitly distinguishes written H and spoken L systems and their non-coterminous periods. A written romanization or historical spelling cannot alone establish modern Yangon IPA.
+- **Contextual voicing:** Nishi (1998) describes two Standard Burmese voicing-sandhi patterns, but documents optionality, exceptions and regional differences. Both remain analysis-dependent; no global runtime rule is enabled.
+- **Text corpora:** Myanglish and orthographic correction datasets may support romanization diagnostics or spelling-normalization research after schema and row review; neither supplies IPA gold. Okell text corpus remains rights-blocked pending direct license clarification.
+- **Measurement:** independent expert-adjudicated text-based IPA gold remains **0**; word-level accuracy remains **null/unmeasured**. No audio is part of the active scope or acceptance criteria.
