@@ -1844,4 +1844,4 @@ The first CI attempt after registering the MOW orthographic coverage claim (work
 
 ## Source registry row-count correction — 2026-11-13
 
-Append a correction note: `sources.csv` had four blank separator lines; earlier row counting overstated the source count. Removed blank lines and added `test_source_registry_has_no_blank_rows_or_duplicate_source_ids`. Current validated registry: 80 unique nonblank sources / 133 claims.
+Append a correction note: `sources.csv` had three internal blank separator lines; earlier row counting included those as empty rows. Removed blank lines and added `test_source_registry_has_no_blank_rows_or_duplicate_source_ids`. Current validated registry: 80 unique nonblank sources / 133 claims.
