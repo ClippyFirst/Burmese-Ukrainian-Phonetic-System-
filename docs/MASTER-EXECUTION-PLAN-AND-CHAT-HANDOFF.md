@@ -1416,3 +1416,10 @@ No local repository checkout or local shell test run was performed in this sessi
 5. Build independent expert-reviewed text IPA fixtures from written dictionaries/grammars with one approved broad/narrow convention and source locators. No audio is part of this acceptance path.
 6. Resolve the competing tone/register analyses and the abstract /N/ vs surface nasalization representation before enabling affected IPA rules.
 7. Continue primary-source verification for the 94 MLCTS rime entries; current vendor-derived coverage is not fully primary-source adjudicated.
+
+## Green 2005 and SEAlang text resources — 2026-11-13
+
+Green's chapter “Word, foot and syllable structure in Burmese” in *Studies in Burmese Linguistics* (2005, pp.1-26) is an openly licensed CC BY-SA 4.0 text source. It explicitly separates broad IPA-style transcription of spoken Burmese from ALA-LC transliteration of Written Burmese; gives the medial transliteration order y, r, l, v, h; describes major-syllable CG onsets and minor-syllable restrictions; and analyzes coda /N/ as nasalization on the preceding vowel. The new source claims, evidence row, evidence-only rules and tests are registered. They do not enable a direct Unicode-medial rule.
+
+SEAlang's MLC-based dictionary (~35,000 entries), Burmese Text Corpus and Bitext Corpus are registered as text-only candidates. The dictionary's actual transcription field is unresolved (SHACHI metadata advertises IPA search/display, while Mya2Rom says MLCTS2 is used by MLC/SEAlang). The text and bitext corpora have no explicit reuse license; reported “contexts/pairs served” are service counts, not verified corpus sizes. No rows were downloaded or imported. Bulk reuse is blocked pending rights and schema verification.
+
