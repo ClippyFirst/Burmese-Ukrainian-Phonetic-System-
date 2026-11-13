@@ -119,7 +119,7 @@ def test_legacy_non_text_corpus_records_are_excluded_from_active_scope():
         assert "Historical metadata only" in scope
         assert "excluded from active text-only research" in scope
         assert "not an active source candidate" in scope
-        assert "No audio is to be acquired, processed, annotated" in scope
+        assert "no audio is to be acquired, processed, annotated" in scope.lower()
 
     assert claims["CLM-MYG2P-001"]["source_id"] == "MYG2P2026"
     assert claims["CLM-MYG2P-001"]["status"] == "DOCUMENTARY"
