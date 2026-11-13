@@ -1440,11 +1440,11 @@ Current ledger: 63 sources / 115 claims; 25 collision groups; 21 unadjudicated, 
 | BURMESE-ALA-LC-SYSTEM-SEPARATION-001 | DONE_VERIFIED | LOC's 2011 Burmese Romanization Table is explicitly a Library of Congress ALA-LC table and is recorded separately from MLCTS. | Keep ALA-LC correspondences out of MLCTS adjudication; use only for system comparison where explicitly labelled. |
 | BURMESE-MLC-PRIMARY-TRANSCRIPTION-001 | BLOCKED / PRIMARY SOURCE | No direct MLC 1980 transcription table or word-level MLC dictionary entries were recovered in this pass. | Inspect primary MLC table and representative entries for all collision groups; distinguish MLCTS from MLCTS2 before adjudication. |
 
-Registry now contains **67 nonblank source records / 118 claims**. No MLCTS/vendor correction, runtime mapping, IPA gold annotation or Ukrainian candidate promotion was made. No audio used.
+Registry now contains **66 nonblank source records / 118 claims**. No MLCTS/vendor correction, runtime mapping, IPA gold annotation or Ukrainian candidate promotion was made. No audio used.
 
 ## Registry count reconciliation — 2026-11-13
 
-A fresh parse of the current CSV registries, counting only nonblank source rows and requiring unique IDs, finds **66 source records and 117 claim records**. The previous continuation note's 65-source count was one too low; the current source registry contains 66 nonblank IDs. Three pre-existing blank separator lines in `sources.csv` are ignored for this count. All 117 claim IDs are unique and every claim's `source_id` resolves to a registered source. The two new provenance records and claims are included in these totals.
+A fresh parse of the current CSV registries, counting only nonblank source rows and requiring unique IDs, finds **66 source records and 117 claim records**. The previous continuation note's 65-source count was one too low; the current source registry contains 66 nonblank IDs. Two pre-existing blank CSV records in `sources.csv` are ignored for this count. All 117 claim IDs are unique and every claim's `source_id` resolves to a registered source. The two new provenance records and claims are included in these totals.
 
 A regression test now protects the distinction between the Htun secondary provenance trail and the LOC ALA-LC table. Test/CI status for the final code-bearing commit is pending verification; no local checkout was available in this connector session.
 
@@ -1454,4 +1454,10 @@ A regression test now protects the distinction between the Htun secondary proven
 |---|---|---|---|
 | BURMESE-MLC-DICTIONARY-BIBLIOGRAPHY-003 | PARTIAL — BIBLIOGRAPHICALLY CORROBORATED | Unicode Consortium's Other Script Sources bibliography lists the 1993 Myanmar-English Dictionary as compiled and edited by MLC, alongside a 1996 Myanmar orthography treatise. | This is bibliographic confirmation only. Obtain and inspect the actual MLC dictionary entries and identify the transcription field before using any values. |
 
-Registry totals: **67 nonblank source records / 118 claims**. A regression test protects the source record and the limitation that this bibliography does not expose entry text or transcription values.
+Registry totals: **66 nonblank source records / 118 claims**. A regression test protects the source record and the limitation that this bibliography does not expose entry text or transcription values.
+
+## Final verification boundary for this continuation — 2026-11-13
+
+- Registry parse on the current branch: **66 nonblank source records / 118 claim records**; all IDs unique, all row widths conform to their CSV headers, and every claim source reference resolves. Two blank CSV records are ignored by the count.
+- The provenance regression test was added to `tests/test_romanization_rime_inventory.py`. The GitHub connector exposed no workflow runs and no commit status checks for final code/documentation head `caf66d5a6b58522ca33715654c38b075c1d1fc21`; therefore this latest test change is **NOT YET CI-VERIFIED**. Earlier successful CI on prior code/data head `46b7da6afd7ecc94e4dcac87c7f759132c74bc6b` does not cover this added test.
+- No local checkout or local Python test execution was available. Do not claim the new test passed.
