@@ -144,7 +144,7 @@ def test_lexical_collision_audit_keeps_secondary_evidence_separate_from_primary_
     assert by_mlcts["um"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
     assert by_mlcts["um"]["observed_ipa"] == "/kòʊɴ/"
     assert by_mlcts["um"]["observed_mlcts"] == "kum"
-    assert sum(row["evidence_status"] == "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE" for row in audit) == 15
+    assert sum(row["evidence_status"] == "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE" for row in audit) == 12
     assert sum(row["evidence_status"] == "SECONDARY_SOURCE_DISTINCTION" for row in audit) == 2
     assert sum(row["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY" for row in audit) == 1
     assert not any("PRIMARY_CONFIRMED" in row["evidence_status"] for row in audit)
@@ -451,6 +451,9 @@ def test_new_wiktionary_lexical_claims_are_linked_to_registered_snapshot():
         claims = {row["claim_id"]: row for row in csv.DictReader(stream)}
     for claim_id in (
         "CLM-WIKTIONARY-AUK-WORD-LEVEL-EXAMPLES-001",
+        "CLM-WIKTIONARY-A-WORD-LEVEL-EXAMPLES-001",
+        "CLM-WIKTIONARY-A-COLON-WORD-LEVEL-EXAMPLES-001",
+        "CLM-WIKTIONARY-AU-WORD-LEVEL-EXAMPLES-001",
         "CLM-WIKTIONARY-AUNG-COLON-WORD-LEVEL-EXAMPLES-001",
         "CLM-WIKTIONARY-ANY-WORD-LEVEL-EXAMPLES-001",
         "CLM-WIKTIONARY-ANY-COLON-WORD-LEVEL-EXAMPLES-001",
