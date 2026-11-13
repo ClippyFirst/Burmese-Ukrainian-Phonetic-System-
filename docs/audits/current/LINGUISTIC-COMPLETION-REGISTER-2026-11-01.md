@@ -564,7 +564,7 @@ No MLCTS output was promoted to IPA or pronunciation evidence. Independent exper
 | MYA-GOOGLE-FST-001 | DONE_VERIFIED (source/license and raw diagnostic) | Pinned grammar commit a90601024f07ab7e96c911243324e0adeb16da96 and root LICENSE declare Apache-2.0; raw probe run 43084508359 returned m j àɴ for မြန်, no gold. | Optional comparator only; do not replace deterministic engine or treat output as gold. |
 | MYA-CRF-DIAG-001 | PARTIAL / DIAGNOSTIC ONLY | Exact branch run [43325991496](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43325991496): 84/100 source-concordant; YA 10/14, RA 17/20, WA 13/15, HA 7/8; zero gold and accuracy null; exact မြန် absent. | Train/test overlap unknown; labels are from myG2P CC BY-NC-SA 4.0. |
 | MYA-TONE-001 | PARTIAL / COMPETING ANALYSES | Green and LREC 2020 use four-tone descriptions; Duan & Zhu (2025) propose eight tones across modal/lower-breathy registers. | Full empirical review, profile scope and expert-approved convention. |
-| MYA-IPA-GOLD-001 | BLOCKED | No independent expert-adjudicated Burmese IPA gold for these medial/coda cells. | Two independent qualified annotators, third adjudicator, lawful audio, versioned convention and frozen held-out splits. |
+| MYA-IPA-GOLD-001 | BLOCKED | No independent expert-adjudicated Burmese IPA gold for these medial/coda cells. | Two independent qualified reviewers, third adjudicator, source-located written dictionary/grammar examples, documented broad-vs-narrow IPA convention and frozen held-out text fixtures. No audio is required or in scope. |
 | MYA-PR129-RECONCILIATION-001 | LEFT OPEN / NOT MERGED | Draft PR #129 is 53 commits ahead / 17 behind current main and non-mergeable; its research findings were reused, broad hybrid implementation left untouched. | Rebase/reconcile only as a separate, reviewed integration task. |
 
 The project remains PARTIAL PROTOTYPE; empirical accuracy remains null.
@@ -577,11 +577,11 @@ The project remains PARTIAL PROTOTYPE; empirical accuracy remains null.
 | MYA-IPA-NASALIZATION-SCHEMA-001 | DEFERRED | The typed IPA schema preserves literal IPA, kind, boundaries, tone, length and phonation but has no dedicated nasalization property. Literal IPA can preserve the diacritic. | Decide after expert-approved phonemic /N/ vs surface nasalization convention; only then consider a backward-compatible optional schema field. No schema change in this research pass. |
 
 
-## UCSY-SC1 rights-gated audio lead — 2026-11-13
+## Legacy non-text corpus metadata — excluded from active scope (2026-11-13)
 
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
-| MYA-UCSY-SC1-AUDIO-001 | BLOCKED / RIGHTS-GATED | Mon et al. (2019) describe 42 h 39 min / 307 speakers and 4 medials; publisher author-details page lists CC BY-SA 4.0, but PDF footer says “All rights reserved”; no separate corpus audio license or public download permission verified. | Confirm article-level license with publisher, obtain corpus access and explicit audio/data reuse permission; then create speaker-disjoint, independently adjudicated IPA annotations. |
+| MYA-UCSY-SC1-AUDIO-001 | DEFERRED / OUT OF SCOPE | Mon et al. (2019) rights conflict and corpus metadata remain in the historical audit trail only. | No acquisition, processing, annotation, or audio-derived IPA labels. This is not a blocker for text-only research. |
 ## Burmese Wiktionary IPA source review — 2026-11-04
 
 | ID | Status | Evidence | Acceptance boundary |
@@ -1173,3 +1173,16 @@ The project remains PARTIAL PROTOTYPE; empirical accuracy remains null.
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | MYA-ROMANIZATION-SEPARATION-001 | DONE_VERIFIED (runtime contract) | Mya2Rom 0.4.4 defines MLCTS as orthographic and MLCTS2 as a more phonetic romanization; the browser adapter explicitly calls mya2rom(..., "mlcts", ...). | Preserve the Latin→Ukrainian crosswalk as orthographic transliteration. Do not treat MLCTS2 or the crosswalk as IPA/G2P gold. |
+
+
+## Text-only source and historical-phonology updates — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| MYA-MYX-MYANGLISH-001 | PARTIAL / CANDIDATE | 2,121 Myanglish text pairs; single-author-style non-standard romanization; viewer/README schema mismatch (3 vs 2 fields); CC BY-SA 4.0 declared. | Pin revision/hash, reconcile schema, inspect rows and obligations; not IPA gold. |
+| MYA-MYX-ORTHO-001 | PARTIAL / CANDIDATE | 4,800 orthographic correction rows; "phonetic" is an error category, not IPA; future medial pairs are roadmap only; CC BY-SA 4.0 declared. | Review row quality and verify actual medial examples before fixtures; not G2P gold. |
+| MYA-OKELL-TEXT-001 | BLOCKED / RIGHTS | 8.8 MB Unicode text corpus; ELG lists CC BY 4.0 while Zenodo Rights/License is blank. | Direct rights clarification or corrected repository metadata before ingestion/redistribution. |
+| MYA-STEDT-HISTORICAL-MEDIAL-001 | PARTIAL / SOURCE-SPECIFIC | Written Burmese and Rangoon analyses distinguish different source profiles and historical notations; Nishi/Matisoff clarify orthographic periodization and *r > y. | Reconcile Nishi 1976 full text and historical inscriptional spellings with modern Yangon sources; no runtime mapping. |
+| MYA-NISHI98-VOICING-001 | PARTIAL / CONTEXTUAL | Two text-documented voicing-sandhi patterns, with optionality, exceptions and dialect variation. | Select a precise spoken profile and build source-located written examples; no global runtime rule. |
+
+Independent text-adjudicated IPA gold remains 0; empirical accuracy remains null. Audio-related records are historical exclusions, not active work items.
