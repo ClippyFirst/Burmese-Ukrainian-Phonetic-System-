@@ -422,6 +422,6 @@ The project owner confirms all required permissions for text-only research use a
 
 The Myanglish raw CSV is 2-column (myanmar,myanglish), while its README metadata/viewer exposes an additional official_standard field; that field remains unverified. The README itself describes a non-standardized, predominantly single-author romanization style, not IPA.
 
-The myX orthography corpus is a work-in-progress text correction dataset, not an IPA corpus. Manual inspection found a target_words mismatch in hc ara_phonetic.csv and multi-substitution examples in phet_bet_phonetic.csv. The resource is quarantined for row-level quality review and deduplication, not blocked by permission.
+The myX orthography corpus is a work-in-progress text correction dataset, not an IPA corpus. Manual inspection found a target_words mismatch in hcara_phonetic.csv and multi-substitution examples in phet_bet_phonetic.csv. The resource is quarantined for row-level quality review and deduplication, not blocked by permission.
 
 The 8.8 MB John Okell text corpus and SEAlang text/dictionary entries were not imported because this runtime could not retrieve the corpus bytes or inspect the SEAlang entry schema. These are tooling/access and schema gates, not rights gates. No audio was used or accessed. Independent expert-adjudicated IPA gold remains 0 and empirical IPA accuracy remains null.
