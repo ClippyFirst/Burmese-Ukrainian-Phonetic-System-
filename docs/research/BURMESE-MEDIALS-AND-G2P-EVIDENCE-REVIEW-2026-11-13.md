@@ -602,3 +602,9 @@ A new National Diet Library of Japan catalogue record identifies *မြန်�
 Allott's inspected 1985 chapter supplies a useful distinction: it says the MLC spelling book was first drafted in 1968, fundamentally revised, and finally published in 1978; in the following paragraph it separately describes the Concise Burmese Dictionary as five parts, from late 1978 to 1980, with official spelling and pronunciations for included entries (ANU PDF lines 10082–10113). This is consistent with two separate publications, but exact title identity and relationship must be verified from title pages, not inferred from the catalogue translation.
 
 The new catalogue record and claim are bibliographic/documentary only. No book contents, MLCTS table, IPA values, or dictionary entry transcription have been inspected. This is an access lead, not a linguistic rule or a cleared primary-source transcription source.
+
+## 25. Retrieval routes for the 1978 MLC spelling book
+
+CiNii Books record BA69415754 provides the fuller extent as 28, 379 pages, 17 cm, and lists holdings at Osaka University and Tokyo University of Foreign Studies (two locations). Google Books record _V1LAAAAMAAJ identifies the original as held by the University of Michigan and a 379-page scan digitized in 2007. The surfaced Google Books record exposes snippet-view metadata; it does not establish that the entire scan can be read or downloaded.
+
+These records make the 1978 spelling book a concrete retrieval target. They do not provide inspected primary text. The next step is to request a copy through a holding library or inspect any accessible Google Books pages, then record title-page identity and page-located contents. No pronunciation, MLCTS or IPA field is asserted.
