@@ -415,3 +415,18 @@ def test_mlc_1986_orthography_catalog_record_is_only_an_access_lead():
     assert claim["source_id"] == "MLC_1986_ORTHOGRAPHY_NLMNPT_189"
     assert "no book pages were inspected" in claim["claim"]
     assert "not the book’s structural rules" in claim["claim"]
+
+def test_unicode_2010_spelling_dictionary_scan_is_partial_and_not_mlcts_ipa():
+    with (ROOT / "data/burmese/sources.csv").open(encoding="utf-8-sig", newline="") as stream:
+        sources = {row["source_id"]: row for row in csv.DictReader(stream)}
+    with (ROOT / "data/burmese/source_claims.csv").open(
+        encoding="utf-8-sig", newline=""
+    ) as stream:
+        claims = {row["claim_id"]: row for row in csv.DictReader(stream)}
+
+    assert "UNICODE_L2_2010_MLC_SPELLING_1986" in sources
+    claim = claims["CLM-UNICODE-L2-2010-MLC-SPELLING-SCAN-001"]
+    assert claim["source_id"] == "UNICODE_L2_2010_MLC_SPELLING_1986"
+    assert "page 1" in claim["claim"]
+    assert "does not show an MLCTS or IPA rime table" in claim["claim"]
+    assert "identity of this title" in claim["claim"]
