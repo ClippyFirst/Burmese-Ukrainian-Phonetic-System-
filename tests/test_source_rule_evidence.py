@@ -427,3 +427,18 @@ def test_source_and_claim_registries_have_unique_ids_and_resolvable_sources():
         assert claim["evidence_type"].strip()
         assert claim["scope"].strip()
         assert claim["status"].strip()
+
+def test_mlc_1978_spelling_book_catalog_is_distinguished_from_concise_dictionary():
+    sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    source = sources["NDL_MLC_SPELLING_1978_CATALOG"]
+    claim = claims["CLM-MLC-SPELLING-BOOK-1978-CATALOG-001"]
+
+    assert source["year"] == "1978"
+    assert source["type"] == "library_catalog"
+    assert "no pages" in source["scope"]
+    assert claim["source_id"] == source["source_id"]
+    assert claim["status"] == "DOCUMENTARY"
+    assert "two distinct MLC publications" in claim["claim"]
+    assert "require title-page verification" in claim["claim"]
+    assert "does not establish pronunciation notation" in claim["claim"]
