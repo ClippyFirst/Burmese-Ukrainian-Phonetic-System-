@@ -2132,3 +2132,10 @@ The MOW candidate lemmas were checked against already-registered Wiktionary text
 - `ui`: `ချို` / `ဆို` / `တို` give one-side examples for `ို`; there are no MOW suffix candidates for `ို်`.
 
 These are secondary lexical transcriptions, not primary MLC adjudication. In particular, the `ui` status is one-side-only, not a claim that the two source units are equivalent or distinct. Updated status distribution: 19 unadjudicated, 2 secondary equivalence, 1 conflict, 1 distinction, 1 one-side-only, 1 special non-rime. Added a parity test requiring the MLCTS2 crosswalk's lexical status to equal the lexical audit's status. CI run **43509339740 SUCCESS**: 251 Python + 66 subtests, 20 Node, 58 Playwright, build and generated-data freshness passed. Registry: **80 sources / 136 claims**.
+
+## Additional lexical evidence for `any.` — 2026-11-13
+
+- Checked text-only Wiktionary entries for `စဉ့်` (MLCTS `cany.`, IPA `/sɪ̰ɴ/`) and `ကြည့်` (MLCTS `krany.`, IPA `/t͡ɕḭ/`). These attest the two orthographic endings ဉ့် and ည့် respectively. `စဉ့်` is not a MOW candidate; `ကြည့်` is.
+- Added claim `CLM-WIKTIONARY-ANY-DOT-WORD-LEVEL-EXAMPLES-001`, updated the 25-group lexical audit and synchronized the MLCTS2 crosswalk status. Added regression assertions for both observed forms and the evidence boundary.
+- Lexical audit now: **18 unadjudicated / 2 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 137 claims**.
+- This is secondary lexical attestation, not a minimal pair or primary MLC adjudication. No runtime, IPA gold or Ukrainian output changed. Exact-head CI is pending.
