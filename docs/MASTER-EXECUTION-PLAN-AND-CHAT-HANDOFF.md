@@ -2116,3 +2116,9 @@ These counts are exact Unicode suffix matches in MOW v0.1.3, not syllable parses
 ## Source registry row-count correction — 2026-11-13
 
 Append a correction note: `sources.csv` had three internal blank separator lines. Removed them and added `test_source_registry_has_no_blank_rows_or_duplicate_source_ids`; the actual current registry is 80 unique nonblank source records and 133 claims.
+
+## Source registry hygiene verification — 2026-11-13
+
+- Removed three internal blank separator rows from `data/burmese/sources.csv` and added `test_source_registry_has_no_blank_rows_or_duplicate_source_ids`.
+- Current registry is **80 unique nonblank sources / 133 claims**. Exact code commit `62f59f177b15e2df54ace464056df7932058bffb` passed required CI run **43508294905**: 249 Python + 66 subtests, 20 Node, 58 Playwright, build and generated-data freshness. `npm install` still reports one high-severity vulnerability.
+- Prior 82/132 and 83/133 row counts were inflated by three blank CSV lines; this correction changes no source content or claim content.
