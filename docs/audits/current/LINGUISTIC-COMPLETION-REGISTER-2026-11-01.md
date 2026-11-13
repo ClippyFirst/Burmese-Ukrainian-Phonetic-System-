@@ -1649,3 +1649,11 @@ Registry totals after registering the catalog lead: **77 sources / 130 claims**,
 - Latest required CI on code/test head `8e8448b70549062636c3f1c539ee1010f93a86cb`, run **43501650235 SUCCESS**: **241 Python + 66 subtests**, **20 Node**, **58 Playwright**, Chromium, production build and generated-data freshness all passed. Optional diagnostics **43501650409 SUCCESS** (raw-output + CRF; not an accuracy score).
 - Source registries: **78 sources / 131 claims**, all IDs unique, valid row widths, all source references resolve.
 - Remaining blockers: obtain and inspect complete MLC orthography/1993 dictionary contents and identify the exact transcription field; adjudicate the 25 collision groups from primary lexical evidence; build independent IPA gold and validate tone/prosody; resolve one high-severity npm vulnerability. Status remains **PARTIAL PROTOTYPE / NOT RELEASE-READY**.
+
+## MLC medial structural parser coverage — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-MLC-MEDIAL-STRUCTURAL-PARSER-016 | DONE_VERIFIED — ORTHOGRAPHIC_ONLY | `tests/test_parser.py::test_mlc_medial_inventory_is_parsed_structurally_without_phonetic_guessing` covers all 11 MLC medial forms (4 basic + 5 pairs + 2 triples), preserving ordered medial IDs in one syllable and asserting no IPA/phonology assignment. Exact-head CI 43502733106 SUCCESS: 242 Python + 66 subtests, 20 Node, 58 Playwright; build and generated-data freshness pass. | Structural parser regression only. All medial phonological rules remain withheld pending source-specific onset × rime × prosody evidence and adjudicated IPA gold. |
+
+Project status remains **PARTIAL PROTOTYPE / NOT RELEASE-READY**: IPA gold is not ready and one high-severity npm vulnerability remains.
