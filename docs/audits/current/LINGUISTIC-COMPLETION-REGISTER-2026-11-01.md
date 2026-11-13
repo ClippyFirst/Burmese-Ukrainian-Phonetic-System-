@@ -1744,3 +1744,11 @@ The earlier 82/132 and 83/133 counts in preceding catalogue-lead entries were in
 - `ui`: `ချို` (`hkyui`, `/d͡ʑò/`), `ဆို` (`hcui`, `/sʰò/`) and `တို` (`tui`, `/tò/`) attest the `ို` side only. The paired `ို်` side has no MOW suffix matches, so this is not a comparison.
 
 Updated lexical audit distribution across 25 groups: 19 unadjudicated; 2 secondary-system equivalence; 1 secondary-source conflict (`any`); 1 secondary-source distinction (`any:`); 1 secondary one-side-only (`ui`); 1 special non-rime (`u.`). MLCTS2 crosswalk status is synchronized to the lexical audit and tested. Registry now contains **80 unique sources / 136 unique claims**; no new source record was required.
+
+## Additional `any.` lexical examples — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-WIKTIONARY-ANY-DOT-LEXICAL-023 | PARTIAL — SECONDARY_WORD_LEVEL_EXAMPLES | Added `စဉ့်` (`cany.`, `/sɪ̰ɴ/`) and `ကြည့်` (`krany.`, `/t͡ɕḭ/`) as source-linked word-level examples for ဉ့် and ည့်. Added claim `CLM-WIKTIONARY-ANY-DOT-WORD-LEVEL-EXAMPLES-001`; crosswalk status parity and regression assertions updated. Registry: 80 sources / 137 claims. | Not a minimal pair or primary MLC specification. No IPA gold, runtime or Ukrainian mapping promotion. CI pending. |
+
+Lexical audit distribution now: **18 unadjudicated / 2 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. `စဉ့်` is not in MOW; `ကြည့်` is a MOW-listed candidate. The MOW coverage table is unchanged.
