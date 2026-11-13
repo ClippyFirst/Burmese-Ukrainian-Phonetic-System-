@@ -1571,3 +1571,15 @@ The first CI attempt after registering the MOW orthographic coverage claim (work
 | BURMESE-SEALANG-ENTRY-ACCESS-014 | BLOCKED — SERVICE RETRIEVAL | SHACHI/SEAlang metadata and the 2008 interface description establish an MLC 1993 dictionary derivative, IPA search/display capability and project-level permission; direct Burmese dictionary/API requests timed out or returned 502/400-timeout, and no entry text was retrieved. | Retrieve actual entries for selected MOW lemma leads with headword, dictionary transcription and IPA fields; record exact source locators and adjudicate against the MLC dictionary/primary key. Interface screenshots and metadata alone do not satisfy this. |
 
 Exact code/test head **c76fab9e4e4a910170a26dd8ed89a95790c7973d**: CI runs 43499475187 and 43499485256 SUCCESS — 236 Python + 66 subtests, 20 Node, 58 Playwright; build and generated-data freshness PASS. IPA gold remains NOT_READY_NO_ADJUDICATED_GOLD. npm install still reports one high-severity vulnerability. Registry: 73 sources / 126 claims.
+
+## MOW reproducibility and schema-corrected exact-head CI — 2026-11-13
+
+- The MOW-derived claim status was changed from unsupported `DATASET_DERIVED` to schema-supported `ANALYSIS_DEPENDENT`; the scope remains the same orthographic string-match analysis.
+- Required CI on code/test head `c76fab9e4e4a910170a26dd8ed89a95790c7973d`, workflow **43499485256**, completed **SUCCESS**:
+  - Python: **236 passed + 66 subtests passed** (includes MOW generator `--check`, dataset/license guard, crosswalks and schema validation).
+  - Node: **20 passed, 0 failed**.
+  - Playwright: **58 passed**; Chromium install passed.
+  - Production build and generated web-data freshness: PASS.
+  - `npm install`: **1 high-severity vulnerability** remains.
+- Optional diagnostics workflow **43499220654**: both raw-output and CRF-baseline jobs passed. They remain raw diagnostic artifacts, not an accuracy score or evidence for Ukrainian output.
+- The generated MOW pair/coverage files are reproducible from the vendored CC BY 4.0 TSV using the stdlib script; test checks committed artifacts against regenerated output.
