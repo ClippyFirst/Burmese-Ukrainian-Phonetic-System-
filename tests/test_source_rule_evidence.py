@@ -386,3 +386,23 @@ def test_hill_2019_burmese_chapter_keeps_historical_medials_and_tone_scope_separ
     assert "projects Written Burmese tone marking backwards" in tone["claim"]
     assert "unstable" in caution["claim"]
 
+
+def test_okell_1969_edition_and_nishi_1977_archival_access_are_not_mistaken_for_full_text():
+    sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    okell = sources["OKELL1969_REFERENCE_GRAMMAR"]
+    nishi = sources["NISHI1976_MEDIALS"]
+    assert "Two volumes" in okell["scope"]
+    assert "National Library of Myanmar" in okell["scope"]
+    assert "no open full text retrieved" in okell["scope"]
+    assert "Box 8 Folder 148" in nishi["scope"]
+    assert "not an online scan" in nishi["scope"]
+
+    edition = claims["CLM-OKELL1969-EDITION-STRUCTURE-001"]
+    archive = claims["CLM-NISHI1977-ARCHIVAL-ACCESS-001"]
+    assert edition["source_id"] == "OKELL1969_REFERENCE_GRAMMAR"
+    assert archive["source_id"] == "NISHI1976_MEDIALS"
+    assert edition["status"] == archive["status"] == "DOCUMENTARY"
+    assert "text remains inaccessible" in edition["claim"]
+    assert "not online full-text access" in archive["claim"]
+
