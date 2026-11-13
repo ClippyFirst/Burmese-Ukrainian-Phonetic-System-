@@ -1975,3 +1975,15 @@ The first CI attempt after registering the MOW orthographic coverage claim (work
 - Registry verified: **73 sources / 126 claims**, unique IDs, all claim source references valid. All 94 Ukrainian candidates remain `PROPOSED / EVIDENCE_LIMITED`; no runtime phonology or output mapping changed.
 - SEAlang remains a potential authorized route to MLC 1993 dictionary entries (metadata says it is based on that dictionary and the interface supports IPA queries/display), but direct API/page retrieval failed with timeouts/502 and Firecrawl retrieval was unavailable due exhausted connected-service credits. No dictionary entry text or internal record schema was inspected. Next acceptance gate: retrieve actual entries for the MOW lemma leads and establish the exact transcription field before any phonological promotion.
 - Final code/test branch head at verification: `c76fab9e4e4a910170a26dd8ed89a95790c7973d`; PR #147 remains open, draft and mergeable; branch was 386 commits ahead of main and 0 behind. No merge, release, audio use, or runtime behavior change.
+
+## MOW reproducibility and schema-corrected exact-head CI — 2026-11-13
+
+- The MOW-derived claim status was changed from unsupported `DATASET_DERIVED` to schema-supported `ANALYSIS_DEPENDENT`; the scope remains the same orthographic string-match analysis.
+- Required CI on code/test head `c76fab9e4e4a910170a26dd8ed89a95790c7973d`, workflow **43499485256**, completed **SUCCESS**:
+  - Python: **236 passed + 66 subtests passed** (includes MOW generator `--check`, dataset/license guard, crosswalks and schema validation).
+  - Node: **20 passed, 0 failed**.
+  - Playwright: **58 passed**; Chromium install passed.
+  - Production build and generated web-data freshness: PASS.
+  - `npm install`: **1 high-severity vulnerability** remains.
+- Optional diagnostics workflow **43499220654**: both raw-output and CRF-baseline jobs passed. They remain raw diagnostic artifacts, not an accuracy score or evidence for Ukrainian output.
+- The generated MOW pair/coverage files are reproducible from the vendored CC BY 4.0 TSV using the stdlib script; test checks committed artifacts against regenerated output.
