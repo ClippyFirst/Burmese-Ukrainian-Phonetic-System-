@@ -221,3 +221,29 @@ def test_myx_corpus_schema_and_quality_limits_are_explicit():
     assert quality_claim["status"] == "DOCUMENTARY"
     assert "target_words" in quality_claim["claim"]
     assert "not an IPA corpus" in quality_claim["claim"]
+
+def test_nishi_old_burmese_historical_claims_have_source_and_scope():
+    sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    rules = {row["rule_id"]: row for row in _rows(DATA / "phonological_rules.csv")}
+    source = sources["NISHI1998_OLDBURMESE"]
+    assert "pp.659-684" in source["scope"]
+    assert "Old Burmese" in source["title"]
+
+    h_claim = claims["CLM-NISHI-OWB-MEDIAL-CLASS-001"]
+    l_claim = claims["CLM-NISHI-OWB-L-MEDIAL-001"]
+    ry_claim = claims["CLM-NISHI-MB-RY-MERGER-001"]
+    dialect_claim = claims["CLM-NISHI-OB-CLUSTER-DIALECT-001"]
+    assert all(claim["source_id"] == "NISHI1998_OLDBURMESE" for claim in (h_claim, l_claim, ry_claim, dialect_claim))
+    assert h_claim["status"] == "DOCUMENTARY"
+    assert l_claim["status"] == ry_claim["status"] == "ANALYSIS_DEPENDENT"
+    assert dialect_claim["status"] == "DIALECT_DEPENDENT"
+    assert "not a direct classification of modern Myanmar Unicode signs" in h_claim["claim"]
+    assert "merged into -y-" in ry_claim["claim"]
+    assert "standard-variety interference and hypercorrection" in dialect_claim["claim"]
+
+    rule = rules["NISHI_OB_CLUSTER_DIALECT_REFLEXES"]
+    assert rule["source_id"] == source["source_id"]
+    assert rule["claim_id"] == dialect_claim["claim_id"]
+    assert rule["status"] == "dialect_dependent"
+    assert "no modern runtime mapping" in rule["scope"]
