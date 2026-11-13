@@ -168,11 +168,11 @@ Preserve `Burmese orthography → structural/medial analysis → Burmese phonolo
 
 ## Audio-source review update — 2026-11-01
 
-OpenSLR 80 (SLR80) is now the leading documented Burmese audio candidate: https://openslr.org/80. The primary paper (Oo et al. 2020, https://aclanthology.org/2020.lrec-1.777.pdf, corpus section pp. 6333–6334) reports 2,528 utterances from 20 female native Burmese speakers aged 25–35, recorded in Yangon at 48 kHz mono, with hand-curated word-segmented transcripts and native-speaker audio/transcript QC. The resource is CC BY-SA 4.0. Only female recordings were released at the time of the paper.
+Historical audit note only: SLR80 is excluded from current text-only scope and is not an active source candidate.
 
 This is **not IPA gold**. The line index contains orthographic transcripts; the paper's FST G2P is a pronunciation-generation/lexicon-bootstrapping tool, not independent adjudicated truth. The recording location does not by itself establish every speaker's dialect. No word-level acoustic timestamps are supplied, so any token selection requires manual alignment verification. The female-only sample cannot support gender-balanced generalization.
 
-Use SLR80 for a separately labelled contextual phonetic pilot after specialist profile review. For lexical citation-form G2P gold, arrange controlled elicitation from qualified target-variety speakers. Keep contextual and citation-form corpora/splits separate.
+Do not acquire, process, annotate or use SLR80 recordings in this work.
 
 Status remains `MYA-GOLD-001 = BLOCKED`: no annotations, annotators or adjudications have been created. Independent gold remains 0 and accuracy remains null.
 
@@ -417,7 +417,7 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BURMESE-MYG2P-SOURCE-001 | DONE_VERIFIED (source pinned and provenance/rights documented; no import) | Upstream `ye-kyaw-thu/myG2P` revision `54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225`; Version 2.0 file `ver2/myg2p.ver2.0.txt`, 2,329,808 bytes, Git blob SHA `0b2735f9a6f7fe28ae94c4baaf323d1db3015c3b`, five tab-separated fields including IPA; CC BY-NC-SA 4.0. Registered as `MYG2P2026`. | External diagnostic/comparator only. Non-commercial/share-alike terms, per-entry provenance, dialect and IPA convention must be respected. Existing test-only probe does not become gold or production approval. |
-| BURMESE-OPENSLR80-AUDIO-001 | PARTIAL (audio source registered; pilot not performed) | OpenSLR SLR80 provider record lists CC BY-SA 4.0; manually quality-checked Burmese volunteer sentence audio and orthographic transcripts; visible female subset includes 541 KB index and 948 MB WAV archive. Registered as `OPENSLR80`. | No IPA labels; dialect/profile not sufficiently established. Any pilot requires specialist screening, exact provider locators, blind double IPA annotation and independent adjudication; assess share-alike before publishing derived labels. |
+| BURMESE-OPENSLR80-AUDIO-001 | DEFERRED / OUT OF SCOPE | Historical source metadata only; not part of current text-only work. | No recording acquisition, processing, annotation or audio-derived labels. Not a blocker for text-based research. |
 
 **Evidence boundary:** source records and provenance tests are complete; no external dictionary or audio was imported. Independent adjudicated Burmese IPA gold remains 0; accuracy remains null.
 
@@ -581,7 +581,7 @@ The project remains PARTIAL PROTOTYPE; empirical accuracy remains null.
 
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
-| MYA-UCSY-SC1-AUDIO-001 | DEFERRED / OUT OF SCOPE | Mon et al. (2019) rights conflict and corpus metadata remain in the historical audit trail only. | No acquisition, processing, annotation, or audio-derived IPA labels. This is not a blocker for text-only research. |
+| MYA-UCSY-SC1-AUDIO-001 | DEFERRED / OUT OF SCOPE | Rights conflict and corpus metadata retained for historical audit only. | No acquisition, processing, annotation or audio-derived IPA labels; not a blocker for text-only research. |
 ## Burmese Wiktionary IPA source review — 2026-11-04
 
 | ID | Status | Evidence | Acceptance boundary |
@@ -752,11 +752,11 @@ Preserve `Burmese orthography → structural/medial analysis → Burmese phonolo
 
 ## Audio-source review update — 2026-11-01
 
-OpenSLR 80 (SLR80) is now the leading documented Burmese audio candidate: https://openslr.org/80. The primary paper (Oo et al. 2020, https://aclanthology.org/2020.lrec-1.777.pdf, corpus section pp. 6333–6334) reports 2,528 utterances from 20 female native Burmese speakers aged 25–35, recorded in Yangon at 48 kHz mono, with hand-curated word-segmented transcripts and native-speaker audio/transcript QC. The resource is CC BY-SA 4.0. Only female recordings were released at the time of the paper.
+Historical audit note only: SLR80 is excluded from current text-only scope and is not an active source candidate.
 
 This is **not IPA gold**. The line index contains orthographic transcripts; the paper's FST G2P is a pronunciation-generation/lexicon-bootstrapping tool, not independent adjudicated truth. The recording location does not by itself establish every speaker's dialect. No word-level acoustic timestamps are supplied, so any token selection requires manual alignment verification. The female-only sample cannot support gender-balanced generalization.
 
-Use SLR80 for a separately labelled contextual phonetic pilot after specialist profile review. For lexical citation-form G2P gold, arrange controlled elicitation from qualified target-variety speakers. Keep contextual and citation-form corpora/splits separate.
+Do not acquire, process, annotate or use SLR80 recordings in this work.
 
 Status remains `MYA-GOLD-001 = BLOCKED`: no annotations, annotators or adjudications have been created. Independent gold remains 0 and accuracy remains null.
 
@@ -1001,7 +1001,7 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BURMESE-MYG2P-SOURCE-001 | DONE_VERIFIED (source pinned and provenance/rights documented; no import) | Upstream `ye-kyaw-thu/myG2P` revision `54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225`; Version 2.0 file `ver2/myg2p.ver2.0.txt`, 2,329,808 bytes, Git blob SHA `0b2735f9a6f7fe28ae94c4baaf323d1db3015c3b`, five tab-separated fields including IPA; CC BY-NC-SA 4.0. Registered as `MYG2P2026`. | External diagnostic/comparator only. Non-commercial/share-alike terms, per-entry provenance, dialect and IPA convention must be respected. Existing test-only probe does not become gold or production approval. |
-| BURMESE-OPENSLR80-AUDIO-001 | PARTIAL (audio source registered; pilot not performed) | OpenSLR SLR80 provider record lists CC BY-SA 4.0; manually quality-checked Burmese volunteer sentence audio and orthographic transcripts; visible female subset includes 541 KB index and 948 MB WAV archive. Registered as `OPENSLR80`. | No IPA labels; dialect/profile not sufficiently established. Any pilot requires specialist screening, exact provider locators, blind double IPA annotation and independent adjudication; assess share-alike before publishing derived labels. |
+| BURMESE-OPENSLR80-AUDIO-001 | DEFERRED / OUT OF SCOPE | Historical source metadata only; not part of current text-only work. | No recording acquisition, processing, annotation or audio-derived labels. Not a blocker for text-based research. |
 
 **Evidence boundary:** source records and provenance tests are complete; no external dictionary or audio was imported. Independent adjudicated Burmese IPA gold remains 0; accuracy remains null.
 
@@ -1148,7 +1148,7 @@ No MLCTS output was promoted to IPA or pronunciation evidence. Independent exper
 | MYA-GOOGLE-FST-001 | DONE_VERIFIED (source/license and raw diagnostic) | Pinned grammar commit a90601024f07ab7e96c911243324e0adeb16da96 and root LICENSE declare Apache-2.0; raw probe run 43084508359 returned m j àɴ for မြန်, no gold. | Optional comparator only; do not replace deterministic engine or treat output as gold. |
 | MYA-CRF-DIAG-001 | PARTIAL / DIAGNOSTIC ONLY | Exact branch run [43325991496](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43325991496): 84/100 source-concordant; YA 10/14, RA 17/20, WA 13/15, HA 7/8; zero gold and accuracy null; exact မြန် absent. | Train/test overlap unknown; labels are from myG2P CC BY-NC-SA 4.0. |
 | MYA-TONE-001 | PARTIAL / COMPETING ANALYSES | Green and LREC 2020 use four-tone descriptions; Duan & Zhu (2025) propose eight tones across modal/lower-breathy registers. | Full empirical review, profile scope and expert-approved convention. |
-| MYA-IPA-GOLD-001 | BLOCKED | No independent expert-adjudicated Burmese IPA gold for these medial/coda cells. | Two independent qualified annotators, third adjudicator, lawful audio, versioned convention and frozen held-out splits. |
+| MYA-IPA-GOLD-001 | BLOCKED | No independent expert-adjudicated Burmese IPA gold for these medial/coda cells. | Two independent qualified reviewers, third adjudicator, source-located written dictionary/grammar examples, documented broad-vs-narrow IPA convention and frozen held-out text fixtures. No audio is required or in scope. |
 | MYA-PR129-RECONCILIATION-001 | LEFT OPEN / NOT MERGED | Draft PR #129 is 53 commits ahead / 17 behind current main and non-mergeable; its research findings were reused, broad hybrid implementation left untouched. | Rebase/reconcile only as a separate, reviewed integration task. |
 
 The project remains PARTIAL PROTOTYPE; empirical accuracy remains null.
@@ -1161,11 +1161,11 @@ The project remains PARTIAL PROTOTYPE; empirical accuracy remains null.
 | MYA-IPA-NASALIZATION-SCHEMA-001 | DEFERRED | The typed IPA schema preserves literal IPA, kind, boundaries, tone, length and phonation but has no dedicated nasalization property. Literal IPA can preserve the diacritic. | Decide after expert-approved phonemic /N/ vs surface nasalization convention; only then consider a backward-compatible optional schema field. No schema change in this research pass. |
 
 
-## UCSY-SC1 rights-gated audio lead — 2026-11-13
+## UCSY-SC1 historical metadata — excluded from active text-only scope (2026-11-13)
 
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
-| MYA-UCSY-SC1-AUDIO-001 | BLOCKED / RIGHTS-GATED | Mon et al. (2019) describe 42 h 39 min / 307 speakers and 4 medials; publisher author-details page lists CC BY-SA 4.0, but PDF footer says “All rights reserved”; no separate corpus audio license or public download permission verified. | Confirm article-level license with publisher, obtain corpus access and explicit audio/data reuse permission; then create speaker-disjoint, independently adjudicated IPA annotations. |
+| MYA-UCSY-SC1-AUDIO-001 | DEFERRED / OUT OF SCOPE | Rights conflict and corpus metadata retained for historical audit only. | No acquisition, processing, annotation or audio-derived IPA labels; not a blocker for text-only research. |
 
 
 ## Romanization/G2P mode separation — 2026-11-13
