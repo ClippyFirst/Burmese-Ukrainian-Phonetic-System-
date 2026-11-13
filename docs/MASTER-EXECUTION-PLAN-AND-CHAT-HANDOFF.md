@@ -2087,7 +2087,7 @@ The first CI attempt after registering the MOW orthographic coverage claim (work
 ## MLC spelling-book access route expansion — 2026-11-13
 
 - CiNii Books NCID BA69415754 gives the 1978 book's physical extent (28, 379 pages, 17 cm) and three Japanese library holdings: Osaka University and two Tokyo University of Foreign Studies locations. Google Books record _V1LAAAAMAAJ lists a 379-page University of Michigan original digitized in 2007, but the visible result is snippet-view metadata, not proof that the entire scan is accessible.
-- Added source CINII_MLC_SPELLING_1978_HOLDINGS and claim CLM-MLC-SPELLING-BOOK-ACCESS-002; test test_mlc_1978_spelling_book_has_concrete_library_and_scan_access_routes. Registry now 83 sources / 133 claims. Next step: obtain/inspect actual pages and establish whether the 1978 spelling book contains any transcription or pronunciation material. No runtime behavior changed.
+- Added source CINII_MLC_SPELLING_1978_HOLDINGS and claim CLM-MLC-SPELLING-BOOK-ACCESS-002; test test_mlc_1978_spelling_book_has_concrete_library_and_scan_access_routes. Registry now 80 sources / 133 claims (verified nonblank, unique source IDs). Next step: obtain/inspect actual pages and establish whether the 1978 spelling book contains any transcription or pronunciation material. No runtime behavior changed.
 
 ## Work-with-existing-evidence mode — rime crosswalk integrity (2026-11-13)
 
@@ -2112,3 +2112,7 @@ Use the existing generated MOW tables rather than waiting for inaccessible prima
 - `ui`: ို် has 0; ို has 15 (e.g. `ချို`, `ငို`, `ဆို`, `တို`, `မှို`).
 
 These counts are exact Unicode suffix matches in MOW v0.1.3, not syllable parses. Treat the listed words as search keys for the already-registered text dictionaries/corpora only. A useful next task is to cross-reference these spellings in the existing text resources and capture each entry's exact transcription field/locator where present. Do not assign IPA based on suffix or MLCTS labels.
+
+## Source registry row-count correction — 2026-11-13
+
+Append a correction note: `sources.csv` had four blank separator lines. Removed them and added `test_source_registry_has_no_blank_rows_or_duplicate_source_ids`; the actual current registry is 80 unique nonblank source records and 133 claims.
