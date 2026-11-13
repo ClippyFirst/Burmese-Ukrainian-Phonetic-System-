@@ -1893,5 +1893,5 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 
 - Added MOW-listed `ပေါက်` (`pauk`, `/paʊʔ/`) and `ကျောက်` (`kyauk`, `/t͡ɕaʊʔ/`) as Wiktionary word-level examples for ေါက် and ောက်. Their onsets differ but the secondary IPA rime sequence `/aʊʔ/` matches.
 - Added claim `CLM-WIKTIONARY-AUK-WORD-LEVEL-EXAMPLES-001`; updated lexical audit, MLCTS2 status parity and regression tests.
-- Current distribution: 14 unadjudicated / 5 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 140 claims.
+- Current distribution: 15 unadjudicated / 5 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 140 claims.
 - This is secondary lexical evidence, not a minimal pair or primary MLC adjudication. No IPA gold, runtime or Ukrainian output promotion. CI pending.
