@@ -1330,3 +1330,17 @@ The paper documents a potentially useful 42 h 39 min / 307-speaker audio corpus,
 - PR #129 remains open/draft and untouched as a code branch (53 commits ahead / 17 behind current main, non-mergeable); its source-backed research findings were reconciled here, but its broad hybrid-engine code was not ported.
 - UCSY-SC1 is a rights-gated audio lead: publisher page lists CC BY-SA 4.0, PDF footer says “All rights reserved”, and the corpus audio has no separately verified license.
 - Release assessment: PARTIAL PROTOTYPE, not linguistically release-ready. The research dossier is ready for specialist review and data-rights resolution.
+
+## Text-only Burmese research continuation — 2026-11-13
+
+User direction: **use text sources only; do not use audio**. This is the active scope for future research and implementation. Do not acquire, inspect, process, annotate or request recordings. Historical SLR80/UCSY-SC1 notes are retained only as prior audit history and must not be turned into next-step tasks.
+
+Newly registered text resources:
+- MYX_MYANGLISH_2026: 2,121 Burmese Unicode ↔ Myanglish text pairs. Potential informal romanization diagnostic only. Its own documentation warns that Myanglish is non-standard and predominantly reflects one author's style; the viewer shows three columns while the README schema describes two. CC BY-SA 4.0 is declared. Not IPA gold; no rows imported.
+- MYX_ORTHO_2026: 4,800-row orthographic correction corpus. "phonetic" in filenames/categories means spelling confusion, not IPA. Future medial contrasts are roadmap items, not present validated evidence. CC BY-SA 4.0 is declared. No rows imported.
+- OKELL_TEXT_2018: John Okell's 8.8 MB text corpus compiled in the 1990s. ELG lists CC BY 4.0, but Zenodo's Rights/License field is blank; blocked from ingestion pending direct rights reconciliation.
+
+Acceptance boundaries: preserve distinct orthographic MLCTS, informal Myanglish, IPA and Ukrainian adaptation fields. Never treat romanized text as IPA without an explicit convention and independent linguistic evidence. Before any import, pin exact dataset revision/hash, reconcile schema, inspect row-level quality and license obligations, and add source-to-claim-to-test provenance. No runtime medial rules are authorized by these resources alone.
+
+Current linguistic status remains unchanged: independent expert-adjudicated IPA gold = 0; empirical accuracy = null; medial/coda IPA rules remain withheld; release status = PARTIAL PROTOTYPE.
+
