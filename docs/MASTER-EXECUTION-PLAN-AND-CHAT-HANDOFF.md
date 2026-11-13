@@ -1511,3 +1511,13 @@ Repository remains **PARTIAL PROTOTYPE**, not linguistically release-ready. PR #
 - Myanglish remains schema-uncertain (raw 2 columns vs metadata/viewer 3 features); myX orthography remains quarantined for target_words misalignment, multi-substitution examples and template duplication.
 - Okell, SEAlang and Hill chapter 2 remain blocked by tool access/schema, not permission. No corpus bytes were imported.
 - Independent expert-adjudicated IPA gold = 0; empirical accuracy = null. No runtime medial/voicing promotion. Release classification: PARTIAL PROTOTYPE.
+
+
+## Okell (1995) dialect medial evidence — 2026-11-13
+
+Full text of John Okell's *Three Burmese Dialects* (Pacific Linguistics A-83, pp.1-138) inspected. It explicitly distinguishes WB from SB (spoken) and compares Arakanese, Intha and Tavoyan against both.
+- Arakanese preserves the WB r/y distinction that SB merges in speech; the source's main Arakanese reference is high-prestige Sit-twe speech, not every Arakanese subvariety.
+- Intha and Tavoyan have restricted medial /l/ combinations; Tavoyan /-l/ is explicitly absent from SB.
+- Dialect text transcriptions are phonemic with limited allophonic approximations, not project IPA gold.
+- Added source OKELL1995_THREE_DIALECTS, seven claims, two dialect-dependent rules, three withheld medial rows and regression tests.
+- This pass inspected only written text/tables; no audio or recordings were accessed. No Okell regional rule is enabled for Yangon.
