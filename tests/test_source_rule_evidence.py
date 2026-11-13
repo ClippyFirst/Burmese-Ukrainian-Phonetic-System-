@@ -347,3 +347,22 @@ def test_okell_text_corpus_orthographic_profile_is_not_phonological_gold():
     assert claim["status"] == "DOCUMENTARY"
     assert "not token frequencies" in claim["claim"]
     assert "pronunciation mappings" in claim["claim"]
+
+
+def test_okell_1999_unicode_proposal_separates_added_finals_and_boundary_logic():
+    sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    source = sources["OKELL1999_WG2_N2033"]
+    assert "N2033" in source["title"]
+    assert "Appendix 2" in source["scope"]
+    assert "no audio" in source["scope"]
+
+    added = claims["CLM-OKELL99-ADDED-FINALS-001"]
+    boundary = claims["CLM-OKELL99-SYLLABLE-BOUNDARY-001"]
+    tone = claims["CLM-OKELL99-OPEN-CLOSED-TONE-ORTHOGRAPHY-001"]
+    assert all(claim["source_id"] == source["source_id"] for claim in (added, boundary, tone))
+    assert all(claim["status"] == "DOCUMENTARY" for claim in (added, boundary, tone))
+    assert "non-Burmese words and names" in added["claim"]
+    assert "not by itself a phonological syllabification rule" in boundary["claim"]
+    assert "orthographic encoding evidence" in tone["claim"]
+
