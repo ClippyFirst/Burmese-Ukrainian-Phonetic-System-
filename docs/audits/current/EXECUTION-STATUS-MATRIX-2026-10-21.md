@@ -1396,5 +1396,5 @@ Exact tested head: d2800ce458ea3c08c3fecb9e61ad170502837343. PR #147 remains Dra
 - Registries: 58 sources, 78 claims, 45 medial evidence rows, 30 phonological rules, 7 source-phonemic sandhi examples. Manual CSV validation found no malformed widths, duplicate IDs or broken references.
 - Okell (1995) dialect profiles and Nishi (1998) historical medials are source-evidenced and tested; all remain withheld from runtime. Okell (1969) and Nishi (1976) are registered full-text targets, not yet retrieved.
 - Owner confirms text-only research and project-ingestion permissions. No audio used. Okell/SEAlang/Okell1969/Nishi1976/Hill retrieval and corpus schema/quality gates remain.
-- PR #147 OPEN / DRAFT / mergeable, 167 commits ahead of main / 0 behind, 28 files; PR #129 untouched.
+- PR #147 OPEN / DRAFT / mergeable, 0 commits behind main and 28 files; current ahead count is tracked on the PR; PR #129 untouched.
 - IPA gold remains 0, accuracy null, no runtime rules promoted. Status PARTIAL PROTOTYPE.
