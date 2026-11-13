@@ -134,3 +134,20 @@ def test_lexical_collision_audit_keeps_secondary_evidence_separate_from_primary_
     assert sum(row["evidence_status"] == "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE" for row in audit) == 21
     assert not any("PRIMARY_CONFIRMED" in row["evidence_status"] for row in audit)
 
+def test_mlcts_source_provenance_does_not_conflate_secondary_sources_or_ala_lc():
+    sources_path = ROOT / "data/burmese/sources.csv"
+    claims_path = ROOT / "data/burmese/source_claims.csv"
+    with sources_path.open(encoding="utf-8-sig", newline="") as stream:
+        sources = {row["source_id"]: row for row in csv.DictReader(stream) if row.get("source_id")}
+    with claims_path.open(encoding="utf-8-sig", newline="") as stream:
+        claims = {row["claim_id"]: row for row in csv.DictReader(stream) if row.get("claim_id")}
+
+    assert "OHNMAR_HTUN_2013" in sources
+    assert "ALA_LC_BURMESE_2011" in sources
+    assert sources["OHNMAR_HTUN_2013"]["type"] == "doctoral_dissertation"
+    assert "not a primary MLCTS specification" in sources["OHNMAR_HTUN_2013"]["scope"]
+    assert "ALA-LC" in sources["ALA_LC_BURMESE_2011"]["scope"]
+    assert claims["CLM-MLCTS-SECONDARY-PROVENANCE-001"]["source_id"] == "OHNMAR_HTUN_2013"
+    assert claims["CLM-ALA-LC-NOT-MLCTS-001"]["source_id"] == "ALA_LC_BURMESE_2011"
+    assert "Wikipedia" in claims["CLM-MLCTS-SECONDARY-PROVENANCE-001"]["claim"]
+    assert "not the Myanmar Language Commission" in claims["CLM-ALA-LC-NOT-MLCTS-001"]["claim"]
