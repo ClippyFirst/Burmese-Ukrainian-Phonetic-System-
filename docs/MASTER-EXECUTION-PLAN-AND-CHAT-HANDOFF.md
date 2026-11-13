@@ -1521,3 +1521,8 @@ Full text of John Okell's *Three Burmese Dialects* (Pacific Linguistics A-83, pp
 - Dialect text transcriptions are phonemic with limited allophonic approximations, not project IPA gold.
 - Added source OKELL1995_THREE_DIALECTS, seven claims, two dialect-dependent rules, three withheld medial rows and regression tests.
 - This pass inspected only written text/tables; no audio or recordings were accessed. No Okell regional rule is enabled for Yangon.
+
+
+## Okell (1969) reference grammar — next text-only source gate
+
+Registered John Okell's *A Reference Grammar of Colloquial Burmese* (two volumes, 498 pp., Oxford University Press, 1969). Bibliographic identity is confirmed by Glottolog and library catalogues. Nishi (1998) cites §§17-20 for voicing sandhi; Okell (1995) identifies it as the Spoken Burmese reference. Project owner confirms research-use permission. Full text was not retrieved in this run; obtain the text and inspect exact phonology/sandhi pages before attributing any new claims or considering runtime rules.
