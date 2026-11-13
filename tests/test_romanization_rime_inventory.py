@@ -115,19 +115,22 @@ def test_lexical_collision_audit_keeps_secondary_evidence_separate_from_primary_
         assert row["acceptance_boundary"]
         assert row["evidence_status"] in {
             "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE",
-            "SECONDARY_TABLE_PARALLEL_MATCH",
-            "SECONDARY_TABLE_CONTRADICTION",
+            "SECONDARY_SYSTEM_EQUIVALENCE",
+            "SECONDARY_SOURCE_CONFLICT",
             "SPECIAL_NONRIME_CONTEXT_DEPENDENT",
         }
 
     by_mlcts = {row["mlcts"]: row for row in audit}
-    assert by_mlcts["am"]["evidence_status"] == "SECONDARY_TABLE_PARALLEL_MATCH"
+    assert by_mlcts["am"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
     assert by_mlcts["am"]["observed_ipa"] == "/kàɴ/"
     assert by_mlcts["am"]["observed_mlcts"] == "kam"
-    assert by_mlcts["any"]["evidence_status"] == "SECONDARY_TABLE_CONTRADICTION"
+    assert by_mlcts["any"]["evidence_status"] == "SECONDARY_SOURCE_CONFLICT"
     assert "kañ" in by_mlcts["any"]["observed_mlcts"]
     assert "kany" in by_mlcts["any"]["observed_mlcts"]
     assert by_mlcts["u."]["evidence_status"] == "SPECIAL_NONRIME_CONTEXT_DEPENDENT"
-    assert sum(row["evidence_status"] == "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE" for row in audit) == 22
+    assert by_mlcts["um"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
+    assert by_mlcts["um"]["observed_ipa"] == "/kòʊɴ/"
+    assert by_mlcts["um"]["observed_mlcts"] == "kum"
+    assert sum(row["evidence_status"] == "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE" for row in audit) == 21
     assert not any("PRIMARY_CONFIRMED" in row["evidence_status"] for row in audit)
 
