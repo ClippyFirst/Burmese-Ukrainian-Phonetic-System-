@@ -1711,7 +1711,7 @@ This is a targeted readout of the already-generated `mow_rime_orthographic_cover
 | MLCTS group | First source unit | MOW lemma matches | Second source unit | MOW lemma matches | Result |
 |---|---|---:|---|---:|---|
 | `any` | ဉ် | 6 | ည် | 13 | Both sides occur as exact Unicode suffixes |
-| `any:` | ဉ်း | 1 | ညည်း | 6 | Both sides occur as exact Unicode suffixes |
+| `any:` | ဉ်း | 1 | ည်း | 6 | Both sides occur as exact Unicode suffixes |
 | `any.` | ဉ့် | 0 | ည့် | 5 | Only second side occurs |
 | `ui` | ို် | 0 | ို | 15 | Only second side occurs |
 
