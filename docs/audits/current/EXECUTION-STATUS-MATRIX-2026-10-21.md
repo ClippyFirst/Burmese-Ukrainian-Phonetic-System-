@@ -1860,3 +1860,10 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - `ui`: `ချို`, `ဆို`, `တို` provide examples for `ို` only; no `ို်` MOW suffix match exists, so no comparison is possible.
 - Required CI run **43509339740 SUCCESS** on code commit `191501979a2c5d8b7c0db9a00af5600b7266201f`: **251 Python + 66 subtests**, **20 Node**, **58 Playwright**, build and generated-data freshness passed. One high-severity npm vulnerability remains.
 - Updated lexical-audit distribution: 19 unadjudicated / 2 secondary equivalence / 1 secondary conflict / 1 secondary distinction / 1 one-side-only / 1 special non-rime. The new evidence is secondary and lexical; it does not authorize runtime, IPA gold or Ukrainian promotion. Current registry: **80 sources / 136 claims**.
+
+## Additional Wiktionary lexical attestation for `any.` — 2026-11-13
+
+- Added word-level secondary entries for `စဉ့်` (MLCTS `cany.`, IPA `/sɪ̰ɴ/`) and `ကြည့်` (MLCTS `krany.`, IPA `/t͡ɕḭ/`), covering ဉ့် and ည့် endings respectively. Only `ကြည့်` is a MOW suffix candidate; `စဉ့်` was found independently in Wiktionary.
+- Added `CLM-WIKTIONARY-ANY-DOT-WORD-LEVEL-EXAMPLES-001`; updated lexical audit, MLCTS2 status parity and regression tests.
+- Distribution: 18 unadjudicated / 2 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 137 claims.
+- Status remains secondary lexical evidence only; no primary MLC adjudication, IPA gold, runtime or Ukrainian mapping promotion. Exact-head CI pending.
