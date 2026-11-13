@@ -173,3 +173,12 @@ This continuation follows the explicit project direction to use **text sources o
 4. No audio-derived acceptance criteria or annotation steps are part of the current plan. Existing audio references are historical exclusions, not blockers for this text-only continuation.
 5. Independent expert-adjudicated IPA gold remains **0**; empirical accuracy remains **null**. Textual lexical evidence can improve coverage, but it does not create an acoustic gold set.
 
+### SEAlang Burmese dictionary and corpora — text-only candidates
+
+- Dictionary metadata: approximately 35,000 entries, spoken and literary styles, MLC 1986 orthography, examples/etymologies; based on the MLC 1993 Myanmar-English Dictionary (1996 Dunwoody reprint), used by SEAlang with permission.
+- Transcription ambiguity: SHACHI describes IPA search/display, while Mya2Rom documentation says MLCTS2 is used by the MLC dictionary and SEAlang. The SEAlang page could not be inspected because it timed out/returned gateway errors. Do not assume the entry transcription is IPA.
+- Rights: underlying MLC/Dunwoody dictionary content is copyrighted; SEAlang's permission to host does not grant project-wide bulk reuse. No extraction or row import.
+- Burmese Text Corpus: monolingual Internet texts; metadata shows 612,692 collocates and 3,172,485 contexts served, not verified dataset row/token counts. No explicit reuse license; metadata carries a 2007 NICT/Matsubara Lab/Anchor copyright notice.
+- Burmese Bitext Corpus: translated words/phrases/sentences, aligned sentence-by-sentence where possible; 1,234,822 pairs served, not verified total size; source SAY Project Burmese resources (NMSU CRL); no explicit reuse license and same metadata copyright notice.
+- Disposition: candidate for written lexical/context and orthographic coverage research only; **BLOCKED for bulk extraction/import pending direct rights and schema verification**; neither text corpus provides IPA gold.
+
