@@ -768,3 +768,9 @@ This is a secondary lexical attestation only; it does not adjudicate the collisi
 Wiktionary lists `စိမ့်` with MLCTS `cim.` and IPA `/sḛɪɴ/`, ending in `မ့်`, and `ကြံ့` with MLCTS `kram.` and IPA `/t͡ɕa̰ɴ/`, ending in `ံ့`. These have distinct rime realizations. The MOW scan contains `စိမ့်` and the compound `အိန္ဒိယကြံ့` as suffix-match candidates. The secondary lexical evidence conflicts with the vendor's same-output MLCTS2/IPA crosswalk. The audit and crosswalk now use `SECONDARY_SOURCE_DISTINCTION`; claim `CLM-WIKTIONARY-AM-DOT-LEXICAL-DISTINCTION-001` is registered.
 
 This is not a controlled minimal pair or primary MLC adjudication. Do not treat the vendor crosswalk as resolved, and do not promote runtime, IPA gold or Ukrainian output. Current 25-group distribution: **4 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 8 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 151 claims**. Exact-head CI pending.
+
+## 39. One-side lexical attestation for `au.` — 2026-11-14
+
+Wiktionary lists `ဝပ်ရှော့` with MLCTS `waphrau.` and IPA `/waʔʃɔ̰/`. Its final syllable contains the source-unit side `ော့` in the `au.` collision group and its MLCTS rime suffix corresponds to `au.`. No MOW lexical example for the other source unit `ေါ့` was located. Audit and MLCTS2 crosswalk now record `SECONDARY_ONE_SIDE_ONLY`; claim `CLM-WIKTIONARY-AU-DOT-ONE-SIDE-EXAMPLE-001` is registered.
+
+This is one-side secondary evidence only, not collision adjudication. Distribution: **3 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 9 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 152 claims**. Exact-head CI pending.
