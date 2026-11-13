@@ -103,10 +103,10 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
     rows = read_rows("romanization_rime_collision_lexical_audit.csv")
     counts = Counter(row["evidence_status"] for row in rows)
     assert counts == {
-        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 12,
+        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 11,
         "SECONDARY_SYSTEM_EQUIVALENCE": 8,
         "SECONDARY_SOURCE_CONFLICT": 1,
-        "SECONDARY_ONE_SIDE_ONLY": 1,
+        "SECONDARY_ONE_SIDE_ONLY": 2,
         "SECONDARY_SOURCE_DISTINCTION": 2,
         "SPECIAL_NONRIME_CONTEXT_DEPENDENT": 1,
     }
@@ -127,6 +127,9 @@ def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     assert all(value in rows["a:"]["observed_mlcts"] for value in ["hka:","ka:"])
     assert rows["au"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
     assert all(value in rows["au"]["observed_mlcts"] for value in ["pau","krau"])
+    assert rows["aung."]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
+    assert "caung." in rows["aung."]["observed_mlcts"] and "/sa̰ʊɴ/" in rows["aung."]["observed_ipa"]
+    assert "second source-unit side" in rows["aung."]["interpretation"]
     assert rows["auk"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
     assert "pauk" in rows["auk"]["observed_mlcts"] and "kyauk" in rows["auk"]["observed_mlcts"]
     assert "/paʊʔ/" in rows["auk"]["observed_ipa"] and "/t͡ɕaʊʔ/" in rows["auk"]["observed_ipa"]
@@ -144,4 +147,4 @@ def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     assert rows["ui"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "only" in rows["ui"]["acceptance_boundary"].lower()
     assert rows["any"]["evidence_status"] == "SECONDARY_SOURCE_CONFLICT"
-    assert all("no runtime" in rows[key]["acceptance_boundary"].lower() for key in ("auk", "aung", "aung:", "any", "any:", "any.", "ui"))
+    assert all("no runtime" in rows[key]["acceptance_boundary"].lower() for key in ("auk", "aung", "aung:", "aung.", "any", "any:", "any.", "ui"))
