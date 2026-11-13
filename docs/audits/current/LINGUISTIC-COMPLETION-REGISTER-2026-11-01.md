@@ -1800,3 +1800,11 @@ Current collision ledger: **12 unadjudicated / 8 secondary equivalence / 1 secon
 | BURMESE-WIKTIONARY-AUNG-DOT-LEXICAL-028 | PARTIAL — SECONDARY_ONE_SIDE_ONLY | Added MOW-listed `စောင့်` (`caung.`, `/sa̰ʊɴ/`) for ောင့်. ေါင့် remains unobserved. Added claim `CLM-WIKTIONARY-AUNG-DOT-ONE-SIDE-EXAMPLE-001`; updated audit/crosswalk parity and regression tests. Registry: 80 sources / 144 claims. | Secondary evidence for one side only; not collision adjudication or primary MLC specification. No IPA gold, runtime or Ukrainian mapping promotion. |
 
 Current collision ledger: **11 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 2 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 144 claims**.
+
+## One-sided `um:` and `un` lexical examples — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-WIKTIONARY-UM-UN-LEXICAL-029 | PARTIAL — SECONDARY_ONE_SIDE_ONLY | Added MOW-listed `နှလုံး` (`hna.lum:`, `/n̥əlóʊɴ/`) for `ုံး` and `ကုန်` (`kun`, `/kòʊɴ/`) for `ုန်`. Opposite sides remain unobserved. Added claims `CLM-WIKTIONARY-UM-COLON-ONE-SIDE-EXAMPLE-001` and `CLM-WIKTIONARY-UN-ONE-SIDE-EXAMPLE-001`; updated audit/crosswalk parity and tests. Registry: 80 sources / 146 claims. | Secondary evidence for one side only; not collision adjudication or primary MLC specification. No IPA gold, runtime or Ukrainian mapping promotion. |
+
+Current collision ledger: **9 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 4 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 146 claims**.
