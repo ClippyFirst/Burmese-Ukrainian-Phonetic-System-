@@ -1816,3 +1816,11 @@ Current collision ledger: **9 unadjudicated / 8 secondary equivalence / 1 second
 | BURMESE-WIKTIONARY-AU-IM-LEXICAL-030 | PARTIAL — SECONDARY_ONE_SIDE_ONLY | Added MOW-listed `ကျော` (`kyau:`, `/t͡ɕɔ́/`) for ော; `အိမ်` (`im`, `/ʔèɪɴ/`) for ိမ်; and `စိမ့်` (`cim.`, `/sḛɪɴ/`) for ိမ့်. Opposite sides remain unobserved. Added three claims; updated audit/crosswalk parity and regression tests. Registry: 80 sources / 149 claims. | Secondary evidence for one side only; not collision adjudication or primary MLC specification. No IPA gold, runtime or Ukrainian mapping promotion. |
 
 Current collision ledger: **6 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 7 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 149 claims**.
+
+## Final exact-head verification — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-RIME-LEXICAL-AUDIT-EXACT-HEAD-031 | DONE_VERIFIED — DATA_AND_TEST_INTEGRITY | SHA `62bea5a26012cb1ace4ce11579e17f4a780c3e1e`; CI **43516197628 SUCCESS** and duplicate exact-SHA run **435161... SUCCESS**: 251 Python + 66 subtests, 20 Node, 58 Playwright; build, generated-data freshness and Chromium install passed. Optional raw-output diagnostic **43516203133 SUCCESS**. | Verifies code/data/registry/test integrity only. IPA gold remains 0; accuracy null; all lexical additions remain secondary. One high-severity npm vulnerability remains. |
+
+Final collision ledger: **6 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 7 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 149 claims**.
