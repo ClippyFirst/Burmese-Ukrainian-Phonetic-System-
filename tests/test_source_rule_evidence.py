@@ -182,10 +182,10 @@ def test_sealang_resources_are_text_candidates_not_ipa_gold():
     assert "project owner confirms project-specific research and ingestion permission" in dictionary["scope"]
     text = sources["SEALANG_BURMESE_TEXT_2006"]
     assert "Monolingual corpus" in text["scope"]
-    assert "no explicit reuse license" in text["scope"]
+    assert "public metadata does not state a reuse license" in text["scope"]
     bitext = sources["SEALANG_BURMESE_BITEXT_2006"]
     assert "sentence-aligned where possible" in bitext["scope"]
-    assert "no explicit reuse license" in bitext["scope"]
+    assert "public metadata does not state a reuse license" in bitext["scope"]
     assert claims["CLM-SEALANG-DICT-TRANS-001"]["status"] == "UNCERTAIN"
     assert "do not assume the displayed transcription is IPA" in claims["CLM-SEALANG-DICT-TRANS-001"]["claim"]
 
