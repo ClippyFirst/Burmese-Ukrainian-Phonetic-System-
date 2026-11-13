@@ -1838,3 +1838,15 @@ Added claims: CLM-MYA2ROM-RIME-EXACT-MATCH-001, CLM-MYA2ROM-MLCTS-COLLISIONS-001
 - **Branch and PR:** PR #147 remains OPEN / DRAFT / mergeable and unmerged. Branch is 287 commits ahead, 0 behind main; PR #129 remains open and untouched; merged PR #146 is preserved. Main was not changed.
 - **Release assessment:** PARTIAL PROTOTYPE, not linguistically release-ready. No audio accessed, no runtime phonological rule changed, no Ukrainian candidate promoted, no release/deployment published.
 
+
+
+## Continuation — MLCTS primary-source provenance check (2026-11-13)
+
+- Added two source records and two source claims:
+  - **OHNMAR_HTUN_2013**: the 2013 Nagaoka doctoral dissertation identifies MLCTS as a 1980 MLC system and provides three examples, but its bibliography [47] points to the Wikipedia system overview (accessed 2012-10-12), not a directly identified MLC publication. Treat this as secondary provenance only.
+  - **ALA_LC_BURMESE_2011**: the Library of Congress 2011 Burmese Romanization Table is an ALA-LC table, not MLCTS. It is registered separately to prevent system conflation.
+- Registry totals: **65 sources / 117 claims**. New claims: CLM-MLCTS-SECONDARY-PROVENANCE-001 and CLM-ALA-LC-NOT-MLCTS-001.
+- Primary-source status remains **BLOCKED / EVIDENCE GATE**. No original MLC 1980 table or primary MLC word-level entry text was retrieved. The dissertation's three examples do not constitute a complete specification; its own bibliography shows that its 1980 attribution is mediated by a secondary web page.
+- The LOC ALA-LC table is explicitly not an MLCTS substitute and cannot resolve the 25 MLCTS collision groups.
+- No source data, runtime rule, IPA gold label or Ukrainian candidate was promoted or changed. No audio was accessed.
+- Exact source locators: Htun dissertation §5.1.2.3 p.80 and ref. [47] p.122; LOC *Burmese Romanization Table*, 2011 version, pp.1–5.
