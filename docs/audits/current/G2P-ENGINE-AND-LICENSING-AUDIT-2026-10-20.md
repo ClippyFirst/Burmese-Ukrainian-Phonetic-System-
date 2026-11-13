@@ -131,3 +131,11 @@ Mya2Rom 0.4.4 exposes distinct ipa, mlcts, mlcts2, simple and simple2 modes. MLC
 - STEDT1996_BURMESE and MATISOFF2003_HANDBOOK_PTB: copyrighted scholarly sources; only factual claims and page locators are registered, no tables or lexical data copied.
 - NISHI1997_ORTHOGRAPHY and NISHI1998_VOICING_RULES: repository-hosted scholarly PDFs; reuse licenses are not stated in the metadata inspected. Only source claims and locators are recorded, not copied tables.
 - The new text sources do not alter the myG2P CC BY-NC-SA 4.0 restriction, Wiktionary license conflict, or zero independent IPA-gold status.
+
+## Green and SEAlang textual sources — licensing and reuse gate (2026-11-13)
+
+- Green (2005), “Word, foot and syllable structure in Burmese”, is an online edition explicitly licensed CC BY-SA 4.0 with permission of Pacific Linguistics. Any copied examples or derived data must retain attribution and comply with share-alike; current repository changes record factual claims and page locators only.
+- SEAlang MLC dictionary is hosted with permission, but the underlying 1993 MLC / 1996 Dunwoody dictionary remains copyrighted. No project-wide bulk extraction permission is inferred.
+- SEAlang Burmese Text and Bitext corpora have no explicit reuse license in the inspected metadata; the metadata includes a 2007 NICT/Matsubara Lab/Anchor copyright notice. Bulk ingestion remains blocked.
+- The dictionary's entry-level transcription encoding is unresolved: metadata advertises IPA search/display while Mya2Rom documentation identifies MLCTS2 as used by the MLC dictionary and SEAlang. Do not treat it as IPA gold until the actual representation is inspected.
+
