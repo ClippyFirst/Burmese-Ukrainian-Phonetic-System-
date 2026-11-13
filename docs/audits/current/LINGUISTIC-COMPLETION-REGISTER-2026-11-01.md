@@ -1493,3 +1493,13 @@ Code/test head **508816dcddf22272e98647625b657bc79712817e** completed required C
 - `npm install` still reports **1 high-severity vulnerability**; no forced dependency upgrade was made.
 - Source registry integrity rechecked: **69 nonblank sources / 121 claims**, unique IDs, valid CSV row widths and all claim-to-source references resolve.
 - The latest changes after code/test head are documentation-only. Final branch tip will be recorded after this handoff update.
+
+## MLCTS/modified-column distinction — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-MLCTS2-COLLISION-CROSSWALK-006 | DONE_VERIFIED — VENDOR-DERIVED ONLY | Added a 25-row crosswalk comparing the MLCTS collision groups with Mya2Rom v0.4.4 third-column values. 21 pairs have the same value; four groups differ: any, any:, any., ui. A regression test compares every row to the vendored array. | This is implementation provenance, not MLC primary evidence. Do not promote lexical equivalence, pronunciation or Ukrainian output until dictionary entries / independent phonological evidence are inspected. |
+| BURMESE-MLCTS2-NAMING-RECONCILIATION-007 | DONE_VERIFIED — SOFTWARE DOCUMENTATION SCOPE | README/API calls the third mode mlcts2; the implementation indexes array column 2; romanisations.js labels the column MLCTS-SL. The discrepancy is now explicit in source claims and tests. | Keep both names in provenance; do not silently relabel the upstream source table or infer that it is a separate system. |
+| BURMESE-MOW-MLCTS2-RESOURCE-008 | PARTIAL — SECONDARY RESOURCE | MOW v0.1.2 documents MLCTS and MLCTS 2 romanized search variants; v0.1.3 is CC BY 4.0. | The small semantic wordnet can support lexical lookup and variant discovery, not primary MLC table adjudication or a pronunciation gold set. |
+
+Registry totals: **70 nonblank source records / 123 claims**. The crosswalk test is added; CI status for this latest code/test commit is pending.
