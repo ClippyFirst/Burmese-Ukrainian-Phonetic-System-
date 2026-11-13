@@ -1752,3 +1752,11 @@ Updated lexical audit distribution across 25 groups: 19 unadjudicated; 2 seconda
 | BURMESE-WIKTIONARY-ANY-DOT-LEXICAL-023 | PARTIAL — SECONDARY_WORD_LEVEL_EXAMPLES | Added `စဉ့်` (`cany.`, `/sɪ̰ɴ/`) and `ကြည့်` (`krany.`, `/t͡ɕḭ/`) as source-linked word-level examples for ဉ့် and ည့်. Added claim `CLM-WIKTIONARY-ANY-DOT-WORD-LEVEL-EXAMPLES-001`; crosswalk status parity and regression assertions updated. Registry: 80 sources / 137 claims. | Not a minimal pair or primary MLC specification. No IPA gold, runtime or Ukrainian mapping promotion. CI pending. |
 
 Lexical audit distribution now: **18 unadjudicated / 2 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. `စဉ့်` is not in MOW; `ကြည့်` is a MOW-listed candidate. The MOW coverage table is unchanged.
+
+## Additional `aung` lexical examples — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-WIKTIONARY-AUNG-LEXICAL-024 | PARTIAL — SECONDARY_WORD_LEVEL_EXAMPLES | Added `ပေါင်` (`paung`, `/pàʊɴ/`) and `တောင်` (`taung`, `/tàʊɴ/`) as lexical examples for ေါင် and ောင်. Same secondary rime sequence `/àʊɴ/` with different onsets. Added claim `CLM-WIKTIONARY-AUNG-WORD-LEVEL-EXAMPLES-001`; updated audit/crosswalk parity and tests. Registry: 80 sources / 138 claims. | Secondary equivalence only; not a controlled minimal pair or primary MLC specification. No IPA gold, runtime or Ukrainian mapping promotion. CI pending. |
+
+Lexical audit distribution now: **17 unadjudicated / 3 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**.
