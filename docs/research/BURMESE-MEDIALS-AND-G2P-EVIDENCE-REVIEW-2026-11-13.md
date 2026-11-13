@@ -685,3 +685,14 @@ Text-only Wiktionary entries supply a MOW-backed example for each of the two sou
 | `ကျောင်း` | ောင်း | `kyaung:` | `/t͡ɕáʊɴ/` |
 
 Both lemmas occur in the existing MOW suffix-match dataset. Their onsets differ while the secondary IPA rime sequence `/áʊɴ/` matches. The audit is therefore updated to `SECONDARY_SYSTEM_EQUIVALENCE`, and the MLCTS2 crosswalk status is synchronized. This is not a controlled minimal pair or a primary MLC specification. No runtime rule, IPA gold row or Ukrainian candidate is promoted. Claim: `CLM-WIKTIONARY-AUNG-COLON-WORD-LEVEL-EXAMPLES-001`.
+
+## 31. Additional secondary lexical evidence for `auk`
+
+Text-only Wiktionary entries provide one MOW-listed example for each source-unit side of the `auk` collision group:
+
+| Lemma | Source-unit ending | Wiktionary MLCTS | Wiktionary IPA |
+|---|---|---|---|
+| `ပေါက်` | ေါက် | `pauk` | `/paʊʔ/` |
+| `ကျောက်` | ောက် | `kyauk` | `/t͡ɕaʊʔ/` |
+
+Both lemmas occur in the existing MOW suffix-match dataset. Their onsets differ while the secondary IPA rime sequence `/aʊʔ/` matches. The audit is updated to `SECONDARY_SYSTEM_EQUIVALENCE`, with MLCTS2 status parity and regression coverage. This is not a controlled minimal pair or a primary MLC specification. No runtime, IPA gold or Ukrainian candidate is promoted. Claim: `CLM-WIKTIONARY-AUK-WORD-LEVEL-EXAMPLES-001`.
