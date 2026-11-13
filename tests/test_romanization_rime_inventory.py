@@ -223,3 +223,39 @@ def test_mlcts2_crosswalk_is_exactly_derived_from_vendored_column_three():
 
     assert distinct_groups == {"any", "any:", "any.", "ui"}
     assert crosswalk and crosswalk[0]["mlcts2_relation"] == "SAME_MLCTS2_OUTPUT"
+
+VENDOR_SYSTEM_CROSSWALK_PATH = ROOT / "data/burmese/romanization_rimes_vendor_systems.csv"
+
+
+def test_full_vendor_system_crosswalk_covers_all_94_nonempty_rime_keys():
+    with CSV_PATH.open(encoding="utf-8-sig", newline="") as stream:
+        inventory = {row["source_unit"]: row for row in csv.DictReader(stream)}
+    with VENDOR_SYSTEM_CROSSWALK_PATH.open(encoding="utf-8-sig", newline="") as stream:
+        crosswalk = {row["source_unit"]: row for row in csv.DictReader(stream)}
+    vendor_text = (ROOT / "vendor/mya2rom/romanisations.js").read_text(encoding="utf-8")
+    vendor = {
+        key: (ipa, mlcts, mlcts2, simple, simple2)
+        for key, ipa, mlcts, mlcts2, simple, simple2 in re.findall(
+            r'^\s*"([^"]+)"\s*:\s*\["([^"]*)"\s*,\s*"([^"]*)"\s*,\s*"([^"]*)"\s*,\s*"([^"]*)"(?:\s*,\s*"([^"]*)")?',
+            vendor_text,
+            flags=re.MULTILINE,
+        )
+    }
+
+    assert len(inventory) == len(crosswalk) == 94
+    assert set(crosswalk) == set(inventory)
+    assert set(crosswalk) <= set(vendor)
+    for key, row in crosswalk.items():
+        values = vendor[key]
+        assert row["mlcts"] == inventory[key]["mlcts"] == values[1]
+        assert row["ipa_vendor"] == values[0]
+        assert row["mlcts2_vendor"] == values[2]
+        assert row["simple_vendor"] == values[3]
+        assert row["simple2_vendor"] == values[4]
+        assert int(row["array_length"]) == (5 if values[4] else 4)
+        assert "not primary MLC table" in row["evidence_boundary"]
+    missing_simple2 = {
+        key for key, row in crosswalk.items()
+        if row["simple2_status"] == "NOT_PROVIDED_IN_VENDOR_ARRAY"
+    }
+    assert missing_simple2 == {"ေါင်း"}
