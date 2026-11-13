@@ -1344,3 +1344,9 @@ Acceptance boundaries: preserve distinct orthographic MLCTS, informal Myanglish,
 
 Current linguistic status remains unchanged: independent expert-adjudicated IPA gold = 0; empirical accuracy = null; medial/coda IPA rules remain withheld; release status = PARTIAL PROTOTYPE.
 
+## Historical Burmese medial evidence — 2026-11-13
+
+New text-only source: STEDT Monograph 3 (Namkung, ed., 1996), pp.61-66, which compiles three distinct Burmese source profiles. The Written Burmese inventory cites Benedict 1976 and treats /-w-/ as rhyme material while /-y-/ and /-r-/ are initial-cluster components. The Rangoon entries cite Burling 1967 and Roop 1972 and list /-y-/ and /-w-/ medials with source-specific distribution restrictions; Roop says /r/ appears only in borrowings.
+
+Do not merge these into one universal rule or equate the historical notation directly with modern Unicode U+103B/U+103C/U+103D. New source claims, matrix rows, evidence-only rules and tests are registered. Both rows remain WITHHELD. The STEDT book is marked All Rights Reserved; no tables or lexical data were copied. Current Yangon runtime and IPA outputs are unchanged.
+
