@@ -1823,3 +1823,8 @@ The first CI attempt after registering the MOW orthographic coverage claim (work
 
 - CiNii Books record BA69415754 gives a fuller physical description (28, 379 pages, 17 cm) and lists three Japanese library holdings, including Osaka University and Tokyo University of Foreign Studies. Google Books record _V1LAAAAMAAJ identifies a University of Michigan original and a digitized 379-page scan from 2007, but the surfaced access is snippet-view metadata, not a verified full-text download.
 - Added a separate catalogue/digitization source and regression test. Registry totals: 83 sources / 133 claims. The primary book remains uninspected; request a copy or inspect accessible pages before making any pronunciation/MLCTS claim.
+
+## Crosswalk consistency validation — 2026-11-13
+
+- Added `tests/test_rime_crosswalk_consistency.py` for the three existing 25-group rime crosswalks. It checks shared key coverage and Myanmar source-unit alignment, per-source-unit MLCTS2/IPA array alignment, R12A comparison-state counts (18 same, 3 distinct, 2 partial, 1 absent, 1 special), and lexical audit evidence-state counts (21 unadjudicated, 2 secondary equivalence, 1 secondary conflict, 1 special).
+- This is data-integrity verification, not phonological adjudication. It adds no new IPA gold, no primary MLC evidence and no runtime rule. Status: implementation committed; CI pending.
