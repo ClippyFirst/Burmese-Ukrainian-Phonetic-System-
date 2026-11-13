@@ -1390,11 +1390,11 @@ Exact tested head: d2800ce458ea3c08c3fecb9e61ad170502837343. PR #147 remains Dra
 
 ### Consolidated text-only research snapshot — 2026-11-13
 
-- Exact tested code/data head: 898e0f7cedd3c5c040c218a52a551cc252c77d4e.
-- Main CI 43395578254 SUCCESS: 219 Python tests + 66 subtests; IPA-gold structure validation; npm build; generated-data freshness; 20 Node tests; 58 Playwright/Chromium tests.
-- Optional diagnostic 43395586881 SUCCESS: CRF 100 predictions, 84 source-concordant, gold_count=0, accuracy=null, NOT_SCORED_POSSIBLE_TRAINING_OVERLAP; Epitran raw-output artifact only.
+- Exact tested code/data head: 2a96f4121a43f704a8f0d2eb6d81cb343fba47db.
+- Main CI 43395906072 SUCCESS: 219 Python tests + 66 subtests; IPA-gold structure validation; npm build; generated-data freshness; 20 Node tests; 58 Playwright/Chromium tests.
+- Optional diagnostic 43395906100 SUCCESS: CRF 100 predictions, 84 source-concordant, gold_count=0, accuracy=null, NOT_SCORED_POSSIBLE_TRAINING_OVERLAP; Epitran raw-output artifact only.
 - Registries: 58 sources, 78 claims, 45 medial evidence rows, 30 phonological rules, 7 source-phonemic sandhi examples. Manual CSV validation found no malformed widths, duplicate IDs or broken references.
 - Okell (1995) dialect profiles and Nishi (1998) historical medials are source-evidenced and tested; all remain withheld from runtime. Okell (1969) and Nishi (1976) are registered full-text targets, not yet retrieved.
 - Owner confirms text-only research and project-ingestion permissions. No audio used. Okell/SEAlang/Okell1969/Nishi1976/Hill retrieval and corpus schema/quality gates remain.
-- PR #147 OPEN / DRAFT / mergeable, 163 commits ahead of main / 0 behind, 28 files; PR #129 untouched.
+- PR #147 OPEN / DRAFT / mergeable, 167 commits ahead of main / 0 behind, 28 files; PR #129 untouched.
 - IPA gold remains 0, accuracy null, no runtime rules promoted. Status PARTIAL PROTOTYPE.
