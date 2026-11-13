@@ -108,3 +108,12 @@ Exact head c03706474cf67b480c449790c9592e5fe0e53fd4 passed CI run 43394274053: 2
 The registries contain 56 sources, 71 claims, 42 medial rows, 28 phonological rules and 7 source-phonemic sandhi examples. Nishi (1998) historical and dialect evidence is now more fully represented; all such rows remain WITHHELD. Nishi (1976) is a registered but unread primary-source target.
 
 Text research permissions are confirmed by the project owner; remaining external-source blockers are retrieval/schema and dataset quality, not permission. No audio was used. IPA gold=0, empirical accuracy=null, no runtime rules promoted.
+
+
+### Okell (1995) regional medial profiles — 2026-11-13
+
+Full text of *Three Burmese Dialects* inspected. It explicitly separates Written Burmese from Standard spoken Burmese and documents distinct Arakanese, Intha and Tavoyan profiles:
+- Arakanese preserves WB r/y, which SB merges in speech; the registered AR profile is specifically high-prestige Sit-twe, not all Arakanese varieties.
+- Intha and Tavoyan have restricted medial /l/ combinations; Tavoyan /-l/ is explicitly absent from SB.
+- The book's transcribed texts are phonemic with limited allophonic approximations, not project IPA gold.
+Added source OKELL1995_THREE_DIALECTS, seven claims, two dialect-dependent rules and three withheld medial rows. No audio was accessed. No regional rule was enabled for Yangon.
