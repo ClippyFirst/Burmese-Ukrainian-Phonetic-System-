@@ -1455,3 +1455,46 @@ The previous final snapshot recorded 90 commits ahead; the final comparison befo
 Exact final pre-note head 18b42a7415d3323220d09c0aacf2a17a3c6ff07d passed GitHub Actions run 43390340513: 209 Python tests + 66 subtests; independent IPA-gold structure validation; npm build; generated-data freshness; 20 Node tests; 58 Playwright/Chromium tests. Optional CRF/Epitran diagnostics passed on the same code/data tree at d2800ce458ea3c08c3fecb9e61ad170502837343; the two intervening commits were documentation-only.
 
 The active source registry has 55 sources, 62 claims, 29 medial evidence rows and 22 phonological rules. A manual parser verified every CSV row width, unique source/claim IDs and all claim→source and rule→claim→source links. No source rows or phonetic labels were imported. No audio was used. The active project remains a PARTIAL PROTOTYPE; no release or merge was performed.
+
+## Text-only continuation after project-owner permission confirmation — 2026-11-13
+
+### Scope and authorization
+
+The project owner confirms all required permissions for research use and project ingestion of textual resources. Rights are no longer treated as blockers to research processing. Preserve public source metadata and attribution. No audio was acquired, opened, processed, annotated or used; audio remains outside scope.
+
+### New primary-source work
+
+- Inspected full Nishi (1998), “Old Burmese: Toward the History of Burmese” (BNME 23(3), pp.659-684; DOI 10.15021/00004119), and registered source NISHI1998_OLDBURMESE.
+- Nishi §1.3 distinguishes historical -h with sonorants (voiceless/aspirated sonorant unit) from true -r/-l/-y/-w clusters called medials. Do not equate historical -h with modern Unicode U+103E.
+- Nishi §2.1.1 documents OWB -l- alongside -r/-y/-w, later -l- reflexes after velars/bilabials, and the MB -r-/-y- distinction merging into -y- in Standard EModWB.
+- Nishi §4 and Table 3 document the tentative Great Consonantal Shift and cross-dialect cluster reflexes among WB, SB, Arakanese, Tavoyan, Intha and Minor Taungyo. Standard-variety interference, hypercorrection and dialectal variation prevent universal modern mapping.
+- Added four claims/rules and 13 Nishi historical/dialect matrix rows; all remain WITHHELD from runtime.
+- Nishi's separate 1998 voicing paper states its slash-delimited forms follow Okell 1995 phonemic transcription. Added seven source-attested examples to data/burmese/sandhi_evidence.csv, explicitly NOT IPA; ipa_value is empty.
+
+### External textual corpora
+
+- Project owner permission confirmed for research use and project ingestion.
+- Myanglish raw CSV has two columns (myanmar,myanglish), while README metadata/viewer expose a third official_standard feature. This remains schema-uncertain; treat as informal romanization only.
+- myX orthography corpus is work-in-progress. Sampled hcara_phonetic.csv has target_words misalignment (ဆျာ→ဆရာ labelled with မင်ရည်/မှင်ရည်); sampled phet_bet rows can contain multiple substitutions. Keep quarantined for quality review and deduplication; not IPA gold.
+- John Okell's 8.8 MB text file, SEAlang dictionary/corpora and Hill (2019) chapter 2 were not retrieved in this execution environment. These are tool-access/schema blockers, not permission blockers. Do not claim their contents were imported or inspected.
+
+### Exact verification
+
+- Tested code/data head: 4835a0abc3e7e4a18c9d0bda35f554031912d570.
+- GitHub Actions run 43393402710 SUCCESS: 217 Python tests + 66 subtests; IPA-gold structure validation; npm build; generated-data freshness; 20 Node tests; 58 Playwright/Chromium tests.
+- Two preceding test runs failed on one case-sensitive test assertion only; the assertion was corrected and the exact-head run passed.
+- Registry integrity: 55 sources, 71 claims, 42 medial rows, 28 phonological rules, 7 source-phonemic sandhi rows. Manual CSV validation found no malformed widths, duplicate IDs or broken claim/source/rule links.
+- No runtime medial or contextual voicing rule enabled. Independent expert-adjudicated IPA gold = 0; empirical accuracy = null.
+
+### Current acceptance gates
+
+1. Obtain and pin Okell corpus bytes; run reproducible Unicode, duplicate, boundary and text-quality profiling.
+2. Retrieve SEAlang dictionary/text/bitext records and inspect actual entry representation/schema (IPA vs MLCTS2).
+3. Obtain Hill (2019) chapter 2 bytes; inspect exact historical medial sections and record locators.
+4. Obtain Nishi (1976) full text; Nishi (1998) is a secondary summary, not a substitute for claiming the 1976 paper was read.
+5. Pin and obtain raw Myanglish and myX orthography artifacts; reconcile metadata, deduplicate, and audit row-level target alignment.
+6. Build independently adjudicated text IPA fixtures with fixed broad/narrow convention and source locators; gold remains 0.
+7. Resolve four-tone vs eight-tone/register analyses and abstract /N/ vs surface nasalization before runtime promotion.
+8. Verify the 94 MLCTS rime entries against primary written sources.
+
+Repository remains **PARTIAL PROTOTYPE**, not linguistically release-ready. PR #147 remains a Draft; no merge or release performed.
