@@ -1430,3 +1430,14 @@ Current ledger: 63 sources / 115 claims; 25 collision groups; 21 unadjudicated, 
 - Registry: 63 sources / 115 claims; 25 collision groups; lexical audit partition 21 unadjudicated / 2 secondary-equivalence / 1 secondary-source conflict / 1 special non-rime.
 - No audio, runtime mapping changes or Ukrainian candidate promotions. Repository remains a PARTIAL PROTOTYPE.
 
+
+
+## MLCTS primary-source provenance check — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-MLCTS-PRIMARY-SOURCE-PROVENANCE-002 | PARTIAL — SECONDARY PROVENANCE ONLY | Ohnmar Htun (2013), §5.1.2.3 p.80, identifies MLCTS [1980] and gives three examples; bibliography [47] p.122 cites the Wikipedia overview accessed 2012-10-12, not a directly identified MLC primary publication. | Do not treat the dissertation as the original specification. Obtain the MLC table itself and verify its exact edition, table rows and publication provenance. |
+| BURMESE-ALA-LC-SYSTEM-SEPARATION-001 | DONE_VERIFIED | LOC's 2011 Burmese Romanization Table is explicitly a Library of Congress ALA-LC table and is recorded separately from MLCTS. | Keep ALA-LC correspondences out of MLCTS adjudication; use only for system comparison where explicitly labelled. |
+| BURMESE-MLC-PRIMARY-TRANSCRIPTION-001 | BLOCKED / PRIMARY SOURCE | No direct MLC 1980 transcription table or word-level MLC dictionary entries were recovered in this pass. | Inspect primary MLC table and representative entries for all collision groups; distinguish MLCTS from MLCTS2 before adjudication. |
+
+Registry now contains **65 sources / 117 claims**. No MLCTS/vendor correction, runtime mapping, IPA gold annotation or Ukrainian candidate promotion was made. No audio used.
