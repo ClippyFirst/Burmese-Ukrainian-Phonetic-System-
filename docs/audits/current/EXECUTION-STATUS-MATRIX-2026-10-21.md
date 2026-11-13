@@ -1605,7 +1605,7 @@ Registry integrity on this continuation: 62 source records, 114 claim records; 2
 
 - Added **OHNMAR_HTUN_2013**, the Nagaoka University of Technology doctoral dissertation *Development of Cross-Lingual Phonetic Similarity Metrics*. Its §5.1.2.3 (p.80) labels MLCTS as the 1980 Myanmar Language Commission system and gives three sample romanizations. Crucially, its bibliography entry [47] (p.122) cites the Wikipedia MLC Transcription System page, accessed 2012-10-12, rather than identifying or reproducing an MLC primary publication. This is a secondary provenance trail, not independent confirmation of the full 1980 table.
 - Added **ALA_LC_BURMESE_2011**, the Library of Congress *Burmese Romanization Table* (2011). It is an ALA-LC table, not MLCTS; keep its forms separate and do not use it to adjudicate MLCTS collision rows.
-- New claims: CLM-MLCTS-SECONDARY-PROVENANCE-001 and CLM-ALA-LC-NOT-MLCTS-001. Registry totals: **66 nonblank source records / 117 claims**.
+- New claims: CLM-MLCTS-SECONDARY-PROVENANCE-001 and CLM-ALA-LC-NOT-MLCTS-001. Registry totals: **67 nonblank source records / 118 claims**.
 - This search did not recover the primary MLC 1980 specification or primary word-level dictionary entries. The MLC-primary-source task remains **BLOCKED / EVIDENCE GATE**; acceptance remains direct inspection of the actual MLC tables and properly located dictionary entries, with the transcription field distinguished as MLCTS vs MLCTS2.
 - No vendor mapping, runtime rule, IPA gold label or Ukrainian candidate changed. No audio accessed.
 
@@ -1614,3 +1614,10 @@ Registry integrity on this continuation: 62 source records, 114 claim records; 2
 A fresh parse of the current CSV registries, counting only nonblank source rows and requiring unique IDs, finds **66 source records and 117 claim records**. The previous continuation note's 65-source count was one too low; the current source registry contains 66 nonblank IDs. Three pre-existing blank separator lines in `sources.csv` are ignored for this count. All 117 claim IDs are unique and every claim's `source_id` resolves to a registered source. The two new provenance records and claims are included in these totals.
 
 A regression test now protects the distinction between the Htun secondary provenance trail and the LOC ALA-LC table. Test/CI status for the final code-bearing commit is pending verification; no local checkout was available in this connector session.
+
+## MLC dictionary bibliographic cross-check — 2026-11-13
+
+- Added **UNICODE_REFERENCE_LISTS_2022** and claim **CLM-MLC-DICT-BIB-UNICODE-001**. The Unicode Consortium's *Other Script Sources* bibliography lists the Myanmar-English Dictionary as a 1993 work compiled and edited by the Myanmar Language Commission, and a 1996 Myanmar orthography treatise (PDF lines 681–690).
+- This independently strengthens the bibliographic locator for MLC primary material, but the Unicode bibliography does not reproduce dictionary entries or MLCTS/MLCTS2 tables. It therefore does not clear the primary-source evidence gate.
+- Added regression assertions for the new bibliography record and its narrow evidential scope. No linguistic mapping was changed.
+- Registry totals after this addition: **67 nonblank source records / 118 claims**.
