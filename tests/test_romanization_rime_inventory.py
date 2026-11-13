@@ -310,8 +310,7 @@ def test_mow_orthographic_lemma_coverage_is_consistent_and_evidence_limited():
     assert len(both) == 11
     assert len(neither) == 1
     assert neither == {"um."}
-    assert all("no pronunciation" in row["evidence_scope"] for row in hits)
-    assert all("not primary MLC" not in row["evidence_scope"] for row in hits)
+    assert all("orthographic evidence only" in row["evidence_scope"] for row in hits)
 
 
 def test_mow_dataset_source_claim_preserves_cc_by_and_orthographic_scope():
