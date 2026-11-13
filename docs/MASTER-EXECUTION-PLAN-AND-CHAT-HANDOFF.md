@@ -1498,3 +1498,16 @@ The project owner confirms all required permissions for research use and project
 8. Verify the 94 MLCTS rime entries against primary written sources.
 
 Repository remains **PARTIAL PROTOTYPE**, not linguistically release-ready. PR #147 remains a Draft; no merge or release performed.
+
+## Final exact-head handoff — 2026-11-13
+
+- Current PR #147 head: c03706474cf67b480c449790c9592e5fe0e53fd4; branch is 135 commits ahead of main, 0 behind, 28 files changed. PR is OPEN / DRAFT / mergeable; no reviews submitted. PR #129 untouched.
+- Exact-head CI 43394274053 SUCCESS: 217 Python tests + 66 subtests; IPA-gold structure validation; npm build; generated-data freshness; 20 Node tests; 58 Playwright/Chromium tests.
+- Exact-head diagnostics 43394274111 SUCCESS: CRF 100 predictions, 84 source-concordant, gold_count=0, accuracy=null, NOT_SCORED_POSSIBLE_TRAINING_OVERLAP; Epitran raw-output only.
+- Final data registries: 56 sources, 71 claims, 42 medial rows, 28 phonological rules, 7 source-phonemic sandhi cases. CSV widths, unique IDs and all cross-registry links verified.
+- Nishi (1998) Old Burmese full text and the separate Nishi (1998) voicing paper are source-registered. Thirteen new historical/dialect medial rows and seven source-phonemic sandhi cases are added and tested; none are project IPA gold or runtime rules.
+- Nishi (1976) Medials in Burmese is registered as a primary-source target but remains unread in this execution. Nishi (1998) is explicitly only a secondary summary.
+- All required text-only research and project-ingestion permissions are confirmed by the project owner. No audio was used.
+- Myanglish remains schema-uncertain (raw 2 columns vs metadata/viewer 3 features); myX orthography remains quarantined for target_words misalignment, multi-substitution examples and template duplication.
+- Okell, SEAlang and Hill chapter 2 remain blocked by tool access/schema, not permission. No corpus bytes were imported.
+- Independent expert-adjudicated IPA gold = 0; empirical accuracy = null. No runtime medial/voicing promotion. Release classification: PARTIAL PROTOTYPE.
