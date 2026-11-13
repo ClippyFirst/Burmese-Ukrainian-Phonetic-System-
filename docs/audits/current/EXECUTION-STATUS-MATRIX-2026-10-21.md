@@ -1599,3 +1599,12 @@ Registry integrity on this continuation: 62 source records, 114 claim records; 2
 - Optional diagnostics run 43491799196: SUCCESS (raw-output and CRF diagnostic jobs). These are raw diagnostic artifacts only, not an IPA accuracy benchmark; independent adjudicated IPA gold remains 0.
 - Final linguistic status remains PARTIAL PROTOTYPE. No runtime rule or Ukrainian candidate promoted.
 
+
+
+## MLCTS primary-source provenance check — 2026-11-13
+
+- Added **OHNMAR_HTUN_2013**, the Nagaoka University of Technology doctoral dissertation *Development of Cross-Lingual Phonetic Similarity Metrics*. Its §5.1.2.3 (p.80) labels MLCTS as the 1980 Myanmar Language Commission system and gives three sample romanizations. Crucially, its bibliography entry [47] (p.122) cites the Wikipedia MLC Transcription System page, accessed 2012-10-12, rather than identifying or reproducing an MLC primary publication. This is a secondary provenance trail, not independent confirmation of the full 1980 table.
+- Added **ALA_LC_BURMESE_2011**, the Library of Congress *Burmese Romanization Table* (2011). It is an ALA-LC table, not MLCTS; keep its forms separate and do not use it to adjudicate MLCTS collision rows.
+- New claims: CLM-MLCTS-SECONDARY-PROVENANCE-001 and CLM-ALA-LC-NOT-MLCTS-001. Registry totals: **65 sources / 117 claims**.
+- This search did not recover the primary MLC 1980 specification or primary word-level dictionary entries. The MLC-primary-source task remains **BLOCKED / EVIDENCE GATE**; acceptance remains direct inspection of the actual MLC tables and properly located dictionary entries, with the transcription field distinguished as MLCTS vs MLCTS2.
+- No vendor mapping, runtime rule, IPA gold label or Ukrainian candidate changed. No audio accessed.
