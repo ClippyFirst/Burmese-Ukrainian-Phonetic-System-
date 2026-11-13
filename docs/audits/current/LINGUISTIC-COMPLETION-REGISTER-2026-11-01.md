@@ -1285,3 +1285,23 @@ Created `data/burmese/okell_text_corpus_orthographic_profile.csv` with four raw 
 - Okell corpus: 8,809,265 bytes; Zenodo MD5 matched; SHA-256 6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c; 21 BOM markers, one NUL, non-NFC, 67 numbered headings, repeated line/paragraph counts profiled. Remaining text-quality/provenance work is PARTIAL.
 - Exact-head CI runs 43449980180 and 43449989336 SUCCESS: 222 Python + 66 subtests, 20 Node, 58 Playwright; build and generated freshness pass. IPA gold validator correctly reports zero adjudicated gold. Optional run 43449989348 SUCCESS; CRF remains unscored with zero gold and null accuracy; Epitran is raw-output-only.
 - No audio, no runtime medial rules, no merge or release. Classification: PARTIAL PROTOTYPE, not release-ready.
+
+
+## Full-text G2P and syllabification audit — 2026-11-13
+
+| Work item | Status | Evidence / acceptance boundary |
+|---|---|---|
+| Thu et al. (2016) full-text benchmark audit | DONE_VERIFIED (methodology evidence) | 25,300 MLC dictionary words; 25,000 train, three 100-word open sets and 100-word closed set drawn from training. 2,393 graphemes, 1,864 pronunciations, 113 reported phonemes; romanized examples are not specified IPA. SCLITE phoneme-level Levenshtein PER on syllable-segmented words. Claims CLM-THU16-PER-001 and CLM-THU16-PHONESET-001. |
+| Hlaing & Mikami (2014) orthographic FST paper | DONE_VERIFIED (structural evidence only) | New source HLAING_MIKAMI2014_FST; 11,732 MLC orthography words; 99.93% word-level orthographic segmentation, not G2P. Internal discrepancies: 32,238 vs 32,283 syllables; 8 vs 9 stacking errors. Claims CLM-HLAING14-ORTHOGRAPHIC-001 and CLM-HLAING14-METRIC-001. |
+| Oo et al. (2020) text-side G2P full text | DONE_VERIFIED (architecture and source-specific phonology) | Thrax weighted FST graphemes→IPA; 34 consonants, 54 vowels; four-tone account; /N/ notation; Yangon recording location without explicit dialect label. Restricted web segmentation corpus and grammar-license uncertainty recorded. Claims CLM-OO20-TONE-001, CLM-OO20-NASAL-001, CLM-OO20-SEG-RESTRICTED-001, CLM-OO20-DIALECT-001. |
+| Nishi (1998) Development of Voicing Rules PDF | BLOCKED / PDF retrieval | Undermind PDF retrieval failed; metadata/abstract only. No new full-text claims or rule activation. |
+| Runtime promotion | DEFERRED / evidence gate | No new medials, tone, coda, /N/ or voicing rule activated. Independent expert-adjudicated IPA gold remains 0; empirical accuracy null. |
+
+### Interpretation safeguards
+
+- Thu et al.'s closed test overlaps training and cannot support independent accuracy claims.
+- Thu et al.'s romanized phone strings are not project IPA.
+- Hlaing & Mikami's 99.93% is orthographic word segmentation only.
+- Oo et al.'s four-tone account is one source-specific model, not resolution of the four-vs-eight/register question.
+- The phrase "open-source" in Oo et al. does not establish a separate license for the G2P grammar files.
+- No audio was used.
