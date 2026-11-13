@@ -1374,3 +1374,12 @@ Exact tested head: d2800ce458ea3c08c3fecb9e61ad170502837343. PR #147 remains Dra
 - Project owner confirms text-only research and project-ingestion permissions. No audio used. External corpus access/schema and quality gates remain.
 - PR #147 OPEN / DRAFT / mergeable, 135 commits ahead, 0 behind, 28 files. PR #129 untouched.
 - Gold remains 0; accuracy remains null; no runtime medial or voicing rule promoted. Repository remains PARTIAL PROTOTYPE.
+
+
+### Okell (1995) dialect evidence — 2026-11-13
+
+| Work item | Status | Evidence / acceptance boundary |
+|---|---|---|
+| Okell (1995) WB/SB and regional medial profiles | DONE_VERIFIED (source evidence) | Full text; AR preserves WB r/y, SB merges; IT/TV have medial /l/ absent in SB; three matrix rows, seven claims, two dialect rules and regression tests. |
+| Modern Yangon medial profile | PARTIAL / EVIDENCE-LIMITED | Do not infer from Arakanese, Intha, Tavoyan or historical OWB; requires current Yangon-specific text evidence and independently adjudicated examples. |
+| Okell transcription convention | DONE_VERIFIED (source scope) | Texts are phonemic with limited allophonic approximations; not project IPA gold. No audio accessed. |
