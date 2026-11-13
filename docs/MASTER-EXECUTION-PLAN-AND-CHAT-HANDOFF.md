@@ -1946,3 +1946,11 @@ Code/test commit **c35a7ae0255725aa85cf5f836c64b4ed1fa5b731** completed required
 - Registry validation: 72 source records / 125 claims; IDs unique, CSV row widths valid, all claim source references resolve.
 - Project remains **PARTIAL PROTOTYPE / NOT RELEASE-READY**. Outstanding evidence gates: inspect actual MLC dictionary/1980 system sources; adjudicate lexical collision groups from primary entries; produce independently adjudicated IPA gold; validate tone/prosody and full source-to-IPA-to-Ukrainian adapter coverage; resolve npm's one high-severity vulnerability.
 - No runtime mappings, IPA gold labels, or Ukrainian candidates promoted. All 94 Ukrainian candidates remain PROPOSED / EVIDENCE_LIMITED. No audio accessed.
+
+## MOW orthographic lemma coverage continuation (2026-11-13)
+
+- Added source **MOW_2017_0_1_3_DATASET** and claim **CLM-MOW-ORTHOGRAPHIC-RIME-COVERAGE-001** for the official MOW 0.1.3 TSV (upstream blob SHA `0c97fc4e98b3827dae0bc667858993037496ca58`, CC BY 4.0).
+- Added `data/burmese/romanization_rime_mow_lemma_coverage.csv` (50 source-unit variants) and `data/burmese/romanization_rime_mow_lemma_hits.csv` (508 exact word-final source-unit/lemma pairs). Input has 1,476 `mya:lemma` rows / 1,041 distinct lemma strings; matches represent 442 distinct lemma strings and 547 synsets. 35/50 source-unit variants are present.
+- Both source-unit variants occur in MOW for 11/25 MLCTS collision groups: `a`, `a:`, `am`, `am:`, `am.`, `any`, `any:`, `au`, `auk`, `aung:`, `u.`. One side occurs for 13/25; neither occurs for `um.`.
+- Crucial limit: matching was exact Unicode `lemma.endsWith(source_unit)`. It does not perform syllabification or provide pronunciation. These are orthographic lexical leads, not lexical pronunciation pairs or evidence of homophony. The prior collision-ledger partition remains unchanged: 21 unadjudicated, 2 secondary equivalence, 1 secondary conflict, 1 special non-rime. Use MOW hits to locate candidate MLC dictionary entries; do not alter runtime mappings or promote Ukrainian candidates based on this dataset.
+- Added tests for the MOW summary/hit cross-consistency, source references, licensing and evidence boundaries. Registry: **73 sources / 126 claims**. Test-bearing commit `8f1dee474a1588fb1f8d55c76afdc57c9ccae335`; registry deduplication is a follow-up data-only fix. Exact-head CI pending.
