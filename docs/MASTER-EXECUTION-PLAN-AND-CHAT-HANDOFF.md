@@ -2176,3 +2176,10 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - Added three documentary claims; updated lexical audit, MLCTS2 status parity and regression tests. The MOW candidate dataset itself is unchanged.
 - Current collision distribution: **12 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 143 claims**.
 - Secondary examples only; no controlled minimal pairs or primary MLC adjudication. No runtime, IPA gold or Ukrainian output changed. Exact-head CI pending.
+
+## One-sided lexical evidence for `aung.` — 2026-11-13
+
+- Added MOW-listed `စောင့်` (`caung.`, `/sa̰ʊɴ/`) from text-only Wiktionary; it attests only the ောင့် side. The ေါင့် side remains unobserved.
+- Added claim `CLM-WIKTIONARY-AUNG-DOT-ONE-SIDE-EXAMPLE-001`; updated lexical audit, MLCTS2 status parity and tests.
+- Current collision distribution: **11 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 2 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 144 claims**.
+- One-sided secondary attestation only; no collision adjudication or runtime/IPA gold/Ukrainian output promotion. Exact-head CI pending.
