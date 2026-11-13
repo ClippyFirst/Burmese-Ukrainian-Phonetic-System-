@@ -129,3 +129,12 @@ Exact tested head 2a96f4121a43f704a8f0d2eb6d81cb343fba47db passed CI 43395906072
 The evidence registries now contain 58 sources, 78 claims, 45 medial rows, 30 rules and 7 source-phonemic sandhi cases. Okell (1995) documents dialect-specific AR/IT/TV medial inventories; Nishi (1998) documents historical medial distinctions and dialect reflexes. Neither source licenses direct modern Yangon mappings. Okell (1969) and Nishi (1976) remain unread primary-source targets.
 
 Text permissions are confirmed; remaining blockers are retrieval/schema and data quality. No audio was used. IPA gold=0; empirical accuracy=null; no runtime rules promoted.
+
+
+### Final verified evidence state — 2026-11-13
+
+Exact tested code/data head cda73ccb7fa80a0404fed5a65588ebd690253f94 passed CI 43397172081: 220 Python tests + 66 subtests, 20 Node, 58 browser tests, IPA schema validation, build and generated-data freshness. Optional diagnostics 43397181331 passed but has zero gold and no accuracy result.
+
+The registries contain 59 sources, 81 claims, 45 medial rows, 30 phonological rules and 7 source-phonemic sandhi cases. Okell (1995) regional and Nishi (1998) historical evidence is source-linked/tested and withheld from runtime. SEAlang interface-level IPA support is confirmed by the 2008 project description, but internal storage vs MLCTS2 remains unresolved. Okell (1969) and Nishi (1976) remain unread primary-source targets.
+
+Text permissions are confirmed; remaining blockers are retrieval/schema and data quality. No audio was used. IPA gold=0; empirical accuracy=null; no runtime rules promoted.
