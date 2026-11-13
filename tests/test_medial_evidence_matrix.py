@@ -168,3 +168,38 @@ def test_green_2005_complex_onset_evidence_is_not_a_unicode_mapping():
     assert rule["source_id"] == "GREEN2005_BURMESE_PHONOLOGY"
     assert rule["claim_id"] == "CLM-GREEN2005-ONSET-CODA-001"
 
+def test_nishi_old_burmese_medial_history_is_separate_from_modern_unicode_rules():
+    matrix = {row["evidence_id"]: row for row in rows("medial_evidence_matrix.csv")}
+    expected = {
+        "MED-NISHI-OWB-H-001",
+        "MED-NISHI-OWB-L-001",
+        "MED-NISHI-MB-RY-MERGER-001",
+        "MED-NISHI-GREAT-SHIFT-CRCY-001",
+    }
+    assert expected <= matrix.keys()
+    for evidence_id in expected:
+        row = matrix[evidence_id]
+        assert row["source_ids"] == "NISHI1998_OLDBURMESE"
+        assert row["project_runtime_status"] == "WITHHELD"
+        assert "historical" in row["evidence_level"]
+        assert "no modern Unicode mapping" in row["unicode"] or "no modern Unicode mapping" in row["notes"]
+
+    h_rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "NISHI_OWB_H_VOICELESS_SONORANT_NOT_MEDIAL")
+    l_rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "NISHI_OWB_L_MEDIAL_REFLEX")
+    merger = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "NISHI_MB_RY_MEDIAL_MERGER")
+    shift = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "NISHI_GREAT_SHIFT_CR_CY")
+    assert all(rule["status"] == "analysis_dependent" for rule in (h_rule, l_rule, merger, shift))
+    assert "not equivalent to modern Unicode U+103E" in h_rule["scope"]
+    assert "never enabled in runtime" not in l_rule["scope"]  # historical scope is already explicit
+    assert "historical merger only" in merger["scope"]
+    assert "Historical model only" in shift["scope"]
+
+
+def test_nishi_old_burmese_h_notation_is_not_collapsed_into_modern_medial_ha():
+    row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-NISHI-OWB-H-001")
+    assert "voiceless or aspirated sonorant unit" in row["attested_phonological_behavior"]
+    assert "not an independent medial cluster" in row["attested_phonological_behavior"]
+    assert "Do not map historical -h to modern U+103E" in row["notes"]
+    modern_ha = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-HA-001")
+    assert modern_ha["unicode"] == "U+103E"
+    assert modern_ha["project_runtime_status"] == "WITHHELD"
