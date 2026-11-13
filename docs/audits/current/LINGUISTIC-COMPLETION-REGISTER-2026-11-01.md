@@ -1503,3 +1503,11 @@ Code/test head **508816dcddf22272e98647625b657bc79712817e** completed required C
 | BURMESE-MOW-MLCTS2-RESOURCE-008 | PARTIAL — SECONDARY RESOURCE | MOW v0.1.2 documents MLCTS and MLCTS 2 romanized search variants; v0.1.3 is CC BY 4.0. | The small semantic wordnet can support lexical lookup and variant discovery, not primary MLC table adjudication or a pronunciation gold set. |
 
 Registry totals: **70 nonblank source records / 123 claims**. The crosswalk test is added; CI status for this latest code/test commit is pending.
+
+## Earlier MLC Concise Dictionary — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-MLC-CONCISE-DICTIONARY-ACCESS-009 | PARTIAL — PRIMARY WORK IDENTIFIED, CONTENT NOT INSPECTED | Allott 1985 reports five parts published 1978-1980 and says the work gives pronunciations; Okell 1982 bibliography identifies a five-volume Rangoon edition from Mranmācā Aphwai. | Locate an authorized physical or digital copy. Inspect title pages, pronunciation key and entries. Do not assume its pronunciation notation is MLCTS or MLCTS2. |
+
+Registry totals: **72 nonblank sources / 125 claims**; source IDs and claim IDs unique, all claim source references resolve, and CSV widths validate.
