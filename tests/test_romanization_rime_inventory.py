@@ -333,3 +333,51 @@ def test_sealang_api_request_pattern_is_registered_with_response_schema_caveat()
     assert claim["source_id"] == "SEALANG_SHORTCUT_2022"
     assert "lang=burmese" in claim["claim"]
     assert "does not establish current endpoint availability" in claim["claim"]
+
+def test_r12a_secondary_phonology_crosswalk_preserves_ipa_distinctions_and_scope():
+    with (ROOT / "data/burmese/romanization_rime_collisions.csv").open(
+        encoding="utf-8-sig", newline=""
+    ) as stream:
+        collisions = {row["mlcts"]: row for row in csv.DictReader(stream)}
+    with (ROOT / "data/burmese/romanization_rime_r12a_secondary_phonology_crosswalk.csv").open(
+        encoding="utf-8-sig", newline=""
+    ) as stream:
+        crosswalk = {row["mlcts"]: row for row in csv.DictReader(stream)}
+    with (ROOT / "data/burmese/sources.csv").open(encoding="utf-8-sig", newline="") as stream:
+        sources = {row["source_id"]: row for row in csv.DictReader(stream)}
+    with (ROOT / "data/burmese/source_claims.csv").open(
+        encoding="utf-8-sig", newline=""
+    ) as stream:
+        claims = {row["claim_id"]: row for row in csv.DictReader(stream)}
+
+    assert set(crosswalk) == set(collisions)
+    assert len(crosswalk) == 25
+    for key, row in crosswalk.items():
+        assert row["source_units"] == collisions[key]["source_units"]
+        assert "not an MLC primary table" in row["evidence_boundary"]
+        assert "do not promote" in row["evidence_boundary"]
+
+    statuses = [row["comparison_status"] for row in crosswalk.values()]
+    assert statuses.count("SAME_IN_R12A_TABLE") == 18
+    assert statuses.count("DISTINCT_IN_R12A_TABLE") == 3
+    assert statuses.count("PARTIAL_COVERAGE") == 2
+    assert statuses.count("NOT_LISTED_IN_R12A_TABLE") == 1
+    assert statuses.count("SPECIAL_NONRIME_CONTEXT_DEPENDENT") == 1
+
+    assert crosswalk["any"]["r12a_ipa_values"] == "ɪ̀N;ì, è, ɛ̀"
+    assert crosswalk["any:"]["r12a_ipa_values"] == "ɪ́N;í, é, ɛ́"
+    assert crosswalk["any."]["r12a_ipa_values"] == "ɪ̰N;ḭ, ḛ, ɛ̰"
+    assert crosswalk["any"]["comparison_status"] == "DISTINCT_IN_R12A_TABLE"
+    assert crosswalk["am"]["r12a_ipa_values"] == "àN;àN"
+    assert crosswalk["um"]["r12a_ipa_values"] == "òʊN;òʊN"
+    assert crosswalk["u."]["comparison_status"] == "SPECIAL_NONRIME_CONTEXT_DEPENDENT"
+    assert crosswalk["a."]["comparison_status"] == "NOT_LISTED_IN_R12A_TABLE"
+
+    assert "R12A_BURMESE_ORTHOGRAPHY_2026" in sources
+    assert "not an MLC primary transcription table" in sources[
+        "R12A_BURMESE_ORTHOGRAPHY_2026"
+    ]["scope"]
+    claim = claims["CLM-R12A-RIME-CROSSWALK-2026-001"]
+    assert claim["source_id"] == "R12A_BURMESE_ORTHOGRAPHY_2026"
+    assert "does not account for vowel reduction" in claim["claim"]
+    assert "not a primary MLC table" in claim["claim"]
