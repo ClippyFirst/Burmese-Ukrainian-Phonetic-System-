@@ -674,3 +674,14 @@ The onsets differ, but the rime sequence `/àʊɴ/` is the same in the two secon
 - `npm install` reports **one high-severity vulnerability**; no dependency upgrade was applied.
 - Current registry: **80 sources / 138 claims**. Lexical audit distribution: **17 unadjudicated / 3 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**.
 - All new lexical evidence remains secondary. No runtime, IPA gold or Ukrainian candidate was promoted.
+
+## 30. Additional secondary lexical evidence for `aung:`
+
+Text-only Wiktionary entries supply a MOW-backed example for each of the two source-unit endings in the `aung:` group:
+
+| Lemma | Source-unit ending | Wiktionary MLCTS | Wiktionary IPA |
+|---|---|---|---|
+| `ပေါင်း` | ေါင်း | `paung:` | `/páʊɴ/` |
+| `ကျောင်း` | ောင်း | `kyaung:` | `/t͡ɕáʊɴ/` |
+
+Both lemmas occur in the existing MOW suffix-match dataset. Their onsets differ while the secondary IPA rime sequence `/áʊɴ/` matches. The audit is therefore updated to `SECONDARY_SYSTEM_EQUIVALENCE`, and the MLCTS2 crosswalk status is synchronized. This is not a controlled minimal pair or a primary MLC specification. No runtime rule, IPA gold row or Ukrainian candidate is promoted. Claim: `CLM-WIKTIONARY-AUNG-COLON-WORD-LEVEL-EXAMPLES-001`.
