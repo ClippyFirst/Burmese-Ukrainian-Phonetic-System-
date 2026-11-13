@@ -100,3 +100,11 @@ The IPA gold schema can preserve nasalization in its literal IPA value, but has 
 - Text-use permissions for external resources are confirmed by the project owner. Okell and SEAlang remain blocked only by actual byte/entry retrieval and schema access, not by permission.
 - Myanglish raw CSV vs dataset metadata has an unresolved 2-column/3-feature discrepancy. The myX orthography corpus has sampled target_words misalignment and multi-substitution examples; quarantine pending full row audit and deduplication.
 - Exact-head CI 43393402710: 217 Python tests + 66 subtests, 20 Node tests and 58 browser tests passed; build, generated-data freshness and IPA schema validation passed. Gold remains 0 and accuracy null.
+
+### Final verified state — 2026-11-13
+
+Exact head c03706474cf67b480c449790c9592e5fe0e53fd4 passed CI run 43394274053: 217 Python tests + 66 subtests, 20 Node tests, 58 browser tests, IPA-gold schema validation, build and generated-data freshness. Diagnostic run 43394274111 also passed, but it has no gold and no accuracy result.
+
+The registries contain 56 sources, 71 claims, 42 medial rows, 28 phonological rules and 7 source-phonemic sandhi examples. Nishi (1998) historical and dialect evidence is now more fully represented; all such rows remain WITHHELD. Nishi (1976) is a registered but unread primary-source target.
+
+Text research permissions are confirmed by the project owner; remaining external-source blockers are retrieval/schema and dataset quality, not permission. No audio was used. IPA gold=0, empirical accuracy=null, no runtime rules promoted.
