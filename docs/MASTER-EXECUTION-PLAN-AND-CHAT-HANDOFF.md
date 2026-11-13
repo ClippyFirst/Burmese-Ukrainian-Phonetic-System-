@@ -1540,4 +1540,4 @@ Okell (1969) Reference Grammar and Nishi (1976) Medials in Burmese are registere
 
 Myanglish raw CSV vs metadata remains 2-column/3-feature uncertain; myX orthography remains quarantined for target-word misalignment, multiple substitutions and template duplication. Gold=0, accuracy=null, no runtime medial or voicing rules promoted.
 
-PR #147 remains OPEN / DRAFT / mergeable, 167 commits ahead / 0 behind, 28 files changed; no reviews submitted. PR #129 untouched. Repository remains PARTIAL PROTOTYPE, not linguistically release-ready.
+PR #147 remains OPEN / DRAFT / mergeable, 0 commits behind main and 28 files changed; the current ahead count is tracked on the PR. No reviews submitted. PR #129 untouched. Repository remains PARTIAL PROTOTYPE, not linguistically release-ready.
