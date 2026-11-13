@@ -565,7 +565,7 @@ The previous handoff statement that no word-level pronunciation lead was found f
 | Nasal coda in မြန် | PARTIAL / CROSS-SOURCE CANDIDATE | Wiktionary /mjàɴ/, Google WFST raw output m j àɴ, and Green's /mj/ plus placeless /N/ model converge. Still no independent text-based expert adjudication; Green treats /N/ as vowel nasalization, not necessarily [ɴ]. |
 | Google Thrax source/license | DONE_VERIFIED | Pinned grammar and repository LICENSE both Apache-2.0 at a90601024f07ab7e96c911243324e0adeb16da96. Run 43084508359 build/raw-output smoke succeeded, zero gold; optional comparator only. |
 | Hlaing orthographic FST | DONE_VERIFIED as published structural baseline | 11,732 words / 32,283 syllables; initial 99.93% word-level syllabification; not G2P or IPA accuracy. |
-| Burmese tone inventory | PARTIAL / COMPETING ANALYSES | Green and LREC 2020 describe four categories; Duan & Zhu (2025) propose eight tones across modal/lower registers; full empirical tables not independently reviewed here. |
+| Burmese tone inventory | PARTIAL / COMPETING ANALYSES | Green and Oo et al. (2020) describe four categories; Duan & Zhu (2025) full text (44 pp., CC BY 4.0) proposes eight categories across modal/lower registers. Its sample is five speakers from Yangon, Taunggyi and Mandalay region (not Yangon-only); 89 words / 694 valid tokens; individual T1/T3 variation documented. |
 | Open PR #129 | LEFT OPEN / NOT MERGED | Draft hybrid-engine research PR is 53 commits ahead and 17 behind current main, divergent and non-mergeable. Its source-backed Google FST and raw-output evidence were reused in this research report; the broad hybrid implementation was not ported or merged. |
 
 Detailed evidence: docs/research/BURMESE-MEDIALS-AND-G2P-EVIDENCE-REVIEW-2026-11-13.md. New rows: data/burmese/medial_evidence_matrix.csv. Traceability tests: tests/test_medial_evidence_matrix.py.
@@ -1493,3 +1493,15 @@ Four claims added: CLM-NISHI98-EXAMPLE-PROVENANCE-001, CLM-NISHI98-ATONICIZATION
 ## Nishi (1997) orthographic-standardization paper — full text verified — 2026-11-13
 
 Status: DONE_VERIFIED as historical orthographic evidence. Full PDF inspected (BNME 22(4), pp.975–999; DOI 10.15021/00004135). It distinguishes OWB, MWB, EModWB and ModWB; reports OWB -l replacement by -r/-v by initial class and later -y insertion after velars before written -i. It explicitly distinguishes written High and spoken Low varieties. The article focuses on rhyme systems and discusses initials only when necessary; it is not a comprehensive medial inventory or modern Unicode-to-IPA source. Added CLM-NISHI97-SCOPE-001. No runtime mapping activated.
+
+
+## Duan & Zhu (2025) Burmese tone study — full-text audit — 2026-11-13
+
+| Work item | Status | Evidence / acceptance boundary |
+|---|---|---|
+| Duan & Zhu (2025), *Double registers and eight tones in Burmese* | DONE_VERIFIED (FULL-TEXT SOURCE EVIDENCE ONLY) | Full 44-page article inspected from the Academia Sinica journal download page; *Language and Linguistics* 26(3), pp.387–430; CC BY 4.0. The authors propose four traditional tone classes split into eight yin/yang categories (1a–4a, 1b–4b), with modal and lower/breathy registers and pitch, phonation/register and length as dimensions. |
+| Empirical sample and dialect scope | DONE_VERIFIED (SOURCE SAMPLE DESCRIPTION) | §1.2 p.392: five speakers aged 22–38, two from Yangon, two from Taunggyi and one from the Mandalay region; 89 words (80 monosyllabic, 9 disyllabic), each read twice; 694 valid word tokens. This is a mixed regional sample, not a Yangon-only sample. |
+| Individual variation | DONE_VERIFIED (SOURCE EVIDENCE) | §5.3 Figure 7 and discussion report speaker variation, particularly in T1 and T3; preserve within-source variability rather than forcing one invariant pitch contour. |
+| Runtime promotion / four-vs-eight reconciliation | PARTIAL / COMPETING ANALYSES | The paper advances an eight-category compound tone analysis, while Green and Oo et al. (2020) describe four categories. The new paper is a significant peer-reviewed competing analysis, not by itself a project-wide adjudication. No runtime tone model changed. |
+
+Claims added: CLM-DUAN25-MODEL-001, CLM-DUAN25-SAMPLE-001, CLM-DUAN25-VARIATION-001. Existing DUAN2025 source record updated from abstract-only to full-text inspected. Review was text-only: no source recordings were accessed or analyzed. Independent project IPA gold remains 0; empirical G2P accuracy remains null.
