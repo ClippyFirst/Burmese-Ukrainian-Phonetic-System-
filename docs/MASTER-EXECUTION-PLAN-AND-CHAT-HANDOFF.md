@@ -2077,3 +2077,9 @@ The first CI attempt after registering the MOW orthographic coverage claim (work
 - Coverage: 11/25 MLCTS collision groups have both source units found in MOW, 13/25 have one, and 1/25 has neither. This measures only MOW's lexical coverage; no pronunciation, phonological rime, syllable segmentation, or equivalence is inferred. The 1,476 lemma rows / 1,041 unique forms / 1,198 synsets are small-resource counts, not a census of Burmese.
 - Exact-head CI on PR #147 head `50a29bb880256fbd0c977bc9dc1f45bb4ad49d2d`, run **43503144848**, passed: 242 Python + 66 subtests, 20 Node, 58 Playwright, production build, generated-data freshness. IPA gold gate remains `NOT_READY_NO_ADJUDICATED_GOLD`; one high-severity npm vulnerability remains.
 - PR #147 remains open/draft/mergeable; branch is 455 ahead / 0 behind. No linguistic candidate or runtime behavior promoted.
+
+## MLC 1978 spelling-book catalogue lead — continuation 2026-11-13
+
+- New source record NDL_MLC_SPELLING_1978_CATALOG records the National Diet Library of Japan catalogue entry for the 1978 MLC Burmese orthography/spelling reference; claim CLM-MLC-SPELLING-BOOK-1978-CATALOG-001 is documentary and explicitly catalogue-only.
+- Allott (1985, p.145) says the MLC spelling book was finally published in 1978 and separately says the Concise Burmese Dictionary appeared in five parts from late 1978 through 1980. This suggests distinct works, but exact title matching remains unverified until title pages are inspected. Do not collapse this record into the Concise Dictionary or infer an MLCTS/IPA field.
+- Added regression test test_mlc_1978_spelling_book_catalog_is_distinguished_from_concise_dictionary. Registry now contains 82 source rows and 132 claim rows; exact-head CI not yet observed. No runtime mapping changed.
