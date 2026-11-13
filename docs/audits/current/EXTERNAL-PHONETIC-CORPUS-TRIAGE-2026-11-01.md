@@ -161,9 +161,10 @@ This continuation follows the explicit project direction to use **text sources o
 ### A Corpus of Modern Burmese — text corpus, rights unresolved
 
 - Resource: https://zenodo.org/records/1202324; DOI 10.5281/zenodo.1202324.
-- Zenodo describes John Okell's corpus as compiled in the 1990s, converted to Unicode and distributed as an 8.8 MB allfiles.txt file. The Zenodo record's Rights/License field is blank.
-- European Language Grid catalogue record 940 lists CC BY 4.0. Because the repository record itself does not display a license, do not assume the catalogue metadata alone settles the underlying rights. Seek a direct rights statement from the depositor/curator or a corrected repository metadata record before copying or redistributing text.
-- Disposition: useful text-corpus lead for orthographic coverage and lexical context; **BLOCKED for project ingestion/redistribution pending rights reconciliation**; not an IPA corpus.
+- Zenodo describes John Okell's corpus as compiled in the 1990s, converted to Unicode and distributed as an 8.8 MB allfiles.txt file. The Zenodo record's Rights/License field is blank, while European Language Grid catalogue record 940 lists CC BY 4.0.
+- The project owner has confirmed that required permissions for text-only research use and project ingestion are in place. The metadata discrepancy remains recorded for provenance and downstream publication, but it is no longer a research-permission blocker.
+- Current operational blocker: the 8.8 MB text file exceeds the web preview limit and this runtime could not download it (container DNS/network unavailable; GitHub connector only fetches GitHub-hosted UTF-8 text). No text has yet been imported or counted.
+- Disposition: **AUTHORIZED_FOR_RESEARCH; BLOCKED_TOOL_ACCESS** until the corpus bytes can be obtained in this execution environment; not an IPA corpus.
 
 ### Text-only policy and corpus gate
 
@@ -177,8 +178,50 @@ This continuation follows the explicit project direction to use **text sources o
 
 - Dictionary metadata: approximately 35,000 entries, spoken and literary styles, MLC 1986 orthography, examples/etymologies; based on the MLC 1993 Myanmar-English Dictionary (1996 Dunwoody reprint), used by SEAlang with permission.
 - Transcription ambiguity: SHACHI describes IPA search/display, while Mya2Rom documentation says MLCTS2 is used by the MLC dictionary and SEAlang. The SEAlang page could not be inspected because it timed out/returned gateway errors. Do not assume the entry transcription is IPA.
-- Rights: underlying MLC/Dunwoody dictionary content is copyrighted; SEAlang's permission to host does not grant project-wide bulk reuse. No extraction or row import.
+- Rights: the project owner confirms all necessary permissions for research use and project ingestion. This is a project-specific authorization, distinct from the public metadata and underlying source copyright statements. No rows were extracted in this pass.
 - Burmese Text Corpus: monolingual Internet texts; metadata shows 612,692 collocates and 3,172,485 contexts served, not verified dataset row/token counts. No explicit reuse license; metadata carries a 2007 NICT/Matsubara Lab/Anchor copyright notice.
 - Burmese Bitext Corpus: translated words/phrases/sentences, aligned sentence-by-sentence where possible; 1,234,822 pairs served, not verified total size; source SAY Project Burmese resources (NMSU CRL); no explicit reuse license and same metadata copyright notice.
 - Disposition: candidate for written lexical/context and orthographic coverage research only; **BLOCKED for bulk extraction/import pending direct rights and schema verification**; neither text corpus provides IPA gold.
 
+
+
+## Text-only permission and data-quality update — 2026-11-13
+
+### Research-use authorization
+
+The project owner has confirmed that all required permissions for text-only research use and project ingestion of the listed textual resources are in place. Therefore, rights uncertainty in public catalogue metadata is no longer treated as a blocker to research processing or internal project ingestion. Public source metadata is retained accurately; this project-specific authorization does not rewrite the original public license fields. No audio resources are in scope.
+
+### Nishi (1998) — full-text inspection and source-faithful evidence
+
+The complete repository-hosted PDF was inspected, not just its abstract. It provides:
+- first sandhi pattern: an atonic syllable around /a/ followed by an eligible unaspirated stop, affricate or sibilant; both eligible consonants may be voiced;
+- second sandhi pattern: an eligible following onset becomes voiced after a non-stop tonal rhyme in close juncture;
+- multiple examples on pp.253–254;
+- explicit non-obligatoriness, exceptions, optional atonicization and dialect/subvariety differences;
+- a four-stage historical account involving three voicing rules plus atonicization, explicitly an explanatory historical proposal.
+
+Nishi states that slash-delimited phonemic transcription follows Okell 1995 and that Written Burmese forms in braces use a modified Duroiselle transliteration. These source phonemic forms are **not project IPA**. Seven source-faithful examples are now stored in data/burmese/sandhi_evidence.csv with an empty IPA field and SOURCE_ATTESTED_NOT_IPA status. No runtime voicing rule was enabled.
+
+### Myanglish raw artifact audit
+
+- The raw data.csv file's header is exactly myanmar,myanglish and the raw file preview contains 2,121 examples.
+- The README's dataset_info.features declares a third official_standard feature, and the viewer displays it. The current raw CSV does not contain that third column. The discrepancy remains UNCERTAIN; do not synthesize or infer the missing field.
+- The README states that Myanglish is non-standardized and the current release is predominantly one author's personal phonetic typing style. Use only as a separate informal romanization diagnostic, never as IPA gold or as a standard pronunciation reference.
+
+### MyX orthography corpus quality audit
+
+- The repository contains 21 CSV files under data/; the dataset page reports 4,800 rows and 1.63 MB. The README labels the corpus work-in-progress.
+- Sampled hc ara_phonetic.csv rows pair ဆျာ with ဆရာ, but target_words is incorrectly labelled မင်ရည် နှင့် မှင်ရည်. This is a concrete field-alignment error.
+- Sampled phet_bet_phonetic.csv rows can contain multiple substitutions in one sentence while the target field only names the confusion pair. This is not a single-edit gold label without additional alignment.
+- mi_mhee_phonetic.csv mixes lexical/semantic distinctions such as မီ vs မှီ, not merely a pronunciation confusion. This is useful orthography/lexical data but cannot be treated as a phonetic label.
+- Yautkyar_spelling.csv repeats a narrow word family in many templated sentences. Deduplication and provenance review are required before benchmark use.
+- Disposition: permission is not the blocker. Keep the dataset **QUARANTINED_FOR_QUALITY_REVIEW**; do not use it as IPA gold or import it as a clean supervised benchmark until row-level checks and de-duplication pass.
+
+### Remaining access and acceptance gates
+
+1. Obtain the Okell corpus bytes through an accessible project-side transfer or mirror, record the exact revision/hash, then perform Unicode, duplicate, document-boundary and text-quality profiling.
+2. Access SEAlang text/dictionary records in a stable manner; resolve entry-level transcription semantics (IPA vs MLCTS2) before treating dictionary pronunciations as source phonemic data.
+3. Obtain raw Myanglish and orthography dataset artifacts at pinned revisions for reproducible row-level schema checks, deduplication and target-word alignment. Permission is confirmed; data access and quality remain the gates.
+4. Build separate text-only evidence tables for source-attested phonemic forms, romanization, orthographic corrections and IPA gold. Do not collapse these into one target field.
+
+No external corpus bytes were imported in this update. Independent expert-adjudicated IPA gold remains 0; empirical IPA accuracy remains null.
