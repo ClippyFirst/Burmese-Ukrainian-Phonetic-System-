@@ -1914,3 +1914,10 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - Added MOW-listed Wiktionary lemma `နှလုံး` (`hna.lum:`, `/n̥əlóʊɴ/`) for `ုံး` and `ကုန်` (`kun`, `/kòʊɴ/`) for `ုန်`; the opposite sides remain unobserved. Added two documentary claims and updated lexical audit, MLCTS2 parity and regression tests.
 - Current distribution: 9 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 4 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 146 claims.
 - Secondary one-sided evidence only; not collision adjudication or primary MLC specification. No IPA gold, runtime or Ukrainian output promotion. CI pending.
+
+## One-sided lexical examples for `au:`, `im` and `im.` — 2026-11-13
+
+- Added MOW-listed Wiktionary entries `ကျော` (`kyau:`, `/t͡ɕɔ́/`) for ော; `အိမ်` (`im`, `/ʔèɪɴ/`) for ိမ်; and `စိမ့်` (`cim.`, `/sḛɪɴ/`) for ိမ့်. Opposite source-unit sides remain unobserved.
+- Added three source claims and updated lexical audit, MLCTS2 status parity and regression tests.
+- Current distribution: 6 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 7 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 149 claims.
+- Secondary one-sided evidence only; no collision adjudication or primary MLC specification. No IPA gold, runtime or Ukrainian output promotion. CI pending.
