@@ -161,7 +161,7 @@ def test_green_2005_complex_onset_evidence_is_not_a_unicode_mapping():
     assert row["evidence_level"] == "modern_spoken_phonology"
     assert row["project_runtime_status"] == "WITHHELD"
     assert "not a one-to-one Unicode mapping" in row["unicode"]
-    assert "/mj/" in row["attested_phonological_behavior"]
+    assert "/mjouʔ/" in row["attested_phonological_behavior"]
     assert "reducing compounds" in row["attested_phonological_behavior"]
     rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "GREEN2005_MAJOR_CG_ONSET")
     assert rule["status"] == "analysis_dependent"
