@@ -1350,3 +1350,11 @@ New text-only source: STEDT Monograph 3 (Namkung, ed., 1996), pp.61-66, which co
 
 Do not merge these into one universal rule or equate the historical notation directly with modern Unicode U+103B/U+103C/U+103D. New source claims, matrix rows, evidence-only rules and tests are registered. Both rows remain WITHHELD. The STEDT book is marked All Rights Reserved; no tables or lexical data were copied. Current Yangon runtime and IPA outputs are unchanged.
 
+## Written Burmese historical-medial reconciliation — 2026-11-13
+
+Nishi (1997) distinguishes OWB, MWB, EModWB and ModWB spelling standards. OWB medial -l- was replaced by MWB -r-/-v- depending on initial context; EModWB inserted -y- after k-/kh- before written -i, reflecting a phonemic change. Nishi explicitly separates Written Burmese H from spoken Burmese L and warns that their phonological systems and historical periods are not identical.
+
+Matisoff (2003, pp.56,70-71) describes historical WB *-r- > Modern Burmese -y- and explains why Written Burmese is not reliable for reconstructing the distinction among proto *-r-, *-l- and *-y-. Orthographic spellings can shift or vacillate across periods.
+
+New source claims, matrix rows, evidence-only rules and tests are registered. All new historical rows remain WITHHELD; they are not modern Unicode-to-IPA rules. The full Nishi 1976 "Medials in Burmese" chapter is still a source-access target; only bibliographic records and later secondary citations are currently verified.
+
