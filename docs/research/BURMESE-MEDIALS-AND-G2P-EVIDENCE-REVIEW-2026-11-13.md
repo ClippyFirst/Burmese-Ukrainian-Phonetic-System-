@@ -762,3 +762,9 @@ This is a secondary lexical attestation only; it does not adjudicate the collisi
 - IPA gold validator remains `NOT_READY_NO_ADJUDICATED_GOLD` (0 independently adjudicated entries). `npm install` reports **one high-severity vulnerability**; no dependency upgrade applied.
 - Current ledger: 25 groups = **5 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 8 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 150 claims**.
 - This verifies code/data/test consistency only. No primary MLC rule, IPA gold, runtime behavior or Ukrainian candidate was promoted.
+
+## 38. Secondary lexical distinction evidence for `am.` — 2026-11-14
+
+Wiktionary lists `စိမ့်` with MLCTS `cim.` and IPA `/sḛɪɴ/`, ending in `မ့်`, and `ကြံ့` with MLCTS `kram.` and IPA `/t͡ɕa̰ɴ/`, ending in `ံ့`. These have distinct rime realizations. The MOW scan contains `စိမ့်` and the compound `အိန္ဒိယကြံ့` as suffix-match candidates. The secondary lexical evidence conflicts with the vendor's same-output MLCTS2/IPA crosswalk. The audit and crosswalk now use `SECONDARY_SOURCE_DISTINCTION`; claim `CLM-WIKTIONARY-AM-DOT-LEXICAL-DISTINCTION-001` is registered.
+
+This is not a controlled minimal pair or primary MLC adjudication. Do not treat the vendor crosswalk as resolved, and do not promote runtime, IPA gold or Ukrainian output. Current 25-group distribution: **4 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 8 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 151 claims**. Exact-head CI pending.
