@@ -1840,3 +1840,11 @@ Current collision ledger: **5 unadjudicated / 8 secondary equivalence / 1 second
 | BURMESE-RIME-AM-COLON-LEXICAL-025 | DONE_VERIFIED — DATA_AND_TEST_INTEGRITY | SHA `73bfbd7d82f69bfa0e306d984a40fe2324fc3515`; required CI runs **43519075644 SUCCESS** and **43519083741 SUCCESS**: 251 Python + 66 subtests, 20 Node, 58 Playwright; build, generated-data freshness and Chromium installation passed. | Confirms registry, crosswalk and test integrity only. IPA gold remains 0; accuracy null; secondary example is one-side-only and not primary MLC adjudication. One high-severity npm vulnerability remains. |
 
 Current collision ledger: **5 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 8 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 150 claims**.
+
+## `am.` secondary lexical distinction — 2026-11-14
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-RIME-AM-DOT-LEXICAL-025 | PARTIAL — SECONDARY_SOURCE_DISTINCTION | Wiktionary `စိမ့်` (`cim.`, `/sḛɪɴ/`) and `ကြံ့` (`kram.`, `/t͡ɕa̰ɴ/`) represent final မ့် and ံ့; claim `CLM-WIKTIONARY-AM-DOT-LEXICAL-DISTINCTION-001` registered. Audit and crosswalk now flag secondary distinction. | Secondary evidence conflicts with vendor MLCTS2/IPA same-output mapping. Not a minimal pair or primary MLC adjudication; no IPA gold, runtime or Ukrainian mapping promotion. CI pending. |
+
+Current collision ledger: **4 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 8 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 151 claims**.
