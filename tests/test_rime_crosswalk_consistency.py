@@ -106,7 +106,6 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
         "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 18,
         "SECONDARY_SYSTEM_EQUIVALENCE": 2,
         "SECONDARY_SOURCE_CONFLICT": 1,
-        "SECONDARY_SOURCE_DISTINCTION": 1,
         "SECONDARY_ONE_SIDE_ONLY": 1,
         "SECONDARY_SOURCE_DISTINCTION": 2,
         "SPECIAL_NONRIME_CONTEXT_DEPENDENT": 1,
