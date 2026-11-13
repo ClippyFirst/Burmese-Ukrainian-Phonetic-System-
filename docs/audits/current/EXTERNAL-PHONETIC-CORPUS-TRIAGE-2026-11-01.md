@@ -211,7 +211,7 @@ Nishi states that slash-delimited phonemic transcription follows Okell 1995 and 
 ### MyX orthography corpus quality audit
 
 - The repository contains 21 CSV files under data/; the dataset page reports 4,800 rows and 1.63 MB. The README labels the corpus work-in-progress.
-- Sampled hc ara_phonetic.csv rows pair ဆျာ with ဆရာ, but target_words is incorrectly labelled မင်ရည် နှင့် မှင်ရည်. This is a concrete field-alignment error.
+- Sampled hcara_phonetic.csv rows pair ဆျာ with ဆရာ, but target_words is incorrectly labelled မင်ရည် နှင့် မှင်ရည်. This is a concrete field-alignment error.
 - Sampled phet_bet_phonetic.csv rows can contain multiple substitutions in one sentence while the target field only names the confusion pair. This is not a single-edit gold label without additional alignment.
 - mi_mhee_phonetic.csv mixes lexical/semantic distinctions such as မီ vs မှီ, not merely a pronunciation confusion. This is useful orthography/lexical data but cannot be treated as a phonetic label.
 - Yautkyar_spelling.csv repeats a narrow word family in many templated sentences. Deduplication and provenance review are required before benchmark use.
