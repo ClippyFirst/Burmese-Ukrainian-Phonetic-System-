@@ -1364,3 +1364,7 @@ Nishi (1998), *The Development of Voicing Rules in Standard Burmese* (BNME 23(1)
 
 The source, three claims, two analysis-dependent rule records and a provenance test are registered. Neither rule is enabled globally. Next acceptance step: select the target spoken profile and reconcile Nishi's descriptions with accessible written dictionary examples and Okell's text grammar. No audio is used.
 
+## Hill (2019) full-text access target — 2026-11-13
+
+Cambridge University Press confirms Nathan W. Hill, *The Historical Phonology of Tibetan, Burmese, and Chinese*, chapter 2 "Burmese", pp.46-83, DOI 10.1017/9781316550939.003. Only a short publisher preview was accessible; no medial-specific claim is made from it. The source and bibliographic/access claim are registered. Next research gate: obtain authorized full-text access, inspect Old Burmese medial clusters and written-to-spoken developments, and add only source-located claims. Do not infer content from the title or preview.
+
