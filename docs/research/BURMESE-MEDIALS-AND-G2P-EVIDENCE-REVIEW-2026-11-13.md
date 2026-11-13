@@ -329,3 +329,31 @@ These descriptions must not be collapsed into one universal mapping. The Written
 
 The STEDT volume states © 1996 Regents of the University of California, All Rights Reserved. Only factual claims and bibliographic pointers are recorded; no inventory tables or lexical data are copied into the repository. No runtime rule is enabled. Both new matrix entries remain WITHHELD pending a direct historical mapping, modern profile reconciliation and expert review.
 
+## 10. Historical spelling changes and the Written/Spoken distinction
+
+Two further text sources materially clarify why the historical medial notation cannot be projected directly onto modern Burmese output.
+
+### 10.1 Nishi (1997): written standards are period-specific
+
+Nishi distinguishes successive written standards: Old Written Burmese (OWB), Middle Written Burmese (MWB), Early Modern Written Burmese (EModWB), and Modern Written Burmese (ModWB). He describes the second standardization, around the end of the fourteenth century, as replacing OWB medial -l- with -r- and -v- according to the initial consonant. In EModWB, medial -y- was inserted between velar k-/kh- and written rhyme -i; Nishi says this reflects a phonemic change (printed pp.977-978).
+
+Nishi also explicitly warns against equating written and spoken systems. The phonological systems of period-specific Written Burmese (the High variety) and the corresponding spoken variety (the Low variety) are not identical, and their historical periods are not coterminous (printed pp.980-981). Reading forms and spoken forms may differ. This is directly relevant to the pipeline: orthographic medial signs and historical spellings must not be treated as self-sufficient modern Yangon phonetic labels.
+
+### 10.2 Matisoff (2003): historical *r > y and limits of Written Burmese evidence
+
+Matisoff describes the palatalization of *r > y in Burmese in both initial and medial position, explicitly giving WB *-r- > Modern Burmese -y- (p.56). Later, he states that Written Burmese is not a reliable language for establishing the distinction among proto-medials *-r-, *-l- and *-y-. His examples show historical *-l- yielding WB -y- after velars and WB -r- after labials, with exceptions and spelling vacillation in inscriptions (pp.70-71).
+
+### 10.3 Reconciliation and implementation consequence
+
+The STEDT/Benedict Written Burmese entry, Nishi's periodized orthographic history, Matisoff's comparative sound-change analysis, and modern Yangon phonological descriptions are not contradictory one-to-one tables. They address different stages and levels:
+
+1. historical proto-medial reconstruction;
+2. Old and later Written Burmese spelling conventions;
+3. phonemic changes between historical stages;
+4. modern spoken Burmese;
+5. current Unicode codepoint sequences.
+
+The historical sequence provides a reason that written -r- and -y- notation can be confused or merge in later Burmese; it does **not** provide a direct mapping from U+103B or U+103C to a unique current IPA segment. The two new matrix rows and evidence-only rules remain WITHHELD. No runtime mapping has been enabled.
+
+Nishi's article is available through the National Museum of Ethnology repository (DOI 10.15021/00004135). Matisoff's *Handbook of Proto-Tibeto-Burman* is © 2003 Regents of the University of California; only factual claims and page locators are recorded, not tables or lexical data.
+
