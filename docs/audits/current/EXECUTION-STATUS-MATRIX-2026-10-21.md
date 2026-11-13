@@ -1288,3 +1288,10 @@ No corpus rows or pronunciation labels were imported. No runtime G2P rule was en
 - Added two evidence-matrix entries, two evidence-only rules and regression tests. Both entries remain WITHHELD; no current Unicode-to-IPA or runtime rule is inferred.
 - Acceptance criterion: reconcile Nishi's full 1976 "Medials in Burmese" treatment, historical inscriptional spellings, later written standards, and modern standard Yangon phonology using source-specific profiles and specialist review.
 
+### Contextual voicing sandhi — 2026-11-13
+
+- Registered Nishi (1998), *The Development of Voicing Rules in Standard Burmese* (DOI 10.15021/00004129), with three documentary claims.
+- Added two source-linked evidence-only rule records: atonic C1aC2 voicing and voicing after non-stop tonal rhymes in close juncture.
+- The paper reports substantial variation and exceptions and warns that Standard Burmese is not a well-defined variety. Regional dialects differ in rule presence.
+- Both rules remain analysis-dependent and are not enabled globally. Acceptance requires a selected runtime profile, lexical/context coverage, written-source cross-checks and tests for optionality/exceptions. No audio evidence is part of the acceptance path.
+
