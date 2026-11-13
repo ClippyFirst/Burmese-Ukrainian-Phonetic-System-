@@ -1687,3 +1687,19 @@ Registry totals: 83 sources / 133 claims. Exact-head CI pending.
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BURMESE-RIME-CROSSWALK-INTEGRITY-020 | IMPLEMENTED — CI PENDING | Added `tests/test_rime_crosswalk_consistency.py` to verify that the Mya2Rom MLCTS2 crosswalk, R12A secondary phonology crosswalk and lexical audit all cover the same 25 collision groups with matching source-unit identities; validates two-position array alignment, enumerated comparison states, and explicit secondary-vs-primary boundaries. | Integrity checks validate table consistency only. They do not establish pronunciation, lexical identity, primary MLC correctness or Ukrainian output. CI must pass before DONE_VERIFIED. |
+
+## Rime crosswalk integrity and evidence triage — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-RIME-CROSSWALK-INTEGRITY-020 | DONE_VERIFIED — DATA_INTEGRITY_ONLY | `tests/test_rime_crosswalk_consistency.py` verifies all three existing 25-row crosswalks share the same MLCTS keys and source-unit pairs, validates MLCTS2 and R12A two-position value alignment, and locks their observed status distributions. Required CI run **43507606882 SUCCESS** on code commit `de7abaea084515c5ef814575656ede8b83369a6a`: 248 Python, 66 subtests, 20 Node, 58 Playwright; build and generated-data freshness passed. | This validates table alignment and evidence labels only. It does not establish pronunciation, lexical identity, primary MLC correctness, IPA gold or Ukrainian output. |
+
+### Cross-system triage from existing tables (no new linguistic adjudication)
+
+- **Priority 1 — `any` / `any:` / `any.`:** Mya2Rom MLCTS2 and R12A both distinguish the paired Myanmar forms in all three groups. The lexical audit has an explicit secondary-source conflict for `any` (`/kɪ̀ɴ/` versus `/kì/, /kè/, /kɛ̀/`), while `any:` and `any.` remain unadjudicated. This is the clearest existing conflict cluster to preserve for later lexical review; it is not resolved by agreement between secondary tables.
+- **Priority 1 — `ui`:** MLCTS2 distinguishes the two source units and R12A has partial coverage (`NOT_COVERED` for one side); the lexical audit has no word-level adjudication. Keep both source units separate.
+- **Special handling — `u.`:** both crosswalks classify this as context-dependent/special non-rime behavior. Do not count `့` as an ordinary independent rime or force it into ordinary vowel/coda logic.
+- **Secondary corroboration only — `am` and `um`:** both vendor MLCTS2 and R12A show matching outputs for the paired units; the lexical audit records secondary equivalence examples (`/kàɴ/` and `/kòʊɴ/`). These examples do not prove universal equivalence or primary MLC policy.
+- **All remaining groups:** retain their existing unadjudicated state. Cross-table agreement is not primary lexical proof.
+
+No source records or runtime rules were promoted by this triage. The first CI attempt exposed two over-specific test assertions; the assertions were corrected against the actual CSV values, and the subsequent required run passed.
