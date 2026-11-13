@@ -696,3 +696,18 @@ Text-only Wiktionary entries provide one MOW-listed example for each source-unit
 | `ကျောက်` | ောက် | `kyauk` | `/t͡ɕaʊʔ/` |
 
 Both lemmas occur in the existing MOW suffix-match dataset. Their onsets differ while the secondary IPA rime sequence `/aʊʔ/` matches. The audit is updated to `SECONDARY_SYSTEM_EQUIVALENCE`, with MLCTS2 status parity and regression coverage. This is not a controlled minimal pair or a primary MLC specification. No runtime, IPA gold or Ukrainian candidate is promoted. Claim: `CLM-WIKTIONARY-AUK-WORD-LEVEL-EXAMPLES-001`.
+
+## 32. Additional secondary lexical evidence for `a`, `a:` and `au`
+
+Three more collision groups now have word-level Wiktionary evidence on both source-unit sides, using only MOW-listed lemmas:
+
+| MLCTS group | Lemma | Source-unit ending | Wiktionary MLCTS | Wiktionary IPA |
+|---|---|---|---|---|
+| `a` | `အဝါ` | ါ | `a.wa` | `/ʔəwà/` |
+| `a` | `အစာ` | ာ | `a.ca` | `/ʔəsà/` |
+| `a:` | `ခါး` | ါး | `hka:` | `/kʰá/` |
+| `a:` | `ကား` | ား | `ka:` | `/ká/` |
+| `au` | `ပေါ်` | ေါ် | `pau` | `/pɔ̀/` |
+| `au` | `ကြော်` | ော် | `krau` | `/t͡ɕɔ̀/` |
+
+In each group, the onsets differ while the secondary IPA rime sequence matches. All six lemmas were present in the pre-existing MOW suffix-match list. These are secondary lexical equivalence examples, not controlled minimal pairs or primary MLC adjudication. The lexical audit and MLCTS2 status parity were updated, with regression tests and source claims `CLM-WIKTIONARY-A-WORD-LEVEL-EXAMPLES-001`, `CLM-WIKTIONARY-A-COLON-WORD-LEVEL-EXAMPLES-001` and `CLM-WIKTIONARY-AU-WORD-LEVEL-EXAMPLES-001`. No runtime, IPA gold or Ukrainian candidate is promoted.
