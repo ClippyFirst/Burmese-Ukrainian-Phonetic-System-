@@ -1703,3 +1703,18 @@ Registry totals: 83 sources / 133 claims. Exact-head CI pending.
 - **All remaining groups:** retain their existing unadjudicated state. Cross-table agreement is not primary lexical proof.
 
 No source records or runtime rules were promoted by this triage. The first CI attempt exposed two over-specific test assertions; the assertions were corrected against the actual CSV values, and the subsequent required run passed.
+
+## MOW orthographic candidate lists for priority collision groups — 2026-11-13
+
+This is a targeted readout of the already-generated `mow_rime_orthographic_coverage.csv` and `mow_rime_orthographic_matches.csv`, not a new pronunciation dataset.
+
+| MLCTS group | First source unit | MOW lemma matches | Second source unit | MOW lemma matches | Result |
+|---|---|---:|---|---:|---|
+| `any` | ဉ် | 6 | ည် | 13 | Both sides occur as exact Unicode suffixes |
+| `any:` | ဉ်း | 1 | ညည်း | 6 | Both sides occur as exact Unicode suffixes |
+| `any.` | ဉ့် | 0 | ည့် | 5 | Only second side occurs |
+| `ui` | ို် | 0 | ို | 15 | Only second side occurs |
+
+Examples exposed by the existing match table include `ဥယျာဉ်`, `တိရစ္ဆာန်ဥယျာဉ်`, `ယာဉ်` for ဉ်; `ပြည်`, `မြန်မာပြည်`, `လက်ဖက်ရည်` for ည်; `အကျဉ်း` for ဉ်း; and `ချို`, `ငို`, `ဆို`, `တို`, `မှို` for ို. These are candidate lemmas for text-based dictionary lookup only. Suffix matching does not establish syllable boundaries, rime identity, tone, pronunciation or homophony.
+
+The MOW table does not currently provide a lexeme-level adjudication for the `any` or `ui` collision. The next practical step is to use these exact lemmas as lookup keys in already-registered textual resources, recording each dictionary's spelling, entry headword, pronunciation/transcription field and page/entry locator where available. Do not populate observed IPA from MOW.
