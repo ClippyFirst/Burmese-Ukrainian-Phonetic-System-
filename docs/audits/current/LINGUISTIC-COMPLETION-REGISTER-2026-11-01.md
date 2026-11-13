@@ -1205,3 +1205,13 @@ Independent text-adjudicated IPA gold remains 0; empirical accuracy remains null
 | MYA-TEXT-RESEARCH-AUTHORIZATION-001 | DONE_VERIFIED (PROJECT OWNER CONFIRMATION) | Project owner confirms required permissions for text-only research use and project ingestion. | Preserve source attribution/provenance; no audio work is in scope. |
 
 Exact-head CI 43393402710 on 4835a0abc3e7e4a18c9d0bda35f554031912d570: 217 Python tests + 66 subtests, 20 Node tests, 58 Playwright/Chromium tests; IPA-gold structure validation, build and generated-data freshness all passed. Independent expert-adjudicated IPA gold remains 0; empirical accuracy remains null.
+
+## Final verification snapshot — 2026-11-13
+
+- Exact tested head c03706474cf67b480c449790c9592e5fe0e53fd4; CI 43394274053 SUCCESS: 217 Python + 66 subtests, 20 Node, 58 Playwright, IPA schema, build and generated-data freshness.
+- Diagnostics CI 43394274111 SUCCESS: CRF 100/100 outputs, 84 source-concordant, zero gold and null accuracy; Epitran raw output only.
+- Registry counts: 56 sources, 71 claims, 42 medial rows, 28 rules, 7 source-phonemic sandhi examples. CSV integrity and traceability passed.
+- Nishi (1976) is registered but full text remains unread; Nishi (1998) Old Burmese is a separate inspected source.
+- Project owner confirms text-only research and project-ingestion permissions. No audio work.
+- Okell/SEAlang/Hill remain tool-access or schema blocked; Myanglish schema is uncertain; myX orthography remains quarantined for quality.
+- Independent IPA gold remains 0; accuracy null; runtime rules withheld. Status PARTIAL PROTOTYPE.
