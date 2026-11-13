@@ -103,7 +103,7 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
     rows = read_rows("romanization_rime_collision_lexical_audit.csv")
     counts = Counter(row["evidence_status"] for row in rows)
     assert counts == {
-        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 18,
+        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 17,
         "SECONDARY_SYSTEM_EQUIVALENCE": 3,
         "SECONDARY_SOURCE_CONFLICT": 1,
         "SECONDARY_ONE_SIDE_ONLY": 1,
@@ -132,4 +132,4 @@ def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     assert rows["ui"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "only" in rows["ui"]["acceptance_boundary"].lower()
     assert rows["any"]["evidence_status"] == "SECONDARY_SOURCE_CONFLICT"
-    assert all("no runtime" in rows[key]["acceptance_boundary"].lower() for key in ("any", "any:", "any.", "ui"))
+    assert all("no runtime" in rows[key]["acceptance_boundary"].lower() for key in ("aung", "any", "any:", "any.", "ui"))
