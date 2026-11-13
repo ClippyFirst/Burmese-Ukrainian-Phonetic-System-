@@ -266,7 +266,7 @@ def test_okell_1995_dialect_evidence_has_separate_profiles_and_transcription_sco
     shared_l = claims["CLM-OKELL1995-IT-TV-MEDIAL-L-001"]
     assert all(claim["source_id"] == source["source_id"] for claim in (wb_sb, ar, it, tv, transcription, profile, shared_l))
     assert "Written Burmese (WB)" in wb_sb["claim"]
-    assert "merged in speech" in ar["claim"]
+    assert "has merged WB r with y in speech" in ar["claim"]
     assert "not be projected onto SB/Yangon" in it["claim"]
     assert "not present in Standard Burmese" in tv["claim"]
     assert "not an independently adjudicated project IPA gold" in transcription["claim"]
