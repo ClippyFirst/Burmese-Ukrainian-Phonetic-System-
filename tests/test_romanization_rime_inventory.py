@@ -317,5 +317,5 @@ def test_mow_dataset_source_claim_preserves_cc_by_and_orthographic_scope():
 def test_mow_source_header_preserves_upstream_attribution_and_license():
     source = ROOT / "data/burmese/external/mow-0.1.3-mya_20171005165336.tab"
     assert source.read_text(encoding="utf-8").splitlines()[0] == (
-        "## MOW 0.1.3\\tmya\\tCC BY 4.0"
+        "## MOW 0.1.3\tmya\tCC BY 4.0"
     )
