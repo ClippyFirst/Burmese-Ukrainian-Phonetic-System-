@@ -1634,3 +1634,17 @@ These counts are not tokenized and do not represent pronunciation or syllable di
 ### Final assessment
 
 **PARTIAL PROTOTYPE — NOT LINGUISTICALLY RELEASE-READY.** The research dossier is suitable for specialist review, but modern Yangon IPA gold, corpus provenance/quality clearance, unresolved phonological models and source-level adjudication are still absent.
+
+
+## Full-text G2P and orthographic syllabification continuation — 2026-11-13
+
+Three additional full texts were inspected through Undermind in text/PDF mode only; no audio was accessed or used.
+
+- Thu et al. (2016), WSSANLP pp.11–22: 25,300 MLC dictionary words; 25,000 train; three 100-word open sets; 100-word closed set drawn from training. 113 reported phonemes but no complete formal inventory or transcription spec. Romanized examples are not IPA. PER uses SCLITE phoneme-level Levenshtein over syllable-segmented words. Closed-set zero-error scores are not independent generalization evidence.
+- Hlaing & Mikami (2014): orthographic Unicode syllabification FST, not G2P. 11,732 MLC orthography words; 99.93% reported word-level segmentation. Paper has unresolved internal discrepancies (32,238 vs 32,283 syllables; 8 vs 9 stacking errors); no independent annotator agreement or formal boundary metric.
+- Oo et al. (2020), LREC pp.6328–6339: text pipeline word segmentation → normalization → Thrax weighted FST graphemes-to-IPA; 34 consonants, 54 vowels; source-specific four-tone analysis and /N/ notation. Yangon recording location but no explicit dialect label. Web-crawled segmentation corpus/models are not public domain; G2P grammar described as open-source but no separate file license stated.
+- Nishi, *The Development of Voicing Rules in Standard Burmese* (1998): PDF retrieval failed; metadata/abstract only. Do not conflate it with Nishi's 1998 Old Burmese paper.
+
+Added source HLAING_MIKAMI2014_FST and eight page-located claims to source_claims.csv; updated the research review and current completion/status registers. Registry counts now 60 sources and 91 claims (other register counts unchanged unless independently revalidated).
+
+Exact code/data branch remains separate from main. No runtime rules promoted; independent expert-adjudicated IPA gold remains zero; accuracy remains null. No audio. No merge or release. Classification remains PARTIAL PROTOTYPE.
