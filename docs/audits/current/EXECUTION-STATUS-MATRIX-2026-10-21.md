@@ -1672,3 +1672,11 @@ Code/test head **508816dcddf22272e98647625b657bc79712817e** completed required C
 - Allott's 1985 chapter (p.145) reports that the MLC Concise Burmese Dictionary was published in five parts from late 1978 through 1980, standardized the official orthography of its entries, and supplied pronunciations. Okell's 1982 bibliography independently lists it as five volumes, Rangoon, Mranmācā Aphwai.
 - This identifies a potentially earlier MLC primary lexicon with pronunciation information. Neither secondary source reproduces the dictionary's pronunciation key, any romanization table, or the relevant lexical entries. It is not yet established that this dictionary uses MLCTS/MLCTS2; inspect the front matter and representative entries before claiming that.
 - Registry totals: **72 nonblank source records / 125 claims**. New regression assertions preserve the secondary-only status.
+
+## Complete Mya2Rom vendor-system inventory — 2026-11-13
+
+- Added `data/burmese/romanization_rimes_vendor_systems.csv`, a 94-row companion inventory that records the exact vendor IPA, MLCTS, modified MLCTS/MLCTS2, Simple and Simple2 values for every non-empty rime key. It is separate from the Ukrainian candidate inventory and does not change runtime behaviour.
+- All 94 source keys are present in the vendored Mya2Rom table. The only key whose array has four values rather than five is `ေါင်း`: its Simple2 value is not provided by the upstream array. This missing value is recorded as missing, not guessed.
+- Added regression coverage that parses the vendored JS array and compares all 94 rows/columns, while preserving the evidence boundary that these are vendor mappings, not a primary MLC table or independent IPA gold.
+- Registry remains **72 nonblank sources / 125 claims**; no new source claim was needed because this artifact is a deterministic extraction of already registered Mya2Rom v0.4.4.
+- Exact-head CI for this latest added full crosswalk test is pending.
