@@ -150,6 +150,8 @@ def test_mlcts_source_provenance_does_not_conflate_secondary_sources_or_ala_lc()
     assert "NDL_MLC1996_DICT_CATALOG" in sources
     assert "BURMA_DEBATE_1996_MLC_DICT_NOTICE" in sources
     assert "MOW_2017_MLCTS_VARIANTS" in sources
+    assert "ALLOTT1985_BURMA_LANGUAGE_POLICY" in sources
+    assert "OKELL1982_BURMESE_DICTIONARY_REVIEW" in sources
     assert sources["OHNMAR_HTUN_2013"]["type"] == "doctoral_dissertation"
     assert "not a primary MLCTS specification" in sources["OHNMAR_HTUN_2013"]["scope"]
     assert "ALA-LC" in sources["ALA_LC_BURMESE_2011"]["scope"]
@@ -161,6 +163,8 @@ def test_mlcts_source_provenance_does_not_conflate_secondary_sources_or_ala_lc()
     assert claims["CLM-MLC-DICT-PRON-GUIDE-001"]["source_id"] == "BURMA_DEBATE_1996_MLC_DICT_NOTICE"
     assert claims["CLM-MOW-MLCTS2-VARIANTS-001"]["source_id"] == "MOW_2017_MLCTS_VARIANTS"
     assert claims["CLM-MYA2ROM-COLUMN3-NAMING-001"]["source_id"] == "MYA2ROM044"
+    assert claims["CLM-MLC-CONCISE-DICT-1978-80-001"]["source_id"] == "ALLOTT1985_BURMA_LANGUAGE_POLICY"
+    assert claims["CLM-MLC-CONCISE-DICT-BIB-001"]["source_id"] == "OKELL1982_BURMESE_DICTIONARY_REVIEW"
     assert "Wikipedia" in claims["CLM-MLCTS-SECONDARY-PROVENANCE-001"]["claim"]
     assert "not the Myanmar Language Commission" in claims["CLM-ALA-LC-NOT-MLCTS-001"]["claim"]
     assert "does not expose their entry text" in claims["CLM-MLC-DICT-BIB-UNICODE-001"]["claim"]
@@ -169,6 +173,8 @@ def test_mlcts_source_provenance_does_not_conflate_secondary_sources_or_ala_lc()
     assert "does not identify the system" in claims["CLM-MLC-DICT-PRON-GUIDE-001"]["claim"]
     assert "MLCTS 2" in claims["CLM-MOW-MLCTS2-VARIANTS-001"]["claim"]
     assert "nomenclature discrepancy" in claims["CLM-MYA2ROM-COLUMN3-NAMING-001"]["claim"]
+    assert "does not reproduce its pronunciation key" in claims["CLM-MLC-CONCISE-DICT-1978-80-001"]["claim"]
+    assert "not direct access to its contents" in claims["CLM-MLC-CONCISE-DICT-BIB-001"]["claim"]
 
 MLCTS2_CROSSWALK_PATH = ROOT / "data/burmese/romanization_rime_mlcts2_crosswalk.csv"
 
