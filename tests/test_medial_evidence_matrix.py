@@ -224,3 +224,18 @@ def test_nishi_old_burmese_cluster_correspondences_preserve_dialect_variation():
     assert any("TAV c-" in row["attested_phonological_behavior"] for row in cluster_rows)
     assert any("INT kl-" in row["attested_phonological_behavior"] for row in cluster_rows)
     assert any("WB Pr-/Mr-" in row["attested_phonological_behavior"] for row in cluster_rows)
+
+def test_okell_1995_regional_medial_profiles_are_not_promoted_to_standard_burmese():
+    matrix = {row["evidence_id"]: row for row in rows("medial_evidence_matrix.csv")}
+    ar = matrix["MED-OKELL1995-AR-RY-001"]
+    it = matrix["MED-OKELL1995-IT-L-001"]
+    tv = matrix["MED-OKELL1995-TV-L-001"]
+    for row in (ar, it, tv):
+        assert row["source_ids"] == "OKELL1995_THREE_DIALECTS"
+        assert row["project_runtime_status"] == "WITHHELD"
+        assert "dialect" in row["evidence_level"]
+        assert "no direct modern Unicode mapping" in row["unicode"]
+    assert "maintains /r/ vs /y/" in ar["attested_phonological_behavior"]
+    assert "merges WB /r/ with /y/" in ar["attested_phonological_behavior"]
+    assert "medial /y/, /l/ and /w/" in it["attested_phonological_behavior"]
+    assert "absent from Standard Burmese" in tv["attested_phonological_behavior"]
