@@ -103,8 +103,8 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
     rows = read_rows("romanization_rime_collision_lexical_audit.csv")
     counts = Counter(row["evidence_status"] for row in rows)
     assert counts == {
-        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 15,
-        "SECONDARY_SYSTEM_EQUIVALENCE": 5,
+        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 12,
+        "SECONDARY_SYSTEM_EQUIVALENCE": 8,
         "SECONDARY_SOURCE_CONFLICT": 1,
         "SECONDARY_ONE_SIDE_ONLY": 1,
         "SECONDARY_SOURCE_DISTINCTION": 2,
@@ -121,6 +121,12 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
 
 def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     rows = {row["mlcts"]: row for row in read_rows("romanization_rime_collision_lexical_audit.csv")}
+    assert rows["a"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
+    assert all(value in rows["a"]["observed_mlcts"] for value in ["a.wa","a.ca"])
+    assert rows["a:"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
+    assert all(value in rows["a:"]["observed_mlcts"] for value in ["hka:","ka:"])
+    assert rows["au"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
+    assert all(value in rows["au"]["observed_mlcts"] for value in ["pau","krau"])
     assert rows["auk"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
     assert "pauk" in rows["auk"]["observed_mlcts"] and "kyauk" in rows["auk"]["observed_mlcts"]
     assert "/paʊʔ/" in rows["auk"]["observed_ipa"] and "/t͡ɕaʊʔ/" in rows["auk"]["observed_ipa"]
