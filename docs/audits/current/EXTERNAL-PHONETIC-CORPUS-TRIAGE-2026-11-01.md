@@ -226,3 +226,8 @@ Nishi states that slash-delimited phonemic transcription follows Okell 1995 and 
 4. Build separate text-only evidence tables for source-attested phonemic forms, romanization, orthographic corrections and IPA gold. Do not collapse these into one target field.
 
 No external corpus bytes were imported in this update. Independent expert-adjudicated IPA gold remains 0; empirical IPA accuracy remains null.
+
+
+### SEAlang interface-level IPA evidence — 2026-11-13
+
+The full 2008 SEAlang project description was inspected. It states that the Burmese dictionary interface accepts local orthography, IPA phonetic input, or both, and that result rows display IPA transliterations. This resolves the question of whether the *interface* supports IPA. It does not reveal whether IPA is stored as the dictionary's primary transcription field, generated from MLCTS2, or stored alongside it. Mya2Rom's MLCTS2 reference may concern a separate field/layer. The actual entry/export schema is still not accessible; do not mark the whole dictionary as IPA gold or MLCTS2-only.
