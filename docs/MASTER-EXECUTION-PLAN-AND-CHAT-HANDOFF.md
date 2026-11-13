@@ -2167,5 +2167,5 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 
 - Added MOW-listed `ပေါက်` (`pauk`, `/paʊʔ/`, ending ေါက်) and `ကျောက်` (`kyauk`, `/t͡ɕaʊʔ/`, ending ောက်) from text-only Wiktionary entries. Different onsets; same secondary IPA rime sequence `/aʊʔ/`.
 - Added claim `CLM-WIKTIONARY-AUK-WORD-LEVEL-EXAMPLES-001`, updated lexical audit and MLCTS2 status parity, and expanded regression tests.
-- Current collision distribution: **14 unadjudicated / 5 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 140 claims**.
+- Current collision distribution: **15 unadjudicated / 5 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 140 claims**.
 - Secondary evidence only; not a controlled minimal pair or primary MLC adjudication. No runtime, IPA gold or Ukrainian output changed. Exact-head CI pending.
