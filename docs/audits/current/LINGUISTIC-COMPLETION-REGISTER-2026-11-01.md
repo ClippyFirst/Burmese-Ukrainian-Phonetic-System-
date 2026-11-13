@@ -1760,3 +1760,11 @@ Lexical audit distribution now: **18 unadjudicated / 2 secondary equivalence / 1
 | BURMESE-WIKTIONARY-AUNG-LEXICAL-024 | PARTIAL — SECONDARY_WORD_LEVEL_EXAMPLES | Added `ပေါင်` (`paung`, `/pàʊɴ/`) and `တောင်` (`taung`, `/tàʊɴ/`) as lexical examples for ေါင် and ောင်. Same secondary rime sequence `/àʊɴ/` with different onsets. Added claim `CLM-WIKTIONARY-AUNG-WORD-LEVEL-EXAMPLES-001`; updated audit/crosswalk parity and tests. Registry: 80 sources / 138 claims. | Secondary equivalence only; not a controlled minimal pair or primary MLC specification. No IPA gold, runtime or Ukrainian mapping promotion. CI pending. |
 
 Lexical audit distribution now: **17 unadjudicated / 3 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**.
+
+## Exact-head verification — lexical collision audit continuation — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-RIME-LEXICAL-AUDIT-VERIFICATION-025 | DONE_VERIFIED — DATA_AND_TEST_INTEGRITY | Code/data snapshot `eb81bd29e9417ddbd6d541d54fce6d754b0bb8bd`; required CI **43513203135 SUCCESS** (duplicate **43513212043 SUCCESS**): 251 Python + 66 subtests, 20 Node, 58 Playwright; production build, generated-data freshness and Chromium install passed. Optional raw-output diagnostic **43513212088 SUCCESS**. | Verifies registry/crosswalk parity and application test suite only. IPA gold remains 0; accuracy null; secondary lexical entries are not primary MLC adjudication. One high-severity npm vulnerability remains. |
+
+Current collision ledger: **17 unadjudicated / 3 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 138 claims**.
