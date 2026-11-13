@@ -1949,3 +1949,10 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - Distinct secondary IPA rimes conflict with vendor same-output MLCTS2/IPA. Audit/crosswalk updated to `SECONDARY_SOURCE_DISTINCTION`; claim registered.
 - Distribution: 4 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 8 secondary one-side-only / 1 special non-rime. Registry 80 sources / 151 claims.
 - Not primary MLC adjudication; no runtime or Ukrainian output promotion. Exact-head CI pending.
+
+## `au.` lexical evidence continuation — 2026-11-14
+
+- `ဝပ်ရှော့` (`waphrau.`, `/waʔʃɔ̰/`) provides a Wiktionary lexical example for `ော့`; opposite unit `ေါ့` remains unobserved.
+- Audit and crosswalk set to `SECONDARY_ONE_SIDE_ONLY`; claim registered; regression tests updated.
+- Distribution: 3 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 9 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 152 claims.
+- No primary MLC or runtime promotion. Exact-head CI pending.
