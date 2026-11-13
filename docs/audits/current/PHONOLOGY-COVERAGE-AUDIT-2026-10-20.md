@@ -117,3 +117,6 @@ Full text of *Three Burmese Dialects* inspected. It explicitly separates Written
 - Intha and Tavoyan have restricted medial /l/ combinations; Tavoyan /-l/ is explicitly absent from SB.
 - The book's transcribed texts are phonemic with limited allophonic approximations, not project IPA gold.
 Added source OKELL1995_THREE_DIALECTS, seven claims, two dialect-dependent rules and three withheld medial rows. No audio was accessed. No regional rule was enabled for Yangon.
+
+
+Okell (1969), *A Reference Grammar of Colloquial Burmese*, is registered as a high-priority primary text target. Nishi (1998) cites §§17-20 for voicing sandhi and Okell (1995) identifies it as the Spoken Burmese reference. Full text was not retrieved; no direct claims are attributed to it. Permission is confirmed; retrieval and exact page locators remain the gate.
