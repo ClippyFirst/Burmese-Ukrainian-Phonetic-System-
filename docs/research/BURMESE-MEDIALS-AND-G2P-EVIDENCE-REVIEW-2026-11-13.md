@@ -357,3 +357,14 @@ The historical sequence provides a reason that written -r- and -y- notation can 
 
 Nishi's article is available through the National Museum of Ethnology repository (DOI 10.15021/00004135). Matisoff's *Handbook of Proto-Tibeto-Burman* is © 2003 Regents of the University of California; only factual claims and page locators are recorded, not tables or lexical data.
 
+## 11. Textual evidence for contextual voicing sandhi in Standard Burmese
+
+Nishi (1998), *The Development of Voicing Rules in Standard Burmese* (BNME 23(1), pp.253-260; DOI 10.15021/00004129), supplies a text-only description of two contextual voicing patterns:
+
+1. In an atonic-syllable environment C1aC2, if both consonants are among /p t t c k s/, both may become voiced. Nishi states that this pattern is generally observed but not obligatory throughout Standard Burmese and has many variables and exceptions.
+2. In close juncture, an eligible following initial with a voiced counterpart becomes voiced after a non-stop tonal rhyme, within a word or a phrase containing postpositions. Nishi reports that the Myanmar-English Dictionary (1993) uses lexical phonemic transcriptions derived from this second rule.
+
+The source is explicit about the limits of its variety label: “Standard Burmese” is not a well-defined variety, but a broad Rangoon-Mandalay profile with social and regional subvarieties (note 1). Nishi compares regional evidence: Intha, Taungyo and Danu lack these rules at the phonemic level; Arakanese, Tavoy and Mergui show only the first; Yaw shows the first and second with exceptions.
+
+Implementation consequence: these are contextual phonological rules, not grapheme-to-phoneme substitutions. The first is variable and exception-rich; the second depends on rhyme type, juncture, morphology/postpositions and profile. Both are registered as analysis-dependent evidence only. No global runtime voicing rule is enabled. The MLC dictionary claim is recorded as Nishi's report, not as a completed independent audit of the 1993 dictionary.
+
