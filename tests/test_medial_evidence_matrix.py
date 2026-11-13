@@ -111,7 +111,7 @@ def test_stedt_written_burmese_medial_segmentation_remains_source_specific():
     row = next(row for row in matrix if row["evidence_id"] == "MED-STEDT-WRITTEN-001")
     assert row["evidence_level"] == "historical_written_analysis"
     assert row["project_runtime_status"] == "WITHHELD"
-    assert "not a one-to-one Unicode mapping" in row["orthographic_input"]
+    assert "Do not equate" in row["notes"]
     assert "/-w-/ belongs to rhyme" in row["attested_phonological_behavior"]
     assert "/-y-/ and /-r-/" in row["attested_phonological_behavior"]
     rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "STEDT_WRITTEN_MEDIAL_SEGMENTATION")
