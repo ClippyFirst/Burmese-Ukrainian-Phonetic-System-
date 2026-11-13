@@ -1432,3 +1432,17 @@ No corpus rows were imported and no audio was accessed or used. This correction 
 | Provenance and text quality | TODO | Map embedded BOM/title boundaries to original documents; inspect line 9,300 NUL and localized glyph corruption; classify duplicate passages and source provenance before any extraction. |
 
 No deduplication or normalization was applied to the source copy; no audio or IPA gold was used.
+
+
+### Okell corpus orthographic-only profile — 2026-11-13
+
+| Metric | Count | Status |
+|---|---:|---|
+| U+103B | 50,072 | ORTHOGRAPHIC_ONLY |
+| U+103C | 73,107 | ORTHOGRAPHIC_ONLY |
+| U+103D | 49,248 | ORTHOGRAPHIC_ONLY |
+| U+103E | 50,869 | ORTHOGRAPHIC_ONLY |
+| \`မြန်\` substring | 659 | ORTHOGRAPHIC_ONLY |
+| \`မြန်မာ\` substring | 288 | ORTHOGRAPHIC_ONLY |
+
+Full profile: \`data/burmese/okell_text_corpus_orthographic_profile.csv\`. These are raw codepoint/substring counts, not token or phonological frequencies; no IPA or runtime rule follows from them.

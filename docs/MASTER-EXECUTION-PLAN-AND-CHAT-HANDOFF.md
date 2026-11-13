@@ -1585,3 +1585,10 @@ The exact text has 21 U+FEFF markers: one at byte-stream start and 20 embedded a
 Line profile: 19,565 CRLF-terminated lines (19,566 split segments including the final empty segment); 18,060 nonblank lines; 17,052 distinct nonblank line values; 295 repeated nonblank line forms and 1,008 excess occurrences. There are 1,061 nonblank paragraph blocks and 23 repeated paragraph forms. Frequent repetitions include recurring poem/title lines, section headers and divider motifs; the most repeated line is a title/author-style header. These are not evidence of duplicate whole documents, so no automatic deduplication was applied.
 
 This advances structural understanding but not full quality clearance. Remaining work: map embedded BOM/title boundaries to source documents, inspect the NUL and legacy glyph corruption, identify provenance for each segment, and determine which repeated passages are genuine text reuse versus corpus duplication. Keep exact original bytes unchanged.
+
+
+## Okell corpus orthographic profile — 2026-11-13
+
+Added a separate orthographic-only profile tied to the byte-verified external corpus SHA-256. Raw codepoint counts: U+103B 50,072; U+103C 73,107; U+103D 49,248; U+103E 50,869. Raw substring matches: \`မြန်\` 659; \`မြန်မာ\` 288; \`မြန်မာနိုင်ငံ\` 45; \`မြန်မာစာ\` 18; \`မြန်မာ့\` 27.
+
+These counts are not tokenized and do not represent pronunciation or syllable distribution. They include repeated source material and non-NFC sequences. The profile is stored in \`data/burmese/okell_text_corpus_orthographic_profile.csv\`, and the source claim explicitly marks it DOCUMENTARY / ORTHOGRAPHIC_ONLY. No IPA labels, IPA gold rows or runtime mappings were created.

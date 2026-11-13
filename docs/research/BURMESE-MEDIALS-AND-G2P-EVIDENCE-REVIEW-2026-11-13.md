@@ -484,3 +484,19 @@ The Zenodo Rights/License field remains blank while the European Language Grid c
 Status: **PARTIAL / CONTENT AND BYTE INTEGRITY VERIFIED; TEXT QUALITY AUDIT PENDING**.
 
 Before importing corpus rows, retain a byte-identical pinned artifact, calculate SHA-256, count documents and lines, audit Unicode normalization and malformed codepoints, profile repeated/template passages, identify section-level provenance where possible, and record corruption without silently rewriting source text. Any extracted lexical examples must retain document/section locators and must remain text evidence rather than IPA gold.
+
+
+## 20. Okell corpus: orthographic-only medial frequency profile
+
+A raw Unicode profile was computed over the complete text-only file identified by SHA-256 \`6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c\`. The profile is stored in \`data/burmese/okell_text_corpus_orthographic_profile.csv\`.
+
+| Myanmar code point | Raw occurrences |
+|---|---:|
+| U+103B medial YA | 50,072 |
+| U+103C medial RA | 73,107 |
+| U+103D medial WA | 49,248 |
+| U+103E medial HA | 50,869 |
+
+Raw substring counts include \`မြန်\` 659, \`မြန်မာ\` 288, \`မြန်မာနိုင်ငံ\` 45, \`မြန်မာစာ\` 18 and \`မြန်မာ့\` 27.
+
+These are Unicode scalar and substring counts over the raw, non-NFC, mixed-source text. They are not token counts, syllable counts, onset/rime distributions, or evidence that a Unicode medial has a particular pronunciation. Repeated source material is included; no normalization, tokenization or deduplication was applied. This profile is useful only for orthographic coverage and candidate written-example discovery. It does not create IPA gold or activate runtime rules.

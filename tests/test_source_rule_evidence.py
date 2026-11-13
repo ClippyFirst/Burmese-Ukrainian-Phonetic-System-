@@ -326,3 +326,24 @@ def test_okell_text_corpus_access_and_quality_boundary_is_explicit():
     assert "matches Zenodo provider MD5" in claim["claim"]
     assert "one NUL" in claim["claim"]
     assert "no IPA annotation schema" in claim["claim"]
+
+
+def test_okell_text_corpus_orthographic_profile_is_not_phonological_gold():
+    profile = _rows(DATA / "okell_text_corpus_orthographic_profile.csv")
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    assert len(profile) == 9
+    assert all(row["source_id"] == "OKELL_TEXT_2018" for row in profile)
+    assert all(row["source_sha256"] == "6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c" for row in profile)
+    assert all(row["interpretation"] == "ORTHOGRAPHIC_ONLY" for row in profile)
+    counts = {(row["measure"], row["sequence"]): int(row["count"]) for row in profile}
+    assert counts[("codepoint_count", "U+103B")] == 50072
+    assert counts[("codepoint_count", "U+103C")] == 73107
+    assert counts[("codepoint_count", "U+103D")] == 49248
+    assert counts[("codepoint_count", "U+103E")] == 50869
+    assert counts[("substring_count", "မြန်")] == 659
+    assert counts[("substring_count", "မြန်မာ")] == 288
+    claim = claims["CLM-OKELL-TEXT-MEDIAL-FREQ-001"]
+    assert claim["source_id"] == "OKELL_TEXT_2018"
+    assert claim["status"] == "DOCUMENTARY"
+    assert "not token frequencies" in claim["claim"]
+    assert "pronunciation mappings" in claim["claim"]

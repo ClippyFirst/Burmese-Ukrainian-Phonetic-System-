@@ -1270,3 +1270,8 @@ Acceptance: retain byte-identical pinned text, compute SHA-256, inspect document
 | Duplicate/provenance audit | TODO | 295 repeated nonblank line forms / 1,008 excess occurrences and 23 repeated paragraph forms; determine source-level duplication vs recurring titles, headers and dividers. Map embedded boundaries and segment provenance. |
 
 Do not normalize or deduplicate the archival source automatically. No audio.
+
+
+## Okell corpus orthographic profile — 2026-11-13
+
+Created \`data/burmese/okell_text_corpus_orthographic_profile.csv\` with four raw medial codepoint counts and five target substring counts. It is pinned to the verified source SHA-256 and explicitly classified ORTHOGRAPHIC_ONLY. Added claim \`CLM-OKELL-TEXT-MEDIAL-FREQ-001\` and a regression test. The profile does not assert tokenization, syllabification, pronunciation or IPA gold and does not change the runtime.
