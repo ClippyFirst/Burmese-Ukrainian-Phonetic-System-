@@ -442,3 +442,16 @@ def test_mlc_1978_spelling_book_catalog_is_distinguished_from_concise_dictionary
     assert "two distinct MLC publications" in claim["claim"]
     assert "require title-page verification" in claim["claim"]
     assert "does not establish pronunciation notation" in claim["claim"]
+
+def test_mlc_1978_spelling_book_has_concrete_library_and_scan_access_routes():
+    sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    source = sources["CINII_MLC_SPELLING_1978_HOLDINGS"]
+    claim = claims["CLM-MLC-SPELLING-BOOK-ACCESS-002"]
+
+    assert "28, 379 pages" in source["scope"]
+    assert "three Japanese library holdings" in source["scope"]
+    assert "snippet-view metadata" in source["scope"]
+    assert claim["source_id"] == source["source_id"]
+    assert claim["status"] == "DOCUMENTARY"
+    assert "no pages or pronunciation/transcription tables" in claim["claim"]
