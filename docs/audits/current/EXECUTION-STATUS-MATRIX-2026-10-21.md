@@ -1583,3 +1583,10 @@ Added claims: CLM-MYA2ROM-RIME-EXACT-MATCH-001, CLM-MYA2ROM-MLCTS-COLLISIONS-001
 
 Registry integrity on this continuation: 62 source records, 114 claim records; 25 collision groups; 25 lexical-audit rows. CSV parsing confirms consistent widths, unique source/claim IDs, and no broken claim-to-source references. New Python regression coverage is committed; exact-head CI run 43491503349 was still in progress at the time of this matrix update. No local test execution is claimed. No runtime or Ukrainian candidate changes; no audio used.
 
+
+## Nasal-final secondary-source reconciliation — 2026-11-13
+
+- Added Wikipedia's MLC-system overview as a secondary source and registered claim CLM-WIKI-MLCTS-NASAL-FINALS-001. It lists shared -any, -am and -um spellings for the paired finals.
+- Reclassified the am and um groups as SECONDARY_SYSTEM_EQUIVALENCE (supported by both secondary tables), and any as SECONDARY_SOURCE_CONFLICT (Wiktionary detailed table vs Wikipedia's MLC summary vs vendor). No primary MLC adjudication is claimed.
+- Lexical ledger now has 21 unadjudicated, 2 secondary-equivalence, 1 secondary-conflict and 1 special non-rime group. Totals: 63 sources / 115 claims. No runtime or Ukrainian candidate changes. CI on the preceding head was still in progress; final exact-head verification pending.
+
