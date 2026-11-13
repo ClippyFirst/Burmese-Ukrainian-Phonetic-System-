@@ -1526,3 +1526,18 @@ Full text of John Okell's *Three Burmese Dialects* (Pacific Linguistics A-83, pp
 ## Okell (1969) reference grammar — next text-only source gate
 
 Registered John Okell's *A Reference Grammar of Colloquial Burmese* (two volumes, 498 pp., Oxford University Press, 1969). Bibliographic identity is confirmed by Glottolog and library catalogues. Nishi (1998) cites §§17-20 for voicing sandhi; Okell (1995) identifies it as the Spoken Burmese reference. Project owner confirms research-use permission. Full text was not retrieved in this run; obtain the text and inspect exact phonology/sandhi pages before attributing any new claims or considering runtime rules.
+
+
+## Consolidated verified handoff — 2026-11-13
+
+Exact tested code/data head 898e0f7cedd3c5c040c218a52a551cc252c77d4e passed main CI 43395578254: 219 Python tests + 66 subtests, IPA-gold structure validation, npm build, generated-data freshness, 20 Node tests and 58 Playwright/Chromium tests. Optional diagnostics 43395586881 passed: CRF 100 predictions / 84 source-concordant / zero gold / null accuracy / NOT_SCORED_POSSIBLE_TRAINING_OVERLAP; Epitran raw output only.
+
+Final registries: 58 sources, 78 claims, 45 medial evidence rows, 30 phonological rules, 7 source-phonemic sandhi examples. Manual CSV integrity and traceability validation passed.
+
+New full-text source work includes Nishi (1998) Old Burmese and Okell (1995) Three Burmese Dialects. Nishi provides historical -h/-l/-r/-y distinctions and cross-dialect cluster correspondences; Okell provides distinct Arakanese, Intha and Tavoyan medial inventories. These are not current Yangon mappings and remain withheld. Nishi's seven sandhi examples are source phonemic, not IPA.
+
+Okell (1969) Reference Grammar and Nishi (1976) Medials in Burmese are registered as primary text targets, but their full texts were not retrieved. Hill (2019) chapter 2, Okell corpus bytes and SEAlang entries likewise remain tool-access/schema gates. Project owner confirms permissions for text-only research and project ingestion; no audio was used.
+
+Myanglish raw CSV vs metadata remains 2-column/3-feature uncertain; myX orthography remains quarantined for target-word misalignment, multiple substitutions and template duplication. Gold=0, accuracy=null, no runtime medial or voicing rules promoted.
+
+PR #147 remains OPEN / DRAFT / mergeable, 163 commits ahead / 0 behind, 28 files changed; no reviews submitted. PR #129 untouched. Repository remains PARTIAL PROTOTYPE, not linguistically release-ready.
