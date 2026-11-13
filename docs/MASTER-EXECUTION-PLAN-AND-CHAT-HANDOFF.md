@@ -2169,3 +2169,10 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - Added claim `CLM-WIKTIONARY-AUK-WORD-LEVEL-EXAMPLES-001`, updated lexical audit and MLCTS2 status parity, and expanded regression tests.
 - Current collision distribution: **15 unadjudicated / 5 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 140 claims**.
 - Secondary evidence only; not a controlled minimal pair or primary MLC adjudication. No runtime, IPA gold or Ukrainian output changed. Exact-head CI pending.
+
+## Additional lexical evidence for `a`, `a:` and `au` — 2026-11-13
+
+- Added MOW-listed Wiktionary pairs: `အဝါ` (`a.wa`, `/ʔəwà/`) / `အစာ` (`a.ca`, `/ʔəsà/`) for `a`; `ခါး` (`hka:`, `/kʰá/`) / `ကား` (`ka:`, `/ká/`) for `a:`; `ပေါ်` (`pau`, `/pɔ̀/`) / `ကြော်` (`krau`, `/t͡ɕɔ̀/`) for `au`. Each pair has distinct onsets but the same secondary IPA rime.
+- Added three documentary claims; updated lexical audit, MLCTS2 status parity and regression tests. The MOW candidate dataset itself is unchanged.
+- Current collision distribution: **12 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 143 claims**.
+- Secondary examples only; no controlled minimal pairs or primary MLC adjudication. No runtime, IPA gold or Ukrainian output changed. Exact-head CI pending.
