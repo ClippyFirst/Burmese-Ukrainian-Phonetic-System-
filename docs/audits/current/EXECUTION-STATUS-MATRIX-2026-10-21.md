@@ -431,8 +431,8 @@ This engineering correction does not change the language-layer statuses above. I
 
 | Task | Status | Evidence / acceptance |
 |---|---|---|
-| Add Python whole-IPA → Ukrainian adapter and integrate after deterministic IPA | DONE_VERIFIED | \`src/burmese_ukrainian/practical.py\`, \`rule_engine.py\`; previous Python suite 180 + 66 subtests |
-| Generate browser mapping from canonical practical CSV/rule data | DONE_VERIFIED | \`src/web/ukrainian-adapter.js\`; previous build, generated-data freshness and Node tests passed |
+| Add Python whole-IPA → Ukrainian adapter and integrate after deterministic IPA | DONE_VERIFIED | `src/burmese_ukrainian/practical.py`, `rule_engine.py`; previous Python suite 180 + 66 subtests |
+| Generate browser mapping from canonical practical CSV/rule data | DONE_VERIFIED | `src/web/ukrainian-adapter.js`; previous build, generated-data freshness and Node tests passed |
 | Map /h, ɦ/ → г, /ɡ/ → ґ (project choice), /x/ → х, /w/ → в, syllable-initial /j/ yotation, affricates → ц/дз/ч/дж | DONE_VERIFIED | Canonical practical table and tests; /ɡ/ → ґ is not claimed as universal orthographic norm |
 | Preserve tone/length in IPA trace; join syllable-level Ukrainian output into one word | DONE_VERIFIED | Python engine output and regression tests |
 | Browser fail-closed behavior for kinzi/medials/conjuncts | PARTIAL | Implemented; final Playwright run 43095883419 queued with no jobs |
@@ -1052,8 +1052,8 @@ This engineering correction does not change the language-layer statuses above. I
 
 | Task | Status | Evidence / acceptance |
 |---|---|---|
-| Add Python whole-IPA → Ukrainian adapter and integrate after deterministic IPA | DONE_VERIFIED | \`src/burmese_ukrainian/practical.py\`, \`rule_engine.py\`; previous Python suite 180 + 66 subtests |
-| Generate browser mapping from canonical practical CSV/rule data | DONE_VERIFIED | \`src/web/ukrainian-adapter.js\`; previous build, generated-data freshness and Node tests passed |
+| Add Python whole-IPA → Ukrainian adapter and integrate after deterministic IPA | DONE_VERIFIED | `src/burmese_ukrainian/practical.py`, `rule_engine.py`; previous Python suite 180 + 66 subtests |
+| Generate browser mapping from canonical practical CSV/rule data | DONE_VERIFIED | `src/web/ukrainian-adapter.js`; previous build, generated-data freshness and Node tests passed |
 | Map /h, ɦ/ → г, /ɡ/ → ґ (project choice), /x/ → х, /w/ → в, syllable-initial /j/ yotation, affricates → ц/дз/ч/дж | DONE_VERIFIED | Canonical practical table and tests; /ɡ/ → ґ is not claimed as universal orthographic norm |
 | Preserve tone/length in IPA trace; join syllable-level Ukrainian output into one word | DONE_VERIFIED | Python engine output and regression tests |
 | Browser fail-closed behavior for kinzi/medials/conjuncts | PARTIAL | Implemented; final Playwright run 43095883419 queued with no jobs |
@@ -1417,7 +1417,7 @@ Exact tested head: d2800ce458ea3c08c3fecb9e61ad170502837343. PR #147 remains Dra
 | Work item | Status | Evidence / acceptance boundary |
 |---|---|---|
 | Okell *A Corpus of Modern Burmese* content access | PARTIAL / CONTENT AND BYTE INTEGRITY VERIFIED | Zenodo direct file endpoint HTTP 200, text/plain UTF-8; provider MD5 f020d7bbcf9857631094a8861143d18f matched; 8,809,265 bytes; SHA-256 6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c; 19,565 CRLF-terminated lines (19,566 split segments including the final empty segment), 67 numbered heading lines, valid UTF-8, Myanmar Unicode, Burmese/English mixed content, dialogue/speech transcripts and prose. |
-| Okell corpus integrity and quality | TODO / HASH_AND_QUALITY_AUDIT_PENDING | Byte sequence verified by matching Zenodo MD5 and computed SHA-256; exact document count, duplicate rate, section provenance, NUL/NFC handling and localized legacy glyph corruption remain to be profiled. Acceptance: byte-identical pinned artifact, SHA-256, Unicode/boundary/duplicate/corruption report. |
+| Okell corpus integrity and quality | PARTIAL / TEXT_QUALITY_AUDIT_PENDING | Byte identity is verified (Zenodo MD5 match; SHA-256 6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c); 21 BOM markers, one NUL, non-NFC, 295 repeated nonblank line forms / 1,008 excess occurrences and 23 repeated paragraph forms profiled. Acceptance: map embedded boundaries to original documents, classify repeated passages, inspect corruption/NUL without altering source, document segment provenance. |
 | Okell corpus as IPA/G2P gold | DEFERRED / NOT GOLD | No IPA annotation schema or independently adjudicated IPA values identified. Do not import as IPA gold or score predictions against it. |
 
 No corpus rows were imported and no audio was accessed or used. This correction supersedes prior BLOCKED_TOOL_ACCESS classification; SEAlang entry/schema access remains separately unresolved.
@@ -1442,7 +1442,16 @@ No deduplication or normalization was applied to the source copy; no audio or IP
 | U+103C | 73,107 | ORTHOGRAPHIC_ONLY |
 | U+103D | 49,248 | ORTHOGRAPHIC_ONLY |
 | U+103E | 50,869 | ORTHOGRAPHIC_ONLY |
-| \`မြန်\` substring | 659 | ORTHOGRAPHIC_ONLY |
-| \`မြန်မာ\` substring | 288 | ORTHOGRAPHIC_ONLY |
+| `မြန်` substring | 659 | ORTHOGRAPHIC_ONLY |
+| `မြန်မာ` substring | 288 | ORTHOGRAPHIC_ONLY |
 
-Full profile: \`data/burmese/okell_text_corpus_orthographic_profile.csv\`. These are raw codepoint/substring counts, not token or phonological frequencies; no IPA or runtime rule follows from them.
+Full profile: `data/burmese/okell_text_corpus_orthographic_profile.csv`. These are raw codepoint/substring counts, not token or phonological frequencies; no IPA or runtime rule follows from them.
+
+
+## Final exact-head verification — 2026-11-13
+
+Final branch head `601cf85a5c740627848f9eff1fa1f0911cf03796` on `research/burmese-medials-g2p-evidence-2026-11-13`, based on unchanged main `dc90463bdd734867308f03cb627eb8941efc19d6`. PR #147 is open/draft/mergeable, 193 commits ahead and 0 behind, 29 files. PR #129 is open/draft and untouched, diverged 53 ahead / 17 behind and non-mergeable.
+
+Exact-head CI: `43449980180` and `43449989336` SUCCESS — 222 Python tests + 66 subtests; IPA schema validator ran with zero gold records; npm build and generated-data freshness passed; 20 Node and 58 Playwright/Chromium tests passed. Optional diagnostics `43449989348` SUCCESS — CRF 100 predictions, 84 source-concordant, 0 gold, null accuracy, NOT_SCORED_POSSIBLE_TRAINING_OVERLAP; Epitran raw output only. No audio, no runtime medial rules, no merge/release.
+
+The Okell corpus byte identity and orthographic-only profile are now documented in the root handoff and research review. Final assessment remains PARTIAL PROTOTYPE, not release-ready.

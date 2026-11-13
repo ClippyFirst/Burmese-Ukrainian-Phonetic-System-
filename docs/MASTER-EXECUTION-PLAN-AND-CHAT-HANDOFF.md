@@ -408,10 +408,10 @@ Do not mark the repository 80% ready based on file count, test count, UI complet
 
 ## Full-sentence MLCTS and Myanmar punctuation/numeral preservation — 2026-10-31
 
-- Main head: \`b6ce024a26bef44c76744aa231b52de551c12c16\` (PR #69).
+- Main head: `b6ce024a26bef44c76744aa231b52de551c12c16` (PR #69).
 - PR #68 added a full Burmese greeting sentence to the browser MLCTS route. Its exact-head workflow [41240518900](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41240518900) passed the Python, Vite build, generated-data, Node, and built-artifact Playwright gates.
-- PR #69 fixed a confirmed source-loss bug. The app previously treated Basic Myanmar digits U+1040–1049 and punctuation U+104A–104B as romanizable script, then passed those code points to Mya2Rom; sentence stops and numerals could disappear. The shared segment predicate now preserves those as non-romanized text, and \`romanizeTextPreservingNonMyanmar\` passes only contiguous Myanmar text runs to Mya2Rom while preserving Latin text, numerals, whitespace, and punctuation around them.
-- The new browser regressions cover the supplied four-sentence greeting, the four U+104B sentence stops, and a mixed-script sample containing Latin \`ABC\`, Myanmar digits \`၁၂၃\`, comma U+104A, and full stop U+104B in both output modes.
+- PR #69 fixed a confirmed source-loss bug. The app previously treated Basic Myanmar digits U+1040–1049 and punctuation U+104A–104B as romanizable script, then passed those code points to Mya2Rom; sentence stops and numerals could disappear. The shared segment predicate now preserves those as non-romanized text, and `romanizeTextPreservingNonMyanmar` passes only contiguous Myanmar text runs to Mya2Rom while preserving Latin text, numerals, whitespace, and punctuation around them.
+- The new browser regressions cover the supplied four-sentence greeting, the four U+104B sentence stops, and a mixed-script sample containing Latin `ABC`, Myanmar digits `၁၂၃`, comma U+104A, and full stop U+104B in both output modes.
 - Exact-head workflow [41241791556](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41241791556) passed: Python tests, Vite production build, generated-data drift check, Node tests, Playwright Chromium setup, and **52/52 built-artifact browser tests**. The earlier test assumption that MLCTS periods must equal sentence punctuation was rejected: some vendor MLCTS forms themselves contain periods; the correct assertions distinguish those from the preserved Myanmar punctuation.
 - This is a bounded Basic Myanmar punctuation/numeral and mixed-text fix, not a full Myanmar Unicode inventory guarantee. Mya2Rom's 94-row table remains vendor-derived; the original MLC primary publication remains BLOCKED/EVIDENCE_LIMITED; MLCTS → Ukrainian syllable adaptation remains TODO; independent lexical IPA gold remains 0.
 - PR #53 remains open and untouched because its branch is diverged and replaces the stylesheet wholesale. At the time of this checkpoint, no post-PR #69 deployment run was yet accessible. A later check verified the Pages deployment at [41242001050](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41242001050), including deployed HTML, script, CSS and vendor-asset smoke checks; see the cross-mode integrity checkpoint below.
@@ -1148,16 +1148,16 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 ## 2026-11-11 continuation — Ukrainian practical transcription
 
 ### Repository state
-- Starting default-branch SHA: \`fab39881259df94be93634088a75667a13059cfc\`.
-- Current final verification branch: \`feat/burmese-ukrainian-practical-adapter-verified-final-2026-11-11\`.
+- Starting default-branch SHA: `fab39881259df94be93634088a75667a13059cfc`.
+- Current final verification branch: `feat/burmese-ukrainian-practical-adapter-verified-final-2026-11-11`.
 - Browser fail-closed implementation code SHA: `e9bd12819ed692d7be2607356008217de9430dca`. Subsequent commits update only handoff/matrix/register documentation; the live PR head is authoritative for the latest documentation commit.
 - Draft PR [#133](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/133), open, not merged.
 - Earlier drafts #129, #130, #131 and #132 are superseded/closed as appropriate; their branches are retained.
 - Main was not modified; no site deployment or publication occurred.
 
 ### Implemented
-- Added \`src/burmese_ukrainian/practical.py\` as the Python whole-IPA → Ukrainian adapter. \`RuleBasedBurmeseEngine\` invokes it after IPA derivation and concatenates per-syllable Ukrainian spellings into a word while preserving IPA syllable boundaries and per-syllable trace.
-- Added \`src/web/ukrainian-adapter.js\` for browser rendering, backed by generated data from \`data/burmese/ukrainian_practical.csv\` and \`data/burmese/practical_rules.csv\`.
+- Added `src/burmese_ukrainian/practical.py` as the Python whole-IPA → Ukrainian adapter. `RuleBasedBurmeseEngine` invokes it after IPA derivation and concatenates per-syllable Ukrainian spellings into a word while preserving IPA syllable boundaries and per-syllable trace.
+- Added `src/web/ukrainian-adapter.js` for browser rendering, backed by generated data from `data/burmese/ukrainian_practical.csv` and `data/burmese/practical_rules.csv`.
 - Added fail-closed handling for unknown IPA, and browser-side withholding of IPA/Ukrainian output for medials, conjuncts and kinzi until those structures have fully supported phonetic rules. Structural parsing remains available.
 - Target conventions: /h, ɦ/ → г; /ɡ/ (ASCII /g/) → ґ as a contrast-preserving project choice; /x/ → х; /w/ → в; /t͡s, d͡z, t͡ʃ, d͡ʒ/ → ц, дз, ч, дж; /tɕ, dʑ/ → ч, дж as approximations; aspiration is represented with a project apostrophe; syllable-initial /j/ uses Ukrainian yotated spellings where transparent.
 - Tone and length remain in IPA/prosody trace and are not converted into Ukrainian stress or vowel doubling.
@@ -1166,9 +1166,9 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Text-only work; no audio corpus was used.
 
 ### Verification evidence and limits
-- Previous code revision \`530cefbfc874b777650bd7e7ccdb5888534ab348\`, workflow [43094695944](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43094695944): Python tests (180 tests + 66 subtests), package build, generated-data freshness and Node tests passed. The Playwright browser step failed on two assertions: stale page copy and a kinzi-bearing syllable receiving a practical rendering.
+- Previous code revision `530cefbfc874b777650bd7e7ccdb5888534ab348`, workflow [43094695944](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43094695944): Python tests (180 tests + 66 subtests), package build, generated-data freshness and Node tests passed. The Playwright browser step failed on two assertions: stale page copy and a kinzi-bearing syllable receiving a practical rendering.
 - Both browser issues were corrected on the current branch: page copy now reflects the target policy, and the browser parser withholds unsupported kinzi/medial/conjunct structures consistently with Python. Regression coverage was added.
-- Final branch workflow [43095578672](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43095578672) is still \`queued\` with zero jobs started. Therefore the final browser/Playwright correction is implemented but not yet CI-verified; do not report the final browser suite as passed.
+- Final branch workflow [43095578672](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43095578672) is still `queued` with zero jobs started. Therefore the final browser/Playwright correction is implemented but not yet CI-verified; do not report the final browser suite as passed.
 - No independent adjudicated Burmese IPA/Ukrainian gold set exists. Passing code tests do not establish phonetic accuracy.
 
 ### Task ledger
@@ -1562,18 +1562,18 @@ PR #147 remains OPEN / DRAFT / mergeable, 0 commits behind main, 28 files change
 
 ## Okell corpus access correction — 2026-11-13
 
-This entry supersedes earlier handoff statements that Okell's 8.8 MB corpus was wholly blocked by tool access. The Zenodo direct file endpoint now returns HTTP 200 (\`text/plain; charset=utf-8\`) through text-only extraction. The provider MD5 is \`f020d7bbcf9857631094a8861143d18f\`; exact raw bytes were not retained in the repository/runtime, so SHA-256 is still uncomputed.
+This entry supersedes earlier handoff statements that Okell's 8.8 MB corpus was wholly blocked by tool access. The Zenodo direct file endpoint now returns HTTP 200 (`text/plain; charset=utf-8`) through text-only extraction. The retrieved byte sequence is 8,809,265 bytes; its MD5 exactly matches Zenodo's provider checksum `f020d7bbcf9857631094a8861143d18f`, and SHA-256 is `6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c`.
 
-Targeted inspection confirms valid UTF-8 and modern Myanmar Unicode, Burmese/English mixed content, more than 23 numbered sections/articles, dates, speaker labels, dialogue/speech transcripts and prose. Some foreign technical terms show localized legacy glyph/encoding corruption. The corpus is therefore **PARTIAL / CONTENT ACCESS VERIFIED; HASH_AND_QUALITY_AUDIT_PENDING**, not BLOCKED_TOOL_ACCESS. No rows were imported, no IPA annotation was identified, no pronunciation labels were created, and no audio was used. The corpus is a text-only lexical/context discovery source, not IPA gold.
+Targeted inspection confirms valid UTF-8 and modern Myanmar Unicode, Burmese/English mixed content, 67 numbered heading lines across embedded texts, dates, speaker labels, dialogue/speech transcripts and prose. Some foreign technical terms show localized legacy glyph/encoding corruption. The corpus is therefore **PARTIAL / CONTENT AND BYTE INTEGRITY VERIFIED; TEXT QUALITY AUDIT PENDING**, not BLOCKED_TOOL_ACCESS. No rows were imported, no IPA annotation was identified, no pronunciation labels were created, and no audio was used. The corpus is a text-only lexical/context discovery source, not IPA gold.
 
-The Zenodo Rights/License field remains blank while ELG lists CC BY 4.0. Project-owner authorization for text-only research and internal ingestion remains recorded separately from public license metadata. Acceptance requires byte-identical pinned bytes, SHA-256, document-boundary/duplicate/Unicode/corruption profiling and source-located text extraction.
+The Zenodo Rights/License field remains blank while ELG lists CC BY 4.0. Project-owner authorization for text-only research and internal ingestion remains recorded separately from public license metadata. Acceptance now focuses on mapping embedded boundaries to original documents, classifying repeated passages, inspecting the NUL and legacy glyph corruption, documenting section provenance and source-located text extraction.
 
 
 ## Okell corpus byte-integrity completion — 2026-11-13
 
-The complete text-only Zenodo response was extracted as UTF-8, including its initial BOM and CRLF endings. Retrieved byte length: 8,809,265. Its MD5 exactly matches Zenodo's published provider checksum \`f020d7bbcf9857631094a8861143d18f\`; SHA-256: \`6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c\`.
+The complete text-only Zenodo response was extracted as UTF-8, including its initial BOM and CRLF endings. Retrieved byte length: 8,809,265. Its MD5 exactly matches Zenodo's published provider checksum `f020d7bbcf9857631094a8861143d18f`; SHA-256: `6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c`.
 
-Profile: 19,565 CRLF-terminated lines (19,566 split segments including the final empty segment) / 19,565 CRLF delimiters; 67 numbered heading lines across embedded texts; valid UTF-8; one leading BOM; one NUL; not NFC-normalized; zero U+FFFD; 73 unique Myanmar code points. The corpus contains mixed Burmese/English, dated and speaker-labelled dialogue/speech text, prose and tables, with localized legacy glyph/encoding corruption in some foreign technical terms. These are content/byte observations, not IPA labels. No rows imported; no audio accessed; no IPA gold created.
+Profile: 19,565 CRLF-terminated lines (19,566 split segments including the final empty segment) / 19,565 CRLF delimiters; 67 numbered heading lines across embedded texts; valid UTF-8; 21 BOM markers (one leading and 20 embedded); one NUL at line 9,300; not NFC-normalized; zero U+FFFD; 73 unique Myanmar code points. The corpus contains mixed Burmese/English, dated and speaker-labelled dialogue/speech text, prose and tables, with localized legacy glyph/encoding corruption in some foreign technical terms. These are content/byte observations, not IPA labels. No rows imported; no audio accessed; no IPA gold created.
 
 Status advances to **PARTIAL / CONTENT AND BYTE INTEGRITY VERIFIED; TEXT QUALITY AUDIT PENDING**. Next acceptance: preserve the exact source externally, document document-level provenance and duplicate rates, inspect NUL/NFC/corrupted technical terms without modifying the source copy, and extract only source-located text examples into separate research records.
 
@@ -1589,6 +1589,47 @@ This advances structural understanding but not full quality clearance. Remaining
 
 ## Okell corpus orthographic profile — 2026-11-13
 
-Added a separate orthographic-only profile tied to the byte-verified external corpus SHA-256. Raw codepoint counts: U+103B 50,072; U+103C 73,107; U+103D 49,248; U+103E 50,869. Raw substring matches: \`မြန်\` 659; \`မြန်မာ\` 288; \`မြန်မာနိုင်ငံ\` 45; \`မြန်မာစာ\` 18; \`မြန်မာ့\` 27.
+Added a separate orthographic-only profile tied to the byte-verified external corpus SHA-256. Raw codepoint counts: U+103B 50,072; U+103C 73,107; U+103D 49,248; U+103E 50,869. Raw substring matches: `မြန်` 659; `မြန်မာ` 288; `မြန်မာနိုင်ငံ` 45; `မြန်မာစာ` 18; `မြန်မာ့` 27.
 
-These counts are not tokenized and do not represent pronunciation or syllable distribution. They include repeated source material and non-NFC sequences. The profile is stored in \`data/burmese/okell_text_corpus_orthographic_profile.csv\`, and the source claim explicitly marks it DOCUMENTARY / ORTHOGRAPHIC_ONLY. No IPA labels, IPA gold rows or runtime mappings were created.
+These counts are not tokenized and do not represent pronunciation or syllable distribution. They include repeated source material and non-NFC sequences. The profile is stored in `data/burmese/okell_text_corpus_orthographic_profile.csv`, and the source claim explicitly marks it DOCUMENTARY / ORTHOGRAPHIC_ONLY. No IPA labels, IPA gold rows or runtime mappings were created.
+
+
+## Final exact-head continuation — 2026-11-13 (supersedes earlier snapshots)
+
+- Starting default-branch commit: `dc90463bdd734867308f03cb627eb8941efc19d6`; `main` remains unchanged.
+- Final dedicated branch: `research/burmese-medials-g2p-evidence-2026-11-13`.
+- Final commit: `601cf85a5c740627848f9eff1fa1f0911cf03796`.
+- PR #147: OPEN / DRAFT / mergeable; 193 commits ahead, 0 behind `main`; 29 files changed. No merge or release performed.
+- PR #129: OPEN / DRAFT, untouched; 53 commits ahead and 17 behind `main`, diverged and non-mergeable. Its broad hybrid-engine code was not ported; no branch was deleted or rewritten.
+
+### Work completed in this continuation
+
+- Retrieved the complete text-only John Okell corpus through the Zenodo direct endpoint. The retrieved byte sequence is 8,809,265 bytes; its MD5 matches Zenodo's published checksum `f020d7bbcf9857631094a8861143d18f`; SHA-256 is `6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c`.
+- Profiled 19,565 CRLF-terminated lines (19,566 split segments including the final empty segment), 67 numbered heading lines, 21 BOM markers, one NUL at line 9,300, non-NFC text, zero U+FFFD, 73 unique Myanmar code points, 295 repeated nonblank line forms / 1,008 excess occurrences and 23 repeated paragraph forms. Repeated titles, headers and divider motifs are not duplicate-document evidence.
+- Added `data/burmese/okell_text_corpus_orthographic_profile.csv` with 4 medial codepoint counts and 5 target-substring counts. It is explicitly ORTHOGRAPHIC_ONLY; no tokenization, syllabification, IPA or pronunciation inference is asserted.
+- Updated source registry and claims, corpus triage, research report, completion register and status matrix. Added regression coverage for checksum, text-quality boundary and orthographic-only counts.
+- Current registries: 59 sources, 82 claims, 45 medial-evidence rows, 30 phonological rules, 7 source-phonemic sandhi examples and 9 orthographic-profile rows.
+- No audio was accessed, acquired, inspected, processed or used. No new medial or contextual voicing rule was enabled.
+
+### Exact-head verification
+
+- Required CI push run `43449980180` SUCCESS and PR run `43449989336` SUCCESS.
+- Python: 222 passed; 66 subtests passed.
+- IPA-gold schema validator executed successfully but reports 0 records, 0 annotations, 0 adjudicated records and `NOT_READY_NO_ADJUDICATED_GOLD`; this is not gold-set readiness.
+- npm production build: PASS; generated web-data freshness: PASS; Node: 20 passed; Playwright/Chromium: 58 passed.
+- Optional diagnostics `43449989348` SUCCESS. CRF: 100 predictions, 84 source-concordant rows, gold_count=0, accuracy=null, `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`. Epitran 1.35.3: raw-output-only artifact, SHA-256 `8dc22b82c588af9575a0f398e69cabe21f9d5b22937b94f882632624caa53a99`, artifact ID `14048474215`. No accuracy claim is made.
+
+### Remaining blockers and acceptance
+
+- Okell (1969) full grammar and Nishi (1976) *Medials in Burmese*: bibliography confirmed, full texts not retrieved; no claims attributed directly. Nishi 1999 reprint is catalogued but NDL access is limited; Okell is behind limited preview/paywall routes.
+- Hill (2019), chapter 2: official Cambridge chapter metadata confirmed, but full chapter PDF unavailable through the research workspace; no new phonological claims taken from the publisher abstract.
+- Okell corpus: byte identity verified, but segment-level provenance, document boundaries, repeated passage classification and localized legacy encoding/glyph corruption remain PARTIAL. Do not normalize/deduplicate the source automatically.
+- SEAlang: actual dictionary records/export schema and corpus rows remain unresolved; IPA interface evidence is not an IPA gold corpus.
+- Independent adjudicated IPA gold remains 0; empirical accuracy remains null. Acceptance requires source-located examples, two independent annotators, a separate adjudicator, frozen splits and full IPA metadata.
+- Tone (four vs eight/register) and abstract /N/ vs surface nasalization remain unresolved; MLCTS 94 rime entries still need primary-source verification.
+- Myanglish third-column provenance remains uncertain; myX orthography corpus remains quarantined pending full 4,800-row target-span/duplicate audit.
+- Public metadata rights conflict for the Okell corpus remains recorded (Zenodo blank; ELG lists CC BY 4.0). Project-owner research/ingestion permission is confirmed; downstream redistribution still requires its own rights/attribution review.
+
+### Final assessment
+
+**PARTIAL PROTOTYPE — NOT LINGUISTICALLY RELEASE-READY.** The research dossier is suitable for specialist review, but modern Yangon IPA gold, corpus provenance/quality clearance, unresolved phonological models and source-level adjudication are still absent.

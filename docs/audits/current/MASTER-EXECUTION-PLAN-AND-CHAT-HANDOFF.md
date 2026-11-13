@@ -533,7 +533,7 @@ The canonical current handoff is [docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md
 
 
 ## 2026-11-11 continuation pointer
-The canonical Ukrainian practical transcription implementation and current task ledger are recorded in \`docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md\` under “2026-11-11 continuation — Ukrainian practical transcription”. The execution matrix and linguistic completion register were updated in this same branch. Current draft PR: [#133](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/133).
+The canonical Ukrainian practical transcription implementation and current task ledger are recorded in `docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md` under “2026-11-11 continuation — Ukrainian practical transcription”. The execution matrix and linguistic completion register were updated in this same branch. Current draft PR: [#133](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/133).
 
 
 ## Complete Myanmar grapheme-accounting sweep — 2026-11-12
@@ -709,3 +709,44 @@ The paper documents a potentially useful 42 h 39 min / 307-speaker audio corpus,
 - PR #129 remains open/draft and untouched as a code branch (53 commits ahead / 17 behind current main, non-mergeable); its source-backed research findings were reconciled here, but its broad hybrid-engine code was not ported.
 - UCSY-SC1 is a rights-gated audio lead: publisher page lists CC BY-SA 4.0, PDF footer says “All rights reserved”, and the corpus audio has no separately verified license.
 - Release assessment: PARTIAL PROTOTYPE, not linguistically release-ready. The research dossier is ready for specialist review and data-rights resolution.
+
+
+## Final exact-head continuation — 2026-11-13 (supersedes earlier snapshots)
+
+- Starting default-branch commit: `dc90463bdd734867308f03cb627eb8941efc19d6`; `main` remains unchanged.
+- Final dedicated branch: `research/burmese-medials-g2p-evidence-2026-11-13`.
+- Final commit: `601cf85a5c740627848f9eff1fa1f0911cf03796`.
+- PR #147: OPEN / DRAFT / mergeable; 193 commits ahead, 0 behind `main`; 29 files changed. No merge or release performed.
+- PR #129: OPEN / DRAFT, untouched; 53 commits ahead and 17 behind `main`, diverged and non-mergeable. Its broad hybrid-engine code was not ported; no branch was deleted or rewritten.
+
+### Work completed in this continuation
+
+- Retrieved the complete text-only John Okell corpus through the Zenodo direct endpoint. The retrieved byte sequence is 8,809,265 bytes; its MD5 matches Zenodo's published checksum `f020d7bbcf9857631094a8861143d18f`; SHA-256 is `6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c`.
+- Profiled 19,565 CRLF-terminated lines (19,566 split segments including the final empty segment), 67 numbered heading lines, 21 BOM markers, one NUL at line 9,300, non-NFC text, zero U+FFFD, 73 unique Myanmar code points, 295 repeated nonblank line forms / 1,008 excess occurrences and 23 repeated paragraph forms. Repeated titles, headers and divider motifs are not duplicate-document evidence.
+- Added `data/burmese/okell_text_corpus_orthographic_profile.csv` with 4 medial codepoint counts and 5 target-substring counts. It is explicitly ORTHOGRAPHIC_ONLY; no tokenization, syllabification, IPA or pronunciation inference is asserted.
+- Updated source registry and claims, corpus triage, research report, completion register and status matrix. Added regression coverage for checksum, text-quality boundary and orthographic-only counts.
+- Current registries: 59 sources, 82 claims, 45 medial-evidence rows, 30 phonological rules, 7 source-phonemic sandhi examples and 9 orthographic-profile rows.
+- No audio was accessed, acquired, inspected, processed or used. No new medial or contextual voicing rule was enabled.
+
+### Exact-head verification
+
+- Required CI push run `43449980180` SUCCESS and PR run `43449989336` SUCCESS.
+- Python: 222 passed; 66 subtests passed.
+- IPA-gold schema validator executed successfully but reports 0 records, 0 annotations, 0 adjudicated records and `NOT_READY_NO_ADJUDICATED_GOLD`; this is not gold-set readiness.
+- npm production build: PASS; generated web-data freshness: PASS; Node: 20 passed; Playwright/Chromium: 58 passed.
+- Optional diagnostics `43449989348` SUCCESS. CRF: 100 predictions, 84 source-concordant rows, gold_count=0, accuracy=null, `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`. Epitran 1.35.3: raw-output-only artifact, SHA-256 `8dc22b82c588af9575a0f398e69cabe21f9d5b22937b94f882632624caa53a99`, artifact ID `14048474215`. No accuracy claim is made.
+
+### Remaining blockers and acceptance
+
+- Okell (1969) full grammar and Nishi (1976) *Medials in Burmese*: bibliography confirmed, full texts not retrieved; no claims attributed directly. Nishi 1999 reprint is catalogued but NDL access is limited; Okell is behind limited preview/paywall routes.
+- Hill (2019), chapter 2: official Cambridge chapter metadata confirmed, but full chapter PDF unavailable through the research workspace; no new phonological claims taken from the publisher abstract.
+- Okell corpus: byte identity verified, but segment-level provenance, document boundaries, repeated passage classification and localized legacy encoding/glyph corruption remain PARTIAL. Do not normalize/deduplicate the source automatically.
+- SEAlang: actual dictionary records/export schema and corpus rows remain unresolved; IPA interface evidence is not an IPA gold corpus.
+- Independent adjudicated IPA gold remains 0; empirical accuracy remains null. Acceptance requires source-located examples, two independent annotators, a separate adjudicator, frozen splits and full IPA metadata.
+- Tone (four vs eight/register) and abstract /N/ vs surface nasalization remain unresolved; MLCTS 94 rime entries still need primary-source verification.
+- Myanglish third-column provenance remains uncertain; myX orthography corpus remains quarantined pending full 4,800-row target-span/duplicate audit.
+- Public metadata rights conflict for the Okell corpus remains recorded (Zenodo blank; ELG lists CC BY 4.0). Project-owner research/ingestion permission is confirmed; downstream redistribution still requires its own rights/attribution review.
+
+### Final assessment
+
+**PARTIAL PROTOTYPE — NOT LINGUISTICALLY RELEASE-READY.** The research dossier is suitable for specialist review, but modern Yangon IPA gold, corpus provenance/quality clearance, unresolved phonological models and source-level adjudication are still absent.
