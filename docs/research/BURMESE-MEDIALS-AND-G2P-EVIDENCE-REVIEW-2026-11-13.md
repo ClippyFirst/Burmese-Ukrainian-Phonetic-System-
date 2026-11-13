@@ -422,7 +422,7 @@ The Myanglish raw CSV is 2-column (myanmar,myanglish), while its README metadata
 
 The myX orthography corpus is a work-in-progress text correction dataset, not an IPA corpus. Manual inspection found a target_words mismatch in hcara_phonetic.csv and multi-substitution examples in phet_bet_phonetic.csv. The resource is quarantined for row-level quality review and deduplication, not blocked by permission.
 
-The 8.8 MB John Okell corpus is now reachable through the Zenodo direct text endpoint (HTTP 200, text/plain; charset=utf-8) and was inspected through text-only extraction. Targeted inspection confirms valid UTF-8, modern Myanmar Unicode, Burmese/English mixed content, more than 23 numbered sections/articles, speaker labels, dates, dialogue/speech transcripts and prose; localized legacy glyph/encoding corruption affects some foreign technical terms. Zenodo supplies MD5 f020d7bbcf9857631094a8861143d18f, but exact raw bytes were not retained and SHA-256 was not computed. No rows were imported, no IPA schema/labels were identified, and the corpus is not IPA gold. This moves the task from BLOCKED_TOOL_ACCESS to PARTIAL / CONTENT AND BYTE INTEGRITY VERIFIED; TEXT QUALITY AUDIT PENDING. SEAlang entry/corpus schema remains unresolved. No audio was used or accessed. Independent expert-adjudicated IPA gold remains 0 and empirical IPA accuracy remains null.
+The 8.8 MB John Okell corpus is now reachable through the Zenodo direct text endpoint (HTTP 200, text/plain; charset=utf-8). The retrieved 8,809,265-byte sequence matches Zenodo MD5 f020d7bbcf9857631094a8861143d18f; SHA-256 is 6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c. It has 19,565 CRLF-terminated lines, 67 numbered heading lines, 21 BOM markers, one NUL at line 9,300, non-NFC text, zero U+FFFD and 73 unique Myanmar code points. Line profiling found 295 repeated nonblank line forms / 1,008 excess occurrences and 23 repeated paragraph forms; these include recurring titles, headers and dividers and are not duplicate-document counts. Raw medial codepoint and substring counts are stored separately as ORTHOGRAPHIC_ONLY. No text rows were imported into runtime, no IPA schema/labels were identified, and the corpus is not IPA gold. Status is PARTIAL / CONTENT AND BYTE INTEGRITY VERIFIED; TEXT QUALITY AUDIT PENDING. SEAlang entry/corpus schema remains unresolved. No audio was used or accessed. Independent expert-adjudicated IPA gold remains 0 and empirical IPA accuracy remains null.
 
 
 ## 17. Okell (1995): explicit WB/SB separation and regional medial inventories
@@ -488,7 +488,7 @@ Before importing corpus rows, retain a byte-identical pinned artifact, calculate
 
 ## 20. Okell corpus: orthographic-only medial frequency profile
 
-A raw Unicode profile was computed over the complete text-only file identified by SHA-256 \`6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c\`. The profile is stored in \`data/burmese/okell_text_corpus_orthographic_profile.csv\`.
+A raw Unicode profile was computed over the complete text-only file identified by SHA-256 `6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c`. The profile is stored in `data/burmese/okell_text_corpus_orthographic_profile.csv`.
 
 | Myanmar code point | Raw occurrences |
 |---|---:|
@@ -497,6 +497,6 @@ A raw Unicode profile was computed over the complete text-only file identified b
 | U+103D medial WA | 49,248 |
 | U+103E medial HA | 50,869 |
 
-Raw substring counts include \`မြန်\` 659, \`မြန်မာ\` 288, \`မြန်မာနိုင်ငံ\` 45, \`မြန်မာစာ\` 18 and \`မြန်မာ့\` 27.
+Raw substring counts include `မြန်` 659, `မြန်မာ` 288, `မြန်မာနိုင်ငံ` 45, `မြန်မာစာ` 18 and `မြန်မာ့` 27.
 
 These are Unicode scalar and substring counts over the raw, non-NFC, mixed-source text. They are not token counts, syllable counts, onset/rime distributions, or evidence that a Unicode medial has a particular pronunciation. Repeated source material is included; no normalization, tokenization or deduplication was applied. This profile is useful only for orthographic coverage and candidate written-example discovery. It does not create IPA gold or activate runtime rules.

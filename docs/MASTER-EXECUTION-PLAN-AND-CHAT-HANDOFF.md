@@ -1476,7 +1476,7 @@ The project owner confirms all required permissions for research use and project
 - Project owner permission confirmed for research use and project ingestion.
 - Myanglish raw CSV has two columns (myanmar,myanglish), while README metadata/viewer expose a third official_standard feature. This remains schema-uncertain; treat as informal romanization only.
 - myX orthography corpus is work-in-progress. Sampled hcara_phonetic.csv has target_words misalignment (ဆျာ→ဆရာ labelled with မင်ရည်/မှင်ရည်); sampled phet_bet rows can contain multiple substitutions. Keep quarantined for quality review and deduplication; not IPA gold.
-- John Okell's 8.8 MB text file, SEAlang dictionary/corpora and Hill (2019) chapter 2 were not retrieved in this execution environment. These are tool-access/schema blockers, not permission blockers. Do not claim their contents were imported or inspected.
+- At that earlier checkpoint, John Okell's 8.8 MB text corpus, SEAlang dictionary/corpora and Hill (2019) chapter 2 had not been retrieved. The Okell text corpus is now byte-verified and profiled in the 2026-11-13 continuation below; SEAlang records/corpora and the full Hill chapter remain access/schema blockers, not permission blockers. No audio was used.
 
 ### Exact verification
 
@@ -1547,7 +1547,7 @@ PR #147 remains OPEN / DRAFT / mergeable, 0 commits behind main and 28 files cha
 
 Exact tested code/data head cda73ccb7fa80a0404fed5a65588ebd690253f94 passed main CI 43397172081: 220 Python tests + 66 subtests; IPA-gold structure validation; npm build; generated-data freshness; 20 Node tests; 58 Playwright/Chromium tests. Optional diagnostics 43397181331 passed: CRF 100 predictions / 84 source-concordant / zero gold / null accuracy / NOT_SCORED_POSSIBLE_TRAINING_OVERLAP; Epitran 1.35.3 raw-output artifact only.
 
-Final registries: 59 sources, 81 claims, 45 medial rows, 30 phonological rules, 7 source-phonemic sandhi examples. Manual CSV integrity and traceability validation passed.
+Final registries at the 2026-11-13 continuation: 59 sources, 83 claims, 45 medial rows, 30 phonological rules, 7 source-phonemic sandhi examples, 9 orthographic-only Okell corpus profile rows. Manual CSV integrity and traceability validation passed.
 
 Okell (1995) *Three Burmese Dialects* and Nishi (1998) *Old Burmese* full texts are inspected. Okell documents Arakanese WB r/y preservation and Intha/Tavoyan medial /l/ inventories absent from SB; Nishi documents historical -h/-l/-r/-y distinctions and cross-dialect cluster reflexes. All are historical/regional evidence, not current Yangon mappings; runtime remains withheld.
 
