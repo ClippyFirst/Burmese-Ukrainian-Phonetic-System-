@@ -2201,7 +2201,7 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 ## Final exact-head verification — 2026-11-13
 
 - Final tested code/data SHA: `62bea5a26012cb1ace4ce11579e17f4a780c3e1e`.
-- Required CI **43516197628 SUCCESS** and duplicate exact-SHA run **435161... SUCCESS**: 251 Python + 66 subtests, 20 Node, 58 Playwright; build, generated-data freshness and Chromium installation passed.
+- Required CI **43516197628 SUCCESS** and duplicate exact-SHA run **43516203122 SUCCESS**: 251 Python + 66 subtests, 20 Node, 58 Playwright; build, generated-data freshness and Chromium installation passed.
 - Optional Epitran raw-output diagnostic **43516203133 SUCCESS**, diagnostic only. IPA gold remains `NOT_READY_NO_ADJUDICATED_GOLD` with 0 independently adjudicated entries; accuracy remains null.
 - npm reports one high-severity vulnerability. No dependency upgrade was made.
 - Final ledger: 25 groups = **6 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 7 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 149 claims**.
