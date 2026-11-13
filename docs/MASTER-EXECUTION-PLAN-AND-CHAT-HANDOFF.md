@@ -2155,3 +2155,10 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - IPA-gold validator: `NOT_READY_NO_ADJUDICATED_GOLD` (0 independent adjudicated gold entries); accuracy remains null. `npm install` still reports one high-severity vulnerability.
 - Registry **80 sources / 138 claims**. Collision ledger: **17 unadjudicated / 3 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**.
 - Test expectations exposed during this batch were corrected against the final 25-row ledger; the exact final code/data snapshot above passes. No runtime, IPA gold or Ukrainian output promotion.
+
+## Additional lexical evidence for `aung:` — 2026-11-13
+
+- Added MOW-listed `ပေါင်း` (`paung:`, `/páʊɴ/`, ending ေါင်း) and `ကျောင်း` (`kyaung:`, `/t͡ɕáʊɴ/`, ending ောင်း) from text-only Wiktionary entries. Different onsets; same secondary IPA rime sequence `/áʊɴ/`.
+- Added claim `CLM-WIKTIONARY-AUNG-COLON-WORD-LEVEL-EXAMPLES-001`, updated lexical audit and MLCTS2 crosswalk status parity, and expanded regression tests.
+- Current collision distribution: **16 unadjudicated / 4 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 139 claims**.
+- Secondary evidence only; not a controlled minimal pair or primary MLC adjudication. No runtime, IPA gold or Ukrainian output changed. Exact-head CI pending.
