@@ -1935,3 +1935,10 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - Audit and MLCTS2 crosswalk updated to `SECONDARY_ONE_SIDE_ONLY`; claim `CLM-WIKTIONARY-AM-COLON-ONE-SIDE-EXAMPLE-001` registered; regression tests expanded.
 - Evidence distribution: 5 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 8 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 150 claims.
 - No runtime or Ukrainian output changes. Exact-head CI pending.
+
+## Exact-head verification — `am:` lexical continuation — 2026-11-14
+
+- Verified SHA `73bfbd7d82f69bfa0e306d984a40fe2324fc3515`; required CI **43519075644 SUCCESS** and **43519083741 SUCCESS**: 251 Python + 66 subtests, 20 Node, 58 Playwright; production build, generated-data freshness and Chromium install passed.
+- Optional Epitran raw-output diagnostic **43519083746 SUCCESS**; IPA gold `NOT_READY_NO_ADJUDICATED_GOLD`, 0 independent gold entries. One high-severity npm vulnerability remains.
+- Collision ledger: 5 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 8 secondary one-side-only / 1 special non-rime; 80 sources / 150 claims.
+- Secondary evidence only; no primary MLC or runtime/IPA gold/Ukrainian mapping promotion.
