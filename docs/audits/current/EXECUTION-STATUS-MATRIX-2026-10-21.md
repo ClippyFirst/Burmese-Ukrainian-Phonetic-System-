@@ -1334,3 +1334,11 @@ The successful CI applies to exact head 4145126ec65b834df96fc7ed57749a719daa27c2
 | Text-only scope | DONE_VERIFIED (documentation) | Legacy non-text records are historical-only and deferred; no audio work or data import |
 
 Exact tested head: d2800ce458ea3c08c3fecb9e61ad170502837343. PR #147 remains Draft and is not release-ready. Linguistic gold=0 and empirical accuracy=null; classification remains PARTIAL PROTOTYPE.
+
+### Final PR-head check — 2026-11-13
+
+- PR #147 head 18b42a7415d3323220d09c0aacf2a17a3c6ff07d, 92 commits ahead of main / 0 behind, 25 files; OPEN / DRAFT / mergeable. No submitted reviews. PR #129 remains untouched.
+- Exact-head run 43390340513: SUCCESS (209 Python + 66 subtests, IPA gold structure, build, generated-data freshness, 20 Node, 58 Playwright).
+- Optional diagnostics run 43390071177: SUCCESS; CRF 100 predictions / 84 source-concordant / 0 gold / null accuracy / possible training overlap; Epitran raw-output artifact only.
+- Registry integrity: 55 sources, 62 claims, 29 medial rows, 22 phonological rules; no CSV width, duplicate-ID or traceability issues.
+- Text-only scope remains enforced; no audio, no corpus imports, no runtime rules promoted. Release status: PARTIAL PROTOTYPE.
