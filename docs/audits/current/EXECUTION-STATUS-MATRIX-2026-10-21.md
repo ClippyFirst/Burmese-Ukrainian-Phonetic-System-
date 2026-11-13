@@ -1450,7 +1450,7 @@ Full profile: `data/burmese/okell_text_corpus_orthographic_profile.csv`. These a
 
 ## Final exact-head verification — 2026-11-13
 
-Final branch head `601cf85a5c740627848f9eff1fa1f0911cf03796` on `research/burmese-medials-g2p-evidence-2026-11-13`, based on unchanged main `dc90463bdd734867308f03cb627eb8941efc19d6`. PR #147 is open/draft/mergeable, 193 commits ahead and 0 behind, 29 files. PR #129 is open/draft and untouched, diverged 53 ahead / 17 behind and non-mergeable.
+Final branch head `601cf85a5c740627848f9eff1fa1f0911cf03796` on `research/burmese-medials-g2p-evidence-2026-11-13`, based on unchanged main `dc90463bdd734867308f03cb627eb8941efc19d6`. PR #147 is open/draft/mergeable, 195 commits ahead and 0 behind, 29 files. PR #129 is open/draft and untouched, diverged 53 ahead / 17 behind and non-mergeable.
 
 Exact-head CI: `43449980180` and `43449989336` SUCCESS — 222 Python tests + 66 subtests; IPA schema validator ran with zero gold records; npm build and generated-data freshness passed; 20 Node and 58 Playwright/Chromium tests passed. Optional diagnostics `43449989348` SUCCESS — CRF 100 predictions, 84 source-concordant, 0 gold, null accuracy, NOT_SCORED_POSSIBLE_TRAINING_OVERLAP; Epitran raw output only. No audio, no runtime medial rules, no merge/release.
 

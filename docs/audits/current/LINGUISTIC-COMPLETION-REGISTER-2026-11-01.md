@@ -1242,7 +1242,7 @@ Exact-head CI 43393402710 on 4835a0abc3e7e4a18c9d0bda35f554031912d570: 217 Pytho
 
 - Exact tested code/data head cda73ccb7fa80a0404fed5a65588ebd690253f94; CI 43397172081 SUCCESS: 220 Python + 66 subtests, 20 Node, 58 Playwright, IPA schema, build and generated-data freshness.
 - Optional diagnostics 43397181331 SUCCESS: CRF 100 predictions, 84 source-concordant, 0 gold, null accuracy; Epitran raw output only.
-- Registries: 59 sources, 82 claims, 45 medial rows, 30 rules, 7 source-phonemic sandhi rows, 9 Okell orthographic-profile rows. CSV widths, unique IDs and cross-registry references validated.
+- Registries: 59 sources, 83 claims, 45 medial rows, 30 rules, 7 source-phonemic sandhi rows, 9 Okell orthographic-profile rows. CSV widths, unique IDs and cross-registry references validated.
 - Okell (1995) and Nishi (1998) full-text evidence is DONE_VERIFIED at source-evidence level only; all historical/regional rules remain withheld.
 - SEAlang IPA query/display is DONE_VERIFIED at interface level; internal entry/export representation remains PARTIAL / SCHEMA UNRESOLVED because Mya2Rom separately documents MLCTS2.
 - Okell (1969), Nishi (1976), Hill (2019) chapter 2, Okell text corpus and SEAlang records remain tool-access/schema blocked, not permission blocked.
@@ -1280,8 +1280,8 @@ Created `data/burmese/okell_text_corpus_orthographic_profile.csv` with four raw 
 ## Final exact-head continuation — 2026-11-13
 
 - Branch head: `601cf85a5c740627848f9eff1fa1f0911cf03796`; base main: `dc90463bdd734867308f03cb627eb8941efc19d6`; main unchanged.
-- PR #147: OPEN / DRAFT / mergeable, 193 ahead / 0 behind, 29 files. PR #129: OPEN / DRAFT, untouched, 53 ahead / 17 behind, diverged/non-mergeable.
-- Registry totals: 59 sources, 82 claims, 45 medial rows, 30 rules, 7 sandhi examples, 9 Okell orthographic profile rows.
+- PR #147: OPEN / DRAFT / mergeable, 195 ahead / 0 behind, 29 files. PR #129: OPEN / DRAFT, untouched, 53 ahead / 17 behind, diverged/non-mergeable.
+- Registry totals: 59 sources, 83 claims, 45 medial rows, 30 rules, 7 sandhi examples, 9 Okell orthographic profile rows.
 - Okell corpus: 8,809,265 bytes; Zenodo MD5 matched; SHA-256 6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c; 21 BOM markers, one NUL, non-NFC, 67 numbered headings, repeated line/paragraph counts profiled. Remaining text-quality/provenance work is PARTIAL.
 - Exact-head CI runs 43449980180 and 43449989336 SUCCESS: 222 Python + 66 subtests, 20 Node, 58 Playwright; build and generated freshness pass. IPA gold validator correctly reports zero adjudicated gold. Optional run 43449989348 SUCCESS; CRF remains unscored with zero gold and null accuracy; Epitran is raw-output-only.
 - No audio, no runtime medial rules, no merge or release. Classification: PARTIAL PROTOTYPE, not release-ready.

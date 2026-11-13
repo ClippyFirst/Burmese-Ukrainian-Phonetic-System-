@@ -715,8 +715,8 @@ The paper documents a potentially useful 42 h 39 min / 307-speaker audio corpus,
 
 - Starting default-branch commit: `dc90463bdd734867308f03cb627eb8941efc19d6`; `main` remains unchanged.
 - Final dedicated branch: `research/burmese-medials-g2p-evidence-2026-11-13`.
-- Final commit: `601cf85a5c740627848f9eff1fa1f0911cf03796`.
-- PR #147: OPEN / DRAFT / mergeable; 193 commits ahead, 0 behind `main`; 29 files changed. No merge or release performed.
+- Latest verified code/data head: `601cf85a5c740627848f9eff1fa1f0911cf03796`; the final handoff-only commit follows it and is recorded in PR #147.
+- PR #147: OPEN / DRAFT / mergeable; 195 commits ahead, 0 behind `main`; 29 files changed. No merge or release performed.
 - PR #129: OPEN / DRAFT, untouched; 53 commits ahead and 17 behind `main`, diverged and non-mergeable. Its broad hybrid-engine code was not ported; no branch was deleted or rewritten.
 
 ### Work completed in this continuation
@@ -725,7 +725,7 @@ The paper documents a potentially useful 42 h 39 min / 307-speaker audio corpus,
 - Profiled 19,565 CRLF-terminated lines (19,566 split segments including the final empty segment), 67 numbered heading lines, 21 BOM markers, one NUL at line 9,300, non-NFC text, zero U+FFFD, 73 unique Myanmar code points, 295 repeated nonblank line forms / 1,008 excess occurrences and 23 repeated paragraph forms. Repeated titles, headers and divider motifs are not duplicate-document evidence.
 - Added `data/burmese/okell_text_corpus_orthographic_profile.csv` with 4 medial codepoint counts and 5 target-substring counts. It is explicitly ORTHOGRAPHIC_ONLY; no tokenization, syllabification, IPA or pronunciation inference is asserted.
 - Updated source registry and claims, corpus triage, research report, completion register and status matrix. Added regression coverage for checksum, text-quality boundary and orthographic-only counts.
-- Current registries: 59 sources, 82 claims, 45 medial-evidence rows, 30 phonological rules, 7 source-phonemic sandhi examples and 9 orthographic-profile rows.
+- Current registries: 59 sources, 83 claims, 45 medial-evidence rows, 30 phonological rules, 7 source-phonemic sandhi examples and 9 orthographic-profile rows.
 - No audio was accessed, acquired, inspected, processed or used. No new medial or contextual voicing rule was enabled.
 
 ### Exact-head verification
