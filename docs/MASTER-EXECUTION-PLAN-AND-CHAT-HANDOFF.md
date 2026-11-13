@@ -2228,3 +2228,10 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - These secondary transcriptions distinguish the rime realizations and conflict with vendor same-output MLCTS2/IPA. Audit and crosswalk set to `SECONDARY_SOURCE_DISTINCTION`; claim `CLM-WIKTIONARY-AM-DOT-LEXICAL-DISTINCTION-001` registered.
 - Current distribution: 4 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 8 secondary one-side-only / 1 special non-rime. Registry 80 sources / 151 claims.
 - Not a minimal pair or primary MLC adjudication. Runtime, IPA gold and Ukrainian output unchanged. Exact-head CI pending.
+
+## `au.` one-side lexical attestation — 2026-11-14
+
+- Wiktionary `ဝပ်ရှော့` (`waphrau.`, `/waʔʃɔ̰/`) supplies a lexical example for source unit `ော့`; no example for `ေါ့` was located.
+- Audit and MLCTS2 crosswalk updated to `SECONDARY_ONE_SIDE_ONLY`; claim `CLM-WIKTIONARY-AU-DOT-ONE-SIDE-EXAMPLE-001` registered; tests expanded.
+- Distribution: 3 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 9 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 152 claims.
+- One-side secondary evidence only; no runtime or Ukrainian output change. Exact-head CI pending.
