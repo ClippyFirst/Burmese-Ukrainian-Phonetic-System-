@@ -137,7 +137,7 @@ def test_nishi_written_burmese_periods_are_not_collapsed_into_runtime():
     assert row["evidence_level"] == "historical_orthographic_analysis"
     assert row["project_runtime_status"] == "WITHHELD"
     assert "OWB -> MWB -> EModWB" in row["environment"]
-    assert "not a modern Yangon G2P rule" in row["notes"]
+    assert "as a modern Yangon G2P rule" in row["notes"]
     rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "NISHI_ORTHOGRAPHIC_PERIODIZATION")
     assert rule["status"] == "analysis_dependent"
     assert rule["source_id"] == "NISHI1997_ORTHOGRAPHY"
