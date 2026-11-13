@@ -120,3 +120,12 @@ Added source OKELL1995_THREE_DIALECTS, seven claims, two dialect-dependent rules
 
 
 Okell (1969), *A Reference Grammar of Colloquial Burmese*, is registered as a high-priority primary text target. Nishi (1998) cites §§17-20 for voicing sandhi and Okell (1995) identifies it as the Spoken Burmese reference. Full text was not retrieved; no direct claims are attributed to it. Permission is confirmed; retrieval and exact page locators remain the gate.
+
+
+### Consolidated final snapshot — 2026-11-13
+
+Exact tested head 898e0f7cedd3c5c040c218a52a551cc252c77d4e passed CI 43395578254: 219 Python tests + 66 subtests, 20 Node tests, 58 browser tests, IPA schema validation, build and generated-data freshness. Diagnostics 43395586881 passed but has zero gold and no accuracy result.
+
+The evidence registries now contain 58 sources, 78 claims, 45 medial rows, 30 rules and 7 source-phonemic sandhi cases. Okell (1995) documents dialect-specific AR/IT/TV medial inventories; Nishi (1998) documents historical medial distinctions and dialect reflexes. Neither source licenses direct modern Yangon mappings. Okell (1969) and Nishi (1976) remain unread primary-source targets.
+
+Text permissions are confirmed; remaining blockers are retrieval/schema and data quality. No audio was used. IPA gold=0; empirical accuracy=null; no runtime rules promoted.
