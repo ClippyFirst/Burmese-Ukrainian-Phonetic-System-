@@ -1937,3 +1937,12 @@ Code/test commit **c35a7ae0255725aa85cf5f836c64b4ed1fa5b731** completed required
 - IPA-gold structural validator executed, but gold remains **NOT_READY_NO_ADJUDICATED_GOLD** (0 independent adjudicated records); successful execution is not evidence that a gold set exists.
 - `npm install` still reports **1 high-severity vulnerability**. No dependency force-upgrade was made.
 - Latest branch changes after the tested code commit are documentation-only.
+
+## Branch and release-readiness checkpoint — 2026-11-13
+
+- Branch `research/burmese-medials-g2p-evidence-2026-11-13` remains dedicated, based on main, and at this checkpoint is **351 commits ahead / 0 behind**. PR **#147** is open, draft, mergeable and unmerged. PR #129 is left untouched (previously divergent/non-mergeable); PR #146 remains merged. No changes to main or release publication.
+- Required CI on code/test commit `c35a7ae0255725aa85cf5f836c64b4ed1fa5b731`, run **43498396994**, passed: 233 Python tests + 66 subtests; 20 Node tests; 58 Playwright tests; Chromium installation; production build; generated-data freshness.
+- Optional raw-output job passed; optional CRF baseline job was still running at checkpoint and is diagnostic only, not a score.
+- Registry validation: 72 source records / 125 claims; IDs unique, CSV row widths valid, all claim source references resolve.
+- Project remains **PARTIAL PROTOTYPE / NOT RELEASE-READY**. Outstanding evidence gates: inspect actual MLC dictionary/1980 system sources; adjudicate lexical collision groups from primary entries; produce independently adjudicated IPA gold; validate tone/prosody and full source-to-IPA-to-Ukrainian adapter coverage; resolve npm's one high-severity vulnerability.
+- No runtime mappings, IPA gold labels, or Ukrainian candidates promoted. All 94 Ukrainian candidates remain PROPOSED / EVIDENCE_LIMITED. No audio accessed.
