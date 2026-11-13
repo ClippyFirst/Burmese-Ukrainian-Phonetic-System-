@@ -102,7 +102,7 @@ def test_burmese_wiktionary_ipa_source_is_sparse_and_rights_gated():
     assert "GFDL" in policy_claim["claim"]
 
 
-def test_external_burmese_pronunciation_and_audio_sources_keep_rights_boundaries():
+def test_legacy_non_text_corpus_records_are_excluded_from_active_scope():
     sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
     claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
 
@@ -114,10 +114,12 @@ def test_external_burmese_pronunciation_and_audio_sources_keep_rights_boundaries
     assert "CC BY-NC-SA 4.0" in myg2p["scope"]
     assert "not an independently adjudicated project gold" in myg2p["scope"]
 
-    openslr = sources["OPENSLR80"]
-    assert "CC BY-SA 4.0" in openslr["scope"]
-    assert "orthographic transcripts" in openslr["scope"]
-    assert "No IPA labels" in openslr["scope"]
+    for source_id in ("OPENSLR80", "MON2019"):
+        scope = sources[source_id]["scope"]
+        assert "Historical metadata only" in scope
+        assert "excluded from active text-only research" in scope
+        assert "not an active source candidate" in scope
+        assert "No audio is to be acquired, processed, annotated" in scope
 
     assert claims["CLM-MYG2P-001"]["source_id"] == "MYG2P2026"
     assert claims["CLM-MYG2P-001"]["status"] == "DOCUMENTARY"
