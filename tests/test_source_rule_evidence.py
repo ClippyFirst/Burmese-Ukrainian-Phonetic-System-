@@ -455,3 +455,10 @@ def test_mlc_1978_spelling_book_has_concrete_library_and_scan_access_routes():
     assert claim["source_id"] == source["source_id"]
     assert claim["status"] == "DOCUMENTARY"
     assert "no pages or pronunciation/transcription tables" in claim["claim"]
+
+def test_source_registry_has_no_blank_rows_or_duplicate_source_ids():
+    rows = _rows(DATA / "sources.csv")
+    source_ids = [row["source_id"] for row in rows]
+    assert rows
+    assert all(source_id.strip() for source_id in source_ids)
+    assert len(source_ids) == len(set(source_ids))
