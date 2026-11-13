@@ -1189,3 +1189,7 @@ Independent text-adjudicated IPA gold remains 0; empirical accuracy remains null
 
 | MYA-HILL-2019-CH2-001 | BLOCKED / ACCESS | Cambridge confirms Hill (2019), chapter 2 Burmese, pp.46-83, but only §44 preview was accessible; no medial-specific claim extracted. | Obtain authorized full text, review historical medial clusters and written-to-spoken developments, then register exact page/section evidence. |
 
+| MYA-GREEN2005-PHONOLOGY-001 | PARTIAL / SOURCE-VERIFIED | Green 2005 gives broad IPA-style spoken transcription, separate ALA-LC written transliteration, CG onset structure and /N/ nasalization; online edition CC BY-SA 4.0. | Select project broad/narrow convention and map source-located modern written examples; no direct Unicode medial rule yet. |
+| MYA-SEALANG-DICT-001 | PARTIAL / ACCESS + RIGHTS | ~35,000-entry MLC-based dictionary; IPA search/display metadata conflicts with Mya2Rom's MLCTS2 description; direct page inaccessible during review. | Inspect actual entries and representation; obtain explicit permission before bulk extraction. |
+| MYA-SEALANG-TEXT-001 | BLOCKED / RIGHTS + SCHEMA | Text and bitext corpora are documented, but metadata lacks explicit reuse license and service counts are not dataset sizes. | Obtain rights statement, inspect downloadable/query schema, pin revision and verify source provenance before import. |
+
