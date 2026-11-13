@@ -140,3 +140,32 @@ def test_regular_checked_syllable_final_is_structurally_attached():
     parsed = parse_burmese("ကတ်")
     assert parsed["graphemes"] == ["ကတ်"]
     assert parsed["syllables"][0]["coda"]["character"] == "တ"
+
+def test_mlc_medial_inventory_is_parsed_structurally_without_phonetic_guessing():
+    # N2827 lists four basic medials plus five pairs and two triples.
+    # These are orthographic parser fixtures, not IPA training/gold examples.
+    fixtures = [
+        ("ျ", ["medial_ya"]),
+        ("ြ", ["medial_ra"]),
+        ("ွ", ["medial_wa"]),
+        ("ှ", ["medial_ha"]),
+        ("ျွ", ["medial_ya", "medial_wa"]),
+        ("ြွ", ["medial_ra", "medial_wa"]),
+        ("ျှ", ["medial_ya", "medial_ha"]),
+        ("ြှ", ["medial_ra", "medial_ha"]),
+        ("ွှ", ["medial_wa", "medial_ha"]),
+        ("ျွှ", ["medial_ya", "medial_wa", "medial_ha"]),
+        ("ြွှ", ["medial_ra", "medial_wa", "medial_ha"]),
+    ]
+    for sequence, expected_medials in fixtures:
+        source = "က" + sequence
+        result = parse_burmese(source)
+        assert result["status"] == "ok", source
+        assert result["graphemes"] == [source]
+        assert len(result["syllables"]) == 1
+        syllable = result["syllables"][0]
+        assert syllable["onset"]["character"] == "က"
+        assert [medial["id"] for medial in syllable["medials"]] == expected_medials
+        assert syllable["analysis"]["status"] == "established"
+        assert syllable["ipa"] is None
+        assert syllable["phonology"] == {}
