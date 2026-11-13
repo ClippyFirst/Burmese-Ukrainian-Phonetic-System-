@@ -319,3 +319,17 @@ def test_mow_source_header_preserves_upstream_attribution_and_license():
     assert source.read_text(encoding="utf-8").splitlines()[0] == (
         "## MOW 0.1.3\tmya\tCC BY 4.0"
     )
+
+def test_sealang_api_request_pattern_is_registered_with_response_schema_caveat():
+    with (ROOT / "data/burmese/sources.csv").open(encoding="utf-8-sig", newline="") as stream:
+        sources = {row["source_id"]: row for row in csv.DictReader(stream)}
+    with (ROOT / "data/burmese/source_claims.csv").open(
+        encoding="utf-8-sig", newline=""
+    ) as stream:
+        claims = {row["claim_id"]: row for row in csv.DictReader(stream)}
+
+    assert "SEALANG_SHORTCUT_2022" in sources
+    claim = claims["CLM-SEALANG-API-REQUEST-PATTERN-001"]
+    assert claim["source_id"] == "SEALANG_SHORTCUT_2022"
+    assert "lang=burmese" in claim["claim"]
+    assert "does not establish current endpoint availability" in claim["claim"]
