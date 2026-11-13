@@ -1219,3 +1219,6 @@ Exact-head CI 43393402710 on 4835a0abc3e7e4a18c9d0bda35f554031912d570: 217 Pytho
 
 | MYA-OKELL1995-DIALECT-MEDIALS-001 | DONE_VERIFIED (SOURCE EVIDENCE ONLY) | Full Okell (1995) text inspected; WB/SB distinction, AR r/y preservation, IT/TV medial /l/, phonemic transcription convention; seven claims, two dialect rules, three matrix rows and regression tests. | All regional rows WITHHELD; do not project onto current Yangon without direct profile-specific evidence. |
 | MYA-STANDARD-YANGON-PROFILE-001 | PARTIAL / EVIDENCE-LIMITED | Okell, Nishi and Green provide useful standard/regional/historical contrasts, but no complete current Yangon source-located written fixture set has been independently adjudicated. | Build a modern Yangon profile from text-only authoritative dictionaries/grammars; keep dialectal and historical correspondences separate. |
+
+
+| MYA-OKELL1969-COLLOQUIAL-GRAMMAR-001 | BLOCKED / TOOL ACCESS | Two-volume reference grammar is bibliographically confirmed; Nishi 1998 cites §§17-20 for voicing sandhi; Okell 1995 identifies it as the Spoken Burmese reference. Project owner confirms permission. | Obtain full text, inspect exact phonology/sandhi sections and register page-located claims before runtime decisions. |
