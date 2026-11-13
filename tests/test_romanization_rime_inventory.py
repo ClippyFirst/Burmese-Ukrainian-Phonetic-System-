@@ -118,6 +118,8 @@ def test_lexical_collision_audit_keeps_secondary_evidence_separate_from_primary_
             "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE",
             "SECONDARY_SYSTEM_EQUIVALENCE",
             "SECONDARY_SOURCE_CONFLICT",
+            "SECONDARY_SOURCE_DISTINCTION",
+            "SECONDARY_ONE_SIDE_ONLY",
             "SPECIAL_NONRIME_CONTEXT_DEPENDENT",
         }
 
@@ -131,11 +133,20 @@ def test_lexical_collision_audit_keeps_secondary_evidence_separate_from_primary_
     assert "R12A" in by_mlcts["any"]["source_locator"]
     assert "not nasalised" in by_mlcts["any"]["interpretation"]
     assert "secondary-source conflict remains" in by_mlcts["any"]["interpretation"]
+    assert by_mlcts["any:"]["evidence_status"] == "SECONDARY_SOURCE_DISTINCTION"
+    assert "/ʔət͡ɕɪ́ɴ/" in by_mlcts["any:"]["observed_ipa"]
+    assert "/nɛ́/" in by_mlcts["any:"]["observed_ipa"]
+    assert "CLM-WIKTIONARY-ANY-COLON-WORD-LEVEL-EXAMPLES-001" in by_mlcts["any:"]["source_locator"] or "Wiktionary" in by_mlcts["any:"]["source_locator"]
+    assert by_mlcts["ui"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
+    assert "/d͡ʑò/" in by_mlcts["ui"]["observed_ipa"]
+    assert "first source unit" in by_mlcts["ui"]["interpretation"]
     assert by_mlcts["u."]["evidence_status"] == "SPECIAL_NONRIME_CONTEXT_DEPENDENT"
     assert by_mlcts["um"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
     assert by_mlcts["um"]["observed_ipa"] == "/kòʊɴ/"
     assert by_mlcts["um"]["observed_mlcts"] == "kum"
-    assert sum(row["evidence_status"] == "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE" for row in audit) == 21
+    assert sum(row["evidence_status"] == "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE" for row in audit) == 19
+    assert sum(row["evidence_status"] == "SECONDARY_SOURCE_DISTINCTION" for row in audit) == 1
+    assert sum(row["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY" for row in audit) == 1
     assert not any("PRIMARY_CONFIRMED" in row["evidence_status"] for row in audit)
 
 def test_mlcts_source_provenance_does_not_conflate_secondary_sources_or_ala_lc():
@@ -430,3 +441,17 @@ def test_unicode_2010_spelling_dictionary_scan_is_partial_and_not_mlcts_ipa():
     assert "page 1" in claim["claim"]
     assert "does not show an MLCTS or IPA rime table" in claim["claim"]
     assert "identity of this title" in claim["claim"]
+
+
+def test_new_wiktionary_lexical_claims_are_linked_to_registered_snapshot():
+    claims_path = ROOT / "data/burmese/source_claims.csv"
+    with claims_path.open(encoding="utf-8-sig", newline="") as stream:
+        claims = {row["claim_id"]: row for row in csv.DictReader(stream)}
+    for claim_id in (
+        "CLM-WIKTIONARY-ANY-WORD-LEVEL-EXAMPLES-001",
+        "CLM-WIKTIONARY-ANY-COLON-WORD-LEVEL-EXAMPLES-001",
+        "CLM-WIKTIONARY-UI-SINGLE-SIDE-WORD-EXAMPLES-001",
+    ):
+        assert claims[claim_id]["source_id"] == "MYWIKTIONARY2026"
+        assert claims[claim_id]["evidence_type"] == "secondary_lexical_transcription"
+        assert claims[claim_id]["status"] == "DOCUMENTARY"
