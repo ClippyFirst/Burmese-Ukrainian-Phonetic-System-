@@ -594,3 +594,11 @@ The complete PDF of *The Orthographic Standardization of Burmese: Linguistic and
 - Scope limitation: the article's stated focus is rhyme writing systems, with initials discussed only when necessary. It is not a complete medial inventory and supplies no direct mapping to modern Unicode medial code points or modern Yangon pronunciation.
 
 This confirms the existing Nishi 1997 historical-medial matrix row as orthographic/historical evidence only. Added CLM-NISHI97-SCOPE-001 to make the article's coverage limitation explicit. No runtime rule is promoted.
+
+## 24. MLC 1978 spelling book: separate catalogue lead from the Concise Dictionary
+
+A new National Diet Library of Japan catalogue record identifies *မြန်မာစာလုံးပေါင်းသတ်ပုံကျမ်း* as a Burmese-language orthography/spelling reference published by the Myanmar Language Commission in 1978 (record R100000136-I1970023484907173422). The record describes a physical book and its subject as Burmese orthography/spelling; it does not expose the book's pages or pronunciation/transcription material.
+
+Allott's inspected 1985 chapter supplies a useful distinction: it says the MLC spelling book was first drafted in 1968, fundamentally revised, and finally published in 1978; in the following paragraph it separately describes the Concise Burmese Dictionary as five parts, from late 1978 to 1980, with official spelling and pronunciations for included entries (ANU PDF lines 10082–10113). This is consistent with two separate publications, but exact title identity and relationship must be verified from title pages, not inferred from the catalogue translation.
+
+The new catalogue record and claim are bibliographic/documentary only. No book contents, MLCTS table, IPA values, or dictionary entry transcription have been inspected. This is an access lead, not a linguistic rule or a cleared primary-source transcription source.
