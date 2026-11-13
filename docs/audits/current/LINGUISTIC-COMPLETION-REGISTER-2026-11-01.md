@@ -1784,3 +1784,11 @@ Current collision ledger: **16 unadjudicated / 4 secondary equivalence / 1 secon
 | BURMESE-WIKTIONARY-AUK-LEXICAL-026 | PARTIAL — SECONDARY_WORD_LEVEL_EXAMPLES | Added MOW-listed `ပေါက်` (`pauk`, `/paʊʔ/`) and `ကျောက်` (`kyauk`, `/t͡ɕaʊʔ/`) for ေါက် and ောက်. Same secondary IPA rime sequence `/aʊʔ/`, different onsets. Added claim `CLM-WIKTIONARY-AUK-WORD-LEVEL-EXAMPLES-001`; updated audit/crosswalk parity and tests. Registry: 80 sources / 140 claims. | Secondary equivalence only; not a controlled minimal pair or primary MLC specification. No IPA gold, runtime or Ukrainian mapping promotion. CI pending. |
 
 Current collision ledger: **15 unadjudicated / 5 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 140 claims**.
+
+## Additional `a`, `a:` and `au` lexical examples — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-WIKTIONARY-A-AU-LEXICAL-027 | PARTIAL — SECONDARY_WORD_LEVEL_EXAMPLES | Added six MOW-listed Wiktionary lemmas across `a`, `a:` and `au`: `အဝါ`/`အစာ`, `ခါး`/`ကား`, `ပေါ်`/`ကြော်`. Within each pair the onsets differ but the secondary IPA rime matches. Added three documentary claims; updated audit, MLCTS2 parity and regression tests. Registry: 80 sources / 143 claims. | Secondary equivalence only; not controlled minimal pairs or primary MLC adjudication. No IPA gold, runtime or Ukrainian mapping promotion. |
+
+Current collision ledger: **12 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 143 claims**.
