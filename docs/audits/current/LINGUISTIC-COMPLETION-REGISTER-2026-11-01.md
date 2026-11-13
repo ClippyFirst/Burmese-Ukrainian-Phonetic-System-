@@ -1399,3 +1399,14 @@ Added claims: CLM-MYA2ROM-RIME-EXACT-MATCH-001, CLM-MYA2ROM-MLCTS-COLLISIONS-001
 - Final registry totals: **61 sources, 112 claims**, 30 phonological rules, 45 medial evidence rows, 7 sandhi evidence rows, 9 Okell orthographic-profile rows; 94 vendor rime keys, 25 MLCTS collision groups. All Ukrainian rime candidates remain PROPOSED / EVIDENCE_LIMITED. No runtime phonological rule changed in this continuation.
 - Earlier CI attempt failed only because the newly qualified auk-myit note no longer contained the existing vendor-provenance phrase expected by a test. The note was corrected without removing the linguistic caveat; exact-head CI above passed afterward.
 - Repository remains a **PARTIAL PROTOTYPE**: primary MLC rime source, Okell §§17–20, Nishi 1976/1977 full text, independent modern Yangon IPA gold (0), tone model reconciliation and /N/ surface analysis remain open.
+
+
+## Burmese MLCTS collision lexical evidence — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-MLCTS-COLLISION-LEXICAL-001 | PARTIAL | 25-row ledger added. The am pair has a secondary rhyme-table parallel (ကမ်/ကံ: /kàɴ/, MLCTS kam). The any pair has a secondary-table discrepancy (ကဉ်: kañ‘ vs ကည်: kany) against the vendor's shared any mapping. | Secondary table only. No primary MLC entry pairs verified. No vendor table correction, runtime mapping, or Ukrainian candidate promotion until MLC primary evidence is checked. |
+| BURMESE-MLC-DICTIONARY-ACCESS-001 | BLOCKED / ACCESS | SEAlang metadata confirms the 1993 MLC dictionary basis and 1986 standard orthography. Direct live dictionary retrieval timed out; Firecrawl retrieval could not run because connected-service credits were exhausted. | Obtain accessible MLC primary table/dictionary entry text and record entry locators for all 25 groups; confirm the exact transcription field (MLCTS vs MLCTS2) before using it. |
+
+Evidence source WIKTIONARY_BURMESE_TRANSLITERATION_2026; claims CLM-WIKT-RIME-AM-001 and CLM-WIKT-RIME-ANY-001. Totals: 62 sources / 114 claims. The 94 Ukrainian candidates remain PROPOSED / EVIDENCE_LIMITED; independent adjudicated IPA gold remains 0; accuracy remains null. No audio used.
+
