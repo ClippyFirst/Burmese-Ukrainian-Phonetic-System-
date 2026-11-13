@@ -1464,7 +1464,7 @@ The project owner confirms all required permissions for research use and project
 
 ### New primary-source work
 
-- Inspected full Nishi (1998), “Old Burmese: Toward the History of Burmese” (BNME 23(3), pp.659-684; DOI 10.15021/00004119), and registered source NISHI1998_OLDBURMESE.
+- Inspected full Nishi (1998), “Old Burmese: Toward the History of Burmese” (BNME 23(3), pp.659-692; DOI 10.15021/00004119), and registered source NISHI1998_OLDBURMESE.
 - Nishi §1.3 distinguishes historical -h with sonorants (voiceless/aspirated sonorant unit) from true -r/-l/-y/-w clusters called medials. Do not equate historical -h with modern Unicode U+103E.
 - Nishi §2.1.1 documents OWB -l- alongside -r/-y/-w, later -l- reflexes after velars/bilabials, and the MB -r-/-y- distinction merging into -y- in Standard EModWB.
 - Nishi §4 and Table 3 document the tentative Great Consonantal Shift and cross-dialect cluster reflexes among WB, SB, Arakanese, Tavoyan, Intha and Minor Taungyo. Standard-variety interference, hypercorrection and dialectal variation prevent universal modern mapping.
