@@ -29,6 +29,11 @@ def test_all_three_rime_crosswalks_cover_the_same_25_collision_groups():
         for row in table:
             assert row["source_units"] == expected[row["mlcts"]]
 
+    lexical_by_key = {row["mlcts"]: row for row in lexical}
+    mlcts2_by_key = {row["mlcts"]: row for row in mlcts2}
+    for key, row in lexical_by_key.items():
+        assert mlcts2_by_key[key]["lexical_audit_status"] == row["evidence_status"]
+
 
 def test_mlcts2_crosswalk_keeps_each_vendor_output_aligned_to_its_source_unit():
     rows = read_rows("romanization_rime_mlcts2_crosswalk.csv")
