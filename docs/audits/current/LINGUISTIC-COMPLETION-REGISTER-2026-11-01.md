@@ -1657,3 +1657,11 @@ Registry totals after registering the catalog lead: **77 sources / 130 claims**,
 | BURMESE-MLC-MEDIAL-STRUCTURAL-PARSER-016 | DONE_VERIFIED — ORTHOGRAPHIC_ONLY | `tests/test_parser.py::test_mlc_medial_inventory_is_parsed_structurally_without_phonetic_guessing` covers all 11 MLC medial forms (4 basic + 5 pairs + 2 triples), preserving ordered medial IDs in one syllable and asserting no IPA/phonology assignment. Exact-head CI 43502733106 SUCCESS: 242 Python + 66 subtests, 20 Node, 58 Playwright; build and generated-data freshness pass. | Structural parser regression only. All medial phonological rules remain withheld pending source-specific onset × rime × prosody evidence and adjudicated IPA gold. |
 
 Project status remains **PARTIAL PROTOTYPE / NOT RELEASE-READY**: IPA gold is not ready and one high-severity npm vulnerability remains.
+
+## MOW orthographic lexical coverage — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-MOW-ORTHOGRAPHIC-COVERAGE-017 | DONE_VERIFIED — ORTHOGRAPHIC_SUFFIX_ONLY | Generator `scripts/analyze_mow_orthographic_rime_coverage.py`, two committed CSV outputs, reproducibility `--check` test. 508 source-unit/lemma pairs, 50 source-unit rows; 11 collision groups both sides found, 13 one side, 1 neither. Exact-head CI 43503144848 SUCCESS: 242 Python + 66 subtests, 20 Node, 58 Playwright, build and generated-data freshness pass. | Do not treat suffix matches as syllable segmentation, pronunciation, MLCTS correctness or homophony. MOW is not exhaustive; absence is not evidence of nonexistence. Primary MLC lexical and pronunciation evidence is still required. |
+
+Project remains PARTIAL PROTOTYPE / NOT RELEASE-READY. IPA gold is `NOT_READY_NO_ADJUDICATED_GOLD`; one high-severity npm vulnerability remains.
