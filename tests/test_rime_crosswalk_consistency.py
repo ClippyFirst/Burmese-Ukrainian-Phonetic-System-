@@ -103,11 +103,12 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
     rows = read_rows("romanization_rime_collision_lexical_audit.csv")
     counts = Counter(row["evidence_status"] for row in rows)
     assert counts == {
-        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 19,
+        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 18,
         "SECONDARY_SYSTEM_EQUIVALENCE": 2,
         "SECONDARY_SOURCE_CONFLICT": 1,
         "SECONDARY_SOURCE_DISTINCTION": 1,
         "SECONDARY_ONE_SIDE_ONLY": 1,
+        "SECONDARY_SOURCE_DISTINCTION": 2,
         "SPECIAL_NONRIME_CONTEXT_DEPENDENT": 1,
     }
     for row in rows:
@@ -121,9 +122,12 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
 
 def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     rows = {row["mlcts"]: row for row in read_rows("romanization_rime_collision_lexical_audit.csv")}
+    assert rows["any."]["evidence_status"] == "SECONDARY_SOURCE_DISTINCTION"
+    assert "cany." in rows["any."]["observed_mlcts"] and "krany." in rows["any."]["observed_mlcts"]
+    assert "/sɪ̰ɴ/" in rows["any."]["observed_ipa"] and "/t͡ɕḭ/" in rows["any."]["observed_ipa"]
     assert rows["any:"]["evidence_status"] == "SECONDARY_SOURCE_DISTINCTION"
     assert "sense-dependent" in rows["any:"]["observed_ipa"]
     assert rows["ui"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "only" in rows["ui"]["acceptance_boundary"].lower()
     assert rows["any"]["evidence_status"] == "SECONDARY_SOURCE_CONFLICT"
-    assert all("no runtime" in rows[key]["acceptance_boundary"].lower() for key in ("any", "any:", "ui"))
+    assert all("no runtime" in rows[key]["acceptance_boundary"].lower() for key in ("any", "any:", "any.", "ui"))
