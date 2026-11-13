@@ -1783,4 +1783,4 @@ Current collision ledger: **16 unadjudicated / 4 secondary equivalence / 1 secon
 |---|---|---|---|
 | BURMESE-WIKTIONARY-AUK-LEXICAL-026 | PARTIAL — SECONDARY_WORD_LEVEL_EXAMPLES | Added MOW-listed `ပေါက်` (`pauk`, `/paʊʔ/`) and `ကျောက်` (`kyauk`, `/t͡ɕaʊʔ/`) for ေါက် and ောက်. Same secondary IPA rime sequence `/aʊʔ/`, different onsets. Added claim `CLM-WIKTIONARY-AUK-WORD-LEVEL-EXAMPLES-001`; updated audit/crosswalk parity and tests. Registry: 80 sources / 140 claims. | Secondary equivalence only; not a controlled minimal pair or primary MLC specification. No IPA gold, runtime or Ukrainian mapping promotion. CI pending. |
 
-Current collision ledger: **14 unadjudicated / 5 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 140 claims**.
+Current collision ledger: **15 unadjudicated / 5 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 140 claims**.
