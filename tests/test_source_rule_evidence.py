@@ -366,3 +366,23 @@ def test_okell_1999_unicode_proposal_separates_added_finals_and_boundary_logic()
     assert "not by itself a phonological syllabification rule" in boundary["claim"]
     assert "orthographic encoding evidence" in tone["claim"]
 
+
+def test_hill_2019_burmese_chapter_keeps_historical_medials_and_tone_scope_separate():
+    sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    source = sources["HILL2019_HISTPHON"]
+    assert "pp.46-83" in source["scope"]
+    assert "third-party mirror" in source["scope"]
+    assert "Secondary historical analysis" in source["scope"]
+
+    medial = claims["CLM-HILL2019-OB-MEDIALS-001"]
+    written = claims["CLM-HILL2019-WB-SCOPE-001"]
+    tone = claims["CLM-HILL2019-OB-TONE-001"]
+    caution = claims["CLM-HILL2019-OB-ORTHO-CAUTION-001"]
+    assert all(claim["source_id"] == source["source_id"] for claim in (medial, written, tone, caution))
+    assert all(claim["status"] == "DOCUMENTARY" for claim in (medial, written, tone, caution))
+    assert "excludes it from the historical medial inventory" in medial["claim"]
+    assert "not modern Unicode-to-IPA mappings" in written["claim"]
+    assert "projects Written Burmese tone marking backwards" in tone["claim"]
+    assert "unstable" in caution["claim"]
+
