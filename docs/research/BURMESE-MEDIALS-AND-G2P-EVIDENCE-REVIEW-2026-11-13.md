@@ -500,3 +500,38 @@ A raw Unicode profile was computed over the complete text-only file identified b
 Raw substring counts include `မြန်` 659, `မြန်မာ` 288, `မြန်မာနိုင်ငံ` 45, `မြန်မာစာ` 18 and `မြန်မာ့` 27.
 
 These are Unicode scalar and substring counts over the raw, non-NFC, mixed-source text. They are not token counts, syllable counts, onset/rime distributions, or evidence that a Unicode medial has a particular pronunciation. Repeated source material is included; no normalization, tokenization or deduplication was applied. This profile is useful only for orthographic coverage and candidate written-example discovery. It does not create IPA gold or activate runtime rules.
+
+
+## 21. Full-text audit: Thu et al. (2016), Hlaing & Mikami (2014), Oo et al. (2020)
+
+The complete PDF texts were inspected in a text-only workflow. No audio was accessed, played, processed, annotated or used.
+
+### 21.1 Thu et al. (2016): benchmark methodology and transcription boundary
+
+The study uses 25,300 words from the Myanmar Language Commission Dictionary (Lwin 1993): 25,000 randomized training words, three open test sets of 100 words each, and a separate 100-word closed test drawn from training. It reports 2,393 graphemes, 1,864 unique pronunciations and 113 unique phonemes, but no complete formal phone inventory or transcription specification. Its examples are romanized strings such as `k`, `kh`, `wa:`, `wa.`, `jaun:` and `jwe'`; they must not be treated as project IPA.
+
+Seven approaches are compared: S-AROW, CRF, JSM, PBSMT, RNN, SVM/KyTea and WFST/Phonetisaurus. PER is phoneme-level Levenshtein error (insertions, deletions, substitutions) computed with SCLITE over syllable-segmented words. Reported open-set PER includes WFST 14.7 (open1), 11.4 (open2), and CRF/WFST 15.7 (open3); PBSMT reports 16.1, 13.1 and 22.0. The zero closed-set results for some systems are not independent generalization evidence because the closed set is drawn from training. Manual review categories are voicing, tone, consonant and vowel; voicing errors are reported as most frequent, but no complete numerical table is supplied.
+
+The paper does not specify a regional dialect or speaker-selection protocol, does not fully explain dictionary pronunciation annotation, and evaluates syllables within words rather than sentence-level contextual pronunciation. It is benchmark-methodology evidence, not an independent Yangon IPA gold set. The underlying MLC dictionary redistribution rights are not established by the paper citation.
+
+### 21.2 Hlaing & Mikami (2014): orthographic FST, not G2P
+
+The paper defines an orthographic Unicode syllable grammar: `S = I | N | P | X`; for ordinary syllables, `X = C M* V* (C K)? D*`, where C is consonant, M medial, V dependent vowel, K vowel-killer/asat and D tone mark. Separate transducers handle irregular forms including kinzi, stacking, repetition, Great SA, contraction and loan words. The system inserts orthographic syllable boundaries; it does not produce phonetic syllables or IPA.
+
+The evaluation uses all 11,732 distinct words from Myanmar Language Commission's *Myanmar Orthography* (2006, 3rd ed.), implemented with SFST-PL. Table 4 reports 11,092/11,092 standard words correct and 245/253 stacking words correct, with overall 99.93% word-level accuracy. The paper is internally inconsistent: the abstract/Table 6 state 32,238 syllables while §6.1 states 32,283; Table 4 implies eight stacking errors while adjacent prose says nine. No formal boundary precision/recall, independent annotator agreement or train/test split is specified. The 99.93% must never be described as pronunciation/G2P accuracy.
+
+### 21.3 Oo et al. (2020): text-side G2P architecture and tone analysis
+
+The text front end is word segmentation → text normalization → G2P → phonemes. G2P is a Thrax weighted FST from Myanmar graphemes to IPA, with orthographic cleanup/reordering, core grapheme-phoneme rewrites, syllable-position-dependent changes, phonological transformations and pronunciation exceptions.
+
+The paper reports 88 symbols (34 consonants and 54 vowels) and four tone categories—low, high, creaky and checked—whose realization involves pitch, contour, duration and phonation. It uses /N/ for a placeless nasal or nasal quality; this notation alone does not decide the project's abstract /N/ versus surface nasalization question. Speakers were native Burmese volunteers recorded in Yangon, aged 25–35, but the paper does not state a dialect label. Location is not a dialect classification.
+
+The paper describes SLR80 as 2,528 utterances from 20 female speakers and states CC BY-SA 4.0. Its web-crawled segmentation corpus/models are explicitly not public domain. The normalization and G2P grammars are described as open-source at Google Language Resources paths, but the paper does not state a separate license for the grammar files. Do not infer a grammar license from the phrase "open-source". No audio was accessed in this review.
+
+### 21.4 Consequences for implementation and research status
+
+- Preserve Hlaing & Mikami as structural-parser evidence only.
+- Preserve Thu et al. as a historical G2P benchmark with explicit train/test leakage caveats and undefined romanized phone notation.
+- Use Oo et al. as an architectural and source-specific four-tone comparator, not as a complete consensus model or a license grant for every associated resource.
+- Do not activate medials, tone, /N/, coda or voicing rules without profile-matched independent adjudication.
+- Independent project IPA gold remains zero; empirical accuracy remains null.
