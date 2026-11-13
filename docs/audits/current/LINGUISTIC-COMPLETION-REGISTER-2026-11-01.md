@@ -1681,3 +1681,9 @@ This is a new access route, not newly inspected primary content. Existing Allott
 | BURMESE-MLC-SPELLING-BOOK-ACCESS-019 | PARTIAL — RETRIEVAL ROUTES IDENTIFIED | CiNii Books NCID BA69415754 records 28, 379 pages, 17 cm and holdings at three Japanese libraries (Osaka University and Tokyo University of Foreign Studies). Google Books record _V1LAAAAMAAJ identifies a 379-page scan originating from the University of Michigan, digitized 2007, but exposes snippet-view metadata only. Added CINII_MLC_SPELLING_1978_HOLDINGS / CLM-MLC-SPELLING-BOOK-ACCESS-002. | Request a copy from one of the holding libraries or inspect any accessible Google Books pages. Capture title page, contents and relevant spelling/pronunciation sections with page locators. No claim about actual book contents until inspected. |
 
 Registry totals: 83 sources / 133 claims. Exact-head CI pending.
+
+## Crosswalk consistency validation — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-RIME-CROSSWALK-INTEGRITY-020 | IMPLEMENTED — CI PENDING | Added `tests/test_rime_crosswalk_consistency.py` to verify that the Mya2Rom MLCTS2 crosswalk, R12A secondary phonology crosswalk and lexical audit all cover the same 25 collision groups with matching source-unit identities; validates two-position array alignment, enumerated comparison states, and explicit secondary-vs-primary boundaries. | Integrity checks validate table consistency only. They do not establish pronunciation, lexical identity, primary MLC correctness or Ukrainian output. CI must pass before DONE_VERIFIED. |
