@@ -1813,3 +1813,16 @@ Added claims: CLM-MYA2ROM-RIME-EXACT-MATCH-001, CLM-MYA2ROM-MLCTS-COLLISIONS-001
 - Verification status: the new regression test checks all 25 rows, status partition (22 unadjudicated, 2 secondary-comparison records, 1 special non-rime), exact source-unit correspondence, and the am/any evidence boundaries. Hosted exact-head CI must be checked after this commit; no local test execution is claimed.
 - Next acceptance gate: retrieve and inspect the MLC 1993 dictionary entries (or a primary MLC system table) for representative headwords across all 25 groups; record exact entry locators, IPA/transcription fields and spelling context; reconcile any conflict between the vendor array and primary MLC material before changing data.
 
+
+## Secondary-source reconciliation of nasal-final collision groups — 2026-11-13
+
+- A second secondary reference, Wikipedia's MLC Transcription System overview, explicitly lists -any for both ည် and ဉ်, -am for both မ် and ံ, and -um for both ုမ် and ုံ (nasal-final table, lines 201-208). Registered WIKIPEDIA_MLCTS_SYSTEM_2026 and claim CLM-WIKI-MLCTS-NASAL-FINALS-001.
+- This changes the interpretation of three collision groups:
+  - am (မ်;ံ): secondary agreement. Wiktionary's rhyme examples give the same /kàɴ/ and kam; Wikipedia says both spellings use -am.
+  - um (ုမ်;ုံ): secondary agreement. Wiktionary's rhyme examples give the same /kòʊɴ/ and kum; Wikipedia says both spellings use -um.
+  - any (ဉ်;ည်): secondary-source conflict. Wiktionary's detailed table distinguishes kañ‘ from kany, whereas Wikipedia's MLC-system summary lists -any for both and the vendor uses any for both. This is not a confirmed vendor error; the primary MLC specification is still needed.
+- Updated the lexical audit statuses accordingly: 2 SECONDARY_SYSTEM_EQUIVALENCE, 1 SECONDARY_SOURCE_CONFLICT, 1 SPECIAL_NONRIME_CONTEXT_DEPENDENT, and 21 UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE. No primary-source group is marked confirmed.
+- The Wikipedia article describes MLCTS as an orthographic system based on formal Burmese and separately notes that the anunasika (ံ) and -m final (မ်) are not differentiated. This is secondary-source context, not a primary MLC citation.
+- Updated regression assertions, source/claim registries, handoff, execution matrix and completion register. Registry totals now 63 sources / 115 claims. The 94-key inventory, 25 collision groups and all Ukrainian candidates are unchanged; no runtime rule changed; no audio used.
+- Primary MLC table and actual SEAlang dictionary entries remain BLOCKED pending direct access. The live SEAlang page timed out; Firecrawl retrieval was unavailable due to exhausted connected-service credits.
+
