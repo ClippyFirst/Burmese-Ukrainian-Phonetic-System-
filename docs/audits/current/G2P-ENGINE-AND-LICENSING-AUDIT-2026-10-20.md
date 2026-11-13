@@ -120,3 +120,14 @@ The JSON report records raw output, package version, corpus SHA-256 and—when t
 ## Mya2Rom mode separation — 2026-11-13
 
 Mya2Rom 0.4.4 exposes distinct ipa, mlcts, mlcts2, simple and simple2 modes. MLCTS is orthographic; MLCTS2 is a more phonetic romanization used by the MLC Myanmar-English Dictionary and SEALang, not standardized IPA. The project's runtime explicitly requests mlcts. Do not treat the Latin→Ukrainian crosswalk as pronunciation-based G2P. Mya2Rom's own IPA convention uses /N/ rather than nasalized vowels and documents limitations with stacking, ASAT, schwa, voicing sandhi, alternate pronunciations and Pali/Sanskrit forms. Source license: CC BY-SA 4.0.
+
+
+## Text-only continuation and licensing update — 2026-11-13
+
+- Active research scope is written sources only. No audio acquisition, processing, annotation or audio-derived G2P evaluation is planned. Legacy SLR80/UCSY-SC1 records are historical metadata only and are not active source candidates.
+- MYX_MYANGLISH_2026: CC BY-SA 4.0 declared; 2,121 text pairs; single-author-style, non-standardized romanization; 3-column viewer vs 2-field README mismatch. No rows copied; not IPA.
+- MYX_ORTHO_2026: CC BY-SA 4.0 declared; 4,800 noisy-to-clean orthographic rows. "Phonetic" filenames/categories refer to spelling confusion, not IPA. No rows copied.
+- OKELL_TEXT_2018: Zenodo Rights/License blank while ELG catalogue lists CC BY 4.0. Rights remain CONFLICT/UNKNOWN; no ingestion or redistribution until direct rights confirmation.
+- STEDT1996_BURMESE and MATISOFF2003_HANDBOOK_PTB: copyrighted scholarly sources; only factual claims and page locators are registered, no tables or lexical data copied.
+- NISHI1997_ORTHOGRAPHY and NISHI1998_VOICING_RULES: repository-hosted scholarly PDFs; reuse licenses are not stated in the metadata inspected. Only source claims and locators are recorded, not copied tables.
+- The new text sources do not alter the myG2P CC BY-NC-SA 4.0 restriction, Wiktionary license conflict, or zero independent IPA-gold status.
