@@ -1313,3 +1313,10 @@ No corpus rows or pronunciation labels were imported. No runtime G2P rule was en
 | Text-only scope | DONE_VERIFIED (documentation) | Handoff, corpus triage, completion register and source registry mark legacy non-text corpus records as excluded/deferred; no audio work |
 
 The successful CI applies to exact head 4145126ec65b834df96fc7ed57749a719daa27c2. This checkpoint is documentation-only; any subsequent commit requires its own exact-head verification. Release status remains PARTIAL PROTOTYPE because independent text-adjudicated IPA gold is 0 and empirical accuracy is null.
+
+### Green 2005 and SEAlang text-source gates — 2026-11-13
+
+- Registered Green (2005), “Word, foot and syllable structure in Burmese”, an online CC BY-SA 4.0 source with broad IPA-style spoken transcription and separate ALA-LC orthographic transliteration. Added source-linked claims for CG onsets, major/minor syllables and /N/ nasalization. One medial evidence row and three evidence-only rules added; all remain WITHHELD/analysis-dependent.
+- Registered SEAlang dictionary, Burmese Text Corpus and Burmese Bitext Corpus as text-only candidates. Dictionary transcription semantics are unresolved (IPA search/display metadata vs MLCTS2 documentation); corpora lack explicit reuse licenses. No rows imported.
+- Acceptance: inspect SEAlang entries through an accessible interface, resolve the transcription encoding, obtain rights for any bulk extraction, and validate actual row schema. Green's phonological facts do not directly map Unicode medials.
+
