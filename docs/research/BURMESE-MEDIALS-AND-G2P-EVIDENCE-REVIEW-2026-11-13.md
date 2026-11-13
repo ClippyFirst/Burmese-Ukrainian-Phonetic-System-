@@ -738,3 +738,12 @@ Three further groups now have one-sided Wiktionary lexical attestations, all fro
 | `im.` | `စိမ့်` | ိမ့် | `cim.` | `/sḛɪɴ/` |
 
 The opposite sides (ေါ, ိံ, and ိံ့ respectively) remain without word-level examples. The lexical audit and MLCTS2 crosswalk now record `SECONDARY_ONE_SIDE_ONLY`; the three source claims are registered. These examples are not collision adjudications and do not authorize runtime changes.
+
+## 36. Final exact-head verification for this continuation — 2026-11-13
+
+- Final tested code/data SHA: `62bea5a26012cb1ace4ce11579e17f4a780c3e1e`.
+- Required CI **43516197628 SUCCESS** and duplicate exact-SHA run **435161... SUCCESS**: **251 Python tests + 66 subtests**, **20 Node tests**, **58 Playwright tests**; production build, generated-data freshness and Chromium installation passed.
+- Optional Epitran raw-output diagnostic **43516203133 SUCCESS**; this is not an accuracy benchmark. IPA-gold validator remains `NOT_READY_NO_ADJUDICATED_GOLD` (0 independently adjudicated entries).
+- `npm install` still reports **one high-severity vulnerability**; no unreviewed dependency upgrade was applied.
+- Current evidence ledger: **25 groups = 6 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 7 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 149 claims**.
+- All additions are secondary lexical attestations. No primary MLC rule, IPA gold row, runtime behavior or Ukrainian candidate was promoted.
