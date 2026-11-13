@@ -1398,3 +1398,15 @@ Exact tested head: d2800ce458ea3c08c3fecb9e61ad170502837343. PR #147 remains Dra
 - Owner confirms text-only research and project-ingestion permissions. No audio used. Okell/SEAlang/Okell1969/Nishi1976/Hill retrieval and corpus schema/quality gates remain.
 - PR #147 OPEN / DRAFT / mergeable, 0 commits behind main and 28 files; current ahead count is tracked on the PR; PR #129 untouched.
 - IPA gold remains 0, accuracy null, no runtime rules promoted. Status PARTIAL PROTOTYPE.
+
+
+### Final text-only evidence snapshot — 2026-11-13
+
+- Exact tested code/data head: cda73ccb7fa80a0404fed5a65588ebd690253f94.
+- Main CI run 43397172081 SUCCESS: 220 Python tests + 66 subtests; independent IPA-gold structure validation; npm build; generated-data freshness; 20 Node tests; 58 Playwright/Chromium tests.
+- Optional diagnostics run 43397181331 SUCCESS: CRF 100 predictions, 84 source-concordant, gold_count=0, accuracy=null, NOT_SCORED_POSSIBLE_TRAINING_OVERLAP; Epitran 1.35.3 raw-output artifact only.
+- Final registries: 59 sources, 81 claims, 45 medial evidence rows, 30 phonological rules, 7 source-phonemic sandhi examples. Manual CSV validation found no malformed widths, duplicate IDs or broken references.
+- Okell (1995) dialect profiles and Nishi (1998) historical medials are source-evidenced/tested; all remain withheld from runtime. SEAlang 2008 confirms IPA query/display at interface level, but internal storage remains unresolved against Mya2Rom MLCTS2. Okell (1969) and Nishi (1976) remain registered but unread full-text targets.
+- Project owner confirms text-only research and project-ingestion permissions. No audio used. Corpus byte access, internal SEAlang schema, Myanglish metadata reconciliation and myX quality remain gates.
+- PR #147 remains OPEN / DRAFT / mergeable, 0 commits behind main, 28 files. Current ahead count is tracked on the PR.
+- IPA gold remains 0, accuracy null, no runtime rules promoted. Status PARTIAL PROTOTYPE.
