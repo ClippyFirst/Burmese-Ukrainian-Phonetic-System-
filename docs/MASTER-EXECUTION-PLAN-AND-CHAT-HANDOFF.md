@@ -1530,7 +1530,7 @@ Registered John Okell's *A Reference Grammar of Colloquial Burmese* (two volumes
 
 ## Consolidated verified handoff — 2026-11-13
 
-Exact tested code/data head 898e0f7cedd3c5c040c218a52a551cc252c77d4e passed main CI 43395578254: 219 Python tests + 66 subtests, IPA-gold structure validation, npm build, generated-data freshness, 20 Node tests and 58 Playwright/Chromium tests. Optional diagnostics 43395586881 passed: CRF 100 predictions / 84 source-concordant / zero gold / null accuracy / NOT_SCORED_POSSIBLE_TRAINING_OVERLAP; Epitran raw output only.
+Exact tested code/data head 2a96f4121a43f704a8f0d2eb6d81cb343fba47db passed main CI 43395906072: 219 Python tests + 66 subtests, IPA-gold structure validation, npm build, generated-data freshness, 20 Node tests and 58 Playwright/Chromium tests. Optional diagnostics 43395906100 passed: CRF 100 predictions / 84 source-concordant / zero gold / null accuracy / NOT_SCORED_POSSIBLE_TRAINING_OVERLAP; Epitran raw output only.
 
 Final registries: 58 sources, 78 claims, 45 medial evidence rows, 30 phonological rules, 7 source-phonemic sandhi examples. Manual CSV integrity and traceability validation passed.
 
@@ -1540,4 +1540,4 @@ Okell (1969) Reference Grammar and Nishi (1976) Medials in Burmese are registere
 
 Myanglish raw CSV vs metadata remains 2-column/3-feature uncertain; myX orthography remains quarantined for target-word misalignment, multiple substitutions and template duplication. Gold=0, accuracy=null, no runtime medial or voicing rules promoted.
 
-PR #147 remains OPEN / DRAFT / mergeable, 163 commits ahead / 0 behind, 28 files changed; no reviews submitted. PR #129 untouched. Repository remains PARTIAL PROTOTYPE, not linguistically release-ready.
+PR #147 remains OPEN / DRAFT / mergeable, 167 commits ahead / 0 behind, 28 files changed; no reviews submitted. PR #129 untouched. Repository remains PARTIAL PROTOTYPE, not linguistically release-ready.
