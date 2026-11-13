@@ -715,3 +715,14 @@ In each group, the onsets differ while the secondary IPA rime sequence matches. 
 ## 33. One-sided secondary lexical attestation for `aung.`
 
 Wiktionary lists `စောင့်` with MLCTS `caung.` and IPA `/sa̰ʊɴ/`. This MOW-listed lemma ends in ောင့်, the second source-unit side of the `aung.` group. No corresponding word-level example for ေါင့် was located. The lexical audit and MLCTS2 crosswalk now record `SECONDARY_ONE_SIDE_ONLY`; claim `CLM-WIKTIONARY-AUNG-DOT-ONE-SIDE-EXAMPLE-001` records the evidence. This does not adjudicate the collision and does not authorize runtime or Ukrainian mapping changes.
+
+## 34. One-sided secondary lexical examples for `um:` and `un`
+
+Two more groups now have a Wiktionary example on one source-unit side only:
+
+| MLCTS group | Lemma | Source-unit ending | Wiktionary MLCTS | Wiktionary IPA |
+|---|---|---|---|---|
+| `um:` | `နှလုံး` | ုံး | `hna.lum:` | `/n̥əlóʊɴ/` |
+| `un` | `ကုန်` | ုန် | `kun` | `/kòʊɴ/` |
+
+Both lemmas are in the existing MOW suffix-match dataset. The opposite sides (ုမ်း and ုဏ် respectively) remain without lexical examples. The audit and MLCTS2 crosswalk now use `SECONDARY_ONE_SIDE_ONLY`; claims `CLM-WIKTIONARY-UM-COLON-ONE-SIDE-EXAMPLE-001` and `CLM-WIKTIONARY-UN-ONE-SIDE-EXAMPLE-001` are registered. These examples do not adjudicate either collision and do not authorize runtime changes.
