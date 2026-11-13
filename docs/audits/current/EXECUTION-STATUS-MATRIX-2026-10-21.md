@@ -1835,3 +1835,9 @@ The first CI attempt after registering the MOW orthographic coverage claim (work
 - Verified required CI run **43507606882 SUCCESS** on code commit `de7abaea084515c5ef814575656ede8b83369a6a`: **248 Python + 66 subtests**, **20 Node**, **58 Playwright**, production build and generated-data freshness all passed. npm install still reports **one high-severity vulnerability**. Optional diagnostic workflow on the same commit completed successfully; raw model output is not an accuracy score.
 - Triage from existing evidence: `any`/`any:`/`any.` are distinguished by both MLCTS2 and R12A; `any` has a secondary-source IPA conflict. `ui` is distinguished by MLCTS2 and only partially covered by R12A. `u.` is special/context-dependent, not an ordinary rime. `am` and `um` have secondary equivalence examples but no primary adjudication. The other groups remain unadjudicated.
 - This is data-integrity and research prioritization only. No primary-source claim, IPA gold entry, phonological rule or Ukrainian output was promoted.
+
+## MOW text-lookup candidates for `any` and `ui` — 2026-11-13
+
+- Existing MOW generated data exposes 6 lemmas ending in ဉ် and 13 ending in ည် for `any`; 1 ending in ဉ်း and 6 in ညည်း for `any:`; 0 ending in ဉ့် and 5 in ည့် for `any.`; and 0 ending in ို် versus 15 in ို for `ui`.
+- Candidate strings include `ဥယျာဉ်`, `တိရစ္ဆာန်ဥယျာဉ်`, `ယာဉ်`, `ပြည်`, `မြန်မာပြည်`, `လက်ဖက်ရည်`, `အကျဉ်း`, `ချို`, `ငို`, `ဆို`, `တို`, and `မှို`.
+- This turns the prior collision triage into concrete textual lookup keys. The evidence remains exact orthographic suffix matching only; no syllabification, pronunciation or homophony conclusion. No source/runtime status promoted.
