@@ -92,7 +92,7 @@ PR [#53](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/
 ## Execution order
 
 1. Preserve fail-closed phonetic behavior.
-2. Commission independently double-annotated Burmese IPA from licensed audio, with speaker/dialect and timestamp metadata.
+2. Commission independent text-based IPA review of source-located Burmese dictionary and published phonological-description entries; record dialect/profile, convention, two independent reviews and adjudication.
 3. Resolve the phonemic/phonetic convention and the interaction of tones, register, phonation and checked syllables with specialists.
 4. Complete vowel/medial/coda derivation and the orthography-to-IPA matrix.
 5. Verify MLCTS against primary Myanmar Language Commission sources; finish the separate MLCTS → Ukrainian adapter.
@@ -101,7 +101,7 @@ PR [#53](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/
 ## External dependencies / blockers
 
 - Qualified Burmese phonologist/phonetic annotators and adjudicator.
-- Licensed audio and permission for derived labels; myG2P cannot be redistributed commercially under its current CC BY-NC-SA terms absent permission.
+- Rights-cleared written IPA sources and permission for derived labels; myG2P cannot be redistributed commercially under its current CC BY-NC-SA terms absent permission.
 - Primary MLC publication access for MLCTS rule confirmation.
 - No local checkout was available to this execution; exact-main GitHub Actions are the engineering evidence. Run documented local release commands in a clean checkout before release.
 
@@ -412,14 +412,14 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | BURMESE-IPA-GOLD-FIXTURE-001 | DONE_VERIFIED | PR [#115](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/115) merged as `28ac47949efb725610023a24b69df1c584d598a7`; exact-main tests [41847895975](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41847895975) and Pages/deployed-site smoke [41847895765](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41847895765) SUCCESS. | Test fixture now uses Myanmar script and neutral test profile; regression asserts the Myanmar Unicode-block and matching profile metadata. This validates test-fixture integrity only, not phonological rules or IPA accuracy. Gold remains 0; accuracy null. |
 
 
-## Burmese external pronunciation/audio source audit — 2026-11-04
+## Burmese external pronunciation source audit — legacy non-text records excluded
 
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BURMESE-MYG2P-SOURCE-001 | DONE_VERIFIED (source pinned and provenance/rights documented; no import) | Upstream `ye-kyaw-thu/myG2P` revision `54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225`; Version 2.0 file `ver2/myg2p.ver2.0.txt`, 2,329,808 bytes, Git blob SHA `0b2735f9a6f7fe28ae94c4baaf323d1db3015c3b`, five tab-separated fields including IPA; CC BY-NC-SA 4.0. Registered as `MYG2P2026`. | External diagnostic/comparator only. Non-commercial/share-alike terms, per-entry provenance, dialect and IPA convention must be respected. Existing test-only probe does not become gold or production approval. |
 | BURMESE-OPENSLR80-AUDIO-001 | DEFERRED / OUT OF SCOPE | Historical source metadata only; not part of current text-only work. | No recording acquisition, processing, annotation or audio-derived labels. Not a blocker for text-based research. |
 
-**Evidence boundary:** source records and provenance tests are complete; no external dictionary or audio was imported. Independent adjudicated Burmese IPA gold remains 0; accuracy remains null.
+**Evidence boundary:** source records and provenance tests are complete; no external dictionary or corpus rows were imported. Independent adjudicated Burmese IPA gold remains 0; accuracy remains null.
 
 
 ## IPA gold release-gate profile consistency — 2026-11-04
@@ -559,7 +559,7 @@ No MLCTS output was promoted to IPA or pronunciation evidence. Independent exper
 |---|---|---|---|
 | MYA-MEDIAL-INVENTORY-001 | DONE_VERIFIED (orthographic inventory) | Unicode 18, WG2 N2827 and Hlaing (2014) support four basic signs plus seven two-/three-medial codepoint combinations. The thesis has a duplicated prose label in the final RA+WA+HA row; codepoints are unambiguous. | This does not assign IPA values to all combinations. |
 | MYA-MEDIAL-PHONOLOGY-001 | PARTIAL / CONTEXT_DEPENDENT | Ishida 2026 and pinned Google Thrax: YA/RA typically /j/ with onset-specific exceptions; WA /w/ vs rime /ʊ/; HA aspiration/devoicing and fused outcomes. Watkins (2001) and Green (2002) support secondary articulation /mj/ analysis. | Complete onset × medial × rime × coda × tone matrix and independent Yangon adjudication. |
-| MYA-MRAN-IPA-001 | PARTIAL / CROSS-SOURCE CANDIDATE | Wiktionary /mjàɴ/; Green /mj/ plus placeless nasal /N/; Google WFST raw output m j àɴ. Epitran 1.35.3 instead returns məjaɴ. Both external outputs have zero gold and null accuracy. | Independent audio/IPA adjudication; settle phonemic /N/ vs surface nasalization and schwa disagreement. |
+| MYA-MRAN-IPA-001 | PARTIAL / CROSS-SOURCE CANDIDATE | Wiktionary /mjàɴ/; Green /mj/ plus placeless nasal /N/; Google WFST raw output m j àɴ. Epitran 1.35.3 instead returns məjaɴ. Both external outputs have zero gold and null accuracy. | Independent text-based expert review against written lexical and phonological sources; settle phonemic /N/ vs surface nasalization and schwa disagreement. |
 | MYA-ASAT-CODA-001 | DONE_VERIFIED (structural parser parity) | Python now attaches base consonant + U+103A as coda within preceding syllable, matching browser. Regression cases: မြန်, မြန်မာ, ကတ်. Exact-head tests [43325991671](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43325991671) SUCCESS. | Broader segmentation remains partial pending independent annotated boundary corpus. |
 | MYA-GOOGLE-FST-001 | DONE_VERIFIED (source/license and raw diagnostic) | Pinned grammar commit a90601024f07ab7e96c911243324e0adeb16da96 and root LICENSE declare Apache-2.0; raw probe run 43084508359 returned m j àɴ for မြန်, no gold. | Optional comparator only; do not replace deterministic engine or treat output as gold. |
 | MYA-CRF-DIAG-001 | PARTIAL / DIAGNOSTIC ONLY | Exact branch run [43325991496](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43325991496): 84/100 source-concordant; YA 10/14, RA 17/20, WA 13/15, HA 7/8; zero gold and accuracy null; exact မြန် absent. | Train/test overlap unknown; labels are from myG2P CC BY-NC-SA 4.0. |
@@ -676,7 +676,7 @@ PR [#53](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/
 ## Execution order
 
 1. Preserve fail-closed phonetic behavior.
-2. Commission independently double-annotated Burmese IPA from licensed audio, with speaker/dialect and timestamp metadata.
+2. Commission independent text-based IPA review of source-located Burmese dictionary and published phonological-description entries; record dialect/profile, convention, two independent reviews and adjudication.
 3. Resolve the phonemic/phonetic convention and the interaction of tones, register, phonation and checked syllables with specialists.
 4. Complete vowel/medial/coda derivation and the orthography-to-IPA matrix.
 5. Verify MLCTS against primary Myanmar Language Commission sources; finish the separate MLCTS → Ukrainian adapter.
@@ -685,7 +685,7 @@ PR [#53](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/
 ## External dependencies / blockers
 
 - Qualified Burmese phonologist/phonetic annotators and adjudicator.
-- Licensed audio and permission for derived labels; myG2P cannot be redistributed commercially under its current CC BY-NC-SA terms absent permission.
+- Rights-cleared written IPA sources and permission for derived labels; myG2P cannot be redistributed commercially under its current CC BY-NC-SA terms absent permission.
 - Primary MLC publication access for MLCTS rule confirmation.
 - No local checkout was available to this execution; exact-main GitHub Actions are the engineering evidence. Run documented local release commands in a clean checkout before release.
 
@@ -996,14 +996,14 @@ The export and benchmark now preserve and validate the complete frozen split ide
 | BURMESE-IPA-GOLD-FIXTURE-001 | DONE_VERIFIED | PR [#115](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/115) merged as `28ac47949efb725610023a24b69df1c584d598a7`; exact-main tests [41847895975](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41847895975) and Pages/deployed-site smoke [41847895765](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41847895765) SUCCESS. | Test fixture now uses Myanmar script and neutral test profile; regression asserts the Myanmar Unicode-block and matching profile metadata. This validates test-fixture integrity only, not phonological rules or IPA accuracy. Gold remains 0; accuracy null. |
 
 
-## Burmese external pronunciation/audio source audit — 2026-11-04
+## Burmese external pronunciation source audit — legacy non-text records excluded
 
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BURMESE-MYG2P-SOURCE-001 | DONE_VERIFIED (source pinned and provenance/rights documented; no import) | Upstream `ye-kyaw-thu/myG2P` revision `54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225`; Version 2.0 file `ver2/myg2p.ver2.0.txt`, 2,329,808 bytes, Git blob SHA `0b2735f9a6f7fe28ae94c4baaf323d1db3015c3b`, five tab-separated fields including IPA; CC BY-NC-SA 4.0. Registered as `MYG2P2026`. | External diagnostic/comparator only. Non-commercial/share-alike terms, per-entry provenance, dialect and IPA convention must be respected. Existing test-only probe does not become gold or production approval. |
 | BURMESE-OPENSLR80-AUDIO-001 | DEFERRED / OUT OF SCOPE | Historical source metadata only; not part of current text-only work. | No recording acquisition, processing, annotation or audio-derived labels. Not a blocker for text-based research. |
 
-**Evidence boundary:** source records and provenance tests are complete; no external dictionary or audio was imported. Independent adjudicated Burmese IPA gold remains 0; accuracy remains null.
+**Evidence boundary:** source records and provenance tests are complete; no external dictionary or corpus rows were imported. Independent adjudicated Burmese IPA gold remains 0; accuracy remains null.
 
 
 ## IPA gold release-gate profile consistency — 2026-11-04
@@ -1143,7 +1143,7 @@ No MLCTS output was promoted to IPA or pronunciation evidence. Independent exper
 |---|---|---|---|
 | MYA-MEDIAL-INVENTORY-001 | DONE_VERIFIED (orthographic inventory) | Unicode 18, WG2 N2827 and Hlaing (2014) support four basic signs plus seven two-/three-medial codepoint combinations. The thesis has a duplicated prose label in the final RA+WA+HA row; codepoints are unambiguous. | This does not assign IPA values to all combinations. |
 | MYA-MEDIAL-PHONOLOGY-001 | PARTIAL / CONTEXT_DEPENDENT | Ishida 2026 and pinned Google Thrax: YA/RA typically /j/ with onset-specific exceptions; WA /w/ vs rime /ʊ/; HA aspiration/devoicing and fused outcomes. Watkins (2001) and Green (2002) support secondary articulation /mj/ analysis. | Complete onset × medial × rime × coda × tone matrix and independent Yangon adjudication. |
-| MYA-MRAN-IPA-001 | PARTIAL / CROSS-SOURCE CANDIDATE | Wiktionary /mjàɴ/; Green /mj/ plus placeless nasal /N/; Google WFST raw output m j àɴ. Epitran 1.35.3 instead returns məjaɴ. Both external outputs have zero gold and null accuracy. | Independent audio/IPA adjudication; settle phonemic /N/ vs surface nasalization and schwa disagreement. |
+| MYA-MRAN-IPA-001 | PARTIAL / CROSS-SOURCE CANDIDATE | Wiktionary /mjàɴ/; Green /mj/ plus placeless nasal /N/; Google WFST raw output m j àɴ. Epitran 1.35.3 instead returns məjaɴ. Both external outputs have zero gold and null accuracy. | Independent text-based expert review against written lexical and phonological sources; settle phonemic /N/ vs surface nasalization and schwa disagreement. |
 | MYA-ASAT-CODA-001 | DONE_VERIFIED (structural parser parity) | Python now attaches base consonant + U+103A as coda within preceding syllable, matching browser. Regression cases: မြန်, မြန်မာ, ကတ်. Exact-head tests [43325991671](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43325991671) SUCCESS. | Broader segmentation remains partial pending independent annotated boundary corpus. |
 | MYA-GOOGLE-FST-001 | DONE_VERIFIED (source/license and raw diagnostic) | Pinned grammar commit a90601024f07ab7e96c911243324e0adeb16da96 and root LICENSE declare Apache-2.0; raw probe run 43084508359 returned m j àɴ for မြန်, no gold. | Optional comparator only; do not replace deterministic engine or treat output as gold. |
 | MYA-CRF-DIAG-001 | PARTIAL / DIAGNOSTIC ONLY | Exact branch run [43325991496](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43325991496): 84/100 source-concordant; YA 10/14, RA 17/20, WA 13/15, HA 7/8; zero gold and accuracy null; exact မြန် absent. | Train/test overlap unknown; labels are from myG2P CC BY-NC-SA 4.0. |
