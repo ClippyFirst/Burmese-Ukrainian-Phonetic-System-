@@ -406,3 +406,24 @@ def test_okell_1969_edition_and_nishi_1977_archival_access_are_not_mistaken_for_
     assert "text remains inaccessible" in edition["claim"]
     assert "not online full-text access" in archive["claim"]
 
+def test_source_and_claim_registries_have_unique_ids_and_resolvable_sources():
+    sources = _rows(DATA / "sources.csv")
+    claims = _rows(DATA / "source_claims.csv")
+
+    source_ids = [row["source_id"] for row in sources]
+    claim_ids = [row["claim_id"] for row in claims]
+    source_id_set = set(source_ids)
+
+    assert sources and claims
+    assert all(source_id.strip() for source_id in source_ids)
+    assert all(claim_id.strip() for claim_id in claim_ids)
+    assert len(source_ids) == len(source_id_set)
+    assert len(claim_ids) == len(set(claim_ids))
+    for claim in claims:
+        assert claim["source_id"] in source_id_set, (
+            claim["claim_id"], claim["source_id"]
+        )
+        assert claim["claim"].strip()
+        assert claim["evidence_type"].strip()
+        assert claim["scope"].strip()
+        assert claim["status"].strip()
