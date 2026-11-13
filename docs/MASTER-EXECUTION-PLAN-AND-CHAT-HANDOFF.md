@@ -2221,3 +2221,10 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - `npm install` reports one high-severity vulnerability; no unreviewed dependency upgrade.
 - Ledger: 5 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 8 secondary one-side-only / 1 special non-rime. Registry 80 sources / 150 claims.
 - No primary MLC, IPA gold, runtime or Ukrainian output promotion.
+
+## `am.` secondary lexical distinction — 2026-11-14
+
+- Wiktionary records `စိမ့်` (`cim.`, `/sḛɪɴ/`, final မ့်) and `ကြံ့` (`kram.`, `/t͡ɕa̰ɴ/`, final ံ့). MOW includes `စိမ့်` and compound `အိန္ဒိယကြံ့` as suffix-match candidates.
+- These secondary transcriptions distinguish the rime realizations and conflict with vendor same-output MLCTS2/IPA. Audit and crosswalk set to `SECONDARY_SOURCE_DISTINCTION`; claim `CLM-WIKTIONARY-AM-DOT-LEXICAL-DISTINCTION-001` registered.
+- Current distribution: 4 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 8 secondary one-side-only / 1 special non-rime. Registry 80 sources / 151 claims.
+- Not a minimal pair or primary MLC adjudication. Runtime, IPA gold and Ukrainian output unchanged. Exact-head CI pending.
