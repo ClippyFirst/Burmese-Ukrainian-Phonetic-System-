@@ -774,3 +774,12 @@ This is not a controlled minimal pair or primary MLC adjudication. Do not treat 
 Wiktionary lists `ဝပ်ရှော့` with MLCTS `waphrau.` and IPA `/waʔʃɔ̰/`. Its final syllable contains the source-unit side `ော့` in the `au.` collision group and its MLCTS rime suffix corresponds to `au.`. No MOW lexical example for the other source unit `ေါ့` was located. Audit and MLCTS2 crosswalk now record `SECONDARY_ONE_SIDE_ONLY`; claim `CLM-WIKTIONARY-AU-DOT-ONE-SIDE-EXAMPLE-001` is registered.
 
 This is one-side secondary evidence only, not collision adjudication. Distribution: **3 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 9 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 152 claims**. Exact-head CI pending.
+
+### Exact-head verification for `au.` lexical attestation — 2026-11-14
+
+- Verified code/data SHA: `ffd08d7ae8e227ee19a86859de00b7d52f456ecf`.
+- Required CI run **43519887514 SUCCESS**: **251 Python tests + 66 subtests**, **20 Node tests**, **58 Playwright tests**; production build, generated-data freshness and Chromium installation passed. Duplicate run **43519895530** was still completing at documentation time.
+- Optional Epitran raw-output diagnostic **43519895542 SUCCESS**; diagnostic only, not an accuracy benchmark.
+- IPA gold remains `NOT_READY_NO_ADJUDICATED_GOLD` (0 independent gold entries). `npm install` reports one high-severity vulnerability.
+- Ledger: 25 groups = **3 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 9 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 152 claims**.
+- Secondary evidence only; no primary MLC, IPA gold, runtime or Ukrainian output promotion.
