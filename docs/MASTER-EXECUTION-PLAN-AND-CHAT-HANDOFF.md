@@ -137,7 +137,7 @@
 
 - **DONE_VERIFIED:** deterministic manifest-wide split identity; export/scorer held-out split integrity; strict TSV and JSON input validation; post-merge exact-main engineering verification.
 - **PARTIAL:** The complete vowel/medial/coda engine, tone/register/phonation and checked-syllable realization, contextual allophony, and primary-source-backed MLCTS → Ukrainian adapter remain incomplete.
-- **BLOCKED:** Approve a versioned IPA convention; recruit two qualified independent Burmese phonetic annotators and a separate adjudicator; secure licensed audio and source-specific derived-label rights.
+- **BLOCKED:** Approve a versioned broad/narrow IPA convention; recruit two qualified independent Burmese linguists for source-located written IPA adjudication and a separate reviewer; use rights-cleared written dictionaries, grammars and published phonological descriptions. No audio.
 - **TODO:** Manual visual, keyboard, screen-reader, responsive and mobile QA on the deployed site remains TODO.
 
 ## Historical checkpoints (retained for audit; superseded by the current state above)
@@ -488,8 +488,8 @@ Do not mark the repository 80% ready based on file count, test count, UI complet
 ## External corpus/source triage — 2026-11-01
 
 - Task `MYA-IPA-SOURCE-TRIAGE-001`: `PARTIAL` for discovery and evidence triage; external data import / benchmark gold remains `BLOCKED` pending source-specific rights and expert validation.
-- External-source triage is PARTIAL; no independently adjudicated, openly reusable Burmese IPA gold was verified. myG2P offers richer IPA but states CC BY-NC-SA 4.0 and remains blocked for commercial use without permission. A 2026 Wiktionary extraction reports 22,191 words with full MLCTS but only 113 IPA rows (0.51%) under CC BY 4.0; it is a possible MLCTS crosswalk, not a broad IPA gold corpus. OpenSLR SLR80 has Burmese audio/transcripts under CC BY-SA 4.0 but requires expert IPA annotation. Mya2Rom is CC BY-SA 4.0 and a comparator, not gold. See the source-triage audit for boundaries and links. Gold remains 0.
-- No external corpus rows, IPA labels, model weights or audio were copied into the repository. No accuracy score or engine ranking is claimed.
+- External-source triage is PARTIAL; no independently adjudicated, openly reusable Burmese IPA gold was verified. myG2P offers richer IPA but states CC BY-NC-SA 4.0 and remains blocked for commercial use without permission. A 2026 Wiktionary extraction reports 22,191 words with full MLCTS but only 113 IPA rows (0.51%) under CC BY 4.0; it is a possible MLCTS crosswalk, not a broad IPA gold corpus. OpenSLR SLR80 is historical metadata only and excluded from active text-only research; it is not an annotation source or blocker. Mya2Rom is CC BY-SA 4.0 and a comparator, not gold. See the source-triage audit for boundaries and links. Gold remains 0.
+- No external corpus rows, IPA labels or model weights were copied into the repository. No accuracy score or engine ranking is claimed.
 - Full source register and acceptance gates: `docs/audits/current/EXTERNAL-PHONETIC-CORPUS-TRIAGE-2026-11-01.md`.
 
 
@@ -736,7 +736,7 @@ The following current statuses supersede older checkpoint rows above where they 
 - Inspected https://github.com/byu-matrix-lab/MekongPhon. Its pipeline README describes SEAlang frequency lists, IPA scraping, minor lexicon post-processing, OPUS sentence downloads, lexicon train/eval splits, and trie-based sentence conversion from word-level IPA entries. Treat this as a large external orthography–IPA resource and possible comparator, not automatically as independent sentence-level phonetic gold.
 - The upstream repository root LICENSE path was not present in the inspected tree. Dataset-specific redistribution permission, source terms, variety, IPA conventions, human verification/correction process, exact data files and overlap with our engine sources remain unverified. Do not import or redistribute any of it until those are resolved. Proceedings CC BY-NC-4.0 and Apache-2.0 model-card licenses do not license the underlying dataset by implication.
 - Khmer Acoustic Model dictionary remains a candidate external comparator only; its README states dictionary CC BY-SA 4.0 and claims native-linguist validation, but per-entry provenance, variety, IPA convention and exact version require inspection.
-- Burmese audio lead: Oo et al. (LREC 2020) speech corpus is described as 2,528 utterances from 20 female speakers with manual segmentation, plus G2P/normalization grammars. This is not IPA gold; inspect primary source, audio/transcript rights, consent, variety and metadata before considering it as lawful audio material for expert re-transcription.
+- Historical source note only: Oo et al. (LREC 2020) described an ASR corpus with orthographic text. It is excluded from active text-only work; no recordings, rights checks or re-transcription will be pursued.
 - No data files were imported and no IPA labels were added. Corpus remains empty and benchmark accuracy remains null.
 
 
@@ -747,10 +747,10 @@ The documentation-only playbook, corpus-guide and handoff changes at the precedi
 
 ## Source acquisition update — 2026-11-01
 
-- **Leading audio candidate:** OpenSLR 80 (SLR80), https://openslr.org/80, CC BY-SA 4.0. The primary paper (Oo et al. 2020, https://aclanthology.org/2020.lrec-1.777.pdf, pp. 6333–6334) reports 2,528 utterances from 20 female native Burmese speakers aged 25–35, recorded in Yangon at 48 kHz mono. It includes hand-curated word-segmented orthographic transcripts; trained native speakers checked audio/transcript match, volume, noise and fluency. Only female recordings were released at the time of publication.
-- **Use boundary:** SLR80 supplies sentence-context audio and text, not IPA. The paper's FST G2P is intended to generate/seed pronunciations for later human checking, not to serve as gold. The recording location does not establish each speaker's dialect; word-level timestamps are not provided and must be manually verified. Female-only speakers limit generalization claims.
+- Historical metadata only: OpenSLR 80 (SLR80) was previously reviewed as an audio/transcript resource. It is explicitly excluded from current text-only scope and is not an active candidate.
+- Scope boundary: SLR80 is not used. Text-only G2P research must rely on written lexical and phonological sources; no audio-based labels or evaluation are permitted.
 - Recommended split: a separately labelled contextual phonetic subset from SLR80, plus a distinct citation-form lexical set elicited from qualified speakers of the approved target variety. Never mix their accuracy denominators or claim citation-form accuracy from sentence-context tokens.
-- `MYA-GOLD-001` remains `BLOCKED`; independent gold 0 and accuracy `null`. No audio or IPA data imported. Next acceptance step: specialist approves the SLR80 profile and 30 contextual token sample, while a separate citation-form recording session is arranged.
+- MYA-GOLD-001 remains BLOCKED; independent text-adjudicated IPA gold is 0 and accuracy is null. Next acceptance step: two independent reviewers adjudicate source-located written lexical examples under one versioned IPA convention; no audio.
 
 
 ## Final exact-head verification — 2026-11-01
@@ -1056,7 +1056,7 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 
 - Created `research/burmese-open-pronunciation-evidence-20261104` from current main `11c4d4d73bc478c9d07ce7bfe3a3477327790445`.
 - Pinned and reviewed upstream myG2P at `54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225`; confirmed Version 2.0's five-field file includes an IPA field and is explicitly CC BY-NC-SA 4.0. Registered source `MYG2P2026` and documentary claim `CLM-MYG2P-001`.
-- Registered OpenSLR SLR80 (`OPENSLR80`) as a CC BY-SA 4.0 audio/transcript source. The provider documents manually quality-checked volunteer Burmese sentence recordings, anonymized file IDs and orthographic transcripts; the visible female subset is 541 KB index + 948 MB WAV archive. No IPA or sufficiently detailed dialect profile is supplied.
+- Historical registry note: OPENSLR80 remains registered for audit provenance only and is excluded from active text-only research; no data or recordings are accessed.
 - Added source-provenance regression tests to `tests/test_source_rule_evidence.py`, and updated the external corpus triage and linguistic completion register.
 - No dictionary/audio data copied. The existing myG2P probe remains test-only; the new source audit does not authorize production use, commercial redistribution, or treating myG2P outputs as project gold.
 - Independent adjudicated Burmese IPA gold remains 0; accuracy remains null. Hosted CI pending; no local test execution was available in this connector session.
@@ -1076,7 +1076,7 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 
 - Found a concrete gap in the shared `scripts/ipa_gold_corpus.py`: the release gate checked adjudicated-record counts, frozen splits and source redistribution rights, but did not enforce the playbooks' one-target-profile / one-IPA-convention requirement. A mixed-variety or mixed-kind corpus could therefore pass the numeric/rights gate and be scored as one benchmark.
 - Added regression tests first for mixed profile and mixed IPA kind in each of the three repositories. The first Lao test run failed on both new cases as expected; after adjusting the fixture to populate all three deterministic split buckets, the regression remained targeted. The Khmer and Burmese exact-head runs subsequently passed; final run IDs and merge evidence are recorded below.
-- Added shared gate checks: one signature across adjudicated records (`profile.id`, `variety`, `region`, `register`) and exactly one adjudicated IPA kind. Per-record speaker/audio IDs are deliberately excluded from target-profile identity.
+- Added shared gate checks for consistent target profile (`profile.id`, `variety`, `region`, `register`) and one adjudicated IPA kind. Speaker/audio identifiers are not part of the active text-only acceptance path.
 - Updated the corpus documentation and completion register. The checks do not replace approved convention sheets, human reviewer qualifications, blind annotation evidence, or language-specific contrast-coverage reports. The gate still does not calculate contrast coverage from free-text phonological metadata.
 - No IPA labels, pronunciation rules, Ukrainian mappings, source data, or benchmark scores were added. Independent adjudicated gold remains 0 in all three projects.
 
@@ -1219,7 +1219,7 @@ A code review found that truthiness-only identifier checks accepted whitespace-o
 - Implemented Python and browser onset-only PROVISIONAL fallback. It uses the existing Yangon onset IPA inventory → existing IPA adapter → Ukrainian text plus ?. Canonical fields remain withheld.
 - Exact-head test workflow 43100176432 was queued at the latest check; no job had started. Do not claim test success.
 - Local test execution was unavailable: public GitHub clone attempt failed because the execution environment could not resolve github.com. No tests are claimed passed on the new fallback.
-- Remaining: execute Python/Node/Chromium tests on the exact head; add functional shared Python/browser fixtures; register each provisional onset with exact primary-source locator and Yangon-profile scope; expand only where positional evidence is explicit. Independent text-only Yangon adjudicated gold remains BLOCKED; audio remains DEFERRED.
+- Remaining: execute Python/Node/Chromium tests on the exact head; add functional shared Python/browser fixtures; register each provisional onset with exact written primary-source locator and Yangon-profile scope; expand only where positional evidence is explicit. Independent text-only Yangon adjudicated gold remains BLOCKED.
 
 
 ## Fallback scope clarification — 2026-11-11
@@ -1233,7 +1233,7 @@ The browser onset-only preview is now limited to isolated bare consonant tokens.
 - Workflow 43101914347 PASS: 182 Python tests, 66 subtests, npm install, build, generated-data freshness, Node tests and Chromium Playwright 54/54.
 - Optional Epitran raw-output comparator 43101914423 PASS; it is not an independent IPA accuracy gold set.
 - Browser keeps canonical IPA/Ukrainian output fail-closed and shows a separate onset-only preview only for isolated bare consonants. Contextual structures remain withheld.
-- Linguistic feature remains PARTIAL: dedicated Yangon-profile positional evidence registry and functional shared Python/browser parity fixture remain TODO. Independent adjudicated gold remains BLOCKED; audio DEFERRED.
+- Linguistic feature remains PARTIAL: dedicated Yangon-profile positional evidence registry and functional shared Python/browser parity fixture remain TODO. Independent text-based adjudicated gold remains BLOCKED.
 
 
 ## MLCTS romanization mainline reconciliation — 2026-11-12
@@ -1292,7 +1292,7 @@ The proposed /ɴ/ → нг target rule is conditional on an IPA analysis that ex
 
 ## UCSY-SC1 rights note — 2026-11-13
 
-The paper documents a potentially useful 42 h 39 min / 307-speaker audio corpus, but it is not IPA gold. The publisher author-details page lists CC BY-SA 4.0 while the PDF footer says “All rights reserved”; the underlying corpus audio has no separately verified license or public download permission. Keep this source BLOCKED / RIGHTS-GATED until both article and corpus terms are confirmed.
+Historical metadata only: the paper's corpus description remains in the audit trail, but UCSY-SC1 is excluded from active text-only scope; no access or rights work is planned.
 
 
 ## Final one-pass verification — 2026-11-13
@@ -1328,7 +1328,7 @@ The paper documents a potentially useful 42 h 39 min / 307-speaker audio corpus,
 - Structural coda parsing is verified: မြန် is one syllable; မြန်မာ is two; ကတ် retains final consonant + ASAT. Browser/Python tests pass.
 - No runtime medial IPA rule was enabled. Independent expert-adjudicated IPA gold for the medial/coda cells remains 0; empirical accuracy remains null.
 - PR #129 remains open/draft and untouched as a code branch (53 commits ahead / 17 behind current main, non-mergeable); its source-backed research findings were reconciled here, but its broad hybrid-engine code was not ported.
-- UCSY-SC1 is a rights-gated audio lead: publisher page lists CC BY-SA 4.0, PDF footer says “All rights reserved”, and the corpus audio has no separately verified license.
+- UCSY-SC1 remains a historical metadata record only; it is excluded from active text-only research and is not a blocker.
 - Release assessment: PARTIAL PROTOTYPE, not linguistically release-ready. The research dossier is ready for specialist review and data-rights resolution.
 
 ## Text-only Burmese research continuation — 2026-11-13
