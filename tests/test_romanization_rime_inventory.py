@@ -128,6 +128,9 @@ def test_lexical_collision_audit_keeps_secondary_evidence_separate_from_primary_
     assert by_mlcts["any"]["evidence_status"] == "SECONDARY_SOURCE_CONFLICT"
     assert "kañ" in by_mlcts["any"]["observed_mlcts"]
     assert "kany" in by_mlcts["any"]["observed_mlcts"]
+    assert "R12A" in by_mlcts["any"]["source_locator"]
+    assert "not nasalised" in by_mlcts["any"]["interpretation"]
+    assert "secondary-source conflict remains" in by_mlcts["any"]["interpretation"]
     assert by_mlcts["u."]["evidence_status"] == "SPECIAL_NONRIME_CONTEXT_DEPENDENT"
     assert by_mlcts["um"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
     assert by_mlcts["um"]["observed_ipa"] == "/kòʊɴ/"
