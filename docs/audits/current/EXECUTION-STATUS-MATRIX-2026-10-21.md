@@ -1928,3 +1928,10 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - Optional Epitran raw-output diagnostic **43516203133 SUCCESS**; not an accuracy score. IPA-gold validator remains `NOT_READY_NO_ADJUDICATED_GOLD`, with 0 independent gold entries. One high-severity npm vulnerability remains.
 - Collision audit: 25 groups = 6 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 7 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 149 claims.
 - Engineering/test consistency verified. Secondary Wiktionary evidence does not adjudicate primary MLC policy and does not authorize runtime or Ukrainian mapping changes.
+
+## `am:` lexical evidence continuation — 2026-11-14
+
+- `လမ်း` (`lam:`, `/láɴ/`) confirms a secondary lexical example for source unit `မ်း`; opposite unit `ံး` remains unobserved in the MOW suffix-match scan.
+- Audit and MLCTS2 crosswalk updated to `SECONDARY_ONE_SIDE_ONLY`; claim `CLM-WIKTIONARY-AM-COLON-ONE-SIDE-EXAMPLE-001` registered; regression tests expanded.
+- Evidence distribution: 5 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 8 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 150 claims.
+- No runtime or Ukrainian output changes. Exact-head CI pending.
