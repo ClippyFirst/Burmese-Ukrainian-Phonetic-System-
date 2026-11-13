@@ -260,57 +260,43 @@ def test_full_vendor_system_crosswalk_covers_all_94_nonempty_rime_keys():
     }
     assert missing_simple2 == {"ေါင်း"}
 
-MOW_RIME_COVERAGE_PATH = ROOT / "data/burmese/romanization_rime_mow_lemma_coverage.csv"
-MOW_RIME_HITS_PATH = ROOT / "data/burmese/romanization_rime_mow_lemma_hits.csv"
+def test_mow_orthographic_outputs_are_reproducible_and_evidence_limited():
+    import subprocess
+    import sys
 
+    completed = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "scripts/analyze_mow_orthographic_rime_coverage.py"),
+            "--check",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert completed.returncode == 0, completed.stdout + completed.stderr
 
-def test_mow_orthographic_lemma_coverage_is_consistent_and_evidence_limited():
-    with (ROOT / "data/burmese/romanization_rime_collisions.csv").open(
+    with (ROOT / "data/burmese/mow_rime_orthographic_coverage.csv").open(
         encoding="utf-8-sig", newline=""
     ) as stream:
-        collisions = {row["mlcts"]: row for row in csv.DictReader(stream)}
-    with MOW_RIME_COVERAGE_PATH.open(encoding="utf-8-sig", newline="") as stream:
-        summary = list(csv.DictReader(stream))
-    with MOW_RIME_HITS_PATH.open(encoding="utf-8-sig", newline="") as stream:
-        hits = list(csv.DictReader(stream))
+        coverage = list(csv.DictReader(stream))
+    with (ROOT / "data/burmese/mow_rime_orthographic_matches.csv").open(
+        encoding="utf-8-sig", newline=""
+    ) as stream:
+        matches = list(csv.DictReader(stream))
 
-    assert len(collisions) == 25
-    assert len(summary) == 50
-    assert len(hits) == 508
-    assert len({(row["source_unit"], row["mow_lemma"]) for row in hits}) == len(hits)
-    assert {row["mlcts_collision_key"] for row in summary} == set(collisions)
-    assert {row["mlcts_collision_key"] for row in hits} <= set(collisions)
-
-    for row in summary:
-        assert row["source_unit"] in collisions[row["mlcts_collision_key"]]["source_units"].split(";")
-        matching = [hit for hit in hits if hit["source_unit"] == row["source_unit"]]
-        assert int(row["distinct_mow_lemma_count"]) == len({hit["mow_lemma"] for hit in matching})
-        assert int(row["distinct_synset_count"]) == len({
-            synset
-            for hit in matching
-            for synset in hit["synset_ids"].split(";")
-            if synset
-        })
-        assert "orthographic lemma final-string match only" in row["evidence_scope"]
-
-    both = {
-        key for key, collision in collisions.items()
-        if all(
-            int(next(row["distinct_mow_lemma_count"] for row in summary if row["source_unit"] == unit)) > 0
-            for unit in collision["source_units"].split(";")
-        )
+    assert len(coverage) == 50
+    assert len(matches) == 508
+    assert {row["evidence_type"] for row in matches} == {"ORTHOGRAPHIC_SUFFIX_MATCH_ONLY"}
+    group_status = {
+        mlcts: {row["collision_group_coverage"] for row in coverage if row["mlcts"] == mlcts}
+        for mlcts in {row["mlcts"] for row in coverage}
     }
-    neither = {
-        key for key, collision in collisions.items()
-        if all(
-            int(next(row["distinct_mow_lemma_count"] for row in summary if row["source_unit"] == unit)) == 0
-            for unit in collision["source_units"].split(";")
-        )
-    }
-    assert len(both) == 11
-    assert len(neither) == 1
-    assert neither == {"um."}
-    assert all("orthographic evidence only" in row["evidence_scope"] for row in hits)
+    assert sum(status == {"BOTH_UNITS_FOUND"} for status in group_status.values()) == 11
+    assert sum(status == {"ONE_UNIT_FOUND"} for status in group_status.values()) == 13
+    assert sum(status == {"NEITHER_UNIT_FOUND"} for status in group_status.values()) == 1
+    assert group_status["um."] == {"NEITHER_UNIT_FOUND"}
 
 
 def test_mow_dataset_source_claim_preserves_cc_by_and_orthographic_scope():
