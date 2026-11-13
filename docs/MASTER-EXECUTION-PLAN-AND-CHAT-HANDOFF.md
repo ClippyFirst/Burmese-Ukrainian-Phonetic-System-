@@ -1663,3 +1663,55 @@ Added four page-located claims and updated the source registry, sandhi evidence,
 ## Nishi (1997) orthographic-standardization paper — full text verified — 2026-11-13
 
 Read the complete *The Orthographic Standardization of Burmese* PDF (BNME 22(4), pp.975–999; DOI 10.15021/00004135). Nishi distinguishes OWB, MWB, EModWB and ModWB; describes OWB -l replaced by -r/-v according to initial class and EModWB -y insertion after velars before written -i. He explicitly distinguishes Written Burmese High and Spoken Burmese Low varieties. The paper focuses on rhyme systems and treats initials only as needed, so it is not a complete medial inventory. Added scope claim CLM-NISHI97-SCOPE-001. No modern Unicode mapping or runtime rule promoted. Total registry: 60 sources, 96 claims.
+
+
+## Final verification and handoff — 2026-11-13
+
+### Verified snapshot
+
+- Default branch: `main`; starting base commit: `dc90463bdd734867308f03cb627eb8941efc19d6`.
+- Dedicated branch: `research/burmese-medials-g2p-evidence-2026-11-13`.
+- Code/data snapshot fully verified by GitHub Actions at commit `7158a401968576f882141bb9cac279204a626d63`; this final handoff-only documentation commit follows that snapshot.
+- PR #147 remains Open / Draft / mergeable, 228 commits ahead and 0 behind main, 29 files changed. Not merged.
+- PR #129 remains Open / Draft / non-mergeable; untouched because it is a separate pre-existing change set and has not been reconciled with the current branch.
+- `main` was not changed; no release or deployment was published.
+
+### Commands and checks actually completed on the verified snapshot
+
+GitHub Actions run 43455376658 (tests, run number 3099):
+- Independent IPA gold corpus structure validation — PASS.
+- `pip install -e ".[test]"` — PASS.
+- `pytest` — 222 passed, 66 subtests passed.
+- `npm install` — completed; reported one high-severity npm audit finding (not auto-fixed; dependency/security review remains open).
+- `npm run build` — PASS.
+- `npm run generate:web` and generated-data drift check — PASS.
+- `npm test` — PASS (20 Node tests).
+- `npx playwright install --with-deps chromium` — PASS.
+- `npm run test:browser:built` — PASS (58 Playwright tests).
+
+Optional diagnostic workflow 43455376657 (run number 537):
+- Epitran raw-output diagnostic — completed successfully; artifact uploaded.
+- Pinned CRFsuite baseline build and raw-output diagnostic — completed successfully; artifact uploaded.
+- These diagnostics are not independent accuracy evaluations. Existing evaluation boundary remains: no independent held-out IPA gold; accuracy is null. Do not present prediction/reference overlap as accuracy.
+
+Manual registry validation on the same snapshot:
+- CSV widths consistent across sources, claims, rules, medial matrix, sandhi evidence and Okell orthographic profile.
+- 60 source records; 96 claim records; 30 phonological rules; 45 medial evidence rows; 7 sandhi evidence rows; 9 Okell orthographic-profile rows.
+- No duplicate source IDs or claim IDs.
+- No broken claim→source, rule→source, rule→claim or medial→source references.
+- All seven sandhi rows retain empty IPA and source-attested traditional phonemic output; all identify examples as quoted from Okell (1969) while the notation convention follows Okell (1995).
+
+### Final research status and blockers
+
+- Full texts newly inspected: Thu et al. (2016), Hlaing & Mikami (2014), Oo et al. (2020), Nishi (1998) *The Development of Voicing Rules in Standard Burmese*, and Nishi (1997) *The Orthographic Standardization of Burmese*.
+- Nishi 1998 provenance correction: examples are quoted from Okell (1969) §§17–20; notation follows Okell (1995). Atonicization remains separate from voicing; first voicing pattern is not obligatory throughout broad Standard Burmese.
+- Nishi (1976/1977) *Medials in Burmese*: BLOCKED — bibliography and secondary citations found, complete primary text not retrieved. Acceptance: inspect full primary text and page locators.
+- Okell (1969) §§17–20: BLOCKED — catalogue/preview evidence found, full text not accessible in this session. Acceptance: inspect the actual sections and reconcile examples/conditions directly.
+- Independent expert-adjudicated modern Yangon IPA gold: TODO / evidence-limited, current count 0. Acceptance: build an independently adjudicated written set with explicit profile and transcription conventions.
+- Four-vs-eight tone/register reconciliation, abstract /N/ vs surface nasalization, 94 MLCTS rime primary-source audit, SEAlang record-level representation, Myanglish pinned artifact, and full myX 4,800-row audit remain open.
+- No runtime medials, tone, coda, /N/ or voicing rules were promoted in this pass.
+- No audio was accessed, played, processed or used.
+
+### Release assessment
+
+Still PARTIAL PROTOTYPE. Code/data validation and current CI pass, but release readiness is not established because independent modern Yangon IPA gold is zero, core phonological decisions remain evidence-limited, and several primary texts/record-level datasets remain unavailable. Next research blockers are Okell (1969) §§17–20 and Nishi (1976/1977) *Medials in Burmese*, followed by expert-adjudicated IPA gold.
