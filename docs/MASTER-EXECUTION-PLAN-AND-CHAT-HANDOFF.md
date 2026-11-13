@@ -1899,3 +1899,12 @@ Code/test head **508816dcddf22272e98647625b657bc79712817e** completed required C
 - `npm install` still reports **1 high-severity vulnerability**; no forced dependency upgrade was made.
 - Source registry integrity rechecked: **69 nonblank sources / 121 claims**, unique IDs, valid CSV row widths and all claim-to-source references resolve.
 - The latest changes after code/test head are documentation-only. Final branch tip will be recorded after this handoff update.
+
+## Continuation — MLCTS2 crosswalk and source naming audit (2026-11-13)
+
+- Added MOW source **MOW_2017_MLCTS_VARIANTS** and claim **CLM-MOW-MLCTS2-VARIANTS-001**. The MOW project page documents MLCTS and MLCTS 2 romanized variants in v0.1.2 and says MLCTS 2 is used in the MLC Myanmar-English Dictionary; MOW v0.1.3 is CC BY 4.0. It is a secondary semantic resource, not an MLC primary specification.
+- Added `data/burmese/romanization_rime_mlcts2_crosswalk.csv`, 25 rows computed from Mya2Rom v0.4.4. Of 25 duplicate-MLCTS groups, 21 have identical values in the modified third column and four differ: `any`, `any:`, `any.`, `ui`. For `any`, the column distinguishes `in` vs `i`; vendor IPA column distinguishes `ɪ̀ɴ` vs `|ì,ɛ̀|`. These are vendor outputs, not independent lexical or IPA gold evidence.
+- Reconciled a source naming discrepancy: Mya2Rom README/API says `mlcts2`; `mya2rom.js` selects index 2; `romanisations.js` labels that same third column `MLCTS-SL`. Registered **CLM-MYA2ROM-COLUMN3-NAMING-001** and guarded it with tests. Treat as one software column with two labels, not two separate representations.
+- Added regression test that derives each crosswalk value from the exact vendored source arrays and enforces the four differing groups, the special `့` fallback and the evidence boundary.
+- Registry totals: **70 nonblank sources / 123 claims**. No runtime behaviour, IPA gold, or Ukrainian candidate promoted; all 94 candidates remain PROPOSED / EVIDENCE_LIMITED. No audio accessed.
+- Latest test-bearing commit: `c4dcaa2ea0a33ed7c9038b472f068a1a7714c12b`; CI pending. Next acceptance gate: run exact-head CI, then obtain/inspect the actual MLC dictionary pages or a primary 1980 MLC transcription table before changing linguistic rules.
