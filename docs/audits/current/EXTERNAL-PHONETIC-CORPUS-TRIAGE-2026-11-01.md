@@ -136,3 +136,40 @@ Independent expert-adjudicated Burmese IPA gold remains **0**; empirical accurac
 - It states 33 basic consonants, 12 vowels and four medials, and describes nasalized vowels. This is useful as a published inventory and acoustic-corpus lead.
 - The paper reports ASR WER, not IPA/G2P accuracy. Its article is CC BY-SA 4.0, but no separate license or public download permission for the underlying audio corpus was established. Treat it as **rights-gated**, not as currently reusable gold/audio data.
 - If access and rights are secured, prioritize speaker-disjoint annotation of medial YA/RA/WA/HA, coda types, tone/register and nasalization. Keep web-news and recorded-conversation domains separate.
+
+## Text-only resource review and scope correction — 2026-11-13
+
+This continuation follows the explicit project direction to use **text sources only**. Audio recordings, speech corpora, audio annotation, speaker diarization and audio-derived gold labels are out of scope for this work. Earlier SLR80/UCSY-SC1 notes remain historical source metadata only; they are not next-step recommendations and no audio is to be acquired, processed or annotated.
+
+### myX Myanglish corpus — text-based romanization diagnostic only
+
+- Resource: https://huggingface.co/datasets/DatarrX/myX-myanmar-to-myanglish-corpus
+- Dataset viewer reports 2,121 rows and exposes Burmese Unicode (myanmar), informal Latin (myanglish) and official_standard columns. The README's schema description lists only myanmar and myanglish, so the third-column discrepancy must be resolved against the raw CSV before any ingestion.
+- The dataset card explicitly says Myanglish has no standardized orthography and that the current batch is predominantly curated in one native author's personal typing/phonetic style. This is not a representative community-wide romanization standard.
+- The target is romanized phonetic text, not IPA. It may be a useful diagnostic crosswalk for source-text-to-Latin variants and for identifying contextual/colloquial spellings, but it cannot validate the project's IPA layer or serve as independent pronunciation gold.
+- The card declares CC BY-SA 4.0. Record attribution and share-alike obligations; do not copy rows into project tests or generated assets until row-level review, schema reconciliation and license compatibility are completed.
+- Disposition: **PARTIAL / candidate only** for romanization research; **NOT GOLD** for IPA/G2P evaluation.
+
+### myX Myanmar Orthography Error Correction Corpus — orthographic text only
+
+- Resource: https://huggingface.co/datasets/DatarrX/myX-myanmar-orthography-corpus
+- Dataset viewer reports 4,800 rows. The documented parallel schema is noisy_sentence, correct_sentence, error_category, and target_words; the corpus is a work in progress and the card declares CC BY-SA 4.0.
+- Filenames containing phonetic and the Phonetic Confusion category refer to spelling/lexical confusion examples, not IPA transcription. The inspected phet_bet_phonetic.csv has only the four orthographic-correction columns and no phonetic/IPA target field.
+- The README says future releases may add medial contrasts such as ကျ vs ကြ; that is a roadmap statement, not evidence that the current release contains an adjudicated medial dataset.
+- Disposition: candidate for future text-normalization/orthographic regression tests after row-level quality review; not a phonological or IPA corpus. No rows imported.
+
+### A Corpus of Modern Burmese — text corpus, rights unresolved
+
+- Resource: https://zenodo.org/records/1202324; DOI 10.5281/zenodo.1202324.
+- Zenodo describes John Okell's corpus as compiled in the 1990s, converted to Unicode and distributed as an 8.8 MB allfiles.txt file. The Zenodo record's Rights/License field is blank.
+- European Language Grid catalogue record 940 lists CC BY 4.0. Because the repository record itself does not display a license, do not assume the catalogue metadata alone settles the underlying rights. Seek a direct rights statement from the depositor/curator or a corrected repository metadata record before copying or redistributing text.
+- Disposition: useful text-corpus lead for orthographic coverage and lexical context; **BLOCKED for project ingestion/redistribution pending rights reconciliation**; not an IPA corpus.
+
+### Text-only policy and corpus gate
+
+1. Only written dictionaries, lexical databases, published phonological descriptions, written examples, romanization tables, and text corpora may be newly researched or considered for ingestion.
+2. Keep source orthography, MLCTS, informal romanization, IPA and Ukrainian output in separate fields and contracts. A romanized text target is not automatically IPA.
+3. Every corpus candidate needs a visible schema, provenance, version/hash, declared license and scope statement. Single-author or non-standardized romanization must be labelled as such.
+4. No audio-derived acceptance criteria or annotation steps are part of the current plan. Existing audio references are historical exclusions, not blockers for this text-only continuation.
+5. Independent expert-adjudicated IPA gold remains **0**; empirical accuracy remains **null**. Textual lexical evidence can improve coverage, but it does not create an acoustic gold set.
+
