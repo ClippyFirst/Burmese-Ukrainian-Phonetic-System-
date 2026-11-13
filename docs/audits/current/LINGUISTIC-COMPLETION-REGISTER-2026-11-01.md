@@ -1832,3 +1832,11 @@ Final collision ledger: **6 unadjudicated / 8 secondary equivalence / 1 secondar
 | BURMESE-RIME-AM-COLON-LEXICAL-025 | PARTIAL — SECONDARY_ONE_SIDE_ONLY | Wiktionary `လမ်း` (`lam:`, `/láɴ/`) ends in `မ်း`; no MOW suffix-match candidate for `ံး` located. Claim `CLM-WIKTIONARY-AM-COLON-ONE-SIDE-EXAMPLE-001` registered; audit, crosswalk and tests updated. | Secondary one-side evidence only; not collision adjudication or primary MLC evidence. No IPA gold, runtime or Ukrainian output promotion. CI pending. |
 
 Current collision ledger: **5 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 8 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 150 claims**.
+
+## Exact-head verification — `am:` lexical continuation — 2026-11-14
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-RIME-AM-COLON-LEXICAL-025 | DONE_VERIFIED — DATA_AND_TEST_INTEGRITY | SHA `73bfbd7d82f69bfa0e306d984a40fe2324fc3515`; required CI runs **43519075644 SUCCESS** and **43519083741 SUCCESS**: 251 Python + 66 subtests, 20 Node, 58 Playwright; build, generated-data freshness and Chromium installation passed. | Confirms registry, crosswalk and test integrity only. IPA gold remains 0; accuracy null; secondary example is one-side-only and not primary MLC adjudication. One high-severity npm vulnerability remains. |
+
+Current collision ledger: **5 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 8 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 150 claims**.
