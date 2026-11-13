@@ -1272,3 +1272,11 @@ The browser romanization adapter explicitly requests Mya2Rom MLCTS, which the up
 
 No corpus rows or pronunciation labels were imported. No runtime G2P rule was enabled. Independent expert-adjudicated IPA gold remains 0; empirical accuracy remains null. This source review does not change release status: **PARTIAL PROTOTYPE**.
 
+### Historical medial-analysis reconciliation — 2026-11-13
+
+- Added STEDT Monograph 3 (1996), pp.61-66, to the source and claim registries. It preserves one Written Burmese analysis (Benedict 1976, with Matisoff's additional notes) and two distinct Rangoon profiles (Burling 1967; Roop 1972).
+- Written Burmese entry: /-w-/ is assigned to the rhyme; /-y-/ and /-r-/ to initial clusters. Rangoon entries list /-y-/ and /-w-/ with source-specific restrictions; Roop describes /r/ only in borrowings.
+- Added two source-specific evidence-matrix entries, two evidence-only phonological-rule records and regression checks. Both remain WITHHELD and do not map directly to U+103B/U+103C/U+103D or authorize runtime output.
+- Acceptance blocker: reconcile the underlying historical notation with modern Unicode spellings and the intended current Yangon profile using further written primary sources; retain the three source profiles separately.
+- STEDT volume copyright is All Rights Reserved; only factual claims and locators are registered, no tables or source data copied.
+
