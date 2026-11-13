@@ -23,7 +23,7 @@
 ### Myanmar Open Wordnet and SEAlang
 
 - Myanmar Open Wordnet is CC BY 4.0, but it is a small semantic lexicon (about 1,041 words), not a pronunciation/IPA corpus: https://wordnet.burmese.sg/
-- SHACHI metadata for the SEAlang Burmese Dictionary identifies the source as the 1993 Myanmar Language Commission dictionary republished by Dunwoody Press and says source material is copyrighted; it was used with permission. Do not scrape or redistribute its pronunciation data without verifying that permission extends to this project: https://shachi.org/resources/3949
+- SHACHI metadata for the SEAlang Burmese Dictionary identifies the source as the 1993 Myanmar Language Commission dictionary republished by Dunwoody Press and says source material is copyrighted; it was used with permission. The project owner confirms all required permissions for research use and project ingestion of textual resources. Preserve the public source metadata and do not treat the dictionary as IPA gold until its entry schema is inspected: https://shachi.org/resources/3949
 
 ### Mya2Rom
 
@@ -177,7 +177,7 @@ This continuation follows the explicit project direction to use **text sources o
 ### SEAlang Burmese dictionary and corpora — text-only candidates
 
 - Dictionary metadata: approximately 35,000 entries, spoken and literary styles, MLC 1986 orthography, examples/etymologies; based on the MLC 1993 Myanmar-English Dictionary (1996 Dunwoody reprint), used by SEAlang with permission.
-- Transcription ambiguity: SHACHI describes IPA search/display, while Mya2Rom documentation says MLCTS2 is used by the MLC dictionary and SEAlang. The SEAlang page could not be inspected because it timed out/returned gateway errors. Do not assume the entry transcription is IPA.
+- Interface-level IPA capability is confirmed by SHACHI metadata and the 2008 SEAlang project description: the Burmese dictionary accepts IPA queries and displays IPA transliterations. Mya2Rom separately identifies MLCTS2 as used by MLC Dictionary/SEAlang. These may describe different layers; the internal entry/export schema remains unresolved because the live page returned gateway errors. Do not assume the underlying stored field is IPA or MLCTS2 without an actual entry.
 - Rights: the project owner confirms all necessary permissions for research use and project ingestion. This is a project-specific authorization, distinct from the public metadata and underlying source copyright statements. No rows were extracted in this pass.
 - Burmese Text Corpus: monolingual Internet texts; metadata shows 612,692 collocates and 3,172,485 contexts served, not verified dataset row/token counts. Metadata carries a 2007 NICT/Matsubara Lab/Anchor copyright notice.
 - Burmese Bitext Corpus: translated words/phrases/sentences, aligned sentence-by-sentence where possible; 1,234,822 pairs served, not verified total size; source SAY Project Burmese resources (NMSU CRL); metadata carries the same 2007 copyright notice.
