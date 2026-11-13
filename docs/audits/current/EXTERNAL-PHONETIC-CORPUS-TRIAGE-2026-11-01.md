@@ -18,7 +18,7 @@
 
 - Resource: https://openslr.org/80/
 - Burmese recordings and manually quality-checked text transcripts are published under CC BY-SA 4.0.
-- This can support a future audio-backed adjudication set, but transcripts alone are not IPA. Expert phonetic transcription, speaker/dialect metadata, audio-level rights review and independent double annotation remain required. Share-alike obligations must be assessed before publishing derived labels.
+- Historical note only: transcripts are not IPA. The resource is excluded from active text-only scope; no recording access, audio review or audio-based annotation is planned. Share-alike obligations must be assessed before publishing derived labels.
 
 ### Myanmar Open Wordnet and SEAlang
 
@@ -33,12 +33,12 @@
 
 ## Benchmark implication
 
-There is no verified, openly reusable, independently adjudicated Burmese IPA gold corpus in the inspected sources. The candidate resources are complementary but not interchangeable: IPA dictionary (myG2P, non-commercial), MLCTS-heavy Wiktionary lexicon (very sparse IPA), audio/transcript corpus (OpenSLR, needs phonetic annotation), semantic WordNet, and rule-based transcription (Mya2Rom).
+There is no verified, openly reusable, independently adjudicated Burmese IPA gold corpus in the inspected written sources. The candidate resources are complementary but not interchangeable: myG2P (non-commercial IPA source), MLCTS-heavy Wiktionary lexicon (very sparse IPA), text corpora, semantic WordNet, and rule-based transcription (Mya2Rom). OpenSLR is historical metadata only and excluded from active work.
 
 ## Acceptance before use
 
 1. Confirm per-resource license, provenance, attribution and share-alike/non-commercial constraints.
-2. For OpenSLR, create a small dialect-labelled audio sample and commission two independent IPA transcriptions plus adjudication; record audio IDs and timestamp spans.
+2. OpenSLR is excluded from current scope. Build any future gold only from source-located written IPA/dictionary examples and independent expert review.
 3. For Wiktionary, import only source-located entries, preserve MLCTS and IPA as separate typed fields, and do not treat missing IPA as inferable.
 4. Keep myG2P blocked for commercial use absent written permission.
 5. Require independent expert review of tone, register, phonation, syllable boundaries, medials and codas before scoring.
@@ -107,17 +107,17 @@ These are documentary facts from different sources, not a legal resolution. The 
 
 **Acceptance before any wider use:** retain the pinned commit and exact file SHA-256; confirm whether project testing/research purposes fit the non-commercial grant; document attribution/share-alike obligations; audit all five columns and IPA conventions; map a stratified subset to primary locators and dialect profile; obtain independent specialist double annotation and adjudication. Do not use the corpus in a commercial or unrestricted redistribution path without separate permission.
 
-### OpenSLR SLR80 — Burmese speech audio and orthographic transcripts
+### OpenSLR SLR80 — historical metadata only; excluded from active text-only scope
 
 - Provider record: https://www.openslr.org/80/
 - The provider lists **CC BY-SA 4.0** and describes manually quality-checked volunteer recordings of Burmese sentences with anonymized file IDs and orthographic transcripts; it cautions that errors may remain.
 - The currently visible female subset lists `line_index_female.tsv` (541 KB) and `my_mm_female.zip` (948 MB). The listing does not establish a full dialect/age profile for these files and supplies no IPA labels.
-- This is a possible audio source for a carefully scoped human annotation pilot, not a pronunciation dictionary or gold set. The text is sentence-level and the visible subset is female-only; do not infer that it covers all Burmese speakers or all Yangon/standard varieties.
+- Historical audit record only. This resource is not a pronunciation dictionary or gold set and is excluded from active text-only work; no recordings are accessed or used.
 - CC BY-SA 4.0 attribution and share-alike conditions apply to the licensed dataset; assess publication of derived annotations before sharing. Preserve provider file IDs and timestamps; do not attempt to identify speakers or mirror files beyond the provider's terms.
 
 ### Evidence decision
 
-The new records `MYG2P2026` and `OPENSLR80` are now registered in `data/burmese/sources.csv`; documentary claims are separately registered in `data/burmese/source_claims.csv`. No third-party dictionary or audio was copied. The only approved use status remains the previously documented test-only diagnostic use; this source audit does not grant any new production, redistribution or commercial permission.
+The records MYG2P2026 and OPENSLR80 remain registered for provenance. OPENSLR80 is historical metadata only and excluded from active scope. No third-party dictionary or corpus rows were copied; no new production or redistribution permission is inferred.
 
 Independent expert-adjudicated Burmese IPA gold remains **0**; empirical accuracy remains **null**.
 
@@ -127,14 +127,14 @@ Independent expert-adjudicated Burmese IPA gold remains **0**; empirical accurac
 - Google Thrax grammar at pinned commit a90601024f07ab7e96c911243324e0adeb16da96 is Apache-2.0; its output for မြန် is m j àɴ, but the structural probe has no gold.
 - Epitran 1.35.3 returns məjaɴ for the same probe; zero gold and null accuracy. The disagreement is useful for prioritizing expert annotation, not for selecting a winner.
 - CRFsuite v2 returns 84/100 source-concordant outputs on a 100-row sample of myG2P v2.0, with overlapping medial subsets YA 10/14, RA 17/20, WA 13/15, HA 7/8. The sample has no gold and the target မြန် is absent; possible train/test overlap remains.
-- The only directly reusable public audio corpus reviewed here is SLR80 (CC BY-SA 4.0), with orthographic transcripts but no IPA labels. myG2P remains CC BY-NC-SA 4.0 and is not commercially cleared. No candidate is an independent gold corpus.
+- SLR80 was previously reviewed but is excluded from active scope. myG2P remains CC BY-NC-SA 4.0 and is not commercially cleared. No candidate is an independent gold corpus.
 
 
-### UCSY-SC1 (Mon, Pa Pa & Thu 2019): rights-gated audio lead
+### UCSY-SC1 (Mon, Pa Pa & Thu 2019): historical metadata only; excluded from active scope
 
 - The paper describes 42 h 39 min of 16 kHz mono speech from 307 speakers: 25 h 20 min web news and 17 h 19 min recorded conversation; 31,114 utterances and 11,696 unique words are reported.
 - It states 33 basic consonants, 12 vowels and four medials, and describes nasalized vowels. This is useful as a published inventory and acoustic-corpus lead.
-- The paper reports ASR WER, not IPA/G2P accuracy. Its article is CC BY-SA 4.0, but no separate license or public download permission for the underlying audio corpus was established. Treat it as **rights-gated**, not as currently reusable gold/audio data.
+- Historical rights metadata only. UCSY-SC1 is excluded from active text-only scope; no corpus access, audio review or derived labels are planned.
 - If access and rights are secured, prioritize speaker-disjoint annotation of medial YA/RA/WA/HA, coda types, tone/register and nasalization. Keep web-news and recorded-conversation domains separate.
 
 ## Text-only resource review and scope correction — 2026-11-13
