@@ -1916,3 +1916,11 @@ Code/test head **508816dcddf22272e98647625b657bc79712817e** completed required C
 - This creates an earlier and potentially valuable primary lexicon access route. The original five volumes and their pronunciation key have not been inspected. It is not yet known whether their pronunciation notation is MLCTS, MLCTS2, or another convention.
 - Registry totals: **72 nonblank sources / 125 claims**. Regression tests now guard both bibliographic sources and their evidence limits.
 - Latest test-bearing commit **161e36c5deadb6da6fd008fb44fdf9eef9c454a8** awaits exact-head CI.
+
+## Complete Mya2Rom vendor-system inventory — 2026-11-13
+
+- Added `data/burmese/romanization_rimes_vendor_systems.csv`, a 94-row companion inventory that records the exact vendor IPA, MLCTS, modified MLCTS/MLCTS2, Simple and Simple2 values for every non-empty rime key. It is separate from the Ukrainian candidate inventory and does not change runtime behaviour.
+- All 94 source keys are present in the vendored Mya2Rom table. The only key whose array has four values rather than five is `ေါင်း`: its Simple2 value is not provided by the upstream array. This missing value is recorded as missing, not guessed.
+- Added regression coverage that parses the vendored JS array and compares all 94 rows/columns, while preserving the evidence boundary that these are vendor mappings, not a primary MLC table or independent IPA gold.
+- Registry remains **72 nonblank sources / 125 claims**; no new source claim was needed because this artifact is a deterministic extraction of already registered Mya2Rom v0.4.4.
+- Exact-head CI for this latest added full crosswalk test is pending.
