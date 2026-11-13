@@ -2190,3 +2190,10 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - Added claims `CLM-WIKTIONARY-UM-COLON-ONE-SIDE-EXAMPLE-001` and `CLM-WIKTIONARY-UN-ONE-SIDE-EXAMPLE-001`; updated audit/crosswalk parity and regression tests.
 - Current collision distribution: **9 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 4 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 146 claims**.
 - One-sided secondary evidence only; no collision adjudication, IPA gold, runtime or Ukrainian output promotion. Exact-head CI pending.
+
+## One-sided lexical examples for `au:`, `im` and `im.` — 2026-11-13
+
+- Added MOW-listed `ကျော` (`kyau:`, `/t͡ɕɔ́/`) for the ော side of `au:`; `အိမ်` (`im`, `/ʔèɪɴ/`) for ိမ် in `im`; and `စိမ့်` (`cim.`, `/sḛɪɴ/`) for ိမ့် in `im.`. Opposite sides remain unobserved.
+- Added three documentary claims and updated lexical audit, MLCTS2 status parity and regression tests.
+- Current collision distribution: **6 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 7 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 149 claims**.
+- One-sided secondary evidence only; no collision adjudication, IPA gold, runtime or Ukrainian output promotion. Exact-head CI pending.
