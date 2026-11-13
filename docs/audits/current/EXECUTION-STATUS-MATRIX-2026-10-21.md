@@ -266,7 +266,7 @@ No accuracy score or engine winner is available. Promotion requires independent 
 |---|---|---|---|
 | MYA-GORUUT-RUNTIME-001 | PARTIAL | PR #82 exact head `d8b065bc66dce5fdd9959c4f0eb932a29acaedba`; [runtime workflow 41310771082](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41310771082); artifact ZIP SHA-256 `0eb19d7079de818736ecff095f700405fc4b46de3791dd6e4fd68762346218fa` | Pinned Go build succeeds; 7/8 usable Goruut outputs, 6 stable and 1 unstable; punctuation probe has no output. Epitran 1.35.3 returns 6/6; raw exact match 0/6. Accuracy remains null, independent gold=0. |
 | MYA-GORUUT-ASSET-WARNING-001 | BLOCKED | Runtime server log in artifact; `weights9.bin.zlib` missing while pinned tree has `weights8.bin.zlib` | Diagnose upstream loader/asset path and determine whether it affects output; no causal claim yet. |
-| MYA-PHONETIC-GOLD-001 | TODO | Current source triage audit | Create independently double-annotated, adjudicated audio-backed IPA gold with dialect/speaker metadata; no engine scoring until then. |
+| MYA-PHONETIC-GOLD-001 | BLOCKED / TEXT-ONLY EXPERT REVIEW | Current source and phonology audits | Create independently reviewed IPA examples from written dictionaries, lexical entries and published phonological descriptions, with source locators and a versioned broad/narrow convention. |
 
 The exact-head results supersede earlier one-shot claims of full stability: `ကြည်` varied between `tɕì` and `tɕɪ̀ɴ` across repeated requests. No external engine is selected as production provider.
 
@@ -332,7 +332,7 @@ This current-head reconciliation supersedes older status cells above where they 
 
 | Workstream | Current status | Acceptance / blocker |
 |---|---|---|
-| Independent lexical IPA gold | BLOCKED | `data/benchmark/gold.tsv` is header-only; independent gold=0 and accuracy=null. Requires licensed audio/source, dialect/speaker metadata, two independent IPA annotators and adjudication. |
+| Independent lexical IPA gold | BLOCKED | data/benchmark/gold.tsv is header-only; independent gold=0 and accuracy=null. Requires source-located written IPA/phonological evidence, a defined target variety, two independent text-based reviewers and adjudication. No audio. |
 | Consonant, kinzi and medial phonology | PARTIAL | Structural parsing exists; source-backed contextual phonological coverage and a differential corpus remain incomplete. |
 | Vowel combinations and coda realization | PARTIAL | Full vowel derivation, checked-syllable and contextual coda realization are not implemented. |
 | Tone/register/phonation | TODO | Specialist adjudication of competing analyses and scoped implementation are required; do not infer or collapse them. |
@@ -562,7 +562,7 @@ The previous handoff statement that no word-level pronunciation lead was found f
 |---|---|---|
 | Eleven MLC medial forms | DONE_VERIFIED as orthographic inventory | Hlaing (2014) Table 5 lists four basic signs plus seven codepoint combinations; WG2 N2827 independently states eleven total. The thesis has a duplicated description typo on the final RA+WA+HA row; codepoints are authoritative. |
 | YA/RA and glide onset | PARTIAL / ANALYSIS_DEPENDENT | Green (2002) gives /mj/ onset examples; Ishida 2026 and pinned Google Thrax describe /j/ behavior with onset-specific exceptions. No complete expert-adjudicated grapheme × onset matrix. |
-| Nasal coda in မြန် | PARTIAL / CROSS-SOURCE CANDIDATE | Wiktionary /mjàɴ/, Google WFST raw output m j àɴ, and Green's /mj/ plus placeless /N/ model converge. Still no independent Yangon audio/adjudication; Green treats /N/ as vowel nasalization, not necessarily [ɴ]. |
+| Nasal coda in မြန် | PARTIAL / CROSS-SOURCE CANDIDATE | Wiktionary /mjàɴ/, Google WFST raw output m j àɴ, and Green's /mj/ plus placeless /N/ model converge. Still no independent text-based expert adjudication; Green treats /N/ as vowel nasalization, not necessarily [ɴ]. |
 | Google Thrax source/license | DONE_VERIFIED | Pinned grammar and repository LICENSE both Apache-2.0 at a90601024f07ab7e96c911243324e0adeb16da96. Run 43084508359 build/raw-output smoke succeeded, zero gold; optional comparator only. |
 | Hlaing orthographic FST | DONE_VERIFIED as published structural baseline | 11,732 words / 32,283 syllables; initial 99.93% word-level syllabification; not G2P or IPA accuracy. |
 | Burmese tone inventory | PARTIAL / COMPETING ANALYSES | Green and LREC 2020 describe four categories; Duan & Zhu (2025) propose eight tones across modal/lower registers; full empirical tables not independently reviewed here. |
@@ -603,7 +603,7 @@ Detailed evidence: docs/research/BURMESE-MEDIALS-AND-G2P-EVIDENCE-REVIEW-2026-11
 
 ### UCSY-SC1 corpus lead — 2026-11-13
 
-UCSY-SC1 is a 42 h 39 min, 307-speaker ASR corpus with news and recorded conversation; it reports four medials and nasalized vowels. The publisher author-details page lists CC BY-SA 4.0, but the PDF footer says “All rights reserved”; article-level rights and the separate corpus audio license both need confirmation. Classify as BLOCKED / RIGHTS-GATED until access and explicit data-use permission are obtained.
+UCSY-SC1 is historical corpus metadata only and excluded from current text-only scope; rights details do not create an active task or blocker.
 
 
 ## Final one-pass verification — 2026-11-13
@@ -887,7 +887,7 @@ No accuracy score or engine winner is available. Promotion requires independent 
 |---|---|---|---|
 | MYA-GORUUT-RUNTIME-001 | PARTIAL | PR #82 exact head `d8b065bc66dce5fdd9959c4f0eb932a29acaedba`; [runtime workflow 41310771082](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41310771082); artifact ZIP SHA-256 `0eb19d7079de818736ecff095f700405fc4b46de3791dd6e4fd68762346218fa` | Pinned Go build succeeds; 7/8 usable Goruut outputs, 6 stable and 1 unstable; punctuation probe has no output. Epitran 1.35.3 returns 6/6; raw exact match 0/6. Accuracy remains null, independent gold=0. |
 | MYA-GORUUT-ASSET-WARNING-001 | BLOCKED | Runtime server log in artifact; `weights9.bin.zlib` missing while pinned tree has `weights8.bin.zlib` | Diagnose upstream loader/asset path and determine whether it affects output; no causal claim yet. |
-| MYA-PHONETIC-GOLD-001 | TODO | Current source triage audit | Create independently double-annotated, adjudicated audio-backed IPA gold with dialect/speaker metadata; no engine scoring until then. |
+| MYA-PHONETIC-GOLD-001 | BLOCKED / TEXT-ONLY EXPERT REVIEW | Current source and phonology audits | Create independently reviewed IPA examples from written dictionaries, lexical entries and published phonological descriptions, with source locators and a versioned broad/narrow convention. |
 
 The exact-head results supersede earlier one-shot claims of full stability: `ကြည်` varied between `tɕì` and `tɕɪ̀ɴ` across repeated requests. No external engine is selected as production provider.
 
@@ -953,7 +953,7 @@ This current-head reconciliation supersedes older status cells above where they 
 
 | Workstream | Current status | Acceptance / blocker |
 |---|---|---|
-| Independent lexical IPA gold | BLOCKED | `data/benchmark/gold.tsv` is header-only; independent gold=0 and accuracy=null. Requires licensed audio/source, dialect/speaker metadata, two independent IPA annotators and adjudication. |
+| Independent lexical IPA gold | BLOCKED | data/benchmark/gold.tsv is header-only; independent gold=0 and accuracy=null. Requires source-located written IPA/phonological evidence, a defined target variety, two independent text-based reviewers and adjudication. No audio. |
 | Consonant, kinzi and medial phonology | PARTIAL | Structural parsing exists; source-backed contextual phonological coverage and a differential corpus remain incomplete. |
 | Vowel combinations and coda realization | PARTIAL | Full vowel derivation, checked-syllable and contextual coda realization are not implemented. |
 | Tone/register/phonation | TODO | Specialist adjudication of competing analyses and scoped implementation are required; do not infer or collapse them. |
@@ -1183,7 +1183,7 @@ The previous handoff statement that no word-level pronunciation lead was found f
 |---|---|---|
 | Eleven MLC medial forms | DONE_VERIFIED as orthographic inventory | Hlaing (2014) Table 5 lists four basic signs plus seven codepoint combinations; WG2 N2827 independently states eleven total. The thesis has a duplicated description typo on the final RA+WA+HA row; codepoints are authoritative. |
 | YA/RA and glide onset | PARTIAL / ANALYSIS_DEPENDENT | Green (2002) gives /mj/ onset examples; Ishida 2026 and pinned Google Thrax describe /j/ behavior with onset-specific exceptions. No complete expert-adjudicated grapheme × onset matrix. |
-| Nasal coda in မြန် | PARTIAL / CROSS-SOURCE CANDIDATE | Wiktionary /mjàɴ/, Google WFST raw output m j àɴ, and Green's /mj/ plus placeless /N/ model converge. Still no independent Yangon audio/adjudication; Green treats /N/ as vowel nasalization, not necessarily [ɴ]. |
+| Nasal coda in မြန် | PARTIAL / CROSS-SOURCE CANDIDATE | Wiktionary /mjàɴ/, Google WFST raw output m j àɴ, and Green's /mj/ plus placeless /N/ model converge. Still no independent text-based expert adjudication; Green treats /N/ as vowel nasalization, not necessarily [ɴ]. |
 | Google Thrax source/license | DONE_VERIFIED | Pinned grammar and repository LICENSE both Apache-2.0 at a90601024f07ab7e96c911243324e0adeb16da96. Run 43084508359 build/raw-output smoke succeeded, zero gold; optional comparator only. |
 | Hlaing orthographic FST | DONE_VERIFIED as published structural baseline | 11,732 words / 32,283 syllables; initial 99.93% word-level syllabification; not G2P or IPA accuracy. |
 | Burmese tone inventory | PARTIAL / COMPETING ANALYSES | Green and LREC 2020 describe four categories; Duan & Zhu (2025) propose eight tones across modal/lower registers; full empirical tables not independently reviewed here. |
@@ -1224,7 +1224,7 @@ Detailed evidence: docs/research/BURMESE-MEDIALS-AND-G2P-EVIDENCE-REVIEW-2026-11
 
 ### UCSY-SC1 corpus lead — 2026-11-13
 
-UCSY-SC1 is a 42 h 39 min, 307-speaker ASR corpus with news and recorded conversation; it reports four medials and nasalized vowels. The publisher author-details page lists CC BY-SA 4.0, but the PDF footer says “All rights reserved”; article-level rights and the separate corpus audio license both need confirmation. Classify as BLOCKED / RIGHTS-GATED until access and explicit data-use permission are obtained.
+UCSY-SC1 is historical corpus metadata only and excluded from current text-only scope; rights details do not create an active task or blocker.
 
 
 ## Final one-pass verification — 2026-11-13
@@ -1258,7 +1258,7 @@ The browser romanization adapter explicitly requests Mya2Rom MLCTS, which the up
 - Structural coda parsing is verified: မြန် is one syllable; မြန်မာ is two; ကတ် retains final consonant + ASAT. Browser/Python tests pass.
 - No runtime medial IPA rule was enabled. Independent expert-adjudicated IPA gold for the medial/coda cells remains 0; empirical accuracy remains null.
 - PR #129 remains open/draft and untouched as a code branch (53 commits ahead / 17 behind current main, non-mergeable); its source-backed research findings were reconciled here, but its broad hybrid-engine code was not ported.
-- UCSY-SC1 is a rights-gated audio lead: publisher page lists CC BY-SA 4.0, PDF footer says “All rights reserved”, and the corpus audio has no separately verified license.
+- UCSY-SC1 remains historical metadata only; it is excluded from active text-only research.
 - Release assessment: PARTIAL PROTOTYPE, not linguistically release-ready. The research dossier is ready for specialist review and data-rights resolution.
 
 ### Text-only source research continuation — 2026-11-13
