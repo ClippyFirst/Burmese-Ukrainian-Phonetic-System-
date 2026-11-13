@@ -1817,12 +1817,12 @@ The first CI attempt after registering the MOW orthographic coverage claim (work
 
 - Added a separate NDL catalogue source for *မြန်မာစာလုံးပေါင်းသတ်ပုံကျမ်း*, a Burmese-language MLC orthography/spelling reference published in 1978. Allott's inspected 1985 chapter separately reports a spelling book published in 1978 and a five-part Concise Burmese Dictionary issued from late 1978 to 1980 (ANU PDF lines 10082–10113).
 - This raises a bibliographic hypothesis that the spelling book and Concise Dictionary are distinct publications. Exact title identity and relationship remain to be checked against title pages; catalogue metadata alone does not prove the contents or any pronunciation notation.
-- Registry updated: 82 sources / 132 claims. Added a regression test protecting the distinction and evidence boundary. No runtime, MLCTS, IPA or Ukrainian mapping changed. Exact-head CI pending.
+- Registry updated: 80 sources / 132 claims (historical checkpoint; source count corrected after blank-row cleanup). Added a regression test protecting the distinction and evidence boundary. No runtime, MLCTS, IPA or Ukrainian mapping changed. Exact-head CI pending.
 
 ## MLC spelling-book retrieval routes — 2026-11-13
 
 - CiNii Books record BA69415754 gives a fuller physical description (28, 379 pages, 17 cm) and lists three Japanese library holdings, including Osaka University and Tokyo University of Foreign Studies. Google Books record _V1LAAAAMAAJ identifies a University of Michigan original and a digitized 379-page scan from 2007, but the surfaced access is snippet-view metadata, not a verified full-text download.
-- Added a separate catalogue/digitization source and regression test. Registry totals: 83 sources / 133 claims. The primary book remains uninspected; request a copy or inspect accessible pages before making any pronunciation/MLCTS claim.
+- Added a separate catalogue/digitization source and regression test. Registry totals: 80 sources / 133 claims (verified nonblank, unique source IDs). The primary book remains uninspected; request a copy or inspect accessible pages before making any pronunciation/MLCTS claim.
 
 ## Crosswalk consistency validation — 2026-11-13
 
@@ -1841,3 +1841,7 @@ The first CI attempt after registering the MOW orthographic coverage claim (work
 - Existing MOW generated data exposes 6 lemmas ending in ဉ် and 13 ending in ည် for `any`; 1 ending in ဉ်း and 6 in ည်း for `any:`; 0 ending in ဉ့် and 5 in ည့် for `any.`; and 0 ending in ို် versus 15 in ို for `ui`.
 - Candidate strings include `ဥယျာဉ်`, `တိရစ္ဆာန်ဥယျာဉ်`, `ယာဉ်`, `ပြည်`, `မြန်မာပြည်`, `လက်ဖက်ရည်`, `အကျဉ်း`, `ချို`, `ငို`, `ဆို`, `တို`, and `မှို`.
 - This turns the prior collision triage into concrete textual lookup keys. The evidence remains exact orthographic suffix matching only; no syllabification, pronunciation or homophony conclusion. No source/runtime status promoted.
+
+## Source registry row-count correction — 2026-11-13
+
+Append a correction note: `sources.csv` had four blank separator lines; earlier row counting overstated the source count. Removed blank lines and added `test_source_registry_has_no_blank_rows_or_duplicate_source_ids`. Current validated registry: 80 unique nonblank sources / 133 claims.
