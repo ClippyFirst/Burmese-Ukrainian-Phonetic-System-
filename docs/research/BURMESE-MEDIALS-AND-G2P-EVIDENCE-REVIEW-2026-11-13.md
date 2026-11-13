@@ -451,3 +451,10 @@ Okell identifies WB and SB as distinct reference systems. His dialect texts are 
 - Added regression tests ensuring these regional profiles are not projected onto Standard Burmese/Yangon.
 
 This source strengthens the case for distinct source-profile handling. It does not supply a direct modern Yangon Unicode-to-IPA mapping.
+
+
+## 18. Okell (1969): authoritative colloquial Burmese grammar target
+
+John Okell's *A Reference Grammar of Colloquial Burmese* (two volumes, 498 pp., Oxford University Press, 1969) is now registered as a primary text-source target. Its bibliographic identity is confirmed by Glottolog and library catalogues. Nishi (1998) explicitly cites Okell 1969, §§17-20, for the two voicing-sandhi patterns; Okell (1995) identifies it as the reference description of Spoken Burmese.
+
+The full grammar was not retrieved in this execution, so no phonological claims are attributed directly to it. The project owner confirms research-use permission; the remaining gate is obtaining the text bytes and inspecting the exact sections/page locators. This is a high-priority source for checking the modern colloquial/Standard Burmese baseline before any contextual rule is considered for runtime.
