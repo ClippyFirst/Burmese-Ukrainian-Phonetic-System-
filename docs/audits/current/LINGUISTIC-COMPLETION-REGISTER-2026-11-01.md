@@ -1768,3 +1768,11 @@ Lexical audit distribution now: **17 unadjudicated / 3 secondary equivalence / 1
 | BURMESE-RIME-LEXICAL-AUDIT-VERIFICATION-025 | DONE_VERIFIED — DATA_AND_TEST_INTEGRITY | Code/data snapshot `eb81bd29e9417ddbd6d541d54fce6d754b0bb8bd`; required CI **43513203135 SUCCESS** (duplicate **43513212043 SUCCESS**): 251 Python + 66 subtests, 20 Node, 58 Playwright; production build, generated-data freshness and Chromium install passed. Optional raw-output diagnostic **43513212088 SUCCESS**. | Verifies registry/crosswalk parity and application test suite only. IPA gold remains 0; accuracy null; secondary lexical entries are not primary MLC adjudication. One high-severity npm vulnerability remains. |
 
 Current collision ledger: **17 unadjudicated / 3 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 138 claims**.
+
+## Additional `aung:` lexical examples — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-WIKTIONARY-AUNG-COLON-LEXICAL-025 | PARTIAL — SECONDARY_WORD_LEVEL_EXAMPLES | Added MOW-listed `ပေါင်း` (`paung:`, `/páʊɴ/`) and `ကျောင်း` (`kyaung:`, `/t͡ɕáʊɴ/`) for ေါင်း and ောင်း. Same secondary IPA rime sequence `/áʊɴ/`, different onsets. Added claim `CLM-WIKTIONARY-AUNG-COLON-WORD-LEVEL-EXAMPLES-001`; updated audit/crosswalk parity and tests. Registry: 80 sources / 139 claims. | Secondary equivalence only; not a controlled minimal pair or primary MLC specification. No IPA gold, runtime or Ukrainian mapping promotion. CI pending. |
+
+Current collision ledger: **16 unadjudicated / 4 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 139 claims**.
