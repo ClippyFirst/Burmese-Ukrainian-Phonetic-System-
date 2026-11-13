@@ -217,7 +217,7 @@ def test_mlcts2_crosswalk_is_exactly_derived_from_vendored_column_three():
             "SECONDARY_SOURCE_CONFLICT",
             "SPECIAL_NONRIME_CONTEXT_DEPENDENT",
         }
-        assert "not a primary MLC dictionary entry" in row["interpretation_boundary"].lower()
+        assert "not a primary mlc dictionary entry" in row["interpretation_boundary"].lower()
         if expected_relation == "DISTINCT_MLCTS2_OUTPUT":
             distinct_groups.add(row["mlcts"])
 
