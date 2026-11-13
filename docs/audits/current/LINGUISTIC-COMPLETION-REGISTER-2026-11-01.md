@@ -1792,3 +1792,11 @@ Current collision ledger: **15 unadjudicated / 5 secondary equivalence / 1 secon
 | BURMESE-WIKTIONARY-A-AU-LEXICAL-027 | PARTIAL — SECONDARY_WORD_LEVEL_EXAMPLES | Added six MOW-listed Wiktionary lemmas across `a`, `a:` and `au`: `အဝါ`/`အစာ`, `ခါး`/`ကား`, `ပေါ်`/`ကြော်`. Within each pair the onsets differ but the secondary IPA rime matches. Added three documentary claims; updated audit, MLCTS2 parity and regression tests. Registry: 80 sources / 143 claims. | Secondary equivalence only; not controlled minimal pairs or primary MLC adjudication. No IPA gold, runtime or Ukrainian mapping promotion. |
 
 Current collision ledger: **12 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 143 claims**.
+
+## One-sided `aung.` lexical example — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-WIKTIONARY-AUNG-DOT-LEXICAL-028 | PARTIAL — SECONDARY_ONE_SIDE_ONLY | Added MOW-listed `စောင့်` (`caung.`, `/sa̰ʊɴ/`) for ောင့်. ေါင့် remains unobserved. Added claim `CLM-WIKTIONARY-AUNG-DOT-ONE-SIDE-EXAMPLE-001`; updated audit/crosswalk parity and regression tests. Registry: 80 sources / 144 claims. | Secondary evidence for one side only; not collision adjudication or primary MLC specification. No IPA gold, runtime or Ukrainian mapping promotion. |
+
+Current collision ledger: **11 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 2 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 144 claims**.
