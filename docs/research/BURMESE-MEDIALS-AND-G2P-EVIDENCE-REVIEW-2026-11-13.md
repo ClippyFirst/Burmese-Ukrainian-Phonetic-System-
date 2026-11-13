@@ -625,3 +625,21 @@ The existing MOW v0.1.3 orthographic suffix tables provide concrete lookup keys 
 | `ui` | ို | 15 | `ချို`, `ငို`, `ဆို`, `တို`, `မှို`, `အို` |
 
 All values are copied from the repository's generated MOW suffix-match output. This is an orthographic candidate list for subsequent text lookup. Some words may contain the suffix as part of a larger orthographic structure; no syllable segmentation, rime identity, tone or pronunciation is implied. The group-level `any` conflict remains unresolved; `ui` remains only partly covered in R12A. No IPA or runtime rule is promoted.
+
+## 27. Wiktionary word-level examples refine the `any`, `any:` and `ui` collision audit
+
+The MOW orthographic candidates were looked up in existing Wiktionary text entries. These pages expose both MLCTS and IPA fields, allowing a limited secondary-source comparison:
+
+| MOW candidate | Myanmar source unit | Wiktionary MLCTS | Wiktionary IPA | Evidence interpretation |
+|---|---|---|---|---|
+| ဥယျာဉ် | ဉ် | `u.yyany` | `/ʔṵjɪ̀ɴ/`, `/ʔújɪ̀ɴ/` | First side of `any` |
+| ပြည် | ည် | `prany` | `/pjì/` | Second side of `any`; differs from first example |
+| အကျဉ်း | ဉ်း | `a.kyany:` | `/ʔət͡ɕɪ́ɴ/` | First side of `any:` |
+| နည်း | ည်း | `nany:` | `/nɛ́/`, `/ní/` | Second side of `any:`; distinct senses have distinct listed pronunciations |
+| ချို | ို | `hkyui` | `/d͡ʑò/` | `ui` second side only |
+| ဆို | ို | `hcui` | `/sʰò/` | `ui` second side only |
+| တို | ို | `tui` | `/tò/` | `ui` second side only |
+
+The `any` examples show why a shared MLCTS rime string must not be interpreted as proof of homophony. The `any:` examples supply word-level secondary evidence for distinct source-unit outcomes; the `နည်း` page also lists two pronunciations for different senses under the same spelling/MLCTS form. For `ui`, only `ို` has MOW-listed examples; `ို်` remains unattested in this small wordnet, so no paired comparison is possible.
+
+The entries are secondary and may reflect the conventions of Wiktionary contributors; they do not adjudicate the original MLC specification. MOW matching remains exact Unicode suffix matching, not syllabification. No phonological rule, IPA gold item, or Ukrainian output has been promoted.
