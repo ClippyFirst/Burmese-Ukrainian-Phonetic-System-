@@ -1826,3 +1826,15 @@ Added claims: CLM-MYA2ROM-RIME-EXACT-MATCH-001, CLM-MYA2ROM-MLCTS-COLLISIONS-001
 - Updated regression assertions, source/claim registries, handoff, execution matrix and completion register. Registry totals now 63 sources / 115 claims. The 94-key inventory, 25 collision groups and all Ukrainian candidates are unchanged; no runtime rule changed; no audio used.
 - Primary MLC table and actual SEAlang dictionary entries remain BLOCKED pending direct access. The live SEAlang page timed out; Firecrawl retrieval was unavailable due to exhausted connected-service credits.
 
+
+## Exact-head verification after lexical collision audit — 2026-11-13
+
+- **Code/data snapshot:** 46b7da6afd7ecc94e4dcac87c7f759132c74bc6b.
+- **Required CI:** workflow run 43491799213 SUCCESS. Exact-head results: Python 229 passed + 66 subtests; Node 20 passed, 0 failed; Playwright 58 passed. Production build, generated web-data freshness, npm install and Chromium installation passed. IPA gold validator reports NOT_READY_NO_ADJUDICATED_GOLD; the repository still has 0 independently adjudicated IPA gold records.
+- **Optional diagnostics:** run 43491799196 SUCCESS for raw-output and CRF baseline jobs. These are diagnostic outputs only; no accuracy is established.
+- **Dependency note:** npm install reports 1 high-severity vulnerability. No force-upgrade or dependency-wide remediation was applied.
+- **Registry totals:** 63 sources, 115 claims; 94 vendor rime keys, 25 collision groups, 25 lexical audit rows. Audit status counts: 21 unadjudicated, 2 secondary-equivalence, 1 secondary-source conflict, 1 special non-rime. All 94 Ukrainian candidates remain PROPOSED / EVIDENCE_LIMITED.
+- **Evidence result:** am and um have secondary-source agreement; any has an unresolved secondary-source conflict. No group has primary MLC confirmation. The actual MLC table and SEAlang dictionary entries remain the next evidence gate.
+- **Branch and PR:** PR #147 remains OPEN / DRAFT / mergeable and unmerged. Branch is 287 commits ahead, 0 behind main; PR #129 remains open and untouched; merged PR #146 is preserved. Main was not changed.
+- **Release assessment:** PARTIAL PROTOTYPE, not linguistically release-ready. No audio accessed, no runtime phonological rule changed, no Ukrainian candidate promoted, no release/deployment published.
+
