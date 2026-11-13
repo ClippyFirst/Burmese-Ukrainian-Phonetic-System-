@@ -229,6 +229,8 @@ def test_mlcts2_crosswalk_is_exactly_derived_from_vendored_column_three():
             "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE",
             "SECONDARY_SYSTEM_EQUIVALENCE",
             "SECONDARY_SOURCE_CONFLICT",
+            "SECONDARY_SOURCE_DISTINCTION",
+            "SECONDARY_ONE_SIDE_ONLY",
             "SPECIAL_NONRIME_CONTEXT_DEPENDENT",
         }
         assert "not a primary mlc dictionary entry" in row["interpretation_boundary"].lower()
