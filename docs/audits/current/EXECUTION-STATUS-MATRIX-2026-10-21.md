@@ -1260,3 +1260,15 @@ The browser romanization adapter explicitly requests Mya2Rom MLCTS, which the up
 - PR #129 remains open/draft and untouched as a code branch (53 commits ahead / 17 behind current main, non-mergeable); its source-backed research findings were reconciled here, but its broad hybrid-engine code was not ported.
 - UCSY-SC1 is a rights-gated audio lead: publisher page lists CC BY-SA 4.0, PDF footer says “All rights reserved”, and the corpus audio has no separately verified license.
 - Release assessment: PARTIAL PROTOTYPE, not linguistically release-ready. The research dossier is ready for specialist review and data-rights resolution.
+
+### Text-only source research continuation — 2026-11-13
+
+| Task | Status | Evidence / acceptance boundary |
+|---|---|---|
+| Register Myanglish text candidate | PARTIAL | MYX_MYANGLISH_2026 and CLM-MYX-MYANGLISH-001 registered. 2,121 text pairs; informal non-standard romanization, predominantly one author's style; viewer/README field-count discrepancy (3 vs 2); CC BY-SA 4.0 declared. Do not use as IPA gold. Acceptance: inspect pinned raw CSV, reconcile all columns, sample and manually adjudicate text-only correspondences, document attribution/share-alike compatibility. |
+| Register orthographic correction corpus | PARTIAL | MYX_ORTHO_2026 and CLM-MYX-ORTHO-001 registered. 4,800 rows; orthographic noisy-to-clean data; "phonetic" refers to confusion class, not IPA. Acceptance: inspect row quality and identify any actual medial examples before considering regression fixtures. |
+| Assess John Okell text corpus | BLOCKED | OKELL_TEXT_2018 registered. Zenodo has 8.8 MB text file and blank Rights/License field; ELG catalogue lists CC BY 4.0. Acceptance: obtain direct rights clarification or corrected Zenodo/DataCite metadata before copying or redistributing. |
+| Enforce text-only continuation scope | DONE_VERIFIED (documentation) | Corpus triage, research report, master matrix and handoff now explicitly exclude audio acquisition, processing and annotation. Existing SLR80/UCSY-SC1 entries remain historical metadata only. |
+
+No corpus rows or pronunciation labels were imported. No runtime G2P rule was enabled. Independent expert-adjudicated IPA gold remains 0; empirical accuracy remains null. This source review does not change release status: **PARTIAL PROTOTYPE**.
+
