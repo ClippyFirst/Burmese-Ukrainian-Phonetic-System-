@@ -1358,3 +1358,9 @@ Matisoff (2003, pp.56,70-71) describes historical WB *-r- > Modern Burmese -y- a
 
 New source claims, matrix rows, evidence-only rules and tests are registered. All new historical rows remain WITHHELD; they are not modern Unicode-to-IPA rules. The full Nishi 1976 "Medials in Burmese" chapter is still a source-access target; only bibliographic records and later secondary citations are currently verified.
 
+## Contextual Burmese voicing research — 2026-11-13
+
+Nishi (1998), *The Development of Voicing Rules in Standard Burmese* (BNME 23(1), pp.253-260; DOI 10.15021/00004129), describes two textually documented voicing-sandhi patterns: optional/exception-rich C1aC2 voicing around atonic /a/, and voicing of eligible initials after non-stop tonal rhymes in close juncture within words or phrases with postpositions. The paper warns that "Standard Burmese" is not a well-defined variety and documents differences across regional dialects. It also reports that the Myanmar-English Dictionary (1993) reflects the second rule in its lexical phonemic transcriptions.
+
+The source, three claims, two analysis-dependent rule records and a provenance test are registered. Neither rule is enabled globally. Next acceptance step: select the target spoken profile and reconcile Nishi's descriptions with accessible written dictionary examples and Okell's text grammar. No audio is used.
+
