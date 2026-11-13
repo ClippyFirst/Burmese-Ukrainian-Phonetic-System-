@@ -1320,3 +1320,17 @@ The successful CI applies to exact head 4145126ec65b834df96fc7ed57749a719daa27c2
 - Registered SEAlang dictionary, Burmese Text Corpus and Burmese Bitext Corpus as text-only candidates. Dictionary transcription semantics are unresolved (IPA search/display metadata vs MLCTS2 documentation); corpora lack explicit reuse licenses. No rows imported.
 - Acceptance: inspect SEAlang entries through an accessible interface, resolve the transcription encoding, obtain rights for any bulk extraction, and validate actual row schema. Green's phonological facts do not directly map Unicode medials.
 
+### Final exact-head verification — 2026-11-13
+
+| Area | Status | Evidence |
+|---|---|---|
+| Python + subtests | DONE_VERIFIED | 209 passed + 66 subtests, CI 43390071180 |
+| IPA gold schema | DONE_VERIFIED | Independent structure validation passed; gold corpus remains header-only / 0 entries |
+| Build and generated-data freshness | DONE_VERIFIED | npm run build and generated-data freshness check passed |
+| Node tests | DONE_VERIFIED | 20 passed, 0 failed |
+| Browser tests | DONE_VERIFIED | 58 Playwright/Chromium tests passed |
+| Optional diagnostics | DONE_VERIFIED (not accuracy evidence) | CI 43390071177; CRF 100 predictions, 84 source-concordant, gold 0, accuracy null; Epitran raw artifact only |
+| Registry integrity | DONE_VERIFIED | 55 sources, 62 claims, 29 medial rows, 22 phonological rules; no schema-width, duplicate-ID or traceability errors |
+| Text-only scope | DONE_VERIFIED (documentation) | Legacy non-text records are historical-only and deferred; no audio work or data import |
+
+Exact tested head: d2800ce458ea3c08c3fecb9e61ad170502837343. PR #147 remains Draft and is not release-ready. Linguistic gold=0 and empirical accuracy=null; classification remains PARTIAL PROTOTYPE.
