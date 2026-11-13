@@ -425,3 +425,29 @@ The Myanglish raw CSV is 2-column (myanmar,myanglish), while its README metadata
 The myX orthography corpus is a work-in-progress text correction dataset, not an IPA corpus. Manual inspection found a target_words mismatch in hcara_phonetic.csv and multi-substitution examples in phet_bet_phonetic.csv. The resource is quarantined for row-level quality review and deduplication, not blocked by permission.
 
 The 8.8 MB John Okell text corpus and SEAlang text/dictionary entries were not imported because this runtime could not retrieve the corpus bytes or inspect the SEAlang entry schema. These are tooling/access and schema gates, not rights gates. No audio was used or accessed. Independent expert-adjudicated IPA gold remains 0 and empirical IPA accuracy remains null.
+
+
+## 17. Okell (1995): explicit WB/SB separation and regional medial inventories
+
+The complete text of John Okell's *Three Burmese Dialects* (Pacific Linguistics A-83, pp.1-138) is now inspected. This is a major addition because it compares Written Burmese (WB) and Standard Burmese as spoken (SB) with three separate regional profiles: Arakanese (AR), Intha (IT) and Tavoyan (TV).
+
+### 17.1 Arakanese: WB r/y distinction retained
+
+Okell states that Arakanese preserves the distinction between WB r and y, while SB has merged WB r with y in speech. The material analyzed is principally Sit-twe District speech; Okell says it has high prestige and tends to be treated as the Arakanese standard. He also documents internal Arakanese subvarieties and warns against describing AR as simply an older or purer SB: both varieties have undergone different mergers and splits.
+
+### 17.2 Intha and Tavoyan: medial /l/ absent from SB
+
+Okell's Intha phoneme inventory includes restricted medial /y/, /l/ and /w/ combinations. His Tavoyan inventory likewise includes medial /y/, /l/ and /w/, and explicitly describes /-l/ as a lateral medial consonant not present in SB. The combinations are constrained by the initial consonant class; they are not an unrestricted combinatorial inventory.
+
+### 17.3 Transcription convention and evidence boundary
+
+Okell identifies WB and SB as distinct reference systems. His dialect texts are phonemically transcribed, with limited allophonic alternatives where a closer approximation to actual pronunciation is useful. The book's transcribed examples are therefore valuable source-specific phonemic evidence, but not an independently adjudicated project IPA gold set. This pass inspected the written tables and prose only; no recordings or audio were accessed.
+
+### 17.4 Repository changes
+
+- Added source OKELL1995_THREE_DIALECTS.
+- Added seven source claims covering WB/SB separation, Arakanese r/y preservation, Intha/Tavoyan /l/ inventories, transcription convention and the Sit-twe profile.
+- Added two dialect-dependent evidence rules and three medial matrix rows for Arakanese, Intha and Tavoyan. All rows remain WITHHELD from runtime.
+- Added regression tests ensuring these regional profiles are not projected onto Standard Burmese/Yangon.
+
+This source strengthens the case for distinct source-profile handling. It does not supply a direct modern Yangon Unicode-to-IPA mapping.
