@@ -158,13 +158,14 @@ This continuation follows the explicit project direction to use **text sources o
 - The README says future releases may add medial contrasts such as ကျ vs ကြ; that is a roadmap statement, not evidence that the current release contains an adjudicated medial dataset.
 - Disposition: candidate for future text-normalization/orthographic regression tests after row-level quality review; not a phonological or IPA corpus. No rows imported.
 
-### A Corpus of Modern Burmese — text corpus, rights unresolved
+### A Corpus of Modern Burmese — text-only access verified; integrity and quality audit pending
 
 - Resource: https://zenodo.org/records/1202324; DOI 10.5281/zenodo.1202324.
-- Zenodo describes John Okell's corpus as compiled in the 1990s, converted to Unicode and distributed as an 8.8 MB allfiles.txt file. The Zenodo record's Rights/License field is blank, while European Language Grid catalogue record 940 lists CC BY 4.0.
-- The project owner has confirmed that required permissions for text-only research use and project ingestion are in place. The metadata discrepancy remains recorded for provenance and downstream publication, but it is no longer a research-permission blocker.
-- Current operational blocker: the 8.8 MB text file exceeds the web preview limit and this runtime could not download it (container DNS/network unavailable; GitHub connector only fetches GitHub-hosted UTF-8 text). No text has yet been imported or counted.
-- Disposition: **AUTHORIZED_FOR_RESEARCH; BLOCKED_TOOL_ACCESS** until the corpus bytes can be obtained in this execution environment; not an IPA corpus.
+- Zenodo describes John Okell's corpus as compiled in the 1990s, converted to Unicode and distributed as an 8.8 MB allfiles.txt file. The Zenodo record's Rights/License field is blank, while European Language Grid catalogue record 940 lists CC BY 4.0. Preserve this public-metadata discrepancy; project-owner authorization covers text-only research and internal ingestion but does not rewrite the upstream license field.
+- The direct Zenodo file endpoint returned HTTP 200 with content type `text/plain; charset=utf-8` through Firecrawl on 2026-11-13. Zenodo's provider MD5 is `f020d7bbcf9857631094a8861143d18f`. A SHA-256 was not computed because the exact raw bytes were not retained in the repository/runtime; do not invent one.
+- Targeted full-text inspection reports valid UTF-8, modern Myanmar Unicode, Burmese and English content, more than 23 numbered sections/articles, dates, headings, speaker labels, both dialogue/speech transcripts and prose/articles/tables. It also reports localized legacy encoding/glyph corruption in some foreign technical terms. Treat this as mixed text corpus material, not a clean normalized corpus.
+- No IPA annotation schema or IPA gold labels were identified. No corpus rows were imported in this pass; no audio was accessed or used.
+- Disposition: **PARTIAL / CONTENT ACCESS VERIFIED; HASH AND QUALITY AUDIT PENDING**. Suitable as a text-only lexical/orthographic/context discovery source after integrity, boundary, duplication and corruption profiling; **NOT IPA GOLD**.
 
 ### Text-only policy and corpus gate
 
@@ -220,7 +221,7 @@ Nishi states that slash-delimited phonemic transcription follows Okell 1995 and 
 
 ### Remaining access and acceptance gates
 
-1. Obtain the Okell corpus bytes through an accessible project-side transfer or mirror, record the exact revision/hash, then perform Unicode, duplicate, document-boundary and text-quality profiling.
+1. Pin and retain the exact Okell corpus bytes through a reproducible project-side transfer, compute SHA-256 in a byte-preserving environment, then perform Unicode, duplicate, document-boundary, provenance and corruption profiling before importing any rows.
 2. Access SEAlang text/dictionary records in a stable manner; resolve entry-level transcription semantics (IPA vs MLCTS2) before treating dictionary pronunciations as source phonemic data.
 3. Obtain raw Myanglish and orthography dataset artifacts at pinned revisions for reproducible row-level schema checks, deduplication and target-word alignment. Permission is confirmed; data access and quality remain the gates.
 4. Build separate text-only evidence tables for source-attested phonemic forms, romanization, orthographic corrections and IPA gold. Do not collapse these into one target field.

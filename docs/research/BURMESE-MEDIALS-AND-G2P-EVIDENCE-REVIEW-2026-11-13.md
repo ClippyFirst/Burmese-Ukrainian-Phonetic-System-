@@ -422,7 +422,7 @@ The Myanglish raw CSV is 2-column (myanmar,myanglish), while its README metadata
 
 The myX orthography corpus is a work-in-progress text correction dataset, not an IPA corpus. Manual inspection found a target_words mismatch in hcara_phonetic.csv and multi-substitution examples in phet_bet_phonetic.csv. The resource is quarantined for row-level quality review and deduplication, not blocked by permission.
 
-The 8.8 MB John Okell text corpus and SEAlang text/dictionary entries were not imported because this runtime could not retrieve the corpus bytes or inspect the SEAlang entry schema. These are tooling/access and schema gates, not rights gates. No audio was used or accessed. Independent expert-adjudicated IPA gold remains 0 and empirical IPA accuracy remains null.
+The 8.8 MB John Okell corpus is now reachable through the Zenodo direct text endpoint (HTTP 200, text/plain; charset=utf-8) and was inspected through text-only extraction. Targeted inspection confirms valid UTF-8, modern Myanmar Unicode, Burmese/English mixed content, more than 23 numbered sections/articles, speaker labels, dates, dialogue/speech transcripts and prose; localized legacy glyph/encoding corruption affects some foreign technical terms. Zenodo supplies MD5 f020d7bbcf9857631094a8861143d18f, but exact raw bytes were not retained and SHA-256 was not computed. No rows were imported, no IPA schema/labels were identified, and the corpus is not IPA gold. This moves the task from BLOCKED_TOOL_ACCESS to PARTIAL / CONTENT ACCESS VERIFIED; HASH_AND_QUALITY_AUDIT_PENDING. SEAlang entry/corpus schema remains unresolved. No audio was used or accessed. Independent expert-adjudicated IPA gold remains 0 and empirical IPA accuracy remains null.
 
 
 ## 17. Okell (1995): explicit WB/SB separation and regional medial inventories
@@ -456,3 +456,31 @@ This source strengthens the case for distinct source-profile handling. It does n
 John Okell's *A Reference Grammar of Colloquial Burmese* (two volumes, 498 pp., Oxford University Press, 1969) is now registered as a primary text-source target. Its bibliographic identity is confirmed by Glottolog and library catalogues. Nishi (1998) explicitly cites Okell 1969, §§17-20, for the two voicing-sandhi patterns; Okell (1995) identifies it as the reference description of Spoken Burmese.
 
 The full grammar was not retrieved in this execution, so no phonological claims are attributed directly to it. The project owner confirms research-use permission; the remaining gate is obtaining the text bytes and inspecting the exact sections/page locators. This is a high-priority source for checking the modern colloquial/Standard Burmese baseline before any contextual rule is considered for runtime.
+
+
+## 19. Okell's A Corpus of Modern Burmese: text access and first-pass content audit
+
+The Zenodo record for John Okell's *A Corpus of Modern Burmese* (DOI 10.5281/zenodo.1202324) lists an 8.8 MB \`allfiles.txt\` file compiled in the 1990s and converted to Unicode. The direct file endpoint returned HTTP 200 with content type \`text/plain; charset=utf-8\` during a text-only Firecrawl extraction on 2026-11-13. The provider's published MD5 is \`f020d7bbcf9857631094a8861143d18f\`. The exact raw bytes were not retained in the repository/runtime and SHA-256 was not computed.
+
+### 19.1 Observed content and structure
+
+Targeted inspection of the extracted text reports:
+- valid UTF-8 and modern Myanmar Unicode;
+- Burmese and English content;
+- more than 23 numbered sections/articles, with dates, headings and speaker labels;
+- both dialogue/speech transcripts and prose/articles/tables;
+- localized legacy encoding/glyph corruption in some foreign technical terms and computer terminology.
+
+These are corpus-content observations, not a validated corpus schema. The exact document count, source provenance for each section, duplicate rate and boundary integrity remain unmeasured. Do not normalize or silently repair corrupted forms in the source copy.
+
+### 19.2 Research value and limits
+
+The resource can support text-only discovery of lexical forms, spelling variation, phrase context and candidate written examples. Its dialogue/transcript-like content is still text and does not authorize audio inference. No IPA annotation schema, phonetic label field or independently adjudicated IPA values were identified. It must not be treated as a pronunciation gold set or used to score G2P accuracy.
+
+The Zenodo Rights/License field remains blank while the European Language Grid catalogue lists CC BY 4.0. Project-owner permission for research use and internal ingestion is confirmed; preserve both facts separately for attribution and downstream publication review.
+
+### 19.3 Acceptance gate
+
+Status: **PARTIAL / CONTENT ACCESS VERIFIED; HASH_AND_QUALITY_AUDIT_PENDING**.
+
+Before importing corpus rows, retain a byte-identical pinned artifact, calculate SHA-256, count documents and lines, audit Unicode normalization and malformed codepoints, profile repeated/template passages, identify section-level provenance where possible, and record corruption without silently rewriting source text. Any extracted lexical examples must retain document/section locators and must remain text evidence rather than IPA gold.

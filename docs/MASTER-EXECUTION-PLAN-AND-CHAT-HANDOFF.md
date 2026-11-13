@@ -1558,3 +1558,12 @@ Nishi (1976) *Medials in Burmese* and Okell (1969) *A Reference Grammar of Collo
 Myanglish raw CSV vs metadata remains 2-column/3-feature uncertain; myX orthography remains quarantined for target-word misalignment, multi-substitution examples and template duplication. Gold=0, accuracy=null, no runtime medial or voicing rules promoted.
 
 PR #147 remains OPEN / DRAFT / mergeable, 0 commits behind main, 28 files changed; current ahead count is tracked on the PR. PR #129 untouched. Repository remains PARTIAL PROTOTYPE, not linguistically release-ready.
+
+
+## Okell corpus access correction — 2026-11-13
+
+This entry supersedes earlier handoff statements that Okell's 8.8 MB corpus was wholly blocked by tool access. The Zenodo direct file endpoint now returns HTTP 200 (\`text/plain; charset=utf-8\`) through text-only extraction. The provider MD5 is \`f020d7bbcf9857631094a8861143d18f\`; exact raw bytes were not retained in the repository/runtime, so SHA-256 is still uncomputed.
+
+Targeted inspection confirms valid UTF-8 and modern Myanmar Unicode, Burmese/English mixed content, more than 23 numbered sections/articles, dates, speaker labels, dialogue/speech transcripts and prose. Some foreign technical terms show localized legacy glyph/encoding corruption. The corpus is therefore **PARTIAL / CONTENT ACCESS VERIFIED; HASH_AND_QUALITY_AUDIT_PENDING**, not BLOCKED_TOOL_ACCESS. No rows were imported, no IPA annotation was identified, no pronunciation labels were created, and no audio was used. The corpus is a text-only lexical/context discovery source, not IPA gold.
+
+The Zenodo Rights/License field remains blank while ELG lists CC BY 4.0. Project-owner authorization for text-only research and internal ingestion remains recorded separately from public license metadata. Acceptance requires byte-identical pinned bytes, SHA-256, document-boundary/duplicate/Unicode/corruption profiling and source-located text extraction.

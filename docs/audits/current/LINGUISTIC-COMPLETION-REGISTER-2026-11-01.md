@@ -1248,3 +1248,14 @@ Exact-head CI 43393402710 on 4835a0abc3e7e4a18c9d0bda35f554031912d570: 217 Pytho
 - Okell (1969), Nishi (1976), Hill (2019) chapter 2, Okell text corpus and SEAlang records remain tool-access/schema blocked, not permission blocked.
 - Myanglish remains schema-uncertain; myX orthography remains quarantined for quality review. No audio.
 - IPA gold=0; accuracy=null; classification PARTIAL PROTOTYPE.
+
+
+## Okell corpus access status correction — 2026-11-13
+
+| Work item | Status | Evidence / acceptance boundary |
+|---|---|---|
+| Okell *A Corpus of Modern Burmese* text access | PARTIAL / CONTENT ACCESS VERIFIED | Zenodo direct endpoint HTTP 200, text/plain UTF-8; provider MD5 f020d7bbcf9857631094a8861143d18f; targeted inspection finds modern Myanmar Unicode, mixed Burmese/English, >23 numbered sections/articles, dialogue/speech transcripts and prose. |
+| Corpus byte integrity and quality | TODO / HASH_AND_QUALITY_AUDIT_PENDING | Raw bytes not retained and SHA-256 not computed; exact document count, provenance, duplicates and localized glyph corruption need reproducible profiling. |
+| Corpus as pronunciation gold | DEFERRED / NOT GOLD | No IPA annotation schema or independent IPA labels identified; no G2P scoring. |
+
+Acceptance: retain byte-identical pinned text, compute SHA-256, inspect document boundaries/duplicates/Unicode/corruption and record section locators before importing any lexical examples. No audio.

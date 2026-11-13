@@ -303,3 +303,18 @@ def test_sealang_ipa_interface_is_not_mistaken_for_an_inspected_ipa_gold_field()
     assert mlcts2["status"] == "DOCUMENTARY"
     assert "MLCTS2" in mlcts2["claim"]
     assert "not be treated as standardized IPA" in mlcts2["claim"]
+
+
+def test_okell_text_corpus_access_and_quality_boundary_is_explicit():
+    sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    source = sources["OKELL_TEXT_2018"]
+    claim = claims["CLM-OKELL-TEXT-STRUCTURE-001"]
+    assert "HTTP 200 text/plain UTF-8" in source["scope"]
+    assert "f020d7bbcf9857631094a8861143d18f" in source["scope"]
+    assert "SHA-256 not computed" in source["scope"]
+    assert "localized legacy encoding/glyph corruption" in source["scope"]
+    assert claim["source_id"] == "OKELL_TEXT_2018"
+    assert claim["status"] == "DOCUMENTARY"
+    assert "more than 23 numbered sections/articles" in claim["claim"]
+    assert "no IPA annotation schema" in claim["claim"]

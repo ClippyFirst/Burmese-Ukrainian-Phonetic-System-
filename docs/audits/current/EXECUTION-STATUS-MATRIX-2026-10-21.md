@@ -1410,3 +1410,14 @@ Exact tested head: d2800ce458ea3c08c3fecb9e61ad170502837343. PR #147 remains Dra
 - Project owner confirms text-only research and project-ingestion permissions. No audio used. Corpus byte access, internal SEAlang schema, Myanglish metadata reconciliation and myX quality remain gates.
 - PR #147 remains OPEN / DRAFT / mergeable, 0 commits behind main, 28 files. Current ahead count is tracked on the PR.
 - IPA gold remains 0, accuracy null, no runtime rules promoted. Status PARTIAL PROTOTYPE.
+
+
+### Okell text corpus — access status correction (2026-11-13)
+
+| Work item | Status | Evidence / acceptance boundary |
+|---|---|---|
+| Okell *A Corpus of Modern Burmese* content access | PARTIAL / CONTENT ACCESS VERIFIED | Zenodo direct file endpoint HTTP 200, text/plain UTF-8; provider MD5 f020d7bbcf9857631094a8861143d18f; targeted text extraction confirms valid UTF-8, Myanmar Unicode, Burmese/English mixed content, >23 numbered sections/articles, dialogue/speech transcripts and prose. |
+| Okell corpus integrity and quality | TODO / HASH_AND_QUALITY_AUDIT_PENDING | Exact raw bytes not retained; SHA-256 not computed; exact document count, duplicate rate, section provenance and localized legacy glyph corruption remain unprofiled. Acceptance: byte-identical pinned artifact, SHA-256, Unicode/boundary/duplicate/corruption report. |
+| Okell corpus as IPA/G2P gold | DEFERRED / NOT GOLD | No IPA annotation schema or independently adjudicated IPA values identified. Do not import as IPA gold or score predictions against it. |
+
+No corpus rows were imported and no audio was accessed or used. This correction supersedes prior BLOCKED_TOOL_ACCESS classification; SEAlang entry/schema access remains separately unresolved.
