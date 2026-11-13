@@ -1186,3 +1186,6 @@ The project remains PARTIAL PROTOTYPE; empirical accuracy remains null.
 | MYA-NISHI98-VOICING-001 | PARTIAL / CONTEXTUAL | Two text-documented voicing-sandhi patterns, with optionality, exceptions and dialect variation. | Select a precise spoken profile and build source-located written examples; no global runtime rule. |
 
 Independent text-adjudicated IPA gold remains 0; empirical accuracy remains null. Audio-related records are historical exclusions, not active work items.
+
+| MYA-HILL-2019-CH2-001 | BLOCKED / ACCESS | Cambridge confirms Hill (2019), chapter 2 Burmese, pp.46-83, but only §44 preview was accessible; no medial-specific claim extracted. | Obtain authorized full text, review historical medial clusters and written-to-spoken developments, then register exact page/section evidence. |
+
