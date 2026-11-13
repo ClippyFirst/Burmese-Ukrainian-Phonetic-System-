@@ -1908,3 +1908,11 @@ Code/test head **508816dcddf22272e98647625b657bc79712817e** completed required C
 - Added regression test that derives each crosswalk value from the exact vendored source arrays and enforces the four differing groups, the special `့` fallback and the evidence boundary.
 - Registry totals: **70 nonblank sources / 123 claims**. No runtime behaviour, IPA gold, or Ukrainian candidate promoted; all 94 candidates remain PROPOSED / EVIDENCE_LIMITED. No audio accessed.
 - Latest test-bearing commit: `c4dcaa2ea0a33ed7c9038b472f068a1a7714c12b`; CI pending. Next acceptance gate: run exact-head CI, then obtain/inspect the actual MLC dictionary pages or a primary 1980 MLC transcription table before changing linguistic rules.
+
+## Earlier MLC Concise Dictionary lead (1978-1980) — 2026-11-13
+
+- Added **ALLOTT1985_BURMA_LANGUAGE_POLICY** and **OKELL1982_BURMESE_DICTIONARY_REVIEW**, with claims **CLM-MLC-CONCISE-DICT-1978-80-001** and **CLM-MLC-CONCISE-DICT-BIB-001**.
+- Allott's 1985 survey says the MLC Concise Burmese Dictionary appeared in five parts from late 1978 through 1980, established official spelling for entries and included pronunciations. Okell's 1982 bibliography independently records a five-volume Rangoon edition, 1978-1980, published by Mranmācā Aphwai.
+- This creates an earlier and potentially valuable primary lexicon access route. The original five volumes and their pronunciation key have not been inspected. It is not yet known whether their pronunciation notation is MLCTS, MLCTS2, or another convention.
+- Registry totals: **72 nonblank sources / 125 claims**. Regression tests now guard both bibliographic sources and their evidence limits.
+- Latest test-bearing commit **161e36c5deadb6da6fd008fb44fdf9eef9c454a8** awaits exact-head CI.
