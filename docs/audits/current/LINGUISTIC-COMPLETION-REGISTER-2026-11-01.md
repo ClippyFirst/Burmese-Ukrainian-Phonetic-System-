@@ -1461,3 +1461,11 @@ Registry totals: **66 nonblank source records / 118 claims**. A regression test 
 - Registry parse on the current branch: **66 nonblank source records / 118 claim records**; all IDs unique, all row widths conform to their CSV headers, and every claim source reference resolves. Two blank CSV records are ignored by the count.
 - The provenance regression test was added to `tests/test_romanization_rime_inventory.py`. The GitHub connector exposed no workflow runs and no commit status checks for final code/documentation head `caf66d5a6b58522ca33715654c38b075c1d1fc21`; therefore this latest test change is **NOT YET CI-VERIFIED**. Earlier successful CI on prior code/data head `46b7da6afd7ecc94e4dcac87c7f759132c74bc6b` does not cover this added test.
 - No local checkout or local Python test execution was available. Do not claim the new test passed.
+
+## MLC dictionary physical-access leads — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-MLC-DICTIONARY-ACCESS-ROUTE-004 | PARTIAL — PHYSICAL ACCESS LOCATED | WHO Myanmar Library record 487 lists an available 1993 MLC dictionary copy (635 pages); NDL record 000003254368 lists the 1996 Dunwoody reprint at Tokyo Main and Kansai-kan and a cooperating Japanese library. | Catalogue holdings are not text access. Obtain authorized consultation or page-level copies, then record exact entries and MLCTS/MLCTS2 field semantics. |
+
+Registry totals: **68 nonblank source records / 120 claims**. The new regression assertions verify the two catalogue records while explicitly rejecting any inference that the contents have been inspected.
