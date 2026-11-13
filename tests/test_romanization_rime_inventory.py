@@ -144,8 +144,8 @@ def test_lexical_collision_audit_keeps_secondary_evidence_separate_from_primary_
     assert by_mlcts["um"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
     assert by_mlcts["um"]["observed_ipa"] == "/kòʊɴ/"
     assert by_mlcts["um"]["observed_mlcts"] == "kum"
-    assert sum(row["evidence_status"] == "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE" for row in audit) == 4
-    assert sum(row["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE" for row in audit) == 8
+    assert sum(row["evidence_status"] == "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE" for row in audit) == 3
+    assert sum(row["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE" for row in audit) == 9
     assert sum(row["evidence_status"] == "SECONDARY_SOURCE_CONFLICT" for row in audit) == 1
     assert sum(row["evidence_status"] == "SECONDARY_SOURCE_DISTINCTION" for row in audit) == 3
     assert sum(row["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY" for row in audit) == 8
@@ -456,6 +456,7 @@ def test_new_wiktionary_lexical_claims_are_linked_to_registered_snapshot():
         "CLM-WIKTIONARY-AUNG-DOT-ONE-SIDE-EXAMPLE-001",
         "CLM-WIKTIONARY-AM-COLON-ONE-SIDE-EXAMPLE-001",
         "CLM-WIKTIONARY-AM-DOT-LEXICAL-DISTINCTION-001",
+        "CLM-WIKTIONARY-AU-DOT-ONE-SIDE-EXAMPLE-001",
         "CLM-WIKTIONARY-UM-COLON-ONE-SIDE-EXAMPLE-001",
         "CLM-WIKTIONARY-AU-COLON-ONE-SIDE-EXAMPLE-001",
         "CLM-WIKTIONARY-IM-ONE-SIDE-EXAMPLE-001",
