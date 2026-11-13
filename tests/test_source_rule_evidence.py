@@ -247,3 +247,37 @@ def test_nishi_old_burmese_historical_claims_have_source_and_scope():
     assert rule["claim_id"] == dialect_claim["claim_id"]
     assert rule["status"] == "dialect_dependent"
     assert "no modern runtime mapping" in rule["scope"]
+
+def test_okell_1995_dialect_evidence_has_separate_profiles_and_transcription_scope():
+    sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    rules = {row["rule_id"]: row for row in _rows(DATA / "phonological_rules.csv")}
+    source = sources["OKELL1995_THREE_DIALECTS"]
+    assert source["title"] == "Three Burmese Dialects"
+    assert "pp.1-138" in source["scope"]
+    assert "no audio" in source["scope"]
+
+    wb_sb = claims["CLM-OKELL1995-WB-SB-DISTINCTION-001"]
+    ar = claims["CLM-OKELL1995-AR-RY-001"]
+    it = claims["CLM-OKELL1995-IT-MEDIAL-L-001"]
+    tv = claims["CLM-OKELL1995-TV-MEDIAL-L-001"]
+    transcription = claims["CLM-OKELL1995-TRANSCRIPTION-001"]
+    profile = claims["CLM-OKELL1995-AR-PROFILE-001"]
+    shared_l = claims["CLM-OKELL1995-IT-TV-MEDIAL-L-001"]
+    assert all(claim["source_id"] == source["source_id"] for claim in (wb_sb, ar, it, tv, transcription, profile, shared_l))
+    assert "Written Burmese (WB)" in wb_sb["claim"]
+    assert "merged in speech" in ar["claim"]
+    assert "not be projected onto SB/Yangon" in it["claim"]
+    assert "not present in Standard Burmese" in tv["claim"]
+    assert "not an independently adjudicated project IPA gold" in transcription["claim"]
+    assert "high prestige" in profile["claim"]
+    assert shared_l["status"] == "DIALECT_DEPENDENT"
+
+    ar_rule = rules["OKELL1995_AR_WB_RY_DISTINCTION"]
+    l_rule = rules["OKELL1995_IT_TV_MEDIAL_L"]
+    assert ar_rule["claim_id"] == ar["claim_id"]
+    assert ar_rule["status"] == "dialect_dependent"
+    assert l_rule["claim_id"] == shared_l["claim_id"]
+    assert l_rule["status"] == "dialect_dependent"
+    assert "not a modern Yangon" in ar_rule["scope"]
+    assert "do not import /l/" in l_rule["scope"]
