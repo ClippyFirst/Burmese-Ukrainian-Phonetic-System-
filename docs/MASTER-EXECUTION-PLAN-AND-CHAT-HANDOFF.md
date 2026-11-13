@@ -2146,3 +2146,12 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - Added claim `CLM-WIKTIONARY-AUNG-WORD-LEVEL-EXAMPLES-001`, updated the lexical audit and MLCTS2 status parity, and expanded regression coverage.
 - Updated 25-group lexical audit distribution: **17 unadjudicated / 3 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 138 claims**.
 - This is secondary lexical evidence, not a minimal pair or primary MLC adjudication. No runtime, IPA gold or Ukrainian output changed. Exact-head CI pending.
+
+## Exact-head verification — `any.` and `aung` lexical evidence — 2026-11-13
+
+- Tested code/data snapshot: `eb81bd29e9417ddbd6d541d54fce6d754b0bb8bd`.
+- Required CI run **43513203135 SUCCESS**; duplicate run **43513212043 SUCCESS** on the same SHA. Results: **251 Python + 66 subtests**, **20 Node**, **58 Playwright**; production build, generated-data freshness and Chromium installation passed.
+- Optional Epitran raw-output diagnostic **43513212088 SUCCESS**; diagnostic only, not an accuracy benchmark.
+- IPA-gold validator: `NOT_READY_NO_ADJUDICATED_GOLD` (0 independent adjudicated gold entries); accuracy remains null. `npm install` still reports one high-severity vulnerability.
+- Registry **80 sources / 138 claims**. Collision ledger: **17 unadjudicated / 3 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**.
+- Test expectations exposed during this batch were corrected against the final 25-row ledger; the exact final code/data snapshot above passes. No runtime, IPA gold or Ukrainian output promotion.
