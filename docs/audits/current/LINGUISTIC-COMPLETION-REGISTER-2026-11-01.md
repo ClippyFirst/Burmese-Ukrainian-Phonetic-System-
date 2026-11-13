@@ -1722,3 +1722,11 @@ The MOW table does not currently provide a lexeme-level adjudication for the `an
 ## Source registry row-count correction — 2026-11-13
 
 Append a correction note: The source CSV contained three internal blank separator lines (plus the final newline); the earlier row-count method counted the three blank lines as empty rows. Removed all blank lines and added a regression test for nonblank unique source IDs. The actual registry contains 80 unique source records and 133 claim records. Historical row-count figures above are superseded.
+
+## Source registry hygiene — 2026-11-13
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-SOURCE-REGISTRY-INTEGRITY-021 | DONE_VERIFIED — REGISTRY_STRUCTURE | Removed three internal blank separator rows from `data/burmese/sources.csv`; added `test_source_registry_has_no_blank_rows_or_duplicate_source_ids`. Current registry: **80 nonblank unique source records / 133 claims**. Required CI on code commit `62f59f177b15e2df54ace464056df7932058bffb`, run **43508294905 SUCCESS**: 249 Python + 66 subtests, 20 Node, 58 Playwright; build and generated-data freshness passed. | Structural registry integrity only; does not validate source quality or promote linguistic claims. |
+
+The earlier 82/132 and 83/133 counts in preceding catalogue-lead entries were inflated by blank CSV rows and are superseded by the verified 80/133 count above.
