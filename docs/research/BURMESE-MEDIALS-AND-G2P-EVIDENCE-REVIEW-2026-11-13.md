@@ -368,9 +368,9 @@ The source is explicit about the limits of its variety label: “Standard Burmes
 
 Implementation consequence: these are contextual phonological rules, not grapheme-to-phoneme substitutions. The first is variable and exception-rich; the second depends on rhyme type, juncture, morphology/postpositions and profile. Both are registered as analysis-dependent evidence only. No global runtime voicing rule is enabled. The MLC dictionary claim is recorded as Nishi's report, not as a completed independent audit of the 1993 dictionary.
 
-## 12. Hill (2019): high-value historical source target, full text not reviewed
+## 12. Hill (2019): high-value historical source target, full chapter not retrieved
 
-Cambridge University Press confirms Nathan W. Hill's *The Historical Phonology of Tibetan, Burmese, and Chinese*, chapter 2 "Burmese", pp.46-83 (DOI 10.1017/9781316550939.003). The book's stated method is comparative sound-law analysis. The official publisher page exposes only a short §44 preview; the full chapter requires access. Therefore this source is registered as a high-value follow-up target, but no claim about Burmese medials is attributed to Hill here. Acceptance: obtain authorized full-text access, inspect the chapter's treatment of Old Burmese medial clusters and written-to-spoken developments, and record exact page/section locators before adding claims or matrix rows.
+Cambridge University Press confirms Nathan W. Hill's *The Historical Phonology of Tibetan, Burmese, and Chinese*, chapter 2 "Burmese", pp.46-83 (DOI 10.1017/9781316550939.003). The book's stated method is comparative sound-law analysis; the publisher excerpt currently accessible in this run covers the introduction and Tibetan chapter, not the Burmese chapter. The project owner confirms the necessary permissions, so rights are not the blocker. The remaining blocker is obtaining the full chapter bytes in this execution environment. No claim about Burmese medials is attributed to Hill until the chapter itself is inspected.
 
 ## 13. Green (2005): explicit spoken-vs-written transcription boundary
 
@@ -383,7 +383,7 @@ Green's modern spoken phonology describes major syllables as permitting simple C
 
 Green states that /N/ is a placeless nasal excluded from onset position; only /ʔ/ and /N/ are permitted codas. /N/ is realized as nasalization on the preceding vowel, with approximate coronal articulation after monophthongs and approximate velar articulation after diphthongs (p.5, citing Bennett & Lehman 1994). This provides a clear source-specific relation between abstract /N/ and surface nasalization, but the project's broad/narrow IPA convention must still be selected before emitting a particular surface form.
 
-## 14. SEAlang dictionary and text corpora: valuable text leads, reuse not cleared
+## 14. SEAlang dictionary and text corpora: valuable text leads, research use authorized
 
 SHACHI metadata identifies three linked SEAlang Burmese resources:
 
@@ -391,5 +391,37 @@ SHACHI metadata identifies three linked SEAlang Burmese resources:
 2. **SEAlang Burmese Text Corpus** — monolingual Burmese Internet texts sampled for research/education. SHACHI lists 612,692 collocates and 3,172,485 contexts served; these are service metrics, not verified corpus row/token counts. No explicit reuse license is stated.
 3. **SEAlang Burmese Bitext Corpus** — translated words, phrases and sentences aligned sentence-by-sentence where possible; metadata lists 1,234,822 pairs served (not verified total corpus size) and attributes the source to SAY Project Burmese resources at NMSU CRL. No explicit reuse license is stated.
 
-The SEAlang dictionary page timed out/returned gateway errors during this review, so no entry-level transcription was inspected. These resources are registered as text-only candidates for lexical/context research, not IPA gold. No rows were downloaded or imported. Obtain rights clarification and inspect the actual text/field schema before any extraction.
+The SEAlang dictionary page timed out/returned gateway errors during this review, so no entry-level transcription was inspected. The project owner confirms permissions for research use and project ingestion; rights are therefore not the blocker. These resources remain text-only candidates for lexical/context research, not IPA gold. No rows were downloaded or imported. Stable retrieval and inspection of the actual text/field schema are still required.
 
+
+
+## 15. Nishi (1998): full Old Burmese text inspected; historical medials and dialect reflexes
+
+The full text of Nishi's “Old Burmese: Toward the History of Burmese” (BNME 23(3), pp.659-684; DOI 10.15021/00004119) is now inspected and registered as a separate source, distinct from Nishi's 1998 voicing-sandhi article.
+
+Key findings, with historical scope preserved:
+
+1. **Old Written Burmese cluster taxonomy (§1.3, pp.660-661).** Nishi treats -h with sonorants (nasals, liquids and semivowels) as marking a voiceless/aspirated sonorant unit, not as an ordinary cluster. He calls -r-, -l-, -y- and -w- the actual medial clusters. This historical romanized notation is not equivalent to the modern Unicode medial HA sign U+103E.
+2. **Old Written Burmese -l- (§2.1.1, p.663).** OWB has medial -l- in addition to -r-, -y- and -w-. Nishi proposes that -l- was later replaced by -y- after velars and by -r- after bilabials in Middle Written Burmese, with exceptions.
+3. **Middle Burmese -r- / -y- distinction and merger (§2.1.1, p.663).** The two medials were distinct in MB and merged into -y- in Standard Early Modern Written Burmese. Modern dictionary Cr~Cy alternatives can therefore preserve historical/lexical variation; they are not a direct map from modern Unicode medial RA to /r/ or /j/.
+4. **Great Consonantal Shift (§4, pp.670-671).** Nishi's tentative account includes Cr- > Cy- and r- > y- among a set of changes placed broadly between the early/mid 18th and early 19th centuries. He explicitly warns that the changes may not have been as neatly ordered across dialects as the scheme suggests.
+5. **Cross-dialect cluster correspondences (Table 3, p.673).** Nishi compares OB velar and bilabial clusters with WB, Standard Burmese, Arakanese, Tavoyan, Intha and Minor Taungyo. Reflexes of historical -r-, -l- and -y- differ and sometimes alternate; he notes standard-variety interference and hypercorrection. This is direct evidence against a single universal modern medial mapping.
+
+The paper also explicitly states that Nishi (1976) aimed to establish regular correspondences among Old Burmese, Written Burmese and Colloquial/Standard Burmese medials. This is a reliable secondary statement about the 1976 paper's purpose, but the 1976 paper itself has not been claimed as read.
+
+Implementation/evidence changes:
+- Added source NISHI1998_OLDBURMESE, four claims and four historical rules.
+- Added 13 source-linked Nishi rows to the medial evidence matrix (one existing Nishi period row plus four taxonomy/history rows and nine cross-dialect cluster rows; total Nishi rows = 14). All remain WITHHELD and no modern Unicode mapping is inferred.
+- Added tests that distinguish historical -h from modern U+103E, preserve the OWB -l- reflexes, the MB -r-/-y- merger, and the dialectal cluster correspondences.
+- Added seven Nishi 1998 voicing examples to data/burmese/sandhi_evidence.csv. The slash-delimited outputs are explicitly stored as Nishi's traditional phonemic notation following Okell 1995, not project IPA; IPA values remain empty.
+- No historical medial or voicing rule was promoted into the runtime.
+
+## 16. Text-source authorization and external corpus quality/access
+
+The project owner confirms all required permissions for text-only research use and project ingestion of the listed textual sources. Public catalogue/license metadata remains recorded accurately, but permission is no longer treated as a research-processing blocker.
+
+The Myanglish raw CSV is 2-column (myanmar,myanglish), while its README metadata/viewer exposes an additional official_standard field; that field remains unverified. The README itself describes a non-standardized, predominantly single-author romanization style, not IPA.
+
+The myX orthography corpus is a work-in-progress text correction dataset, not an IPA corpus. Manual inspection found a target_words mismatch in hc ara_phonetic.csv and multi-substitution examples in phet_bet_phonetic.csv. The resource is quarantined for row-level quality review and deduplication, not blocked by permission.
+
+The 8.8 MB John Okell text corpus and SEAlang text/dictionary entries were not imported because this runtime could not retrieve the corpus bytes or inspect the SEAlang entry schema. These are tooling/access and schema gates, not rights gates. No audio was used or accessed. Independent expert-adjudicated IPA gold remains 0 and empirical IPA accuracy remains null.
