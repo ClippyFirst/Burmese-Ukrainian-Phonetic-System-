@@ -1881,3 +1881,10 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - Optional Epitran raw-output diagnostic **43513212088 SUCCESS**, not an accuracy score. IPA-gold validator remains `NOT_READY_NO_ADJUDICATED_GOLD`; independent gold count 0. npm install reports one high-severity vulnerability.
 - Registry 80 sources / 138 claims. Collision evidence distribution: 17 unadjudicated / 3 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime.
 - This verifies code/data/test consistency only. Secondary Wiktionary examples do not adjudicate primary MLC policy and do not enable runtime or Ukrainian mapping changes.
+
+## Additional lexical evidence for `aung:` — 2026-11-13
+
+- Added MOW-listed `ပေါင်း` (`paung:`, `/páʊɴ/`) and `ကျောင်း` (`kyaung:`, `/t͡ɕáʊɴ/`) as Wiktionary word-level examples for ေါင်း and ောင်း. The onsets differ but the secondary IPA rime sequence `/áʊɴ/` matches.
+- Added claim `CLM-WIKTIONARY-AUNG-COLON-WORD-LEVEL-EXAMPLES-001`; updated lexical audit, MLCTS2 status parity and regression tests.
+- Current distribution: 16 unadjudicated / 4 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 139 claims.
+- This is secondary lexical evidence, not a minimal pair or primary MLC adjudication. No IPA gold, runtime or Ukrainian output promotion. CI pending.
