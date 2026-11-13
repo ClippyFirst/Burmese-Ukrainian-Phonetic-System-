@@ -1877,3 +1877,9 @@ A regression test now protects the distinction between the Htun secondary proven
 - Added claims CLM-MLC-DICT-1993-PHYSICAL-HOLDING-001 and CLM-MLC-DICT-1996-NDL-HOLDING-001. Current registry totals: **68 nonblank source records / 120 claims**.
 - This changes the next-step blocker from an unidentified book to access/inspection of known physical holdings. No page/entry content was obtained; no MLCTS/MLCTS2 field was adjudicated. The primary-source gate remains blocked until the text is consulted.
 - Regression tests assert the catalogue locators and their access-only limits. No runtime mapping or Ukrainian candidate changes; no audio used.
+
+## MLC dictionary field-purpose clue — 2026-11-13
+
+- Added **BURMA_DEBATE_1996_MLC_DICT_NOTICE** and **CLM-MLC-DICT-PRON-GUIDE-001**. A contemporaneous 1996 notice says the MLC dictionary's transcription system serves as an aid to pronunciation for English speakers; it also reports nearly 35,000 entries.
+- This is secondary promotional evidence about intended function, not the field's identity. It does not prove MLCTS2. The dictionary's own introduction and sample entries must be inspected to identify the transcription convention.
+- Registry totals: **69 nonblank source records / 121 claims**. A regression assertion guards against upgrading the notice into a specific MLCTS/MLCTS2 identification.
