@@ -876,3 +876,15 @@ Updated 25-group distribution: **0 unadjudicated / 10 secondary equivalence / 1 
 ## 50. Exact-head CI after `un` evidence extension — 2026-11-14
 
 Required CI run **43585743620 SUCCESS** on final tested SHA `1ce829eda10ae5c3b3e4b9772efb434043198a75`: 267 Python tests + 68 subtests, 20 Node tests, 58 Playwright tests; `npm ci`, high-severity npm audit, production build, generated-data freshness and Chromium installation all passed. Audit found 0 vulnerabilities. The lexical evidence extension did not modify runtime or Ukrainian mappings. Current source registry: 80 sources / 170 claims; 25 rime groups = 0 unadjudicated / 10 secondary equivalence / 1 conflict / 3 distinctions / 10 one-side-only / 1 special non-rime. Independent adjudicated IPA gold remains 0.
+
+
+## 51. Two further secondary lexical equivalence findings — 2026-11-14
+
+Two Wiktionary lemmas fill the missing source-unit sides in the `au:` and `au.` collision groups:
+
+- `au:`: `ပေါ` MLCTS `pau:`, IPA `/pɔ́/`, ends in ေါ; `ကျော` MLCTS `kyau:`, IPA `/t͡ɕɔ́/`, ends in ော. Same secondary rime `/ɔ́/`.
+- `au.`: `ပေါ့` MLCTS `pau.`, IPA `/pɔ̰/`, ends in ေါ့; the final syllable of `ဝပ်ရှော့` (MLCTS `waphrau.`, IPA `/waʔʃɔ̰/`) ends in ော့ and realizes `/ʃɔ̰/`. Same secondary rime `/ɔ̰/`.
+
+Claims `CLM-WIKTIONARY-AU-COLON-SECOND-SIDE-EXAMPLE-001` and `CLM-WIKTIONARY-AU-DOT-SECOND-SIDE-EXAMPLE-001` added. `au:` and `au.` move from `SECONDARY_ONE_SIDE_ONLY` to `SECONDARY_SYSTEM_EQUIVALENCE`. `ပေါ့` is not in the MOW suffix-match inventory; this is an independent Wiktionary example, not a MOW candidate. Neither finding is a controlled minimal pair or primary MLC adjudication.
+
+Updated 25-group distribution: **0 unadjudicated / 12 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 8 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 172 claims**. Exact-head CI `43586334287 SUCCESS` on `dd494662f0c94bcf1f59170fe65ea6cd41199c64`: 267 Python + 68 subtests, 20 Node, 58 Playwright; npm audit 0 vulnerabilities.
