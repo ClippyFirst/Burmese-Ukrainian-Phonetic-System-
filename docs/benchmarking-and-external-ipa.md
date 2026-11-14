@@ -238,3 +238,11 @@ The benchmark rejects a prediction TSV with a header but no data rows. Without t
 ### Identifier input validation
 
 Gold IDs and prediction IDs, as well as prediction engine names, must contain at least one non-whitespace character. Whitespace-only values are rejected before scoring so they cannot create blank-looking keys or engine entries. The check does not rewrite non-empty identifiers; matching remains exact and provenance-preserving. Regression coverage exercises whitespace-only gold IDs, prediction IDs and engine names.
+
+## Google Burmese Thrax/OpenFst WFST — raw-output only
+
+A pinned Google Language Resources grammar (`my/burmese.grm`, commit `a90601024f07ab7e96c911243324e0adeb16da96`) can be built with Bazel and queried through the compiled Thrax binary. The optional workflow pins the source and the legacy Abseil dependency, checks upstream IPA symbol-table invariants, then records raw outputs for the six `STRUCTURAL_ONLY` probes in `data/burmese/phonology_corpus.csv`. The raw-output harness refuses labelled or non-structural rows, validates echoed-input alignment, records artifact hashes and deliberately emits `accuracy: null` with `RAW_OUTPUT_SMOKE_NOT_ACCURACY`. The verified run 43084508359 produced 6/6 non-empty outputs and zero runtime errors; this is a build/execution smoke only, not a pronunciation benchmark. The upstream repository declares Apache-2.0, but its WORKSPACE dependency graph is not fully content-address pinned.
+
+## Explicit candidate collection
+
+`HybridBurmeseEngine` can collect Google WFST, exact myG2P v2 IPA dictionary, Epitran and pinned command-line candidates. Providers are never auto-discovered or auto-run; the default empty-provider call uses only `RuleBasedBurmeseEngine`. Candidate priority is display/diagnostic order, not a score. Every external candidate carries provenance and `WITHHELD_PENDING_INDEPENDENT_PROFILE_MATCHED_ADJUDICATION`; no voting or promotion is permitted without independent Yangon-profile gold. myG2P v2 is CC BY-NC-SA 4.0 and must not be bundled or commercially redistributed without a separate rights decision.
