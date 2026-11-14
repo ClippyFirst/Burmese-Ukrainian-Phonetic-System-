@@ -2169,3 +2169,13 @@ Required CI **43586334287 SUCCESS** on `dd494662f0c94bcf1f59170fe65ea6cd41199c64
 ## Optional diagnostic run 43620353669 — 2026-11-14
 
 Optional diagnostics run 43620353669 completed SUCCESS: Epitran, CRF and Google WFST raw-output jobs succeeded. Google WFST returned 6/6 outputs with 0 runtime errors but 0 independent gold (accuracy null). CRF returned 100 predictions, 84 source-concordant, with 0 gold and NOT_SCORED_POSSIBLE_TRAINING_OVERLAP. These are raw-output diagnostics, not accuracy results.
+
+
+## Final state addendum — 2026-11-14
+
+- Before this documentation-only addendum, branch head was 5219bd6cfb814f17c63404c90ae20affcd521bd0; comparison to main was 861 ahead / 0 behind, merge base dc90463bdd734867308f03cb627eb8941efc19d6. The main branch remains unchanged.
+- The code/data/test head remains 9e0d134a3189a4d57d38de1fa6c0e7b85725d72e; all later commits in this continuation are documentation-only.
+- Required CI 43620353708 is SUCCESS: 271 Python + 68 subtests, 20 Node, 58 Playwright; IPA-gold structure validation, npm ci, npm audit (0 vulnerabilities), production build and generated-data freshness passed.
+- Optional diagnostic workflow 43620353669 is also complete SUCCESS: Epitran, CRF and Google WFST raw-output jobs succeeded. Google WFST: 6/6 outputs, 0 runtime errors, no independent gold, accuracy null. CRF: 100 predictions, 84 source-concordant, no gold, NOT_SCORED_POSSIBLE_TRAINING_OVERLAP. No accuracy claim is made.
+- Final evidence totals: 89 sources / 189 claims; 25 collision groups; eight target groups remain one-sided. No primary MLC entries, independent adjudicated IPA gold or runtime/Ukrainian mapping promotion was obtained.
+- Final status remains PARTIAL PROTOTYPE, not release-ready; next genuine blocker is permissioned page-level access to the 2019 MED second edition and expert lexical/IPA adjudication.
