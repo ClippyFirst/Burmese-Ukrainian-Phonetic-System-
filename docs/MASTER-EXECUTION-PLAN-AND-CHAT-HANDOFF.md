@@ -2425,3 +2425,10 @@ A secondary Wiktionary appendix directly lists `ဂုဏ်` /ɡòuɴ/ and `က
 - `un` secondary lexical equivalence claim and tests are included. No primary MLC adjudication, no independently adjudicated Yangon IPA gold, no runtime or Ukrainian mapping promotion.
 - Vite 8.3.8, lockfile v3 committed (51 package entries), `npm ci` and zero-vulnerability audit are DONE_VERIFIED.
 - Still blocked/partial: primary MLC dictionary/transcription pages unavailable; independent expert IPA gold and annotators unavailable; positional medial/coda/tone/phonation coverage and Python/browser phonological parity incomplete; manual accessibility QA outstanding; Google WFST dependency transitive pinning not fully hermetic; myG2P commercial reuse blocked by CC BY-NC-SA 4.0. Repository remains **PARTIAL PROTOTYPE, not linguistically release-ready**.
+
+
+## Two additional `au` lexical evidence groups — 2026-11-14
+
+`au:` upgraded using `ပေါ` `/pɔ́/` (MLCTS `pau:`, source ေါ) plus `ကျော` `/t͡ɕɔ́/` (MLCTS `kyau:`, source ော). `au.` upgraded using `ပေါ့` `/pɔ̰/` (MLCTS `pau.`, source ေါ့) plus final syllable `/ʃɔ̰/` of `ဝပ်ရှော့` (MLCTS `waphrau.`, source ော့). Claims `CLM-WIKTIONARY-AU-COLON-SECOND-SIDE-EXAMPLE-001` and `CLM-WIKTIONARY-AU-DOT-SECOND-SIDE-EXAMPLE-001` registered; tests updated. `ပေါ့` is outside the MOW suffix candidate inventory. Secondary evidence only, no controlled minimal pair, no primary MLC adjudication or runtime promotion.
+
+Registry: **80 sources / 172 claims**. Rime ledger: **0 unadjudicated / 12 secondary equivalence / 1 conflict / 3 distinctions / 8 one-side-only / 1 special non-rime**. Required CI **43586334287 SUCCESS** on `dd494662f0c94bcf1f59170fe65ea6cd41199c64`: 267 Python + 68 subtests, 20 Node, 58 Playwright; npm ci and audit 0 vulnerabilities.
