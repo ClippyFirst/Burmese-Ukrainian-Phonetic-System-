@@ -2348,3 +2348,12 @@ This section supersedes all older branch-count, PR-state and CI snapshots above;
 - PR #147 is OPEN / DRAFT / mergeable; branch 745 commits ahead / 0 behind `main` at the test-bearing checkpoint. No merge, release or deployment. PR #129 remains OPEN / DRAFT / non-mergeable (53 ahead / 17 behind its base); its compatible work was selectively ported to #147, but PR #129 itself was left untouched. Recent merged PRs #141–#146 are already included because #147 is 0 behind main.
 - Runtime change in this continuation is conservative abstention only: Python IPA withholds medials, conjuncts and kinzi rather than silently omitting them. External candidate API does not run by default and never promotes outputs; RuleBasedBurmeseEngine remains final authority. No new tone, rime or Ukrainian mapping rule was activated.
 - Remaining blockers: primary MLC written-source adjudication; independent Yangon-profile IPA gold and expert annotators; full positional medial/coda/tone/phonation coverage and Python/browser parity; manual accessibility QA; Google WFST dependency hermeticity; commercial rights for myG2P CC BY-NC-SA 4.0; one npm high-severity vulnerability. The repository remains a PARTIAL PROTOTYPE, not release-ready.
+
+
+## Final exact-head closeout — 2026-11-14
+
+- Final branch tip: `cf7bb590f0acb7929f10832ca80062b83a1b33a2`; PR #147 OPEN / DRAFT / mergeable, 750 ahead / 0 behind `main`; not merged.
+- Required CI **43582678405 SUCCESS** on that exact tip: 267 Python + 68 subtests, 20 Node, 58 Playwright; build, generated-data freshness, Chromium and IPA-gold structure validation passed. One high-severity npm vulnerability remains.
+- Optional diagnostics **43582678434 SUCCESS** on that exact tip: Google WFST 6/6 raw outputs, Epitran six raw outputs, CRF 100/100 predictions / 84 source-concordant. Zero gold, no accuracy. Artifacts inspected; provenance recorded in `sources.csv`, `source_claims.csv` and `external-ipa-renderers.json`.
+- Source registry 80 sources / 164 claims. Rime ledger: 0 unadjudicated / 9 secondary equivalence / 1 conflict / 3 distinctions / 11 one-side-only / 1 special non-rime.
+- PR #129 remains OPEN / DRAFT / non-mergeable and untouched; its compatible implementation was selectively ported into #147. Main unchanged, no release or deployment. Repository remains PARTIAL PROTOTYPE, not linguistically release-ready.
