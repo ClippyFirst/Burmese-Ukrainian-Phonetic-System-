@@ -40,10 +40,36 @@
       "url": "https://github.com/ye-kyaw-thu/myG2P",
       "kind": "dictionary / G2P research resource",
       "status": "candidate",
-      "output": "Inspect structured pronunciation/IPA fields, lexicon version, coverage and provenance",
-      "license": "Verify exact version and dictionary license",
+      "output": "Version 2.0 dictionary has a separate IPA field in addition to syllable segmentation and pronunciation respelling; exact-orthography lookup is supported by the optional evidence-gated candidate API. The pinned dictionary commit and CC BY-NC-SA 4.0 license are recorded in the source registry. Not approved for commercial redistribution/use without a separate rights decision; dictionary files are not bundled.",
+      "license": "CC BY-NC-SA 4.0 upstream; non-commercial and share-alike conditions apply. Do not redistribute the dictionary without a separate rights review.",
       "verified_in_repo": false,
       "enabled_by_default": false
+    },
+    {
+      "id": "google-language-resources-burmese-fst",
+      "name": "Google Language Resources Burmese Thrax/OpenFst G2P",
+      "url": "https://github.com/google/language-resources/tree/a90601024f07ab7e96c911243324e0adeb16da96/my",
+      "kind": "Burmese finite-state grapheme-to-IPA engine",
+      "status": "candidate",
+      "output": "Pinned source commit a90601024f07ab7e96c911243324e0adeb16da96; my/burmese.grm compiles to a weighted OpenFst G2P transducer. The LREC 2020 paper says the output tape is IPA and the grammar composes orthographic, syllable-position, phonological and exception rewrites; 88 phone symbols include tone/phonation variants. Optional workflow now builds and smoke-tests it; no independent project gold exists.",
+      "license": "Google Language Resources repository declares Apache-2.0; the workflow pins the repository commit. Its WORKSPACE still references some upstream dependencies without content-addressed pins.",
+      "verified_in_repo": false,
+      "enabled_by_default": false,
+      "latest_run_id": 43084508359,
+      "latest_run_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43084508359",
+      "execution_status": "BUILD_AND_RAW_OUTPUT_SMOKE_VERIFIED_NOT_ACCURACY",
+      "last_run_summary": {
+        "input_count": 6,
+        "output_count": 6,
+        "successful_outputs": 6,
+        "failed_outputs": 0,
+        "runtime_errors": 0,
+        "independent_gold_count": 0,
+        "accuracy": null,
+        "score_status": "RAW_OUTPUT_SMOKE_NOT_ACCURACY",
+        "report_sha256": "386194f65a12554c290020d8882c4f6ef35c1dc758fcb2d91894799f5d6cd66c",
+        "artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43084508359/artifacts/13886670485"
+      }
     },
     {
       "id": "burmese-g2p",
