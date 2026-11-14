@@ -533,7 +533,7 @@ The canonical current handoff is [docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md
 
 
 ## 2026-11-11 continuation pointer
-The canonical Ukrainian practical transcription implementation and current task ledger are recorded in \`docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md\` under “2026-11-11 continuation — Ukrainian practical transcription”. The execution matrix and linguistic completion register were updated in this same branch. Current draft PR: [#133](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/133).
+The canonical Ukrainian practical transcription implementation and current task ledger are recorded in `docs/MASTER-EXECUTION-PLAN-AND-CHAT-HANDOFF.md` under “2026-11-11 continuation — Ukrainian practical transcription”. The execution matrix and linguistic completion register were updated in this same branch. Current draft PR: [#133](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/pull/133).
 
 
 ## Complete Myanmar grapheme-accounting sweep — 2026-11-12
@@ -612,3 +612,141 @@ Latest final exact-head verification after adding explicit withholding for Myanm
 - Linguistic status is unchanged: `မြန်` contains the medial-ra/rime combination that the current Yangon IPA rule inventory does not establish. Canonical IPA remains `?`, Ukrainian practical output retains `⟦မြန်⟧`. This is intentional abstention, not a parser crash. Do not map it by orthographic guess; acceptance requires a source-backed positional rule and independent adjudication.
 - At this documentation update, Pages deployment run [43319186954](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43319186954) is still in progress; verify its final status before claiming the website has deployed this fix.
 - Current merged main SHA: `85dab8bdd08576c1cd112552f68092182bd9a8fa`. No local test execution is claimed; verification is hosted GitHub Actions.
+
+
+## Burmese medial and G2P evidence research — 2026-11-13
+
+- Base main: dc90463bdd734867308f03cb627eb8941efc19d6; branch: research/burmese-medials-g2p-evidence-2026-11-13.
+- Completed three Undermind deep searches: Yangon medial realization; Burmese pronunciation lexicons/corpus provenance; Burmese syllable structure/G2P benchmark methodology. Full text extracted for Watkins (2001), Thu et al. (2016), Oo et al. (2020) and Mooney & Repetti-Ludlow (2021). Additional metadata reviewed for Yanson (2015), Nishi (1998), Hlaing (2018/2019/2020), Repetti-Ludlow (2023), UCSY-SC1 (2019) and related work.
+- Added a source-linked medial evidence matrix and a research report. Unicode 18 / WG2 N2827 are orthographic sources; Ishida 2026 is a descriptive orthography/phonology source; Watkins is one-speaker phonetic evidence; Wiktionary /mjàɴ/ is a lexical lead only.
+- Important correction: English Wiktionary lists မြန် /mjàɴ/ and a longer compound contains /mjàɴmà/. This supersedes the earlier statement “no word-level attestation found.” It does not provide independently adjudicated Yangon audio, so no runtime mapping was enabled.
+- Implementation audit: Python _ipa withholds any coda and has no medial rule path. Browser parseCluster blocks every medial via unsupportedStructure; a contextual deriveIpa function exists behind this guard and is dormant. Do not remove the guard without shared cross-runtime evidence fixtures.
+- Resource/licensing: myG2P 2.0 is CC BY-NC-SA 4.0 and its Myanmar README excludes commercial use absent permission; the 2016 MLC source dictionary's rights are separate. SLR80 audio/transcripts are CC BY-SA 4.0 and not IPA-labelled. Oo et al.'s Thrax grammar URL is identified, but its license remains unverified.
+- New tests lock the lexical candidate's current withheld status and validate source/claim/rule traceability. These are evidence-governance tests, not pronunciation-accuracy tests.
+- Remaining acceptance: independent Yangon expert/audio adjudication; phonemic-vs-phonetic IPA contract; complete onset × medial × rime × tone/register matrix; license clearance; Python/browser shared fixtures.
+- Project remains PARTIAL PROTOTYPE, not linguistically release-ready.
+
+
+## Burmese medials: cross-source G2P and syllable-structure reconciliation — 2026-11-13
+
+- Expanded the research using the existing draft PR #129 rather than duplicating or merging its broad hybrid-engine work. PR #129 remains open, draft, divergent (53 commits ahead / 17 behind current main) and non-mergeable; its external hybrid implementation was not ported.
+- Verified the exact Google Language Resources commit a90601024f07ab7e96c911243324e0adeb16da96. Both root LICENSE and my/burmese.grm header declare Apache-2.0. The grammar maps -y/-r to /j/, -w to /w/, reorders -h before other medials and contains onset/rime-conditioned exceptions. This corrects the earlier “license pending” status; LREC 2020 paper license and in-house speech corpus rights remain separate.
+- Exact PR-head Google WFST run 43084508359 built and returned six structural-only outputs. The fifth input, မြန် (struct-005), returned “m j àɴ”. Artifact SHA-256 c43dc9afc74c49189330c1e704e12b352c9e9d02b58072d5a37a8d7b1a03ebba. No expected IPA or independent gold existed; output is computational corroboration only.
+- Green (2002) supplies a phonological cross-check: C(G)V((V)C), examples /mjè:/ and /mjɛʔ/, placeless /N/ coda realized through preceding-vowel nasalization, and three tones (low/high/creaky) in nasal rhymes. This means the terminal N in /mjàɴ/ should not automatically be rendered as an independent surface [ɴ].
+- Tin Htay Hlaing (2014) provides the exact seven two-/three-medial codepoint combinations and an orthographic FST benchmark (11,732 words / 32,283 syllables; initial 99.93% word accuracy). It is structural, not G2P; the thesis has a codepoint/label typo in its final RA+WA+HA row, now explicitly documented.
+- Tone evidence remains disputed: Green/LREC use four categories; Duan & Zhu (2025) propose eight split across modal and lower/breathy registers. Full Duan & Zhu empirical tables were not extracted; no tone model was changed.
+- Runtime remains unchanged. Python/browser parity, profile-matched expert audio adjudication, tone/rime convention and independent gold remain acceptance blockers. The lexical and WFST candidates stay WITHHELD.
+
+
+## Python/browser asat-coda segmentation parity — 2026-11-13
+
+- First exact-head CI run 43324492175 exposed five failures: two new IPA tests correctly uncovered Python splitting မြန် into မြ + န် (and မြန်မာ into three records); three failures were evidence-matrix CSV alignment/assertion defects.
+- Root cause: browser segmenter already treats a base consonant followed by U+103A as a final/coda; Python segmenter did not. Python parser also lacked explicit C+ASAT coda parsing.
+- Fixed Python segmentation and coda parsing to match browser behavior; added parser and Playwright regressions for မြန်, မြန်မာ and ကတ်. Corrected the CSV row alignment and combination-row assertion.
+- IPA remains withheld. This is a structural parity fix, not a phonological mapping.
+- CI rerun pending on updated PR #147 head.
+
+
+## External comparator disagreement and CRF sample — 2026-11-13
+
+- Epitran 1.35.3 raw output for မြန် is məjaɴ; pinned Google Thrax raw output is m j àɴ; Wiktionary lists /mjàɴ/. Both engines were run on structural-only probes with zero gold and null accuracy. No winner is selected.
+- Pinned CRFsuite v2 was run on 100 evenly spaced myG2P v2.0 source rows: 84/100 source-concordant; YA 10/14, RA 17/20, WA 13/15, HA 7/8 (overlapping). The exact target မြန် is absent; possible training overlap; syllable boundaries supplied; zero gold and null accuracy.
+- Artifacts are recorded in sources.csv and medial_evidence_matrix.csv with SHA-256 hashes. They are diagnostics only and do not authorize runtime mappings.
+
+
+## Exact-head research and parser verification — 2026-11-13
+
+- Latest code-bearing head 5eff1f3d052e775026ffff0fa0b3edd00512224d; required CI [43325991671](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43325991671) SUCCESS; optional Epitran/CRF run [43325991496](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43325991496) SUCCESS.
+- Python coda segmentation parity fix and all regression tests passed. Browser/Node/build/generated-data checks passed.
+- Exact Epitran artifact SHA-256 cb9cbb1c08047b2082f21f3c29d01d8054eaf37fc462abf55a3336ad265d7c1f; CRF artifact SHA-256 d0df5c6527a757ee3c8be5259578ec08abdd3b219bf317d3de7364a47bdb6125.
+- No runtime medial IPA rules enabled; gold 0, accuracy null; project remains PARTIAL PROTOTYPE.
+
+
+## Nasal coda and IPA schema boundary — 2026-11-13
+
+- Added source-backed phonotactic records for Green's placeless /N/ coda and nasal-rhyme tone restrictions.
+- The Ukrainian target rule /ɴ/ → нг is explicitly conditional on the selected IPA analysis producing /ɴ/; it does not automatically apply to abstract /N/ or nasalized vowels.
+- The IPA gold schema preserves nasalization in the literal IPA value but has no dedicated typed nasalization field. No schema change was made; consider an optional field only after the expert-approved convention sheet.
+
+
+## UCSY-SC1 rights note — 2026-11-13
+
+The paper documents a potentially useful 42 h 39 min / 307-speaker audio corpus, but it is not IPA gold. The publisher author-details page lists CC BY-SA 4.0 while the PDF footer says “All rights reserved”; the underlying corpus audio has no separately verified license or public download permission. Keep this source BLOCKED / RIGHTS-GATED until both article and corpus terms are confirmed.
+
+
+## Final one-pass verification — 2026-11-13
+
+- Base/default-branch starting commit: dc90463bdd734867308f03cb627eb8941efc19d6.
+- Latest code/data-bearing research head: 826601139fd73a5152b6b37a5ed3574f3fca18a5.
+- Dedicated branch: research/burmese-medials-g2p-evidence-2026-11-13.
+- Draft PR: #147. It is intentionally not merged while independent linguistic adjudication remains absent.
+- Required exact-head CI 43327571175 SUCCESS: 201 Python tests + 66 subtests; independent IPA gold schema validation; npm build; generated web-data freshness; 19 Node tests; 58 Chromium/Playwright tests.
+- Optional raw comparator/CRF workflow 43327570809 SUCCESS. Outputs remain non-gold and accuracy remains null.
+- Intermediate CI failures were fixed and rerun: 43324492175 exposed Python coda segmentation and matrix CSV issues; 43326933757 exposed a temporary practical_rules.csv path-mapping overwrite during documentation work. The table was restored from main, the conditional /ɴ/ note reapplied, and the final required CI passed.
+- No runtime medial IPA rule was enabled. The structural coda fix is verified; phonological coverage remains PARTIAL.
+- Independent expert-adjudicated IPA gold for the medial/coda cells: 0. Empirical accuracy: null.
+- PR #129 remains open/draft and untouched as a code branch (53 commits ahead / 17 behind current main, non-mergeable); its source-backed research findings were reconciled into this branch, but its broad hybrid-engine code was not ported.
+- Release assessment: PARTIAL PROTOTYPE, not linguistically release-ready. Research dossier is ready for specialist review and data-rights resolution.
+
+
+## Mya2Rom mode contract — 2026-11-13
+
+- Mya2Rom 0.4.4 exposes ipa, mlcts, mlcts2, simple and simple2; MLCTS is orthographic, MLCTS2 is more phonetic romanization but not standardized IPA.
+- The project browser adapter explicitly calls mya2rom(unit.raw, "mlcts", ...). A regression test now locks this mode.
+- Keep Latin→Ukrainian transliteration separate from source phonology → IPA → Ukrainian adaptation. The upstream README documents stacking, ASAT, schwa, voicing-sandhi and alternate-pronunciation limitations; its IPA convention uses /N/ instead of nasalized vowels.
+
+
+## Final exact-head verification — 2026-11-13
+
+- Starting default-branch commit: dc90463bdd734867308f03cb627eb8941efc19d6.
+- Latest code/data-bearing research head: fef242e4d4cc978823e4133f65abe48224355c13.
+- Dedicated branch: research/burmese-medials-g2p-evidence-2026-11-13; draft PR #147 is open and not merged.
+- Required exact-head CI 43328423650 SUCCESS: 201 Python tests + 66 subtests; independent IPA gold schema validation; npm build; generated web-data freshness; 20 Node tests; 58 Chromium/Playwright tests. The new Node regression asserts that the romanization adapter explicitly requests MLCTS, not MLCTS2 or IPA.
+- Optional raw comparator/CRF workflow 43328423664 SUCCESS. These artifacts remain non-gold; no accuracy is reported.
+- Intermediate CI failures were fixed and rerun: 43324492175 exposed Python coda segmentation and matrix CSV issues; 43326933757 exposed a temporary practical_rules.csv path-mapping overwrite during documentation work. The table was restored from main, the conditional /ɴ/ note reapplied, and final exact-head CI passed.
+- Structural coda parsing is verified: မြန် is one syllable; မြန်မာ is two; ကတ် retains final consonant + ASAT. Browser/Python tests pass.
+- No runtime medial IPA rule was enabled. Independent expert-adjudicated IPA gold for the medial/coda cells remains 0; empirical accuracy remains null.
+- PR #129 remains open/draft and untouched as a code branch (53 commits ahead / 17 behind current main, non-mergeable); its source-backed research findings were reconciled here, but its broad hybrid-engine code was not ported.
+- UCSY-SC1 is a rights-gated audio lead: publisher page lists CC BY-SA 4.0, PDF footer says “All rights reserved”, and the corpus audio has no separately verified license.
+- Release assessment: PARTIAL PROTOTYPE, not linguistically release-ready. The research dossier is ready for specialist review and data-rights resolution.
+
+
+## Final exact-head continuation — 2026-11-13 (supersedes earlier snapshots)
+
+- Starting default-branch commit: `dc90463bdd734867308f03cb627eb8941efc19d6`; `main` remains unchanged.
+- Final dedicated branch: `research/burmese-medials-g2p-evidence-2026-11-13`.
+- Latest verified code/data head: `601cf85a5c740627848f9eff1fa1f0911cf03796`; the final handoff-only commit follows it and is recorded in PR #147.
+- PR #147: OPEN / DRAFT / mergeable; ahead of `main` (0 behind; exact ahead count is maintained by PR #147); 29 files changed. No merge or release performed.
+- PR #129: OPEN / DRAFT, untouched; 53 commits ahead and 17 behind `main`, diverged and non-mergeable. Its broad hybrid-engine code was not ported; no branch was deleted or rewritten.
+
+### Work completed in this continuation
+
+- Retrieved the complete text-only John Okell corpus through the Zenodo direct endpoint. The retrieved byte sequence is 8,809,265 bytes; its MD5 matches Zenodo's published checksum `f020d7bbcf9857631094a8861143d18f`; SHA-256 is `6bbafd699c587876317f6e0535b9dd8f9ec87c15efe4b7e65a8c7362ebcdbf4c`.
+- Profiled 19,565 CRLF-terminated lines (19,566 split segments including the final empty segment), 67 numbered heading lines, 21 BOM markers, one NUL at line 9,300, non-NFC text, zero U+FFFD, 73 unique Myanmar code points, 295 repeated nonblank line forms / 1,008 excess occurrences and 23 repeated paragraph forms. Repeated titles, headers and divider motifs are not duplicate-document evidence.
+- Added `data/burmese/okell_text_corpus_orthographic_profile.csv` with 4 medial codepoint counts and 5 target-substring counts. It is explicitly ORTHOGRAPHIC_ONLY; no tokenization, syllabification, IPA or pronunciation inference is asserted.
+- Updated source registry and claims, corpus triage, research report, completion register and status matrix. Added regression coverage for checksum, text-quality boundary and orthographic-only counts.
+- Current registries: 59 sources, 83 claims, 45 medial-evidence rows, 30 phonological rules, 7 source-phonemic sandhi examples and 9 orthographic-profile rows.
+- No audio was accessed, acquired, inspected, processed or used. No new medial or contextual voicing rule was enabled.
+
+### Exact-head verification
+
+- Required CI push run `43449980180` SUCCESS and PR run `43449989336` SUCCESS.
+- Python: 222 passed; 66 subtests passed.
+- IPA-gold schema validator executed successfully but reports 0 records, 0 annotations, 0 adjudicated records and `NOT_READY_NO_ADJUDICATED_GOLD`; this is not gold-set readiness.
+- npm production build: PASS; generated web-data freshness: PASS; Node: 20 passed; Playwright/Chromium: 58 passed.
+- Optional diagnostics `43449989348` SUCCESS. CRF: 100 predictions, 84 source-concordant rows, gold_count=0, accuracy=null, `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`. Epitran 1.35.3: raw-output-only artifact, SHA-256 `8dc22b82c588af9575a0f398e69cabe21f9d5b22937b94f882632624caa53a99`, artifact ID `14048474215`. No accuracy claim is made.
+
+### Remaining blockers and acceptance
+
+- Okell (1969) full grammar and Nishi (1976) *Medials in Burmese*: bibliography confirmed, full texts not retrieved; no claims attributed directly. Nishi 1999 reprint is catalogued but NDL access is limited; Okell is behind limited preview/paywall routes.
+- Hill (2019), chapter 2: official Cambridge chapter metadata confirmed, but full chapter PDF unavailable through the research workspace; no new phonological claims taken from the publisher abstract.
+- Okell corpus: byte identity verified, but segment-level provenance, document boundaries, repeated passage classification and localized legacy encoding/glyph corruption remain PARTIAL. Do not normalize/deduplicate the source automatically.
+- SEAlang: actual dictionary records/export schema and corpus rows remain unresolved; IPA interface evidence is not an IPA gold corpus.
+- Independent adjudicated IPA gold remains 0; empirical accuracy remains null. Acceptance requires source-located examples, two independent annotators, a separate adjudicator, frozen splits and full IPA metadata.
+- Tone (four vs eight/register) and abstract /N/ vs surface nasalization remain unresolved; MLCTS 94 rime entries still need primary-source verification.
+- Myanglish third-column provenance remains uncertain; myX orthography corpus remains quarantined pending full 4,800-row target-span/duplicate audit.
+- Public metadata rights conflict for the Okell corpus remains recorded (Zenodo blank; ELG lists CC BY 4.0). Project-owner research/ingestion permission is confirmed; downstream redistribution still requires its own rights/attribution review.
+
+### Final assessment
+
+**PARTIAL PROTOTYPE — NOT LINGUISTICALLY RELEASE-READY.** The research dossier is suitable for specialist review, but modern Yangon IPA gold, corpus provenance/quality clearance, unresolved phonological models and source-level adjudication are still absent.

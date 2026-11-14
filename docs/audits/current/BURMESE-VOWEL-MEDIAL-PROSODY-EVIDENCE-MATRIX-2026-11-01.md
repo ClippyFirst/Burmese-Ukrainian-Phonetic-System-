@@ -116,3 +116,29 @@ The paper states that the authors' in-house Burmese speech corpora and segmentat
 
 
 **Extraction limit:** Green's 50-rhyme table is present in the source PDF, but the available text extraction corrupts several IPA symbols and tone marks. This pass records the table count and the source's explicit phonotactic restrictions, but does not reconstruct all 50 entries from corrupted OCR. A page-image/manual linguistic transcription is required before turning the table into machine-readable rows.
+
+
+## Full-text primary-source reconciliation — 2026-11-14
+
+### Thu et al. (2016), WSSANLP — benchmark interpretation
+
+The full paper confirms 25,300 Myanmar Language Commission dictionary words: 25,000 training items, three 100-word open test sets, and a separate 100-word closed test sampled from training. PER is phoneme-level Levenshtein after syllable alignment. Best open-set values are WFST 14.7 (Open1), 11.4 (Open2), and 15.7 (Open3, tied with CRF); PBSMT reports 16.1/13.1/22.0 and is described by the authors as best overall in manual evaluation, especially tone. The closed-set zero-error results are not held-out evidence. The paper's phone strings are romanized transcription, not project IPA. These figures are historical source-specific benchmark results, not accuracy estimates for this repository.
+
+### Oo et al. (2020), LREC — grammar and inventory
+
+The paper describes a Thrax grammar compiling to a weighted OpenFst transducer: Myanmar Unicode input, IPA phone output, 195 states and 2,966 arcs, with 139 input-side and 263 output-side epsilon transitions. It reports 88 phone symbols (34 consonants, 54 vowels), context-conditioned open and nasalized/glottally-closed vowel sets, four diphthongs, and four tone categories (low, high, creaky, checked). The paper's `/N/` notation is source-specific and not automatically a project decision about surface nasal consonants versus vowel nasalization. Counts and architecture are paper-reported, not independent current-build measurements. The in-house speech/segmentation corpus is explicitly not public domain; it is not imported.
+
+### Hlaing (2014) — orthographic segmentation, not G2P
+
+The full text reports 11,732 tested words and 99.93% word-level orthographic syllabification accuracy. It contains a numerical discrepancy: the abstract and Table 6 say 32,238 syllables, while §6.1 says 32,283. Table 4's counts imply eight stacked-word errors, while the prose says nine. This measures orthographic syllable-boundary segmentation, not pronunciation or IPA. The discrepancy is now explicitly recorded in the source registry; no corrected total is guessed.
+
+### Runtime acceptance consequence
+
+Medials, conjuncts and kinzi remain structurally parsed but are withheld by the IPA adapter until their Yangon-profile realizations are implemented and adjudicated. The parser still exposes the structural fields. Regression probes cover `ကြွေ`, `က္ကာ`, and `င်္ဂါ`; this is conservative abstention, not a new phonological rule.
+
+
+## Google WFST and primary-source closeout — 2026-11-14
+
+The current branch's optional comparator workflow **43582075278 SUCCESS**: pinned Google grammar built with Bazel 7.4.1, symbol-table invariants passed, and 6/6 structural-only probes emitted output. The artifact was downloaded and inspected; report SHA-256 `88372233d85df73593b030ee0f91aa678fe86fd1c6d5cdc18e7c609b8eefd2c6`, zero gold, accuracy null. Epitran 1.35.3 produced six raw structural-only outputs; CRF produced 100/100 outputs with 84 source-concordant but possible train/test overlap; both artifacts inspected, no accuracy claim. The required CI on the same test-bearing SHA passed 267 Python tests + 68 subtests, 20 Node tests, and 58 Playwright tests.
+
+Source registry closeout: **80 sources / 164 claims**. Rime ledger: **0 unadjudicated / 9 secondary equivalence / 1 conflict / 3 distinctions / 11 one-side-only / 1 special non-rime**. Independent adjudicated IPA gold remains 0. One high-severity npm vulnerability remains. PR #147 remains open/draft; PR #129 was selectively ported but left open and untouched.

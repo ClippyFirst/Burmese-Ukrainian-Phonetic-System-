@@ -385,3 +385,24 @@ test("MLCTS mode renders the separate Ukrainian syllable crosswalk",async({page}
   await expect(page.locator("#ua-romanization-status")).toContainText("PROPOSED");
   await expect(page.locator("#ipa")).toBeHidden();
 });
+
+
+test("browser keeps the medial-ra nasal coda in one orthographic syllable",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("မြန်");
+  const rows=page.locator("#syllables .syllable");
+  await expect(rows).toHaveCount(1);
+  await expect(rows.first().locator("strong")).toContainText("မြန်");
+  await expect(page.locator("#ipa")).toContainText("?");
+  await expect(page.locator("#uk")).toContainText("⟦မြန်⟧");
+});
+
+test("browser separates မြန်မာ into two syllables, not three",async({page})=>{
+  await page.goto("/");
+  await page.locator("#source").fill("မြန်မာ");
+  const rows=page.locator("#syllables .syllable");
+  await expect(rows).toHaveCount(2);
+  await expect(rows.nth(0).locator("strong")).toContainText("မြန်");
+  await expect(rows.nth(1).locator("strong")).toContainText("မာ");
+  await expect(page.locator("#ipa")).toContainText("?");
+});

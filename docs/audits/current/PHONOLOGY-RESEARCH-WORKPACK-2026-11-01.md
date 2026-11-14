@@ -98,3 +98,28 @@ Rights correction: LREC 2020 explicitly states that its in-house speech and segm
 
 
 Green's 50-rhyme table is identified, but the available PDF text extraction corrupts several symbols/tones; the full 50-row inventory is deliberately not transcribed from OCR. Only the readable structural restrictions are recorded until a manual page-image extraction is available.
+
+
+## New source-backed findings — 2026-11-13
+
+- Hlaing (2014) separates phonetic from orthographic syllable structure and lists all eleven medial forms. The final RA+WA+HA row has a prose label typo; the codepoint sequence is U+103C+U+103D+U+103E.
+- Ishida (2026): U+103B/U+103C normally /j/ with velar-conditioned palatalization; U+103D /w/ or /ʊ/; U+103E aspiration/devoicing and selected /ʃ/ fusion. Watkins (2001) warns that /j,w/ may surface as secondary articulation.
+- Green (2002): /mj/ onset examples, placeless /N/ coda realized through preceding-vowel nasalization, and only three tone categories in nasal rhymes. Do not map /N/ automatically to a surface [ɴ].
+- Google Thrax pinned commit a90601024f07ab7e96c911243324e0adeb16da96 is Apache-2.0. Its grammar maps -r/-y to /j/, -w to /w/, reorders -h and contains onset/rime-specific rules.
+- Cross-engine target disagreement: Google raw output m j àɴ; Epitran 1.35.3 raw output məjaɴ for မြန်. Zero gold; both are diagnostics only. CRF 84/100 source-concordant on myG2P-derived sample, zero gold, possible train/test overlap.
+- Acceptance still requires a versioned phonemic-vs-phonetic convention, independent Yangon audio/IPA adjudication, full onset × medial × rime × tone coverage and shared Python/browser phonological fixtures.
+
+
+### Nasal coda and typed IPA representation
+
+Green (2002) treats /N/ as a placeless nasal coda whose realization includes preceding-vowel nasalization and approximate place articulation. Keep the abstract coda and its surface phonetic realization separate. The current IPA gold schema preserves nasalization in the literal value but has no typed nasalization field; decide whether to extend it only after the convention sheet is adjudicated.
+
+
+### UCSY-SC1 audio resource
+
+Mon et al. (2019) describe a 42 h 39 min, 307-speaker corpus with web-news and recorded-conversation domains, 16 kHz mono audio, and 31,114 utterances. It reports four medial signs and nasalized vowels. This is a promising annotation lead, but it is an ASR corpus, not IPA gold. The publisher author-details page lists CC BY-SA 4.0, but the PDF footer says “All rights reserved”; confirm article-level rights. This does not establish the underlying corpus audio's reuse terms; obtain explicit corpus permission before using it.
+
+
+### Romanization vs IPA engine boundary
+
+Mya2Rom 0.4.4 exposes separate ipa, mlcts, mlcts2, simple and simple2 modes. The project runtime uses mlcts, the MLC orthographic transcription; mlcts2 is a more phonetic romanization, still not standardized IPA. Keep this orthographic Latin→Ukrainian path separate from source phonology → IPA → Ukrainian adaptation. The README's /N/ convention and documented limitations are not independent pronunciation gold.

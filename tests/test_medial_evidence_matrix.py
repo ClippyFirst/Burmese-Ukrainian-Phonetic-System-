@@ -1,0 +1,241 @@
+"""Evidence-matrix integrity checks; these tests do not approve runtime rules."""
+import csv
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "data" / "burmese"
+
+
+def rows(name):
+    with (DATA / name).open(encoding="utf-8", newline="") as handle:
+        return list(csv.DictReader(handle))
+
+
+def test_medial_matrix_is_source_linked_and_runtime_withheld():
+    sources = {row["source_id"] for row in rows("sources.csv")}
+    matrix = rows("medial_evidence_matrix.csv")
+    assert len(matrix) >= 10
+    assert len({row["evidence_id"] for row in matrix}) == len(matrix)
+    for row in matrix:
+        assert row["source_ids"].strip()
+        assert row["project_runtime_status"] == "WITHHELD"
+        assert row["evidence_level"].strip()
+        assert row["source_locator"].strip()
+        assert set(row["source_ids"].split(";")) <= sources
+    assert any(row["evidence_id"] == "MED-MRAN-001" for row in matrix)
+
+
+def test_medial_rule_registry_is_evidence_only_and_linked_to_tests():
+    sources = {row["source_id"] for row in rows("sources.csv")}
+    claims = {row["claim_id"] for row in rows("source_claims.csv")}
+    rules = rows("phonological_rules.csv")
+    medial_rules = [row for row in rules if row["rule_id"].startswith("MEDIAL_") or row["rule_id"] == "MRAN_LEXICAL_IPA_CANDIDATE"]
+    assert len(medial_rules) >= 6
+    for rule in medial_rules:
+        assert rule["source_id"] in sources
+        assert rule["claim_id"] in claims
+        assert rule["source_locator"].strip()
+        assert rule["status"] in {"analysis_dependent", "context_dependent", "not_established"}
+        assert (ROOT / rule["test_reference"]).is_file()
+
+
+def test_lexical_mran_candidate_does_not_promote_runtime_or_general_rule():
+    row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-MRAN-001")
+    assert row["attested_phonological_behavior"] == "/mjàɴ/"
+    assert row["evidence_level"] == "lexical_candidate_not_gold"
+    assert row["project_runtime_status"] == "WITHHELD"
+    rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "MRAN_LEXICAL_IPA_CANDIDATE")
+    assert rule["status"] == "not_established"
+
+
+def test_all_seven_mlc_medial_combinations_are_recorded_as_orthographic_only():
+    matrix = rows("medial_evidence_matrix.csv")
+    combos = {row["evidence_id"]: row for row in matrix if row["evidence_id"].startswith("MED-COMBO-")}
+    assert set(combos) == {f"MED-COMBO-{i:02d}" for i in range(1, 8)}
+    for row in combos.values():
+        assert row["evidence_level"] == "orthographic_only"
+        assert row["project_runtime_status"] == "WITHHELD"
+        assert "HLAING2014" in row["source_ids"].split(";")
+        assert "not phonological composition" in row["notes"]
+
+
+def test_google_fst_mran_output_is_cross_system_candidate_not_gold():
+    row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-GOOGLE-MRAN-001")
+    assert row["attested_phonological_behavior"] == "m j àɴ"
+    assert row["evidence_level"] == "cross_system_candidate_not_gold"
+    assert row["project_runtime_status"] == "WITHHELD"
+    assert "43084508359" in row["source_locator"]
+    rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "GOOGLE_FST_MRAN_RAW_CANDIDATE")
+    assert rule["status"] == "not_established"
+
+
+def test_green_nasal_coda_is_not_flattened_to_independent_velar_nasal():
+    row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-GREEN-N-001")
+    assert "nasalization" in row["attested_phonological_behavior"]
+    assert "standalone surface [ɴ]" in row["notes"]
+    assert row["project_runtime_status"] == "WITHHELD"
+
+
+def test_external_engine_candidates_for_mran_remain_non_gold_and_withheld():
+    matrix = rows("medial_evidence_matrix.csv")
+    epitran = next(row for row in matrix if row["evidence_id"] == "MED-EPITRAN-MRAN-001")
+    google = next(row for row in matrix if row["evidence_id"] == "MED-GOOGLE-MRAN-001")
+    assert epitran["attested_phonological_behavior"] == "məjaɴ"
+    assert google["attested_phonological_behavior"] == "m j àɴ"
+    assert epitran["project_runtime_status"] == google["project_runtime_status"] == "WITHHELD"
+    assert epitran["evidence_level"] == "engine_disagreement_not_gold"
+    assert "43325991496" in epitran["source_locator"]
+
+
+def test_crf_medial_counts_are_diagnostic_not_accuracy():
+    row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-CRF-MEDIAL-SAMPLE-001")
+    assert row["attested_phonological_behavior"] == "YA 10/14; RA 17/20; WA 13/15; HA 7/8; overall 84/100"
+    assert row["evidence_level"] == "sample_concordance_not_accuracy"
+    assert row["project_runtime_status"] == "WITHHELD"
+    assert "gold_count=0" in row["source_locator"]
+
+
+def test_nasal_coda_and_nasal_rhyme_tone_are_registered_separately():
+    with (DATA / "phonotactics.csv").open(encoding="utf-8", newline="") as handle:
+        rules = {row["rule_id"]: row for row in csv.DictReader(handle)}
+    nasal = rules["NASAL_CODA_N"]
+    tone = rules["NASAL_RHYME_TONE"]
+    assert nasal["source_id"] == tone["source_id"] == "GREEN2002"
+    assert nasal["status"] == tone["status"] == "analysis_dependent"
+    assert "nasalization" in nasal["notes"]
+    assert "not equate automatically" in nasal["notes"]
+    assert "checked tone excluded" in tone["notes"]
+
+def test_stedt_written_burmese_medial_segmentation_remains_source_specific():
+    matrix = rows("medial_evidence_matrix.csv")
+    row = next(row for row in matrix if row["evidence_id"] == "MED-STEDT-WRITTEN-001")
+    assert row["evidence_level"] == "historical_written_analysis"
+    assert row["project_runtime_status"] == "WITHHELD"
+    assert "Do not equate" in row["notes"]
+    assert "/-w-/ belongs to rhyme" in row["attested_phonological_behavior"]
+    assert "/-y-/ and /-r-/" in row["attested_phonological_behavior"]
+    rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "STEDT_WRITTEN_MEDIAL_SEGMENTATION")
+    assert rule["status"] == "analysis_dependent"
+    assert rule["source_id"] == "STEDT1996_BURMESE"
+    assert rule["claim_id"] == "CLM-STEDT-WRITTEN-MEDIAL-001"
+    assert "no modern Unicode medial mapping" in rule["scope"]
+
+
+def test_stedt_rangoon_medial_distribution_is_not_promoted_to_yangon_runtime():
+    row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-STEDT-RANGOON-001")
+    assert row["evidence_level"] == "historical_dialectal_description"
+    assert row["project_runtime_status"] == "WITHHELD"
+    assert "Burling" in row["attested_phonological_behavior"]
+    assert "Roop" in row["attested_phonological_behavior"]
+    rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "STEDT_RANGOON_MEDIAL_DISTRIBUTION")
+    assert rule["status"] == "analysis_dependent"
+    assert rule["source_id"] == "STEDT1996_BURMESE"
+    assert "not a current standard Yangon runtime rule" in rule["scope"]
+
+def test_nishi_written_burmese_periods_are_not_collapsed_into_runtime():
+    row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-NISHI-PERIODS-001")
+    assert row["evidence_level"] == "historical_orthographic_analysis"
+    assert row["project_runtime_status"] == "WITHHELD"
+    assert "OWB -> MWB -> EModWB" in row["environment"]
+    assert "as a modern Yangon G2P rule" in row["notes"]
+    rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "NISHI_ORTHOGRAPHIC_PERIODIZATION")
+    assert rule["status"] == "analysis_dependent"
+    assert rule["source_id"] == "NISHI1997_ORTHOGRAPHY"
+    assert rule["claim_id"] == "CLM-NISHI-1997-PERIODS-001"
+
+
+def test_matisoff_historical_r_to_y_is_not_a_unicode_medial_mapping():
+    row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-MATISOFF-RY-001")
+    assert row["evidence_level"] == "historical_comparative_analysis"
+    assert row["project_runtime_status"] == "WITHHELD"
+    assert "WB *-r- > Modern Burmese -y-" in row["attested_phonological_behavior"]
+    assert "no direct modern Unicode mapping" in row["unicode"]
+    assert "do not infer modern U+103B/U+103C" in row["notes"]
+    rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "MATISOFF_MEDIAL_R_TO_Y")
+    assert rule["status"] == "analysis_dependent"
+    assert rule["source_id"] == "MATISOFF2003_HANDBOOK_PTB"
+    assert rule["claim_id"] == "CLM-MATISOFF-2003-RY-001"
+
+def test_green_2005_complex_onset_evidence_is_not_a_unicode_mapping():
+    row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-GREEN2005-CG-ONSET-001")
+    assert row["evidence_level"] == "modern_spoken_phonology"
+    assert row["project_runtime_status"] == "WITHHELD"
+    assert "not a one-to-one Unicode mapping" in row["unicode"]
+    assert "/mjouʔ/" in row["attested_phonological_behavior"]
+    assert "reducing compounds" in row["attested_phonological_behavior"]
+    rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "GREEN2005_MAJOR_CG_ONSET")
+    assert rule["status"] == "analysis_dependent"
+    assert rule["source_id"] == "GREEN2005_BURMESE_PHONOLOGY"
+    assert rule["claim_id"] == "CLM-GREEN2005-ONSET-CODA-001"
+
+def test_nishi_old_burmese_medial_history_is_separate_from_modern_unicode_rules():
+    matrix = {row["evidence_id"]: row for row in rows("medial_evidence_matrix.csv")}
+    expected = {
+        "MED-NISHI-OWB-H-001",
+        "MED-NISHI-OWB-L-001",
+        "MED-NISHI-MB-RY-MERGER-001",
+        "MED-NISHI-GREAT-SHIFT-CRCY-001",
+    }
+    assert expected <= matrix.keys()
+    for evidence_id in expected:
+        row = matrix[evidence_id]
+        assert row["source_ids"] == "NISHI1998_OLDBURMESE"
+        assert row["project_runtime_status"] == "WITHHELD"
+        assert "historical" in row["evidence_level"]
+        assert "no modern Unicode mapping" in row["unicode"] or "no modern Unicode mapping" in row["notes"]
+
+    h_rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "NISHI_OWB_H_VOICELESS_SONORANT_NOT_MEDIAL")
+    l_rule = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "NISHI_OWB_L_MEDIAL_REFLEX")
+    merger = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "NISHI_MB_RY_MEDIAL_MERGER")
+    shift = next(row for row in rows("phonological_rules.csv") if row["rule_id"] == "NISHI_GREAT_SHIFT_CR_CY")
+    assert all(rule["status"] == "analysis_dependent" for rule in (h_rule, l_rule, merger, shift))
+    assert "not equivalent to modern Unicode U+103E" in h_rule["scope"]
+    assert "do not map directly to modern Unicode medial signs" in l_rule["scope"]
+    assert "Historical merger only" in merger["scope"]
+    assert "Historical model only" in shift["scope"]
+
+
+def test_nishi_old_burmese_h_notation_is_not_collapsed_into_modern_medial_ha():
+    row = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-NISHI-OWB-H-001")
+    assert "voiceless or aspirated sonorant unit" in row["attested_phonological_behavior"]
+    assert "not an independent medial cluster" in row["attested_phonological_behavior"]
+    assert "Do not map historical -h to modern U+103E" in row["notes"]
+    modern_ha = next(row for row in rows("medial_evidence_matrix.csv") if row["evidence_id"] == "MED-HA-001")
+    assert modern_ha["unicode"] == "U+103E"
+    assert modern_ha["project_runtime_status"] == "WITHHELD"
+
+def test_nishi_old_burmese_cluster_correspondences_preserve_dialect_variation():
+    matrix = rows("medial_evidence_matrix.csv")
+    cluster_rows = [
+        row for row in matrix
+        if row["evidence_id"].startswith("MED-NISHI-OB-")
+        and row["evidence_id"] not in {
+            "MED-NISHI-OWB-H-001",
+            "MED-NISHI-OWB-L-001",
+        }
+    ]
+    assert len(cluster_rows) == 9
+    for row in cluster_rows:
+        assert row["source_ids"] == "NISHI1998_OLDBURMESE"
+        assert row["project_runtime_status"] == "WITHHELD"
+        assert "dialect_historical_correspondence" == row["evidence_level"]
+        assert "historical romanized" in row["unicode"]
+        assert "Source romanization only, not IPA" in row["notes"]
+    assert any("TAV c-" in row["attested_phonological_behavior"] for row in cluster_rows)
+    assert any("INT kl-" in row["attested_phonological_behavior"] for row in cluster_rows)
+    assert any("WB Pr-/Mr-" in row["attested_phonological_behavior"] for row in cluster_rows)
+
+def test_okell_1995_regional_medial_profiles_are_not_promoted_to_standard_burmese():
+    matrix = {row["evidence_id"]: row for row in rows("medial_evidence_matrix.csv")}
+    ar = matrix["MED-OKELL1995-AR-RY-001"]
+    it = matrix["MED-OKELL1995-IT-L-001"]
+    tv = matrix["MED-OKELL1995-TV-L-001"]
+    for row in (ar, it, tv):
+        assert row["source_ids"] == "OKELL1995_THREE_DIALECTS"
+        assert row["project_runtime_status"] == "WITHHELD"
+        assert "dialect" in row["evidence_level"]
+        assert "no direct modern Unicode mapping" in row["unicode"]
+    assert "maintains /r/ vs /y/" in ar["attested_phonological_behavior"]
+    assert "merges WB /r/ with /y/" in ar["attested_phonological_behavior"]
+    assert "medial /y/, /l/ and /w/" in it["attested_phonological_behavior"]
+    assert "absent from Standard Burmese" in tv["attested_phonological_behavior"]

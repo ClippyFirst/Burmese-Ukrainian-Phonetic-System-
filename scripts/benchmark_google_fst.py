@@ -1,0 +1,251 @@
+#!/usr/bin/env python3
+"""Run a pinned Google Burmese WFST G2P raw-output smoke test.
+
+The current repository probe corpus is structural-only and contains no
+adjudicated IPA labels. This runner deliberately reports execution evidence,
+not phonological accuracy, and refuses labelled/non-structural rows.
+"""
+from __future__ import annotations
+
+import argparse
+import csv
+import hashlib
+import json
+import os
+import platform
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+ENGINE_SOURCE_COMMIT = "a90601024f07ab7e96c911243324e0adeb16da96"
+ABSEIL_SOURCE_COMMIT = "45fdade6c0415ec5af3f9312e6311a4ccc682a7b"
+ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_CORPUS = ROOT / "data" / "burmese" / "phonology_corpus.csv"
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def read_probe_rows(path: Path) -> list[dict[str, str]]:
+    with path.open(encoding="utf-8", newline="") as stream:
+        reader = csv.DictReader(stream)
+        required = {"case_id", "orthography", "evidence_status", "expected_ipa"}
+        if not required.issubset(reader.fieldnames or []):
+            raise ValueError(
+                "probe CSV must contain case_id, orthography, evidence_status and expected_ipa"
+            )
+        rows = list(reader)
+    if not rows:
+        raise ValueError("probe CSV contains no rows")
+    if any(not row["orthography"].strip() for row in rows):
+        raise ValueError("probe CSV contains an empty orthography")
+    return rows
+
+
+def parse_outputs(
+    stdout: str,
+    expected_rows: list[dict[str, str]],
+) -> list[dict[str, str]]:
+    """Split Thrax's echoed input and IPA output, checking row alignment."""
+    lines = [line.rstrip("\r") for line in stdout.splitlines()]
+    if len(lines) != len(expected_rows):
+        raise ValueError(
+            f"expected {len(expected_rows)} output lines, received {len(lines)}"
+        )
+    parsed: list[dict[str, str]] = []
+    for row, line in zip(expected_rows, lines, strict=True):
+        if "\t" not in line:
+            raise ValueError("expected tab-separated echoed input and IPA output")
+        echoed_input, raw_output_ipa = line.split("\t", 1)
+        if echoed_input != row["orthography"]:
+            raise ValueError(
+                f"echoed input does not match expected input for {row.get('case_id', 'row')}"
+            )
+        parsed.append({
+            "raw_engine_line": line,
+            "raw_output_ipa": raw_output_ipa,
+        })
+    return parsed
+
+
+def build_command(binary: Path, fst: Path, phoneme_symbols: Path) -> list[str]:
+    """Invoke the compiled Thrax binary directly, bypassing the runfiles shell wrapper."""
+    return [
+        str(binary.resolve()),
+        f"--fst={fst.resolve()}",
+        f"--phoneme_syms={phoneme_symbols.resolve()}",
+    ]
+
+
+def run_engine(
+    binary: Path,
+    fst: Path,
+    phoneme_symbols: Path,
+    rows: list[dict[str, str]],
+) -> tuple[list[dict[str, str]], str]:
+    for path, label in (
+        (binary, "Thrax G2P binary"),
+        (fst, "compiled G2P FST"),
+        (phoneme_symbols, "generated IPA symbol table"),
+    ):
+        if not path.is_file():
+            raise FileNotFoundError(f"{label} not found: {path}")
+    input_text = "\n".join(row["orthography"] for row in rows) + "\n"
+    result = subprocess.run(
+        build_command(binary, fst, phoneme_symbols),
+        input=input_text,
+        text=True,
+        capture_output=True,
+        check=True,
+    )
+    return parse_outputs(result.stdout, rows), result.stderr
+
+
+def build_report(
+    rows: list[dict[str, str]],
+    outputs: list[dict[str, str]],
+    *,
+    engine_source_commit: str,
+    grammar_sha256: str,
+    phoneme_symbols_sha256: str,
+    fst_sha256: str,
+    bazel_version: str,
+    corpus_sha256: str,
+    stderr: str = "",
+) -> dict[str, Any]:
+    if len(rows) != len(outputs):
+        raise ValueError("expected one output per input")
+    if not rows:
+        raise ValueError("cannot run an empty probe")
+    for row in rows:
+        if row.get("evidence_status") != "STRUCTURAL_ONLY":
+            raise ValueError(
+                "Google FST raw-output smoke accepts STRUCTURAL_ONLY rows only"
+            )
+        if row.get("expected_ipa", "").strip():
+            raise ValueError(
+                "Google FST raw-output smoke refuses rows with expected_ipa labels"
+            )
+
+    records = []
+    for row, output in zip(rows, outputs, strict=True):
+        raw_engine_line = output.get("raw_engine_line", "")
+        raw_output_ipa = output.get("raw_output_ipa", "")
+        if not raw_engine_line or not raw_output_ipa:
+            raise ValueError("each output must include the raw engine line and IPA field")
+        if raw_engine_line.split("\t", 1)[0] != row["orthography"]:
+            raise ValueError("echoed input does not match expected input")
+        records.append({
+            "case_id": row["case_id"],
+            "orthography": row["orthography"],
+            "raw_engine_line": raw_engine_line,
+            "raw_output_ipa": raw_output_ipa,
+            "output_nonempty": bool(raw_output_ipa.strip()),
+            "evidence_status": "STRUCTURAL_ONLY",
+            "score_status": "NOT_SCORED_NO_INDEPENDENT_GOLD",
+        })
+
+    successful_outputs = sum(item["output_nonempty"] for item in records)
+    return {
+        "schema_version": "1.0",
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "engine": "google/language-resources Burmese Thrax/OpenFst WFST",
+        "engine_source_commit": engine_source_commit,
+        "engine_output_claim": (
+            "The upstream LREC 2020 paper describes the FST output tape as IPA; "
+            "the project's own IPA profile has not been independently validated."
+        ),
+        "corpus": "data/burmese/phonology_corpus.csv",
+        "corpus_sha256": corpus_sha256,
+        "input_count": len(rows),
+        "output_count": len(outputs),
+        "successful_outputs": successful_outputs,
+        "failed_outputs": len(rows) - successful_outputs,
+        "runtime_errors": 0,
+        "independent_gold_count": 0,
+        "accuracy": None,
+        "score_status": "RAW_OUTPUT_SMOKE_NOT_ACCURACY",
+        "provenance": {
+            "engine_source_commit": engine_source_commit,
+            "abseil_source_commit": ABSEIL_SOURCE_COMMIT,
+            "grammar_sha256": grammar_sha256,
+            "phoneme_symbols_sha256": phoneme_symbols_sha256,
+            "fst_sha256": fst_sha256,
+            "bazel_version": bazel_version,
+            "harness_path": "scripts/benchmark_google_fst.py",
+            "harness_sha256": sha256_file(Path(__file__).resolve()),
+            "python_version": platform.python_version(),
+            "python_implementation": platform.python_implementation(),
+            "platform": platform.platform(),
+            "github_event_sha": os.environ.get("GITHUB_SHA"),
+            "github_ref": os.environ.get("GITHUB_REF"),
+            "github_head_ref": os.environ.get("GITHUB_HEAD_REF"),
+        },
+        "stderr": stderr,
+        "records": records,
+        "limitations": [
+            "The six repository inputs are structural-only probes, not pronunciation gold.",
+            "No PER, CER, exact-match accuracy or IPA accuracy can be computed from this corpus.",
+            "The upstream paper reports IPA output, but no independent adjudication for this project's Standard Burmese profile exists.",
+            "The upstream repository is pinned to a source commit; its WORKSPACE contains upstream dependency references that are not all content-address pinned.",
+            "This smoke verifies build and execution only, not tone/register/phonation or dialect accuracy.",
+        ],
+    }
+
+
+def write_report(path: Path, report: dict[str, Any]) -> str:
+    rendered = json.dumps(report, ensure_ascii=False, indent=2) + "\n"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(rendered, encoding="utf-8")
+    digest = sha256_file(path)
+    path.with_suffix(path.suffix + ".sha256").write_text(digest + "\n", encoding="ascii")
+    return digest
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--corpus", type=Path, default=DEFAULT_CORPUS)
+    parser.add_argument("--binary", type=Path, required=True)
+    parser.add_argument("--grammar", type=Path, required=True)
+    parser.add_argument("--phoneme-symbols", type=Path, required=True)
+    parser.add_argument("--fst", type=Path, required=True)
+    parser.add_argument("--bazel-version", required=True)
+    parser.add_argument("--engine-source-commit", default=ENGINE_SOURCE_COMMIT)
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+
+    rows = read_probe_rows(args.corpus)
+    outputs, stderr = run_engine(args.binary, args.fst, args.phoneme_symbols, rows)
+    report = build_report(
+        rows,
+        outputs,
+        engine_source_commit=args.engine_source_commit,
+        grammar_sha256=sha256_file(args.grammar),
+        phoneme_symbols_sha256=sha256_file(args.phoneme_symbols),
+        fst_sha256=sha256_file(args.fst),
+        bazel_version=args.bazel_version,
+        corpus_sha256=sha256_file(args.corpus),
+        stderr=stderr,
+    )
+    report_sha256 = write_report(args.output, report)
+    print(json.dumps({
+        "input_count": report["input_count"],
+        "successful_outputs": report["successful_outputs"],
+        "runtime_errors": report["runtime_errors"],
+        "independent_gold_count": 0,
+        "accuracy": None,
+        "report_sha256": report_sha256,
+        "output": str(args.output),
+    }, ensure_ascii=False))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -95,3 +95,43 @@ At this checkpoint the exact-head CI jobs are queued, not passed: [tests 4141499
 ## CRF raw-output artifact inspection — 2026-11-02
 
 The pinned Burmese CRF probe completed successfully in [workflow 41417982199](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/41417982199). Downloaded artifact `burmese-crf-raw-output` (SHA-256 `0119281f9bd3d946a36dad1299f530b629599cfd26146ce190ea34f7c707ddd6`) was inspected: 100 inputs, 100 predictions, 84 exact source-concordant strings, zero skipped rows, model SHA-256 `f66571b7632eed2e94878278702654ce0a4b25fcab18720af60d3cfe00b011ce`. The report explicitly records `gold_count=0`, `accuracy=null`, `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`. The 84/100 figure is source concordance only, not an accuracy estimate, because model training membership is unknown and source-attested myG2P entries are not independent adjudicated gold. The probe uses pre-supplied syllable segmentation and therefore does not measure end-to-end Burmese segmentation or sentence handling. The upstream myG2P source declares CC BY-NC-SA 4.0; this diagnostic artifact is not a basis for redistributing source data or model output as a production lexicon.
+
+
+## Google WFST and evidence-gated hybrid API — 2026-11-14
+
+The Google Language Resources Burmese Thrax/OpenFst grammar is pinned at `a90601024f07ab7e96c911243324e0adeb16da96`; the optional workflow also pins a compatible Abseil revision. Historical exact-head workflow 43084508359 built the grammar, passed upstream symbol-table checks and emitted 6/6 outputs for the six structural-only probes. The report had zero independent gold and `accuracy: null`; this is raw execution evidence only. The upstream WORKSPACE still has dependencies not all content-address pinned.
+
+The current branch now carries `scripts/benchmark_google_fst.py`, its structural-only refusal/alignment tests, and a Google build/smoke job in the optional comparator workflow. `HybridBurmeseEngine` is an explicit candidate collector for Google WFST, exact myG2P v2 IPA lookup, Epitran and pinned CLI providers. It does not auto-run providers, vote, or promote; `RuleBasedBurmeseEngine` remains final IPA authority. The provider order (myG2P 10, Google 20, Epitran 40, CRF 60, Goruut 90) is diagnostic ordering only. myG2P v2 is CC BY-NC-SA 4.0; its dictionary is not bundled. Google repository code is Apache-2.0, while upstream dependency pinning remains incomplete.
+
+The current independent adjudicated Yangon IPA gold count remains zero. Neither the historical WFST PER values nor the six raw outputs can be treated as this project's benchmark.
+
+
+## Current-branch comparator artifacts — 2026-11-14
+
+Optional workflow **43582075278 SUCCESS** (test-bearing SHA `45d3513ad1f6bbbda8d9a97768e493cdda08856d`): Google Thrax/OpenFst build/symbol check and 6/6 structural-only raw outputs; Epitran 1.35.3 raw outputs on six structural probes; CRF 100/100 predictions with 84 source-concordant rows, 0 gold and `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`. The Google report SHA-256 is `88372233d85df73593b030ee0f91aa678fe86fd1c6d5cdc18e7c609b8eefd2c6`; all artifact ZIP hashes and raw report hashes are in `data/burmese/sources.csv`, `data/burmese/source_claims.csv`, and `data/external-ipa-renderers.json`. None of these figures is pronunciation accuracy.
+
+
+## Final exact-head optional diagnostics — 2026-11-14
+
+Optional workflow **43582678434 SUCCESS** on branch tip `cf7bb590f0acb7929f10832ca80062b83a1b33a2`: Google WFST build/symbol checks and 6/6 raw structural-only outputs; Epitran six raw outputs; CRF 100/100 predictions with 84 source-concordant and possible training overlap. Zero independent gold and null accuracy for every engine. Artifacts were downloaded and inspected; hashes and report provenance are recorded in the external-engine registry and source claims.
+
+
+## Vite security patch — 2026-11-14
+
+The high-severity Vite advisory affecting the previous `8.3.1` pin was addressed by pinning Vite `8.3.8`. Required CI run **43583443880 SUCCESS**: `npm install` audited 19 packages and found 0 vulnerabilities; `npm audit --audit-level=high` passed. A lockfile v3 with 51 package entries is committed; CI now uses `npm ci`.
+
+
+## Clean-install gate — 2026-11-14
+
+`package-lock.json` is committed (Vite 8.3.8; lockfile v3, 51 package entries). Exact-head required CI **43583859568 SUCCESS**: `npm ci` and `npm audit --audit-level=high` passed with 0 vulnerabilities; 267 Python + 68 subtests, 20 Node, 58 Playwright, build and generated-data freshness passed.
+
+
+## Final exact-head optional diagnostics — 2026-11-14
+
+Optional workflow **43584975335 SUCCESS** on PR head `58fe38c15f6373948640c89921d818d3be3cafff`; all three artifacts downloaded and inspected:
+
+- **Google Burmese Thrax/OpenFst:** Bazel 7.4.1 build and symbol checks passed; 6/6 structural-only outputs, zero runtime errors, zero independent gold, accuracy null. Report SHA-256 `d9399126edb168462112e0ed3a2657d97b2a08a1f8c900fa6d208231cad2e8e8`; artifact ZIP SHA-256 `0817a16afca0705863cf4e96c1cf60ef01531815fdc9ced52569e6a63a8f9396`.
+- **Epitran 1.35.3:** six structural-only raw outputs; zero independent gold and accuracy null. Report SHA-256 `7fb137a6c4e0d27d0010d119fd85b9809ff246091fd0871011c3fff10e4a76c4`; artifact ZIP SHA-256 `d92dcb32c935ce1dfb604a161139f1dc2b4df4a2c3febbb0078bebf5a3e2c729`.
+- **myG2P CRF:** 100/100 predictions, 84 source-concordant, zero gold, `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`; input syllable boundaries are supplied. Report SHA-256 `f9a028d07bf2bd1bfc4d570829dc025771ba7e39dbd8ed174c70527baa35ab0a`; artifact ZIP SHA-256 `d82b15b075e762129d6013bdb8b0a21a412b6ee3ad9e0cd75563c412138378e8`.
+
+These are build/runtime diagnostics only; none is an accuracy benchmark, and no candidate is enabled by default. Hashes and exact run/artifact links are in `data/external-ipa-renderers.json` and the corresponding source claims.

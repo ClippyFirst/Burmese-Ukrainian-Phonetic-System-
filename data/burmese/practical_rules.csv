@@ -8,7 +8,7 @@ UA-BUR-ASP-T,ua_target,tʰ,т',PROPOSED,UA_ORTH_2026,"Preserve aspiration with a
 UA-BUR-ASP-P,ua_target,pʰ,п',PROPOSED,UA_ORTH_2026,"Preserve aspiration with apostrophe; do not copy Russian пх."
 UA-BUR-ASP-S,ua_target,sʰ,с',PROPOSED,UA_ORTH_2026,"Preserve aspiration with apostrophe; do not copy Russian сх."
 UA-BUR-NG,ua_target,ŋ,нг,PROPOSED,RU_EPSHTEIN_1959,"Retain an explicit velar nasal sequence."
-UA-BUR-NASAL-FINAL,ua_target,ɴ,нг,PROPOSED,UA_ORTH_2026,"Use an explicit Ukrainian nasal sequence for Burmese final nasal realization /ɴ/."
+UA-BUR-NASAL-FINAL,ua_target,ɴ,нг,PROPOSED,UA_ORTH_2026,"Use this only when the selected IPA convention explicitly yields a segment /ɴ/; do not apply automatically to abstract /N/ or a nasalized vowel."
 UA-BUR-W,ua_target,w,в,PROPOSED,UA_ORTH_2026,"Use consonantal в rather than Russian у."
 UA-BUR-H,ua_target,h,г,PROPOSED,UA_ORTH_2026,"Foreign /h/ maps to Ukrainian г; do not merge with /x/."
 UA-BUR-X,ua_target,x,х,PROPOSED,UA_ORTH_2026,"A genuine /x/ remains Ukrainian х."

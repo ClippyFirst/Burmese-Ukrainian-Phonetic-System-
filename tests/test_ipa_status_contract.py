@@ -45,3 +45,19 @@ def test_contiguous_myanmar_bare_clusters_keep_existing_contextual_path():
     assert len(result["syllables"]) == 2
     assert all(s["ipa"] is not None for s in result["syllables"])
     assert all(s["phonetic_status"] == "conservative_partial" for s in result["syllables"])
+
+
+def test_medial_ra_nasal_coda_lexical_candidate_remains_withheld_pending_adjudication():
+    # A dictionary IPA lead exists for မြန် (/mjàɴ/), but it is not yet an
+    # independently adjudicated Yangon gold item. Do not enable it implicitly.
+    result = to_ipa("မြန်")
+    assert len(result["syllables"]) == 1
+    assert result["syllables"][0]["ipa"] is None
+    assert result["ipa"] == "?"
+
+
+def test_compound_with_medial_ra_remains_withheld_until_shared_rule_validation():
+    result = to_ipa("မြန်မာ")
+    assert len(result["syllables"]) == 2
+    assert result["syllables"][0]["ipa"] is None
+    assert result["ipa"].split()[0] == "?"

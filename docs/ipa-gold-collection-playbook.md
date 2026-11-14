@@ -172,3 +172,8 @@ Additional specialist leads improve the reviewer/referral shortlist, but do not 
 **Important qualification:** the target profile is Yangon Standard Burmese, careful citation-form speech. A phonetics publication alone does not prove native competence in this variety; a native speaker alone does not prove IPA annotation reliability. Confirm both separately. At least two independent native Yangon annotators, a third independent adjudicator and a non-annotating curator remain required.
 
 **Recruitment status:** no one has been contacted or recruited. The owner/curator must initiate invitations and agree terms, role separation, confidentiality and secure blind intake.
+
+
+## Nasal coda convention decision — 2026-11-13
+
+Green (2002) analyzes Burmese coda /N/ as placeless and describes preceding-vowel nasalization plus approximate place realization. The current typed IPA schema preserves the literal IPA value, IPA kind, syllable boundaries, tone, vowel length and phonation, but has no dedicated nasalization field. Annotators must preserve nasalization in the literal IPA value and state whether they are recording phonemic /N/ or a surface phonetic realization. Do not rewrite /N/ as [ɴ] by default. A typed nasalization schema field is deferred until the expert-approved convention sheet decides whether it is needed.

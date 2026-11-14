@@ -100,3 +100,42 @@ python scripts/benchmark_g2p.py --engine epitran --output epitran-benchmark.json
 
 The JSON report records raw output, package version, corpus SHA-256 and—when the installed package exposes the file—mapping-table SHA-256. It only scores rows whose evidence status is `GOLD_VERIFIED`, with a non-empty expected IPA, source ID and a non-pending source locator. With the current structural-only seed corpus, the eligible gold count is zero and accuracy remains `null`; this is intentional. The runner has not yet been executed against an installed Epitran environment, so no engine output or accuracy result is claimed in this audit.
 
+
+## Burmese medial/G2P source and licensing update — 2026-11-13
+
+### Google Thrax/OpenFst
+
+- The exact pinned source commit a90601024f07ab7e96c911243324e0adeb16da96 has Apache-2.0 in both repository LICENSE and my/burmese.grm header. This corrects the earlier “license not identified” note for the paper: the paper does not specify the code license, but the actual pinned code does.
+- The grammar is a candidate external comparator, not a default runtime dependency. Its upstream WORKSPACE is not fully hermetic; the PR #129 branch contains a pinned build path. The raw structural probe returned m j àɴ for မြန်, but had no expected IPA/gold.
+- This code license does not extend to LREC in-house speech data, MLC dictionary data, myG2P, or other corpora.
+
+### Epitran and CRFsuite diagnostics
+
+- Epitran 1.35.3 raw output for မြန် is məjaɴ, compared with Google m j àɴ and Wiktionary /mjàɴ/. The exact artifact has zero gold and null accuracy; treat this as unresolved model disagreement.
+- CRFsuite v2 sample: 100 evenly spaced myG2P v2.0 rows, 84 source-concordant, 0 gold, null accuracy, possible training overlap. Medial counts overlap: YA 10/14, RA 17/20, WA 13/15, HA 7/8. The target word မြန် was not selected.
+- The CRF model's source data inherits the myG2P CC BY-NC-SA 4.0 restriction. Do not integrate its data/model artifacts commercially without separate permission.
+- Current exact artifacts: optional run 43325991496; Epitran SHA-256 cb9cbb1c08047b2082f21f3c29d01d8054eaf37fc462abf55a3336ad265d7c1f; CRF SHA-256 d0df5c6527a757ee3c8be5259578ec08abdd3b219bf317d3de7364a47bdb6125.
+
+
+## Mya2Rom mode separation — 2026-11-13
+
+Mya2Rom 0.4.4 exposes distinct ipa, mlcts, mlcts2, simple and simple2 modes. MLCTS is orthographic; MLCTS2 is a more phonetic romanization used by the MLC Myanmar-English Dictionary and SEALang, not standardized IPA. The project's runtime explicitly requests mlcts. Do not treat the Latin→Ukrainian crosswalk as pronunciation-based G2P. Mya2Rom's own IPA convention uses /N/ rather than nasalized vowels and documents limitations with stacking, ASAT, schwa, voicing sandhi, alternate pronunciations and Pali/Sanskrit forms. Source license: CC BY-SA 4.0.
+
+
+## Text-only continuation and licensing update — 2026-11-13
+
+- Active research scope is written sources only. No audio acquisition, processing, annotation or audio-derived G2P evaluation is planned. Legacy SLR80/UCSY-SC1 records are historical metadata only and are not active source candidates.
+- MYX_MYANGLISH_2026: CC BY-SA 4.0 declared; 2,121 text pairs; single-author-style, non-standardized romanization; 3-column viewer vs 2-field README mismatch. No rows copied; not IPA.
+- MYX_ORTHO_2026: CC BY-SA 4.0 declared; 4,800 noisy-to-clean orthographic rows. "Phonetic" filenames/categories refer to spelling confusion, not IPA. No rows copied.
+- OKELL_TEXT_2018: Zenodo Rights/License blank while ELG catalogue lists CC BY 4.0. Rights remain CONFLICT/UNKNOWN; no ingestion or redistribution until direct rights confirmation.
+- STEDT1996_BURMESE and MATISOFF2003_HANDBOOK_PTB: copyrighted scholarly sources; only factual claims and page locators are registered, no tables or lexical data copied.
+- NISHI1997_ORTHOGRAPHY and NISHI1998_VOICING_RULES: repository-hosted scholarly PDFs; reuse licenses are not stated in the metadata inspected. Only source claims and locators are recorded, not copied tables.
+- The new text sources do not alter the myG2P CC BY-NC-SA 4.0 restriction, Wiktionary license conflict, or zero independent IPA-gold status.
+
+## Green and SEAlang textual sources — licensing and reuse gate (2026-11-13)
+
+- Green (2005), “Word, foot and syllable structure in Burmese”, is an online edition explicitly licensed CC BY-SA 4.0 with permission of Pacific Linguistics. Any copied examples or derived data must retain attribution and comply with share-alike; current repository changes record factual claims and page locators only.
+- SEAlang MLC dictionary is hosted with permission, but the underlying 1993 MLC / 1996 Dunwoody dictionary remains copyrighted. No project-wide bulk extraction permission is inferred.
+- SEAlang Burmese Text and Bitext corpora have no explicit reuse license in the inspected metadata; the metadata includes a 2007 NICT/Matsubara Lab/Anchor copyright notice. Bulk ingestion remains blocked.
+- The dictionary's entry-level transcription encoding is unresolved: metadata advertises IPA search/display while Mya2Rom documentation identifies MLCTS2 as used by the MLC dictionary and SEAlang. Do not treat it as IPA gold until the actual representation is inspected.
+

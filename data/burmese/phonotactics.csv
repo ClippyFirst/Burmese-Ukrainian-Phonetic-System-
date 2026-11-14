@@ -1,3 +1,5 @@
 rule_id,structure,status,source_id,notes
 SYLLABLE_CGVVC,"C(G)V((V)C)",well_supported,GREEN2002,"Structural abstraction; not a lexical generator."
 NASAL_NO_CHECKED,"nasal rhyme + checked tone",well_supported,GREEN2002,"Checked tone is excluded from the nasal-rhyme class in the cited analysis."
+NASAL_CODA_N,"placeless nasal coda /N/",analysis_dependent,GREEN2002,"Green 2002 §1.2: realized through preceding-vowel nasalization, with approximate coronal articulation after monophthongs and velar after diphthongs; do not equate automatically with a surface [ɴ]."
+NASAL_RHYME_TONE,"nasal-rhyme tone classes",analysis_dependent,GREEN2002,"Green 2002 §2.4: low, high and creaky only in nasal rhymes; checked tone excluded in this analysis; retain the competing eight-tone register proposal separately."

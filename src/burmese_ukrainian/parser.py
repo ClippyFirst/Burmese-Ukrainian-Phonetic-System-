@@ -62,8 +62,16 @@ def segment_graphemes(text: str) -> list[str]:
         start = i
         i += 1
         while i < len(s) and _is_myanmar_text(s[i]):
+            # A base consonant followed by ASAT is a final of the current syllable,
+            # not the onset of a new syllable. Keep Python aligned with the browser.
+            is_coda_base = (
+                i + 1 < len(s)
+                and s[i] in BASE_CONSONANTS
+                and s[i + 1] == "\u103a"
+            )
             if (
                 s[i] in BASE_CONSONANTS
+                and not is_coda_base
                 and s[i - 1] != "\u1039"
                 and s[i - 3 : i] != KINZI
             ):
@@ -140,6 +148,24 @@ def _parse_cluster(cluster: str) -> Syllable:
             "status": "present_or_contextually_suppressed",
             "reason": "no_dependent_vowel_sign",
         }
+
+    # A final consonant is written as a base consonant followed by ASAT.
+    # When it follows the syllable onset/medials/vowels, keep it inside this
+    # orthographic syllable as a coda rather than leaving it unparsed.
+    if (
+        i + 1 < len(cluster)
+        and cluster[i] in BASE_CONSONANTS
+        and cluster[i + 1] == "\u103a"
+    ):
+        final = cluster[i]
+        sy.coda = {
+            "character": final,
+            "codepoint": f"U+{ord(final):04X}",
+            "marker": "asat",
+            "asat_codepoint": "U+103A",
+            "orthographic_function": "final_consonant",
+        }
+        i += 2
 
     while i < len(cluster) and cluster[i] in SPECIAL:
         role = SPECIAL[cluster[i]]
