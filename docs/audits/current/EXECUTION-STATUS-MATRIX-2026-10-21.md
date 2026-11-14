@@ -2118,3 +2118,12 @@ Wiktionary Appendix:Burmese pronunciation lists `ဂုဏ်` /ɡòuɴ/ and `�
 Wiktionary `ပေါ` `/pɔ́/` (MLCTS `pau:`; source ေါ) and `ကျော` `/t͡ɕɔ́/` (MLCTS `kyau:`; source ော) establish secondary equivalence for `au:`. `ပေါ့` `/pɔ̰/` (MLCTS `pau.`; source ေါ့) and final syllable `/ʃɔ̰/` in `ဝပ်ရှော့` (MLCTS `waphrau.`; source ော့) establish secondary equivalence for `au.`. Two new claims and regression assertions added; no primary MLC adjudication or runtime promotion. Distribution: **0 unadjudicated / 12 secondary equivalence / 1 conflict / 3 distinctions / 8 one-side-only / 1 special non-rime**. Registry: **80 sources / 172 claims**.
 
 Required CI **43586334287 SUCCESS** on `dd494662f0c94bcf1f59170fe65ea6cd41199c64`: 267 Python + 68 subtests, 20 Node, 58 Playwright; npm ci, explicit audit (0 vulnerabilities), build and generated-data freshness passed.
+
+
+## MLC dictionary access and secondary rime-table follow-up — 2026-11-14
+
+- Google Books metadata identifies a digitized 1996 Dunwoody Press reprint of the MLC 1993 Myanmar-English Dictionary (University of Michigan original; digitized 2008-05-15; 635 pages), but the inspected page exposed metadata only, not page images or transcription tables.
+- SHACHI independently describes the SEAlang Burmese dictionary as sourced from the MLC 1993 dictionary, supporting IPA search/display and recording MLC/Dunwoody copyright. This does not reveal the internal entry schema or MLCTS/MLCTS2 field semantics.
+- Wiktionary's rime table gives `ကိံ` /kèɪɴ/ MLCTS `kim` for the `im` collision's second orthographic side. This is a secondary table example, not a lexical entry; it does not change the 8 one-side-only lexical groups.
+- SEAlang dictionary/API retrieval remains inaccessible (HTTP 502 / inaccessible endpoint). No primary MLC entry/table inspected. No runtime or Ukrainian mapping promotion.
+- Registry: **82 sources / 175 claims**; lexical collision ledger remains **12 secondary equivalence / 1 conflict / 3 distinctions / 8 one-side-only / 1 special non-rime**. Exact-head CI pending after this change.
