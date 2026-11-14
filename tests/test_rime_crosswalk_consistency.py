@@ -103,10 +103,10 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
     rows = read_rows("romanization_rime_collision_lexical_audit.csv")
     counts = Counter(row["evidence_status"] for row in rows)
     assert counts == {
-        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 1,
+        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 0,
         "SECONDARY_SYSTEM_EQUIVALENCE": 8,
         "SECONDARY_SOURCE_CONFLICT": 1,
-        "SECONDARY_ONE_SIDE_ONLY": 11,
+        "SECONDARY_ONE_SIDE_ONLY": 12,
         "SECONDARY_SOURCE_DISTINCTION": 3,
         "SPECIAL_NONRIME_CONTEXT_DEPENDENT": 1,
     }
