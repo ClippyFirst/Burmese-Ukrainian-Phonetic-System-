@@ -103,9 +103,9 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
     rows = read_rows("romanization_rime_collision_lexical_audit.csv")
     counts = Counter(row["evidence_status"] for row in rows)
     assert counts == {
-        "SECONDARY_SYSTEM_EQUIVALENCE": 9,
+        "SECONDARY_SYSTEM_EQUIVALENCE": 10,
         "SECONDARY_SOURCE_CONFLICT": 1,
-        "SECONDARY_ONE_SIDE_ONLY": 11,
+        "SECONDARY_ONE_SIDE_ONLY": 10,
         "SECONDARY_SOURCE_DISTINCTION": 3,
         "SPECIAL_NONRIME_CONTEXT_DEPENDENT": 1,
     }
@@ -138,8 +138,9 @@ def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     assert "not a mow candidate" in rows["um."]["acceptance_boundary"].lower()
     assert rows["um:"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "hna.lum:" in rows["um:"]["observed_mlcts"] and "/n̥əlóʊɴ/" in rows["um:"]["observed_ipa"]
-    assert rows["un"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
-    assert "kun" in rows["un"]["observed_mlcts"] and "/kòʊɴ/" in rows["un"]["observed_ipa"]
+    assert rows["un"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
+    assert "gun" in rows["un"]["observed_mlcts"] and "kun" in rows["un"]["observed_mlcts"]
+    assert "/ɡòʊɴ/" in rows["un"]["observed_ipa"] and "/kòʊɴ/" in rows["un"]["observed_ipa"]
     assert rows["au:"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "kyau:" in rows["au:"]["observed_mlcts"] and "/t͡ɕɔ́/" in rows["au:"]["observed_ipa"]
     assert rows["im"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
