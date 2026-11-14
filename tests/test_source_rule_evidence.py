@@ -485,3 +485,29 @@ def test_mlc_dictionary_access_leads_and_secondary_rime_table_are_not_overstated
     assert "does not disclose record-level fields" in shachi_claim["claim"]
     assert "not an independently located lexical entry" in rime_claim["claim"]
     assert "does not satisfy the lexical two-sided acceptance criterion" in rime_claim["claim"]
+
+
+def test_burmese_lexical_examples_and_tone_sources_keep_scope_boundaries():
+    sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+
+    assert "minimal pairs" in sources["HLAING2018"]["scope"]
+    assert "no specified dialect" in sources["HLAING2018"]["scope"]
+    assert "not evidence for the eight MLCTS rime collisions" in sources["WIN2011"]["scope"]
+    assert "not IPA or phonemic pronunciation labels" in sources["MYMEDICON2024"]["scope"]
+
+    pair = claims["CLM-HLAING2018-LEXICAL-MINIMAL-PAIRS-001"]
+    inventory = claims["CLM-HLAING2018-TONE-VOWEL-INVENTORY-001"]
+    tone = claims["CLM-WIN2011-STANDARD-MYANMAR-TONE-DURATION-001"]
+    corpus = claims["CLM-MYMEDICON2024-NO-IPA-GOLD-001"]
+
+    assert pair["source_id"] == "HLAING2018"
+    assert "ပန်း /pan/" in pair["claim"] and "ဗန်း /ban/" in pair["claim"]
+    assert "not any of the eight MLCTS rime-collision groups" in pair["claim"]
+    assert "50 vowel sounds" in inventory["claim"]
+    assert "not a verified Yangon consensus inventory" in inventory["claim"]
+    assert "two of whom were Yangon natives" in tone["claim"]
+    assert "not a formally controlled minimal-pair study" in tone["claim"]
+    assert "no corpus download URL or corpus license" in corpus["claim"]
+    assert "not an available independent IPA gold lexicon" in corpus["claim"]
+    assert all(row["status"] == "DOCUMENTARY" for row in (pair, inventory, tone, corpus))
