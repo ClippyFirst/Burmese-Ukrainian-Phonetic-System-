@@ -2242,3 +2242,11 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - Optional Epitran raw-output diagnostic **43519895542 SUCCESS**, not accuracy benchmark. IPA gold remains `NOT_READY_NO_ADJUDICATED_GOLD`; npm install reports one high-severity vulnerability.
 - Ledger: 3 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 9 secondary one-side-only / 1 special non-rime. Registry 80 sources / 152 claims.
 - No primary MLC, IPA gold, runtime or Ukrainian output promotion.
+
+
+## `um.` one-side secondary lexical attestation — 2026-11-14
+
+- Wiktionary `အုံ့` (`um.`, `/ʔo̰ʊɴ/`) attests the source-unit ending ုံ့. It is **not** in the MOW suffix-match inventory; this is secondary evidence outside MOW. The opposite ending ုမ့် remains unobserved.
+- Added claim `CLM-WIKTIONARY-UM-DOT-ONE-SIDE-EXAMPLE-001`; updated lexical audit, MLCTS2 status parity and regression tests.
+- Distribution: **2 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 10 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 153 claims**.
+- One-side secondary evidence only; no primary MLC adjudication, IPA gold, runtime or Ukrainian output promotion. Exact-head CI pending.
