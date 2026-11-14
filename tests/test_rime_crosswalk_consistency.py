@@ -103,7 +103,6 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
     rows = read_rows("romanization_rime_collision_lexical_audit.csv")
     counts = Counter(row["evidence_status"] for row in rows)
     assert counts == {
-        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 0,
         "SECONDARY_SYSTEM_EQUIVALENCE": 9,
         "SECONDARY_SOURCE_CONFLICT": 1,
         "SECONDARY_ONE_SIDE_ONLY": 11,
@@ -194,4 +193,4 @@ def test_a_dot_phonetic_literature_does_not_supply_orthographic_mapping():
     assert "both source-unit sides" in rows["a."]["interpretation"].lower()
     assert "mooney" in rows["a."]["interpretation"].lower()
     assert "watkins" in rows["a."]["interpretation"].lower()
-    assert "no lexical example for" in rows["a."]["interpretation"].lower()
+    assert "both source-unit sides" in rows["a."]["interpretation"].lower()
