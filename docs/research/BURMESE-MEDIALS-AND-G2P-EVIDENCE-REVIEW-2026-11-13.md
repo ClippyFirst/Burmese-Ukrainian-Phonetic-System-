@@ -819,3 +819,8 @@ The `a.` group remains UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE; this is an inventor
 ## 44. Phonetic literature cross-check for unresolved `a.` — 2026-11-14
 
 A full-text read of Mooney & Repetti-Ludlow (2021) confirms a Yangon-speaker phonetic analysis of open /a/ versus centralized closed [5], with example (3) including open [pʰa] ‘frog’, nasal [pʰ5̃(n)] ‘catch’, and killed [pʰ5ʔ] ‘hug’. The authors give no Burmese-script spellings or MLCTS forms for these tokens. Watkins (2001) likewise provides open /ma/ and checked /maʔ/ examples and a four-tone description, but not the Burmese spellings of those lexical examples. These sources establish useful phonetic context, not orthography-to-IPA mappings for `ါ့` or `ာ့`. The sole MOW suffix hit for `ာ့`, `ဝပ်ရှော့`, is still only an overlapping code-point match within `ော့` and belongs to `au.` (`waphrau.` / `/waʔʃɔ̰/`). `a.` therefore remains unadjudicated. No runtime or Ukrainian output changes.
+
+
+## 45. `a.` first-side lexical attestation — 2026-11-14
+
+Wiktionary's entry `ငါ့` gives IPA `/ŋa̰/` and MLCTS `nga.`. The entry explicitly labels it a familiar/informal non-lemma pronoun form with induced creaky tone, derived from `ငါ` (`nga`). Its final orthographic unit is `ါ့`, the first source-unit side in the `a.` group. This is a genuine spelling-to-pronunciation lexical attestation for one side, though not a MOW candidate and not an independent primary MLC dictionary record. No matching lexical example for `ာ့` has been found. The group is therefore upgraded from unadjudicated to `SECONDARY_ONE_SIDE_ONLY`, not adjudicated. The phonetic-literature context and the `ဝပ်ရှော့` suffix-overlap caveat remain as recorded above.
