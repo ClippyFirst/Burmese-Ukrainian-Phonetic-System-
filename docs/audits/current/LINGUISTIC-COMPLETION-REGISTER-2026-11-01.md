@@ -1906,3 +1906,12 @@ Current ledger: **1 unadjudicated / 8 secondary equivalence / 1 secondary confli
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
 | BURMESE-RIME-A-DOT-PHONETIC-CONTEXT-026 | DONE_VERIFIED — SOURCE_SCOPE_GUARD | Full texts: Mooney & Repetti-Ludlow (2021), DOI 10.3765/PLSA.V6I1.4900; Watkins (2001), DOI 10.1017/S0025100301002122. | Both provide phonetic vowel/rhyme context but no Burmese spelling-to-MLCTS mapping for the relevant examples. `a.` remains unadjudicated; no runtime promotion. |
+
+
+## `a.` secondary one-side attestation — 2026-11-14
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-RIME-A-DOT-ONE-SIDE-027 | DONE_VERIFIED — SECONDARY_ONE_SIDE_ONLY | Wiktionary `ငါ့`: IPA `/ŋa̰/`, MLCTS `nga.`, source ending `ါ့`; explicitly a non-lemma induced creaky pronoun form. | Only first source-unit side attested; no lexical `ာ့` example and no primary MLC adjudication. No runtime promotion. |
+
+Updated 25-group distribution: **0 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 12 secondary one-side-only / 1 special non-rime**. Source registry: **80 sources / 157 claims**.
