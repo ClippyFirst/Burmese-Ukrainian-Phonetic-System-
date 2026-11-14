@@ -1899,3 +1899,10 @@ Current ledger: **1 unadjudicated / 8 secondary equivalence / 1 secondary confli
 | BURMESE-RIME-IM-COLON-LEXICAL-025 / BURMESE-RIME-UM-DOT-LEXICAL-025 / BURMESE-MOW-A-DOT-SUFFIX-OVERLAP-025 | DONE_VERIFIED — DATA_AND_TEST_INTEGRITY | SHA `2b1f306b43a8a6c38e626252fb0b0b9c18501e1b`; CI **43580029898 SUCCESS**: 252 Python + 66 subtests, 20 Node, 58 Playwright; gold-structure validation, build, generated-data freshness and Chromium passed. | Confirms data/test integrity only. Both lexical attestations are secondary and one-sided; `a.` remains unadjudicated. IPA gold remains 0; no primary MLC, runtime or Ukrainian mapping promotion. One high-severity npm vulnerability remains. |
 
 Current ledger: **1 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 154 claims**.
+
+
+## `a.` phonetic-literature boundary — 2026-11-14
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-RIME-A-DOT-PHONETIC-CONTEXT-026 | DONE_VERIFIED — SOURCE_SCOPE_GUARD | Full texts: Mooney & Repetti-Ludlow (2021), DOI 10.3765/PLSA.V6I1.4900; Watkins (2001), DOI 10.1017/S0025100301002122. | Both provide phonetic vowel/rhyme context but no Burmese spelling-to-MLCTS mapping for the relevant examples. `a.` remains unadjudicated; no runtime promotion. |
