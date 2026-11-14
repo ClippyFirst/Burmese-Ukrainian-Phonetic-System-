@@ -144,11 +144,14 @@ def test_lexical_collision_audit_keeps_secondary_evidence_separate_from_primary_
     assert by_mlcts["um"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
     assert by_mlcts["um"]["observed_ipa"] == "/kòʊɴ/"
     assert by_mlcts["um"]["observed_mlcts"] == "kum"
+    assert by_mlcts["un"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
+    assert "/ɡòʊɴ/" in by_mlcts["un"]["observed_ipa"]
+    assert "/kòʊɴ/" in by_mlcts["un"]["observed_ipa"]
     assert sum(row["evidence_status"] == "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE" for row in audit) == 0
-    assert sum(row["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE" for row in audit) == 9
+    assert sum(row["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE" for row in audit) == 10
     assert sum(row["evidence_status"] == "SECONDARY_SOURCE_CONFLICT" for row in audit) == 1
     assert sum(row["evidence_status"] == "SECONDARY_SOURCE_DISTINCTION" for row in audit) == 3
-    assert sum(row["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY" for row in audit) == 11
+    assert sum(row["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY" for row in audit) == 10
     assert sum(row["evidence_status"] == "SPECIAL_NONRIME_CONTEXT_DEPENDENT" for row in audit) == 1
     assert not any("PRIMARY_CONFIRMED" in row["evidence_status"] for row in audit)
 
@@ -462,6 +465,7 @@ def test_new_wiktionary_lexical_claims_are_linked_to_registered_snapshot():
         "CLM-WIKTIONARY-IM-ONE-SIDE-EXAMPLE-001",
         "CLM-WIKTIONARY-IM-DOT-ONE-SIDE-EXAMPLE-001",
         "CLM-WIKTIONARY-UN-ONE-SIDE-EXAMPLE-001",
+        "CLM-WIKTIONARY-UN-SECOND-SIDE-EXAMPLE-001",
         "CLM-WIKTIONARY-AUK-WORD-LEVEL-EXAMPLES-001",
         "CLM-WIKTIONARY-A-WORD-LEVEL-EXAMPLES-001",
         "CLM-WIKTIONARY-A-COLON-WORD-LEVEL-EXAMPLES-001",
