@@ -804,3 +804,13 @@ This is not a collision adjudication or primary MLC evidence. Current distributi
 A targeted review of the MOW orthographic suffix inventory found one apparent `a.` match: `ဝပ်ရှော့` under source unit `ာ့`. This is a code-point suffix overlap inside the full final sequence `ော့`, not an independent Burmese syllable or rime segmentation. Wiktionary records the word as MLCTS `waphrau.` with IPA `/waʔʃɔ̰/`, which supports treating it as an `au.` lexical example, not as evidence for the `a.` collision. The MOW generator intentionally performs exact Unicode suffix matching only; it does not claim grapheme-cluster or syllable parsing. Therefore no `a.` lexical audit promotion is made, and a regression test now protects this boundary.
 
 The `a.` group remains UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE; this is an inventory interpretation caveat, not a change to the 25-group status distribution. No runtime or Ukrainian output change.
+
+
+## 43. Exact-head CI verification — 2026-11-14
+
+- Test-bearing code/data/test SHA: `2b1f306b43a8a6c38e626252fb0b0b9c18501e1b`.
+- Required CI run **43580029898 SUCCESS**: **252 Python tests + 66 subtests**, **20 Node tests**, **58 Playwright tests**; IPA-gold structure validation, production build, generated-web-data freshness and Chromium installation passed.
+- The immediately preceding run on `70121b2a4d0f4ae8899419be2c357d42f77cc7d0` failed only because a pre-existing distribution assertion still expected 3 unadjudicated and 9 one-side-only groups. The actual ledger correctly moved `im:` and `um.` into one-side-only; `tests/test_romanization_rime_inventory.py` was corrected to 1 and 11 respectively, then the exact updated SHA passed.
+- IPA-gold validator remains `NOT_READY_NO_ADJUDICATED_GOLD` (0 independently adjudicated entries); no accuracy score is claimed. `npm install` reports **one high-severity vulnerability**; no dependency upgrade was applied.
+- Current ledger: 25 groups = **1 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 154 claims**.
+- No primary MLC adjudication, IPA gold, runtime behavior or Ukrainian output was promoted.
