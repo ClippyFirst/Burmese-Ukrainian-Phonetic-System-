@@ -1985,3 +1985,11 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 
 - The single MOW suffix-match candidate for `a.` / `ာ့` is `ဝပ်ရှော့`, where the matched code points overlap the larger final sequence `ော့`. Wiktionary records this word as `waphrau.` / `/waʔʃɔ̰/`, so it is not promoted as an `a.` rime example.
 - Added a regression test preserving `a.` as unadjudicated and `ဝပ်ရှော့` as an `au.` example only. This does not change the generator's explicitly orthographic-only suffix matching contract.
+
+
+## Exact-head CI — `im:` / `um.` and MOW overlap guard — 2026-11-14
+
+- SHA `2b1f306b43a8a6c38e626252fb0b0b9c18501e1b`; CI **43580029898 SUCCESS**: 252 Python + 66 subtests, 20 Node, 58 Playwright; gold-structure validation, build, generated-data freshness and Chromium passed.
+- Previous run exposed one stale status-distribution assertion (expected 3 unadjudicated / 9 one-side-only); corrected to 1 / 11 and reran successfully.
+- IPA gold remains 0 adjudicated entries; one high-severity npm vulnerability remains. No runtime or Ukrainian mapping change.
+- Ledger: 1 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime; registry 80 sources / 154 claims.
