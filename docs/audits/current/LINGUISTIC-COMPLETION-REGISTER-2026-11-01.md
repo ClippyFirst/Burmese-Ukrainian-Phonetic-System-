@@ -1864,3 +1864,12 @@ Current ledger: **3 unadjudicated / 8 secondary equivalence / 1 secondary confli
 | BURMESE-RIME-AU-DOT-LEXICAL-025 | DONE_VERIFIED — DATA_AND_TEST_INTEGRITY | SHA `ffd08d7ae8e227ee19a86859de00b7d52f456ecf`; CI **43519887514 SUCCESS**: 251 Python + 66 subtests, 20 Node, 58 Playwright; build, generated-data freshness and Chromium installation passed. | Confirms data/test integrity only. The lexical example is one-side secondary evidence; opposite source unit remains unobserved. IPA gold remains 0; no primary MLC, runtime or Ukrainian mapping promotion. One high-severity npm vulnerability remains. |
 
 Current ledger: **3 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 9 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 152 claims**.
+
+
+## `um.` one-side secondary lexical attestation — 2026-11-14
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-RIME-UM-DOT-LEXICAL-025 | PARTIAL — SECONDARY_ONE_SIDE_ONLY | Wiktionary `အုံ့` (`um.`, `/ʔo̰ʊɴ/`) attests ုံ့; claim `CLM-WIKTIONARY-UM-DOT-ONE-SIDE-EXAMPLE-001` registered. Not a MOW suffix candidate. | ုမ့် remains unobserved; secondary evidence only, not primary MLC adjudication or collision resolution. No IPA gold, runtime or Ukrainian mapping promotion. CI pending. |
+
+Current ledger: **2 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 10 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 153 claims**.
