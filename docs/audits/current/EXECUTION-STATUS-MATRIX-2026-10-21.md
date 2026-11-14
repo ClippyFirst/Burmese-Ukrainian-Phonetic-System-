@@ -2060,3 +2060,10 @@ Primary-source corrections added: WSSANLP PER results and test split; LREC 2020 
 - Required CI **43582678405 SUCCESS** on this exact tip: **267 Python tests + 68 subtests**, **20 Node tests**, **58 Playwright tests**; IPA corpus structure check, production build, generated-data freshness and Chromium installation passed. Gold remains `NOT_READY_NO_ADJUDICATED_GOLD`; npm reports one high-severity vulnerability.
 - Optional workflow **43582678434 SUCCESS** on this exact tip: Google WFST 6/6 raw outputs, Epitran six raw outputs, CRF 100/100 predictions and 84 source-concordant; 0 gold, no accuracy. Artifacts downloaded and inspected.
 - Source registry: **80 sources / 164 claims**. Rime ledger: **0 unadjudicated / 9 secondary equivalence / 1 conflict / 3 distinctions / 11 one-side-only / 1 special non-rime**. No primary MLC adjudication or runtime/Ukrainian promotion.
+
+
+## Web dependency security follow-up — 2026-11-14
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-WEB-DEPENDENCY-SECURITY-001 | DONE_VERIFIED — HIGH_SEVERITY_FIXED | Vite updated `8.3.1` → `8.3.8`; required CI **43583443880 SUCCESS** on SHA `6b90336171b807f5f17d32e237dda210f7b1a820`: `npm install` audited 19 packages and found 0 vulnerabilities; explicit `npm audit --audit-level=high` passed. | No high-severity npm advisories remain at this run. `package-lock.json` is not committed; a bootstrap lockfile artifact exists in run 43583094199. Deterministic transitive dependency installation remains PARTIAL until lockfile is committed and CI switches to `npm ci`. |
