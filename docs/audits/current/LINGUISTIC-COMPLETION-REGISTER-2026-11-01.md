@@ -1997,3 +1997,13 @@ The `un` second-side lexical addition and regression changes passed exact-head r
 - Both groups are `SECONDARY_SYSTEM_EQUIVALENCE` only. `ပေါ့` is not a MOW suffix-match candidate. Neither claim is a minimal pair or primary MLC adjudication.
 - Registry: **80 sources / 172 claims**. 25-group distribution: **0 unadjudicated / 12 secondary equivalence / 1 conflict / 3 distinctions / 8 one-side-only / 1 special non-rime**.
 - Required CI **43586334287 SUCCESS** on `dd494662f0c94bcf1f59170fe65ea6cd41199c64`: 267 Python + 68 subtests, 20 Node, 58 Playwright; npm audit 0 vulnerabilities.
+
+
+## MLC dictionary access and secondary rime-table follow-up — 2026-11-14
+
+- Added `GOOGLE_BOOKS_MLC1996_DIGITIZED`: Google Books identifies the 1996 Dunwoody Press reprint of the 1993 MLC Myanmar-English Dictionary as originating from the University of Michigan and digitized on 2008-05-15 (635 pages). The retrieved record is bibliographic metadata only; no page-level content, pronunciation key or MLCTS/MLCTS2 table was inspected.
+- Added `SHACHI_SEALANG_DICT_2009`: independent resource metadata confirms that SEAlang's ~35,000-entry Burmese dictionary is based on the 1993 MLC dictionary (1996 reprint), supports IPA phonetic search/display, and carries copyright attribution for the MLC/Dunwoody source. It does not disclose record-level fields or prove whether entries store MLCTS or MLCTS2.
+- Added `CLM-WIKTIONARY-KI-SECONDARY-RIME-TABLE-001`: Wiktionary's secondary rime table lists `ကိံ` /kèɪɴ/ MLCTS `kim` alongside `ကိမ်`. This is table-level evidence for the second orthographic side of `im`, not a lexical entry. It does **not** satisfy the lexical two-sided acceptance criterion; the `im` lexical audit status is unchanged.
+- Direct SEAlang dictionary retrieval still returned HTTP 502 / inaccessible through the available web route; the historical API request endpoint was also inaccessible. No MLC entry text or internal schema was obtained.
+- Registry totals: **82 sources / 175 claims**. The 25-group lexical audit remains **12 secondary equivalence / 1 secondary conflict / 3 secondary distinctions / 8 secondary one-side-only / 1 special non-rime**. No primary MLC adjudication, runtime mapping or Ukrainian candidate was promoted.
+- New regression test protects the distinction between catalog/interface metadata, table-level rime evidence and lexical/primary-source acceptance. Exact-head CI must be checked after these changes; no test result is claimed here.
