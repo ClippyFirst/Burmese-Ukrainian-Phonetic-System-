@@ -1890,3 +1890,12 @@ Current ledger: **1 unadjudicated / 8 secondary equivalence / 1 secondary confli
 |---|---|---|---|
 | BURMESE-MOW-A-DOT-SUFFIX-OVERLAP-025 | DONE_VERIFIED — INTERPRETATION_GUARD | Regression test verifies the only MOW `a.` / `ာ့` suffix match is `ဝပ်ရှော့`, whose full ending is `ော့` and whose Wiktionary entry gives `waphrau.` / `/waʔʃɔ̰/`. | Exact Unicode suffix overlap is not syllabification or phonological-rime evidence. `a.` remains unadjudicated; no data/runtime promotion. |
 
+
+
+## Exact-head verification — `im:` / `um.` lexical updates and `a.` suffix guard — 2026-11-14
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-RIME-IM-COLON-LEXICAL-025 / BURMESE-RIME-UM-DOT-LEXICAL-025 / BURMESE-MOW-A-DOT-SUFFIX-OVERLAP-025 | DONE_VERIFIED — DATA_AND_TEST_INTEGRITY | SHA `2b1f306b43a8a6c38e626252fb0b0b9c18501e1b`; CI **43580029898 SUCCESS**: 252 Python + 66 subtests, 20 Node, 58 Playwright; gold-structure validation, build, generated-data freshness and Chromium passed. | Confirms data/test integrity only. Both lexical attestations are secondary and one-sided; `a.` remains unadjudicated. IPA gold remains 0; no primary MLC, runtime or Ukrainian mapping promotion. One high-severity npm vulnerability remains. |
+
+Current ledger: **1 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 154 claims**.
