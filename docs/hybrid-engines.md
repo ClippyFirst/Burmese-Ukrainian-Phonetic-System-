@@ -44,3 +44,14 @@ myG2P має CC BY-NC-SA 4.0; не копіювати словник у цей �
 6. Невідомі провайдери (50) — не отримують довіри лише через підключення.
 
 Фінальне IPA залишається за внутрішніми детермінованими правилами. Підвищення джерела до авторитетного вимагає незалежного Yangon IPA gold, оцінки тону/фонації/довготи/код, відсутності витоку даних і відтворюваного профільного benchmark.
+
+
+## Current-branch exact raw-output run — 2026-11-14
+
+Optional workflow **43582075278 SUCCESS** on code/test SHA `45d3513ad1f6bbbda8d9a97768e493cdda08856d`:
+
+- Google Burmese Thrax/OpenFst: pinned Bazel 7.4.1 build and symbol-table invariants passed; **6/6** non-empty raw outputs on structural-only probes. Report SHA-256 `88372233d85df73593b030ee0f91aa678fe86fd1c6d5cdc18e7c609b8eefd2c6`; artifact ZIP SHA-256 `501a279189bbfb643b1c185a043bdc80ea6de9ca55e0a1116f4f8ba30ce59820`.
+- Epitran 1.35.3: six raw structural-only outputs; e.g. `ကော်` → `kaʊʔ`, `မြန်` → `məjaɴ`; zero independently verified gold; exact-match count and accuracy remain null. Artifact ZIP SHA-256 `4b60180e479d884826ed158dab525c809a3c45c66e627eb4904e61c8be048304`.
+- Burmese-G2P CRF: **100/100** predictions; 84 source-concordant; zero gold; `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`; supplied syllable segmentation means end-to-end segmentation is not tested. Artifact ZIP SHA-256 `fbf339ed34dfb80b4147998d7b2fee4c602fcb1abc10c91b9229ea10ccf7bb9d`.
+
+All three artifacts were downloaded and inspected. None provides accuracy or adjudicated IPA gold. External outputs remain diagnostic candidates only.
