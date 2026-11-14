@@ -2134,5 +2134,8 @@ Required CI **43586334287 SUCCESS** on `dd494662f0c94bcf1f59170fe65ea6cd41199c64
 - New access lead: CiNii identifies a revised 2nd edition of the 1993 Myanmar-English Dictionary (709 pages, chief editor Dr Myint Kyi, Department of Myanmar Nationalities' Languages) with one holding at the University of Tokyo General Library. NDL guide reports 2019; a 2023 scholarly bibliography cites 2020. Publication year remains unresolved; no pages or pronunciation system inspected.
 - NDL's 2022 guide confirms SEAlang is based on the 1993/1996 MLC dictionary. SEAlang 2008 paper documents IPA query/display and a screenshot with phonetic output, but the headword is not recoverable from extraction and record schema is not disclosed.
 - Hlaing & Thida (2018), Win & Takara (2011), and Mooney & Repetti-Ludlow (2021) add phonetic context but no new lexical example for the missing side of the eight one-sided collision groups. No mapping promotion.
-- Registry 87 sources / 183 claims; collision distribution unchanged.
+- Registry 88 sources / 184 claims; collision distribution unchanged.
 - CI 43619590836 failed one new Python assertion due to capitalization mismatch (No pages... vs expected no pages...); 269 Python tests + 68 subtests passed, 1 failed. Assertion corrected in 3b5e55cc8ac45afee6c98cf6999510012669ddf2; no exact-head CI run/status was created for the fix. Corrected full-suite verification remains pending/unverified.
+
+
+- Official Ministry of Education FY 2018-19 Annual Performance Review Report, p.256, lists “Myanmar-English Dictionary (2019)” among outputs of the Department of Myanmar Nationalities' Languages. This independently supports the 2019 publication year; a 2023 scholarly bibliography still gives 2020, so preserve the citation discrepancy pending title-page verification.
