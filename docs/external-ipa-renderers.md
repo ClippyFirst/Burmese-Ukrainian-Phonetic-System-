@@ -92,3 +92,10 @@ These resources are relevant to the UI's display of the source writing system; t
 - [Padauk](https://software.sil.org/padauk/) — Useful for Myanmar-script text shaping and coverage; not an IPA transcription engine. License: SIL Open Font License; verify current release metadata.
 - [Busra](https://software.sil.org/busra/) — Khmer-script display font only; not an IPA transcription engine. License: SIL Open Font License; verify current release metadata.
 - [Mondulkiri](https://software.sil.org/mondulkiri/) — Khmer-script display font only; not an IPA transcription engine. License: SIL Open Font License; verify current release metadata.
+
+
+## Google Burmese WFST and candidate-only integration
+
+- [Google Language Resources Burmese Thrax/OpenFst](https://github.com/google/language-resources/tree/a90601024f07ab7e96c911243324e0adeb16da96/my) — pinned grammar, Apache-2.0 repository. The optional workflow builds it and emits raw outputs for six structural-only probes (run 43084508359: 6/6, zero runtime errors, no gold and no accuracy). Upstream transitive dependencies are not fully hermetic.
+- [myG2P v2.0](https://github.com/ye-kyaw-thu/myG2P/tree/54b5c76bb5a87fdbaaeddc1892e6ebd8f97ee225) — exact orthography lookup uses the fifth tab-separated IPA field, not MLCTS. License CC BY-NC-SA 4.0; no dictionary data is bundled by the candidate adapter.
+- The optional `HybridBurmeseEngine` collects candidates only. It never changes the final rule-engine IPA, does not auto-run providers, and does not vote or promote outputs.
