@@ -56,7 +56,8 @@ class HybridBurmeseEngine:
         result = dict(self.rule_engine.analyze(text))
         candidates, failures = [], []
         normalized = result.get("normalized", text)
-        for provider_id, provider in sorted(self.providers.items(), key=lambda item: (PROVIDER_PRIORITY.get(item[0], DEFAULT_PROVIDER_PRIORITY), item[0])):
+        ordered_providers = sorted(self.providers.items(), key=lambda item: (PROVIDER_PRIORITY.get(item[0], DEFAULT_PROVIDER_PRIORITY), item[0]))
+        for provider_id, provider in ordered_providers:
             try:
                 item = _candidate(provider_id, provider(normalized))
                 if item is None:
@@ -69,6 +70,7 @@ class HybridBurmeseEngine:
             "hybrid_engine": "burmese-evidence-gated-hybrid-v1",
             "external_candidates": candidates, "backend_failures": failures,
             "external_candidate_count": len(candidates),
+            "external_backends_used": [provider_id for provider_id, _ in ordered_providers],
             "provider_priority_policy": "lower_number_runs_first_and_orders_candidates; priorities_are_research_triage_only_not_accuracy_or_promotion; unknown_providers_use_default_priority_50",
             "selection_policy": "internal_deterministic_rule_output_is_preserved; external_candidates_are_diagnostic_only; no_voting_or_promotion_without_independent_profile_matched_gold",
         })
