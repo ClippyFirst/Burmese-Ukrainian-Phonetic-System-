@@ -124,3 +124,14 @@ The high-severity Vite advisory affecting the previous `8.3.1` pin was addressed
 ## Clean-install gate — 2026-11-14
 
 `package-lock.json` is committed (Vite 8.3.8; lockfile v3, 51 package entries). Exact-head required CI **43583859568 SUCCESS**: `npm ci` and `npm audit --audit-level=high` passed with 0 vulnerabilities; 267 Python + 68 subtests, 20 Node, 58 Playwright, build and generated-data freshness passed.
+
+
+## Final exact-head optional diagnostics — 2026-11-14
+
+Optional workflow **43584975335 SUCCESS** on PR head `58fe38c15f6373948640c89921d818d3be3cafff`; all three artifacts downloaded and inspected:
+
+- **Google Burmese Thrax/OpenFst:** Bazel 7.4.1 build and symbol checks passed; 6/6 structural-only outputs, zero runtime errors, zero independent gold, accuracy null. Report SHA-256 `d9399126edb168462112e0ed3a2657d97b2a08a1f8c900fa6d208231cad2e8e8`; artifact ZIP SHA-256 `0817a16afca0705863cf4e96c1cf60ef01531815fdc9ced52569e6a63a8f9396`.
+- **Epitran 1.35.1:** six structural-only raw outputs; zero independent gold and accuracy null. Report SHA-256 `7fb137a6c4e0d27d0010d119fd85b9809ff246091fd0871011c3fff10e4a76c4`; artifact ZIP SHA-256 `d92dcb32c935ce1dfb604a161139f1dc2b4df4a2c3febbb0078bebf5a3e2c729`.
+- **myG2P CRF:** 100/100 predictions, 84 source-concordant, zero gold, `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`; input syllable boundaries are supplied. Report SHA-256 `f9a028d07bf2bd1bfc4d570829dc025771ba7e39dbd8ed174c70527baa35ab0a`; artifact ZIP SHA-256 `d82b15b075e762129d6013bdb8b0a21a412b6ee3ad9e0cd75563c412138378e8`.
+
+These are build/runtime diagnostics only; none is an accuracy benchmark, and no candidate is enabled by default. Hashes and exact run/artifact links are in `data/external-ipa-renderers.json` and the corresponding source claims.
