@@ -783,3 +783,10 @@ This is one-side secondary evidence only, not collision adjudication. Distributi
 - IPA gold remains `NOT_READY_NO_ADJUDICATED_GOLD` (0 independent gold entries). `npm install` reports one high-severity vulnerability.
 - Ledger: 25 groups = **3 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 9 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 152 claims**.
 - Secondary evidence only; no primary MLC, IPA gold, runtime or Ukrainian output promotion.
+
+
+## 40. One-side secondary lexical attestation for `um.` — 2026-11-14
+
+Wiktionary lists `အုံ့` with MLCTS `um.` and IPA `/ʔo̰ʊɴ/`. The lemma ends in ုံ့, the second source-unit side of the `um.` group. It is not present in the MOW suffix-match inventory, so this is a secondary lexical attestation outside MOW, not a MOW-backed candidate. No word-level example for ုမ့် was located. The audit and MLCTS2 crosswalk now record `SECONDARY_ONE_SIDE_ONLY`; claim `CLM-WIKTIONARY-UM-DOT-ONE-SIDE-EXAMPLE-001` is registered.
+
+This does not adjudicate the collision or authorize primary MLC, IPA gold, runtime or Ukrainian-output changes. Current 25-group distribution: **2 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 10 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 153 claims**. Exact-head CI pending.
