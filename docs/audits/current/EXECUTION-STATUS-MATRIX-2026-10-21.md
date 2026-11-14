@@ -2088,3 +2088,8 @@ Required CI **43583859568 SUCCESS** on test-bearing SHA `2c17f9843766913c40654c5
 The preceding continuation note incorrectly stated that no committed npm lockfile existed. Repository inspection corrected that statement: `package-lock.json` is present (lockfileVersion 3, 51 package entries; blob `43c0da9092cc0c63f7ed5f89a11ad5c6039aeb1e`), and `.github/workflows/test.yml` uses `npm ci` plus `npm audit --audit-level=high`. Exact-head CI **43584975330 SUCCESS** on `58fe38c15f6373948640c89921d818d3be3cafff` confirms `npm ci`, audit with **0 vulnerabilities**, 267 Python + 68 subtests, 20 Node and 58 Playwright. Thus install reproducibility and the Vite high-severity finding are both DONE_VERIFIED at this checkpoint.
 
 The 25-group rime CSV currently has 0 unadjudicated groups (9 secondary equivalence, 1 secondary conflict, 3 secondary distinction, 11 secondary one-side-only, 1 special non-rime). The source registry now contains **80 sources / 169 claims** after five additional full-text claims. Independent adjudicated IPA gold remains 0; do not change that status.
+
+
+## Exact-head comparator provenance — 2026-11-14
+
+Optional run **43584975335 SUCCESS** on PR head `58fe38c15f6373948640c89921d818d3be3cafff`: Google WFST 6/6 structural-only outputs (Bazel build/symbol checks passed), Epitran 6/6 raw outputs, myG2P CRF 100/100 predictions with 84 source-concordant. Zero independent gold and null accuracy for all; CRF may overlap training data and is given syllable boundaries. Artifacts downloaded/inspected; report and ZIP hashes recorded in engine registry and source claims. No model enabled by default.
