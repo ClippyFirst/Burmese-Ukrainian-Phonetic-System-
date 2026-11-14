@@ -2134,8 +2134,16 @@ Required CI **43586334287 SUCCESS** on `dd494662f0c94bcf1f59170fe65ea6cd41199c64
 - New access lead: CiNii identifies a revised 2nd edition of the 1993 Myanmar-English Dictionary (709 pages, chief editor Dr Myint Kyi, Department of Myanmar Nationalities' Languages) with one holding at the University of Tokyo General Library. NDL guide reports 2019; a 2023 scholarly bibliography cites 2020. Publication year remains unresolved; no pages or pronunciation system inspected.
 - NDL's 2022 guide confirms SEAlang is based on the 1993/1996 MLC dictionary. SEAlang 2008 paper documents IPA query/display and a screenshot with phonetic output, but the headword is not recoverable from extraction and record schema is not disclosed.
 - Hlaing & Thida (2018), Win & Takara (2011), and Mooney & Repetti-Ludlow (2021) add phonetic context but no new lexical example for the missing side of the eight one-sided collision groups. No mapping promotion.
-- Registry 88 sources / 184 claims; collision distribution unchanged.
+- Registry 89 sources / 189 claims; collision distribution unchanged.
 - CI 43619590836 failed one new Python assertion due to capitalization mismatch (No pages... vs expected no pages...); 269 Python tests + 68 subtests passed, 1 failed. Assertion corrected in 3b5e55cc8ac45afee6c98cf6999510012669ddf2; The corrected assertion was included in subsequent code/test head bccc8c3c495fdaa20736a104eabc4d0642345ac6; required CI run 43619829840 completed SUCCESS: 270 Python tests + 68 subtests, 20 Node tests, 58 Playwright tests; IPA-gold structure validation, npm ci, high-severity audit (0 vulnerabilities), production build and generated-data freshness passed. Later commits are documentation-only.
 
 
 - Official Ministry of Education FY 2018-19 Annual Performance Review Report, p.256, lists “Myanmar-English Dictionary (2019)” among outputs of the Department of Myanmar Nationalities' Languages. This independently supports the 2019 publication year; a 2023 scholarly bibliography still gives 2020, so preserve the citation discrepancy pending title-page verification.
+
+
+## TUFS MED-to-IPA comparison — 2026-11-14
+
+- TUFS's university Burmese Pronunciation Module explicitly compares its IPA analysis with the 2019 MED second edition's own transcription notation and other dictionaries. It lists MED forms such as -a/-a:/-a., -in/-in:/-in., -ein/-ein:/-ein., -aun/-aun:/-aun. and checked -a' etc. This is a MED comparison, not proof of MED=MLCTS or a primary dictionary page.
+- TUFS provides lexical examples for already-observed sides of am:, aung., im, im:, im.; no missing-side lexical example found. It also disagrees with Wiktionary on the phonetic analysis of စောင့် (/sâuɴ/ vs /sa̰ʊɴ/). No collision status promotion.
+- Registry 89 sources / 189 claims; eight one-sided groups remain one-sided.
+- Required CI 43620353708 SUCCESS: 271 Python + 68 subtests, 20 Node, 58 Playwright; IPA gold structure validation, npm ci, npm audit (0 vulnerabilities), production build and generated-data freshness passed. The preceding run 43620266372 had one test assertion wording failure; corrected in 9e0d134a3189a4d57d38de1fa6c0e7b85725d72e and rerun successfully.
