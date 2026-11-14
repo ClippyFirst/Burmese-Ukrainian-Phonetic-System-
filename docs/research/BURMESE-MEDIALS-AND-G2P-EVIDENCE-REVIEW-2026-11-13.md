@@ -841,3 +841,24 @@ A further Wiktionary entry closes the one-sided gap: `တာ့တာ` is a Burm
 - Final lexical ledger: 25 groups = **0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 158 claims**.
 - PR #147 remains OPEN / DRAFT / mergeable; branch remains ahead of `main` with zero commits behind. No merge or release.
 - No primary MLC adjudication, independent IPA gold, runtime behavior or Ukrainian output was promoted.
+
+
+## 48. Full-text reconciliation: Hlaing–Mikami FST and Watkins IPA scope — 2026-11-14
+
+A second full-text audit through Undermind re-read Hlaing & Mikami (2014), Watkins (2001), and Oo et al. (2020), with source claims registered rather than promoting any new runtime rule.
+
+### Hlaing & Mikami (2014): orthographic FST specification
+
+The paper's target is Unicode orthographic boundary insertion, not phonetic syllabification. Its grammar is internally non-equivalent at three points: §4.2 gives `X = C M? V? (C K)? D?`; the expanded account gives `X = C M* V* (C K)? D*`; §5's actual automaton expression returns to `Opt(M) Opt(V)`, permitting at most one medial and vowel. The paper does not reconcile these multiplicity differences. It lists separate transducers for kinzi, stacking, repetition, Great SA, contraction and loan words. Kinzi may carry high-tone pronunciation not indicated in spelling, but that is an observation—not an orthographic parser rule.
+
+The 11,732-word evaluation is attributed to Myanmar Orthography (MLC, 2006, third edition). No license is stated for the book, digitized evaluation words, or transducer/code. Table 4 reports 245/253 stacking words correct (eight implied errors), while prose says nine; 32,238 syllables in abstract/Table 6 conflicts with 32,283 in §6.1. The 99.93% headline is word-level orthographic syllabification and cannot be reused as a G2P metric. Claims `CLM-HLAING14-GRAMMAR-EXPR-001` and `CLM-HLAING14-LICENSE-001` capture these boundaries.
+
+### Watkins (2001): valuable IPA description, limited gold scope
+
+The JIPA illustration is based on one 30-year-old male consultant from Rangoon reading a passage slowly and deliberately; Watkins explicitly uses broad transcription. The analysis describes /ʔ/ as the only modern coda consonant, with vowel subsets conditioned by nasalization or glottal closure; four tone categories combine pitch, phonation and length. These details are important source-specific phonological evidence, but the single-speaker broad passage does not constitute a comprehensive, population-validated Yangon IPA gold set, nor does it map every Unicode medial/rime form. Claims `CLM-WATKINS2001-SPEAKER-SCOPE-001` and `CLM-WATKINS2001-CODA-001` capture this.
+
+### Oo et al. (2020): generated seed is not gold
+
+The Thrax/OpenFst grammar outputs IPA and is described as a way to generate a seed lexicon that human annotators then check. The paper does not state that a checked lexicon was released. SLR80 is a corpus of word-segmented Burmese text, not word-level IPA labels. Thus the paper is strong architectural evidence but does not provide independent IPA gold (`CLM-OO20-NO-GOLD-001`).
+
+No corpus or grammar license was inferred beyond what the papers state. No audio was accessed or evaluated. No phonological or Ukrainian output rule was promoted.
