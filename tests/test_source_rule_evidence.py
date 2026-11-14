@@ -523,7 +523,7 @@ def test_mlc_second_edition_and_sealang_interface_are_not_misrepresented_as_ipa_
     sealang = sources["SEALANG_2008_PROJECT_OVERVIEW"]
 
     assert "709 pages" in edition["scope"]
-    assert "no pages, pronunciation key" in edition["scope"]
+    assert "No pages, pronunciation key" in edition["scope"]
     assert "2019" in guide["scope"] and "ALA-LC" in guide["scope"]
     assert "2020" in mdpi["scope"]
     assert "headword itself is not recoverable" in sealang["scope"]
