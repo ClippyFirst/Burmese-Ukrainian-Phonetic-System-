@@ -2399,3 +2399,8 @@ Current source registry after five new claims: **80 sources / 169 claims**. Rime
 Optional workflow **43584975335 SUCCESS** on PR head `58fe38c15f6373948640c89921d818d3be3cafff`: Google WFST build/symbol checks and 6/6 structural-only outputs; Epitran 6/6 raw outputs; CRF 100/100 predictions, 84 source-concordant, 0 gold and possible training overlap. All artifacts downloaded and inspected; report/ZIP hashes and exact links recorded in `data/external-ipa-renderers.json` and `source_claims.csv`. All accuracy values remain null; candidates stay disabled by default.
 
 Current branch data checkpoint: 80 sources / 169 claims; 25 rime groups = 0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime. Final required CI on `58fe38c15f6373948640c89921d818d3be3cafff` was `43584975330 SUCCESS` (267 Python + 68 subtests, 20 Node, 58 Playwright; npm ci and audit 0 vulnerabilities). The later source-registry and documentation commits require the latest exact-head CI to finish before final closeout.
+
+
+## `un` lexical ledger extension — 2026-11-14
+
+A secondary Wiktionary appendix directly lists `ဂုဏ်` /ɡòuɴ/ and `ကုန်` /kòuɴ/; the `ဂုဏ်ထူး` compound entry confirms the first component `ဂုဏ်` /ɡòʊɴ/ with MLCTS `gunhtu:`. The `un` group was upgraded to `SECONDARY_SYSTEM_EQUIVALENCE` (not primary adjudication). Regression tests updated. Registry **80 sources / 170 claims**; rime ledger **0 unadjudicated / 10 secondary equivalence / 1 conflict / 3 distinctions / 10 one-side-only / 1 special non-rime**. Exact-head CI is pending for this last evidence/test change.
