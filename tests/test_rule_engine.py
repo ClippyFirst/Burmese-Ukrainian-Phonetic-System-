@@ -33,6 +33,7 @@ def test_hybrid_factory_accepts_candidates_but_does_not_promote_them():
     assert result["ipa"] == baseline["ipa"]
     assert result["external_candidates"][0]["provider"] == "external-model"
     assert result["external_candidates"][0]["promotion"].startswith("WITHHELD")
+    assert result["external_backends_used"] == ["external-model"]
 
 
 def test_provisional_onset_registry_includes_the_registered_nya_letter():
