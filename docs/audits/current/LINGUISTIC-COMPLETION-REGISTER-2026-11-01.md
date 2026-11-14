@@ -1873,3 +1873,12 @@ Current ledger: **3 unadjudicated / 8 secondary equivalence / 1 secondary confli
 | BURMESE-RIME-UM-DOT-LEXICAL-025 | PARTIAL — SECONDARY_ONE_SIDE_ONLY | Wiktionary `အုံ့` (`um.`, `/ʔo̰ʊɴ/`) attests ုံ့; claim `CLM-WIKTIONARY-UM-DOT-ONE-SIDE-EXAMPLE-001` registered. Not a MOW suffix candidate. | ုမ့် remains unobserved; secondary evidence only, not primary MLC adjudication or collision resolution. No IPA gold, runtime or Ukrainian mapping promotion. CI pending. |
 
 Current ledger: **2 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 10 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 153 claims**.
+
+
+## `im:` secondary compound-level lexical attestation — 2026-11-14
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-RIME-IM-COLON-LEXICAL-025 | PARTIAL — SECONDARY_ONE_SIDE_ONLY | Wiktionary compound `တစ်သဝေမတိမ်း` provides final-component evidence for `တိမ်း` (`tim:`, `/téɪɴ/`); MOW lists `တိမ်း` for ိမ်း. Claim `CLM-WIKTIONARY-IM-COLON-ONE-SIDE-EXAMPLE-001` registered. | Compound IPA is not a standalone entry; ိံး remains unobserved. No primary MLC adjudication, IPA gold, runtime or Ukrainian mapping promotion. CI pending. |
+
+Current ledger: **1 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 154 claims**.
