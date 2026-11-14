@@ -1941,3 +1941,14 @@ Current ledger: **0 unadjudicated / 9 secondary equivalence / 1 secondary confli
 - Full-text Undermind review of Thu et al. (2016), Oo et al. (2020), and Hlaing (2014) corrected the evidence ledger: WSSANLP open-set PER 14.7/11.4/15.7 (WFST), 15.7 CRF tie on open3; LREC Thrax/OpenFst paper-reported 195 states/2,966 arcs and 88-symbol inventory; Hlaing 11,732 words, 99.93% orthographic segmentation accuracy with 32,238 vs 32,283 syllable-count discrepancy and 8-vs-9 stacking-error discrepancy. Source claims explicitly distinguish these from project IPA accuracy.
 - PR #129 was inspected (21 files, 53 commits ahead/17 behind, non-mergeable); its useful work was selectively ported rather than blindly merged: candidate-only hybrid API, Google WFST raw-output harness/optional CI, and medials/conjunct/kinzi IPA withholding. PR #129 remains open/draft/untouched.
 - Current branch now has an explicit candidate-only provider API; deterministic rule engine remains final authority. No external provider auto-runs and no provider output is promoted.
+
+
+## External G2P raw-output artifacts — 2026-11-14
+
+| Claim | Status | Result | Limit |
+|---|---|---|---|
+| CLM-GOOGLE-WFST-RAW-SMOKE-2026-11-14 | TESTED | Workflow 43582075278: build/symbol checks passed, 6/6 structural-only outputs, report SHA `88372233d85df73593b030ee0f91aa678fe86fd1c6d5cdc18e7c609b8eefd2c6`. | 0 gold, accuracy null. |
+| CLM-EPITRAN-RAW-SMOKE-2026-11-14 | TESTED | Epitran 1.35.3, six structural-only raw outputs, report SHA `a7d93e0f04b4f4822094a36760c5376cb596db31a710aae4cdcacd14213d0b69`. | 0 gold, accuracy null. |
+| CLM-CRF-MYG2P-RAW-SMOKE-2026-11-14 | TESTED | 100 predictions, 84 source-concordant, report SHA `741dc7fa1263e667cb1c51f91f7ee0a24b0bd6c2479d1efafe63798a63d73d20`. | 0 gold; possible training overlap; no accuracy. |
+
+Current registry: **80 sources / 164 claims**. The 25-group rime ledger remains 0 unadjudicated / 9 secondary equivalence / 1 conflict / 3 distinctions / 11 one-side-only / 1 special non-rime. Independent IPA gold remains 0.
