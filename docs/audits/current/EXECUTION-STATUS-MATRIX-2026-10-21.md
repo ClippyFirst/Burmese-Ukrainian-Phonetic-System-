@@ -435,8 +435,8 @@ This engineering correction does not change the language-layer statuses above. I
 | Generate browser mapping from canonical practical CSV/rule data | DONE_VERIFIED | `src/web/ukrainian-adapter.js`; previous build, generated-data freshness and Node tests passed |
 | Map /h, ɦ/ → г, /ɡ/ → ґ (project choice), /x/ → х, /w/ → в, syllable-initial /j/ yotation, affricates → ц/дз/ч/дж | DONE_VERIFIED | Canonical practical table and tests; /ɡ/ → ґ is not claimed as universal orthographic norm |
 | Preserve tone/length in IPA trace; join syllable-level Ukrainian output into one word | DONE_VERIFIED | Python engine output and regression tests |
-| Browser fail-closed behavior for kinzi/medials/conjuncts | PARTIAL | Implemented; final Playwright run 43095883419 queued with no jobs |
-| Final browser/Playwright acceptance | BLOCKED | Acceptance: current PR head completes all Chromium tests successfully |
+| Browser fail-closed behavior for kinzi/medials/conjuncts | PARTIAL — CROSS-RUNTIME PARITY OPEN | Browser all-medials guard remains; Python adapter now explicitly withholds medials/conjunct/kinzi. Exact-head CI 43582496619 passed 58 Playwright tests. | Shared structured fixtures and Python/browser parity remain TODO; no browser IPA rule promotion. |
+| Final browser/Playwright acceptance | DONE_VERIFIED — CI ONLY | Exact-head CI 43582496619 on SHA `fd27f481470b5f6a08648cf0dcc25ab8b4a8ecf5` passed 58 built-site Playwright tests, build and generated-data checks. | Manual visual, keyboard, screen-reader and mobile accessibility QA remains TODO; CI is not a substitute. |
 | Independent empirical IPA/Ukrainian accuracy evaluation | BLOCKED | No independent text gold set yet; requires source provenance, dialect scope and adjudication |
 | Audio validation | DEFERRED | Outside user-requested text-only scope |
 
@@ -455,7 +455,7 @@ This engineering correction does not change the language-layer statuses above. I
 | Python onset-only fallback for unresolved syllables | PARTIAL | RuleBasedBurmeseEngine now exposes separate provisional IPA/Ukrainian preview and trace; canonical fields remain withheld |
 | Browser onset-only fallback | PARTIAL | Browser parser reuses onset IPA and target adapter; unresolved remainder receives ? |
 | Python/browser parity | TODO | Add shared fixture with exact matching status, IPA hint, Ukrainian rendering and trace |
-| Exact-head CI / Chromium | BLOCKED | No workflow run returned for head 36b6ebf5a1d5a03b0c4d7a95aae2d842046e4152 |
+| Exact-head CI / Chromium | DONE_VERIFIED — CURRENT TEST-BEARING HEAD | Required CI 43582496619 SUCCESS on `fd27f481470b5f6a08648cf0dcc25ab8b4a8ecf5`: 267 Python tests + 68 subtests, 20 Node tests, 58 Playwright tests; production build, generated-data freshness and Chromium install passed. | IPA gold validator still reports `NOT_READY_NO_ADJUDICATED_GOLD`; one high-severity npm vulnerability remains. |
 | Complete Yangon positional fallback registry | TODO | Evidence-gated; onset-only partial coverage is not a full grapheme fallback |
 
 
@@ -548,7 +548,7 @@ The initial regression run [43318664262](https://github.com/ClippyFirst/Burmese-
 | Lexical IPA for မြန် | CANDIDATE / NOT GOLD | English Wiktionary lists /mjàɴ/ and a compound contains /mjàɴmà/. This supersedes “no lexical lead found” but does not approve a general rule or runtime output. |
 | Shared runtime implementation | TODO | Browser has dormant candidate derivation behind an all-medials guard; Python adapter independently withholds medials/codas. Require shared fixtures and parity before enabling. |
 | myG2P dictionary reuse | BLOCKED pending permission for commercial integration | CC BY-NC-SA 4.0; Myanmar README says commercial use is not granted without maintainer permission. |
-| Oo et al. Thrax grammar reuse | BLOCKED pending license verification | Paper describes public GitHub grammar but does not specify its license. |
+| Oo et al. Thrax grammar reuse | PARTIAL — CODE LICENSE VERIFIED; DEPENDENCY LOCK OPEN | Google Language Resources repository/grammar declare Apache-2.0; pinned build and six-probe smoke passed in optional workflow 43582075278. | Upstream WORKSPACE dependencies are not all content-address pinned; no in-house LREC speech/segmentation corpus reused; no accuracy claim. |
 | Independent Yangon IPA gold | BLOCKED / NOT ESTABLISHED | No controlled speaker recordings, independent annotation or adjudication for target medial combinations. |
 
 Detailed review: docs/research/BURMESE-MEDIALS-AND-G2P-EVIDENCE-REVIEW-2026-11-13.md. Evidence registry: data/burmese/medial_evidence_matrix.csv. Automated traceability: tests/test_medial_evidence_matrix.py.
@@ -1575,7 +1575,7 @@ Added claims: CLM-MYA2ROM-RIME-EXACT-MATCH-001, CLM-MYA2ROM-MLCTS-COLLISIONS-001
 
 | Task | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
-| 25-group collision evidence ledger | PARTIAL | Added data/burmese/romanization_rime_collision_lexical_audit.csv with one row per existing collision group. All 25 source-unit pairs are preserved. | This is a triage ledger, not a primary-source adjudication. |
+| 25-group collision evidence ledger | PARTIAL — SECONDARY EVIDENCE LEDGER COMPLETE | 25 rows preserved; 0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime. Source registry 80 sources / 164 claims. | All evidence remains secondary; primary MLC table and independent Yangon IPA adjudication are still required. No runtime or Ukrainian promotion. |
 | am / မ်;ံ comparison | PARTIAL — SECONDARY TABLE MATCH | Wiktionary's comparative rhyme table gives ကမ် and ကံ the same /kàɴ/ and MLCTS kam in the က-onset examples. | Do not generalize to all words or claim MLC dictionary headword attestation. |
 | any / ဉ်;ည် comparison | BLOCKED — SOURCE CONFLICT | Wiktionary's table distinguishes ကဉ် (kañ‘; /kɪ̀ɴ/) and ကည် (kany; /kì/, /kè/, /kɛ̀/), while Mya2Rom maps both isolated keys to any. | Primary MLC table/entry verification is required before correcting vendor data. |
 | Other 22 collision groups | TODO — LEXICAL EVIDENCE | No direct primary-source lexeme pairs checked. | Record MLC dictionary headword, exact page/entry locator, source spelling, IPA/MLCTS fields and contextual analysis for representative examples in each group. |
@@ -2045,3 +2045,10 @@ Primary-source corrections added: WSSANLP PER results and test split; LREC 2020 
 | BURMESE-EPITRAN-RAW-SMOKE-001 | DONE_VERIFIED — RAW_OUTPUT_ONLY | Epitran 1.35.3, six structural-only raw outputs, artifact ZIP SHA `4b60180e479d884826ed158dab525c809a3c45c66e627eb4904e61c8be048304`. | 0 gold; no accuracy claim. |
 | BURMESE-CRF-RAW-SMOKE-001 | DONE_VERIFIED — RAW_OUTPUT_ONLY | CRF 100/100 outputs, 84 source-concordant, 0 gold, possible training overlap, artifact ZIP SHA `fbf339ed34dfb80b4147998d7b2fee4c602fcb1abc10c91b9229ea10ccf7bb9d`. | Not accuracy; syllable boundaries are supplied. |
 
+
+
+## Current exact-head acceptance snapshot — 2026-11-14
+
+- Required CI 43582496619 SUCCESS on test-bearing SHA `fd27f481470b5f6a08648cf0dcc25ab8b4a8ecf5`: 267 Python + 68 subtests, 20 Node, 58 Playwright; build, generated-data freshness, Chromium and IPA-gold structure validation passed.
+- Optional raw-output evidence is recorded in the source registry. It is not accuracy evidence: Google 6/6 structural-only outputs; Epitran six raw outputs; CRF 100/100 with 84 source-concordant, zero gold and possible training overlap.
+- Registry 80 sources / 164 claims. Independent IPA gold 0. One high-severity npm vulnerability remains.
