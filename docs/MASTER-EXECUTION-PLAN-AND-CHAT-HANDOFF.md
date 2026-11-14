@@ -2320,3 +2320,11 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - Gold remains `NOT_READY_NO_ADJUDICATED_GOLD` (0 entries). npm install reports one high-severity vulnerability; no dependency update applied.
 - Current lexical ledger: 0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime. Registry 80 sources / 158 claims.
 - PR #147 OPEN / DRAFT / mergeable; branch remains ahead of main with zero commits behind. Not merged.
+
+
+## PR #129 reconciliation and selective port — 2026-11-14
+
+- Inspected all open PRs. PR #129 (`research/burmese-hybrid-benchmarks-reconciled-2026-11-11`, head `d0be0c316fe59f64f1b2f71e484c10d1356dbf3b`) remains OPEN/DRAFT, 53 commits ahead and 17 behind its then-current main base; current GitHub reports it non-mergeable. It is divergent from PR #147 and was not merged or closed.
+- Compared its 21 changed files and ported the useful, non-conflicting work into PR #147: conservative IPA withholding for medials/conjunct/kinzi; explicit candidate-only `HybridBurmeseEngine` and provider adapters; provider provenance/ordering; Google WFST raw-output harness, tests and optional CI job; registry and README/docs updates. Existing current-branch source records for MYG2P, Google WFST and CRF were reused rather than duplicated.
+- `external_backends_used` now reports providers actually attempted; external outputs remain diagnostic candidates and cannot replace the rule-engine IPA. The `myG2P` dictionary is not copied into the repository.
+- PR #129 remains untouched so its owner can review/close it; the port is tracked on PR #147. The deterministic engine remains final authority and no phonological rule or gold label was promoted.
