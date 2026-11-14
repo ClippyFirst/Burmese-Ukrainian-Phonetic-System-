@@ -1963,3 +1963,16 @@ Current registry: **80 sources / 164 claims**. The 25-group rime ledger remains 
 | Burmese-G2P CRF | ESTABLISHED — RAW OUTPUT ONLY | 100/100 predictions, 84 source-concordant, report SHA `741dc7fa1263e667cb1c51f91f7ee0a24b0bd6c2479d1efafe63798a63d73d20`. | 0 gold; possible training overlap; supplied syllable boundaries. |
 
 Registry: **80 sources / 164 claims**; no independent IPA gold.
+
+
+## Full-text source scope additions — 2026-11-14
+
+Five claims added after full-text review of Hlaing & Mikami (2014), Watkins (2001), and Oo et al. (2020):
+
+- `CLM-HLAING14-GRAMMAR-EXPR-001`: Hlaing & Mikami's orthographic FST expressions disagree on whether medials/vowels can repeat (`M? V?`, `M* V*`, and implementation `Opt(M) Opt(V)`). Preserve as a source-specification inconsistency; it is not a phonological rule.
+- `CLM-HLAING14-LICENSE-001`: the paper states no reuse license for the MLC orthography corpus, digitized test words or transducer/code.
+- `CLM-WATKINS2001-SPEAKER-SCOPE-001`: Watkins' broad transcription is based on one Rangoon male consultant reading deliberately; useful IPA description, not population-validated Yangon gold.
+- `CLM-WATKINS2001-CODA-001`: Watkins' /ʔ/-only coda analysis and vowel subsets remain source-specific; no universal runtime promotion.
+- `CLM-OO20-NO-GOLD-001`: Oo et al.'s IPA G2P creates seed pronunciations for checking; SLR80 is manually segmented Burmese text, not word-level IPA gold.
+
+Registry: **80 sources / 169 claims**. None of these claims creates independent adjudicated gold or promotes runtime/Ukrainian output.
