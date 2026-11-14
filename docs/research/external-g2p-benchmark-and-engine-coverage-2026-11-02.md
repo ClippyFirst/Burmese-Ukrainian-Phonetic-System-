@@ -118,4 +118,9 @@ Optional workflow **43582678434 SUCCESS** on branch tip `cf7bb590f0acb7929f10832
 
 ## Vite security patch — 2026-11-14
 
-The high-severity Vite advisory affecting the previous `8.3.1` pin was addressed by pinning Vite `8.3.8`. Required CI run **43583443880 SUCCESS**: `npm install` audited 19 packages and found 0 vulnerabilities; `npm audit --audit-level=high` passed. The lockfile was generated as a bootstrap artifact but remains uncommitted; transitive clean-install reproducibility is not yet complete.
+The high-severity Vite advisory affecting the previous `8.3.1` pin was addressed by pinning Vite `8.3.8`. Required CI run **43583443880 SUCCESS**: `npm install` audited 19 packages and found 0 vulnerabilities; `npm audit --audit-level=high` passed. A lockfile v3 with 51 package entries is committed; CI now uses `npm ci`.
+
+
+## Clean-install gate — 2026-11-14
+
+`package-lock.json` is committed (Vite 8.3.8; lockfile v3, 51 package entries). Exact-head required CI **43583859568 SUCCESS**: `npm ci` and `npm audit --audit-level=high` passed with 0 vulnerabilities; 267 Python + 68 subtests, 20 Node, 58 Playwright, build and generated-data freshness passed.
