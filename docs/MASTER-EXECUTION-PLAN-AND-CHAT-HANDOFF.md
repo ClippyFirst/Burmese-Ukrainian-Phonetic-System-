@@ -2282,3 +2282,17 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - Watkins 2001: one Rangoon male consultant; /ma/ and /maʔ/ examples and four-tone inventory, but no orthographic keys for the example words.
 - Both sources are registered as documentary/phonetic evidence. They cannot adjudicate the `a.` source-unit collision (`ါ့` vs `ာ့`) without spelling-to-pronunciation linkage. `a.` remains the only unadjudicated group.
 - The `ဝပ်ရှော့` MOW suffix hit is a raw overlap inside `ော့`, with `waphrau.` / `/waʔʃɔ̰/`; it is retained under `au.` only.
+
+
+## `a.` one-side lexical update — 2026-11-14
+
+- Wiktionary entry `ငါ့` gives IPA `/ŋa̰/`, MLCTS `nga.`, and explicitly identifies a non-lemma familiar/informal induced creaky-tone pronoun form from `ငါ`. Its spelling ends in `ါ့`, the first side of the `a.` collision.
+- This is a real secondary spelling-to-pronunciation example, but it is not a MOW candidate or primary MLC dictionary evidence. No lexical example for `ာ့` was found. Status becomes `SECONDARY_ONE_SIDE_ONLY`, not adjudicated.
+- The MOW `ဝပ်ရှော့` hit remains an overlap inside `ော့` and is counted under `au.` only.
+
+
+## `a.` first-side lexical attestation — 2026-11-14
+
+- Wiktionary's `ငါ့` entry gives `/ŋa̰/`, MLCTS `nga.`, and identifies it as a familiar/informal non-lemma induced creaky-tone form of `ငါ`. The final unit `ါ့` is the first source-unit side of `a.`.
+- Updated `a.` to `SECONDARY_ONE_SIDE_ONLY`. This is secondary lexical evidence, not MOW coverage or primary MLC adjudication; no lexical example for `ာ့` located.
+- Revised 25-group distribution: 0 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 12 secondary one-side-only / 1 special non-rime. Registry now 80 sources / 157 claims.
