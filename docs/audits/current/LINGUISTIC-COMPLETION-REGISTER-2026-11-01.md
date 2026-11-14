@@ -1882,3 +1882,11 @@ Current ledger: **2 unadjudicated / 8 secondary equivalence / 1 secondary confli
 | BURMESE-RIME-IM-COLON-LEXICAL-025 | PARTIAL — SECONDARY_ONE_SIDE_ONLY | Wiktionary compound `တစ်သဝေမတိမ်း` provides final-component evidence for `တိမ်း` (`tim:`, `/téɪɴ/`); MOW lists `တိမ်း` for ိမ်း. Claim `CLM-WIKTIONARY-IM-COLON-ONE-SIDE-EXAMPLE-001` registered. | Compound IPA is not a standalone entry; ိံး remains unobserved. No primary MLC adjudication, IPA gold, runtime or Ukrainian mapping promotion. CI pending. |
 
 Current ledger: **1 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 154 claims**.
+
+
+## MOW suffix-overlap guard — 2026-11-14
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-MOW-A-DOT-SUFFIX-OVERLAP-025 | DONE_VERIFIED — INTERPRETATION_GUARD | Regression test verifies the only MOW `a.` / `ာ့` suffix match is `ဝပ်ရှော့`, whose full ending is `ော့` and whose Wiktionary entry gives `waphrau.` / `/waʔʃɔ̰/`. | Exact Unicode suffix overlap is not syllabification or phonological-rime evidence. `a.` remains unadjudicated; no data/runtime promotion. |
+
