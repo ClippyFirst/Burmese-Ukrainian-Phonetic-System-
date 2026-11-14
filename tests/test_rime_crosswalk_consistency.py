@@ -103,9 +103,9 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
     rows = read_rows("romanization_rime_collision_lexical_audit.csv")
     counts = Counter(row["evidence_status"] for row in rows)
     assert counts == {
-        "SECONDARY_SYSTEM_EQUIVALENCE": 10,
+        "SECONDARY_SYSTEM_EQUIVALENCE": 12,
         "SECONDARY_SOURCE_CONFLICT": 1,
-        "SECONDARY_ONE_SIDE_ONLY": 10,
+        "SECONDARY_ONE_SIDE_ONLY": 8,
         "SECONDARY_SOURCE_DISTINCTION": 3,
         "SPECIAL_NONRIME_CONTEXT_DEPENDENT": 1,
     }
@@ -126,8 +126,9 @@ def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     assert all(value in rows["a:"]["observed_mlcts"] for value in ["hka:","ka:"])
     assert rows["au"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
     assert all(value in rows["au"]["observed_mlcts"] for value in ["pau","krau"])
-    assert rows["au."]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
-    assert "waphrau." in rows["au."]["observed_mlcts"] and "/waʔʃɔ̰/" in rows["au."]["observed_ipa"]
+    assert rows["au."]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
+    assert "pau." in rows["au."]["observed_mlcts"] and "waphrau." in rows["au."]["observed_mlcts"]
+    assert "/pɔ̰/" in rows["au."]["observed_ipa"] and "/waʔʃɔ̰/" in rows["au."]["observed_ipa"]
     assert rows["am."]["evidence_status"] == "SECONDARY_SOURCE_DISTINCTION"
     assert "cim." in rows["am."]["observed_mlcts"] and "kram." in rows["am."]["observed_mlcts"]
     assert "/sḛɪɴ/" in rows["am."]["observed_ipa"] and "/t͡ɕa̰ɴ/" in rows["am."]["observed_ipa"]
@@ -141,8 +142,9 @@ def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     assert rows["un"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
     assert "gun" in rows["un"]["observed_mlcts"] and "kun" in rows["un"]["observed_mlcts"]
     assert "/ɡòʊɴ/" in rows["un"]["observed_ipa"] and "/kòʊɴ/" in rows["un"]["observed_ipa"]
-    assert rows["au:"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
-    assert "kyau:" in rows["au:"]["observed_mlcts"] and "/t͡ɕɔ́/" in rows["au:"]["observed_ipa"]
+    assert rows["au:"]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
+    assert "pau:" in rows["au:"]["observed_mlcts"] and "kyau:" in rows["au:"]["observed_mlcts"]
+    assert "/pɔ́/" in rows["au:"]["observed_ipa"] and "/t͡ɕɔ́/" in rows["au:"]["observed_ipa"]
     assert rows["im"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "im" in rows["im"]["observed_mlcts"] and "/ʔèɪɴ/" in rows["im"]["observed_ipa"]
     assert rows["im:"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
