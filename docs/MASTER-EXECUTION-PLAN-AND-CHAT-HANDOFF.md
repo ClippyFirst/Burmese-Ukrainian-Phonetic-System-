@@ -2363,9 +2363,16 @@ This section supersedes all older branch-count, PR-state and CI snapshots above;
 
 Vite `8.3.1` was the high-severity dependency finding. Updated the pinned dev dependency to `8.3.8` and added `npm audit --audit-level=high` to required CI. Exact-head run **43583443880 SUCCESS** on `6b90336171b807f5f17d32e237dda210f7b1a820`: npm audited 19 packages, found **0 vulnerabilities**, and the explicit audit gate passed. This closes the high-severity finding without `npm audit fix --force`.
 
-Install reproducibility is still PARTIAL: the repository has no committed `package-lock.json`. A lockfile was generated and uploaded as a bootstrap artifact in [run 43583094199](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43583094199/artifacts/14109416496), with Vite 8.3.8 and the resolved dependency tree, but it was not committed; CI still uses `npm install`, not `npm ci`. Next acceptance criterion: commit that lockfile, switch CI to `npm ci`, rerun all browser/build checks.
+Install reproducibility is now verified: `package-lock.json` (`lockfileVersion: 3`, 51 package entries) was committed at `35b2649481ac2f8532fdc1ebbf2c123d2abaf1ee`; CI now runs `npm ci` and `npm audit --audit-level=high`.
 
 
 ## npm clean-install reproducibility completed — 2026-11-14
 
-A generated npm lockfile from Vite 8.3.8 resolution was validated (`lockfileVersion: 3`, 51 package entries) and committed as `package-lock.json` at commit `35b2649481ac2f8532fdc1ebbf2c123d2abaf1ee`. CI now uses `npm ci` instead of floating `npm install`, followed by `npm audit --audit-level=high`. The previous high-severity Vite advisory is fixed; exact-head CI `43583443880` audited 19 packages with 0 vulnerabilities. Final acceptance is the next exact-head CI run after this lockfile/workflow update.
+A generated npm lockfile from Vite 8.3.8 resolution was validated (`lockfileVersion: 3`, 51 package entries) and committed as `package-lock.json` at commit `35b2649481ac2f8532fdc1ebbf2c123d2abaf1ee`. CI uses `npm ci` and `npm audit --audit-level=high`. Exact-head CI **43583859568 SUCCESS** on `2c17f9843766913c40654c59965a63593b604092`: 267 Python + 68 subtests, 20 Node, 58 Playwright; npm ci, audit, build, generated-data freshness and Chromium passed; 0 vulnerabilities.
+
+
+## Final repository closeout — 2026-11-14
+
+- Test-bearing code/data head `2c17f9843766913c40654c59965a63593b604092`; required CI **43583859568 SUCCESS**: 267 Python + 68 subtests, 20 Node, 58 Playwright; `npm ci`, `npm audit --audit-level=high`, build, generated-data freshness and Chromium passed; 0 vulnerabilities.
+- `package-lock.json` is committed (lockfile v3, 51 package entries); CI now uses `npm ci`. The high-severity Vite advisory is fixed with Vite 8.3.8.
+- IPA gold remains 0 independently adjudicated entries; validator correctly returns `NOT_READY_NO_ADJUDICATED_GOLD`. Primary MLC adjudication remains unavailable. Repository is still a PARTIAL PROTOTYPE, not release-ready.
