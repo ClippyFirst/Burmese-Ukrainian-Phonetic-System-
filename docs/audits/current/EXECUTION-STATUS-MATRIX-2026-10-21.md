@@ -1963,3 +1963,11 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - Optional Epitran diagnostic **43519895542 SUCCESS**; IPA gold `NOT_READY_NO_ADJUDICATED_GOLD`, 0 independent gold entries. One high-severity npm vulnerability remains.
 - Ledger: 3 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 9 secondary one-side-only / 1 special non-rime; 80 sources / 152 claims.
 - Secondary evidence only; no runtime or Ukrainian output changes.
+
+
+## `um.` secondary lexical attestation — 2026-11-14
+
+- Wiktionary `အုံ့` (`um.`, `/ʔo̰ʊɴ/`) supplies a one-side example for ုံ့. It is not a MOW suffix candidate; ုမ့် remains unobserved.
+- Claim `CLM-WIKTIONARY-UM-DOT-ONE-SIDE-EXAMPLE-001` registered; audit, crosswalk and tests updated.
+- Distribution: 2 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 10 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 153 claims.
+- Secondary evidence only; no primary MLC or runtime/IPA gold/Ukrainian mapping promotion. Exact-head CI pending.
