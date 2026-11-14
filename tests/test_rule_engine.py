@@ -19,19 +19,20 @@ def test_unsupported_bare_consonant_is_withheld():
     assert result["status"] == "PARTIAL"
 
 
-def test_legacy_hybrid_name_is_rule_engine_not_ensemble():
-    assert HybridBurmeseEngine is RuleBasedBurmeseEngine
+def test_hybrid_wraps_rule_engine_without_changing_final_ipa():
+    baseline = RuleBasedBurmeseEngine().analyze("ကာ")
     result = HybridBurmeseEngine().analyze("ကာ")
-    assert result["engine"] == "burmese-deterministic-rules-v1"
-    assert result["external_backends_used"] == []
+    assert result["ipa"] == baseline["ipa"]
+    assert result["external_candidates"] == []
 
 
-def test_legacy_factory_rejects_external_backend_injection():
-    import pytest
+def test_hybrid_factory_accepts_candidates_but_does_not_promote_them():
     from burmese_ukrainian import create_hybrid_engine
-
-    with pytest.raises(TypeError):
-        create_hybrid_engine({"external-model": lambda _: "ka"})
+    baseline = RuleBasedBurmeseEngine().analyze("ကာ")
+    result = create_hybrid_engine({"external-model": lambda _: "ka"}).analyze("ကာ")
+    assert result["ipa"] == baseline["ipa"]
+    assert result["external_candidates"][0]["provider"] == "external-model"
+    assert result["external_candidates"][0]["promotion"].startswith("WITHHELD")
 
 
 def test_provisional_onset_registry_includes_the_registered_nya_letter():
