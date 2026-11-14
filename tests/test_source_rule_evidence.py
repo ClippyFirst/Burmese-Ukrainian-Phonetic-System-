@@ -462,3 +462,26 @@ def test_source_registry_has_no_blank_rows_or_duplicate_source_ids():
     assert rows
     assert all(source_id.strip() for source_id in source_ids)
     assert len(source_ids) == len(set(source_ids))
+
+
+def test_mlc_dictionary_access_leads_and_secondary_rime_table_are_not_overstated():
+    sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+
+    google = sources["GOOGLE_BOOKS_MLC1996_DIGITIZED"]
+    shachi = sources["SHACHI_SEALANG_DICT_2009"]
+    assert "digitized 2008-05-15" in google["scope"]
+    assert "no page-level dictionary entries" in google["scope"]
+    assert "IPA phonetic search/display" in shachi["scope"]
+    assert "copyright" in shachi["scope"]
+
+    google_claim = claims["CLM-GOOGLE-BOOKS-MLC1996-DIGITIZATION-001"]
+    shachi_claim = claims["CLM-SHACHI-SEALANG-MLC-DICT-METADATA-001"]
+    rime_claim = claims["CLM-WIKTIONARY-KI-SECONDARY-RIME-TABLE-001"]
+    assert google_claim["source_id"] == google["source_id"]
+    assert shachi_claim["source_id"] == shachi["source_id"]
+    assert all(row["status"] == "DOCUMENTARY" for row in (google_claim, shachi_claim, rime_claim))
+    assert "no primary transcription claim" in google_claim["claim"]
+    assert "does not disclose record-level fields" in shachi_claim["claim"]
+    assert "not an independently located lexical entry" in rime_claim["claim"]
+    assert "does not satisfy the lexical two-sided acceptance criterion" in rime_claim["claim"]
