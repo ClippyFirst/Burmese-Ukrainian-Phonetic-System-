@@ -521,11 +521,13 @@ def test_mlc_second_edition_and_sealang_interface_are_not_misrepresented_as_ipa_
     guide = sources["NDL_BURMESE_BIBLIO_GUIDE_2022"]
     mdpi = sources["MDPI_BURMESE_DICT_2E_BIBLIO_2023"]
     sealang = sources["SEALANG_2008_PROJECT_OVERVIEW"]
+    moe_report = sources["MOE_APR_FY2018_19"]
 
     assert "709 pages" in edition["scope"]
     assert "No pages, pronunciation key" in edition["scope"]
     assert "2019" in guide["scope"] and "ALA-LC" in guide["scope"]
     assert "2020" in mdpi["scope"]
+    assert "Myanmar-English Dictionary (2019)" in moe_report["scope"]
     assert "headword itself is not recoverable" in sealang["scope"]
     assert "does not disclose whether IPA is stored" in sealang["scope"]
 
@@ -533,6 +535,7 @@ def test_mlc_second_edition_and_sealang_interface_are_not_misrepresented_as_ipa_
     date_claim = claims["CLM-MLC-2019-2E-PUBLICATION-DATE-001"]
     guide_claim = claims["CLM-NDL-2022-MLC-DICTIONARY-AND-SEALANG-ACCESS-001"]
     sealang_claim = claims["CLM-SEALANG-2008-SAMPLE-IPA-RESULT-001"]
+    moe_claim = claims["CLM-MOE-APR-2019-MYANMAR-ENGLISH-DICT-001"]
 
     assert edition_claim["source_id"] == "MLC_MYANMAR_ENGLISH_2E_2019"
     assert "709 pages" in edition_claim["claim"]
@@ -543,4 +546,5 @@ def test_mlc_second_edition_and_sealang_interface_are_not_misrepresented_as_ipa_
     assert "not phonetic/IPA transcriptions" in guide_claim["claim"]
     assert "headword is not recoverable" in sealang_claim["claim"]
     assert "does not establish the underlying record schema" in sealang_claim["claim"]
-    assert all(row["status"] == "DOCUMENTARY" for row in (edition_claim, guide_claim, sealang_claim))
+    assert "official government corroboration" in moe_claim["claim"]
+    assert all(row["status"] == "DOCUMENTARY" for row in (edition_claim, guide_claim, sealang_claim, moe_claim))
