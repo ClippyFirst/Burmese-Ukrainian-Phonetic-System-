@@ -193,4 +193,4 @@ def test_a_dot_phonetic_literature_does_not_supply_orthographic_mapping():
     assert "one side only" in rows["a."]["acceptance_boundary"].lower()
     assert "mooney" in rows["a."]["interpretation"].lower()
     assert "watkins" in rows["a."]["interpretation"].lower()
-    assert "no direct word-level" in rows["a."]["acceptance_boundary"].lower()
+    assert "no lexical example for" in rows["a."]["interpretation"].lower()
