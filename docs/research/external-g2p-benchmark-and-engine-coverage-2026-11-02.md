@@ -114,3 +114,8 @@ Optional workflow **43582075278 SUCCESS** (test-bearing SHA `45d3513ad1f6bbbda8d
 ## Final exact-head optional diagnostics — 2026-11-14
 
 Optional workflow **43582678434 SUCCESS** on branch tip `cf7bb590f0acb7929f10832ca80062b83a1b33a2`: Google WFST build/symbol checks and 6/6 raw structural-only outputs; Epitran six raw outputs; CRF 100/100 predictions with 84 source-concordant and possible training overlap. Zero independent gold and null accuracy for every engine. Artifacts were downloaded and inspected; hashes and report provenance are recorded in the external-engine registry and source claims.
+
+
+## Vite security patch — 2026-11-14
+
+The high-severity Vite advisory affecting the previous `8.3.1` pin was addressed by pinning Vite `8.3.8`. Required CI run **43583443880 SUCCESS**: `npm install` audited 19 packages and found 0 vulnerabilities; `npm audit --audit-level=high` passed. The lockfile was generated as a bootstrap artifact but remains uncommitted; transitive clean-install reproducibility is not yet complete.
