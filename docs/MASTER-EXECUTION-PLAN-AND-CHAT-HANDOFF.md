@@ -2258,3 +2258,10 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - Added claim `CLM-WIKTIONARY-IM-COLON-ONE-SIDE-EXAMPLE-001`; updated audit, crosswalk parity and regression tests.
 - Distribution: **1 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 154 claims**.
 - Secondary compound evidence only; no primary MLC adjudication, IPA gold, runtime or Ukrainian output promotion. Exact-head CI pending.
+
+
+## MOW orthographic suffix overlap — `a.` caution — 2026-11-14
+
+- MOW suffix inventory has one apparent `a.` / `ာ့` match: `ဝပ်ရှော့`. This is only a code-point suffix overlap inside full final sequence `ော့`, not evidence of a standalone `a.` rime.
+- Wiktionary lists `ဝပ်ရှော့` as `waphrau.`, IPA `/waʔʃɔ̰/`; it remains evidence for `au.` only. `a.` stays unadjudicated.
+- Added regression test to prevent the orthographic suffix inventory from being misread as syllable/rime segmentation. Generator behavior unchanged because its declared contract is exact code-point suffix matching only.
