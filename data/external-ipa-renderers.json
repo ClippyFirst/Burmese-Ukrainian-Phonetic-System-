@@ -55,8 +55,8 @@
       "license": "Google Language Resources repository declares Apache-2.0; the workflow pins the repository commit. Its WORKSPACE still references some upstream dependencies without content-addressed pins.",
       "verified_in_repo": false,
       "enabled_by_default": false,
-      "latest_run_id": 43582678434,
-      "latest_run_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43582678434",
+      "latest_run_id": 43584975335,
+      "latest_run_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43584975335",
       "execution_status": "BUILD_AND_RAW_OUTPUT_SMOKE_VERIFIED_NOT_ACCURACY",
       "last_run_summary": {
         "input_count": 6,
@@ -67,16 +67,16 @@
         "independent_gold_count": 0,
         "accuracy": null,
         "score_status": "RAW_OUTPUT_SMOKE_NOT_ACCURACY",
-        "report_sha256": "541dbe0d70074819d006548d5eb7543822e3dae9508c47e598f08504f8d3340b",
+        "report_sha256": "d9399126edb168462112e0ed3a2657d97b2a08a1f8c900fa6d208231cad2e8e8",
         "corpus_sha256": "2caad1d85c1c8e4590ccf460d6af448ff161d67097137691a84d7a0a88798091",
         "grammar_sha256": "662478c6c3ce932869ac477c77881117bfba0bb254a8887a7d580432457929e5",
         "phoneme_symbols_sha256": "88f2b10b5a094a4d57db1da4c687b170fa6020f28f2fe9b65967443ccacfc557",
         "fst_sha256": "262113acb8de201ec0a0742878822b5bd54529a00ef3a3491c798fa08b38a8bc",
-        "artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43582678434/artifacts/14109111920",
-        "artifact_zip_sha256": "9ec421100f5450cc63d3466a7df1cd05bdc65770703da65235f6659c7d265911"
+        "artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43584975335/artifacts/14110056236",
+        "artifact_zip_sha256": "0817a16afca0705863cf4e96c1cf60ef01531815fdc9ced52569e6a63a8f9396"
       },
-      "latest_artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43582678434/artifacts/14109111920",
-      "latest_artifact_zip_sha256": "9ec421100f5450cc63d3466a7df1cd05bdc65770703da65235f6659c7d265911"
+      "latest_artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43584975335/artifacts/14110056236",
+      "latest_artifact_zip_sha256": "0817a16afca0705863cf4e96c1cf60ef01531815fdc9ced52569e6a63a8f9396"
     },
     {
       "id": "burmese-g2p",
@@ -88,10 +88,10 @@
       "license": "CC BY-NC-SA 4.0 reported upstream; non-commercial restriction blocks commercial reuse unless separately resolved",
       "verified_in_repo": false,
       "enabled_by_default": false,
-      "latest_run_id": 43582678434,
-      "latest_run_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43582678434",
-      "latest_artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43582678434/artifacts/14109077066",
-      "latest_artifact_zip_sha256": "8ef5fc2357cbf241b23929a00039bd22dbd473f4b639622387d8d2bead587a6f",
+      "latest_run_id": 43584975335,
+      "latest_run_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43584975335",
+      "latest_artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43584975335/artifacts/14110235547",
+      "latest_artifact_zip_sha256": "d82b15b075e762129d6013bdb8b0a21a412b6ee3ad9e0cd75563c412138378e8",
       "execution_status": "RAW_OUTPUT_DIAGNOSTIC_NOT_ACCURACY",
       "last_run_summary": {
         "input_rows": 100,
@@ -101,9 +101,9 @@
         "accuracy": null,
         "scoring_status": "NOT_SCORED_POSSIBLE_TRAINING_OVERLAP",
         "model_sha256": "f66571b7632eed2e94878278702654ce0a4b25fcab18720af60d3cfe00b011ce",
-        "report_sha256": "741dc7fa1263e667cb1c51f91f7ee0a24b0bd6c2479d1efafe63798a63d73d20",
-        "artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43582678434/artifacts/14109077066",
-        "artifact_zip_sha256": "8ef5fc2357cbf241b23929a00039bd22dbd473f4b639622387d8d2bead587a6f"
+        "report_sha256": "f9a028d07bf2bd1bfc4d570829dc025771ba7e39dbd8ed174c70527baa35ab0a",
+        "artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43584975335/artifacts/14110235547",
+        "artifact_zip_sha256": "d82b15b075e762129d6013bdb8b0a21a412b6ee3ad9e0cd75563c412138378e8"
       }
     },
     {
@@ -139,7 +139,7 @@
       "license": "Upstream project reports an open-source license; verify the exact pinned release, bundled mapping/data licenses, and notices before reuse or redistribution.",
       "verified_in_repo": false,
       "enabled_by_default": false,
-      "latest_run_id": 43582678434,
+      "latest_run_id": 43584975335,
       "execution_status": "SMOKE_VERIFIED_NOT_ACCURACY",
       "smoke_evidence": {
         "id": "epitran",
@@ -160,9 +160,9 @@
         "preprocessor_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "postprocessor_sha256": "0eac185c50b19b7c2682d1395afad97a7662a5ff22e2344195eb0d3ffcbed7af"
       },
-      "latest_run_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43582678434",
-      "latest_artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43582678434/artifacts/14109226129",
-      "latest_artifact_zip_sha256": "ad4a98c3cc3489df161cf81d4154fcb6a3db3c940003717c0bc354589196429c",
+      "latest_run_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43584975335",
+      "latest_artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43584975335/artifacts/14109539512",
+      "latest_artifact_zip_sha256": "d92dcb32c935ce1dfb604a161139f1dc2b4df4a2c3febbb0078bebf5a3e2c729",
       "latest_smoke_summary": {
         "input_count": 6,
         "successful_outputs": 6,
@@ -178,11 +178,11 @@
         "exact_match_count": null,
         "exact_match_accuracy": null,
         "score_status": "NOT_SCORED_NO_VERIFIED_GOLD",
-        "report_sha256": "a582039d46764f07ed509076ca0fb1542d6bdb4a358dc46aa0ad600bbbb88521",
+        "report_sha256": "7fb137a6c4e0d27d0010d119fd85b9809ff246091fd0871011c3fff10e4a76c4",
         "mapping_sha256": "de8660a0cdccb4192993d423342ad775a59ade19b8081829eb70da18f291dfe4",
         "corpus_sha256": "2caad1d85c1c8e4590ccf460d6af448ff161d67097137691a84d7a0a88798091",
-        "artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43582678434/artifacts/14109226129",
-        "artifact_zip_sha256": "ad4a98c3cc3489df161cf81d4154fcb6a3db3c940003717c0bc354589196429c"
+        "artifact_url": "https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43584975335/artifacts/14109539512",
+        "artifact_zip_sha256": "d92dcb32c935ce1dfb604a161139f1dc2b4df4a2c3febbb0078bebf5a3e2c729"
       }
     },
     {
