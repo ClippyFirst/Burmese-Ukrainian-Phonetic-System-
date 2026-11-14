@@ -862,3 +862,12 @@ The JIPA illustration is based on one 30-year-old male consultant from Rangoon r
 The Thrax/OpenFst grammar outputs IPA and is described as a way to generate a seed lexicon that human annotators then check. The paper does not state that a checked lexicon was released. SLR80 is a corpus of word-segmented Burmese text, not word-level IPA labels. Thus the paper is strong architectural evidence but does not provide independent IPA gold (`CLM-OO20-NO-GOLD-001`).
 
 No corpus or grammar license was inferred beyond what the papers state. No audio was accessed or evaluated. No phonological or Ukrainian output rule was promoted.
+
+
+## 49. `un` two-sided secondary lexical evidence — 2026-11-14
+
+A Wiktionary appendix on Burmese pronunciation explicitly lists `ဂုဏ်` /ɡòuɴ/ and `ကုန်` /kòuɴ/ as separate Burmese examples. The dedicated entry `ဂုဏ်ထူး` gives IPA `/ɡòʊɴdú/`, MLCTS `gunhtu:`, and identifies `ဂုဏ်` as its first component. This independently corroborates the first source-unit side `ုဏ်` as compound-initial `/ɡòʊɴ/`; the already registered MOW-listed `ကုန်` supplies `ုန်` `/kòʊɴ/`. Different onsets, same secondary rime `/òʊɴ/`.
+
+The `un` row is therefore upgraded from `SECONDARY_ONE_SIDE_ONLY` to `SECONDARY_SYSTEM_EQUIVALENCE`. This is not a controlled minimal pair, and Wiktionary is not the primary MLC transcription table. The change is evidence-ledger only: no vendor mapping, runtime or Ukrainian output is promoted. Claim `CLM-WIKTIONARY-UN-SECOND-SIDE-EXAMPLE-001` is registered.
+
+Updated 25-group distribution: **0 unadjudicated / 10 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 10 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 170 claims**.
