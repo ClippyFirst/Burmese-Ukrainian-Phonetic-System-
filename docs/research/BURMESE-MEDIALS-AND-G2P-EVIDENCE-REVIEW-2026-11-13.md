@@ -797,3 +797,10 @@ This does not adjudicate the collision or authorize primary MLC, IPA gold, runti
 Wiktionary gives the compound `တစ်သဝေမတိမ်း` IPA `/təθwèmətéɪɴ/` and MLCTS `tacsa.wema.tim:`, and explicitly analyses final `တိမ်း` as a component. The MOW suffix-match inventory independently includes `တိမ်း` under source ending ိမ်း. This is compound-level secondary evidence for the final component, not a standalone pronunciation entry. No lexical example for ိံး was located. The audit and crosswalk now record `SECONDARY_ONE_SIDE_ONLY`; claim `CLM-WIKTIONARY-IM-COLON-ONE-SIDE-EXAMPLE-001` is registered.
 
 This is not a collision adjudication or primary MLC evidence. Current distribution: **1 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 154 claims**. Exact-head CI pending.
+
+
+## 42. MOW suffix-match overlap caveat for `a.` — 2026-11-14
+
+A targeted review of the MOW orthographic suffix inventory found one apparent `a.` match: `ဝပ်ရှော့` under source unit `ာ့`. This is a code-point suffix overlap inside the full final sequence `ော့`, not an independent Burmese syllable or rime segmentation. Wiktionary records the word as MLCTS `waphrau.` with IPA `/waʔʃɔ̰/`, which supports treating it as an `au.` lexical example, not as evidence for the `a.` collision. The MOW generator intentionally performs exact Unicode suffix matching only; it does not claim grapheme-cluster or syllable parsing. Therefore no `a.` lexical audit promotion is made, and a regression test now protects this boundary.
+
+The `a.` group remains UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE; this is an inventory interpretation caveat, not a change to the 25-group status distribution. No runtime or Ukrainian output change.
