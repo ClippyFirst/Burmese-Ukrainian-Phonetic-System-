@@ -183,3 +183,13 @@ def test_mow_suffix_match_does_not_promote_overlapping_composite_vowel_to_a_dot_
     assert lexical["a."]["observed_ipa"] == ""
     assert lexical["au."]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "waphrau." in lexical["au."]["observed_mlcts"]
+
+
+def test_a_dot_phonetic_literature_does_not_supply_orthographic_mapping():
+    """General /a/~closed-vowel descriptions cannot adjudicate MLCTS a. spellings."""
+    rows = {row["mlcts"]: row for row in read_rows("romanization_rime_collision_lexical_audit.csv")}
+    assert rows["a."]["evidence_status"] == "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE"
+    assert "no word-level" in rows["a."]["interpretation"].lower()
+    assert "mooney" in rows["a."]["interpretation"].lower()
+    assert "watkins" in rows["a."]["interpretation"].lower()
+    assert "no direct word-level" in rows["a."]["acceptance_boundary"].lower()
