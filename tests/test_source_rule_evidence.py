@@ -548,3 +548,39 @@ def test_mlc_second_edition_and_sealang_interface_are_not_misrepresented_as_ipa_
     assert "does not establish the underlying record schema" in sealang_claim["claim"]
     assert "official government corroboration" in moe_claim["claim"]
     assert all(row["status"] == "DOCUMENTARY" for row in (edition_claim, guide_claim, sealang_claim, moe_claim))
+
+
+def test_tufs_med_ipa_crosswalk_and_lexical_examples_preserve_mlcts_boundary():
+    sources = {row["source_id"]: row for row in _rows(DATA / "sources.csv")}
+    claims = {row["claim_id"]: row for row in _rows(DATA / "source_claims.csv")}
+    lexical = {row["mlcts"]: row for row in _rows(DATA / "romanization_rime_collision_lexical_audit.csv")}
+
+    tufs = sources["TUFS_BURMESE_PRONUNCIATION_MODULE"]
+    assert "MED 2019 second edition" in tufs["scope"]
+    assert "not the primary dictionary itself" in tufs["scope"]
+    assert "no open data license" in tufs["scope"]
+
+    crosswalk = claims["CLM-TUFS-MED-IPA-CROSSWALK-001"]
+    tone = claims["CLM-TUFS-BURMESE-TONE-CODA-ANALYSIS-001"]
+    examples = claims["CLM-TUFS-LEXICAL-RIME-EXAMPLES-001"]
+    divergence = claims["CLM-TUFS-WIKTIONARY-SAUNG-TONE-DIVERGENCE-001"]
+    coverage = claims["CLM-TUFS-MED-LEXICAL-COVERAGE-001"]
+    assert "not proof that MED equals MLCTS" in crosswalk["claim"]
+    assert "nasal coda -ɴ" in tone["claim"]
+    assert "ကမ်း /káɴ/" in examples["claim"]
+    assert "သိမ်း /t̪éiɴ/" in examples["claim"]
+    assert "စောင့် /sâuɴ/" in divergence["claim"]
+    assert "creaky phonation" in divergence["claim"]
+    assert "absent from the 2019 MED" in coverage["claim"]
+    assert all(row["status"] == "DOCUMENTARY" for row in (crosswalk, tone, examples, divergence, coverage))
+
+    expected_one_sided = {"am:", "aung.", "im", "im:", "im.", "ui", "um:", "um."}
+    assert expected_one_sided <= lexical.keys()
+    assert all(lexical[key]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY" for key in expected_one_sided)
+    assert "/káɴ/ (ကမ်း" in lexical["am:"]["observed_ipa"]
+    assert "/sâuɴ/ (စောင့်" in lexical["aung."]["observed_ipa"]
+    assert "/t̪èiɴ/ (သိမ်" in lexical["im"]["observed_ipa"]
+    assert "/t̪éiɴ/ (သိမ်း" in lexical["im:"]["observed_ipa"]
+    assert "/t̪êiɴ/ (သိမ့်" in lexical["im."]["observed_ipa"]
+    assert "discrepancy" in lexical["aung."]["interpretation"]
+    assert "MLCTS" in lexical["im:"]["interpretation"]
