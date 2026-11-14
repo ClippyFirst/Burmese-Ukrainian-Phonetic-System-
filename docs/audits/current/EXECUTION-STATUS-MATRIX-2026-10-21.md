@@ -1979,3 +1979,9 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - Claim `CLM-WIKTIONARY-IM-COLON-ONE-SIDE-EXAMPLE-001` registered; audit, crosswalk and tests updated.
 - Distribution: 1 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 154 claims.
 - Secondary evidence only; no primary MLC or runtime/IPA gold/Ukrainian mapping promotion. Exact-head CI pending.
+
+
+## MOW `a.` suffix-overlap caution — 2026-11-14
+
+- The single MOW suffix-match candidate for `a.` / `ာ့` is `ဝပ်ရှော့`, where the matched code points overlap the larger final sequence `ော့`. Wiktionary records this word as `waphrau.` / `/waʔʃɔ̰/`, so it is not promoted as an `a.` rime example.
+- Added a regression test preserving `a.` as unadjudicated and `ဝပ်ရှော့` as an `au.` example only. This does not change the generator's explicitly orthographic-only suffix matching contract.
