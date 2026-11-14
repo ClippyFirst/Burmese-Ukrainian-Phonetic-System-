@@ -171,3 +171,15 @@ def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     assert "only" in rows["ui"]["acceptance_boundary"].lower()
     assert rows["any"]["evidence_status"] == "SECONDARY_SOURCE_CONFLICT"
     assert all("no runtime" in rows[key]["acceptance_boundary"].lower() for key in ("auk", "aung", "aung:", "aung.", "any", "any:", "any.", "ui", "um:", "un", "au:", "au.", "im", "im:", "im.", "am:", "am.", "um."))
+
+
+def test_mow_suffix_match_does_not_promote_overlapping_composite_vowel_to_a_dot_rime():
+    """A raw code-point suffix overlap is not a Burmese syllable/rime analysis."""
+    matches = read_rows("mow_rime_orthographic_matches.csv")
+    a_dot = [row for row in matches if row["mlcts"] == "a." and row["source_unit"] == "ာ့"]
+    assert [row["lemma"] for row in a_dot] == ["ဝပ်ရှော့"]
+    lexical = {row["mlcts"]: row for row in read_rows("romanization_rime_collision_lexical_audit.csv")}
+    assert lexical["a."]["evidence_status"] == "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE"
+    assert lexical["a."]["observed_ipa"] == ""
+    assert lexical["au."]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
+    assert "waphrau." in lexical["au."]["observed_mlcts"]
