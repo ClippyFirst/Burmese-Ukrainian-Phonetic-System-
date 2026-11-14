@@ -103,10 +103,10 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
     rows = read_rows("romanization_rime_collision_lexical_audit.csv")
     counts = Counter(row["evidence_status"] for row in rows)
     assert counts == {
-        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 2,
+        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 1,
         "SECONDARY_SYSTEM_EQUIVALENCE": 8,
         "SECONDARY_SOURCE_CONFLICT": 1,
-        "SECONDARY_ONE_SIDE_ONLY": 10,
+        "SECONDARY_ONE_SIDE_ONLY": 11,
         "SECONDARY_SOURCE_DISTINCTION": 3,
         "SPECIAL_NONRIME_CONTEXT_DEPENDENT": 1,
     }
@@ -145,6 +145,9 @@ def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     assert "kyau:" in rows["au:"]["observed_mlcts"] and "/t͡ɕɔ́/" in rows["au:"]["observed_ipa"]
     assert rows["im"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "im" in rows["im"]["observed_mlcts"] and "/ʔèɪɴ/" in rows["im"]["observed_ipa"]
+    assert rows["im:"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
+    assert "tim:" in rows["im:"]["observed_mlcts"] and "/təθwèmətéɪɴ/" in rows["im:"]["observed_ipa"]
+    assert "compound-level" in rows["im:"]["interpretation"]
     assert rows["im."]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "cim." in rows["im."]["observed_mlcts"] and "/sḛɪɴ/" in rows["im."]["observed_ipa"]
     assert rows["aung."]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
@@ -167,4 +170,4 @@ def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     assert rows["ui"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "only" in rows["ui"]["acceptance_boundary"].lower()
     assert rows["any"]["evidence_status"] == "SECONDARY_SOURCE_CONFLICT"
-    assert all("no runtime" in rows[key]["acceptance_boundary"].lower() for key in ("auk", "aung", "aung:", "aung.", "any", "any:", "any.", "ui", "um:", "un", "au:", "au.", "im", "im.", "am:", "am.", "um."))
+    assert all("no runtime" in rows[key]["acceptance_boundary"].lower() for key in ("auk", "aung", "aung:", "aung.", "any", "any:", "any.", "ui", "um:", "un", "au:", "au.", "im", "im:", "im.", "am:", "am.", "um."))
