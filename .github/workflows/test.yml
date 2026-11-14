@@ -18,12 +18,8 @@ jobs:
         with:
           node-version: 22
       - run: npm install
-      - name: Upload resolved npm lockfile for reproducibility bootstrap
-        uses: actions/upload-artifact@v4
-        with:
-          name: npm-lockfile-bootstrap
-          path: package-lock.json
-          if-no-files-found: error
+      - name: Fail on high-severity npm advisories
+        run: npm audit --audit-level=high
       - run: npm run build
       - name: Check generated web data is up to date
         run: npm run generate:web && git diff --exit-code -- src/web/generated/data.js
