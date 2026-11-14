@@ -2066,4 +2066,9 @@ Primary-source corrections added: WSSANLP PER results and test split; LREC 2020 
 
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
-| BURMESE-WEB-DEPENDENCY-SECURITY-001 | DONE_VERIFIED — HIGH_SEVERITY_FIXED | Vite updated `8.3.1` → `8.3.8`; required CI **43583443880 SUCCESS** on SHA `6b90336171b807f5f17d32e237dda210f7b1a820`: `npm install` audited 19 packages and found 0 vulnerabilities; explicit `npm audit --audit-level=high` passed. | No high-severity npm advisories remain at this run. `package-lock.json` is not committed; a bootstrap lockfile artifact exists in run 43583094199. Deterministic transitive dependency installation remains PARTIAL until lockfile is committed and CI switches to `npm ci`. |
+| BURMESE-WEB-DEPENDENCY-SECURITY-001 | DONE_VERIFIED — CLEAN_INSTALL_AND_AUDIT | Vite `8.3.8`; committed `package-lock.json` (`lockfileVersion: 3`, 51 package entries; commit `35b2649481ac2f8532fdc1ebbf2c123d2abaf1ee`); required CI **43583859568 SUCCESS** on test-bearing SHA `2c17f9843766913c40654c59965a63593b604092`: `npm ci`, `npm audit --audit-level=high`, build and generated-data checks passed; 0 vulnerabilities. | Clean-install reproducibility and high-severity audit gate verified. |
+
+
+## Final clean-install acceptance — 2026-11-14
+
+Required CI **43583859568 SUCCESS** on test-bearing SHA `2c17f9843766913c40654c59965a63593b604092`: 267 Python + 68 subtests, 20 Node, 58 Playwright; `npm ci`, `npm audit --audit-level=high`, production build, generated-data freshness and Chromium passed. npm audit found 0 vulnerabilities. The committed lockfile closes the transitive dependency reproducibility gap.
