@@ -824,3 +824,8 @@ A full-text read of Mooney & Repetti-Ludlow (2021) confirms a Yangon-speaker pho
 ## 45. `a.` first-side lexical attestation — 2026-11-14
 
 Wiktionary's entry `ငါ့` gives IPA `/ŋa̰/` and MLCTS `nga.`. The entry explicitly labels it a familiar/informal non-lemma pronoun form with induced creaky tone, derived from `ငါ` (`nga`). Its final orthographic unit is `ါ့`, the first source-unit side in the `a.` group. This is a genuine spelling-to-pronunciation lexical attestation for one side, though not a MOW candidate and not an independent primary MLC dictionary record. No matching lexical example for `ာ့` has been found. The group is therefore upgraded from unadjudicated to `SECONDARY_ONE_SIDE_ONLY`, not adjudicated. The phonetic-literature context and the `ဝပ်ရှော့` suffix-overlap caveat remain as recorded above.
+
+
+## 46. `a.` second-side lexical attestation — 2026-11-14
+
+A further Wiktionary entry closes the one-sided gap: `တာ့တာ` is a Burmese interjection borrowed from English *ta-ta*, with IPA `/ta̰tà/` and MLCTS `ta.ta`. Its first syllable `တာ့` ends in the second source unit `ာ့` and is pronounced `/ta̰/`. Together with `ငါ့` `/ŋa̰/` (MLCTS `nga.`), whose spelling ends in `ါ့`, both sides of the `a.` source-unit collision now have secondary lexical attestations with matching creaky `/a̰/` rhyme realization. The two forms are not a controlled minimal pair, and Wiktionary is not the primary MLC dictionary. The MOW suffix inventory does not include `တာ့တာ` because the relevant syllable is internal, not word-final. Therefore the group is upgraded to `SECONDARY_SYSTEM_EQUIVALENCE`, not primary adjudication. No runtime or Ukrainian output change.
