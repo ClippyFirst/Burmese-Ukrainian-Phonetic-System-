@@ -104,3 +104,8 @@ The Google Language Resources Burmese Thrax/OpenFst grammar is pinned at `a90601
 The current branch now carries `scripts/benchmark_google_fst.py`, its structural-only refusal/alignment tests, and a Google build/smoke job in the optional comparator workflow. `HybridBurmeseEngine` is an explicit candidate collector for Google WFST, exact myG2P v2 IPA lookup, Epitran and pinned CLI providers. It does not auto-run providers, vote, or promote; `RuleBasedBurmeseEngine` remains final IPA authority. The provider order (myG2P 10, Google 20, Epitran 40, CRF 60, Goruut 90) is diagnostic ordering only. myG2P v2 is CC BY-NC-SA 4.0; its dictionary is not bundled. Google repository code is Apache-2.0, while upstream dependency pinning remains incomplete.
 
 The current independent adjudicated Yangon IPA gold count remains zero. Neither the historical WFST PER values nor the six raw outputs can be treated as this project's benchmark.
+
+
+## Current-branch comparator artifacts — 2026-11-14
+
+Optional workflow **43582075278 SUCCESS** (test-bearing SHA `45d3513ad1f6bbbda8d9a97768e493cdda08856d`): Google Thrax/OpenFst build/symbol check and 6/6 structural-only raw outputs; Epitran 1.35.3 raw outputs on six structural probes; CRF 100/100 predictions with 84 source-concordant rows, 0 gold and `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`. The Google report SHA-256 is `88372233d85df73593b030ee0f91aa678fe86fd1c6d5cdc18e7c609b8eefd2c6`; all artifact ZIP hashes and raw report hashes are in `data/burmese/sources.csv`, `data/burmese/source_claims.csv`, and `data/external-ipa-renderers.json`. None of these figures is pronunciation accuracy.
