@@ -2147,3 +2147,20 @@ Required CI **43586334287 SUCCESS** on `dd494662f0c94bcf1f59170fe65ea6cd41199c64
 - TUFS provides lexical examples for already-observed sides of am:, aung., im, im:, im.; no missing-side lexical example found. It also disagrees with Wiktionary on the phonetic analysis of စောင့် (/sâuɴ/ vs /sa̰ʊɴ/). No collision status promotion.
 - Registry 89 sources / 189 claims; eight one-sided groups remain one-sided.
 - Required CI 43620353708 SUCCESS: 271 Python + 68 subtests, 20 Node, 58 Playwright; IPA gold structure validation, npm ci, npm audit (0 vulnerabilities), production build and generated-data freshness passed. The preceding run 43620266372 had one test assertion wording failure; corrected in 9e0d134a3189a4d57d38de1fa6c0e7b85725d72e and rerun successfully.
+
+
+## Final execution checkpoint — 2026-11-14
+
+- Repository: ClippyFirst/Burmese-Ukrainian-Phonetic-System-
+- Starting default-branch commit: dc90463bdd734867308f03cb627eb8941efc19d6
+- Starting research-branch head for this continuation: 3d5b3f2b17376e969acabfc9b237ee9d805a71d8
+- Dedicated working branch: research/burmese-medials-g2p-evidence-2026-11-13
+- Code/data/test-bearing head: 9e0d134a3189a4d57d38de1fa6c0e7b85725d72e
+- Latest documentation head before this checkpoint: 4478d4dbaffdc7ab127bc8f2a22f4f543275b880
+- Comparison to main at the checkpoint: 852 commits ahead, 0 behind; merge base remains dc90463bdd734867308f03cb627eb8941efc19d6. main was not changed.
+- Required CI run 43620353708 SUCCESS on the code/test-bearing head: 271 Python tests + 68 subtests, 20 Node tests, 58 Playwright tests; IPA-gold structural validation, npm ci, npm audit --audit-level=high (0 vulnerabilities), production build and generated-data freshness passed.
+- Optional diagnostic run 43620353669: CRF baseline and raw-output jobs SUCCESS; Google Thrax/OpenFst build job remained IN_PROGRESS at last inspection. It is not a linguistic accuracy benchmark and no accuracy claim is made.
+- Evidence registries: 89 sources / 189 claims; CSV widths/refs/ID uniqueness validated. Collision lexical audit contains 25 groups; 8 target groups remain SECONDARY_ONE_SIDE_ONLY. TUFS examples add evidence only to already-observed sides and expose a secondary transcription disagreement for စောင့်; no mapping was promoted.
+- Open PRs: #147 (research: map Burmese medial and G2P evidence) and #129 (benchmark/hybrid). #147 remains open; no review submissions or inline review threads. #129 remains untouched because its branch is divergent from main (previous comparison: 53 ahead / 17 behind); compatible work already ported to #147 in the earlier continuation.
+- Remaining blockers: obtain permissioned access to the 2019 MED second edition (CiNii/NDL/official Ministry evidence identifies a 709-page copy at University of Tokyo General Library and copies at National Library Myanmar; no entry pages or transcription key inspected); find lexical examples for the missing sides of the eight one-sided groups; expert-adjudicated independent IPA gold; accessibility manual QA; full hermetic pinning for Google WFST dependencies; myG2P CC BY-NC-SA commercial-use resolution.
+- Final classification: PARTIAL PROTOTYPE, not release-ready. Engineering CI is green on the code/test head; linguistic evidence, licensing and independent gold remain incomplete.
