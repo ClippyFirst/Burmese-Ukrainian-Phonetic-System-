@@ -1976,3 +1976,10 @@ Five claims added after full-text review of Hlaing & Mikami (2014), Watkins (200
 - `CLM-OO20-NO-GOLD-001`: Oo et al.'s IPA G2P creates seed pronunciations for checking; SLR80 is manually segmented Burmese text, not word-level IPA gold.
 
 Registry: **80 sources / 169 claims**. None of these claims creates independent adjudicated gold or promotes runtime/Ukrainian output.
+
+
+## `un` two-sided lexical evidence — 2026-11-14
+
+- `CLM-WIKTIONARY-UN-SECOND-SIDE-EXAMPLE-001` records `ဂုဏ်` /ɡòuɴ/ from the Burmese pronunciation appendix and compound-initial `ဂုဏ်` /ɡòʊɴ/ from `ဂုဏ်ထူး` (MLCTS `gunhtu:`), complementing MOW-listed `ကုန်` /kòʊɴ` for the other orthographic source unit.
+- `un` is now `SECONDARY_SYSTEM_EQUIVALENCE`, not primary adjudication and not a controlled minimal pair. No runtime/Ukrainian promotion.
+- Registry: **80 sources / 170 claims**. 25-group distribution: **0 unadjudicated / 10 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 10 secondary one-side-only / 1 special non-rime**.
