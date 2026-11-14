@@ -2376,3 +2376,12 @@ A generated npm lockfile from Vite 8.3.8 resolution was validated (`lockfileVers
 - Test-bearing code/data head `2c17f9843766913c40654c59965a63593b604092`; required CI **43583859568 SUCCESS**: 267 Python + 68 subtests, 20 Node, 58 Playwright; `npm ci`, `npm audit --audit-level=high`, build, generated-data freshness and Chromium passed; 0 vulnerabilities.
 - `package-lock.json` is committed (lockfile v3, 51 package entries); CI now uses `npm ci`. The high-severity Vite advisory is fixed with Vite 8.3.8.
 - IPA gold remains 0 independently adjudicated entries; validator correctly returns `NOT_READY_NO_ADJUDICATED_GOLD`. Primary MLC adjudication remains unavailable. Repository is still a PARTIAL PROTOTYPE, not release-ready.
+
+
+## 2026-11-14 continuation — full-text evidence and dependency security
+
+- Current exact-head test checkpoint before this documentation/data update: `716e65b4fac5b4f2ec782ffacdf9408521503d01`; required CI `43583984697 SUCCESS`: 267 Python + 68 subtests, 20 Node, 58 Playwright; `npm install` and explicit `npm audit --audit-level=high` each reported 0 vulnerabilities. Vite is pinned to 8.3.8.
+- Five additional source claims registered after full-text reads of Hlaing & Mikami 2014, Watkins 2001, and Oo et al. 2020. Hlaing's FST is orthographic only; its grammar has unreconciled M/V multiplicity expressions and no stated reuse license. Watkins is a broad transcription of one Rangoon consultant, not a population-validated gold set. Oo's seed lexicon and SLR80 are not independently adjudicated IPA gold.
+- Rime ledger verified from CSV: 25 groups = 0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime. No primary MLC adjudication and no independent IPA gold.
+- Security finding closed. Remaining install reproducibility gap: no committed `package-lock.json`; CI still uses `npm install`, not `npm ci`. A lockfile artifact exists in run 43583094199 but was not ported into the repo.
+- Continue to keep runtime and Ukrainian outputs unchanged until primary lexical evidence and independent adjudication are available.
