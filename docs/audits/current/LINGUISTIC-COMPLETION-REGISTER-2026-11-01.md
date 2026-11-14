@@ -1789,7 +1789,7 @@ Current collision ledger: **15 unadjudicated / 5 secondary equivalence / 1 secon
 
 | ID | Status | Evidence | Acceptance boundary |
 |---|---|---|---|
-| BURMESE-WIKTIONARY-A-AU-LEXICAL-027 | PARTIAL — SECONDARY_WORD_LEVEL_EXAMPLES | Added six MOW-listed Wiktionary lemmas across `a`, `a:` and `au`: `အဝါ`/`အစာ`, `ခါး`/`ကား`, `ပေါ်`/`ကြော်`. Within each pair the onsets differ but the secondary IPA rime matches. Added three documentary claims; updated audit, MLCTS2 parity and regression tests. Registry: 80 sources / 143 claims. | Secondary equivalence only; not controlled minimal pairs or primary MLC adjudication. No IPA gold, runtime or Ukrainian mapping promotion. |
+| BURMESE-WIKTIONARY-A-AU-LEXICAL-027 | PARTIAL — SECONDARY EVIDENCE RECONCILED | Earlier MOW-listed pairs across `a`, `a:` and `au` remain; `a.` now also has both-side examples: `ငါ့` `/ŋa̰/` (`ါ့`) and first syllable `တာ့` `/ta̰/` in `တာ့တာ` (`ာ့`). Registry: 80 sources / 164 claims. | Secondary only, not a controlled minimal pair or primary MLC adjudication. No IPA gold, runtime or Ukrainian mapping promotion. |
 
 Current collision ledger: **12 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 2 secondary distinction / 1 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 143 claims**.
 
