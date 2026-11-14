@@ -2357,3 +2357,10 @@ This section supersedes all older branch-count, PR-state and CI snapshots above;
 - Optional diagnostics **43582678434 SUCCESS** on that exact tip: Google WFST 6/6 raw outputs, Epitran six raw outputs, CRF 100/100 predictions / 84 source-concordant. Zero gold, no accuracy. Artifacts inspected; provenance recorded in `sources.csv`, `source_claims.csv` and `external-ipa-renderers.json`.
 - Source registry 80 sources / 164 claims. Rime ledger: 0 unadjudicated / 9 secondary equivalence / 1 conflict / 3 distinctions / 11 one-side-only / 1 special non-rime.
 - PR #129 remains OPEN / DRAFT / non-mergeable and untouched; its compatible implementation was selectively ported into #147. Main unchanged, no release or deployment. Repository remains PARTIAL PROTOTYPE, not linguistically release-ready.
+
+
+## Security and install reproducibility closeout — 2026-11-14
+
+Vite `8.3.1` was the high-severity dependency finding. Updated the pinned dev dependency to `8.3.8` and added `npm audit --audit-level=high` to required CI. Exact-head run **43583443880 SUCCESS** on `6b90336171b807f5f17d32e237dda210f7b1a820`: npm audited 19 packages, found **0 vulnerabilities**, and the explicit audit gate passed. This closes the high-severity finding without `npm audit fix --force`.
+
+Install reproducibility is still PARTIAL: the repository has no committed `package-lock.json`. A lockfile was generated and uploaded as a bootstrap artifact in [run 43583094199](https://github.com/ClippyFirst/Burmese-Ukrainian-Phonetic-System-/actions/runs/43583094199/artifacts/14109416496), with Vite 8.3.8 and the resolved dependency tree, but it was not committed; CI still uses `npm install`, not `npm ci`. Next acceptance criterion: commit that lockfile, switch CI to `npm ci`, rerun all browser/build checks.
