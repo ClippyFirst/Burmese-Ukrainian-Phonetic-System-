@@ -2385,3 +2385,10 @@ A generated npm lockfile from Vite 8.3.8 resolution was validated (`lockfileVers
 - Rime ledger verified from CSV: 25 groups = 0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime. No primary MLC adjudication and no independent IPA gold.
 - Security finding closed. Remaining install reproducibility gap: no committed `package-lock.json`; CI still uses `npm install`, not `npm ci`. A lockfile artifact exists in run 43583094199 but was not ported into the repo.
 - Continue to keep runtime and Ukrainian outputs unchanged until primary lexical evidence and independent adjudication are available.
+
+
+## Correction: npm lockfile state and final test checkpoint — 2026-11-14 12:20 UTC
+
+The preceding continuation note incorrectly stated that no committed npm lockfile existed. This was corrected by inspecting the actual branch: `package-lock.json` is present (lockfileVersion 3, 51 package entries; blob `43c0da9092cc0c63f7ed5f89a11ad5c6039aeb1e`), and the workflow uses `npm ci` plus `npm audit --audit-level=high`. Exact-head required CI **43584975330 SUCCESS** on `58fe38c15f6373948640c89921d818d3be3cafff`: 267 Python + 68 subtests, 20 Node, 58 Playwright; `npm ci` and explicit audit both report **0 vulnerabilities**. Therefore npm install reproducibility and the Vite high-severity advisory are DONE_VERIFIED; do not carry forward the earlier incorrect blocker.
+
+Current source registry after five new claims: **80 sources / 169 claims**. Rime ledger: **0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Independent IPA gold remains 0. Repository remains a PARTIAL PROTOTYPE, not linguistically release-ready.
