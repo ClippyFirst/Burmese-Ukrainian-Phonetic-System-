@@ -55,3 +55,14 @@ Optional workflow **43582075278 SUCCESS** on code/test SHA `45d3513ad1f6bbbda8d9
 - Burmese-G2P CRF: **100/100** predictions; 84 source-concordant; zero gold; `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`; supplied syllable segmentation means end-to-end segmentation is not tested. Artifact ZIP SHA-256 `fbf339ed34dfb80b4147998d7b2fee4c602fcb1abc10c91b9229ea10ccf7bb9d`.
 
 All three artifacts were downloaded and inspected. None provides accuracy or adjudicated IPA gold. External outputs remain diagnostic candidates only.
+
+
+## Final exact-branch raw comparator run — 2026-11-14
+
+Optional workflow **43582678434 SUCCESS** on final branch tip `cf7bb590f0acb7929f10832ca80062b83a1b33a2`:
+
+- Google Thrax/OpenFst: Bazel 7.4.1 build and symbol checks passed; 6/6 structural-only outputs, 0 gold, accuracy null. Report SHA-256 `541dbe0d70074819d006548d5eb7543822e3dae9508c47e598f08504f8d3340b`; artifact ZIP SHA-256 `9ec421100f5450cc63d3466a7df1cd05bdc65770703da65235f6659c7d265911`.
+- Epitran 1.35.3: six raw structural-only outputs; 0 gold and accuracy null. Report SHA-256 `a582039d46764f07ed509076ca0fb1542d6bdb4a358dc46aa0ad600bbbb88521`; artifact ZIP SHA-256 `ad4a98c3cc3489df161cf81d4154fcb6a3db3c940003717c0bc354589196429c`.
+- CRF: 100/100 predictions, 84 source-concordant, 0 gold, `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`. Report SHA-256 `741dc7fa1263e667cb1c51f91f7ee0a24b0bd6c2479d1efafe63798a63d73d20`; artifact ZIP SHA-256 `8ef5fc2357cbf241b23929a00039bd22dbd473f4b639622387d8d2bead587a6f`.
+
+All three final-head artifacts were downloaded and inspected. Outputs remain diagnostic only; no score is claimed.
