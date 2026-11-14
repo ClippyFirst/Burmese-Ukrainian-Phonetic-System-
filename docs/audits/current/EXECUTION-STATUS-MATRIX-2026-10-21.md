@@ -2013,3 +2013,13 @@ Updated lexical ledger: 25 groups = **0 unadjudicated / 8 secondary equivalence 
 | BURMESE-RIME-A-DOT-BOTH-SIDES-028 | DONE_VERIFIED — SECONDARY_SYSTEM_EQUIVALENCE | Wiktionary `ငါ့` `/ŋa̰/` (`ါ့`) and `တာ့တာ` `/ta̰tà/`, first syllable `တာ့` (`ာ့`); MLCTS values `nga.` and `ta.ta`. | Secondary lexical equivalence for both sides; not a minimal pair or primary MLC adjudication. No runtime change. |
 
 Current ledger: **0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 158 claims**. Exact-head CI pending.
+
+
+## Final exact-head verification — 2026-11-14
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-RIME-A-DOT-BOTH-SIDES-028 | DONE_VERIFIED — SECONDARY_SYSTEM_EQUIVALENCE | Final SHA `e6d865e1daa191a7ecc9cd5b0025b628cc930310`; Wiktionary `ငါ့` `/ŋa̰/` (ending `ါ့`) and `တာ့တာ` `/ta̰tà/`, first syllable `တာ့` (`ာ့`); exact-head CI **43581081561 SUCCESS**. | Secondary lexical evidence only; not a controlled minimal pair or primary MLC adjudication. No runtime/Ukrainian promotion. |
+| BURMESE-RIME-LEXICAL-AUDIT-025 | DONE_VERIFIED — TESTED_LEDGER | 253 Python + 66 subtests, 20 Node, 58 Playwright; build, generated-data freshness, Chromium and IPA-gold structure validation passed. | All 25 groups have some secondary evidence; 11 still one-sided, 1 conflicting, 3 distinguished. |
+
+Registry: **80 sources / 158 claims**. IPA gold remains 0; `NOT_READY_NO_ADJUDICATED_GOLD`. Optional diagnostics **43581085495 SUCCESS**: raw outputs only; CRF 100 predictions / 84 source-concordant / 0 gold / possible training overlap, no accuracy. One high-severity npm vulnerability remains. PR #147 is OPEN / DRAFT / mergeable, 704 ahead / 0 behind main; not merged.
