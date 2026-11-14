@@ -2404,3 +2404,14 @@ Current branch data checkpoint: 80 sources / 169 claims; 25 rime groups = 0 unad
 ## `un` lexical ledger extension — 2026-11-14
 
 A secondary Wiktionary appendix directly lists `ဂုဏ်` /ɡòuɴ/ and `ကုန်` /kòuɴ/; the `ဂုဏ်ထူး` compound entry confirms the first component `ဂုဏ်` /ɡòʊɴ/ with MLCTS `gunhtu:`. The `un` group was upgraded to `SECONDARY_SYSTEM_EQUIVALENCE` (not primary adjudication). Regression tests updated. Registry **80 sources / 170 claims**; rime ledger **0 unadjudicated / 10 secondary equivalence / 1 conflict / 3 distinctions / 10 one-side-only / 1 special non-rime**. Exact-head CI is pending for this last evidence/test change.
+
+
+## Exact final checkpoint — 2026-11-14 12:30 UTC
+
+- Branch `research/burmese-medials-g2p-evidence-2026-11-13`, final tested HEAD `1ce829eda10ae5c3b3e4b9772efb434043198a75`; PR #147 OPEN / DRAFT / mergeable, **794 ahead / 0 behind** `main`; no reviews or inline review threads.
+- Required CI **43585743620 SUCCESS** on exact HEAD: **267 Python tests + 68 subtests**, **20 Node**, **58 Playwright**; IPA corpus structural validator, `npm ci`, `npm audit --audit-level=high` (0 vulnerabilities), production build, generated-data freshness and Chromium install all passed.
+- Source registry: **80 sources / 170 claims**. Rime ledger: **25 groups = 0 unadjudicated / 10 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 10 secondary one-side-only / 1 special non-rime**.
+- `un` upgraded to secondary equivalence from `ဂုဏ်` /ɡòuɴ/ (also first component in `ဂုဏ်ထူး`) and `ကုန်` /kòʊɴ`; claim `CLM-WIKTIONARY-UN-SECOND-SIDE-EXAMPLE-001`; tests updated. Not primary MLC adjudication or controlled minimal pair.
+- Required security/install status: Vite 8.3.8, committed `package-lock.json` (lock v3, 51 package entries), CI `npm ci`, audit 0 vulnerabilities — DONE_VERIFIED.
+- PR #129 remains OPEN / DRAFT / non-mergeable (53 ahead / 17 behind `main`), untouched; its compatible changes selectively ported to #147. No merges, releases or deployments.
+- Remaining genuine blockers: primary MLC transcription table/dictionary text not retrieved; independent Yangon-profile expert IPA gold remains 0; complete positional phonology/tone/phonation and Python/browser parity incomplete; manual accessibility QA outstanding; Google WFST dependency references not fully content-address pinned; commercial reuse of myG2P remains blocked by CC BY-NC-SA 4.0. Repository status: **PARTIAL PROTOTYPE — not linguistically release-ready**.
