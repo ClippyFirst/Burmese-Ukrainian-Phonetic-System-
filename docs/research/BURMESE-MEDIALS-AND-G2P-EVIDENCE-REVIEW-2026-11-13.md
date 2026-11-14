@@ -790,3 +790,10 @@ This is one-side secondary evidence only, not collision adjudication. Distributi
 Wiktionary lists `အုံ့` with MLCTS `um.` and IPA `/ʔo̰ʊɴ/`. The lemma ends in ုံ့, the second source-unit side of the `um.` group. It is not present in the MOW suffix-match inventory, so this is a secondary lexical attestation outside MOW, not a MOW-backed candidate. No word-level example for ုမ့် was located. The audit and MLCTS2 crosswalk now record `SECONDARY_ONE_SIDE_ONLY`; claim `CLM-WIKTIONARY-UM-DOT-ONE-SIDE-EXAMPLE-001` is registered.
 
 This does not adjudicate the collision or authorize primary MLC, IPA gold, runtime or Ukrainian-output changes. Current 25-group distribution: **2 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 10 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 153 claims**. Exact-head CI pending.
+
+
+## 41. One-side secondary lexical attestation for `im:` — 2026-11-14
+
+Wiktionary gives the compound `တစ်သဝေမတိမ်း` IPA `/təθwèmətéɪɴ/` and MLCTS `tacsa.wema.tim:`, and explicitly analyses final `တိမ်း` as a component. The MOW suffix-match inventory independently includes `တိမ်း` under source ending ိမ်း. This is compound-level secondary evidence for the final component, not a standalone pronunciation entry. No lexical example for ိံး was located. The audit and crosswalk now record `SECONDARY_ONE_SIDE_ONLY`; claim `CLM-WIKTIONARY-IM-COLON-ONE-SIDE-EXAMPLE-001` is registered.
+
+This is not a collision adjudication or primary MLC evidence. Current distribution: **1 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 154 claims**. Exact-head CI pending.
