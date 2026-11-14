@@ -871,3 +871,8 @@ A Wiktionary appendix on Burmese pronunciation explicitly lists `ဂုဏ်` /
 The `un` row is therefore upgraded from `SECONDARY_ONE_SIDE_ONLY` to `SECONDARY_SYSTEM_EQUIVALENCE`. This is not a controlled minimal pair, and Wiktionary is not the primary MLC transcription table. The change is evidence-ledger only: no vendor mapping, runtime or Ukrainian output is promoted. Claim `CLM-WIKTIONARY-UN-SECOND-SIDE-EXAMPLE-001` is registered.
 
 Updated 25-group distribution: **0 unadjudicated / 10 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 10 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 170 claims**.
+
+
+## 50. Exact-head CI after `un` evidence extension — 2026-11-14
+
+Required CI run **43585743620 SUCCESS** on final tested SHA `1ce829eda10ae5c3b3e4b9772efb434043198a75`: 267 Python tests + 68 subtests, 20 Node tests, 58 Playwright tests; `npm ci`, high-severity npm audit, production build, generated-data freshness and Chromium installation all passed. Audit found 0 vulnerabilities. The lexical evidence extension did not modify runtime or Ukrainian mappings. Current source registry: 80 sources / 170 claims; 25 rime groups = 0 unadjudicated / 10 secondary equivalence / 1 conflict / 3 distinctions / 10 one-side-only / 1 special non-rime. Independent adjudicated IPA gold remains 0.
