@@ -2093,3 +2093,8 @@ The 25-group rime CSV currently has 0 unadjudicated groups (9 secondary equivale
 ## Exact-head comparator provenance — 2026-11-14
 
 Optional run **43584975335 SUCCESS** on PR head `58fe38c15f6373948640c89921d818d3be3cafff`: Google WFST 6/6 structural-only outputs (Bazel build/symbol checks passed), Epitran 6/6 raw outputs, myG2P CRF 100/100 predictions with 84 source-concordant. Zero independent gold and null accuracy for all; CRF may overlap training data and is given syllable boundaries. Artifacts downloaded/inspected; report and ZIP hashes recorded in engine registry and source claims. No model enabled by default.
+
+
+## `un` secondary lexical evidence update — 2026-11-14
+
+Wiktionary Appendix:Burmese pronunciation lists `ဂုဏ်` /ɡòuɴ/ and `ကုန်` /kòuɴ/; the `ဂုဏ်ထူး` entry provides compound-initial confirmation for `ဂုဏ်` with IPA `/ɡòʊɴdú/` and MLCTS `gunhtu:`. The `un` ledger/crosswalk row is now `SECONDARY_SYSTEM_EQUIVALENCE`, with a new documentary claim and regression assertions. This remains secondary evidence, not a minimal pair or primary MLC adjudication. Distribution: **0 unadjudicated / 10 secondary equivalence / 1 conflict / 3 distinctions / 10 one-side-only / 1 special non-rime**. Registry: **80 sources / 170 claims**.
