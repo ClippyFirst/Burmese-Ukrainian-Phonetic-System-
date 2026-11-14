@@ -2105,3 +2105,9 @@ Wiktionary Appendix:Burmese pronunciation lists `ဂုဏ်` /ɡòuɴ/ and `�
 - Final tested branch head: `1ce829eda10ae5c3b3e4b9772efb434043198a75`; required CI **43585743620 SUCCESS**: **267 Python + 68 subtests**, **20 Node**, **58 Playwright**; `npm ci`, `npm audit --audit-level=high`, build, generated-data freshness, Chromium install all passed; **0 vulnerabilities**.
 - Rime ledger: 25 groups = **0 unadjudicated / 10 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 10 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 170 claims**.
 - IPA gold validator correctly remains `NOT_READY_NO_ADJUDICATED_GOLD` (0 independently adjudicated entries). PR #147 OPEN / DRAFT / mergeable, 794 ahead / 0 behind `main`; no reviews or inline review threads. PR #129 OPEN / DRAFT / non-mergeable, 53 ahead / 17 behind; untouched. No merge/release/deployment.
+
+
+## Current final HEAD verification — 2026-11-14 12:35 UTC
+
+- Branch head `f1854a75f63281e536f7c661eac1ad19f541833b`; required CI **43585929068 SUCCESS** on exact SHA: 267 Python + 68 subtests, 20 Node, 58 Playwright; `npm ci`, explicit `npm audit --audit-level=high` (0 vulnerabilities), build, generated-data freshness and Chromium all passed.
+- Rime evidence: 25 groups = 0 unadjudicated / 10 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 10 secondary one-side-only / 1 special non-rime. Source registry 80 sources / 170 claims. Independent IPA gold 0.
