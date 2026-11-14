@@ -1988,3 +1988,12 @@ Registry: **80 sources / 169 claims**. None of these claims creates independent 
 ## Exact final test verification — 2026-11-14
 
 The `un` second-side lexical addition and regression changes passed exact-head required CI **43585743620 SUCCESS** on `1ce829eda10ae5c3b3e4b9772efb434043198a75`: 267 Python + 68 subtests, 20 Node, 58 Playwright; npm ci and explicit high-severity audit passed with 0 vulnerabilities. IPA gold remains 0; validator `NOT_READY_NO_ADJUDICATED_GOLD`. Registry 80 sources / 170 claims; rime ledger 0 unadjudicated / 10 secondary equivalence / 1 conflict / 3 distinctions / 10 one-side-only / 1 special non-rime.
+
+
+## `au:` and `au.` two-sided secondary evidence — 2026-11-14
+
+- `CLM-WIKTIONARY-AU-COLON-SECOND-SIDE-EXAMPLE-001`: `ပေါ` `/pɔ́/`, MLCTS `pau:`, source `ေါ`; complements `ကျော` `/t͡ɕɔ́/`, MLCTS `kyau:`, source `ော`.
+- `CLM-WIKTIONARY-AU-DOT-SECOND-SIDE-EXAMPLE-001`: `ပေါ့` `/pɔ̰/`, MLCTS `pau.`, source `ေါ့`; complements final syllable of `ဝပ်ရှော့` `/ʃɔ̰/`, MLCTS `waphrau.`, source `ော့`.
+- Both groups are `SECONDARY_SYSTEM_EQUIVALENCE` only. `ပေါ့` is not a MOW suffix-match candidate. Neither claim is a minimal pair or primary MLC adjudication.
+- Registry: **80 sources / 172 claims**. 25-group distribution: **0 unadjudicated / 12 secondary equivalence / 1 conflict / 3 distinctions / 8 one-side-only / 1 special non-rime**.
+- Required CI **43586334287 SUCCESS** on `dd494662f0c94bcf1f59170fe65ea6cd41199c64`: 267 Python + 68 subtests, 20 Node, 58 Playwright; npm audit 0 vulnerabilities.
