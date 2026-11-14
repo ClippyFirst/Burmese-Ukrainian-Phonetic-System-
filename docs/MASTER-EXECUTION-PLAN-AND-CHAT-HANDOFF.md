@@ -2315,8 +2315,8 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 
 ## Final exact-head verification — 2026-11-14
 
-- Final HEAD: `e6d865e1daa191a7ecc9cd5b0025b628cc930310`; required CI run **43581081561 SUCCESS**: 253 Python tests + 66 subtests, 20 Node tests, 58 Playwright tests. IPA-gold structure validation, build, generated-data freshness and Chromium install passed.
+- Final tested code/data HEAD (subsequent closeout commits are documentation-only): `e6d865e1daa191a7ecc9cd5b0025b628cc930310`; required CI run **43581081561 SUCCESS**: 253 Python tests + 66 subtests, 20 Node tests, 58 Playwright tests. IPA-gold structure validation, build, generated-data freshness and Chromium install passed.
 - Optional diagnostic run **43581085495 SUCCESS**. CRF raw output: 100 predictions, 84 source-concordant rows, 0 gold, `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`, accuracy null. Epitran raw output artifact generated; no accuracy score. Do not interpret these as evaluated benchmark results.
 - Gold remains `NOT_READY_NO_ADJUDICATED_GOLD` (0 entries). npm install reports one high-severity vulnerability; no dependency update applied.
 - Current lexical ledger: 0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime. Registry 80 sources / 158 claims.
-- PR #147 OPEN / DRAFT / mergeable; branch 704 ahead / 0 behind main. Not merged.
+- PR #147 OPEN / DRAFT / mergeable; branch remains ahead of main with zero commits behind. Not merged.
