@@ -2004,3 +2004,12 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 | BURMESE-MOW-A-DOT-SUFFIX-OVERLAP-025 | DONE_VERIFIED — INTERPRETATION_GUARD | MOW's sole `a.` / `ာ့` suffix hit `ဝပ်ရှော့` overlaps larger ending `ော့`; Wiktionary gives `waphrau.` / `/waʔʃɔ̰/`, hence `au.`. Regression tests preserve this distinction. | Code-point suffix matching is not syllabification. No `a.` rime promotion from this candidate. |
 
 Updated lexical ledger: 25 groups = **0 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 12 secondary one-side-only / 1 special non-rime**. Source registry: **80 sources / 157 claims**. Exact-head CI for this update pending. IPA gold remains 0; runtime and Ukrainian output unchanged.
+
+
+## `a.` both-side lexical evidence — 2026-11-14
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-RIME-A-DOT-BOTH-SIDES-028 | DONE_VERIFIED — SECONDARY_SYSTEM_EQUIVALENCE | Wiktionary `ငါ့` `/ŋa̰/` (`ါ့`) and `တာ့တာ` `/ta̰tà/`, first syllable `တာ့` (`ာ့`); MLCTS values `nga.` and `ta.ta`. | Secondary lexical equivalence for both sides; not a minimal pair or primary MLC adjudication. No runtime change. |
+
+Current ledger: **0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 158 claims**. Exact-head CI pending.
