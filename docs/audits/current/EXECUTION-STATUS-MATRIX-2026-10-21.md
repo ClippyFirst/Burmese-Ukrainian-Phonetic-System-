@@ -2034,3 +2034,14 @@ Registry: **80 sources / 158 claims**. IPA gold remains 0; `NOT_READY_NO_ADJUDIC
 | BURMESE-GOOGLE-WFST-RAW-SMOKE-001 | DONE_VERIFIED — HARNESS_AND_OPTIONAL_CI | Pinned source commit, structural-only raw-output script/tests and optional workflow ported from PR #129. Historical run 43084508359: 6/6 raw outputs, 0 gold, accuracy null. | Current-branch exact-head optional workflow still pending; no accuracy claim or production fallback. |
 
 Primary-source corrections added: WSSANLP PER results and test split; LREC 2020 compiled WFST/inventory counts; Hlaing 2014 syllable-count and stacking-error discrepancies. None is promoted to project IPA gold.
+
+
+## Current-branch hybrid and raw-output verification — 2026-11-14
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-HYBRID-CANDIDATE-COLLECTOR-001 | DONE_VERIFIED — DIAGNOSTIC_ONLY | `HybridBurmeseEngine`, explicit provider adapters and tests; external provider attempts are listed separately from candidates; required CI on SHA `45d3513ad1f6bbbda8d9a97768e493cdda08856d` passed. | RuleBased engine remains final IPA authority; no provider auto-runs, votes or promotes. |
+| BURMESE-GOOGLE-WFST-RAW-SMOKE-001 | DONE_VERIFIED — RAW_OUTPUT_ONLY | Optional run **43582075278 SUCCESS**; Bazel build, symbol-table checks, 6/6 outputs; report SHA `88372233d85df73593b030ee0f91aa678fe86fd1c6d5cdc18e7c609b8eefd2c6`. | Six structural-only probes; 0 gold; accuracy null; upstream dependencies not fully hermetic. |
+| BURMESE-EPITRAN-RAW-SMOKE-001 | DONE_VERIFIED — RAW_OUTPUT_ONLY | Epitran 1.35.3, six structural-only raw outputs, artifact ZIP SHA `4b60180e479d884826ed158dab525c809a3c45c66e627eb4904e61c8be048304`. | 0 gold; no accuracy claim. |
+| BURMESE-CRF-RAW-SMOKE-001 | DONE_VERIFIED — RAW_OUTPUT_ONLY | CRF 100/100 outputs, 84 source-concordant, 0 gold, possible training overlap, artifact ZIP SHA `fbf339ed34dfb80b4147998d7b2fee4c602fcb1abc10c91b9229ea10ccf7bb9d`. | Not accuracy; syllable boundaries are supplied. |
+
