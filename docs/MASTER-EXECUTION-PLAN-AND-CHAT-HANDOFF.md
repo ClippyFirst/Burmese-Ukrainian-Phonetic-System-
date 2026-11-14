@@ -2415,3 +2415,13 @@ A secondary Wiktionary appendix directly lists `ဂုဏ်` /ɡòuɴ/ and `က
 - Required security/install status: Vite 8.3.8, committed `package-lock.json` (lock v3, 51 package entries), CI `npm ci`, audit 0 vulnerabilities — DONE_VERIFIED.
 - PR #129 remains OPEN / DRAFT / non-mergeable (53 ahead / 17 behind `main`), untouched; its compatible changes selectively ported to #147. No merges, releases or deployments.
 - Remaining genuine blockers: primary MLC transcription table/dictionary text not retrieved; independent Yangon-profile expert IPA gold remains 0; complete positional phonology/tone/phonation and Python/browser parity incomplete; manual accessibility QA outstanding; Google WFST dependency references not fully content-address pinned; commercial reuse of myG2P remains blocked by CC BY-NC-SA 4.0. Repository status: **PARTIAL PROTOTYPE — not linguistically release-ready**.
+
+
+## Final verified state — 2026-11-14 12:35 UTC
+
+- Final tested SHA `f1854a75f63281e536f7c661eac1ad19f541833b`; PR #147 OPEN / DRAFT / mergeable, 798 ahead / 0 behind `main`, 61 changed files; no reviews or inline threads. PR #129 remains OPEN / DRAFT / non-mergeable (53 ahead / 17 behind); untouched. No merge/release/deployment.
+- Required CI **43585929068 SUCCESS** on exact SHA: 267 Python tests + 68 subtests, 20 Node, 58 Playwright; IPA structure validation, `npm ci`, high-severity npm audit (0 vulnerabilities), build, generated-data freshness and Chromium install passed.
+- Source registry: 80 sources / 170 claims. Rime ledger: 25 groups = 0 unadjudicated / 10 secondary equivalence / 1 conflict / 3 distinctions / 10 one-side-only / 1 special non-rime.
+- `un` secondary lexical equivalence claim and tests are included. No primary MLC adjudication, no independently adjudicated Yangon IPA gold, no runtime or Ukrainian mapping promotion.
+- Vite 8.3.8, lockfile v3 committed (51 package entries), `npm ci` and zero-vulnerability audit are DONE_VERIFIED.
+- Still blocked/partial: primary MLC dictionary/transcription pages unavailable; independent expert IPA gold and annotators unavailable; positional medial/coda/tone/phonation coverage and Python/browser phonological parity incomplete; manual accessibility QA outstanding; Google WFST dependency transitive pinning not fully hermetic; myG2P commercial reuse blocked by CC BY-NC-SA 4.0. Repository remains **PARTIAL PROTOTYPE, not linguistically release-ready**.
