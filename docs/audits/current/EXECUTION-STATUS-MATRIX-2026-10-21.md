@@ -2127,3 +2127,12 @@ Required CI **43586334287 SUCCESS** on `dd494662f0c94bcf1f59170fe65ea6cd41199c64
 - Wiktionary's rime table gives `ကိံ` /kèɪɴ/ MLCTS `kim` for the `im` collision's second orthographic side. This is a secondary table example, not a lexical entry; it does not change the 8 one-side-only lexical groups.
 - SEAlang dictionary/API retrieval remains inaccessible (HTTP 502 / inaccessible endpoint). No primary MLC entry/table inspected. No runtime or Ukrainian mapping promotion.
 - Registry: **82 sources / 175 claims**; lexical collision ledger remains **12 secondary equivalence / 1 conflict / 3 distinctions / 8 one-side-only / 1 special non-rime**. Required CI **43618679936 SUCCESS** on code/test head `9e1a770cfd3d5e4c56264f79e458637f8c9bc1f9`: 268 Python + 68 subtests, 20 Node, 58 Playwright; IPA-gold structure validation, `npm ci`, high-severity audit (0 vulnerabilities), production build and generated-data freshness passed. This is the test-bearing snapshot; later handoff/register changes are documentation-only.
+
+
+## MLC second-edition access follow-up — 2026-11-14
+
+- New access lead: CiNii identifies a revised 2nd edition of the 1993 Myanmar-English Dictionary (709 pages, chief editor Dr Myint Kyi, Department of Myanmar Nationalities' Languages) with one holding at the University of Tokyo General Library. NDL guide reports 2019; a 2023 scholarly bibliography cites 2020. Publication year remains unresolved; no pages or pronunciation system inspected.
+- NDL's 2022 guide confirms SEAlang is based on the 1993/1996 MLC dictionary. SEAlang 2008 paper documents IPA query/display and a screenshot with phonetic output, but the headword is not recoverable from extraction and record schema is not disclosed.
+- Hlaing & Thida (2018), Win & Takara (2011), and Mooney & Repetti-Ludlow (2021) add phonetic context but no new lexical example for the missing side of the eight one-sided collision groups. No mapping promotion.
+- Registry 87 sources / 183 claims; collision distribution unchanged.
+- CI 43619590836 failed one new Python assertion due to capitalization mismatch (No pages... vs expected no pages...); 269 Python tests + 68 subtests passed, 1 failed. Assertion corrected in 3b5e55cc8ac45afee6c98cf6999510012669ddf2; no exact-head CI run/status was created for the fix. Corrected full-suite verification remains pending/unverified.
