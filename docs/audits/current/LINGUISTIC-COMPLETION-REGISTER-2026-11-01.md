@@ -1915,3 +1915,12 @@ Current ledger: **1 unadjudicated / 8 secondary equivalence / 1 secondary confli
 | BURMESE-RIME-A-DOT-ONE-SIDE-027 | DONE_VERIFIED — SECONDARY_ONE_SIDE_ONLY | Wiktionary `ငါ့`: IPA `/ŋa̰/`, MLCTS `nga.`, source ending `ါ့`; explicitly a non-lemma induced creaky pronoun form. | Only first source-unit side attested; no lexical `ာ့` example and no primary MLC adjudication. No runtime promotion. |
 
 Updated 25-group distribution: **0 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 12 secondary one-side-only / 1 special non-rime**. Source registry: **80 sources / 157 claims**.
+
+
+## `a.` both-side secondary lexical equivalence — 2026-11-14
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-RIME-A-DOT-BOTH-SIDES-028 | DONE_VERIFIED — SECONDARY_SYSTEM_EQUIVALENCE | Wiktionary `ငါ့` `/ŋa̰/`, MLCTS `nga.` (`ါ့`) and `တာ့တာ` `/ta̰tà/`, MLCTS `ta.ta`, with first syllable `တာ့` (`ာ့`). | Both source units represented, same `/a̰/` rime; not a controlled minimal pair and not primary MLC adjudication. No runtime promotion. |
+
+Updated 25-group distribution: **0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 158 claims**.
