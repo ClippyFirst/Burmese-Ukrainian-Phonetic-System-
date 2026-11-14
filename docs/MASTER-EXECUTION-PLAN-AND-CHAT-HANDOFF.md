@@ -2265,3 +2265,12 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - MOW suffix inventory has one apparent `a.` / `ာ့` match: `ဝပ်ရှော့`. This is only a code-point suffix overlap inside full final sequence `ော့`, not evidence of a standalone `a.` rime.
 - Wiktionary lists `ဝပ်ရှော့` as `waphrau.`, IPA `/waʔʃɔ̰/`; it remains evidence for `au.` only. `a.` stays unadjudicated.
 - Added regression test to prevent the orthographic suffix inventory from being misread as syllable/rime segmentation. Generator behavior unchanged because its declared contract is exact code-point suffix matching only.
+
+
+## Exact-head verification — `im:` / `um.` and MOW suffix guard — 2026-11-14
+
+- Test-bearing SHA `2b1f306b43a8a6c38e626252fb0b0b9c18501e1b`; required CI **43580029898 SUCCESS**: 252 Python + 66 subtests, 20 Node, 58 Playwright; IPA-gold structure validation, production build, generated-web-data freshness and Chromium install passed.
+- A preceding test run failed because one old regression assertion still expected the former distribution (3 unadjudicated / 9 one-side-only). The count assertion was corrected to 1 / 11; the subsequent exact-SHA CI passed.
+- IPA gold remains `NOT_READY_NO_ADJUDICATED_GOLD` (0 independent entries); npm reports one high-severity vulnerability. No dependency update applied.
+- Final lexical ledger: 1 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime. Registry 80 sources / 154 claims.
+- PR #147 remains OPEN / DRAFT / mergeable; branch 667 commits ahead / 0 behind main. No merge or release.
