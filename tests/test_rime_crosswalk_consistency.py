@@ -104,9 +104,9 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
     counts = Counter(row["evidence_status"] for row in rows)
     assert counts == {
         "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 0,
-        "SECONDARY_SYSTEM_EQUIVALENCE": 8,
+        "SECONDARY_SYSTEM_EQUIVALENCE": 9,
         "SECONDARY_SOURCE_CONFLICT": 1,
-        "SECONDARY_ONE_SIDE_ONLY": 12,
+        "SECONDARY_ONE_SIDE_ONLY": 11,
         "SECONDARY_SOURCE_DISTINCTION": 3,
         "SPECIAL_NONRIME_CONTEXT_DEPENDENT": 1,
     }
@@ -179,9 +179,9 @@ def test_mow_suffix_match_does_not_promote_overlapping_composite_vowel_to_a_dot_
     a_dot = [row for row in matches if row["mlcts"] == "a." and row["source_unit"] == "ာ့"]
     assert [row["lemma"] for row in a_dot] == ["ဝပ်ရှော့"]
     lexical = {row["mlcts"]: row for row in read_rows("romanization_rime_collision_lexical_audit.csv")}
-    assert lexical["a."]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
-    assert lexical["a."]["observed_ipa"] == "/ŋa̰/"
-    assert lexical["a."]["observed_mlcts"] == "nga."
+    assert lexical["a."]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
+    assert lexical["a."]["observed_ipa"] == "/ŋa̰/; /ta̰/"
+    assert lexical["a."]["observed_mlcts"] == "nga.; ta.ta"
     assert lexical["au."]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "waphrau." in lexical["au."]["observed_mlcts"]
 
@@ -189,8 +189,9 @@ def test_mow_suffix_match_does_not_promote_overlapping_composite_vowel_to_a_dot_
 def test_a_dot_phonetic_literature_does_not_supply_orthographic_mapping():
     """General /a/~closed-vowel descriptions cannot adjudicate MLCTS a. spellings."""
     rows = {row["mlcts"]: row for row in read_rows("romanization_rime_collision_lexical_audit.csv")}
-    assert rows["a."]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
-    assert "one side only" in rows["a."]["acceptance_boundary"].lower()
+    assert rows["a."]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
+    assert "not a controlled minimal pair" in rows["a."]["acceptance_boundary"].lower()
+    assert "both source-unit sides" in rows["a."]["interpretation"].lower()
     assert "mooney" in rows["a."]["interpretation"].lower()
     assert "watkins" in rows["a."]["interpretation"].lower()
     assert "no lexical example for" in rows["a."]["interpretation"].lower()
