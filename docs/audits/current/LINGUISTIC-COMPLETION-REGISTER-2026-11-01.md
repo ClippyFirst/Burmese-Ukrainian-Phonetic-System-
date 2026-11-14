@@ -1924,3 +1924,13 @@ Updated 25-group distribution: **0 unadjudicated / 8 secondary equivalence / 1 s
 | BURMESE-RIME-A-DOT-BOTH-SIDES-028 | DONE_VERIFIED — SECONDARY_SYSTEM_EQUIVALENCE | Wiktionary `ငါ့` `/ŋa̰/`, MLCTS `nga.` (`ါ့`) and `တာ့တာ` `/ta̰tà/`, MLCTS `ta.ta`, with first syllable `တာ့` (`ာ့`). | Both source units represented, same `/a̰/` rime; not a controlled minimal pair and not primary MLC adjudication. No runtime promotion. |
 
 Updated 25-group distribution: **0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 158 claims**.
+
+
+## Final exact-head CI and lexical ledger — 2026-11-14
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-RIME-LEXICAL-AUDIT-025 | DONE_VERIFIED — SECONDARY_EVIDENCE_LEDGER | Final SHA `e6d865e1daa191a7ecc9cd5b0025b628cc930310`; CI **43581081561 SUCCESS**: 253 Python + 66 subtests, 20 Node, 58 Playwright; build, generated-data freshness, Chromium, IPA-gold structure validation passed. | Evidence ledger integrity only. 0 groups remain without any lexical evidence, but 11 groups are still one-sided, 1 conflicting and 3 source-distinguished; all evidence is secondary. No primary MLC adjudication or runtime promotion. |
+| BURMESE-RAW-G2P-DIAGNOSTICS-001 | DONE_VERIFIED — RAW_OUTPUT_ONLY | Optional run **43581085495 SUCCESS**; CRF 100 predictions / 84 source-concordant / 0 gold / `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`; Epitran raw output artifact. | No accuracy estimate. Diagnostic outputs are not gold or held-out benchmark results. |
+
+Current ledger: **0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 158 claims**. Gold: 0. One high-severity npm vulnerability remains.
