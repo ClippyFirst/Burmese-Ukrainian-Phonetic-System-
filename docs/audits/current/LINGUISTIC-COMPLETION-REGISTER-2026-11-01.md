@@ -1934,3 +1934,10 @@ Updated 25-group distribution: **0 unadjudicated / 9 secondary equivalence / 1 s
 | BURMESE-RAW-G2P-DIAGNOSTICS-001 | DONE_VERIFIED — RAW_OUTPUT_ONLY | Optional run **43581085495 SUCCESS**; CRF 100 predictions / 84 source-concordant / 0 gold / `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`; Epitran raw output artifact. | No accuracy estimate. Diagnostic outputs are not gold or held-out benchmark results. |
 
 Current ledger: **0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 158 claims**. Gold: 0. One high-severity npm vulnerability remains.
+
+
+## Research-source reconciliation and engine integration — 2026-11-14
+
+- Full-text Undermind review of Thu et al. (2016), Oo et al. (2020), and Hlaing (2014) corrected the evidence ledger: WSSANLP open-set PER 14.7/11.4/15.7 (WFST), 15.7 CRF tie on open3; LREC Thrax/OpenFst paper-reported 195 states/2,966 arcs and 88-symbol inventory; Hlaing 11,732 words, 99.93% orthographic segmentation accuracy with 32,238 vs 32,283 syllable-count discrepancy and 8-vs-9 stacking-error discrepancy. Source claims explicitly distinguish these from project IPA accuracy.
+- PR #129 was inspected (21 files, 53 commits ahead/17 behind, non-mergeable); its useful work was selectively ported rather than blindly merged: candidate-only hybrid API, Google WFST raw-output harness/optional CI, and medials/conjunct/kinzi IPA withholding. PR #129 remains open/draft/untouched.
+- Current branch now has an explicit candidate-only provider API; deterministic rule engine remains final authority. No external provider auto-runs and no provider output is promoted.
