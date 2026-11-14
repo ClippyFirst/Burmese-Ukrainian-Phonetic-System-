@@ -2467,7 +2467,7 @@ Registry: **80 sources / 172 claims**. Rime ledger: **0 unadjudicated / 12 secon
 - TUFS notes aspirated ချိုင်း /cʰáiɴ/ is regarded as non-lexical by most speakers and absent from MED 2019 although present in Ohno 2000; a voiced /jáiɴ/ form is listed. This is a lexicon coverage/speaker judgment issue, not a rule.
 - Registry **89 sources / 189 claims**.
 - CI run 43620266372 had one test assertion wording failure; corrected in code/test commit 9e0d134a3189a4d57d38de1fa6c0e7b85725d72e. Required CI run **43620353708 SUCCESS**: **271 Python tests + 68 subtests**, **20 Node tests**, **58 Playwright tests**, IPA-gold structure validation, npm ci, npm audit (0 vulnerabilities), production build and generated-data freshness all passed.
-- Optional diagnostics run 43620353669: CRF baseline and raw-output jobs succeeded; Google WFST raw-output build was still running at the last check. It is diagnostic only, not an accuracy benchmark.
+- Optional diagnostics run 43620353669 completed SUCCESS: Epitran, CRF and Google WFST raw-output jobs succeeded. Google WFST returned 6/6 outputs with 0 runtime errors but 0 independent gold (accuracy null). CRF returned 100 predictions, 84 source-concordant, with 0 gold and NOT_SCORED_POSSIBLE_TRAINING_OVERLAP. These are raw-output diagnostics, not accuracy results.
 
 
 ## Final execution checkpoint — 2026-11-14
@@ -2478,7 +2478,7 @@ Registry: **80 sources / 172 claims**. Rime ledger: **0 unadjudicated / 12 secon
 - Dedicated working branch: research/burmese-medials-g2p-evidence-2026-11-13
 - Code/data/test-bearing head: 9e0d134a3189a4d57d38de1fa6c0e7b85725d72e
 - Latest documentation head before this checkpoint: 4478d4dbaffdc7ab127bc8f2a22f4f543275b880
-- Comparison to main at the checkpoint: 852 commits ahead, 0 behind; merge base remains dc90463bdd734867308f03cb627eb8941efc19d6. main was not changed.
+- Comparison to main at the checkpoint: 855 commits ahead, 0 behind; merge base remains dc90463bdd734867308f03cb627eb8941efc19d6. main was not changed.
 - Required CI run 43620353708 SUCCESS on the code/test-bearing head: 271 Python tests + 68 subtests, 20 Node tests, 58 Playwright tests; IPA-gold structural validation, npm ci, npm audit --audit-level=high (0 vulnerabilities), production build and generated-data freshness passed.
 - Optional diagnostic run 43620353669: CRF baseline and raw-output jobs SUCCESS; Google Thrax/OpenFst build job remained IN_PROGRESS at last inspection. It is not a linguistic accuracy benchmark and no accuracy claim is made.
 - Evidence registries: 89 sources / 189 claims; CSV widths/refs/ID uniqueness validated. Collision lexical audit contains 25 groups; 8 target groups remain SECONDARY_ONE_SIDE_ONLY. TUFS examples add evidence only to already-observed sides and expose a secondary transcription disagreement for စောင့်; no mapping was promoted.
