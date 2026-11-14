@@ -1993,3 +1993,14 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - Previous run exposed one stale status-distribution assertion (expected 3 unadjudicated / 9 one-side-only); corrected to 1 / 11 and reran successfully.
 - IPA gold remains 0 adjudicated entries; one high-severity npm vulnerability remains. No runtime or Ukrainian mapping change.
 - Ledger: 1 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime; registry 80 sources / 154 claims.
+
+
+## Burmese rime lexical evidence continuation — 2026-11-14
+
+| ID | Status | Evidence | Acceptance criterion / boundary |
+|---|---|---|---|
+| BURMESE-RIME-A-DOT-ONE-SIDE-027 | DONE_VERIFIED — SECONDARY_ONE_SIDE_ONLY | Wiktionary `ငါ့` entry: IPA `/ŋa̰/`, MLCTS `nga.`, written ending `ါ့`; explicitly a non-lemma familiar/informal induced creaky pronoun form. Claim `CLM-WIKTIONARY-A-DOT-ONE-SIDE-EXAMPLE-001`. | Only first source-unit side attested; no lexical example for `ာ့`; not primary MLC adjudication or MOW candidate. No runtime/Ukrainian promotion. |
+| BURMESE-RIME-A-DOT-PHONETIC-CONTEXT-026 | DONE_VERIFIED — SOURCE_SCOPE_GUARD | Full texts Mooney & Repetti-Ludlow (2021), DOI `10.3765/PLSA.V6I1.4900`, and Watkins (2001), DOI `10.1017/S0025100301002122`. | Phonetic context only; no Burmese orthography-to-MLCTS mapping for the example items. |
+| BURMESE-MOW-A-DOT-SUFFIX-OVERLAP-025 | DONE_VERIFIED — INTERPRETATION_GUARD | MOW's sole `a.` / `ာ့` suffix hit `ဝပ်ရှော့` overlaps larger ending `ော့`; Wiktionary gives `waphrau.` / `/waʔʃɔ̰/`, hence `au.`. Regression tests preserve this distinction. | Code-point suffix matching is not syllabification. No `a.` rime promotion from this candidate. |
+
+Updated lexical ledger: 25 groups = **0 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 12 secondary one-side-only / 1 special non-rime**. Source registry: **80 sources / 157 claims**. Exact-head CI for this update pending. IPA gold remains 0; runtime and Ukrainian output unchanged.
