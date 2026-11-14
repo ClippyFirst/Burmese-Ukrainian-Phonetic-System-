@@ -103,10 +103,10 @@ def test_lexical_audit_does_not_upgrade_secondary_crosswalks_to_primary_adjudica
     rows = read_rows("romanization_rime_collision_lexical_audit.csv")
     counts = Counter(row["evidence_status"] for row in rows)
     assert counts == {
-        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 3,
+        "UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE": 2,
         "SECONDARY_SYSTEM_EQUIVALENCE": 8,
         "SECONDARY_SOURCE_CONFLICT": 1,
-        "SECONDARY_ONE_SIDE_ONLY": 9,
+        "SECONDARY_ONE_SIDE_ONLY": 10,
         "SECONDARY_SOURCE_DISTINCTION": 3,
         "SPECIAL_NONRIME_CONTEXT_DEPENDENT": 1,
     }
@@ -134,6 +134,9 @@ def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     assert "/sḛɪɴ/" in rows["am."]["observed_ipa"] and "/t͡ɕa̰ɴ/" in rows["am."]["observed_ipa"]
     assert rows["am:"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "lam:" in rows["am:"]["observed_mlcts"] and "/láɴ/" in rows["am:"]["observed_ipa"]
+    assert rows["um."]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
+    assert "um." in rows["um."]["observed_mlcts"] and "/ʔo̰ʊɴ/" in rows["um."]["observed_ipa"]
+    assert "not a mow candidate" in rows["um."]["acceptance_boundary"].lower()
     assert rows["um:"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "hna.lum:" in rows["um:"]["observed_mlcts"] and "/n̥əlóʊɴ/" in rows["um:"]["observed_ipa"]
     assert rows["un"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
@@ -164,4 +167,4 @@ def test_secondary_word_level_evidence_statuses_keep_their_limits_explicit():
     assert rows["ui"]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
     assert "only" in rows["ui"]["acceptance_boundary"].lower()
     assert rows["any"]["evidence_status"] == "SECONDARY_SOURCE_CONFLICT"
-    assert all("no runtime" in rows[key]["acceptance_boundary"].lower() for key in ("auk", "aung", "aung:", "aung.", "any", "any:", "any.", "ui", "um:", "un", "au:", "au.", "im", "im.", "am:", "am."))
+    assert all("no runtime" in rows[key]["acceptance_boundary"].lower() for key in ("auk", "aung", "aung:", "aung.", "any", "any:", "any.", "ui", "um:", "un", "au:", "au.", "im", "im.", "am:", "am.", "um."))
