@@ -569,7 +569,7 @@ def test_tufs_med_ipa_crosswalk_and_lexical_examples_preserve_mlcts_boundary():
     assert "nasal coda -ɴ" in tone["claim"]
     assert "ကမ်း /káɴ/" in examples["claim"]
     assert "သိမ်း /t̪éiɴ/" in examples["claim"]
-    assert "စောင့် /sâuɴ/" in divergence["claim"]
+    assert "For စောင့် 'wait', TUFS gives /sâuɴ/" in divergence["claim"]
     assert "creaky phonation" in divergence["claim"]
     assert "absent from the 2019 MED" in coverage["claim"]
     assert all(row["status"] == "DOCUMENTARY" for row in (crosswalk, tone, examples, divergence, coverage))
