@@ -2098,3 +2098,10 @@ Optional run **43584975335 SUCCESS** on PR head `58fe38c15f6373948640c89921d818d
 ## `un` secondary lexical evidence update — 2026-11-14
 
 Wiktionary Appendix:Burmese pronunciation lists `ဂုဏ်` /ɡòuɴ/ and `ကုန်` /kòuɴ/; the `ဂုဏ်ထူး` entry provides compound-initial confirmation for `ဂုဏ်` with IPA `/ɡòʊɴdú/` and MLCTS `gunhtu:`. The `un` ledger/crosswalk row is now `SECONDARY_SYSTEM_EQUIVALENCE`, with a new documentary claim and regression assertions. This remains secondary evidence, not a minimal pair or primary MLC adjudication. Distribution: **0 unadjudicated / 10 secondary equivalence / 1 conflict / 3 distinctions / 10 one-side-only / 1 special non-rime**. Registry: **80 sources / 170 claims**.
+
+
+## Exact final verification after `un` ledger extension — 2026-11-14
+
+- Final tested branch head: `1ce829eda10ae5c3b3e4b9772efb434043198a75`; required CI **43585743620 SUCCESS**: **267 Python + 68 subtests**, **20 Node**, **58 Playwright**; `npm ci`, `npm audit --audit-level=high`, build, generated-data freshness, Chromium install all passed; **0 vulnerabilities**.
+- Rime ledger: 25 groups = **0 unadjudicated / 10 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 10 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 170 claims**.
+- IPA gold validator correctly remains `NOT_READY_NO_ADJUDICATED_GOLD` (0 independently adjudicated entries). PR #147 OPEN / DRAFT / mergeable, 794 ahead / 0 behind `main`; no reviews or inline review threads. PR #129 OPEN / DRAFT / non-mergeable, 53 ahead / 17 behind; untouched. No merge/release/deployment.
