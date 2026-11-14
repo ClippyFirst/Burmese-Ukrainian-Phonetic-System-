@@ -135,3 +135,10 @@ The full text reports 11,732 tested words and 99.93% word-level orthographic syl
 ### Runtime acceptance consequence
 
 Medials, conjuncts and kinzi remain structurally parsed but are withheld by the IPA adapter until their Yangon-profile realizations are implemented and adjudicated. The parser still exposes the structural fields. Regression probes cover `ကြွေ`, `က္ကာ`, and `င်္ဂါ`; this is conservative abstention, not a new phonological rule.
+
+
+## Google WFST and primary-source closeout — 2026-11-14
+
+The current branch's optional comparator workflow **43582075278 SUCCESS**: pinned Google grammar built with Bazel 7.4.1, symbol-table invariants passed, and 6/6 structural-only probes emitted output. The artifact was downloaded and inspected; report SHA-256 `88372233d85df73593b030ee0f91aa678fe86fd1c6d5cdc18e7c609b8eefd2c6`, zero gold, accuracy null. Epitran 1.35.3 produced six raw structural-only outputs; CRF produced 100/100 outputs with 84 source-concordant but possible train/test overlap; both artifacts inspected, no accuracy claim. The required CI on the same test-bearing SHA passed 267 Python tests + 68 subtests, 20 Node tests, and 58 Playwright tests.
+
+Source registry closeout: **80 sources / 164 claims**. Rime ledger: **0 unadjudicated / 9 secondary equivalence / 1 conflict / 3 distinctions / 11 one-side-only / 1 special non-rime**. Independent adjudicated IPA gold remains 0. One high-severity npm vulnerability remains. PR #147 remains open/draft; PR #129 was selectively ported but left open and untouched.
