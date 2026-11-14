@@ -2250,3 +2250,11 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - Added claim `CLM-WIKTIONARY-UM-DOT-ONE-SIDE-EXAMPLE-001`; updated lexical audit, MLCTS2 status parity and regression tests.
 - Distribution: **2 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 10 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 153 claims**.
 - One-side secondary evidence only; no primary MLC adjudication, IPA gold, runtime or Ukrainian output promotion. Exact-head CI pending.
+
+
+## `im:` one-side secondary lexical attestation — 2026-11-14
+
+- Wiktionary `တစ်သဝေမတိမ်း` (`tacsa.wema.tim:`, `/təθwèmətéɪɴ/`) provides a compound-level attestation of final component `တိမ်း`, and MOW independently lists `တိမ်း` for source ending ိမ်း. This is not a standalone pronunciation entry; opposite unit ိံး remains unobserved.
+- Added claim `CLM-WIKTIONARY-IM-COLON-ONE-SIDE-EXAMPLE-001`; updated audit, crosswalk parity and regression tests.
+- Distribution: **1 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 154 claims**.
+- Secondary compound evidence only; no primary MLC adjudication, IPA gold, runtime or Ukrainian output promotion. Exact-head CI pending.
