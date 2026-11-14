@@ -1952,3 +1952,14 @@ Current ledger: **0 unadjudicated / 9 secondary equivalence / 1 secondary confli
 | CLM-CRF-MYG2P-RAW-SMOKE-2026-11-14 | TESTED | 100 predictions, 84 source-concordant, report SHA `741dc7fa1263e667cb1c51f91f7ee0a24b0bd6c2479d1efafe63798a63d73d20`. | 0 gold; possible training overlap; no accuracy. |
 
 Current registry: **80 sources / 164 claims**. The 25-group rime ledger remains 0 unadjudicated / 9 secondary equivalence / 1 conflict / 3 distinctions / 11 one-side-only / 1 special non-rime. Independent IPA gold remains 0.
+
+
+## Final exact-head diagnostic evidence — 2026-11-14
+
+| Claim | Status | Result | Boundary |
+|---|---|---|---|
+| Google WFST | ESTABLISHED — RAW OUTPUT ONLY | Workflow 43582678434: 6/6 structural-only outputs, report SHA `541dbe0d70074819d006548d5eb7543822e3dae9508c47e598f08504f8d3340b`. | 0 gold; accuracy null. |
+| Epitran 1.35.3 | ESTABLISHED — RAW OUTPUT ONLY | Six structural-only raw outputs, report SHA `a582039d46764f07ed509076ca0fb1542d6bdb4a358dc46aa0ad600bbbb88521`. | 0 gold; accuracy null. |
+| Burmese-G2P CRF | ESTABLISHED — RAW OUTPUT ONLY | 100/100 predictions, 84 source-concordant, report SHA `741dc7fa1263e667cb1c51f91f7ee0a24b0bd6c2479d1efafe63798a63d73d20`. | 0 gold; possible training overlap; supplied syllable boundaries. |
+
+Registry: **80 sources / 164 claims**; no independent IPA gold.
