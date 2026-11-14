@@ -2274,3 +2274,11 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - IPA gold remains `NOT_READY_NO_ADJUDICATED_GOLD` (0 independent entries); npm reports one high-severity vulnerability. No dependency update applied.
 - Final lexical ledger: 1 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime. Registry 80 sources / 154 claims.
 - PR #147 remains OPEN / DRAFT / mergeable; branch 667 commits ahead / 0 behind main. No merge or release.
+
+
+## `a.` phonetic context vs spelling-level evidence — 2026-11-14
+
+- Full-text evidence from Mooney & Repetti-Ludlow 2021: one female Yangon speaker; open /a/ has a centralized closed-syllable outcome transcribed [5], with lexical phonetic examples but no Burmese script or MLCTS.
+- Watkins 2001: one Rangoon male consultant; /ma/ and /maʔ/ examples and four-tone inventory, but no orthographic keys for the example words.
+- Both sources are registered as documentary/phonetic evidence. They cannot adjudicate the `a.` source-unit collision (`ါ့` vs `ာ့`) without spelling-to-pronunciation linkage. `a.` remains the only unadjudicated group.
+- The `ဝပ်ရှော့` MOW suffix hit is a raw overlap inside `ော့`, with `waphrau.` / `/waʔʃɔ̰/`; it is retained under `au.` only.
