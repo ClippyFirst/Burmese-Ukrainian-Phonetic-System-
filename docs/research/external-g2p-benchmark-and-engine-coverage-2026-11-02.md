@@ -109,3 +109,8 @@ The current independent adjudicated Yangon IPA gold count remains zero. Neither 
 ## Current-branch comparator artifacts — 2026-11-14
 
 Optional workflow **43582075278 SUCCESS** (test-bearing SHA `45d3513ad1f6bbbda8d9a97768e493cdda08856d`): Google Thrax/OpenFst build/symbol check and 6/6 structural-only raw outputs; Epitran 1.35.3 raw outputs on six structural probes; CRF 100/100 predictions with 84 source-concordant rows, 0 gold and `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`. The Google report SHA-256 is `88372233d85df73593b030ee0f91aa678fe86fd1c6d5cdc18e7c609b8eefd2c6`; all artifact ZIP hashes and raw report hashes are in `data/burmese/sources.csv`, `data/burmese/source_claims.csv`, and `data/external-ipa-renderers.json`. None of these figures is pronunciation accuracy.
+
+
+## Final exact-head optional diagnostics — 2026-11-14
+
+Optional workflow **43582678434 SUCCESS** on branch tip `cf7bb590f0acb7929f10832ca80062b83a1b33a2`: Google WFST build/symbol checks and 6/6 raw structural-only outputs; Epitran six raw outputs; CRF 100/100 predictions with 84 source-concordant and possible training overlap. Zero independent gold and null accuracy for every engine. Artifacts were downloaded and inspected; hashes and report provenance are recorded in the external-engine registry and source claims.
