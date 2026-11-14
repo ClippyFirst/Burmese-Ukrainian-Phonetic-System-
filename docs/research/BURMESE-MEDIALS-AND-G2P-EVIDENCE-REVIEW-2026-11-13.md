@@ -814,3 +814,8 @@ The `a.` group remains UNADJUDICATED_NO_WORD_LEVEL_EVIDENCE; this is an inventor
 - IPA-gold validator remains `NOT_READY_NO_ADJUDICATED_GOLD` (0 independently adjudicated entries); no accuracy score is claimed. `npm install` reports **one high-severity vulnerability**; no dependency upgrade was applied.
 - Current ledger: 25 groups = **1 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 154 claims**.
 - No primary MLC adjudication, IPA gold, runtime behavior or Ukrainian output was promoted.
+
+
+## 44. Phonetic literature cross-check for unresolved `a.` — 2026-11-14
+
+A full-text read of Mooney & Repetti-Ludlow (2021) confirms a Yangon-speaker phonetic analysis of open /a/ versus centralized closed [5], with example (3) including open [pʰa] ‘frog’, nasal [pʰ5̃(n)] ‘catch’, and killed [pʰ5ʔ] ‘hug’. The authors give no Burmese-script spellings or MLCTS forms for these tokens. Watkins (2001) likewise provides open /ma/ and checked /maʔ/ examples and a four-tone description, but not the Burmese spellings of those lexical examples. These sources establish useful phonetic context, not orthography-to-IPA mappings for `ါ့` or `ာ့`. The sole MOW suffix hit for `ာ့`, `ဝပ်ရှော့`, is still only an overlapping code-point match within `ော့` and belongs to `au.` (`waphrau.` / `/waʔʃɔ̰/`). `a.` therefore remains unadjudicated. No runtime or Ukrainian output changes.
