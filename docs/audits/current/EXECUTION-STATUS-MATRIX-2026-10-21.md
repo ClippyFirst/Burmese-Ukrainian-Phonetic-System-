@@ -2052,3 +2052,11 @@ Primary-source corrections added: WSSANLP PER results and test split; LREC 2020 
 - Required CI 43582496619 SUCCESS on test-bearing SHA `fd27f481470b5f6a08648cf0dcc25ab8b4a8ecf5`: 267 Python + 68 subtests, 20 Node, 58 Playwright; build, generated-data freshness, Chromium and IPA-gold structure validation passed.
 - Optional raw-output evidence is recorded in the source registry. It is not accuracy evidence: Google 6/6 structural-only outputs; Epitran six raw outputs; CRF 100/100 with 84 source-concordant, zero gold and possible training overlap.
 - Registry 80 sources / 164 claims. Independent IPA gold 0. One high-severity npm vulnerability remains.
+
+
+## Exact final branch verification — 2026-11-14
+
+- Final branch tip at this checkpoint: `cf7bb590f0acb7929f10832ca80062b83a1b33a2`; PR #147 remains OPEN / DRAFT / mergeable, **750 ahead / 0 behind** `main`.
+- Required CI **43582678405 SUCCESS** on this exact tip: **267 Python tests + 68 subtests**, **20 Node tests**, **58 Playwright tests**; IPA corpus structure check, production build, generated-data freshness and Chromium installation passed. Gold remains `NOT_READY_NO_ADJUDICATED_GOLD`; npm reports one high-severity vulnerability.
+- Optional workflow **43582678434 SUCCESS** on this exact tip: Google WFST 6/6 raw outputs, Epitran six raw outputs, CRF 100/100 predictions and 84 source-concordant; 0 gold, no accuracy. Artifacts downloaded and inspected.
+- Source registry: **80 sources / 164 claims**. Rime ledger: **0 unadjudicated / 9 secondary equivalence / 1 conflict / 3 distinctions / 11 one-side-only / 1 special non-rime**. No primary MLC adjudication or runtime/Ukrainian promotion.
