@@ -184,8 +184,9 @@ def test_mow_suffix_match_does_not_promote_overlapping_composite_vowel_to_a_dot_
     assert lexical["a."]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
     assert lexical["a."]["observed_ipa"] == "/ŋa̰/; /ta̰/"
     assert lexical["a."]["observed_mlcts"] == "nga.; ta.ta"
-    assert lexical["au."]["evidence_status"] == "SECONDARY_ONE_SIDE_ONLY"
-    assert "waphrau." in lexical["au."]["observed_mlcts"]
+    assert lexical["au."]["evidence_status"] == "SECONDARY_SYSTEM_EQUIVALENCE"
+    assert "pau." in lexical["au."]["observed_mlcts"] and "waphrau." in lexical["au."]["observed_mlcts"]
+    assert "not a mow suffix-match candidate" in lexical["au."]["interpretation"].lower()
 
 
 def test_a_dot_phonetic_literature_does_not_supply_orthographic_mapping():
