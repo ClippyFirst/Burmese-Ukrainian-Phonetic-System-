@@ -2111,3 +2111,10 @@ Wiktionary Appendix:Burmese pronunciation lists `ဂုဏ်` /ɡòuɴ/ and `�
 
 - Branch head `f1854a75f63281e536f7c661eac1ad19f541833b`; required CI **43585929068 SUCCESS** on exact SHA: 267 Python + 68 subtests, 20 Node, 58 Playwright; `npm ci`, explicit `npm audit --audit-level=high` (0 vulnerabilities), build, generated-data freshness and Chromium all passed.
 - Rime evidence: 25 groups = 0 unadjudicated / 10 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 10 secondary one-side-only / 1 special non-rime. Source registry 80 sources / 170 claims. Independent IPA gold 0.
+
+
+## `au:` / `au.` lexical evidence update — 2026-11-14
+
+Wiktionary `ပေါ` `/pɔ́/` (MLCTS `pau:`; source ေါ) and `ကျော` `/t͡ɕɔ́/` (MLCTS `kyau:`; source ော) establish secondary equivalence for `au:`. `ပေါ့` `/pɔ̰/` (MLCTS `pau.`; source ေါ့) and final syllable `/ʃɔ̰/` in `ဝပ်ရှော့` (MLCTS `waphrau.`; source ော့) establish secondary equivalence for `au.`. Two new claims and regression assertions added; no primary MLC adjudication or runtime promotion. Distribution: **0 unadjudicated / 12 secondary equivalence / 1 conflict / 3 distinctions / 8 one-side-only / 1 special non-rime**. Registry: **80 sources / 172 claims**.
+
+Required CI **43586334287 SUCCESS** on `dd494662f0c94bcf1f59170fe65ea6cd41199c64`: 267 Python + 68 subtests, 20 Node, 58 Playwright; npm ci, explicit audit (0 vulnerabilities), build and generated-data freshness passed.
