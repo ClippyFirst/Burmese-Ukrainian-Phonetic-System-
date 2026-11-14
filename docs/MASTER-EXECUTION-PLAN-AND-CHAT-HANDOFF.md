@@ -2296,3 +2296,18 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - Wiktionary's `ငါ့` entry gives `/ŋa̰/`, MLCTS `nga.`, and identifies it as a familiar/informal non-lemma induced creaky-tone form of `ငါ`. The final unit `ါ့` is the first source-unit side of `a.`.
 - Updated `a.` to `SECONDARY_ONE_SIDE_ONLY`. This is secondary lexical evidence, not MOW coverage or primary MLC adjudication; no lexical example for `ာ့` located.
 - Revised 25-group distribution: 0 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 12 secondary one-side-only / 1 special non-rime. Registry now 80 sources / 157 claims.
+
+
+## `a.` second-side example found — 2026-11-14
+
+- Wiktionary `တာ့တာ` (English borrowing *ta-ta*) has IPA `/ta̰tà/` and MLCTS `ta.ta`; its first syllable `တာ့` supplies the second source-unit side `ာ့` with `/ta̰/`.
+- Together with `ငါ့` `/ŋa̰/`, MLCTS `nga.`, ending `ါ့`, both sides now have secondary lexical examples with matching `/a̰/` rime realization.
+- Not a minimal pair, not primary MLC evidence. `တာ့` is internal to the word, so its absence from the MOW word-final suffix inventory is expected. Status becomes `SECONDARY_SYSTEM_EQUIVALENCE`; no runtime change.
+
+
+## `a.` both-side lexical evidence update — 2026-11-14
+
+- `တာ့တာ` is a Wiktionary Burmese lemma (borrowed interjection), IPA `/ta̰tà/`, MLCTS `ta.ta`; its first syllable `တာ့` supplies the second source unit `ာ့` with `/ta̰/`.
+- Combined with `ငါ့` `/ŋa̰/`, MLCTS `nga.`, source unit `ါ့`, this gives secondary lexical examples on both sides with matching `/a̰/` rime realization. Not a controlled minimal pair or primary MLC adjudication.
+- MOW's word-final suffix scan does not include `တာ့တာ` because `တာ့` is internal to the form; no issue with the scan's declared contract.
+- Current 25-group distribution: 0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime. Registry 80 sources / 158 claims.
