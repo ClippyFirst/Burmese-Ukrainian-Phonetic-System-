@@ -2328,3 +2328,11 @@ These are secondary lexical transcriptions, not primary MLC adjudication. In par
 - Compared its 21 changed files and ported the useful, non-conflicting work into PR #147: conservative IPA withholding for medials/conjunct/kinzi; explicit candidate-only `HybridBurmeseEngine` and provider adapters; provider provenance/ordering; Google WFST raw-output harness, tests and optional CI job; registry and README/docs updates. Existing current-branch source records for MYG2P, Google WFST and CRF were reused rather than duplicated.
 - `external_backends_used` now reports providers actually attempted; external outputs remain diagnostic candidates and cannot replace the rule-engine IPA. The `myG2P` dictionary is not copied into the repository.
 - PR #129 remains untouched so its owner can review/close it; the port is tracked on PR #147. The deterministic engine remains final authority and no phonological rule or gold label was promoted.
+
+
+## Current exact-head comparator verification — 2026-11-14
+
+- Required CI **43582075261 SUCCESS** on test-bearing SHA `45d3513ad1f6bbbda8d9a97768e493cdda08856d`: **267 Python tests + 68 subtests**, **20 Node tests**, **58 Playwright tests**; production build, generated-data freshness, Chromium install and IPA-gold structure validation passed. `npm install` still reports one high-severity vulnerability.
+- Optional diagnostics **43582075278 SUCCESS** on the same SHA: Google WFST build/symbol checks and 6/6 raw outputs; Epitran 1.35.3 raw output; CRF 100/100 predictions and 84 source-concordant, but zero gold and possible training overlap.
+- Downloaded artifacts were inspected. No output is gold and no accuracy was computed. Google report SHA `88372233d85df73593b030ee0f91aa678fe86fd1c6d5cdc18e7c609b8eefd2c6`; Epitran report SHA `a7d93e0f04b4f4822094a36760c5376cb596db31a710aae4cdcacd14213d0b69`; CRF report SHA `741dc7fa1263e667cb1c51f91f7ee0a24b0bd6c2479d1efafe63798a63d73d20`.
+- Source registry now has **80 sources / 164 claims**; 25 rime groups: **0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**.
