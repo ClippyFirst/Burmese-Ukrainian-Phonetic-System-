@@ -2023,3 +2023,14 @@ Current ledger: **0 unadjudicated / 9 secondary equivalence / 1 secondary confli
 | BURMESE-RIME-LEXICAL-AUDIT-025 | DONE_VERIFIED — TESTED_LEDGER | 253 Python + 66 subtests, 20 Node, 58 Playwright; build, generated-data freshness, Chromium and IPA-gold structure validation passed. | All 25 groups have some secondary evidence; 11 still one-sided, 1 conflicting, 3 distinguished. |
 
 Registry: **80 sources / 158 claims**. IPA gold remains 0; `NOT_READY_NO_ADJUDICATED_GOLD`. Optional diagnostics **43581085495 SUCCESS**: raw outputs only; CRF 100 predictions / 84 source-concordant / 0 gold / possible training overlap, no accuracy. One high-severity npm vulnerability remains. PR #147 is OPEN / DRAFT / mergeable, 704 ahead / 0 behind main; not merged.
+
+
+## External hybrid candidate integration and conservative IPA guard — 2026-11-14
+
+| ID | Status | Evidence | Acceptance boundary |
+|---|---|---|---|
+| BURMESE-IPA-MEDIAL-STACK-KINZI-WITHHOLD-001 | DONE_VERIFIED — CONSERVATIVE_ABSTENTION | `src/burmese_ukrainian/ipa.py` now returns no IPA when parsed `medials`, `conjunct` or `kinzi` fields are present; tests cover `ကြွေ`, `က္ကာ`, `င်္ဂါ` and public engine `PARTIAL` status. | Does not add pronunciations; prevents silent segment deletion until profile-specific rules are adjudicated. |
+| BURMESE-HYBRID-CANDIDATE-COLLECTOR-001 | DONE_VERIFIED — DIAGNOSTIC_ONLY | `HybridBurmeseEngine` wrapper, explicit Google/myG2P/Epitran/CLI adapters, provider-order/provenance tests; final IPA is preserved from `RuleBasedBurmeseEngine`. | Providers never run by default; no voting/promotion; myG2P license remains CC BY-NC-SA 4.0 and no data is bundled. |
+| BURMESE-GOOGLE-WFST-RAW-SMOKE-001 | DONE_VERIFIED — HARNESS_AND_OPTIONAL_CI | Pinned source commit, structural-only raw-output script/tests and optional workflow ported from PR #129. Historical run 43084508359: 6/6 raw outputs, 0 gold, accuracy null. | Current-branch exact-head optional workflow still pending; no accuracy claim or production fallback. |
+
+Primary-source corrections added: WSSANLP PER results and test split; LREC 2020 compiled WFST/inventory counts; Hlaing 2014 syllable-count and stacking-error discrepancies. None is promoted to project IPA gold.
