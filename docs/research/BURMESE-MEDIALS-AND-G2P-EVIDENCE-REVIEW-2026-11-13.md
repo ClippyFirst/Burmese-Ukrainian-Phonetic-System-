@@ -839,5 +839,5 @@ A further Wiktionary entry closes the one-sided gap: `တာ့တာ` is a Burm
 - Gold validator remains `NOT_READY_NO_ADJUDICATED_GOLD` (0 independently adjudicated entries). `npm install` reports one high-severity vulnerability; no dependency upgrade was applied.
 - Optional raw diagnostics **43581085495 SUCCESS**: Epitran raw output artifact produced without an accuracy score; CRF baseline returned 100 predictions, 84 source-concordant rows, 0 gold rows, and `NOT_SCORED_POSSIBLE_TRAINING_OVERLAP`; accuracy null. These diagnostics are not benchmark results.
 - Final lexical ledger: 25 groups = **0 unadjudicated / 9 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime**. Registry: **80 sources / 158 claims**.
-- PR #147 remains OPEN / DRAFT / mergeable; branch **704 commits ahead / 0 behind** `main`. No merge or release.
+- PR #147 remains OPEN / DRAFT / mergeable; branch remains ahead of `main` with zero commits behind. No merge or release.
 - No primary MLC adjudication, independent IPA gold, runtime behavior or Ukrainian output was promoted.
