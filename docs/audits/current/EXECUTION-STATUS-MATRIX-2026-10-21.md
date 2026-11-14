@@ -1971,3 +1971,11 @@ Append a correction note: `sources.csv` had three internal blank separator lines
 - Claim `CLM-WIKTIONARY-UM-DOT-ONE-SIDE-EXAMPLE-001` registered; audit, crosswalk and tests updated.
 - Distribution: 2 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 10 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 153 claims.
 - Secondary evidence only; no primary MLC or runtime/IPA gold/Ukrainian mapping promotion. Exact-head CI pending.
+
+
+## `im:` secondary compound-level lexical attestation — 2026-11-14
+
+- Wiktionary compound `တစ်သဝေမတိမ်း` has MLCTS `tacsa.wema.tim:` and IPA `/təθwèmətéɪɴ/`; its final component `တိမ်း` is an MOW suffix candidate for ိမ်း. The source provides compound IPA, not a standalone pronunciation record. ိံး remains unobserved.
+- Claim `CLM-WIKTIONARY-IM-COLON-ONE-SIDE-EXAMPLE-001` registered; audit, crosswalk and tests updated.
+- Distribution: 1 unadjudicated / 8 secondary equivalence / 1 secondary conflict / 3 secondary distinction / 11 secondary one-side-only / 1 special non-rime. Registry: 80 sources / 154 claims.
+- Secondary evidence only; no primary MLC or runtime/IPA gold/Ukrainian mapping promotion. Exact-head CI pending.
